@@ -198,7 +198,7 @@
 
         <p>O banco não quer que você saiba disso.</p>
 
-        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta corrente. Mas, por padrão, essa função vem DESATIVADA.</p>
+        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta bancária. Mas, por padrão, essa função vem DESATIVADA.</p>
 
         <p>O dinheiro fica lá... rendendo para ELES, enquanto você paga taxas.</p>
         
@@ -238,7 +238,7 @@
                 </div>
             </div>
 
-            <p class="scarcity">🔥 Restam apenas 3 licenças.</p>
+            <p class="scarcity">🔥 Restam apenas 3 licenças antes que o site caia.</p>
         </div>
 
         <div class="comments-section">
@@ -294,7 +294,7 @@
         <div>
             <p><strong><span id="notify-name">João</span> de SP</strong></p>
             <p>Acabou de comprar o Manual.</p>
-            <p style="color: #28a745; font-size: 11px; font-weight: bold;">Ganhou R$ 750,00 de retorno</p>
+            <p style="color: #28a745; font-size: 11px; font-weight: bold;"><span id="notify-value">Ganhou R$ 1.950,00 de retorno</span></p>
         </div>
     </div>
 
@@ -308,8 +308,14 @@
             const imgId = Math.floor(Math.random() * 50);
             const gender = Math.random() > 0.5 ? 'men' : 'women';
             
+            // GERA VALOR ALEATÓRIO ENTRE 1400 e 2890
+            const randomValue = Math.floor(Math.random() * (2890 - 1400 + 1) + 1400);
+
             document.getElementById('notify-name').innerText = name;
             document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
+            
+            // ATUALIZA O TEXTO COM O VALOR NOVO
+            document.getElementById('notify-value').innerText = `Ganhou R$ ${randomValue},00 de retorno`;
             
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
@@ -319,7 +325,7 @@
             }, 4000);
         }
 
-        // Show first notification after 3 seconds, then every 20 seconds
+        // Show first notification after 3 seconds, then every 15 seconds
         setTimeout(showNotification, 3000);
         setInterval(showNotification, 15000);
     </script>
