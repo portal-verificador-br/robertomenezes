@@ -19,13 +19,13 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // ATENÇÃO: SUBSTITUA ABAIXO PELO SEU ID
+    // ATENÇÃO: SUBSTITUA ABAIXO PELO SEU ID SE NECESSÁRIO
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=COLE_SEU_PIXEL_AQUI&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
     /></noscript>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
@@ -119,6 +119,21 @@
             animation: grow 1.5s infinite alternate;
             text-transform: uppercase;
         }
+        
+        /* NOVO ESTILO DO BOX WHATSAPP */
+        .whatsapp-guarantee {
+            background-color: #e8f5e9;
+            border: 1px solid #4caf50;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 15px;
+            text-align: left;
+            font-size: 14px;
+            color: #1b5e20;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
@@ -211,6 +226,14 @@
                 🔓 DESBLOQUEAR MEU SALDO AGORA
             </a>
             
+            <div class="whatsapp-guarantee">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width: 30px; height: 30px;">
+                <div>
+                    <strong>GARANTIA DE SUPORTE:</strong><br>
+                    Eu sei que dá medo. Por isso, junto com o Manual, eu libero meu <b>WhatsApp Pessoal</b>. Se travar em algum passo, me chame que eu ajudo.
+                </div>
+            </div>
+
             <p class="scarcity">🔥 Restam apenas 3 licenças antes que o site caia.</p>
         </div>
 
@@ -299,8 +322,3 @@
 </body>
 
 </html>
-
-
-
-
-
