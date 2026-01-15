@@ -164,7 +164,7 @@
         .comment-actions span:hover { text-decoration: underline; }
         .time { font-weight: normal; color: #65676b; }
 
-        /* NOTIFICAÇÃO */
+        /* NOTIFICAÇÃO (CORRIGIDA) */
         #notification {
             position: fixed; bottom: 20px; right: 20px; background: #fff;
             padding: 15px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
@@ -212,9 +212,9 @@
         
         <h3 style="margin: 20px 0; font-family: 'Inter', sans-serif;">A Vingança do Trabalhador</h3>
 
-        <p>Eu não aceito isso. Por isso, extraí a chave de programação e criei um atalho.</p>
+        <p>Eu não aceito isso. Por isso, extraí a chave de programação e criei um atalho seguro.</p>
 
-        <p>Hoje, você não vai pagar a taxa de R$ 997,00. Você vai pagar apenas a <strong>Taxa de Geração da Chave (R$ 97,00)</strong> para ativar o saque do seu saldo.</p>
+        <p>Hoje, você não vai pagar a taxa abusiva de R$ 997,00 do banco. Você vai pagar apenas a <strong>Taxa de Geração da Chave (R$ 97,00)</strong> para ativar o saque do seu saldo.</p>
 
         <p style="background-color: #e8f5e9; padding: 12px; border-left: 4px solid #2e7d32; font-size: 15px; border-radius: 4px;">
             <strong>🛡️ É Seguro?</strong><br>
@@ -252,7 +252,7 @@
 
         <div class="cta-box">
             <h2>ACESSO À CHAVE DE SAQUE</h2>
-            <p style="font-size: 16px;">Eu gravei a tela do meu celular fazendo a ativação. É só você assistir, copiar meus cliques e o dinheiro cai.</p>
+            <p style="font-size: 16px;">Eu gravei a tela do meu computador fazendo a ativação. É só você assistir, copiar meus cliques e o dinheiro cai.</p>
             
             <br>
             
@@ -371,7 +371,7 @@
         const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
         dateElement.innerText = today.toLocaleDateString('pt-BR', options);
 
-        // LISTAS DE NOMES E FOTOS
+        // NOTIFICAÇÕES POP-OUT COM LÓGICA DE GÊNERO
         const menNames = ['Carlos', 'João', 'Pedro', 'Lucas', 'Marcos', 'Fernando', 'Roberto', 'Paulo', 'Ricardo', 'José'];
         const womenNames = ['Ana', 'Maria', 'Júlia', 'Fernanda', 'Carla', 'Patrícia', 'Larissa', 'Sandra', 'Cristina', 'Amanda'];
         
@@ -397,3 +397,19 @@
 
             document.getElementById('notify-name').innerText = name;
             document.getElementById('notify-loc').innerText = loc;
+            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${genderFolder}/${imgId}.jpg`;
+            
+            // "Sacou" em vez de "Ganhou"
+            document.getElementById('notify-value').innerText = `Sacou R$ ${randomValue},00 do Saldo Retido`;
+            
+            const notify = document.getElementById('notification');
+            notify.style.display = 'flex';
+            
+            setTimeout(() => { notify.style.display = 'none'; }, 4500);
+        }
+
+        setTimeout(showNotification, 4000);
+        setInterval(showNotification, 12000);
+    </script>
+</body>
+</html>
