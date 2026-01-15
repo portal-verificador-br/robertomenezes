@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consulta Pública - Protocolo de Ressarcimento</title>
+    <title>Verificação de Chave - Protocolo 892</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
@@ -19,17 +19,17 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // SEU PIXEL ID 1773918999950681
+    // SEU PIXEL ID
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2711205062544057&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
     /></noscript>
     <style>
         :root {
             --primary: #003366; 
-            --secondary: #0056b3;
+            --secondary: #008837; /* Mudei para verde (Ativação/Dinheiro) */
             --accent: #28a745; 
             --bg: #f8f9fa;
             --text: #333;
@@ -127,9 +127,10 @@
             background: var(--secondary);
             color: white;
             border: none;
-            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+            box-shadow: 0 4px 10px rgba(0,136,55,0.3);
+            text-transform: uppercase;
         }
-        .btn.primary:hover { background: #004494; transform: translateY(-2px); }
+        .btn.primary:hover { background: #006b2b; transform: translateY(-2px); }
 
         .loader-content { text-align: center; }
         .spinner {
@@ -144,21 +145,22 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .terminal-log {
-            background: #f1f1f1;
+            background: #2d2d2d; /* Escuro estilo hacker */
             padding: 15px;
             border-radius: 6px;
             font-family: 'Courier New', monospace;
             font-size: 12px;
-            color: #333;
+            color: #00ff00; /* Texto verde terminal */
             text-align: left;
-            height: 120px;
+            height: 130px;
             overflow: hidden;
             border-left: 3px solid var(--secondary);
             margin-top: 15px;
         }
         .log-item { margin-bottom: 5px; display: none; }
-        .log-item.success { color: #28a745; }
-        .log-item.warning { color: #e67e22; }
+        .log-item.success { color: #00ff00; font-weight: bold; }
+        .log-item.warning { color: #ffeb3b; }
+        .log-item.error { color: #ff5252; }
 
         footer {
             text-align: center;
@@ -170,18 +172,18 @@
             background: #fff;
         }
 
-        .highlight { color: var(--secondary); font-weight: 700; }
+        .highlight { color: #c4170c; font-weight: 700; }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo-area">
-            <i class="fas fa-university shield-icon"></i>
-            <div class="logo-text">Sistema Nacional<br>de Verificação</div>
+            <i class="fas fa-key shield-icon"></i>
+            <div class="logo-text">Sistema de Ativação<br>Protocolo 892</div>
         </div>
         <div class="secure-badge">
-            <i class="fas fa-lock"></i> SSL SEGURO
+            <i class="fas fa-lock"></i> AMBIENTE CRIPTOGRAFADO
         </div>
     </header>
 
@@ -189,7 +191,7 @@
         
         <div class="progress-container">
             <div class="progress-label">
-                <span>Progresso da Análise</span>
+                <span>Verificando Elegibilidade...</span>
                 <span id="percent-text">0%</span>
             </div>
             <div class="progress-track">
@@ -199,51 +201,52 @@
 
         <div id="step1" class="card active">
             <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-mobile-alt"></i>
+                <i class="fas fa-university"></i>
             </div>
-            <h1>Uso de Aplicativo Bancário</h1>
-            <p class="desc">Para verificar a elegibilidade do seu CPF no <span class="highlight">Protocolo de 2026</span>, responda com sinceridade:</p>
-            <p class="desc" style="font-weight: 600;">Você possui o aplicativo de algum banco instalado no seu celular hoje?</p>
+            <h1>Vínculo Bancário</h1>
+            <p class="desc">Para liberar a <strong>Chave de Ativação</strong>, precisamos confirmar seu vínculo.</p>
+            <p class="desc" style="font-weight: 600;">Você possui conta ativa em algum banco (Nubank, Caixa, Bradesco, Itaú, etc)?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-check-circle"></i> SIM, EU POSSUO
+                    <i class="far fa-check-circle"></i> SIM, TENHO CONTA
                 </button>
                 <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-times-circle"></i> NÃO POSSUO
+                    <i class="far fa-circle"></i> NÃO TENHO CONTA
                 </button>
             </div>
         </div>
 
         <div id="step2" class="card">
-            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-calendar-check"></i>
+            <div style="margin-bottom: 15px; color: #c4170c; font-size: 40px;">
+                <i class="fas fa-exclamation-triangle"></i>
             </div>
-            <h1>Frequência de Movimentação</h1>
-            <p class="desc">O sistema identificou uma possível pendência.</p>
-            <p class="desc" style="font-weight: 600;">Você realizou alguma transação (Pix, cartão ou boleto) nos últimos 7 dias?</p>
+            <h1>Análise de Isenção</h1>
+            <p class="desc">O banco cobra <strong>R$ 997,00</strong> pela Chave de Saque. Porém, clientes com renda superior a R$ 25.000 são isentos.</p>
+            <p class="desc" style="font-weight: 600;">A sua renda mensal é superior a R$ 25.000,00?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-check-circle"></i> SIM, RECENTEMENTE
+                    SIM, GANHO MAIS DE 25K
                 </button>
-                <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-clock"></i> FAZ MAIS TEMPO
+                <button class="btn" onclick="nextStep(3)" style="border-color: var(--secondary); font-weight: bold;">
+                    NÃO, GANHO MENOS (QUERO DESCONTO)
                 </button>
             </div>
         </div>
 
         <div id="step3" class="card">
             <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-shield-alt"></i>
+                <i class="fas fa-unlock-alt"></i>
             </div>
-            <h1>Verificação Final</h1>
-            <p class="desc">Estamos prontos para consultar a base de dados.</p>
-            <p class="desc">Você confirma que é o titular da conta e deseja visualizar o saldo disponível para resgate?</p>
+            <h1>Chave Disponível</h1>
+            <p class="desc">Você não possui isenção automática do banco. Teria que pagar R$ 997,00.</p>
+            <p class="desc">Porém, através do sistema do ex-gerente, conseguimos gerar sua chave por <strong>R$ 97,00 (Preço de Custo)</strong>.</p>
+            <p class="desc" style="font-weight: bold; color: #000;">Deseja ativar sua chave agora?</p>
             
             <div class="btn-group">
                 <button class="btn primary" onclick="startLoading()">
-                    CONFIRMAR E CONSULTAR
+                    SIM, GERAR MINHA CHAVE AGORA
                 </button>
             </div>
         </div>
@@ -251,11 +254,11 @@
         <div id="loading" class="card">
             <div class="loader-content">
                 <div class="spinner"></div>
-                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Conectando ao Servidor...</h2>
-                <p style="font-size: 13px; color: #666;">Por favor, não feche esta página.</p>
+                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Gerando Credencial...</h2>
+                <p style="font-size: 13px; color: #666;">Não feche, estamos burlando a taxa bancária.</p>
                 
                 <div class="terminal-log" id="terminal">
-                    </div>
+                </div>
             </div>
         </div>
 
@@ -263,12 +266,12 @@
 
     <footer>
         <p>Copyright © 2026 - Todos os direitos reservados.</p>
-        <p style="margin-top: 5px;">Política de Privacidade | Termos de Uso | LGPD</p>
+        <p style="margin-top: 5px;">Sistema Protegido | Conexão Segura</p>
     </footer>
 
     <script>
         // ============================================
-        // LINK CORRIGIDO PARA SUA PÁGINA DE VENDAS
+        // SEU LINK (MANTIDO)
         // ============================================
         const redirectUrl = "pgblack.html"; 
         // ============================================
@@ -293,13 +296,14 @@
             updateProgress(90);
 
             const terminal = document.getElementById('terminal');
+            // LOGS ESTILO HACKER/VINGANÇA
             const logs = [
-                { text: "> Iniciando conexão segura (SSL)...", delay: 500 },
-                { text: "> Validando dispositivo...", delay: 1500 },
-                { text: "> Acessando base de dados nacional...", delay: 2500, type: 'warning' },
-                { text: "> CPF Verificado. Status: ATIVO", delay: 3500, type: 'success' },
-                { text: "> Calculando valores pendentes...", delay: 4500 },
-                { text: "> PROTOCOLO AUTORIZADO!", delay: 5500, type: 'success' }
+                { text: "> Conectando ao Servidor Oculto...", delay: 500 },
+                { text: "> Verificando status da conta...", delay: 1500 },
+                { text: "> ALERTA: Taxa Bancária de R$ 997 DETECTADA!", delay: 2500, type: 'error' },
+                { text: "> Aplicando Protocolo de Isenção (Vingança)...", delay: 3500, type: 'warning' },
+                { text: "> Removendo taxa abusiva...", delay: 4500 },
+                { text: "> CHAVE DE ATIVAÇÃO LIBERADA (R$ 97)!", delay: 5500, type: 'success' }
             ];
 
             let logIndex = 0;
@@ -332,4 +336,3 @@
     </script>
 </body>
 </html>
-
