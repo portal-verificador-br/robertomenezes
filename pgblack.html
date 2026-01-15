@@ -33,6 +33,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
         
+        /* BARRA DE ALERTA */
         .alert-bar {
             background-color: #c4170c;
             color: #fff;
@@ -68,6 +69,41 @@
         p { margin-bottom: 15px; font-size: 18px; color: #333; text-align: left; }
         
         .print-screen { width: 100%; border: 1px solid #ddd; margin: 15px 0; border-radius: 4px; }
+
+        /* BOX DE BANCOS */
+        .bank-box {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .bank-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .bank-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .bank-tag {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        .check-icon { color: #28a745; margin-left: 5px; }
 
         /* BOX DE OFERTA */
         .cta-box {
@@ -113,74 +149,22 @@
         .btn-pulse:active { transform: translateY(4px); box-shadow: none; }
         .scarcity { color: #c00; font-weight: bold; margin-top: 10px; font-size: 13px; }
 
-        /* --- FACEBOOK COMMENTS 2026 STYLE --- */
+        /* FACEBOOK COMMENTS STYLE */
         .comments-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-        
-        .fb-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 14px;
-            color: #65676b;
-        }
+        .fb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 14px; color: #65676b; }
         .fb-header strong { color: #050505; font-size: 16px; }
-        
         .comment { display: flex; margin-bottom: 12px; align-items: flex-start; }
-        
-        .avatar { 
-            width: 32px; 
-            height: 32px; 
-            border-radius: 50%; 
-            background: #ddd; 
-            margin-right: 8px; 
-            flex-shrink: 0;
-            object-fit: cover;
-        }
-        
-        .comment-content {
-            display: flex;
-            flex-direction: column;
-            max-width: 90%;
-        }
-
-        /* O Balão Redondo Moderno */
-        .comment-bubble { 
-            background: #f0f2f5; 
-            padding: 8px 12px; 
-            border-radius: 18px; 
-            position: relative;
-            display: inline-block;
-        }
-        
-        .name { 
-            font-weight: 600; 
-            font-size: 13px; 
-            color: #050505; 
-            margin-bottom: 2px;
-            display: block;
-        }
-        
-        .text { 
-            font-size: 14px; 
-            color: #050505; 
-            line-height: 1.3;
-        }
-        
-        /* Ações ficam FORA do balão agora */
-        .comment-actions { 
-            font-size: 12px; 
-            color: #65676b; 
-            margin-top: 3px; 
-            margin-left: 12px;
-            font-weight: bold;
-        }
-        
+        .avatar { width: 32px; height: 32px; border-radius: 50%; background: #ddd; margin-right: 8px; flex-shrink: 0; object-fit: cover; }
+        .comment-content { display: flex; flex-direction: column; max-width: 90%; }
+        .comment-bubble { background: #f0f2f5; padding: 8px 12px; border-radius: 18px; position: relative; display: inline-block; }
+        .name { font-weight: 600; font-size: 13px; color: #050505; margin-bottom: 2px; display: block; }
+        .text { font-size: 14px; color: #050505; line-height: 1.3; }
+        .comment-actions { font-size: 12px; color: #65676b; margin-top: 3px; margin-left: 12px; font-weight: bold; }
         .comment-actions span { margin-right: 10px; cursor: pointer; }
         .comment-actions span:hover { text-decoration: underline; }
         .time { font-weight: normal; color: #65676b; }
 
-        /* Notificação */
+        /* NOTIFICAÇÃO */
         #notification {
             position: fixed; bottom: 20px; right: 20px; background: #fff;
             padding: 15px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
@@ -203,7 +187,7 @@
         <div class="news-header">
             <p class="chapeu">Economia &bull; Seu Bolso</p>
             <h1 class="manchete-titulo">Ex-Gerente de T.I. é demitido após vazar código que obriga bancos a liberarem "Saque Retido" via PIX</h1>
-            <p class="subtitulo">Documento conhecido como "Protocolo 892" revela falha no sistema bancário. Roberto M. expõe o sistema e libera chave de acesso para correntistas.</p>
+            <p class="subtitulo">Documento conhecido como "Protocolo 892" revela esquema de taxas abusivas. Roberto M. expõe o sistema e libera chave de acesso para trabalhadores.</p>
             
             <div class="meta-dados">
                 <span>Por <strong>Redação Economia</strong></span> <br>
@@ -218,11 +202,47 @@
 
         <p>Trabalhei por 20 anos no setor de T.I. de um dos maiores bancos do Brasil. Fui demitido semana passada (por justa causa) apenas porque tentei avisar uma cliente idosa que ela tinha <span class="highlight">dinheiro esquecido</span> na conta.</p>
 
-        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta bancária. Mas, por padrão, a função vem configurada para aparecer somente para clientes "ULTRA-VIP".</p>
-        
-        <h3 style="margin: 20px 0; font-family: 'Inter', sans-serif;">A Vingança</h3>
+        <p>O banco não quer que você saiba disso.</p>
 
-        <p>Em vez de apenas sair calado, eu gravei a tela do meu computador e agora estou entregando a <strong>CHAVE DE ACESSO</strong> nas suas mãos.</p>
+        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta. Mas o sistema tem uma trava injusta: ele só é ativado automaticamente para <strong>clientes com renda comprovada acima de R$ 25.000,00</strong>.</p>
+
+        <p>Para quem ganha menos que isso, o banco exige o pagamento de uma <strong>"Taxa de Abertura" no valor de R$ 997,00</strong>.</p>
+
+        <p>Eles cobram esse absurdo de propósito, apenas para você desistir e deixar o dinheiro lá rendendo para eles.</p>
+        
+        <h3 style="margin: 20px 0; font-family: 'Inter', sans-serif;">A Vingança do Trabalhador</h3>
+
+        <p>Eu não aceito isso. Por isso, extraí a chave de programação e criei um atalho.</p>
+
+        <p>Hoje, você não vai pagar a taxa de R$ 997,00. Você vai pagar apenas a <strong>Taxa Simbólica de Geração da Chave (R$ 97,00)</strong> para manter o servidor ligado.</p>
+
+        <p style="background-color: #e8f5e9; padding: 12px; border-left: 4px solid #2e7d32; font-size: 15px; border-radius: 4px;">
+            <strong>🛡️ É Seguro?</strong><br>
+            Sim. O saque é amparado pelo Código de Defesa do Consumidor. Uma vez que o dinheiro cai na sua conta, <strong>ele é propriedade sua e o banco nunca mais pode tocar.</strong>
+        </p>
+
+        <div class="bank-box">
+            <div class="bank-title">🔍 VERIFICADO NO SISTEMA: COMPATÍVEL COM TODOS OS BANCOS</div>
+            
+            <p style="font-size: 12px; margin-bottom: 8px;">Digitais e Fintechs:</p>
+            <div class="bank-tags">
+                <span class="bank-tag" style="border-bottom: 2px solid #820ad1;">Nubank <span class="check-icon">✔</span></span>
+                <span class="bank-tag" style="border-bottom: 2px solid #ff7a00;">Inter <span class="check-icon">✔</span></span>
+                <span class="bank-tag" style="border-bottom: 2px solid #21c25e;">PicPay <span class="check-icon">✔</span></span>
+                <span class="bank-tag" style="border-bottom: 2px solid #000;">C6 Bank <span class="check-icon">✔</span></span>
+            </div>
+
+            <p style="font-size: 12px; margin-bottom: 8px; margin-top: 12px;">Bancos Tradicionais:</p>
+            <div class="bank-tags">
+                <span class="bank-tag" style="border-bottom: 2px solid #0056b3;">Caixa <span class="check-icon">✔</span></span>
+                <span class="bank-tag" style="border-bottom: 2px solid #ffe600;">Banco do Brasil <span class="check-icon">✔</span></span>
+                <span class="bank-tag" style="border-bottom: 2px solid #cc0000;">Bradesco <span class="check-icon">✔</span></span>
+                <span class="bank-tag" style="border-bottom: 2px solid #ec0000;">Santander <span class="check-icon">✔</span></span>
+                <span class="bank-tag" style="border-bottom: 2px solid #ff6200;">Itaú <span class="check-icon">✔</span></span>
+            </div>
+        </div>
+
+        <p>Não importa o seu banco. Se você usou o cartão nos últimos 3 anos, o saldo está lá.</p>
 
         <div style="background: #f9f9f9; padding: 10px; border-left: 3px solid #333; margin: 20px 0;">
             <p style="font-size: 14px; margin-bottom: 5px;"><strong>Lucas (Irmão do Roberto):</strong></p>
@@ -232,7 +252,7 @@
 
         <div class="cta-box">
             <h2>ACESSO À CHAVE DE SAQUE</h2>
-            <p style="font-size: 16px;">Eu gravei a tela do meu celular fazendo a ativação. É só você assistir, copiar meus cliques e o dinheiro cai.</p>
+            <p style="font-size: 16px;">Eu gravei a tela do meu computador fazendo a ativação. É só você assistir, copiar meus cliques e o dinheiro cai.</p>
             
             <br>
             
@@ -377,17 +397,3 @@
 
             document.getElementById('notify-name').innerText = name;
             document.getElementById('notify-loc').innerText = loc;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${genderFolder}/${imgId}.jpg`;
-            document.getElementById('notify-value').innerText = `Sacou R$ ${randomValue},00 do Saldo Retido`;
-            
-            const notify = document.getElementById('notification');
-            notify.style.display = 'flex';
-            
-            setTimeout(() => { notify.style.display = 'none'; }, 4500);
-        }
-
-        setTimeout(showNotification, 4000);
-        setInterval(showNotification, 12000);
-    </script>
-</body>
-</html>
