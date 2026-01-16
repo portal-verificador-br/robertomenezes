@@ -176,20 +176,19 @@
         .comment-actions span:hover { text-decoration: underline; }
         .time { font-weight: normal; color: #65676b; }
 
-        /* ESTILOS DA NOTIFICAÇÃO (AGORA NO CSS PARA NÃO FALHAR) */
+        /* ESTILOS DA NOTIFICAÇÃO (FOTO + NOME) */
         #notification-area {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 320px;
-            z-index: 2147483647; /* Máximo possível */
-            pointer-events: none; /* Deixa clicar através do vazio */
+            width: 340px; /* Um pouco mais largo pra caber a foto */
+            z-index: 2147483647; 
+            pointer-events: none; 
             display: flex;
             flex-direction: column;
             align-items: flex-end;
         }
 
-        /* Ajuste para Mobile */
         @media (max-width: 480px) {
             #notification-area {
                 right: 10px;
@@ -201,9 +200,9 @@
 
         .notify-card {
             background: #fff;
-            padding: 12px 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            padding: 10px 15px;
+            border-radius: 50px; /* Borda redonda estilo "pill" moderna */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
             margin-top: 10px;
             display: flex;
             align-items: center;
@@ -212,12 +211,19 @@
             font-family: 'Roboto', sans-serif;
             font-size: 13px;
             color: #333;
-            max-width: 320px;
-            pointer-events: auto; /* Permite clicar no card */
+            max-width: 340px;
+            pointer-events: auto;
             
-            /* Animação CSS Pura */
             animation: slideInRight 0.5s ease-out forwards;
-            opacity: 0; /* Começa invisível */
+            opacity: 0;
+        }
+
+        .notify-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #28a745;
         }
 
         @keyframes slideInRight {
@@ -302,7 +308,7 @@
 
         <div class="cta-box">
             <h2>ACESSO À CHAVE DE SAQUE</h2>
-            <p style="font-size: 16px;">Eu gravei a tela do meu celular fazendo a ativação. É só você copiar meus cliques dentro do seu aplicativo e o dinheiro cai.</p>
+            <p style="font-size: 16px;">Eu gravei a tela do meu celular fazendo a ativação. É só você copiar meus cliques e o dinheiro cai.</p>
             
             <br>
             
@@ -330,7 +336,7 @@
                 <div>
                     <strong style="font-size: 14px; text-transform: uppercase; color: #1b5e20;">Suporte Pessoal do Roberto:</strong>
                     <p style="margin: 0; font-size: 13px; color: #333; line-height: 1.4;">
-                        Ao garantir sua chave, meu número pessoal será liberado para você. Se tiver qualquer dúvida na hora do saque, <strong>me chame e eu te ajudo</strong>.
+                        Ao garantir sua chave, meu número pessoal será liberado para você. Se tiver qualquer dúvida na hora do saque, <strong>eu te chamo e ajudo</strong>.
                     </p>
                 </div>
             </div>
@@ -359,7 +365,7 @@
                 <div class="comment-content">
                     <div class="comment-bubble">
                         <span class="name">Maria de Lourdes</span>
-                        <span class="text">O meu deu certo graças a Deus!! 🙏 Eu sou meio fraca pra mexer em celular, mas ele explica direitinho onde clica. Consegui pagar a fatura do cartão que tava atrasada. Deus abençoe Roberto.</span>
+                        <span class="text">O meu deu certo graças a Deus!! 🙏 Eu sou meio fraca pra mexer em celular, mas o vídeo explica direitinho onde clica. Consegui pagar a fatura do cartão que tava atrasada. Deus abençoe Roberto.</span>
                     </div>
                     <div class="comment-actions">
                         <span>Curtir</span> <span>Responder</span> <span class="time">34 min</span>
@@ -413,97 +419,3 @@
         </center>
 
     </div>
-
-    <div id="notification-area"></div>
-
-    <script>
-        // DATA AUTOMÁTICA
-        const dateElement = document.getElementById('data-noticia');
-        if(dateElement) {
-            const today = new Date();
-            const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-            dateElement.innerText = today.toLocaleDateString('pt-BR', options);
-        }
-
-        // ==========================================
-        // SCRIPT SIMPLIFICADO E ROBUSTO
-        // ==========================================
-        
-        let licenses = 27; 
-        const minLicenses = 1; 
-
-        const actions = [
-            "ativou a chave de segurança.",
-            "realizou o saque do saldo retido.",
-            "garantiu uma das últimas licenças.",
-            "desbloqueou o acesso ao sistema.",
-            "liberou o saque oculto."
-        ];
-
-        const names = ["Ricardo M.", "Ana Paula S.", "José Carlos", "Leandro V.", "Juliana A.", "Fernanda L.", "Marcos D.", "Sônia R.", "Eduardo B.", "Patrícia T.", "Lucas F."];
-        const locs = ["SP", "RJ", "MG", "RS", "BA", "PR", "SC"];
-
-        function updateCounter() {
-            const counterElement = document.getElementById('counter');
-            if(counterElement) {
-                if (licenses === 1) {
-                    counterElement.innerText = "01";
-                    counterElement.parentElement.innerHTML = "🚨 URGENTE: RESTA APENAS <span style='font-size: 24px; color: red; font-weight: 900;'>01</span> CHAVE.";
-                    return;
-                }
-                counterElement.innerText = licenses < 10 ? "0" + licenses : licenses;
-            }
-        }
-
-        function showNotification() {
-            // Se chegou no limite, para de mandar notificação
-            if (licenses <= minLicenses) return;
-
-            // Diminui licença
-            licenses--;
-            updateCounter();
-
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            const randomAction = actions[Math.floor(Math.random() * actions.length)];
-            const randomLoc = locs[Math.floor(Math.random() * locs.length)];
-
-            // Cria o elemento
-            const notification = document.createElement('div');
-            notification.className = 'notify-card'; // Usa a classe do CSS
-            
-            notification.innerHTML = `
-                <div style="font-size: 20px; color: #28a745;">✅</div>
-                <div>
-                    <strong>${randomName} de ${randomLoc}</strong><br>
-                    ${randomAction}
-                </div>
-            `;
-
-            const area = document.getElementById('notification-area');
-            if(area) area.appendChild(notification);
-
-            // Remove após 4s
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                setTimeout(() => { 
-                    if(notification.parentNode) notification.remove(); 
-                }, 500);
-            }, 4000);
-        }
-
-        function loopNotifications() {
-            // Intervalo rápido: 2 a 5 segundos
-            const time = Math.floor(Math.random() * (5000 - 2000 + 1) + 2000);
-            setTimeout(() => {
-                showNotification();
-                if (licenses > minLicenses) loopNotifications();
-            }, time);
-        }
-
-        // INÍCIO IMEDIATO
-        updateCounter();
-        setTimeout(showNotification, 1000); // Dispara a primeira em 1 segundo
-        setTimeout(loopNotifications, 2000); // Inicia o loop
-    </script>
-</body>
-</html>
