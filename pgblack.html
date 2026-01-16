@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
     !function(f,b,e,v,n,t,s)
@@ -145,9 +146,18 @@
             gap: 10px;
         }
 
+        /* CAIXA DE ESCASSEZ/AGENDA (NOVO ESTILO) */
+        .scarcity-box {
+            background: #fff3cd; 
+            border: 1px solid #ffeeba; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-top: 15px;
+            text-align: left;
+        }
+
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
         .btn-pulse:active { transform: translateY(4px); box-shadow: none; }
-        .scarcity { color: #c00; font-weight: bold; margin-top: 10px; font-size: 13px; }
 
         /* FACEBOOK COMMENTS STYLE */
         .comments-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
@@ -163,17 +173,6 @@
         .comment-actions span { margin-right: 10px; cursor: pointer; }
         .comment-actions span:hover { text-decoration: underline; }
         .time { font-weight: normal; color: #65676b; }
-
-        /* NOTIFICAÇÃO (CORRIGIDA) */
-        #notification {
-            position: fixed; bottom: 20px; right: 20px; background: #fff;
-            padding: 15px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            display: none; align-items: center; z-index: 1000; width: 320px;
-            border-left: 5px solid #28a745; animation: slideIn 0.5s ease-out;
-        }
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-        #notification img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
-        #notification p { font-size: 14px; margin: 0; line-height: 1.3; color: #333; }
     </style>
 </head>
 <body>
@@ -191,7 +190,7 @@
             
             <div class="meta-dados">
                 <span>Por <strong>Redação Economia</strong></span> <br>
-                <span id="data-noticia">16/01/2026 10:00</span> &bull; Atualizado há 11 minutos
+                <span id="data-noticia"></span> &bull; Atualizado há 11 minutos
             </div>
         </div>
 
@@ -264,16 +263,27 @@
             </a>
             
             <div class="whatsapp-guarantee">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width: 34px; height: 34px; flex-shrink: 0;">
+                <i class="fab fa-whatsapp" style="color: #25d366; font-size: 30px;"></i>
                 <div>
-                    <strong style="font-size: 14px; text-transform: uppercase; color: #1b5e20;">Meu Compromisso Pessoal:</strong>
+                    <strong style="font-size: 14px; text-transform: uppercase; color: #1b5e20;">Compromisso Pessoal:</strong>
                     <p style="margin: 0; font-size: 13px; color: #333; line-height: 1.4;">
-                        Assim que sua Chave for gerada, eu recebo um alerta. Farei contato imediato no seu WhatsApp para garantir que o desbloqueio seja concluído com sucesso.
+                        Assim que sua Chave for gerada, eu recebo um alerta. <strong>Eu mesmo te chamo no WhatsApp</strong> para garantir que o desbloqueio seja concluído.
                     </p>
                 </div>
             </div>
 
-            <p class="scarcity">⚠️ RESTAM APENAS 3 CHAVES DE SAQUE.</p>
+            <div class="scarcity-box">
+                <p style="color: #856404; font-size: 14px; margin-bottom: 5px;">
+                    <i class="fas fa-user-clock"></i> <strong>ATENÇÃO SOBRE O SUPORTE:</strong>
+                </p>
+                <p style="color: #333; font-size: 14px; line-height: 1.4; margin-bottom: 10px;">
+                    Como eu faço o atendimento um a um, minha agenda lota rápido. Eu não consigo atender muita gente hoje.
+                </p>
+                <p style="margin: 0; font-weight: bold; color: #c4170c; font-size: 15px;">
+                    ⚠️ RESTAM APENAS <span id="counter" style="font-size: 18px;">09</span> VAGAS PARA HOJE.
+                </p>
+            </div>
+            
         </div>
 
         <div class="comments-section">
@@ -281,7 +291,6 @@
                 <strong>Comentários (196)</strong>
                 <span>Mais relevantes ▼</span>
             </div>
-
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/33.jpg" class="avatar">
                 <div class="comment-content">
@@ -294,7 +303,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/42.jpg" class="avatar">
                 <div class="comment-content">
@@ -307,45 +315,6 @@
                     </div>
                 </div>
             </div>
-             
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/85.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-bubble">
-                        <span class="name">Carlos Eduardo</span>
-                        <span class="text">Alguém sabe se funciona pro Banco do Brasil tbm? Ou só Itaú?</span>
-                    </div>
-                    <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">55 min</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comment" style="margin-left: 40px;">
-                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-bubble">
-                        <span class="name">Sueli Almeida</span>
-                        <span class="text">Funciona sim Carlos, o meu é BB e liberou na hora. Só tem que colocar a chave certinho igual ele mostra.</span>
-                    </div>
-                    <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">40 min</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/52.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-bubble">
-                        <span class="name">Paulo Henrique</span>
-                        <span class="text">Top. Paguei os 97 conto com medo mas recuperei R$ 1.890,00. Lucro bom kkkk</span>
-                    </div>
-                    <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">1 h</span>
-                    </div>
-                </div>
-            </div>
         </div>
         
         <br><br>
@@ -355,14 +324,7 @@
 
     </div>
 
-    <div id="notification">
-        <img src="" id="notify-img">
-        <div>
-            <p><strong><span id="notify-name">Nome</span> de <span id="notify-loc">SP</span></strong></p>
-            <p style="font-size: 12px; color: #555;">Acabou de ativar o código.</p>
-            <p style="color: #28a745; font-size: 13px; font-weight: bold;"><span id="notify-value">...</span></p>
-        </div>
-    </div>
+    <div id="notification-area" style="position: fixed; top: 20px; right: 20px; z-index: 9999; pointer-events: none;"></div>
 
     <script>
         // DATA AUTOMÁTICA
@@ -371,45 +333,89 @@
         const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
         dateElement.innerText = today.toLocaleDateString('pt-BR', options);
 
-        // NOTIFICAÇÕES POP-OUT COM LÓGICA DE GÊNERO
-        const menNames = ['Carlos', 'João', 'Pedro', 'Lucas', 'Marcos', 'Fernando', 'Roberto', 'Paulo', 'Ricardo', 'José'];
-        const womenNames = ['Ana', 'Maria', 'Júlia', 'Fernanda', 'Carla', 'Patrícia', 'Larissa', 'Sandra', 'Cristina', 'Amanda'];
+        // ==========================================
+        // SCRIPT INTELIGENTE DE ESCASSEZ + AGENDA
+        // ==========================================
         
-        const locs = ['SP', 'RJ', 'MG', 'RS', 'BA', 'PR', 'SC', 'GO'];
-        
-        function showNotification() {
-            // Sorteia Homem ou Mulher
-            const isMan = Math.random() > 0.5;
-            
-            let name, genderFolder;
-            
-            if (isMan) {
-                name = menNames[Math.floor(Math.random() * menNames.length)];
-                genderFolder = 'men';
-            } else {
-                name = womenNames[Math.floor(Math.random() * womenNames.length)];
-                genderFolder = 'women';
+        // Começa com 9 vagas na agenda
+        let licenses = 9; 
+        const minLicenses = 2; // Trava no 2
+
+        // Frases focadas no SUPORTE/AGENDA
+        const actions = [
+            "garantiu a vaga de suporte no WhatsApp.",
+            "acabou de ser chamado pelo Roberto.",
+            "iniciou o atendimento privado.",
+            "ativou a chave e já está no suporte.",
+            "preencheu uma das últimas vagas."
+        ];
+
+        const names = ["Ricardo M.", "Ana Paula S.", "José Carlos", "Fernanda L.", "Marcos D.", "Sônia R.", "Eduardo B."];
+
+        function updateCounter() {
+            const counterElement = document.getElementById('counter');
+            if(counterElement) {
+                // Formata para sempre ter dois dígitos (09, 08...)
+                counterElement.innerText = licenses < 10 ? "0" + licenses : licenses;
+                counterElement.style.color = "red";
+                // Efeito visual
+                counterElement.style.transform = "scale(1.2)";
+                setTimeout(() => { 
+                    counterElement.style.color = "#c4170c"; 
+                    counterElement.style.transform = "scale(1)";
+                }, 300);
             }
-
-            const loc = locs[Math.floor(Math.random() * locs.length)];
-            const imgId = Math.floor(Math.random() * 70); 
-            const randomValue = Math.floor(Math.random() * (3200 - 890 + 1) + 890);
-
-            document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-loc').innerText = loc;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${genderFolder}/${imgId}.jpg`;
-            
-            // "Sacou" em vez de "Ganhou"
-            document.getElementById('notify-value').innerText = `Sacou R$ ${randomValue},00 do Saldo Retido`;
-            
-            const notify = document.getElementById('notification');
-            notify.style.display = 'flex';
-            
-            setTimeout(() => { notify.style.display = 'none'; }, 4500);
         }
 
-        setTimeout(showNotification, 4000);
-        setInterval(showNotification, 12000);
-    </script>
-</body>
-</html>
+        function showNotification() {
+            if (licenses <= minLicenses) return;
+
+            licenses--;
+            updateCounter();
+
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomAction = actions[Math.floor(Math.random() * actions.length)];
+
+            const notification = document.createElement('div');
+            // Estilo de notificação estilo WhatsApp/Sistema
+            notification.style = `
+                background: #fff;
+                padding: 12px 15px;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+                margin-bottom: 10px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                border-left: 4px solid #25D366; /* Verde Zap */
+                font-family: 'Roboto', sans-serif;
+                font-size: 13px;
+                color: #333;
+                animation: slideInRight 0.5s ease-out;
+                max-width: 320px;
+                pointer-events: auto;
+            `;
+            
+            notification.innerHTML = `
+                <div style="font-size: 20px; color: #25D366;"><i class="fab fa-whatsapp"></i></div>
+                <div>
+                    <strong>Agenda Atualizada:</strong><br>
+                    ${randomName} ${randomAction}
+                </div>
+            `;
+
+            const area = document.getElementById('notification-area');
+            area.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => { notification.remove(); }, 500);
+            }, 4000);
+        }
+
+        // CSS da animação
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes slideInRight {
+          
