@@ -52,6 +52,7 @@
             background: #fff;
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding-bottom: 80px; /* Espaço extra pro footer não cobrir */
         }
 
         /* HEADER NOTÍCIA G1 */
@@ -364,23 +365,25 @@
 
     </div>
 
-    <div id="notification-area" style="position: fixed; top: 20px; right: 20px; z-index: 9999; pointer-events: none;"></div>
+    <div id="notification-area" style="position: fixed; bottom: 20px; right: 20px; z-index: 2147483647; pointer-events: none; display: flex; flex-direction: column; align-items: flex-end;"></div>
 
     <script>
         // DATA AUTOMÁTICA
         const dateElement = document.getElementById('data-noticia');
-        const today = new Date();
-        const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-        dateElement.innerText = today.toLocaleDateString('pt-BR', options);
+        if(dateElement) {
+            const today = new Date();
+            const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+            dateElement.innerText = today.toLocaleDateString('pt-BR', options);
+        }
 
         // ==========================================
-        // SCRIPT SINCRONIZADO: CHAVES E NOTIFICAÇÕES
+        // SCRIPT TURBO: Sincronia Total + Rapidez
         // ==========================================
         
-        let licenses = 27; // Começa com 27 chaves
-        const minLicenses = 1; // Trava na ÚLTIMA
+        let licenses = 27; 
+        const minLicenses = 1; 
 
-        // Frases de Ação do Sistema (Vazamento)
+        // Frases de Ação
         const actions = [
             "ativou a chave de segurança.",
             "realizou o saque do saldo retido.",
@@ -395,8 +398,6 @@
         function updateCounter() {
             const counterElement = document.getElementById('counter');
             if(counterElement) {
-                // TRAVA NO 1: PRESSÃO MÁXIMA
                 if (licenses === 1) {
-                    counterElement.innerText = "01 (ÚLTIMA)";
-                    // Muda o texto inteiro da frase para alertar
-                    counterElemen
+                    counterElement.innerText = "01";
+                    counter
