@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
@@ -146,10 +147,10 @@
             gap: 10px;
         }
 
-        /* CAIXA DE ESCASSEZ/AGENDA (NOVO ESTILO) */
+        /* BOX DE ESCASSEZ DO SISTEMA */
         .scarcity-box {
-            background: #fff3cd; 
-            border: 1px solid #ffeeba; 
+            background: #ffebee; 
+            border: 1px solid #ffcdd2; 
             padding: 15px; 
             border-radius: 8px; 
             margin-top: 15px;
@@ -262,28 +263,27 @@
                 🔓 ATIVAR CHAVE E REALIZAR SAQUE
             </a>
             
-            <div class="whatsapp-guarantee">
+            <div class="scarcity-box">
+                <p style="color: #c62828; font-size: 14px; margin-bottom: 5px;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>ALERTA DE SISTEMA:</strong>
+                </p>
+                <p style="color: #333; font-size: 14px; line-height: 1.4; margin-bottom: 10px;">
+                    O banco já identificou o vazamento e está tentando derrubar o site. As licenças estão se esgotando rapidamente.
+                </p>
+                <p style="margin: 0; font-weight: bold; color: #d32f2f; font-size: 16px;">
+                    ⚠️ RESTAM APENAS <span id="counter" style="font-size: 22px; background: #fff; padding: 2px 8px; border-radius: 4px; border: 1px solid #d32f2f;">27</span> CHAVES ATIVAS.
+                </p>
+            </div>
+
+            <div class="whatsapp-guarantee" style="margin-top: 15px;">
                 <i class="fab fa-whatsapp" style="color: #25d366; font-size: 30px;"></i>
                 <div>
-                    <strong style="font-size: 14px; text-transform: uppercase; color: #1b5e20;">Compromisso Pessoal:</strong>
+                    <strong style="font-size: 14px; text-transform: uppercase; color: #1b5e20;">Suporte Pessoal do Roberto:</strong>
                     <p style="margin: 0; font-size: 13px; color: #333; line-height: 1.4;">
-                        Assim que sua Chave for gerada, eu recebo um alerta. <strong>Eu mesmo te chamo no WhatsApp</strong> para garantir que o desbloqueio seja concluído.
+                        Ao garantir sua chave, meu número pessoal será liberado para você. Se tiver qualquer dúvida na hora do saque, <strong>eu te chamo e ajudo</strong>.
                     </p>
                 </div>
             </div>
-
-            <div class="scarcity-box">
-                <p style="color: #856404; font-size: 14px; margin-bottom: 5px;">
-                    <i class="fas fa-user-clock"></i> <strong>ATENÇÃO SOBRE O SUPORTE:</strong>
-                </p>
-                <p style="color: #333; font-size: 14px; line-height: 1.4; margin-bottom: 10px;">
-                    Como eu faço o atendimento um a um, minha agenda lota rápido. Eu não consigo atender muita gente hoje.
-                </p>
-                <p style="margin: 0; font-weight: bold; color: #c4170c; font-size: 15px;">
-                    ⚠️ RESTAM APENAS <span id="counter" style="font-size: 18px;">09</span> VAGAS PARA HOJE.
-                </p>
-            </div>
-            
         </div>
 
         <div class="comments-section">
@@ -303,6 +303,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/42.jpg" class="avatar">
                 <div class="comment-content">
@@ -312,6 +313,45 @@
                     </div>
                     <div class="comment-actions">
                         <span>Curtir</span> <span>Responder</span> <span class="time">34 min</span>
+                    </div>
+                </div>
+            </div>
+             
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/85.jpg" class="avatar">
+                <div class="comment-content">
+                    <div class="comment-bubble">
+                        <span class="name">Carlos Eduardo</span>
+                        <span class="text">Alguém sabe se funciona pro Banco do Brasil tbm? Ou só Itaú?</span>
+                    </div>
+                    <div class="comment-actions">
+                        <span>Curtir</span> <span>Responder</span> <span class="time">55 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment" style="margin-left: 40px;">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="avatar">
+                <div class="comment-content">
+                    <div class="comment-bubble">
+                        <span class="name">Sueli Almeida</span>
+                        <span class="text">Funciona sim Carlos, o meu é BB e liberou na hora. Só tem que colocar a chave certinho igual ele mostra.</span>
+                    </div>
+                    <div class="comment-actions">
+                        <span>Curtir</span> <span>Responder</span> <span class="time">40 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" class="avatar">
+                <div class="comment-content">
+                    <div class="comment-bubble">
+                        <span class="name">Paulo Henrique</span>
+                        <span class="text">Top. Paguei os 97 conto com medo mas recuperei R$ 1.890,00. Lucro bom kkkk</span>
+                    </div>
+                    <div class="comment-actions">
+                        <span>Curtir</span> <span>Responder</span> <span class="time">1 h</span>
                     </div>
                 </div>
             </div>
@@ -334,88 +374,29 @@
         dateElement.innerText = today.toLocaleDateString('pt-BR', options);
 
         // ==========================================
-        // SCRIPT INTELIGENTE DE ESCASSEZ + AGENDA
+        // SCRIPT SINCRONIZADO: CHAVES E NOTIFICAÇÕES
         // ==========================================
         
-        // Começa com 9 vagas na agenda
-        let licenses = 9; 
-        const minLicenses = 2; // Trava no 2
+        let licenses = 27; // Começa com 27 chaves
+        const minLicenses = 1; // Trava na ÚLTIMA
 
-        // Frases focadas no SUPORTE/AGENDA
+        // Frases de Ação do Sistema (Vazamento)
         const actions = [
-            "garantiu a vaga de suporte no WhatsApp.",
-            "acabou de ser chamado pelo Roberto.",
-            "iniciou o atendimento privado.",
-            "ativou a chave e já está no suporte.",
-            "preencheu uma das últimas vagas."
+            "ativou a chave de segurança.",
+            "realizou o saque do saldo retido.",
+            "garantiu uma das últimas licenças.",
+            "desbloqueou o acesso ao sistema.",
+            "recebeu o PIX na conta."
         ];
 
-        const names = ["Ricardo M.", "Ana Paula S.", "José Carlos", "Fernanda L.", "Marcos D.", "Sônia R.", "Eduardo B."];
+        const names = ["Ricardo M.", "Ana Paula S.", "José Carlos", "Fernanda L.", "Marcos D.", "Sônia R.", "Eduardo B.", "Patrícia T.", "Lucas F."];
+        const locs = ["SP", "RJ", "MG", "RS", "BA", "PR", "SC"];
 
         function updateCounter() {
             const counterElement = document.getElementById('counter');
             if(counterElement) {
-                // Formata para sempre ter dois dígitos (09, 08...)
-                counterElement.innerText = licenses < 10 ? "0" + licenses : licenses;
-                counterElement.style.color = "red";
-                // Efeito visual
-                counterElement.style.transform = "scale(1.2)";
-                setTimeout(() => { 
-                    counterElement.style.color = "#c4170c"; 
-                    counterElement.style.transform = "scale(1)";
-                }, 300);
-            }
-        }
-
-        function showNotification() {
-            if (licenses <= minLicenses) return;
-
-            licenses--;
-            updateCounter();
-
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            const randomAction = actions[Math.floor(Math.random() * actions.length)];
-
-            const notification = document.createElement('div');
-            // Estilo de notificação estilo WhatsApp/Sistema
-            notification.style = `
-                background: #fff;
-                padding: 12px 15px;
-                border-radius: 8px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-                margin-bottom: 10px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                border-left: 4px solid #25D366; /* Verde Zap */
-                font-family: 'Roboto', sans-serif;
-                font-size: 13px;
-                color: #333;
-                animation: slideInRight 0.5s ease-out;
-                max-width: 320px;
-                pointer-events: auto;
-            `;
-            
-            notification.innerHTML = `
-                <div style="font-size: 20px; color: #25D366;"><i class="fab fa-whatsapp"></i></div>
-                <div>
-                    <strong>Agenda Atualizada:</strong><br>
-                    ${randomName} ${randomAction}
-                </div>
-            `;
-
-            const area = document.getElementById('notification-area');
-            area.appendChild(notification);
-
-            setTimeout(() => {
-                notification.style.opacity = '0';
-                notification.style.transform = 'translateX(100%)';
-                setTimeout(() => { notification.remove(); }, 500);
-            }, 4000);
-        }
-
-        // CSS da animação
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes slideInRight {
-          
+                // TRAVA NO 1: PRESSÃO MÁXIMA
+                if (licenses === 1) {
+                    counterElement.innerText = "01 (ÚLTIMA)";
+                    // Muda o texto inteiro da frase para alertar
+                    counterElemen
