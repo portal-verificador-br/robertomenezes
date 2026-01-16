@@ -6,7 +6,6 @@
     <title>Verificação de Chave - Protocolo 892</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
@@ -29,7 +28,7 @@
     <style>
         :root {
             --primary: #003366; 
-            --secondary: #008837; /* Mudei para verde (Ativação/Dinheiro) */
+            --secondary: #008837; 
             --accent: #28a745; 
             --bg: #f8f9fa;
             --text: #333;
@@ -123,6 +122,12 @@
             background: #f0f8ff;
         }
         
+        /* Estilo especial para botões de banco */
+        .btn-bank {
+            justify-content: flex-start;
+            padding-left: 20px;
+        }
+        
         .btn.primary {
             background: var(--secondary);
             color: white;
@@ -145,12 +150,12 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .terminal-log {
-            background: #2d2d2d; /* Escuro estilo hacker */
+            background: #2d2d2d;
             padding: 15px;
             border-radius: 6px;
             font-family: 'Courier New', monospace;
             font-size: 12px;
-            color: #00ff00; /* Texto verde terminal */
+            color: #00ff00;
             text-align: left;
             height: 130px;
             overflow: hidden;
@@ -171,8 +176,6 @@
             margin-top: auto;
             background: #fff;
         }
-
-        .highlight { color: #c4170c; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -191,7 +194,7 @@
         
         <div class="progress-container">
             <div class="progress-label">
-                <span>Verificando Elegibilidade...</span>
+                <span id="progress-text">Verificando Elegibilidade...</span>
                 <span id="percent-text">0%</span>
             </div>
             <div class="progress-track">
@@ -204,15 +207,26 @@
                 <i class="fas fa-university"></i>
             </div>
             <h1>Vínculo Bancário</h1>
-            <p class="desc">Para liberar a <strong>Chave de Ativação</strong>, precisamos confirmar seu vínculo.</p>
-            <p class="desc" style="font-weight: 600;">Você possui conta ativa em algum banco (Nubank, Caixa, Bradesco, Itaú, etc)?</p>
+            <p class="desc">Para liberar a <strong>Chave de Ativação Específica</strong>, selecione onde você possui conta ativa ou saldo retido:</p>
             
             <div class="btn-group">
-                <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-check-circle"></i> SIM, TENHO CONTA
+                <button class="btn btn-bank" onclick="selectBank('NUBANK', 2)">
+                    <span style="color: #820ad1; font-weight: 900;">NUBANK</span>
                 </button>
-                <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-circle"></i> NÃO TENHO CONTA
+                <button class="btn btn-bank" onclick="selectBank('CAIXA ECONÔMICA', 2)">
+                    <span style="color: #0056b3; font-weight: 900;">CAIXA</span>
+                </button>
+                <button class="btn btn-bank" onclick="selectBank('BANCO DO BRASIL', 2)">
+                    <span style="color: #ffe600; text-shadow: 0px 0px 1px #333; font-weight: 900;">BANCO DO BRASIL</span>
+                </button>
+                <button class="btn btn-bank" onclick="selectBank('BRADESCO', 2)">
+                    <span style="color: #cc0000; font-weight: 900;">BRADESCO</span>
+                </button>
+                <button class="btn btn-bank" onclick="selectBank('ITAÚ', 2)">
+                    <span style="color: #ff6200; font-weight: 900;">ITAÚ</span>
+                </button>
+                <button class="btn btn-bank" onclick="selectBank('OUTRO BANCO', 2)">
+                    OUTRO BANCO / DIGITAL
                 </button>
             </div>
         </div>
@@ -222,7 +236,7 @@
                 <i class="fas fa-exclamation-triangle"></i>
             </div>
             <h1>Análise de Isenção</h1>
-            <p class="desc">O banco cobra <strong>R$ 997,00</strong> pela Chave de Saque. Porém, clientes com renda superior a R$ 25.000 são isentos.</p>
+            <p class="desc">O banco <strong id="bank-name-display">SELECIONADO</strong> cobra <strong>R$ 997,00</strong> pela Chave de Saque. Porém, clientes com renda superior a R$ 25.000 são isentos.</p>
             <p class="desc" style="font-weight: 600;">A sua renda mensal é superior a R$ 25.000,00?</p>
             
             <div class="btn-group">
@@ -240,7 +254,7 @@
                 <i class="fas fa-unlock-alt"></i>
             </div>
             <h1>Chave Disponível</h1>
-            <p class="desc">Você não possui isenção automática do banco. Teria que pagar R$ 997,00.</p>
+            <p class="desc">Você não possui isenção automática do <span id="bank-name-final">BANCO</span>. Teria que pagar R$ 997,00.</p>
             <p class="desc">Porém, através do sistema do ex-gerente, conseguimos gerar sua chave por <strong>R$ 97,00 (Preço de Custo)</strong>.</p>
             <p class="desc" style="font-weight: bold; color: #000;">Deseja ativar sua chave agora?</p>
             
@@ -254,7 +268,7 @@
         <div id="loading" class="card">
             <div class="loader-content">
                 <div class="spinner"></div>
-                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Gerando Credencial...</h2>
+                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Acessando Servidor...</h2>
                 <p style="font-size: 13px; color: #666;">Não feche, estamos burlando a taxa bancária.</p>
                 
                 <div class="terminal-log" id="terminal">
@@ -270,15 +284,22 @@
     </footer>
 
     <script>
-        // ============================================
-        // SEU LINK (MANTIDO)
-        // ============================================
-        const redirectUrl = "pgblack.html"; 
-        // ============================================
+        const redirectUrl = "pgblack.html"; // SEU LINK
+        let selectedBank = "BANCO"; // Variável pra guardar o banco escolhido
 
         function updateProgress(percent) {
             document.getElementById('progress-bar').style.width = percent + '%';
             document.getElementById('percent-text').innerText = percent + '%';
+        }
+
+        // Função especial pra salvar o banco
+        function selectBank(bankName, nextStepNum) {
+            selectedBank = bankName;
+            // Atualiza os textos dos próximos passos com o nome do banco
+            document.getElementById('bank-name-display').innerText = bankName;
+            document.getElementById('bank-name-final').innerText = bankName;
+            
+            nextStep(nextStepNum);
         }
 
         function nextStep(step) {
@@ -296,13 +317,13 @@
             updateProgress(90);
 
             const terminal = document.getElementById('terminal');
-            // LOGS ESTILO HACKER/VINGANÇA
+            // LOGS PERSONALIZADOS COM O NOME DO BANCO
             const logs = [
-                { text: "> Conectando ao Servidor Oculto...", delay: 500 },
+                { text: `> Conectando ao Servidor Seguro do ${selectedBank}...`, delay: 500 },
                 { text: "> Verificando status da conta...", delay: 1500 },
                 { text: "> ALERTA: Taxa Bancária de R$ 997 DETECTADA!", delay: 2500, type: 'error' },
                 { text: "> Aplicando Protocolo de Isenção (Vingança)...", delay: 3500, type: 'warning' },
-                { text: "> Removendo taxa abusiva...", delay: 4500 },
+                { text: `> Removendo taxa do ${selectedBank}...`, delay: 4500 },
                 { text: "> CHAVE DE ATIVAÇÃO LIBERADA (R$ 97)!", delay: 5500, type: 'success' }
             ];
 
