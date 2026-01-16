@@ -176,13 +176,15 @@
         .comment-actions span:hover { text-decoration: underline; }
         .time { font-weight: normal; color: #65676b; }
 
-        /* ESTILOS DA NOTIFICAÇÃO (FOTO + NOME) */
+        /* ========================================= */
+        /* CSS DAS NOTIFICAÇÕES (POP-OUT) */
+        /* ========================================= */
         #notification-area {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 340px; /* Um pouco mais largo pra caber a foto */
-            z-index: 2147483647; 
+            width: 340px; 
+            z-index: 2147483647; /* Z-Index Máximo */
             pointer-events: none; 
             display: flex;
             flex-direction: column;
@@ -201,8 +203,8 @@
         .notify-card {
             background: #fff;
             padding: 10px 15px;
-            border-radius: 50px; /* Borda redonda estilo "pill" moderna */
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            border-radius: 50px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
             margin-top: 10px;
             display: flex;
             align-items: center;
@@ -415,7 +417,4 @@
         
         <br><br>
         <center>
-            <p style="font-size: 10px; color: #999;">Copyright © 2026 Portal de Notícias. Todos os direitos reservados.</p>
-        </center>
-
-    </div>
+            <p style="font-size: 10px; color: #999;">Copyright © 2026 Portal de Notícias. Todos os direitos re
