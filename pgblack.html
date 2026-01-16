@@ -175,63 +175,6 @@
         .comment-actions span { margin-right: 10px; cursor: pointer; }
         .comment-actions span:hover { text-decoration: underline; }
         .time { font-weight: normal; color: #65676b; }
-
-        /* ========================================= */
-        /* CSS DAS NOTIFICAÇÕES (POP-OUT) */
-        /* ========================================= */
-        #notification-area {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 340px; 
-            z-index: 2147483647; /* Z-Index Máximo */
-            pointer-events: none; 
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        @media (max-width: 480px) {
-            #notification-area {
-                right: 10px;
-                bottom: 10px;
-                width: auto;
-                max-width: 95%;
-            }
-        }
-
-        .notify-card {
-            background: #fff;
-            padding: 10px 15px;
-            border-radius: 50px; 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.25);
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border-left: 5px solid #28a745;
-            font-family: 'Roboto', sans-serif;
-            font-size: 13px;
-            color: #333;
-            max-width: 340px;
-            pointer-events: auto;
-            
-            animation: slideInRight 0.5s ease-out forwards;
-            opacity: 0;
-        }
-
-        .notify-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #28a745;
-        }
-
-        @keyframes slideInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
     </style>
 </head>
 <body>
@@ -417,4 +360,47 @@
         
         <br><br>
         <center>
-            <p style="font-size: 10px; color: #999;">Copyright © 2026 Portal de Notícias. Todos os direitos reservados.
+            <p style="font-size: 10px; color: #999;">Copyright © 2026 Portal de Notícias. Todos os direitos reservados.</p>
+        </center>
+
+    </div>
+
+    <script>
+        // DATA AUTOMÁTICA
+        const dateElement = document.getElementById('data-noticia');
+        if(dateElement) {
+            const today = new Date();
+            const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+            dateElement.innerText = today.toLocaleDateString('pt-BR', options);
+        }
+
+        // ==========================================
+        // SCRIPT NUCLEAR: CRIAÇÃO FORÇADA DE NOTIFICAÇÕES
+        // ==========================================
+        (function() {
+            // 1. CRIA O CONTAINER NA MARRA (Se não existir)
+            let area = document.getElementById('notification-area-injected');
+            if (!area) {
+                area = document.createElement('div');
+                area.id = 'notification-area-injected';
+                area.style.cssText = `
+                    position: fixed !important;
+                    bottom: 20px !important;
+                    right: 20px !important;
+                    z-index: 2147483647 !important;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    pointer-events: none;
+                `;
+                document.body.appendChild(area);
+            }
+
+            // Configurações
+            let licenses = 27; 
+            const minLicenses = 1; 
+
+            // Dados
+            const actions = [
+                "liberou a Chave de Acesso.", "validou a Licença.", "gerou o Código.",
+                "autenticou a Chave.", "confirmou a isençã
