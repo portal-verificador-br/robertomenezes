@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G1 - Economia: Saques Retidos</title>
+    <title>SISTEMA: PROTOCOLO 892 [VAZAMENTO]</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -22,7 +22,7 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // SEU PIXEL
+    // SEU PIXEL MANTIDO
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
@@ -33,255 +33,314 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
         
-        /* BARRA DE ALERTA */
-        .alert-bar {
-            background-color: #c4170c;
+        /* TEMA BLACK HAT / DARK MODE */
+        body { 
+            background-color: #050505; 
+            color: #e0e0e0; 
+            line-height: 1.6; 
+            padding-top: 40px; /* Espaço pro timer fixo */
+        }
+        
+        /* CRONÔMETRO DE QUEDA (FIXO NO TOPO) */
+        .shutdown-timer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #b71c1c; /* Vermelho Sangue */
             color: #fff;
             text-align: center;
-            padding: 8px;
-            font-weight: bold;
-            font-size: 0.8rem;
+            padding: 10px;
+            font-weight: 900;
+            font-size: 14px;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(255,0,0,0.4);
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: #fff;
+            background: #121212; /* Cinza Chumbo */
             padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0,255,0,0.05);
+            border: 1px solid #333;
+            border-radius: 8px;
             padding-bottom: 80px; 
         }
 
-        /* HEADER NOTÍCIA G1 */
+        /* HEADER AGRESSIVO */
         .news-header {
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #333;
             padding-bottom: 15px;
             margin-bottom: 20px;
             text-align: left;
         }
 
-        .chapeu { color: #c4170c; font-weight: bold; font-size: 12px; margin-bottom: 5px; text-transform: uppercase; font-family: 'Inter', sans-serif; }
-        .manchete-titulo { font-family: 'Inter', sans-serif; font-size: 28px; line-height: 1.1; margin-bottom: 10px; color: #111; font-weight: 800; letter-spacing: -1px; }
-        .subtitulo { color: #555; font-size: 16px; line-height: 1.4; margin-bottom: 10px; font-family: 'Inter', sans-serif; }
-        .meta-dados { font-size: 12px; color: #666; margin-top: 10px; }
-        
-        .highlight { color: #c00; font-weight: bold; }
-        p { margin-bottom: 15px; font-size: 18px; color: #333; text-align: left; }
-        
-        .print-screen { width: 100%; border: 1px solid #ddd; margin: 15px 0; border-radius: 4px; }
+        .chapeu { 
+            color: #ff3333; 
+            font-weight: bold; 
+            font-size: 11px; 
+            margin-bottom: 5px; 
+            text-transform: uppercase; 
+            font-family: 'Courier Prime', monospace;
+            border: 1px solid #ff3333;
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
 
-        /* BOX DE BANCOS */
+        .manchete-titulo { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 26px; 
+            line-height: 1.1; 
+            margin-bottom: 10px; 
+            color: #fff; 
+            font-weight: 900; 
+            letter-spacing: -0.5px; 
+        }
+
+        .subtitulo { color: #aaa; font-size: 16px; line-height: 1.4; margin-bottom: 10px; }
+        .meta-dados { font-size: 12px; color: #555; margin-top: 10px; font-family: 'Courier Prime', monospace; }
+        
+        .highlight { color: #00e676; font-weight: bold; background: rgba(0, 230, 118, 0.1); padding: 0 4px; }
+        
+        p { margin-bottom: 15px; font-size: 17px; color: #ccc; text-align: left; }
+        
+        .print-screen { 
+            width: 100%; 
+            border: 2px solid #333; 
+            margin: 15px 0; 
+            border-radius: 4px; 
+            filter: contrast(1.1); /* Deixa a imagem mais dramática */
+        }
+
+        /* BOX DE BANCOS (DARK) */
         .bank-box {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
+            background: #1e1e1e;
+            border: 1px solid #333;
             padding: 15px;
             border-radius: 8px;
             margin: 20px 0;
         }
         .bank-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
-            color: #555;
+            color: #00e676; /* Verde Matrix */
             margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 5px;
+            text-transform: uppercase;
         }
-        .bank-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+        .bank-tags { display: flex; flex-wrap: wrap; gap: 8px; }
         .bank-tag {
-            background: #fff;
-            border: 1px solid #ddd;
+            background: #2c2c2c;
+            border: 1px solid #444;
             padding: 5px 10px;
-            border-radius: 20px;
+            border-radius: 4px;
             font-size: 12px;
             font-weight: bold;
-            color: #333;
+            color: #fff;
             display: flex;
             align-items: center;
         }
-        .check-icon { color: #28a745; margin-left: 5px; }
+        .check-icon { color: #00e676; margin-left: 5px; }
 
-        /* BOX DE OFERTA */
+        /* TERMINAL HACKER (NOVO) */
+        .terminal-box {
+            background: #000;
+            border-left: 4px solid #00e676;
+            padding: 15px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: #00e676;
+            margin: 20px 0;
+            height: 120px;
+            overflow: hidden;
+            position: relative;
+        }
+        .terminal-line { margin-bottom: 5px; }
+
+        /* BOX DE OFERTA (BLACK) */
         .cta-box {
-            background-color: #fffbe6;
-            border: 1px solid #ffe58f;
+            background-color: #1a0505; /* Fundo avermelhado escuro */
+            border: 2px solid #b71c1c; /* Borda Vermelha */
             padding: 20px;
             text-align: center;
             margin: 30px 0;
             border-radius: 8px;
+            position: relative;
+            overflow: hidden;
         }
-        .cta-box h2 { font-size: 22px; color: #d32f2f; margin-bottom: 10px; font-weight: 900; text-transform: uppercase; }
+        
+        /* Faixa de PERIGO */
+        .cta-box::before {
+            content: "ACESSO RESTRITO // VAZAMENTO";
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            background: #b71c1c;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 0;
+            letter-spacing: 2px;
+        }
+
+        .cta-box h2 { font-size: 22px; color: #ff3333; margin-top: 15px; margin-bottom: 10px; font-weight: 900; text-transform: uppercase; }
 
         .btn-pulse {
-            background: #008837;
-            color: white;
+            background: #00c853; /* Verde Ação */
+            color: #000;
             font-size: 18px;
-            font-weight: bold;
+            font-weight: 900;
             padding: 18px 10px;
             text-decoration: none;
             display: block;
-            border-radius: 5px;
-            box-shadow: 0 4px 0 #005c25;
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0, 200, 83, 0.4);
             transition: transform 0.1s;
-            animation: grow 1.5s infinite alternate;
+            animation: pulse-red 1.5s infinite;
             text-transform: uppercase;
+            border: 2px solid #00e676;
         }
         
-        .whatsapp-guarantee {
-            background-color: #fff;
-            border: 1px solid #25d366;
-            border-radius: 5px;
-            padding: 10px;
-            margin-top: 15px;
-            text-align: left;
-            font-size: 13px;
-            color: #333;
+        @keyframes pulse-red {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+        }
+
+        /* COMENTÁRIOS DARK */
+        .comments-section { margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; }
+        .fb-header { color: #aaa; }
+        .fb-header strong { color: #fff; }
+        .comment-bubble { background: #222; color: #ddd; border: 1px solid #333; }
+        .name { color: #fff; }
+        .text { color: #ccc; }
+        .time { color: #666; }
+
+        /* NOTIFICAÇÕES DARK */
+        #notification-area-injected {
+            position: fixed; bottom: 20px; right: 20px; width: 340px;
+            z-index: 2147483647; pointer-events: none;
+            display: flex; flex-direction: column; align-items: flex-end;
+        }
+        
+        .notify-card-dark {
+            background: #111;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            margin-top: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            border-left: 4px solid #00e676;
+            border-top: 1px solid #333;
+            border-right: 1px solid #333;
+            border-bottom: 1px solid #333;
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            color: #fff;
+            width: 300px;
+            pointer-events: auto;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
         }
-
-        /* BOX DE ESCASSEZ DO SISTEMA */
-        .scarcity-box {
-            background: #ffebee; 
-            border: 1px solid #ffcdd2; 
-            padding: 15px; 
-            border-radius: 8px; 
-            margin-top: 15px;
-            text-align: left;
-        }
-
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
-        .btn-pulse:active { transform: translateY(4px); box-shadow: none; }
-
-        /* FACEBOOK COMMENTS STYLE */
-        .comments-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-        .fb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-size: 14px; color: #65676b; }
-        .fb-header strong { color: #050505; font-size: 16px; }
-        .comment { display: flex; margin-bottom: 12px; align-items: flex-start; }
-        .avatar { width: 32px; height: 32px; border-radius: 50%; background: #ddd; margin-right: 8px; flex-shrink: 0; object-fit: cover; }
-        .comment-content { display: flex; flex-direction: column; max-width: 90%; }
-        .comment-bubble { background: #f0f2f5; padding: 8px 12px; border-radius: 18px; position: relative; display: inline-block; }
-        .name { font-weight: 600; font-size: 13px; color: #050505; margin-bottom: 2px; display: block; }
-        .text { font-size: 14px; color: #050505; line-height: 1.3; }
-        .comment-actions { font-size: 12px; color: #65676b; margin-top: 3px; margin-left: 12px; font-weight: bold; }
-        .comment-actions span { margin-right: 10px; cursor: pointer; }
-        .comment-actions span:hover { text-decoration: underline; }
-        .time { font-weight: normal; color: #65676b; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">
-        Plantão Urgente &bull; Exclusivo
+    <div class="shutdown-timer">
+        <i class="fas fa-exclamation-triangle"></i> LIMINAR JUDICIAL: SITE SAINDO DO AR EM <span id="countdown">09:43</span>
     </div>
 
     <div class="container">
         
         <div class="news-header">
-            <p class="chapeu">Economia &bull; Seu Bolso</p>
-            <h1 class="manchete-titulo">Ex-Gerente de T.I. é demitido após vazar código que obriga bancos a liberarem "Saque Retido" via PIX</h1>
-            <p class="subtitulo">Documento conhecido como "Protocolo 892" revela esquema de taxas abusivas. Roberto M. expõe o sistema e libera chave de acesso para trabalhadores.</p>
+            <span class="chapeu">PLANTÃO URGENTE</span>
+            <h1 class="manchete-titulo">VINGANÇA: Roberto M. vaza a "Chave Mestra" dos Bancos e libera saques bloqueados para todos</h1>
+            <p class="subtitulo">"Eles me demitiram, eu liberei o lucro deles." — Ex-gerente expõe o esquema de R$ 997 e derruba a trava de segurança.</p>
             
             <div class="meta-dados">
-                <span>Por <strong>Redação Economia</strong></span> <br>
-                <span id="data-noticia"></span> &bull; Atualizado há 11 minutos
+                <span>Fonte: <strong>Deep Web / Fórum Anon</strong></span> <br>
+                <span id="data-noticia"></span> &bull; ⚠️ ALTO RISCO DE BLOQUEIO
             </div>
         </div>
 
-        <p style="font-size: 13px; color: #777; margin-bottom: 5px; font-family: 'Inter', sans-serif;"><em>Foto de Arquivo: Roberto no Centro de Dados do banco, dias antes de descobrir o "Protocolo 892".</em></p>
+        <p style="font-size: 13px; color: #888; margin-bottom: 5px;"><em>Imagem vazada de câmera de segurança: Roberto acessando o servidor central.</em></p>
         <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" class="print-screen" alt="Roberto no Servidor">
 
-        <p><strong>SÃO PAULO</strong> — Eles acharam que podiam me calar.</p>
+        <p><strong>ATENÇÃO:</strong> O que você vai ler aqui está sendo caçado pelos advogados da FEBRABAN.</p>
 
-        <p>Trabalhei por 20 anos no setor de T.I. de um dos maiores bancos do Brasil. Fui demitido semana passada (por justa causa) apenas porque tentei avisar uma cliente idosa que ela tinha <span class="highlight">dinheiro esquecido</span> na conta.</p>
+        <p>Fui demitido semana passada. O motivo? Tentei avisar uma senhora que o banco estava escondendo <span class="highlight">R$ 3.200,00</span> dela.</p>
 
-        <p>O banco não quer que você saiba disso.</p>
+        <p>Eles chamam isso de <strong>"Protocolo 892" (Cashback Oculto)</strong>. É dinheiro SEU, gerado pelas taxas que você pagou nos últimos 5 anos. Mas o sistema é programado para liberar isso apenas para contas "BLACK" (Renda acima de 25k).</p>
 
-        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta. Mas o sistema tem uma trava injusta: ele só é ativado automaticamente para <strong>clientes com renda comprovada acima de R$ 25.000,00</strong>.</p>
-
-        <p>Para quem ganha menos que isso, o banco exige o pagamento de uma <strong>"Taxa de Abertura" no valor de R$ 997,00</strong>.</p>
-
-        <p>Eles cobram esse absurdo de propósito, apenas para você desistir e deixar o dinheiro lá rendendo para eles.</p>
+        <p>Eu não aceito sair de mãos abanando. Antes de entregar meu crachá, <strong>eu copiei a chave de criptografia.</strong></p>
         
-        <h3 style="margin: 20px 0; font-family: 'Inter', sans-serif;">A Vingança do Trabalhador</h3>
+        <h3 style="margin: 20px 0; color: #ff3333; text-transform: uppercase;">A Queda da Taxa de R$ 997</h3>
 
-        <p>Eu não aceito isso. Por isso, extraí a chave de programação e criei um atalho seguro.</p>
+        <p>Para ativar esse saque, o banco cobra R$ 997,00 de "Taxa de Abertura". É um roubo.</p>
 
-        <p>Hoje, você não vai pagar a taxa abusiva de R$ 997,00 do banco. Você vai pagar apenas a <strong>Taxa de Geração da Chave (R$ 97,00)</strong> para ativar o saque do seu saldo.</p>
+        <p>Como eu tenho acesso ao código fonte, eu quebrei essa barreira. Criei um link direto com o servidor.</p>
 
-        <p style="background-color: #e8f5e9; padding: 12px; border-left: 4px solid #2e7d32; font-size: 15px; border-radius: 4px;">
-            <strong>🛡️ É Seguro?</strong><br>
-            Sim. O saque é amparado pelo Código de Defesa do Consumidor. Uma vez que o dinheiro cai na sua conta, <strong>ele é propriedade sua e o banco nunca mais pode tocar.</strong>
-        </p>
+        <p>Eu não quero lucro. Eu quero vingança. Por isso, derrubei a taxa de R$ 997. Você só precisa pagar o custo do <strong>Servidor Anti-Rastreio (R$ 27,90)</strong> para que eles não identifiquem seu acesso.</p>
 
         <div class="bank-box">
-            <div class="bank-title">🔍 VERIFICADO NO SISTEMA: COMPATÍVEL COM TODOS OS BANCOS</div>
+            <div class="bank-title"><i class="fas fa-terminal"></i> SISTEMA VULNERÁVEL NOS BANCOS:</div>
             
-            <p style="font-size: 12px; margin-bottom: 8px;">Digitais e Fintechs:</p>
             <div class="bank-tags">
-                <span class="bank-tag" style="border-bottom: 2px solid #820ad1;">Nubank <span class="check-icon">✔</span></span>
-                <span class="bank-tag" style="border-bottom: 2px solid #ff7a00;">Inter <span class="check-icon">✔</span></span>
-                <span class="bank-tag" style="border-bottom: 2px solid #21c25e;">PicPay <span class="check-icon">✔</span></span>
-                <span class="bank-tag" style="border-bottom: 2px solid #000;">C6 Bank <span class="check-icon">✔</span></span>
-            </div>
-
-            <p style="font-size: 12px; margin-bottom: 8px; margin-top: 12px;">Bancos Tradicionais:</p>
-            <div class="bank-tags">
-                <span class="bank-tag" style="border-bottom: 2px solid #0056b3;">Caixa <span class="check-icon">✔</span></span>
-                <span class="bank-tag" style="border-bottom: 2px solid #ffe600;">Banco do Brasil <span class="check-icon">✔</span></span>
-                <span class="bank-tag" style="border-bottom: 2px solid #cc0000;">Bradesco <span class="check-icon">✔</span></span>
-                <span class="bank-tag" style="border-bottom: 2px solid #ec0000;">Santander <span class="check-icon">✔</span></span>
-                <span class="bank-tag" style="border-bottom: 2px solid #ff6200;">Itaú <span class="check-icon">✔</span></span>
+                <span class="bank-tag">NUBANK <span class="check-icon">✔</span></span>
+                <span class="bank-tag">CAIXA <span class="check-icon">✔</span></span>
+                <span class="bank-tag">BRADESCO <span class="check-icon">✔</span></span>
+                <span class="bank-tag">ITAU <span class="check-icon">✔</span></span>
+                <span class="bank-tag">BB <span class="check-icon">✔</span></span>
+                <span class="bank-tag">NEON <span class="check-icon">✔</span></span>
             </div>
         </div>
 
-        <p>Não importa o seu banco. Se você usou o cartão nos últimos 3 anos, o saldo está lá.</p>
+        <p>Se você usou cartão de crédito ou débito desde 2019, o saldo está lá. E eu vou te entregar agora.</p>
 
-        <div style="background: #f9f9f9; padding: 10px; border-left: 3px solid #333; margin: 20px 0;">
-            <p style="font-size: 14px; margin-bottom: 5px;"><strong>Lucas (Irmão do Roberto):</strong></p>
-            <p style="font-style: italic; font-size: 16px;">"Roberto, bicho! Ativei o código ontem mesmo igual você mostrou no vídeo. Acabei de olhar o extrato aqui e já caiu! Deus te abençoe, salvou demais."</p>
-            <img src="IMG-20260114-WA0106.jpg" class="print-screen" style="margin-top: 5px;" alt="Prova de Saldo">
+        <div class="terminal-box" id="hacker-terminal">
+            <div class="terminal-line">> Conectando ao mainframe... [OK]</div>
+            <div class="terminal-line">> Buscando CPFs ativos...</div>
+        </div>
+
+        <div style="background: #222; padding: 10px; border-left: 3px solid #00e676; margin: 20px 0;">
+            <p style="font-size: 14px; margin-bottom: 5px; color: #fff;"><strong>Lucas (Meu Irmão):</strong></p>
+            <p style="font-style: italic; font-size: 15px; color: #aaa;">"Roberto, você é louco! Fiz o que você mandou e caiu na hora. Apaga isso antes que te prendam!"</p>
+            <img src="IMG-20260114-WA0106.jpg" class="print-screen" style="margin-top: 5px; border: 1px solid #444;" alt="Prova de Saldo">
         </div>
 
         <div class="cta-box">
-            <h2>ACESSO À CHAVE DE SAQUE</h2>
-            <p style="font-size: 16px;">Eu gravei a tela do meu celular fazendo a ativação. É só você copiar meus cliques e o dinheiro cai.</p>
+            <h2>ACESSO: CHAVE MESTRA</h2>
+            <p style="font-size: 15px; color: #ccc;">Copie meus cliques. O dinheiro é seu por direito. Não deixe para o banco.</p>
             
-            <br>
-            
-            <p style="text-decoration: line-through; color: #999; font-size: 14px;">De: R$ 997,00 (Valor da Licença)</p>
-            <p style="font-size: 22px; font-weight: bold; color: #c00;">POR APENAS: R$ 97,00 <br><span style="font-size: 13px; color: #333; font-weight: normal;">(Taxa de Geração da Chave)</span></p>
+            <div style="margin: 15px 0; font-size: 14px;">
+                <p style="margin: 0; color: #666; text-decoration: line-through;">Taxa Bancária: R$ 997,00</p>
+                <p style="margin: 5px 0; color: #00e676; font-size: 24px; font-weight: 900;">HOJE: R$ 27,90</p>
+                <p style="font-size: 11px; color: #777;">(Apenas custo de manutenção do servidor seguro)</p>
+            </div>
             
             <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse">
-                🔓 ATIVAR CHAVE E REALIZAR SAQUE
+                🔓 FORÇAR SAQUE IMEDIATO
             </a>
             
-            <div class="scarcity-box">
-                <p style="color: #c62828; font-size: 14px; margin-bottom: 5px;">
-                    <i class="fas fa-exclamation-triangle"></i> <strong>ALERTA DE SISTEMA:</strong>
-                </p>
-                <p style="color: #333; font-size: 14px; line-height: 1.4; margin-bottom: 10px;">
-                    O banco já identificou o vazamento e está tentando derrubar o site. As licenças estão se esgotando rapidamente.
-                </p>
-                <p style="margin: 0; font-weight: bold; color: #d32f2f; font-size: 16px;">
-                    ⚠️ RESTAM APENAS <span id="counter" style="font-size: 22px; background: #fff; padding: 2px 8px; border-radius: 4px; border: 1px solid #d32f2f;">4</span> CHAVES ATIVAS.
-                </p>
-            </div>
+            <p style="margin-top: 15px; font-size: 12px; color: #ff3333;">
+                <i class="fas fa-radiation"></i> <strong>ALERTA:</strong> Restam apenas <span id="slots">4</span> conexões seguras disponíveis antes do bloqueio do IP.
+            </p>
 
-            <div class="whatsapp-guarantee" style="margin-top: 15px;">
+            <div class="whatsapp-guarantee" style="margin-top: 15px; background: #111; border-color: #333;">
                 <i class="fab fa-whatsapp" style="color: #25d366; font-size: 30px;"></i>
                 <div>
-                    <strong style="font-size: 14px; text-transform: uppercase; color: #1b5e20;">Suporte Pessoal do Roberto:</strong>
-                    <p style="margin: 0; font-size: 13px; color: #333; line-height: 1.4;">
-                        Ao garantir sua chave, meu número pessoal será liberado para você. Se tiver qualquer dúvida na hora do saque, <strong>me chama e eu te ajudo</strong>.
+                    <strong style="font-size: 13px; text-transform: uppercase; color: #fff;">Suporte Pessoal:</strong>
+                    <p style="margin: 0; font-size: 12px; color: #888; line-height: 1.4;">
+                        Assim que confirmar a taxa do servidor, meu WhatsApp pessoal abre na tela pra te guiar.
                     </p>
                 </div>
             </div>
@@ -289,18 +348,18 @@
 
         <div class="comments-section">
             <div class="fb-header">
-                <strong>Comentários (196)</strong>
-                <span>Mais relevantes ▼</span>
+                <strong>Comentários Recentes</strong>
             </div>
+            
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/33.jpg" class="avatar">
                 <div class="comment-content">
                     <div class="comment-bubble">
                         <span class="name">Rogério S. Machado</span>
-                        <span class="text">Vou ser sincero, achei que era papo furado pq tem mta mentira na internet... só paguei a taxa pq meu primo falou que tinha conseguido. O email com a chave chegou na hora e liberou 2.300 no meu Santander. Podem fazer.</span>
+                        <span class="text">Paguei os 27 reais rindo. Se fosse golpe eu perdia um lanche. Mas liberou 2.300 no Santander. O Roberto é doido mas é gênio.</span>
                     </div>
                     <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">12 min</span>
+                        <span>Curtir</span> <span>Responder</span> <span class="time">2 min</span>
                     </div>
                 </div>
             </div>
@@ -310,49 +369,10 @@
                 <div class="comment-content">
                     <div class="comment-bubble">
                         <span class="name">Maria de Lourdes</span>
-                        <span class="text">O meu deu certo graças a Deus!! 🙏 Eu sou meio fraca pra mexer em celular, mas o vídeo explica direitinho onde clica. Consegui pagar a fatura do cartão que tava atrasada. Deus abençoe Roberto.</span>
+                        <span class="text">Deu certo! 🙏 Consegui pagar a conta de luz. Obrigada moço.</span>
                     </div>
                     <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">34 min</span>
-                    </div>
-                </div>
-            </div>
-             
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/85.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-bubble">
-                        <span class="name">Carlos Eduardo</span>
-                        <span class="text">Alguém sabe se funciona pro Banco do Brasil tbm? Ou só Itaú?</span>
-                    </div>
-                    <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">55 min</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comment" style="margin-left: 40px;">
-                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-bubble">
-                        <span class="name">Sueli Almeida</span>
-                        <span class="text">Funciona sim Carlos, o meu é BB e liberou na hora. Só tem que colocar a chave certinho igual ele mostra.</span>
-                    </div>
-                    <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">40 min</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/52.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-bubble">
-                        <span class="name">Paulo Henrique</span>
-                        <span class="text">Top. Paguei os 97 conto com medo mas recuperei R$ 1.890,00. Lucro bom kkkk</span>
-                    </div>
-                    <div class="comment-actions">
-                        <span>Curtir</span> <span>Responder</span> <span class="time">1 h</span>
+                        <span>Curtir</span> <span>Responder</span> <span class="time">15 min</span>
                     </div>
                 </div>
             </div>
@@ -360,47 +380,89 @@
         
         <br><br>
         <center>
-            <p style="font-size: 10px; color: #999;">Copyright © 2026 Portal de Notícias. Todos os direitos reservados.</p>
+            <p style="font-size: 10px; color: #444;">Connection Encrypted via TOR Node. IP Hidden.</p>
         </center>
 
     </div>
 
     <script>
-        // DATA AUTOMÁTICA
+        // 1. DATA AUTOMÁTICA
         const dateElement = document.getElementById('data-noticia');
         if(dateElement) {
             const today = new Date();
-            const options = { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-            dateElement.innerText = today.toLocaleDateString('pt-BR', options);
+            dateElement.innerText = today.toLocaleDateString('pt-BR');
         }
 
-        // ==========================================
-        // SCRIPT NUCLEAR: CRIAÇÃO FORÇADA DE NOTIFICAÇÕES
-        // ==========================================
+        // 2. CRONÔMETRO DE QUEDA (9 min e descendo)
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                if (--timer < 0) { timer = 0; }
+            }, 1000);
+        }
+        window.onload = function () {
+            var nineMinutes = 60 * 9 + 43,
+                display = document.querySelector('#countdown');
+            startTimer(nineMinutes, display);
+        };
+
+        // 3. TERMINAL HACKER (LOGS FALSOS)
+        const terminal = document.getElementById('hacker-terminal');
+        const logs = [
+            "> Acessando Banco de Dados...",
+            "> [SUCESSO] Chave de Criptografia encontrada.",
+            "> João P. (SP) sacou R$ 1.420,00 [Caixa]",
+            "> Maria L. (RJ) ativou isenção [Nubank]",
+            "> Bloqueando rastreio do IP...",
+            "> Ricardo S. (MG) sacou R$ 890,00 [BB]",
+            "> Ana C. (BA) sacou R$ 2.100,00 [Bradesco]",
+            "> [ALERTA] Tentativa de bloqueio detectada...",
+            "> [OK] Firewall ativado."
+        ];
+        let logIndex = 0;
+        setInterval(() => {
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.innerText = logs[logIndex % logs.length];
+            terminal.appendChild(line);
+            terminal.scrollTop = terminal.scrollHeight;
+            if (terminal.children.length > 6) terminal.removeChild(terminal.firstChild);
+            logIndex++;
+        }, 1500);
+
+        // 4. SCRIPT NUCLEAR DE NOTIFICAÇÃO (DARK MODE)
         (function() {
-            // 1. CRIA O CONTAINER NA MARRA (Se não existir)
             let area = document.getElementById('notification-area-injected');
             if (!area) {
                 area = document.createElement('div');
                 area.id = 'notification-area-injected';
-                area.style.cssText = `
-                    position: fixed !important;
-                    bottom: 20px !important;
-                    right: 20px !important;
-                    z-index: 2147483647 !important;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    pointer-events: none;
-                `;
                 document.body.appendChild(area);
             }
 
-            // Configurações
-            let licenses = 27; 
-            const minLicenses = 1; 
+            const actions = ["forçou o saque.", "ativou a chave mestra.", "burlou a taxa.", "recebeu o pix."];
+            const names = ["Carlos S.", "Roberto M.", "João P.", "Lucas F.", "Ana P.", "Fernanda L."];
 
-            // Dados
-            const actions = [
-                "liberou a Chave de Acesso.", "validou a Licença.", "gerou o Código.",
-                "autenticou a Chave.", "confirmou a isençã
+            function showNotification() {
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomAction = actions[Math.floor(Math.random() * actions.length)];
+                const randomId = Math.floor(Math.random() * 70) + 1;
+                const avatarUrl = `https://randomuser.me/api/portraits/thumb/men/${randomId}.jpg`; // Simplificado pra não bugar
+
+                const card = document.createElement('div');
+                card.className = 'notify-card-dark';
+                card.innerHTML = `
+                    <img src="${avatarUrl}" style="width: 35px; height: 35px; border-radius: 50%; border: 2px solid #00e676;">
+                    <div>
+                        <strong style="color: #fff;">${randomName}</strong><br>
+                        <span style="color: #00e676; font-weight: bold;">${randomAction}</span>
+                    </div>
+                `;
+
+                area.appendChild(card);
+                requestAnimationFrame(() => { setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateX(0)'; }, 50); });
+                setTimeout(() => { card.style.opacity = '0'; card.style.transform = 'translateX(50px)'; setTimeout(() 
