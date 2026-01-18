@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PAINEL ADMINISTRATIVO - ACESSO RESTRITO</title>
+    <title>Protocolo de Liberação 892</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -18,6 +18,7 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
+    // SEU PIXEL
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
@@ -27,334 +28,305 @@
 
     <style>
         :root {
-            --bg-color: #111827; /* Azul Marinho Quase Preto (Enterprise) */
-            --card-color: #1f2937;
-            --text-white: #f3f4f6;
-            --text-gray: #9ca3af;
-            --accent-blue: #3b82f6;
-            --alert-red: #ef4444;
-            --success-green: #10b981;
+            --bg-dark: #0f172a;
+            --card-dark: #1e293b;
+            --primary: #3b82f6; /* Azul Confiança */
+            --success: #10b981; /* Verde Dinheiro */
+            --alert: #ef4444;   /* Vermelho Urgência */
+            --text-light: #f8fafc;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
         
         body { 
-            background-color: var(--bg-color); 
-            color: var(--text-white);
+            background-color: var(--bg-dark); 
+            color: var(--text-light);
             min-height: 100vh;
-            display: flex;
+            display: flex; 
             flex-direction: column;
         }
 
-        /* HEADER TIPO SISTEMA */
-        .system-header {
-            background: #0f172a;
-            border-bottom: 1px solid #374151;
+        /* HEADER */
+        header {
             padding: 15px;
+            background: #020617;
+            border-bottom: 1px solid #334155;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
-        
-        .badge-internal {
-            background: #374151;
-            padding: 4px 8px;
-            border-radius: 4px;
-            color: #e5e7eb;
-            font-weight: bold;
-        }
+        .logo { font-weight: 900; font-size: 14px; letter-spacing: 1px; color: #fff; }
+        .secure-badge { background: #334155; padding: 4px 8px; border-radius: 4px; font-size: 10px; color: #94a3b8; display: flex; align-items: center; gap: 5px; }
 
-        /* TIMER DE SESSÃO */
-        .session-timer {
-            background: #7f1d1d;
-            color: #fecaca;
-            text-align: center;
-            padding: 8px;
-            font-size: 12px;
-            font-weight: 600;
-        }
+        /* BARRA DE PROGRESSO */
+        .progress-container { width: 100%; height: 4px; background: #334155; }
+        .progress-bar { height: 100%; background: var(--success); width: 0%; transition: width 0.5s ease; box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
 
+        /* ÁREA PRINCIPAL */
         main {
+            flex: 1;
             padding: 20px;
             max-width: 500px;
             margin: 0 auto;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* CARDS */
-        .card {
-            background: var(--card-color);
-            border: 1px solid #374151;
+        /* CARD GERAL */
+        .step-card {
+            background: var(--card-dark);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            display: none; /* Escondido por padrão */
+            animation: slideUp 0.4s ease-out;
+        }
+        .step-card.active { display: block; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { font-size: 20px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; color: #fff; }
+        p.sub { color: #94a3b8; font-size: 14px; margin-bottom: 24px; }
+
+        /* BOTÕES DE OPÇÃO */
+        .options-grid { display: grid; gap: 12px; }
+        
+        .option-btn {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 16px;
             border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 20px;
-            display: none;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-        }
-        .card.active { display: block; animation: fadeIn 0.4s; }
-        @keyframes fadeIn { from { opacity: 0; margin-top: 10px; } to { opacity: 1; margin-top: 0; } }
-
-        h1 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-        p.desc { color: var(--text-gray); font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
-
-        /* LISTA DE BANCOS ESTILO PAINEL */
-        .bank-list { display: flex; flex-direction: column; gap: 10px; }
-        .bank-item {
-            background: #111827;
-            border: 1px solid #374151;
-            padding: 15px;
-            border-radius: 6px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 15px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .bank-item:hover { border-color: var(--accent-blue); background: #1e293b; }
-        .bank-item span { font-weight: 600; font-size: 14px; }
-
-        /* LOADING BARRA DE SISTEMA */
-        .system-loader {
-            background: #000;
-            padding: 20px;
-            border-radius: 6px;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 12px;
-            color: var(--accent-blue);
-        }
-        .load-line { margin-bottom: 5px; display: block; }
-        .load-error { color: var(--alert-red); }
-        .load-success { color: var(--success-green); }
-
-        /* SEÇÃO DA OFERTA */
-        .alert-box {
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 4px solid var(--alert-red);
-            padding: 15px;
-            margin-bottom: 20px;
         }
         
-        .manager-note {
-            background: #374151;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #d1d5db;
-            font-size: 13px;
-            border: 1px dashed #6b7280;
+        .option-btn:active { transform: scale(0.98); border-color: var(--primary); background: #1e3a8a; }
+        .option-btn i { color: var(--primary); }
+
+        /* ETAPA DE CARREGAMENTO/ANÁLISE */
+        .loader-box { text-align: center; padding: 20px 0; }
+        .spinner {
+            width: 50px; height: 50px; border: 4px solid #334155;
+            border-top: 4px solid var(--primary); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .status-log { 
+            font-family: monospace; font-size: 12px; color: var(--success); 
+            text-align: left; background: #000; padding: 15px; border-radius: 6px; 
+            margin-top: 20px; border-left: 3px solid var(--success);
         }
 
-        .price-display {
-            text-align: center;
-            margin: 25px 0;
-            padding: 20px;
-            background: #111827;
-            border: 1px solid #374151;
-            border-radius: 8px;
+        /* CARD DE OFERTA/VENDAS (O FINAL) */
+        .alert-banner {
+            background: rgba(239, 68, 68, 0.1); border: 1px solid var(--alert);
+            color: #fca5a5; padding: 12px; border-radius: 6px; font-size: 13px;
+            margin-bottom: 20px; display: flex; gap: 10px; align-items: start;
         }
 
-        .btn-primary {
-            background: var(--accent-blue);
-            color: white;
-            width: 100%;
-            padding: 18px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 800;
-            font-size: 18px;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
-            transition: transform 0.1s;
-            text-decoration: none;
-            display: block;
-            text-align: center;
+        .roberto-box {
+            background: #334155; padding: 15px; border-radius: 8px;
+            margin-bottom: 20px; font-size: 14px; color: #e2e8f0;
+            border-left: 4px solid var(--primary);
         }
-        .btn-primary:active { transform: scale(0.98); }
 
-        /* NOTIFICAÇÃO DISCRETA */
-        #notify-area {
-            position: fixed; bottom: 15px; right: 15px; 
-            width: 300px; pointer-events: none; z-index: 99;
+        .price-tag {
+            text-align: center; margin: 20px 0; padding: 15px;
+            background: #0f172a; border-radius: 8px; border: 1px dashed #475569;
         }
-        .notify-item {
-            background: #1f2937; border-left: 4px solid var(--success-green);
-            color: #fff; padding: 12px; margin-top: 10px;
-            border-radius: 4px; box-shadow: 0 10px 15px rgba(0,0,0,0.5);
-            font-size: 12px; transform: translateX(100%); transition: transform 0.3s;
+
+        .cta-button {
+            background: var(--success); color: #064e3b;
+            width: 100%; padding: 18px; border-radius: 8px;
+            font-size: 18px; font-weight: 900; text-align: center;
+            text-decoration: none; display: block; text-transform: uppercase;
+            box-shadow: 0 4px 0 #065f46; transition: transform 0.1s;
+            animation: pulse 2s infinite;
         }
-        .notify-item.show { transform: translateX(0); }
+        .cta-button:active { transform: translateY(4px); box-shadow: none; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+        /* RODAPÉ */
+        footer { text-align: center; padding: 20px; color: #64748b; font-size: 11px; }
 
     </style>
 </head>
 <body>
 
-    <div class="system-header">
-        <span><i class="fas fa-network-wired"></i> Intranet Bancária v4.2</span>
-        <span class="badge-internal">ACESSO INTERNO</span>
-    </div>
-
-    <div class="session-timer">
-        ⚠️ SESSÃO ADMINISTRATIVA EXPIRA EM: <span id="timer">09:43</span>
+    <header>
+        <div class="logo">PROTOCOLO 892</div>
+        <div class="secure-badge"><i class="fas fa-lock"></i> AMBIENTE SEGURO</div>
+    </header>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
     </div>
 
     <main>
 
-        <div id="step1" class="card active">
-            <h1><i class="fas fa-database"></i> Selecionar Base de Dados</h1>
-            <p class="desc">Qual instituição bancária detém o saldo retido?</p>
+        <div id="step1" class="step-card active">
+            <h2>Vamos localizar seu saldo.</h2>
+            <p class="sub">Qual instituição bancária você mais utilizou nos últimos 5 anos?</p>
             
-            <div class="bank-list">
-                <div class="bank-item" onclick="selectBank('Nubank Payments S.A.')">
-                    <span>Nubank</span> <i class="fas fa-chevron-right text-gray-500"></i>
-                </div>
-                <div class="bank-item" onclick="selectBank('Caixa Econômica Federal')">
-                    <span>Caixa</span> <i class="fas fa-chevron-right text-gray-500"></i>
-                </div>
-                <div class="bank-item" onclick="selectBank('Banco Bradesco S.A.')">
-                    <span>Bradesco</span> <i class="fas fa-chevron-right text-gray-500"></i>
-                </div>
-                <div class="bank-item" onclick="selectBank('Banco do Brasil S.A.')">
-                    <span>Banco do Brasil</span> <i class="fas fa-chevron-right text-gray-500"></i>
-                </div>
-                <div class="bank-item" onclick="selectBank('Itaú Unibanco S.A.')">
-                    <span>Itaú</span> <i class="fas fa-chevron-right text-gray-500"></i>
+            <div class="options-grid">
+                <div class="option-btn" onclick="nextStep(2)">Nubank <i class="fas fa-chevron-right"></i></div>
+                <div class="option-btn" onclick="nextStep(2)">Caixa Econômica <i class="fas fa-chevron-right"></i></div>
+                <div class="option-btn" onclick="nextStep(2)">Banco do Brasil <i class="fas fa-chevron-right"></i></div>
+                <div class="option-btn" onclick="nextStep(2)">Bradesco <i class="fas fa-chevron-right"></i></div>
+                <div class="option-btn" onclick="nextStep(2)">Itaú <i class="fas fa-chevron-right"></i></div>
+                <div class="option-btn" onclick="nextStep(2)">Outro Banco <i class="fas fa-chevron-right"></i></div>
+            </div>
+        </div>
+
+        <div id="step2" class="step-card">
+            <h2>Verificação de Atividade</h2>
+            <p class="sub">Você realizou compras no crédito ou débito entre 2021 e 2025?</p>
+            
+            <div class="options-grid">
+                <div class="option-btn" onclick="nextStep(3)">Sim, uso frequentemente <i class="fas fa-check"></i></div>
+                <div class="option-btn" onclick="nextStep(3)">Sim, poucas vezes <i class="fas fa-check"></i></div>
+                <div class="option-btn" onclick="nextStep(3)">Não me lembro <i class="fas fa-question"></i></div>
+            </div>
+        </div>
+
+        <div id="step3" class="step-card">
+            <h2>Análise de Perfil VIP</h2>
+            <p class="sub">Para isenção automática de taxas, o banco exige renda alta. Responda com sinceridade:</p>
+            <p style="background: #334155; padding: 10px; border-radius: 6px; margin-bottom: 20px; font-weight: bold; font-size: 14px;">
+                <i class="fas fa-wallet"></i> Sua renda mensal é SUPERIOR a R$ 25.000,00?
+            </p>
+            
+            <div class="options-grid">
+                <div class="option-btn" onclick="nextStep(4)">Sim, ganho mais que 25k</div>
+                <div class="option-btn" onclick="nextStep(4)">Não, ganho menos</div>
+            </div>
+        </div>
+
+        <div id="step4" class="step-card">
+            <div class="loader-box">
+                <div class="spinner"></div>
+                <h2>Processando Resposta...</h2>
+                <p class="sub">Verificando elegibilidade no sistema.</p>
+                
+                <div class="status-log" id="logBox">
+                    > Conectando ao servidor...<br>
                 </div>
             </div>
         </div>
 
-        <div id="loading" class="card">
-            <h1><i class="fas fa-cog fa-spin"></i> Processando Requisição...</h1>
-            <p class="desc">Acessando API interna de isenção de tarifas.</p>
+        <div id="step5" class="step-card">
             
-            <div class="system-loader" id="sys-log">
-                <span class="load-line">> Iniciando handshake seguro...</span>
-            </div>
-        </div>
-
-        <div id="step3" class="card">
-            
-            <div class="alert-box">
-                <strong style="color: var(--alert-red);">ERRO DE COBRANÇA DETECTADO</strong><br>
-                <span style="font-size: 13px;">O sistema identificou uma cobrança automática de <strong>R$ 997,00</strong> vinculada ao seu CPF.</span>
-            </div>
-
-            <div class="manager-note">
-                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                    <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
-                    <strong>Roberto M. - Ex-Gerente T.I.</strong>
+            <div class="alert-banner">
+                <i class="fas fa-exclamation-triangle" style="margin-top: 3px;"></i>
+                <div>
+                    <strong>ACESSO BLOQUEADO PELO BANCO</strong><br>
+                    Como sua renda é inferior a R$ 25k, o sistema gerou automaticamente uma taxa de <strong>R$ 997,00</strong> para liberar o saque.
                 </div>
-                "Usei minha credencial de Gerente (ID: 892-Admin) para forçar o cancelamento dessa taxa de R$ 997. O banco não quer que você saiba, mas qualquer funcionário pode remover isso."
             </div>
 
-            <p class="desc" style="color: #fff;">
-                Consegui derrubar a taxa do banco. Porém, para processar o saque via <strong>Gateway de Pagamento Externo</strong> (para não alertar a auditoria do banco), é necessária uma validação fiscal.
+            <div class="roberto-box">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                    <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #fff;">
+                    <strong>Roberto Menezes</strong>
+                </div>
+                "Eu sabia que eles fariam isso. O sistema é feito para travar o pobre. Mas eu acessei o painel administrativo agora e <strong>removi essa taxa de R$ 997 do seu CPF</strong>."
+            </div>
+
+            <p style="font-size: 14px; margin-bottom: 10px;">
+                Para liberar seu PIX agora, o sistema exige apenas uma <strong>Taxa de Validação de Protocolo</strong> (para provar que você é humano e ativar a chave).
             </p>
 
-            <div class="price-display">
-                <p style="font-size: 12px; color: #6b7280; text-decoration: line-through;">Taxa de Abertura: R$ 997,00</p>
-                <p style="font-size: 14px; color: var(--text-white); margin-top: 5px;">Custo Operacional:</p>
-                <p style="font-size: 32px; font-weight: 800; color: var(--accent-blue);">R$ 27,90</p>
-                <p style="font-size: 11px; color: #6b7280; margin-top: 5px;">(Taxa Única de Validação de Protocolo)</p>
+            <div class="price-tag">
+                <span style="color: #64748b; text-decoration: line-through; font-size: 13px;">De: R$ 997,00 (Removido)</span><br>
+                <span style="color: #fff; font-size: 14px; font-weight: bold;">Sobra apenas:</span><br>
+                <span style="color: var(--success); font-size: 32px; font-weight: 900;">R$ 27,90</span>
             </div>
 
-            <a href="SEU_LINK_KIRVANO_AQUI" class="btn-primary">
-                <i class="fas fa-file-signature"></i> VALIDAR E SACAR
+            <h3 style="text-align: center; margin-bottom: 15px; font-size: 16px;">Você deseja ativar a chave e sacar?</h3>
+
+            <a href="SEU_LINK_KIRVANO_AQUI" class="cta-button">
+                SIM, LIBERAR MEU SALDO
             </a>
 
-            <p style="text-align: center; margin-top: 15px; font-size: 11px; color: #6b7280;">
-                Este procedimento é irreversível. O valor cairá na conta de origem em até 10 minutos após a validação.
+            <p style="text-align: center; font-size: 11px; margin-top: 15px; color: #64748b;">
+                <i class="fas fa-lock"></i> Validação Segura &bull; Acesso Imediato
             </p>
-
         </div>
 
     </main>
 
-    <div id="notify-area"></div>
+    <footer>
+        <p>Copyright © 2026 - Portal Verificador<br>Todos os direitos reservados.</p>
+    </footer>
 
     <script>
-        // CRONÔMETRO
-        let time = 583;
-        setInterval(() => {
-            if(time > 0) {
-                time--;
-                let m = Math.floor(time / 60).toString().padStart(2, '0');
-                let s = (time % 60).toString().padStart(2, '0');
-                document.getElementById('timer').innerText = `${m}:${s}`;
-            }
-        }, 1000);
-
-        // NAVEGAÇÃO
-        function selectBank(name) {
-            document.getElementById('step1').style.display = 'none';
-            document.getElementById('loading').style.display = 'block';
-            runSystemLog(name);
+        // BARRA DE PROGRESSO
+        function updateProgress(percent) {
+            document.getElementById('progressBar').style.width = percent + '%';
         }
 
-        function runSystemLog(bankName) {
+        // TRANSIÇÃO DE ETAPAS
+        function nextStep(step) {
+            // Esconde todas
+            document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+            
+            // Mostra a próxima
+            const nextCard = document.getElementById('step' + step);
+            if(nextCard) nextCard.classList.add('active');
+
+            // Atualiza barra
+            if(step === 1) updateProgress(20);
+            if(step === 2) updateProgress(40);
+            if(step === 3) updateProgress(60);
+            
+            // Se for a etapa de loading, roda o script
+            if(step === 4) {
+                updateProgress(80);
+                runLoadingScript();
+            }
+        }
+
+        // SCRIPT DE LOADING FALSO
+        function runLoadingScript() {
             const logs = [
-                `> Conectando ao mainframe: ${bankName}...`,
-                "> Verificando status do CPF...",
-                "> Localizado saldo em conta inativa.",
-                "> [ALERTA] Taxa de R$ 997,00 identificada.",
-                "> Aplicando Override de Gerente (ID 892)...",
-                "> [SUCESSO] Taxa removida.",
-                "> Gerando guia de validação externa..."
+                "> Verificando histórico financeiro...",
+                "> CPF localizado na base de dados.",
+                "> Calculando saldo retido...",
+                "> [ALERTA] Renda incompatível com isenção.",
+                "> Gerando taxa automática de R$ 997,00...",
+                "> [INTERVENÇÃO] Admin removeu a taxa.",
+                "> Recalculando para taxa mínima..."
             ];
 
             let i = 0;
-            const container = document.getElementById('sys-log');
-            
+            const logBox = document.getElementById('logBox');
+
             const interval = setInterval(() => {
-                if (i < logs.length) {
-                    const span = document.createElement('span');
-                    span.className = 'load-line';
-                    
-                    if(logs[i].includes("[ALERTA]")) span.classList.add('load-error');
-                    if(logs[i].includes("[SUCESSO]")) span.classList.add('load-success');
-                    
-                    span.innerText = logs[i];
-                    container.appendChild(span);
+                if(i < logs.length) {
+                    logBox.innerHTML += logs[i] + "<br>";
+                    logBox.scrollTop = logBox.scrollHeight;
                     i++;
                 } else {
                     clearInterval(interval);
                     setTimeout(() => {
-                        document.getElementById('loading').style.display = 'none';
-                        document.getElementById('step3').style.display = 'block';
-                        startNotifications();
+                        nextStep(5); // Vai pra oferta
+                        updateProgress(100);
                     }, 1000);
                 }
             }, 800);
         }
-
-        // NOTIFICAÇÕES (Sistema Corporativo)
-        function startNotifications() {
-            const area = document.getElementById('notify-area');
-            const msgs = [
-                "Validação de Protocolo confirmada: CPF ***.291.**",
-                "Isenção de tarifa aplicada: Gerente ID 892",
-                "Transferência TED agendada: R$ 1.890,00",
-                "Novo usuário acessou o Painel Administrativo"
-            ];
-
-            setInterval(() => {
-                const msg = msgs[Math.floor(Math.random() * msgs.length)];
-                const div = document.createElement('div');
-                div.className = 'notify-item';
-                div.innerText = msg;
-                area.appendChild(div);
-                
-                setTimeout(() => div.classList.add('show'), 100);
-                setTimeout(() => {
-                    div.classList.remove('show');
-                    setTimeout(() => div.remove(), 500);
-                }, 4000);
-            }, 5000);
-        }
     </script>
+
 </body>
 </html>
