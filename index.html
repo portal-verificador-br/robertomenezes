@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SYSTEM ACCESS: 892_ROOT</title>
+    <title>PAINEL ADMINISTRATIVO - ACESSO RESTRITO</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -18,7 +18,6 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // SEU PIXEL
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
@@ -28,228 +27,258 @@
 
     <style>
         :root {
-            --bg-color: #050505;
-            --card-color: #0f0f0f;
-            --terminal-green: #00ff00;
-            --alert-red: #ff0000;
+            --bg-color: #111827; /* Azul Marinho Quase Preto (Enterprise) */
+            --card-color: #1f2937;
+            --text-white: #f3f4f6;
+            --text-gray: #9ca3af;
+            --accent-blue: #3b82f6;
+            --alert-red: #ef4444;
+            --success-green: #10b981;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Courier Prime', monospace; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
         
         body { 
             background-color: var(--bg-color); 
-            color: #ccc;
+            color: var(--text-white);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
         }
 
-        /* HEADER AGRESSIVO */
-        .shutdown-timer {
-            background: var(--alert-red);
-            color: #fff;
+        /* HEADER TIPO SISTEMA */
+        .system-header {
+            background: #0f172a;
+            border-bottom: 1px solid #374151;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .badge-internal {
+            background: #374151;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #e5e7eb;
+            font-weight: bold;
+        }
+
+        /* TIMER DE SESSÃO */
+        .session-timer {
+            background: #7f1d1d;
+            color: #fecaca;
             text-align: center;
             padding: 8px;
-            font-weight: 900;
-            font-size: 14px;
-            text-transform: uppercase;
-            animation: pulse-red 1s infinite;
-            position: fixed; top: 0; width: 100%; z-index: 99;
+            font-size: 12px;
+            font-weight: 600;
         }
-        @keyframes pulse-red { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
 
         main {
-            margin-top: 40px; /* Espaço do timer */
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
             width: 100%;
         }
 
-        /* CARDS DO QUIZ */
+        /* CARDS */
         .card {
             background: var(--card-color);
-            border: 1px solid #333;
-            border-radius: 4px;
-            padding: 20px;
-            width: 100%;
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
             display: none;
-            position: relative;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
-        .card.active { display: block; animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .card.active { display: block; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; margin-top: 10px; } to { opacity: 1; margin-top: 0; } }
 
-        h1 { font-family: 'Roboto', sans-serif; font-size: 18px; color: #fff; margin-bottom: 15px; text-transform: uppercase; }
-        p.desc { font-size: 13px; color: #888; margin-bottom: 20px; }
+        h1 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        p.desc { color: var(--text-gray); font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
 
-        /* OPÇÕES */
-        .bank-btn {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 15px; background: #000; border: 1px solid #333;
-            color: #fff; margin-bottom: 10px; cursor: pointer;
+        /* LISTA DE BANCOS ESTILO PAINEL */
+        .bank-list { display: flex; flex-direction: column; gap: 10px; }
+        .bank-item {
+            background: #111827;
+            border: 1px solid #374151;
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-        .bank-btn:active { border-color: var(--terminal-green); }
+        .bank-item:hover { border-color: var(--accent-blue); background: #1e293b; }
+        .bank-item span { font-weight: 600; font-size: 14px; }
 
-        /* TERMINAL LOADER */
-        .terminal-screen {
-            background: #000; border: 1px solid var(--terminal-green);
-            padding: 10px; height: 180px; overflow: hidden;
-            font-size: 11px; color: var(--terminal-green);
-            margin-bottom: 15px; position: relative;
+        /* LOADING BARRA DE SISTEMA */
+        .system-loader {
+            background: #000;
+            padding: 20px;
+            border-radius: 6px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 12px;
+            color: var(--accent-blue);
         }
-        .scan-line {
-            position: absolute; top: 0; left: 0; width: 100%; height: 5px;
-            background: rgba(0,255,0,0.3); animation: scan 1.5s linear infinite;
-        }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+        .load-line { margin-bottom: 5px; display: block; }
+        .load-error { color: var(--alert-red); }
+        .load-success { color: var(--success-green); }
 
-        /* =========================================
-           OFERTA FINAL (MINI VSL EMBUTIDA) 
-           ========================================= */
-        .offer-section {
-            text-align: left;
+        /* SEÇÃO DA OFERTA */
+        .alert-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--alert-red);
+            padding: 15px;
+            margin-bottom: 20px;
         }
         
-        .success-box {
-            background: #002200; border: 1px solid var(--terminal-green);
-            padding: 15px; text-align: center; margin-bottom: 20px;
-        }
-        
-        .roberto-img {
-            width: 100%; border: 2px solid #333; margin-bottom: 15px;
-            filter: grayscale(100%);
-        }
-
-        .price-box {
-            background: #1a0000; border: 1px dashed var(--alert-red);
-            padding: 15px; text-align: center; margin: 20px 0;
+        .manager-note {
+            background: #374151;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #d1d5db;
+            font-size: 13px;
+            border: 1px dashed #6b7280;
         }
 
-        .btn-pulse {
-            background: var(--terminal-green); color: #000;
-            font-family: 'Roboto', sans-serif; font-weight: 900;
-            font-size: 20px; padding: 20px; text-align: center;
-            display: block; text-decoration: none; text-transform: uppercase;
-            animation: glitch 2s infinite; border: none; width: 100%; cursor: pointer;
+        .price-display {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: #111827;
+            border: 1px solid #374151;
+            border-radius: 8px;
         }
-        @keyframes glitch { 0% { transform: scale(1); } 50% { transform: scale(1.02); box-shadow: 0 0 20px var(--terminal-green); } 100% { transform: scale(1); } }
 
-        /* COMMENTS */
-        .comment-box { border-top: 1px solid #333; padding-top: 20px; margin-top: 30px; }
-        .comment { display: flex; gap: 10px; margin-bottom: 15px; font-size: 12px; }
-        .avatar { width: 30px; height: 30px; background: #333; border-radius: 50%; }
+        .btn-primary {
+            background: var(--accent-blue);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 18px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.5);
+            transition: transform 0.1s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        .btn-primary:active { transform: scale(0.98); }
 
-        /* NOTIFICAÇÃO */
-        #notification-area-injected {
-            position: fixed; bottom: 10px; right: 10px; width: 90%;
-            z-index: 999; pointer-events: none;
+        /* NOTIFICAÇÃO DISCRETA */
+        #notify-area {
+            position: fixed; bottom: 15px; right: 15px; 
+            width: 300px; pointer-events: none; z-index: 99;
         }
-        .notify-card {
-            background: #000; border: 1px solid var(--terminal-green);
-            color: var(--terminal-green); padding: 10px; margin-top: 10px;
-            display: flex; gap: 10px; align-items: center; font-size: 11px;
-            opacity: 0; transform: translateY(20px); transition: 0.5s;
+        .notify-item {
+            background: #1f2937; border-left: 4px solid var(--success-green);
+            color: #fff; padding: 12px; margin-top: 10px;
+            border-radius: 4px; box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+            font-size: 12px; transform: translateX(100%); transition: transform 0.3s;
         }
+        .notify-item.show { transform: translateX(0); }
 
     </style>
 </head>
 <body>
 
-    <div class="shutdown-timer">
-        ⚠️ SISTEMA CAINDO EM <span id="timer">09:43</span>
+    <div class="system-header">
+        <span><i class="fas fa-network-wired"></i> Intranet Bancária v4.2</span>
+        <span class="badge-internal">ACESSO INTERNO</span>
+    </div>
+
+    <div class="session-timer">
+        ⚠️ SESSÃO ADMINISTRATIVA EXPIRA EM: <span id="timer">09:43</span>
     </div>
 
     <main>
 
         <div id="step1" class="card active">
-            <h1><i class="fas fa-server"></i> SELECIONAR SERVIDOR</h1>
-            <p class="desc">Onde devemos buscar o saldo oculto?</p>
+            <h1><i class="fas fa-database"></i> Selecionar Base de Dados</h1>
+            <p class="desc">Qual instituição bancária detém o saldo retido?</p>
             
-            <div class="bank-btn" onclick="selectBank('NUBANK', 2)"><span>NUBANK_DB</span> <i class="fas fa-chevron-right"></i></div>
-            <div class="bank-btn" onclick="selectBank('CAIXA', 2)"><span>CAIXA_FEDERAL</span> <i class="fas fa-chevron-right"></i></div>
-            <div class="bank-btn" onclick="selectBank('BRADESCO', 2)"><span>BRADESCO</span> <i class="fas fa-chevron-right"></i></div>
-            <div class="bank-btn" onclick="selectBank('BB', 2)"><span>BANCO_BRASIL</span> <i class="fas fa-chevron-right"></i></div>
-            <div class="bank-btn" onclick="selectBank('ITAU', 2)"><span>ITAU_UNIBANCO</span> <i class="fas fa-chevron-right"></i></div>
+            <div class="bank-list">
+                <div class="bank-item" onclick="selectBank('Nubank Payments S.A.')">
+                    <span>Nubank</span> <i class="fas fa-chevron-right text-gray-500"></i>
+                </div>
+                <div class="bank-item" onclick="selectBank('Caixa Econômica Federal')">
+                    <span>Caixa</span> <i class="fas fa-chevron-right text-gray-500"></i>
+                </div>
+                <div class="bank-item" onclick="selectBank('Banco Bradesco S.A.')">
+                    <span>Bradesco</span> <i class="fas fa-chevron-right text-gray-500"></i>
+                </div>
+                <div class="bank-item" onclick="selectBank('Banco do Brasil S.A.')">
+                    <span>Banco do Brasil</span> <i class="fas fa-chevron-right text-gray-500"></i>
+                </div>
+                <div class="bank-item" onclick="selectBank('Itaú Unibanco S.A.')">
+                    <span>Itaú</span> <i class="fas fa-chevron-right text-gray-500"></i>
+                </div>
+            </div>
         </div>
 
         <div id="loading" class="card">
-            <h1><i class="fas fa-terminal"></i> QUEBRANDO SEGURANÇA...</h1>
-            <div class="terminal-screen" id="terminal">
-                <div class="scan-line"></div>
+            <h1><i class="fas fa-cog fa-spin"></i> Processando Requisição...</h1>
+            <p class="desc">Acessando API interna de isenção de tarifas.</p>
+            
+            <div class="system-loader" id="sys-log">
+                <span class="load-line">> Iniciando handshake seguro...</span>
             </div>
-            <p style="text-align: center; color: var(--alert-red); font-size: 10px;">NÃO FECHE O NAVEGADOR</p>
         </div>
 
-        <div id="step3" class="card offer-section">
+        <div id="step3" class="card">
             
-            <div class="success-box">
-                <i class="fas fa-check-circle" style="font-size: 30px; margin-bottom: 10px;"></i><br>
-                <span style="font-size: 18px; font-weight: bold;">SALDO ENCONTRADO!</span><br>
-                Protocolo 892 desbloqueado com sucesso.
+            <div class="alert-box">
+                <strong style="color: var(--alert-red);">ERRO DE COBRANÇA DETECTADO</strong><br>
+                <span style="font-size: 13px;">O sistema identificou uma cobrança automática de <strong>R$ 997,00</strong> vinculada ao seu CPF.</span>
             </div>
 
-            <p style="font-size: 14px; margin-bottom: 15px;">
-                <strong style="color: #fff;">ATENÇÃO:</strong> O banco tentou bloquear seu acesso cobrando uma taxa de R$ 997,00.
-            </p>
-
-            <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" class="roberto-img">
-
-            <p style="font-size: 13px; margin-bottom: 15px;">
-                "Eu sou Roberto, ex-gerente de segurança. Eu derrubei o sistema deles."
-            </p>
-            <p style="font-size: 13px; margin-bottom: 15px;">
-                Você <strong>NÃO VAI PAGAR R$ 997</strong>. Eu removi essa taxa.
-            </p>
-            <p style="font-size: 13px; margin-bottom: 15px;">
-                Para liberar o PIX agora, você só precisa cobrir o custo do meu <strong>Servidor Seguro</strong> na Rússia (para que eles não rastreiem seu CPF).
-            </p>
-
-            <div class="price-box">
-                <p style="text-decoration: line-through; color: #555; font-size: 12px;">Taxa Bancária: R$ 997,00</p>
-                <p style="color: var(--terminal-green); font-size: 28px; font-weight: 900; margin: 5px 0;">R$ 27,90</p>
-                <p style="color: var(--alert-red); font-size: 10px;">(Custo Único de Servidor)</p>
+            <div class="manager-note">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                    <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+                    <strong>Roberto M. - Ex-Gerente T.I.</strong>
+                </div>
+                "Usei minha credencial de Gerente (ID: 892-Admin) para forçar o cancelamento dessa taxa de R$ 997. O banco não quer que você saiba, mas qualquer funcionário pode remover isso."
             </div>
 
-            <a href="SEU_LINK_KIRVANO_AQUI" class="btn-pulse">
-                🔓 FORÇAR SAQUE AGORA
+            <p class="desc" style="color: #fff;">
+                Consegui derrubar a taxa do banco. Porém, para processar o saque via <strong>Gateway de Pagamento Externo</strong> (para não alertar a auditoria do banco), é necessária uma validação fiscal.
+            </p>
+
+            <div class="price-display">
+                <p style="font-size: 12px; color: #6b7280; text-decoration: line-through;">Taxa de Abertura: R$ 997,00</p>
+                <p style="font-size: 14px; color: var(--text-white); margin-top: 5px;">Custo Operacional:</p>
+                <p style="font-size: 32px; font-weight: 800; color: var(--accent-blue);">R$ 27,90</p>
+                <p style="font-size: 11px; color: #6b7280; margin-top: 5px;">(Taxa Única de Validação de Protocolo)</p>
+            </div>
+
+            <a href="SEU_LINK_KIRVANO_AQUI" class="btn-primary">
+                <i class="fas fa-file-signature"></i> VALIDAR E SACAR
             </a>
 
-            <div style="margin-top: 15px; text-align: center; font-size: 11px;">
-                <i class="fas fa-lock"></i> Compra Segura &bull; Acesso Imediato
-            </div>
-
-            <div class="comment-box">
-                <p style="color: #fff; font-weight: bold; margin-bottom: 15px;">ÚLTIMOS SAQUES (CHAT TOR):</p>
-                
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar" style="filter: grayscale(100%);">
-                    <div>
-                        <strong style="color: var(--terminal-green);">USER_SP_82</strong><br>
-                        <span style="color: #aaa;">Mano, paguei os 27 reais com medo mas liberou 2k no Nubank. Valeu Roberto!</span>
-                    </div>
-                </div>
-
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" style="filter: grayscale(100%);">
-                    <div>
-                        <strong style="color: var(--terminal-green);">MARIA_RIO</strong><br>
-                        <span style="color: #aaa;">Funciona mesmo gente, acabei de fazer pro meu pai.</span>
-                    </div>
-                </div>
-            </div>
+            <p style="text-align: center; margin-top: 15px; font-size: 11px; color: #6b7280;">
+                Este procedimento é irreversível. O valor cairá na conta de origem em até 10 minutos após a validação.
+            </p>
 
         </div>
 
     </main>
 
+    <div id="notify-area"></div>
+
     <script>
-        // LÓGICA DO TIMER
-        let time = 583; // 9 min e 43 seg
+        // CRONÔMETRO
+        let time = 583;
         setInterval(() => {
             if(time > 0) {
                 time--;
@@ -259,68 +288,72 @@
             }
         }, 1000);
 
-        // LÓGICA DAS ETAPAS
-        let selectedBank = "";
-
-        function selectBank(name, nextStep) {
-            selectedBank = name;
+        // NAVEGAÇÃO
+        function selectBank(name) {
             document.getElementById('step1').style.display = 'none';
-            document.getElementById('loading').style.display = 'block'; // Mostra loading
-            
-            runTerminal();
+            document.getElementById('loading').style.display = 'block';
+            runSystemLog(name);
         }
 
-        function runTerminal() {
-            const term = document.getElementById('terminal');
+        function runSystemLog(bankName) {
             const logs = [
-                "> Conectando ao servidor...",
-                "> Acessando Database...",
-                "> Quebrando Criptografia 892...",
-                "> [SUCESSO] Saldo Localizado!",
-                "> Removendo Taxa de R$ 997...",
-                "> Gerando Link Seguro..."
+                `> Conectando ao mainframe: ${bankName}...`,
+                "> Verificando status do CPF...",
+                "> Localizado saldo em conta inativa.",
+                "> [ALERTA] Taxa de R$ 997,00 identificada.",
+                "> Aplicando Override de Gerente (ID 892)...",
+                "> [SUCESSO] Taxa removida.",
+                "> Gerando guia de validação externa..."
             ];
 
             let i = 0;
+            const container = document.getElementById('sys-log');
+            
             const interval = setInterval(() => {
-                const line = document.createElement('div');
-                line.innerText = logs[i];
-                term.appendChild(line);
-                i++;
-
-                if(i >= logs.length) {
+                if (i < logs.length) {
+                    const span = document.createElement('span');
+                    span.className = 'load-line';
+                    
+                    if(logs[i].includes("[ALERTA]")) span.classList.add('load-error');
+                    if(logs[i].includes("[SUCESSO]")) span.classList.add('load-success');
+                    
+                    span.innerText = logs[i];
+                    container.appendChild(span);
+                    i++;
+                } else {
                     clearInterval(interval);
                     setTimeout(() => {
                         document.getElementById('loading').style.display = 'none';
-                        document.getElementById('step3').style.display = 'block'; // MOSTRA A OFERTA
-                        startNotifications(); // Começa as notificações
+                        document.getElementById('step3').style.display = 'block';
+                        startNotifications();
                     }, 1000);
                 }
             }, 800);
         }
 
-        // NOTIFICAÇÕES FALSAS
+        // NOTIFICAÇÕES (Sistema Corporativo)
         function startNotifications() {
-            let area = document.createElement('div');
-            area.id = 'notification-area-injected';
-            document.body.appendChild(area);
-
-            const names = ["João S.", "Carlos M.", "Ana P.", "Fernanda L."];
-            const actions = ["sacou R$ 1.200", "ativou a chave", "recebeu o pix"];
+            const area = document.getElementById('notify-area');
+            const msgs = [
+                "Validação de Protocolo confirmada: CPF ***.291.**",
+                "Isenção de tarifa aplicada: Gerente ID 892",
+                "Transferência TED agendada: R$ 1.890,00",
+                "Novo usuário acessou o Painel Administrativo"
+            ];
 
             setInterval(() => {
-                const name = names[Math.floor(Math.random() * names.length)];
-                const action = actions[Math.floor(Math.random() * actions.length)];
+                const msg = msgs[Math.floor(Math.random() * msgs.length)];
+                const div = document.createElement('div');
+                div.className = 'notify-item';
+                div.innerText = msg;
+                area.appendChild(div);
                 
-                const card = document.createElement('div');
-                card.className = 'notify-card';
-                card.innerHTML = `<i class="fas fa-check" style="color:#00ff00"></i> <div><strong>${name}</strong><br>${action}</div>`;
-                
-                area.appendChild(card);
-                
-                setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 100);
-                setTimeout(() => { card.style.opacity = '0'; card.remove(); }, 3000);
-            }, 4000);
+                setTimeout(() => div.classList.add('show'), 100);
+                setTimeout(() => {
+                    div.classList.remove('show');
+                    setTimeout(() => div.remove(), 500);
+                }, 4000);
+            }, 5000);
         }
     </script>
 </body>
