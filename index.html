@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SYSTEM ACCESS: 892_EXPLOIT</title>
+    <title>SYSTEM ACCESS: 892_ROOT</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,8 +28,8 @@
 
     <style>
         :root {
-            --bg-color: #000000;
-            --card-color: #0a0a0a;
+            --bg-color: #050505;
+            --card-color: #0f0f0f;
             --terminal-green: #00ff00;
             --alert-red: #ff0000;
         }
@@ -38,379 +38,289 @@
         
         body { 
             background-color: var(--bg-color); 
-            color: var(--terminal-green);
+            color: #ccc;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            background-image: radial-gradient(#111 15%, transparent 16%), radial-gradient(#111 15%, transparent 16%);
-            background-size: 20px 20px;
         }
 
-        /* BARRA DE ALERTA */
-        .alert-strip {
+        /* HEADER AGRESSIVO */
+        .shutdown-timer {
             background: var(--alert-red);
             color: #fff;
-            font-weight: 900;
             text-align: center;
             padding: 8px;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            animation: blink-bg 0.8s infinite alternate;
-            box-shadow: 0 0 15px rgba(255,0,0,0.5);
-        }
-
-        @keyframes blink-bg {
-            from { background: #b30000; }
-            to { background: #ff0000; }
-        }
-
-        /* HEADER HACKER */
-        header {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #333;
-        }
-        
-        .logo-text {
-            font-family: 'Roboto', sans-serif;
             font-weight: 900;
-            font-size: 18px;
-            color: #fff;
+            font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            animation: pulse-red 1s infinite;
+            position: fixed; top: 0; width: 100%; z-index: 99;
         }
+        @keyframes pulse-red { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
 
-        .status-badge {
-            display: inline-block;
-            background: #111;
-            border: 1px solid var(--terminal-green);
-            padding: 4px 8px;
-            font-size: 10px;
-            margin-top: 5px;
-            color: var(--terminal-green);
-            text-transform: uppercase;
-        }
-
-        /* BARRA DE PROGRESSO */
-        .progress-container {
-            width: 100%;
-            height: 4px;
-            background: #222;
-        }
-        .progress-fill {
-            height: 100%;
-            background: var(--terminal-green);
-            width: 0%;
-            box-shadow: 0 0 10px var(--terminal-green);
-            transition: width 0.4s ease;
-        }
-
-        /* CONTAINER PRINCIPAL */
         main {
-            flex: 1;
+            margin-top: 40px; /* Espaço do timer */
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 480px;
-            margin: 0 auto;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
             width: 100%;
         }
 
-        /* CARDS AGRESSIVOS */
+        /* CARDS DO QUIZ */
         .card {
             background: var(--card-color);
             border: 1px solid #333;
             border-radius: 4px;
-            padding: 25px 20px;
+            padding: 20px;
             width: 100%;
             display: none;
             position: relative;
         }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: var(--terminal-green);
-            opacity: 0.5;
-        }
         .card.active { display: block; animation: slideUp 0.3s ease-out; }
-
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-        h1 {
-            font-family: 'Roboto', sans-serif;
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            text-shadow: 0 0 5px rgba(255,255,255,0.3);
-        }
+        h1 { font-family: 'Roboto', sans-serif; font-size: 18px; color: #fff; margin-bottom: 15px; text-transform: uppercase; }
+        p.desc { font-size: 13px; color: #888; margin-bottom: 20px; }
 
-        p.desc {
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        /* BOTÕES DE BANCO / SERVIDOR */
-        .bank-grid { display: grid; gap: 12px; }
-
+        /* OPÇÕES */
         .bank-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px;
-            background: #000;
-            border: 1px solid #444;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.2s;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 15px; background: #000; border: 1px solid #333;
+            color: #fff; margin-bottom: 10px; cursor: pointer;
         }
-        .bank-btn:hover, .bank-btn:active {
-            border-color: var(--terminal-green);
-            background: #0f1a0f;
-            box-shadow: 0 0 10px rgba(0,255,0,0.2);
-        }
+        .bank-btn:active { border-color: var(--terminal-green); }
 
-        .bank-info { display: flex; align-items: center; gap: 10px; }
-        .icon-box { font-size: 18px; color: var(--terminal-green); width: 30px; text-align: center; }
-        .bank-name { font-weight: bold; font-family: 'Roboto', sans-serif; text-transform: uppercase; font-size: 14px; }
-
-        /* BOTÕES DE AÇÃO */
-        .btn-action {
-            width: 100%;
-            padding: 20px;
-            background: #000;
-            border: 2px solid var(--terminal-green);
-            color: var(--terminal-green);
-            font-weight: 900;
-            font-size: 16px;
-            text-transform: uppercase;
-            cursor: pointer;
-            margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(0,255,0,0.1);
-            transition: 0.2s;
-        }
-        
-        .btn-action:hover {
-            background: var(--terminal-green);
-            color: #000;
-            box-shadow: 0 0 20px var(--terminal-green);
-        }
-
-        /* BOTÃO GLITCH (FINAL) */
-        .btn-glitch {
-            background: var(--terminal-green);
-            color: #000;
-            border: none;
-            animation: glitch 2s infinite;
-        }
-        @keyframes glitch {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); box-shadow: 0 0 25px var(--terminal-green); }
-            100% { transform: scale(1); }
-        }
-
-        /* TERMINAL DE CARREGAMENTO */
+        /* TERMINAL LOADER */
         .terminal-screen {
-            background: #000;
-            border: 1px solid #333;
-            padding: 15px;
-            height: 200px;
-            overflow: hidden;
-            font-size: 11px;
-            color: var(--terminal-green);
-            text-align: left;
-            margin-bottom: 20px;
-            position: relative;
+            background: #000; border: 1px solid var(--terminal-green);
+            padding: 10px; height: 180px; overflow: hidden;
+            font-size: 11px; color: var(--terminal-green);
+            margin-bottom: 15px; position: relative;
         }
         .scan-line {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 5px;
-            background: rgba(0,255,0,0.3);
-            animation: scan 2s linear infinite;
+            position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+            background: rgba(0,255,0,0.3); animation: scan 1.5s linear infinite;
         }
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
-        .log-line { display: none; margin-bottom: 2px; }
-        .highlight-log { color: #fff; font-weight: bold; background: #004400; }
-        .error-log { color: var(--alert-red); }
+        /* =========================================
+           OFERTA FINAL (MINI VSL EMBUTIDA) 
+           ========================================= */
+        .offer-section {
+            text-align: left;
+        }
+        
+        .success-box {
+            background: #002200; border: 1px solid var(--terminal-green);
+            padding: 15px; text-align: center; margin-bottom: 20px;
+        }
+        
+        .roberto-img {
+            width: 100%; border: 2px solid #333; margin-bottom: 15px;
+            filter: grayscale(100%);
+        }
 
-        footer {
-            margin-top: auto;
-            text-align: center;
-            padding: 20px;
-            font-size: 10px;
-            color: #444;
-            border-top: 1px solid #111;
+        .price-box {
+            background: #1a0000; border: 1px dashed var(--alert-red);
+            padding: 15px; text-align: center; margin: 20px 0;
+        }
+
+        .btn-pulse {
+            background: var(--terminal-green); color: #000;
+            font-family: 'Roboto', sans-serif; font-weight: 900;
+            font-size: 20px; padding: 20px; text-align: center;
+            display: block; text-decoration: none; text-transform: uppercase;
+            animation: glitch 2s infinite; border: none; width: 100%; cursor: pointer;
+        }
+        @keyframes glitch { 0% { transform: scale(1); } 50% { transform: scale(1.02); box-shadow: 0 0 20px var(--terminal-green); } 100% { transform: scale(1); } }
+
+        /* COMMENTS */
+        .comment-box { border-top: 1px solid #333; padding-top: 20px; margin-top: 30px; }
+        .comment { display: flex; gap: 10px; margin-bottom: 15px; font-size: 12px; }
+        .avatar { width: 30px; height: 30px; background: #333; border-radius: 50%; }
+
+        /* NOTIFICAÇÃO */
+        #notification-area-injected {
+            position: fixed; bottom: 10px; right: 10px; width: 90%;
+            z-index: 999; pointer-events: none;
+        }
+        .notify-card {
+            background: #000; border: 1px solid var(--terminal-green);
+            color: var(--terminal-green); padding: 10px; margin-top: 10px;
+            display: flex; gap: 10px; align-items: center; font-size: 11px;
+            opacity: 0; transform: translateY(20px); transition: 0.5s;
         }
 
     </style>
 </head>
 <body>
 
-    <div class="alert-strip">
-        <i class="fas fa-radiation"></i> CONEXÃO NÃO SEGURA DETECTADA
-    </div>
-
-    <header>
-        <div class="logo-text">PROTOCOLO_892 <span style="color:var(--terminal-green);">// VAZAMENTO</span></div>
-        <div class="status-badge">SERVIDOR: RUSSIA_PROXY_04</div>
-    </header>
-
-    <div class="progress-container">
-        <div class="progress-fill" id="progress"></div>
+    <div class="shutdown-timer">
+        ⚠️ SISTEMA CAINDO EM <span id="timer">09:43</span>
     </div>
 
     <main>
 
         <div id="step1" class="card active">
-            <h1><i class="fas fa-terminal"></i> SELECIONAR ALVO</h1>
-            <p class="desc">Qual servidor bancário você deseja interceptar para buscar saldos ocultos?</p>
-
-            <div class="bank-grid">
-                <div class="bank-btn" onclick="selectBank('SERVER_NUBANK', 2)">
-                    <div class="bank-info"><div class="icon-box"><i class="fas fa-university"></i></div><span class="bank-name">NUBANK_DB</span></div>
-                    <i class="fas fa-chevron-right" style="font-size: 12px; color: #555;"></i>
-                </div>
-                <div class="bank-btn" onclick="selectBank('SERVER_CAIXA', 2)">
-                    <div class="bank-info"><div class="icon-box"><i class="fas fa-box"></i></div><span class="bank-name">CAIXA_FEDERAL</span></div>
-                    <i class="fas fa-chevron-right" style="font-size: 12px; color: #555;"></i>
-                </div>
-                <div class="bank-btn" onclick="selectBank('SERVER_BB', 2)">
-                    <div class="bank-info"><div class="icon-box"><i class="fas fa-university"></i></div><span class="bank-name">BANCO_BRASIL</span></div>
-                    <i class="fas fa-chevron-right" style="font-size: 12px; color: #555;"></i>
-                </div>
-                <div class="bank-btn" onclick="selectBank('SERVER_ITAU', 2)">
-                    <div class="bank-info"><div class="icon-box"><i class="fas fa-university"></i></div><span class="bank-name">ITAU_UNIBANCO</span></div>
-                    <i class="fas fa-chevron-right" style="font-size: 12px; color: #555;"></i>
-                </div>
-                <div class="bank-btn" onclick="selectBank('SERVER_BRADESCO', 2)">
-                    <div class="bank-info"><div class="icon-box"><i class="fas fa-university"></i></div><span class="bank-name">BRADESCO_PRIME</span></div>
-                    <i class="fas fa-chevron-right" style="font-size: 12px; color: #555;"></i>
-                </div>
-            </div>
-        </div>
-
-        <div id="step2" class="card">
-            <h1><i class="fas fa-search-dollar"></i> ANÁLISE DE DADOS</h1>
-            <p class="desc">O sistema detectou movimentações. Você utilizou cartão de crédito/débito nos últimos 5 anos?</p>
-
-            <button class="btn-action" onclick="nextStep(3)">
-                [SIM] - INICIAR VARREDURA
-            </button>
-            <button class="btn-action" style="border-color: #333; color: #555;" onclick="nextStep(3)">
-                [NÃO] - TENTAR MESMO ASSIM
-            </button>
+            <h1><i class="fas fa-server"></i> SELECIONAR SERVIDOR</h1>
+            <p class="desc">Onde devemos buscar o saldo oculto?</p>
+            
+            <div class="bank-btn" onclick="selectBank('NUBANK', 2)"><span>NUBANK_DB</span> <i class="fas fa-chevron-right"></i></div>
+            <div class="bank-btn" onclick="selectBank('CAIXA', 2)"><span>CAIXA_FEDERAL</span> <i class="fas fa-chevron-right"></i></div>
+            <div class="bank-btn" onclick="selectBank('BRADESCO', 2)"><span>BRADESCO</span> <i class="fas fa-chevron-right"></i></div>
+            <div class="bank-btn" onclick="selectBank('BB', 2)"><span>BANCO_BRASIL</span> <i class="fas fa-chevron-right"></i></div>
+            <div class="bank-btn" onclick="selectBank('ITAU', 2)"><span>ITAU_UNIBANCO</span> <i class="fas fa-chevron-right"></i></div>
         </div>
 
         <div id="loading" class="card">
-            <h1 style="font-size: 16px; margin-bottom: 10px;">EXECUTANDO SCRIPT...</h1>
-            
+            <h1><i class="fas fa-terminal"></i> QUEBRANDO SEGURANÇA...</h1>
             <div class="terminal-screen" id="terminal">
                 <div class="scan-line"></div>
-                </div>
-
-            <p style="text-align: center; font-size: 12px; color: var(--alert-red); animation: blink 1s infinite;">
-                ⚠️ NÃO FECHE O NAVEGADOR
-            </p>
+            </div>
+            <p style="text-align: center; color: var(--alert-red); font-size: 10px;">NÃO FECHE O NAVEGADOR</p>
         </div>
 
-        <div id="step4" class="card">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <i class="fas fa-unlock" style="font-size: 50px; color: var(--terminal-green); text-shadow: 0 0 20px var(--terminal-green);"></i>
-            </div>
-            <h1 style="text-align: center; color: var(--terminal-green);">ACESSO LIBERADO</h1>
-            <p class="desc" style="text-align: center;">O sistema quebrou a trava de segurança do <strong id="bank-final" style="color: #fff;">SERVIDOR</strong>.</p>
+        <div id="step3" class="card offer-section">
             
-            <div style="background: #111; border: 1px dashed #333; padding: 15px; margin-bottom: 20px;">
-                <p style="margin-bottom: 5px; color: #fff;"><strong>STATUS:</strong> <span style="color:var(--terminal-green);">SUCESSO</span></p>
-                <p style="margin-bottom: 5px; color: #fff;"><strong>SALDO RETIDO:</strong> <span style="color:var(--terminal-green);">DETECTADO</span></p>
-                <p style="margin-bottom: 0; color: #fff;"><strong>TAXA BANCÁRIA:</strong> <span style="color:var(--alert-red); text-decoration: line-through;">R$ 997,00</span> (REMOVIDA)</p>
+            <div class="success-box">
+                <i class="fas fa-check-circle" style="font-size: 30px; margin-bottom: 10px;"></i><br>
+                <span style="font-size: 18px; font-weight: bold;">SALDO ENCONTRADO!</span><br>
+                Protocolo 892 desbloqueado com sucesso.
             </div>
 
-            <button class="btn-action btn-glitch" onclick="redirectPage()">
-                RESGATAR AGORA
-            </button>
+            <p style="font-size: 14px; margin-bottom: 15px;">
+                <strong style="color: #fff;">ATENÇÃO:</strong> O banco tentou bloquear seu acesso cobrando uma taxa de R$ 997,00.
+            </p>
+
+            <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" class="roberto-img">
+
+            <p style="font-size: 13px; margin-bottom: 15px;">
+                "Eu sou Roberto, ex-gerente de segurança. Eu derrubei o sistema deles."
+            </p>
+            <p style="font-size: 13px; margin-bottom: 15px;">
+                Você <strong>NÃO VAI PAGAR R$ 997</strong>. Eu removi essa taxa.
+            </p>
+            <p style="font-size: 13px; margin-bottom: 15px;">
+                Para liberar o PIX agora, você só precisa cobrir o custo do meu <strong>Servidor Seguro</strong> na Rússia (para que eles não rastreiem seu CPF).
+            </p>
+
+            <div class="price-box">
+                <p style="text-decoration: line-through; color: #555; font-size: 12px;">Taxa Bancária: R$ 997,00</p>
+                <p style="color: var(--terminal-green); font-size: 28px; font-weight: 900; margin: 5px 0;">R$ 27,90</p>
+                <p style="color: var(--alert-red); font-size: 10px;">(Custo Único de Servidor)</p>
+            </div>
+
+            <a href="SEU_LINK_KIRVANO_AQUI" class="btn-pulse">
+                🔓 FORÇAR SAQUE AGORA
+            </a>
+
+            <div style="margin-top: 15px; text-align: center; font-size: 11px;">
+                <i class="fas fa-lock"></i> Compra Segura &bull; Acesso Imediato
+            </div>
+
+            <div class="comment-box">
+                <p style="color: #fff; font-weight: bold; margin-bottom: 15px;">ÚLTIMOS SAQUES (CHAT TOR):</p>
+                
+                <div class="comment">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar" style="filter: grayscale(100%);">
+                    <div>
+                        <strong style="color: var(--terminal-green);">USER_SP_82</strong><br>
+                        <span style="color: #aaa;">Mano, paguei os 27 reais com medo mas liberou 2k no Nubank. Valeu Roberto!</span>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" style="filter: grayscale(100%);">
+                    <div>
+                        <strong style="color: var(--terminal-green);">MARIA_RIO</strong><br>
+                        <span style="color: #aaa;">Funciona mesmo gente, acabei de fazer pro meu pai.</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </main>
 
-    <footer>
-        <p>SYSTEM_ID: 892_ROOT_ACCESS // IP HIDDEN</p>
-    </footer>
-
     <script>
-        // ===========================================
-        // ⚠️ pgblack.html ⚠️
-        // ===========================================
-        const redirectLink = "pagina_vendas.html"; // Coloque o nome da página de vendas que te mandei antes
-        let selectedBankName = "";
-
-        function updateBar(percent) {
-            document.getElementById('progress').style.width = percent + '%';
-        }
-
-        function selectBank(name, next) {
-            selectedBankName = name;
-            document.getElementById('bank-final').innerText = name.replace("SERVER_", "");
-            if (navigator.vibrate) navigator.vibrate(50);
-            nextStep(next);
-        }
-
-        function nextStep(step) {
-            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-            
-            if(step === 3) {
-                document.getElementById('loading').classList.add('active');
-                runTerminal();
-                updateBar(70);
-            } else {
-                document.getElementById('step'+step).classList.add('active');
-                if(step === 2) updateBar(30);
-                if(step === 4) updateBar(100);
+        // LÓGICA DO TIMER
+        let time = 583; // 9 min e 43 seg
+        setInterval(() => {
+            if(time > 0) {
+                time--;
+                let m = Math.floor(time / 60).toString().padStart(2, '0');
+                let s = (time % 60).toString().padStart(2, '0');
+                document.getElementById('timer').innerText = `${m}:${s}`;
             }
+        }, 1000);
+
+        // LÓGICA DAS ETAPAS
+        let selectedBank = "";
+
+        function selectBank(name, nextStep) {
+            selectedBank = name;
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('loading').style.display = 'block'; // Mostra loading
+            
+            runTerminal();
         }
 
         function runTerminal() {
-            const terminal = document.getElementById('terminal');
+            const term = document.getElementById('terminal');
             const logs = [
-                { text: `> Target: ${selectedBankName}...`, delay: 200 },
-                { text: "> Bypass Firewall Port 8080...", delay: 800 },
-                { text: "> Injecting SQL payload...", delay: 1500 },
-                { text: "> Accessing User Database...", delay: 2200 },
-                { text: "> ERROR: SECURITY TOKEN REQUIRED", delay: 3000, class: "error-log" },
-                { text: "> Running Brute-Force Attack...", delay: 3500 },
-                { text: "> SUCCESS! Admin Access Granted.", delay: 4500, class: "highlight-log" },
-                { text: "> Found: 'HIDDEN_BALANCE' table.", delay: 5200 },
-                { text: "> Decrypting Protocol 892...", delay: 6000 }
+                "> Conectando ao servidor...",
+                "> Acessando Database...",
+                "> Quebrando Criptografia 892...",
+                "> [SUCESSO] Saldo Localizado!",
+                "> Removendo Taxa de R$ 997...",
+                "> Gerando Link Seguro..."
             ];
 
-            logs.forEach((log, index) => {
-                setTimeout(() => {
-                    const div = document.createElement('div');
-                    div.className = `log-line ${log.class || ''}`;
-                    div.style.display = 'block';
-                    div.innerText = log.text;
-                    terminal.appendChild(div);
-                    terminal.scrollTop = terminal.scrollHeight;
+            let i = 0;
+            const interval = setInterval(() => {
+                const line = document.createElement('div');
+                line.innerText = logs[i];
+                term.appendChild(line);
+                i++;
 
-                    if (index === logs.length - 1) {
-                        setTimeout(() => {
-                            nextStep(4); // Vai para o resultado final
-                        }, 1000);
-                    }
-                }, log.delay);
-            });
+                if(i >= logs.length) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        document.getElementById('loading').style.display = 'none';
+                        document.getElementById('step3').style.display = 'block'; // MOSTRA A OFERTA
+                        startNotifications(); // Começa as notificações
+                    }, 1000);
+                }
+            }, 800);
         }
 
-        function redirectPage() {
-            if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
-            window.location.href = redirectLink;
+        // NOTIFICAÇÕES FALSAS
+        function startNotifications() {
+            let area = document.createElement('div');
+            area.id = 'notification-area-injected';
+            document.body.appendChild(area);
+
+            const names = ["João S.", "Carlos M.", "Ana P.", "Fernanda L."];
+            const actions = ["sacou R$ 1.200", "ativou a chave", "recebeu o pix"];
+
+            setInterval(() => {
+                const name = names[Math.floor(Math.random() * names.length)];
+                const action = actions[Math.floor(Math.random() * actions.length)];
+                
+                const card = document.createElement('div');
+                card.className = 'notify-card';
+                card.innerHTML = `<i class="fas fa-check" style="color:#00ff00"></i> <div><strong>${name}</strong><br>${action}</div>`;
+                
+                area.appendChild(card);
+                
+                setTimeout(() => { card.style.opacity = '1'; card.style.transform = 'translateY(0)'; }, 100);
+                setTimeout(() => { card.style.opacity = '0'; card.remove(); }, 3000);
+            }, 4000);
         }
     </script>
 </body>
