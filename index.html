@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consulta: Negociação de Dívida Ativa</title>
+    <title>Consulta: Feirão Limpa Nome (Extrajudicial)</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,6 +18,7 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
+    // SEU PIXEL
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
@@ -27,49 +28,151 @@
 
     <style>
         :root {
-            --serasa-pink: #e6007e; /* Cor parecida com Serasa pra gerar conexão */
-            --serasa-purple: #272c64;
-            --bg-gray: #f2f2f2;
+            --brand-color: #e6007e; /* Rosa Serasa */
+            --brand-dark: #272c64;  /* Roxo Serasa */
+            --bg-light: #f4f4f4;
+            --success: #00c853;
         }
 
-        body { font-family: 'Roboto', sans-serif; background: var(--bg-gray); margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
         
-        /* HEADER SERASA STYLE */
-        header { background: #fff; padding: 15px; border-bottom: 1px solid #ddd; display: flex; align-items: center; justify-content: center; }
-        .logo { color: var(--serasa-purple); font-weight: 900; font-size: 20px; letter-spacing: -1px; }
-        .logo span { color: var(--serasa-pink); }
+        body { 
+            background-color: var(--bg-light); 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-        /* CONTAINER */
-        main { padding: 20px; max-width: 500px; margin: 0 auto; width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        /* HEADER OFICIAL */
+        header {
+            background: #fff;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--brand-dark);
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--brand-color); }
+        .secure-badge { font-size: 10px; color: #888; margin-top: 5px; text-transform: uppercase; display: flex; justify-content: center; gap: 5px; align-items: center; }
 
-        .card { background: #fff; border-radius: 8px; padding: 30px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: none; text-align: center; }
-        .card.active { display: block; animation: fadeUp 0.4s ease; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* CONTAINER PRINCIPAL */
+        main {
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-        h2 { color: var(--serasa-purple); font-size: 22px; margin-bottom: 10px; line-height: 1.2; }
-        p.sub { color: #666; font-size: 15px; margin-bottom: 25px; }
+        /* CARTÕES (STEPS) */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: none;
+            text-align: center;
+        }
+        .card.active { display: block; animation: slideUp 0.4s ease-out; }
 
-        /* SCORE METER */
-        .score-box { width: 150px; height: 150px; border-radius: 50%; border: 8px solid #ddd; border-top: 8px solid var(--serasa-pink); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; flex-direction: column; font-weight: 900; color: var(--serasa-purple); font-size: 30px; animation: spinScore 2s ease-out forwards; }
-        @keyframes spinScore { 0% { border-top-color: #ddd; transform: rotate(0deg); } 100% { border-top-color: var(--serasa-pink); transform: rotate(360deg); } }
-        
-        .score-label { font-size: 12px; color: #999; font-weight: 400; margin-top: 5px; text-transform: uppercase; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* BOTÕES */
-        .btn-option { display: block; width: 100%; padding: 15px; border: 2px solid #eee; border-radius: 8px; background: #fff; color: #555; font-weight: 600; margin-bottom: 10px; cursor: pointer; transition: 0.2s; text-align: left; }
-        .btn-option:hover { border-color: var(--serasa-pink); color: var(--serasa-pink); background: #fff0f5; }
-        
-        .btn-cta { background: var(--serasa-pink); color: #fff; width: 100%; padding: 18px; border: none; border-radius: 50px; font-size: 18px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; box-shadow: 0 4px 10px rgba(230, 0, 126, 0.4); }
-        .btn-cta:active { transform: scale(0.98); }
+        h2 { color: var(--brand-dark); font-size: 22px; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
+        p.sub { color: #666; font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
 
-        /* LOADER */
-        .loader { border: 4px solid #f3f3f3; border-top: 4px solid var(--serasa-pink); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        /* BOTÕES DE OPÇÃO */
+        .btn-option {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            background: #fff;
+            color: #444;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+            position: relative;
+        }
+        .btn-option:active, .btn-option:hover {
+            border-color: var(--brand-color);
+            background: #fff0f6;
+            color: var(--brand-color);
+        }
+        .btn-option::after { content: '➔'; position: absolute; right: 15px; color: #ccc; }
+
+        /* LOADER ANIMADO */
+        .loader-container { padding: 20px 0; }
+        .spinner {
+            width: 50px; height: 50px; border: 5px solid #eee;
+            border-top: 5px solid var(--brand-color); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto 20px;
+        }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .status-text { font-size: 14px; color: #555; font-weight: 500; margin-top: 10px; }
 
-        /* OFERTA FINAL */
-        .offer-box { text-align: left; background: #fdf2f8; border: 1px dashed var(--serasa-pink); padding: 15px; border-radius: 8px; margin-bottom: 20px; }
-        .strike { text-decoration: line-through; color: #999; font-size: 13px; }
-        .price { font-size: 32px; font-weight: 900; color: var(--serasa-purple); }
+        /* TELA FINAL (A OFERTA) */
+        .discount-circle {
+            width: 140px; height: 140px; border-radius: 50%;
+            border: 6px solid #eee; border-top: 6px solid var(--brand-color);
+            margin: 0 auto 20px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            color: var(--brand-dark); font-weight: 900;
+            animation: circleAnim 1.5s forwards ease-out;
+        }
+        .big-number { font-size: 42px; line-height: 1; }
+        .small-text { font-size: 12px; text-transform: uppercase; color: #888; }
+        
+        @keyframes circleAnim { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; border-top-color: var(--success); } }
+
+        .alert-box {
+            background: #e8f5e9; border: 1px dashed var(--success);
+            padding: 15px; border-radius: 8px; margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .roberto-box {
+            background: #f8f9fa; border-left: 4px solid var(--brand-dark);
+            padding: 15px; text-align: left; font-size: 14px;
+            color: #333; margin-bottom: 20px; font-style: italic;
+        }
+
+        .price-tag {
+            background: #fff; padding: 15px; border-radius: 8px;
+            border: 2px dashed #ddd; margin: 20px 0;
+        }
+
+        .cta-btn {
+            background: var(--brand-color); color: #fff;
+            width: 100%; padding: 18px; border-radius: 50px;
+            font-size: 18px; font-weight: 900; text-decoration: none;
+            display: block; box-shadow: 0 4px 15px rgba(230, 0, 126, 0.4);
+            animation: pulse 2s infinite; text-transform: uppercase;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+        /* NOTIFICAÇÃO FLUTUANTE */
+        .notification {
+            position: fixed; top: 20px; right: 20px;
+            background: #fff; padding: 12px 20px; border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); border-left: 5px solid var(--success);
+            display: flex; align-items: center; gap: 10px; z-index: 100;
+            transform: translateX(200%); transition: transform 0.5s;
+        }
+        .notification.show { transform: translateX(0); }
+
+        footer { text-align: center; padding: 20px; color: #999; font-size: 11px; }
 
     </style>
 </head>
@@ -77,81 +180,133 @@
 
     <header>
         <div class="logo">CONSULTA <span>SCORE</span></div>
+        <div class="secure-badge"><i class="fas fa-lock"></i> Ambiente Criptografado</div>
     </header>
 
     <main>
 
         <div id="step1" class="card active">
             <h2>Análise de Dívida</h2>
-            <p class="sub">Para calcular o desconto disponível, selecione o valor aproximado das suas dívidas somadas (Cartão, Empréstimo, Cheque Especial):</p>
+            <p class="sub">Para verificar a elegibilidade do desconto, selecione o valor total aproximado das suas dívidas:</p>
             
             <button class="btn-option" onclick="nextStep(2)">Até R$ 1.000,00</button>
             <button class="btn-option" onclick="nextStep(2)">Entre R$ 1.000 e R$ 5.000</button>
-            <button class="btn-option" onclick="nextStep(2)">Entre R$ 5.000 e R$ 20.000</button>
-            <button class="btn-option" onclick="nextStep(2)">Mais de R$ 20.000 (Crítico)</button>
+            <button class="btn-option" onclick="nextStep(2)">Entre R$ 5.000 e R$ 15.000</button>
+            <button class="btn-option" onclick="nextStep(2)">Acima de R$ 15.000 (Crítico)</button>
         </div>
 
         <div id="step2" class="card">
-            <h2>Seu Score está baixo?</h2>
-            <p class="sub">Isso impede você de conseguir cartões de crédito e financiamentos. Como você classificaria sua situação hoje?</p>
-
-            <button class="btn-option" onclick="nextStep(3)">Nome Sujo (Negativado)</button>
+            <h2>Situação do Nome</h2>
+            <p class="sub">Como está a situação do seu CPF nos órgãos de proteção ao crédito (SPC/Serasa) hoje?</p>
+            
+            <button class="btn-option" onclick="nextStep(3)">Estou Negativado (Nome Sujo)</button>
             <button class="btn-option" onclick="nextStep(3)">Nome Limpo, mas Score Baixo</button>
-            <button class="btn-option" onclick="nextStep(3)">Não sei minha situação</button>
+            <button class="btn-option" onclick="nextStep(3)">Tenho dívidas "Caducadas"</button>
         </div>
 
         <div id="step3" class="card">
-            <div class="loader"></div>
-            <h2>Buscando "Lista de Descontos"...</h2>
-            <p class="sub">Verificando se suas dívidas são elegíveis para o Decreto de Quitação com 90% de desconto.</p>
-            <div style="font-size:12px; color:#999; margin-top:10px;">Aguarde...</div>
+            <div class="loader-container">
+                <div class="spinner"></div>
+                <h2>Verificando "Lista de Perdas"...</h2>
+                <div id="loading-text" class="status-text">Acessando base de dados bancária...</div>
+            </div>
         </div>
 
         <div id="step4" class="card">
-            <div class="score-box">
-                90%
-                <span class="score-label">DESCONTO</span>
-            </div>
             
-            <h2 style="color: #272c64;">Dívida Elegível para Quitação!</h2>
-            
-            <p class="sub" style="text-align: left; font-size: 14px; line-height: 1.5;">
-                <strong>Atenção:</strong> O sistema detectou que suas dívidas já foram vendidas para recuperadoras. Isso significa que o banco aceita receber migalhas para limpar seu nome.
-            </p>
-
-            <div style="background: #fff; border-left: 4px solid var(--serasa-purple); padding: 10px; text-align: left; font-size: 13px; color: #555; margin-bottom: 20px;">
-                "Eu sou Roberto, ex-auditor bancário. O banco <strong>NÃO QUER</strong> que você saiba disso, mas existe um documento chamado <strong>Termo de Quitação Extrajudicial</strong>. Se você enviar esse modelo preenchido, eles são obrigados a aceitar um valor até 95% menor e limpar seu nome em 24h."
+            <div class="discount-circle">
+                <span class="big-number">95%</span>
+                <span class="small-text">DESCONTO</span>
             </div>
 
-            <div class="offer-box">
-                <p style="margin: 0; font-size: 14px; font-weight: bold;">Kit Limpa Nome + Aumento de Score:</p>
-                <div style="margin-top: 10px;">
-                    <span class="strike">Valor da Consultoria: R$ 500,00</span><br>
-                    <span class="price">Hoje: R$ 67,00</span>
+            <h2 style="color: var(--success);">Dívida Elegível para Quitação!</h2>
+
+            <div class="alert-box">
+                <i class="fas fa-check-circle" style="color: var(--success);"></i> <strong>Status: VENDIDA</strong><br>
+                <span style="font-size: 14px; color: #555;">O sistema detectou que o banco vendeu sua dívida como "Prejuízo Fiscal". Eles aceitam qualquer valor acima de 5% para dar baixa.</span>
+            </div>
+
+            <div class="roberto-box">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                    <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+                    <strong>Roberto Menezes (Ex-Auditor)</strong>
                 </div>
+                "Eles não querem que você saiba, mas existe um documento chamado <strong>Termo de Acordo Extrajudicial</strong>. Se você enviar esse modelo preenchido, o banco é obrigado por lei a aceitar a oferta mínima e limpar seu nome em 24h."
             </div>
 
-            <a href="SEU_LINK_KIRVANO_AQUI" class="btn-cta">
+            <div class="price-tag">
+                <p style="font-size: 14px; color: #777; margin-bottom: 5px;">Kit Limpa Nome + Aumento de Score:</p>
+                <p style="text-decoration: line-through; color: #999; font-size: 13px;">De R$ 500,00</p>
+                <p style="font-size: 32px; font-weight: 900; color: var(--brand-dark); margin-top: 5px;">HOJE: R$ 67,00</p>
+            </div>
+
+            <a href="SEU_LINK_KIRVANO_AQUI" class="cta-btn">
                 BAIXAR DOCUMENTO AGORA
             </a>
-            
-            <p style="font-size: 11px; color: #999; margin-top: 15px;">Compra Segura. Se não limpar o nome, devolvemos seu dinheiro.</p>
+
+            <p style="font-size: 11px; color: #999; margin-top: 15px;">
+                <i class="fas fa-shield-alt"></i> Garantia Total: Se o banco não aceitar, devolvemos seu dinheiro.
+            </p>
+
         </div>
 
     </main>
 
+    <div class="notification" id="notif">
+        <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
+        <div>
+            <div style="font-size: 12px; font-weight: bold;">Acordo Realizado</div>
+            <div style="font-size: 11px; color: #666;">Marcos pagou R$ 80 em dívida de 2k.</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Monitoramento de Score e Crédito.<br>Todos os direitos reservados.</p>
+    </footer>
+
     <script>
         function nextStep(step) {
             document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-            
+
             if (step === 3) {
                 document.getElementById('step3').classList.add('active');
-                setTimeout(() => {
-                    nextStep(4);
-                }, 2500);
+                runLoading();
             } else {
-                document.getElementById('step' + step).classList.add('active');
+                document.getElementById('step'+step).classList.add('active');
             }
+        }
+
+        function runLoading() {
+            const texts = [
+                "Verificando Lei do Superendividamento...",
+                "Consultando Feirão Limpa Nome...",
+                "Localizando dívidas vendidas...",
+                "Calculando desconto máximo...",
+                "SUCESSO: Brecha encontrada!"
+            ];
+            
+            let i = 0;
+            const el = document.getElementById('loading-text');
+            
+            const interval = setInterval(() => {
+                el.innerText = texts[i];
+                i++;
+                if (i >= texts.length) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        nextStep(4);
+                        showNotification();
+                    }, 1000);
+                }
+            }, 800);
+        }
+
+        function showNotification() {
+            const el = document.getElementById('notif');
+            setTimeout(() => {
+                el.classList.add('show');
+                setTimeout(() => el.classList.remove('show'), 4000);
+            }, 2000);
         }
     </script>
 </body>
