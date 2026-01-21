@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>⚠️ SISTEMA 892: ACESSO RESTRITO</title>
+    <title>NOTÍCIA: Vazamento Protocolo 892</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700;900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
     !function(f,b,e,v,n,t,s)
@@ -32,129 +31,119 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         
         body { 
-            background-color: #050505; 
-            color: #dcdcdc; 
+            background-color: #121212; /* Fundo Dark News */
+            color: #e0e0e0; 
             line-height: 1.6; 
-            padding-top: 50px; 
             overflow-x: hidden;
         }
-        
-        /* BARRA DE URGÊNCIA */
-        .shutdown-timer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: #cc0000;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            font-weight: 900;
-            font-size: 13px;
-            z-index: 9999;
-            box-shadow: 0 0 15px rgba(204,0,0,0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+
+        /* HEADER ESTILO PORTAL G1 (DARK) */
+        .portal-header {
+            border-bottom: 1px solid #333;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1f1f1f;
+            margin-bottom: 20px;
         }
+        .portal-logo { font-weight: 900; letter-spacing: -1px; color: #fff; font-size: 20px; }
+        .portal-menu { color: #cc0000; font-size: 20px; }
 
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: #0f0f0f;
-            padding: 20px;
-            border-left: 1px solid #222;
-            border-right: 1px solid #222;
-            padding-bottom: 100px; 
+            padding: 0 20px 100px 20px;
         }
 
-        /* HEADER AGRESSIVA */
-        .news-header {
-            border-bottom: 2px dashed #333;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .chapeu { 
-            background: #ffff00;
-            color: #000;
-            font-weight: 900; 
-            font-size: 11px; 
-            margin-bottom: 10px; 
-            text-transform: uppercase; 
-            font-family: 'Courier Prime', monospace;
-            display: inline-block;
-            padding: 4px 8px;
+        /* MANCHETE JORNALÍSTICA */
+        .editoria {
+            color: #cc0000; /* Vermelho G1 */
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 5px;
+            display: block;
         }
 
         .manchete-titulo { 
-            font-family: 'Roboto', sans-serif; 
-            font-size: 26px; 
+            font-family: 'Merriweather', serif; /* Fonte de Jornal */
+            font-size: 28px; 
             line-height: 1.1; 
-            margin-bottom: 15px; 
+            margin-bottom: 10px; 
             color: #fff; 
             font-weight: 900; 
-            letter-spacing: -0.5px;
         }
 
-        .subtitulo { color: #aaa; font-size: 16px; line-height: 1.4; margin-bottom: 15px; border-left: 3px solid #cc0000; padding-left: 10px; }
+        .subtitulo { color: #aaa; font-size: 16px; line-height: 1.4; margin-bottom: 15px; }
         
-        .highlight { color: #ffff00; font-weight: bold; background: rgba(255, 255, 0, 0.1); padding: 0 2px; }
-        
-        p { margin-bottom: 15px; font-size: 17px; color: #ccc; text-align: left; }
+        .autor-data {
+            font-size: 11px;
+            color: #777;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
 
-        /* BOX DE VAGAS */
+        .highlight { background: rgba(255, 255, 0, 0.2); color: #ffff00; font-weight: bold; padding: 0 2px; }
+        
+        p { margin-bottom: 15px; font-size: 18px; color: #ccc; text-align: left; }
+
+        /* BOX DE VAGAS COM BARRA DE PROGRESSO */
         .slots-box {
-            background: #1a0000;
-            border: 1px solid #ff0000;
-            padding: 10px;
+            background: #2a0a0a;
+            border: 1px solid #cc0000;
+            padding: 15px;
             text-align: center;
-            font-family: 'Courier Prime', monospace;
-            color: #ff0000;
+            border-radius: 8px;
             margin: 20px 0;
-            font-weight: bold;
-            animation: pulse-border 2s infinite;
+            box-shadow: 0 0 10px rgba(204,0,0,0.2);
         }
+        .slots-text { color: #fff; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
+        .slots-number { color: #ff3333; font-size: 24px; font-weight: 900; }
         
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 5px rgba(255,0,0,0.2); }
-            50% { box-shadow: 0 0 15px rgba(255,0,0,0.5); }
-            100% { box-shadow: 0 0 5px rgba(255,0,0,0.2); }
+        /* CARTA DE VENDAS / COPY */
+        .story-block {
+            border-left: 3px solid #cc0000;
+            padding-left: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #ddd;
         }
 
-        /* OFFER BOX */
+        /* OFFER BOX AGRESSIVA */
         .cta-box {
-            background: linear-gradient(180deg, #111 0%, #000 100%);
+            background: linear-gradient(180deg, #1e1e1e 0%, #000 100%);
             border: 1px solid #333;
             padding: 25px 15px;
             text-align: center;
             margin: 30px 0;
-            border-radius: 8px;
-            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
-        .cta-box h2 { font-size: 22px; color: #fff; margin-bottom: 5px; font-weight: 900; text-transform: uppercase; }
-
-        .price-old { font-size: 16px; color: #666; text-decoration: line-through; }
         .price-tag {
-            font-size: 38px; 
+            font-size: 42px; 
             color: #00e676; 
             font-weight: 900; 
-            margin: 5px 0;
+            margin: 10px 0;
             letter-spacing: -1px;
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
         }
 
         .btn-pulse {
-            background: #00e676; /* Verde Dinheiro */
-            color: #000;
-            font-size: 19px;
+            background: #00c853; /* Verde Zap/Dinheiro */
+            color: #fff;
+            font-size: 20px;
             font-weight: 900;
-            padding: 18px 10px;
+            padding: 20px 10px;
             text-decoration: none;
             display: block;
-            border-radius: 5px;
-            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4);
-            animation: pulse-btn 1.5s infinite;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.4);
+            animation: pulse-btn 2s infinite;
             text-transform: uppercase;
             border: none;
             cursor: pointer;
@@ -163,193 +152,206 @@
         }
 
         @keyframes pulse-btn {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
         }
 
-        /* NOTIFICAÇÕES POP-OUT */
+        /* COMENTÁRIOS ESTILO FACEBOOK 2026 */
+        .comments-section { margin-top: 40px; background: #1a1a1a; padding: 15px; border-radius: 8px; }
+        .fb-header { border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; font-size: 14px;}
+        
+        .comment-item { display: flex; gap: 10px; margin-bottom: 15px; }
+        .avatar { width: 36px; height: 36px; border-radius: 50%; background: #444; object-fit: cover;}
+        
+        .comment-content { flex: 1; }
+        .bubble { background: #2a2a2a; padding: 8px 12px; border-radius: 18px; display: inline-block; }
+        .c-name { color: #fff; font-weight: bold; font-size: 13px; display: block; }
+        .c-text { color: #ccc; font-size: 13px; line-height: 1.3; }
+        
+        .c-actions { font-size: 11px; color: #777; margin-top: 4px; margin-left: 5px; }
+        .c-actions span { margin-right: 10px; cursor: pointer; }
+        .c-actions span:hover { text-decoration: underline; }
+
+        /* NOTIFICAÇÕES POP-OUT REALISTAS */
         #notification-area-injected {
-            position: fixed; bottom: 20px; right: 20px; width: 320px;
+            position: fixed; top: 20px; right: 20px; width: auto; max-width: 90%;
             z-index: 99999; pointer-events: none;
             display: flex; flex-direction: column; align-items: flex-end;
         }
         
-        .notify-card-dark {
-            background: rgba(0,0,0,0.95);
-            padding: 12px;
-            border-left: 3px solid #00e676;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        .notify-card {
+            background: rgba(255, 255, 255, 0.95); /* Branco levemente transparente pra contraste no dark */
+            color: #111;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
             margin-top: 10px;
             display: flex;
             align-items: center;
             gap: 12px;
             font-family: 'Roboto', sans-serif;
             font-size: 12px;
-            color: #fff;
-            width: 280px;
             pointer-events: auto;
-            border-radius: 4px;
             opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.3s ease;
+            transform: translateY(-20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 4px solid #00c853;
         }
-
-        /* PROVA SOCIAL */
-        .roberto-box {
-            background: #111; 
-            border-left: 3px solid #00e676;
-            padding: 15px; 
-            font-size: 14px; 
-            color: #ccc; 
-            margin-bottom: 20px; 
-            font-style: italic;
-        }
-
-        .comments-section { margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
-        .comment-bubble { background: #1a1a1a; color: #ccc; border-radius: 8px; padding: 10px; margin-bottom: 10px; }
-        .name { color: #fff; font-weight: bold; font-size: 13px; }
-        .text { font-size: 13px; display: block; margin-top: 3px; }
-        .time { color: #555; font-size: 11px; }
+        .notify-img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
 
     </style>
 </head>
 <body>
 
-    <div class="shutdown-timer">
-        ⏳ DOCUMENTO EXPIRA EM: <span id="countdown">09:43</span>
+    <div class="portal-header">
+        <div class="portal-menu"><i class="fas fa-bars"></i></div>
+        <div class="portal-logo">FINANÇAS<span style="color:#cc0000">.G1</span></div>
+        <div class="portal-menu" style="font-size: 16px;"><i class="fas fa-search"></i></div>
     </div>
 
     <div class="container">
         
-        <div class="news-header">
-            <span class="chapeu">⚠️ VAZAMENTO INTERNO</span>
-            <h1 class="manchete-titulo">EX-AUDITOR DERRUBA O SIGILO E VAZA O "DOCUMENTO 892" DOS BANCOS</h1>
-            <p class="subtitulo">"Eles escondem isso no cofre para usar só com milionários. Eu copiei os arquivos e vou liberar para o povo."</p>
-            
-            <div style="font-size: 11px; color: #555; margin-top: 5px;">
-                FONTE: <span style="color: #00e676;">ANÔNIMA</span> | STATUS: <span style="color: #ff0000; font-weight: bold;">DISPONÍVEL POR POUCO TEMPO</span>
-            </div>
+        <span class="editoria">SEU BOLSO &bull; EXCLUSIVO</span>
+        <h1 class="manchete-titulo">Ex-Auditor vaza o "Protocolo 892" e ensina como forçar bancos a limparem o nome por R$ 67,00</h1>
+        <p class="subtitulo">Documento interno obriga instituições a aceitarem o "Prejuízo Fiscal" e restaurarem o crédito em 5 dias.</p>
+        
+        <div class="autor-data">
+            <span>Por <strong>Redação Economia</strong></span>
+            <span>&bull; Atualizado há 12 minutos</span>
         </div>
 
-        <p><strong>Eles estão tentando me calar. O jurídico dos bancos já notificou para derrubar este site.</strong></p>
+        <p><strong>São Paulo</strong> – O que parecia impossível aconteceu. Um arquivo interno, conhecido como "Termo de Quitação 892", vazou dos servidores centrais.</p>
 
-        <p>Meu nome é Roberto Menezes. Eu era Auditor de Risco e Crédito por 15 anos.</p>
+        <p>Esse documento é a única ferramenta capaz de obrigar o banco a limpar o nome pelo valor mínimo, sem precisar de advogado.</p>
 
-        <p>Você acha que o rico paga dívida? Não paga. Ele usa o <span class="highlight">TERMO DE PREJUÍZO FISCAL</span>.</p>
+        <p>O responsável pelo vazamento é Roberto Menezes, ex-auditor que trabalhou 15 anos no setor de risco.</p>
 
-        <p>É um documento interno (Código 892) que obriga o banco a limpar o nome aceitando 5% do valor.</p>
+        <div class="story-block">
+            "O banco já vendeu sua dívida como prejuízo. Eles recuperam o imposto e continuam te cobrando. É ilegal. Se você apresentar esse Termo assinado, eles são obrigados a dar baixa no sistema e liberar seu cartão de volta." — Roberto Menezes.
+        </div>
+
+        <p>Abaixo, o Auditor liberou um lote restrito de cópias do documento para download imediato.</p>
 
         <div class="slots-box">
-            🔓 RESTAM APENAS <span id="slots-count" style="font-size: 20px;">14</span> CÓPIAS DO DOCUMENTO
+            <div class="slots-text">📄 CÓPIAS DO TERMO RESTANTES:</div>
+            <div id="slots-count" class="slots-number">13</div>
+            <div style="font-size: 11px; color: #888; margin-top: 5px;">Lote liberado apenas para hoje (21/01/2026)</div>
         </div>
 
-        <p>Eu desviei um lote desses documentos antes de sair do banco. Não é hack, é burocracia usada contra eles.</p>
-
-        <p>Ao enviar esse arquivo preenchido, o sistema do banco entende que você é um cliente VIP e libera seu Score automaticamente.</p>
-
-        <div class="roberto-box">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
-                <strong style="color: #fff;">Roberto M. (Ex-Auditor)</strong>
-            </div>
-            "Entenda: O gerente não tem medo de advogado. Ele tem medo deste papel. O que te entrego agora é a CHAVE MESTRA. Você preenche, envia pelo App e a dívida sai da pasta 'Cobrança' para 'Acordo Automático' em 24h."
-        </div>
+        <p><strong>Como funciona:</strong></p>
+        <ul style="margin-left: 20px; margin-bottom: 20px; color: #ccc;">
+            <li style="margin-bottom: 10px;">1. Você baixa o Termo (PDF Editável).</li>
+            <li style="margin-bottom: 10px;">2. Preenche com seus dados e assina.</li>
+            <li>3. Envia no chat ou e-mail do banco.</li>
+        </ul>
+        
+        <p>O resultado? O Score sobe e o limite de crédito volta a ser liberado, pois a pendência some do Banco Central (Registrato).</p>
 
         <div class="cta-box">
-            <h2>RESGATE SEU NOME HOJE</h2>
-            <p style="font-size: 13px; color: #aaa;">Acesso vitalício ao Documento + Manual de Envio</p>
+            <h2 style="color:#fff; font-size: 22px; margin-bottom: 5px;">LIMPE SEU NOME HOJE</h2>
+            <p style="font-size: 13px; color: #aaa;">Tenha acesso ao Termo + Manual de Envio</p>
             
             <div style="margin: 20px 0;">
-                <p class="price-old">Valor da Auditoria: R$ 1.340,00</p>
+                <p style="font-size: 14px; text-decoration: line-through; color: #666;">Valor da Assessoria: R$ 1.340,00</p>
                 <div class="price-tag">R$ 67,00</div>
-                <p style="font-size: 11px; color: #ffff00;">(Taxa Única de Servidor Seguro)</p>
+                <p style="font-size: 12px; color: #ffff00; font-weight: bold;">(Taxa Única de Emissão)</p>
             </div>
             
             <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" onclick="trackClick()" class="btn-pulse">
-                BAIXAR DOCUMENTO AGORA
+                BAIXAR DOCUMENTO AGORA <i class="fas fa-download"></i>
             </a>
             
-            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #333; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                <i class="fab fa-whatsapp" style="color: #00e676; font-size: 20px;"></i>
-                <span style="font-size: 11px; color: #ddd; text-align: left;">
-                    Inclui meu <strong>WhatsApp Pessoal</strong><br>para garantir que o banco aceite.
-                </span>
-            </div>
+            <p style="margin-top: 15px; font-size: 11px; color: #888;">
+                <i class="fas fa-lock"></i> Compra Segura. Você receberá o arquivo no seu e-mail imediatamente.
+            </p>
         </div>
 
         <div class="comments-section">
-            <div style="color: #fff; margin-bottom: 10px; font-size: 14px;"><strong>QUEM USOU HOJE:</strong></div>
+            <div class="fb-header">Comentários mais relevantes</div>
             
-            <div class="comment-bubble">
-                <span class="name">Claudio M. (SP)</span>
-                <span class="text">Cara, baixei agora. É muito profissional o documento. Já preenchi e mandei no chat. O atendente mudou o tom na hora kkkk</span>
-                <div class="time">Há 2 minutos</div>
+            <div class="comment-item">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
+                <div class="comment-content">
+                    <div class="bubble">
+                        <span class="c-name">Larissa Torres</span>
+                        <span class="c-text">Gente, eu tava devendo 4 mil no roxinho. Mandei o termo ontem a noite, hoje acordei com notificação que foi baixado! Tô tremendo kkkk</span>
+                    </div>
+                    <div class="c-actions">
+                        <span>Curtir</span> <span>Responder</span> <span>2 min</span>
+                    </div>
+                </div>
             </div>
 
-            <div class="comment-bubble">
-                <span class="name">Fernanda S. (RJ)</span>
-                <span class="text">Gente, funciona msm pra cartão? Pq minha dívida é de 12 mil.</span>
-                <div class="time">Há 5 minutos</div>
+            <div class="comment-item">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
+                <div class="comment-content">
+                    <div class="bubble">
+                        <span class="c-name">Marcos Paulo</span>
+                        <span class="c-text">Funciona. Sou advogado e isso aí é a pura lei do superendividamento aplicada. O banco odeia, mas tem que aceitar. Valeu cada centavo.</span>
+                    </div>
+                    <div class="c-actions">
+                        <span>Curtir</span> <span>Responder</span> <span>15 min</span>
+                    </div>
+                </div>
             </div>
-            
-             <div class="comment-bubble" style="margin-left: 20px; border-left: 2px solid #555;">
-                <span class="name">Roberto Menezes</span> <span style="background:#555; color:#fff; font-size:9px; padding:2px 4px; border-radius:3px;">AUTOR</span>
-                <span class="text">Oi Fernanda, funciona sim. O documento 892 cobre qualquer dívida bancária. Pode baixar.</span>
-                <div class="time">Há 1 minuto</div>
+
+             <div class="comment-item">
+                <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" class="avatar">
+                <div class="comment-content">
+                    <div class="bubble">
+                        <span class="c-name">Roberto Menezes <i class="fas fa-check-circle" style="color:#00c853; font-size:10px;"></i></span>
+                        <span class="c-text">Parabéns a quem conseguiu baixar. O sistema me avisou que restam poucas licenças, aproveitem antes que o banco derrube o site.</span>
+                    </div>
+                    <div class="c-actions">
+                        <span>Curtir</span> <span>Responder</span> <span>Agora mesmo</span>
+                    </div>
+                </div>
             </div>
+
         </div>
         
         <br><br>
-        <div style="text-align: center;">
-            <p style="font-size: 10px; color: #333;">COPYRIGHT 2026 © AUDITORIA BLINDADA</p>
+        <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px;">
+            <p style="font-size: 10px; color: #555;">Termos de Uso | Política de Privacidade | © 2026</p>
         </div>
 
     </div>
 
     <script>
-        // 1. RASTREAMENTO DO BOTÃO (IMPORTANTE PRA OTIMIZAR)
+        // 1. RASTREAMENTO DO BOTÃO
         function trackClick() {
             fbq('track', 'InitiateCheckout');
         }
 
-        // 2. CONTADOR DE VAGAS (14 até 1)
-        let slots = 14;
+        // 2. CONTADOR DE VAGAS (13 até 1 - Lento e Sincronizado)
+        let slots = 13;
         const slotsDisplay = document.getElementById('slots-count');
         
         function decreaseSlots() {
+            // Só diminui se for maior que 1
             if(slots > 1) {
-                // Diminui aleatoriamente
-                if(Math.random() > 0.5) {
-                    slots--;
-                    slotsDisplay.innerText = slots;
-                    slotsDisplay.style.color = "#fff";
-                    setTimeout(() => { slotsDisplay.style.color = "#ff0000"; }, 200);
-                }
+                // Diminui 1 unidade
+                slots--;
+                slotsDisplay.innerText = slots;
+                
+                // Efeito visual de alerta
+                slotsDisplay.style.color = "#fff";
+                setTimeout(() => { slotsDisplay.style.color = "#ff3333"; }, 300);
             } else {
-                slotsDisplay.innerText = "1 (RESERVADA)";
+                slotsDisplay.innerText = "1 (SUA RESERVA)";
+                return; // Para o loop
             }
-            // Tempo aleatório entre descidas (3 a 10 segundos)
-            let nextDrop = Math.floor(Math.random() * 7000) + 3000;
+
+            // Intervalo variável (entre 15 e 25 segundos) para não zerar rápido demais
+            // Isso acompanha as notificações sem parecer fake
+            let nextDrop = Math.floor(Math.random() * 10000) + 15000;
             setTimeout(decreaseSlots, nextDrop);
         }
-        setTimeout(decreaseSlots, 3000);
+        // Começa a cair depois de 5 segundos
+        setTimeout(decreaseSlots, 5000);
 
-        // 3. CRONÔMETRO
-        document.addEventListener('DOMContentLoaded', function() {
-            let duration = 60 * 9 + 43; 
-            const display = document.querySelector('#countdown');
-            setInterval(function () {
-                let minutes = parseInt(duration / 60, 10);
-                let seconds = parseInt(duration % 60, 10);
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-                display.textContent = minutes + ":" + seconds;
-                if (--duration < 0) duration = 0;
-            }, 1000);
-        });
-
-        // 4. NOTIFICAÇÕES POP-OUT (Focadas em Crédito)
+        // 3. NOTIFICAÇÕES POP-OUT (A cada 10s aprox)
         (function() {
             let area = document.getElementById('notification-area-injected');
             if (!area) {
@@ -358,50 +360,52 @@
                 document.body.appendChild(area);
             }
 
-            const actions = [
-                "recuperou R$ 2.000 de limite.", 
-                "baixou o Termo de Quitação.", 
-                "limpou o nome no Serasa.", 
-                "aumentou o Score para 780.",
-                "obrigou o banco a aceitar o acordo."
+            // Dados Realistas
+            const people = [
+                { name: "Mariana Costa (SP)", text: "conseguiu limpar o nome no Serasa.", img: "https://randomuser.me/api/portraits/women/65.jpg" },
+                { name: "Pedro H. Almeida (MG)", text: "baixou o Termo de Quitação.", img: "https://randomuser.me/api/portraits/men/43.jpg" },
+                { name: "Carla Dias (RJ)", text: "recuperou R$ 3.500 de limite.", img: "https://randomuser.me/api/portraits/women/22.jpg" },
+                { name: "Dr. Fábio Souza (PR)", text: "assinou o documento agora.", img: "https://randomuser.me/api/portraits/men/11.jpg" },
+                { name: "Amanda Lima (BA)", text: "teve o acordo aprovado pelo banco.", img: "https://randomuser.me/api/portraits/women/12.jpg" }
             ];
-            const names = ["João M. (SP)", "Maria L. (RJ)", "Carlos B. (MG)", "Ana T. (BA)", "Pedro H. (SC)"];
 
             function showNotification() {
-                const randomName = names[Math.floor(Math.random() * names.length)];
-                const randomAction = actions[Math.floor(Math.random() * actions.length)];
+                const person = people[Math.floor(Math.random() * people.length)];
                 
                 const card = document.createElement('div');
-                card.className = 'notify-card-dark';
+                card.className = 'notify-card';
                 card.innerHTML = `
-                    <div style="background: #00e676; width: 8px; height: 8px; border-radius: 50%;"></div>
+                    <img src="${person.img}" class="notify-img">
                     <div>
-                        <strong style="color: #fff;">${randomName}</strong>
-                        <span style="color: #bbb; display:block;">${randomAction}</span>
+                        <strong style="display:block; font-size:11px;">${person.name}</strong>
+                        <span style="color: #333;">${person.text}</span>
                     </div>
                 `;
 
                 area.appendChild(card);
                 
+                // Animação Entrar
                 requestAnimationFrame(() => { 
                     setTimeout(() => { 
                         card.style.opacity = '1'; 
-                        card.style.transform = 'translateX(0)'; 
+                        card.style.transform = 'translateY(0)'; 
                     }, 50); 
                 });
 
+                // Sair depois de 4s
                 setTimeout(() => { 
                     card.style.opacity = '0'; 
-                    card.style.transform = 'translateX(50px)'; 
+                    card.style.transform = 'translateY(-20px)'; 
                     setTimeout(() => { card.remove(); }, 500); 
                 }, 4000);
+
+                // Próxima notificação: Entre 8 e 12 segundos (Média 10s)
+                let nextTime = Math.floor(Math.random() * 4000) + 8000;
+                setTimeout(showNotification, nextTime);
             }
 
-            function loop() {
-                const time = Math.floor(Math.random() * (6000 - 3000) + 3000); 
-                setTimeout(() => { showNotification(); loop(); }, time);
-            }
-            setTimeout(loop, 2000);
+            // Primeira notificação em 3s
+            setTimeout(showNotification, 3000);
         })();
     </script>
 </body>
