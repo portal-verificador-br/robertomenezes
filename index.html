@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consulta: Feirão Limpa Nome (Extrajudicial)</title>
+    <title>⚠️ SISTEMA 892: ACESSO RESTRITO</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
     !function(f,b,e,v,n,t,s)
@@ -18,299 +21,388 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // SEU PIXEL
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
     /></noscript>
-
     <style>
-        :root {
-            --brand-color: #e6007e; /* Rosa Serasa */
-            --brand-dark: #272c64;  /* Roxo Serasa */
-            --bg-light: #f4f4f4;
-            --success: #00c853;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         
         body { 
-            background-color: var(--bg-light); 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background-color: #050505; 
+            color: #dcdcdc; 
+            line-height: 1.6; 
+            padding-top: 50px; 
+            overflow-x: hidden;
+        }
+        
+        /* BARRA DE URGÊNCIA */
+        .shutdown-timer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #cc0000;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-weight: 900;
+            font-size: 13px;
+            z-index: 9999;
+            box-shadow: 0 0 15px rgba(204,0,0,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* HEADER OFICIAL */
-        header {
-            background: #fff;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 2px solid #e0e0e0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #0f0f0f;
+            padding: 20px;
+            border-left: 1px solid #222;
+            border-right: 1px solid #222;
+            padding-bottom: 100px; 
         }
-        .logo {
-            font-size: 20px;
-            font-weight: 900;
-            color: var(--brand-dark);
+
+        /* HEADER AGRESSIVA */
+        .news-header {
+            border-bottom: 2px dashed #333;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .chapeu { 
+            background: #ffff00;
+            color: #000;
+            font-weight: 900; 
+            font-size: 11px; 
+            margin-bottom: 10px; 
+            text-transform: uppercase; 
+            font-family: 'Courier Prime', monospace;
+            display: inline-block;
+            padding: 4px 8px;
+        }
+
+        .manchete-titulo { 
+            font-family: 'Roboto', sans-serif; 
+            font-size: 26px; 
+            line-height: 1.1; 
+            margin-bottom: 15px; 
+            color: #fff; 
+            font-weight: 900; 
             letter-spacing: -0.5px;
         }
-        .logo span { color: var(--brand-color); }
-        .secure-badge { font-size: 10px; color: #888; margin-top: 5px; text-transform: uppercase; display: flex; justify-content: center; gap: 5px; align-items: center; }
 
-        /* CONTAINER PRINCIPAL */
-        main {
-            padding: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-            width: 100%;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .subtitulo { color: #aaa; font-size: 16px; line-height: 1.4; margin-bottom: 15px; border-left: 3px solid #cc0000; padding-left: 10px; }
+        
+        .highlight { color: #ffff00; font-weight: bold; background: rgba(255, 255, 0, 0.1); padding: 0 2px; }
+        
+        p { margin-bottom: 15px; font-size: 17px; color: #ccc; text-align: left; }
 
-        /* CARTÕES (STEPS) */
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            display: none;
+        /* BOX DE VAGAS */
+        .slots-box {
+            background: #1a0000;
+            border: 1px solid #ff0000;
+            padding: 10px;
             text-align: center;
+            font-family: 'Courier Prime', monospace;
+            color: #ff0000;
+            margin: 20px 0;
+            font-weight: bold;
+            animation: pulse-border 2s infinite;
         }
-        .card.active { display: block; animation: slideUp 0.4s ease-out; }
+        
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 5px rgba(255,0,0,0.2); }
+            50% { box-shadow: 0 0 15px rgba(255,0,0,0.5); }
+            100% { box-shadow: 0 0 5px rgba(255,0,0,0.2); }
+        }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        h2 { color: var(--brand-dark); font-size: 22px; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
-        p.sub { color: #666; font-size: 15px; margin-bottom: 25px; line-height: 1.5; }
-
-        /* BOTÕES DE OPÇÃO */
-        .btn-option {
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 12px;
-            border: 2px solid #f0f0f0;
+        /* OFFER BOX */
+        .cta-box {
+            background: linear-gradient(180deg, #111 0%, #000 100%);
+            border: 1px solid #333;
+            padding: 25px 15px;
+            text-align: center;
+            margin: 30px 0;
             border-radius: 8px;
-            background: #fff;
-            color: #444;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: left;
             position: relative;
         }
-        .btn-option:active, .btn-option:hover {
-            border-color: var(--brand-color);
-            background: #fff0f6;
-            color: var(--brand-color);
-        }
-        .btn-option::after { content: '➔'; position: absolute; right: 15px; color: #ccc; }
-
-        /* LOADER ANIMADO */
-        .loader-container { padding: 20px 0; }
-        .spinner {
-            width: 50px; height: 50px; border: 5px solid #eee;
-            border-top: 5px solid var(--brand-color); border-radius: 50%;
-            animation: spin 1s linear infinite; margin: 0 auto 20px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        .status-text { font-size: 14px; color: #555; font-weight: 500; margin-top: 10px; }
+        .cta-box h2 { font-size: 22px; color: #fff; margin-bottom: 5px; font-weight: 900; text-transform: uppercase; }
 
-        /* TELA FINAL (A OFERTA) */
-        .discount-circle {
-            width: 140px; height: 140px; border-radius: 50%;
-            border: 6px solid #eee; border-top: 6px solid var(--brand-color);
-            margin: 0 auto 20px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            color: var(--brand-dark); font-weight: 900;
-            animation: circleAnim 1.5s forwards ease-out;
-        }
-        .big-number { font-size: 42px; line-height: 1; }
-        .small-text { font-size: 12px; text-transform: uppercase; color: #888; }
-        
-        @keyframes circleAnim { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; border-top-color: var(--success); } }
-
-        .alert-box {
-            background: #e8f5e9; border: 1px dashed var(--success);
-            padding: 15px; border-radius: 8px; margin-bottom: 20px;
-            text-align: left;
-        }
-        
-        .roberto-box {
-            background: #f8f9fa; border-left: 4px solid var(--brand-dark);
-            padding: 15px; text-align: left; font-size: 14px;
-            color: #333; margin-bottom: 20px; font-style: italic;
-        }
-
+        .price-old { font-size: 16px; color: #666; text-decoration: line-through; }
         .price-tag {
-            background: #fff; padding: 15px; border-radius: 8px;
-            border: 2px dashed #ddd; margin: 20px 0;
+            font-size: 38px; 
+            color: #00e676; 
+            font-weight: 900; 
+            margin: 5px 0;
+            letter-spacing: -1px;
         }
 
-        .cta-btn {
-            background: var(--brand-color); color: #fff;
-            width: 100%; padding: 18px; border-radius: 50px;
-            font-size: 18px; font-weight: 900; text-decoration: none;
-            display: block; box-shadow: 0 4px 15px rgba(230, 0, 126, 0.4);
-            animation: pulse 2s infinite; text-transform: uppercase;
+        .btn-pulse {
+            background: #00e676; /* Verde Dinheiro */
+            color: #000;
+            font-size: 19px;
+            font-weight: 900;
+            padding: 18px 10px;
+            text-decoration: none;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0, 230, 118, 0.4);
+            animation: pulse-btn 1.5s infinite;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-        /* NOTIFICAÇÃO FLUTUANTE */
-        .notification {
-            position: fixed; top: 20px; right: 20px;
-            background: #fff; padding: 12px 20px; border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); border-left: 5px solid var(--success);
-            display: flex; align-items: center; gap: 10px; z-index: 100;
-            transform: translateX(200%); transition: transform 0.5s;
+        @keyframes pulse-btn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
-        .notification.show { transform: translateX(0); }
 
-        footer { text-align: center; padding: 20px; color: #999; font-size: 11px; }
+        /* NOTIFICAÇÕES POP-OUT */
+        #notification-area-injected {
+            position: fixed; bottom: 20px; right: 20px; width: 320px;
+            z-index: 99999; pointer-events: none;
+            display: flex; flex-direction: column; align-items: flex-end;
+        }
+        
+        .notify-card-dark {
+            background: rgba(0,0,0,0.95);
+            padding: 12px;
+            border-left: 3px solid #00e676;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            color: #fff;
+            width: 280px;
+            pointer-events: auto;
+            border-radius: 4px;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.3s ease;
+        }
+
+        /* PROVA SOCIAL */
+        .roberto-box {
+            background: #111; 
+            border-left: 3px solid #00e676;
+            padding: 15px; 
+            font-size: 14px; 
+            color: #ccc; 
+            margin-bottom: 20px; 
+            font-style: italic;
+        }
+
+        .comments-section { margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
+        .comment-bubble { background: #1a1a1a; color: #ccc; border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+        .name { color: #fff; font-weight: bold; font-size: 13px; }
+        .text { font-size: 13px; display: block; margin-top: 3px; }
+        .time { color: #555; font-size: 11px; }
 
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">CONSULTA <span>SCORE</span></div>
-        <div class="secure-badge"><i class="fas fa-lock"></i> Ambiente Criptografado</div>
-    </header>
-
-    <main>
-
-        <div id="step1" class="card active">
-            <h2>Análise de Dívida</h2>
-            <p class="sub">Para verificar a elegibilidade do desconto, selecione o valor total aproximado das suas dívidas:</p>
-            
-            <button class="btn-option" onclick="nextStep(2)">Até R$ 1.000,00</button>
-            <button class="btn-option" onclick="nextStep(2)">Entre R$ 1.000 e R$ 5.000</button>
-            <button class="btn-option" onclick="nextStep(2)">Entre R$ 5.000 e R$ 15.000</button>
-            <button class="btn-option" onclick="nextStep(2)">Acima de R$ 15.000 (Crítico)</button>
-        </div>
-
-        <div id="step2" class="card">
-            <h2>Situação do Nome</h2>
-            <p class="sub">Como está a situação do seu CPF nos órgãos de proteção ao crédito (SPC/Serasa) hoje?</p>
-            
-            <button class="btn-option" onclick="nextStep(3)">Estou Negativado (Nome Sujo)</button>
-            <button class="btn-option" onclick="nextStep(3)">Nome Limpo, mas Score Baixo</button>
-            <button class="btn-option" onclick="nextStep(3)">Tenho dívidas "Caducadas"</button>
-        </div>
-
-        <div id="step3" class="card">
-            <div class="loader-container">
-                <div class="spinner"></div>
-                <h2>Verificando "Lista de Perdas"...</h2>
-                <div id="loading-text" class="status-text">Acessando base de dados bancária...</div>
-            </div>
-        </div>
-
-        <div id="step4" class="card">
-            
-            <div class="discount-circle">
-                <span class="big-number">95%</span>
-                <span class="small-text">DESCONTO</span>
-            </div>
-
-            <h2 style="color: var(--success);">Dívida Elegível para Quitação!</h2>
-
-            <div class="alert-box">
-                <i class="fas fa-check-circle" style="color: var(--success);"></i> <strong>Status: VENDIDA</strong><br>
-                <span style="font-size: 14px; color: #555;">O sistema detectou que o banco vendeu sua dívida como "Prejuízo Fiscal". Eles aceitam qualquer valor acima de 5% para dar baixa.</span>
-            </div>
-
-            <div class="roberto-box">
-                <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
-                    <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
-                    <strong>Roberto Menezes (Ex-Auditor)</strong>
-                </div>
-                Entenda uma coisa: O gerente do banco não tem medo de advogado. Ele tem medo deste papel.
-O que eu vou te entregar agora, por apenas R$ 67,00, é o Arquivo Digital do Protocolo 892.
-Não é um curso, não é uma aula. É o DOCUMENTO PRONTO.
-Você baixa, coloca seus dados e envia. Assim que o sistema do banco ler esse código, sua dívida sai da pasta de 'Cobrança' e vai para a pasta de 'Acordo Automático'. É só preencher, enviar e ver a mágica acontecer.
-            </div>
-
-            <div class="price-tag">
-                <p style="font-size: 14px; color: #777; margin-bottom: 5px;">Termo Limpa Nome + Aumento de Score:</p>
-                <p style="text-decoration: line-through; color: #999; font-size: 13px;">De R$ 1.340,00</p>
-                <p style="font-size: 32px; font-weight: 900; color: var(--brand-dark); margin-top: 5px;">SOMENTE HOJE: R$ 67,00</p>
-            </div>
-
-            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="cta-btn">
-                BAIXAR DOCUMENTO AGORA
-            </a>
-
-            <p style="font-size: 11px; color: #999; margin-top: 15px;">
-                <i class="fas fa-shield-alt"></i> Garantia Total: Eu não vou te entregar apenas um documento e sumir. Ao finalizar sua emissão hoje, você recebe meu WHATSAPP PESSOAL (Exclusivo).
-            </p>
-
-        </div>
-
-    </main>
-
-    <div class="notification" id="notif">
-        <i class="fas fa-check-circle" style="color: var(--success); font-size: 24px;"></i>
-        <div>
-            <div style="font-size: 12px; font-weight: bold;">Acordo Realizado</div>
-            <div style="font-size: 11px; color: #666;">Jorge Santos pagou R$ 67,00 em empréstimo de R$ 2.346,92.</div>
-        </div>
+    <div class="shutdown-timer">
+        ⏳ DOCUMENTO EXPIRA EM: <span id="countdown">09:43</span>
     </div>
 
-    <footer>
-        <p>© 2026 Monitoramento de Score e Crédito.<br>Todos os direitos reservados.</p>
-    </footer>
+    <div class="container">
+        
+        <div class="news-header">
+            <span class="chapeu">⚠️ VAZAMENTO INTERNO</span>
+            <h1 class="manchete-titulo">EX-AUDITOR DERRUBA O SIGILO E VAZA O "DOCUMENTO 892" DOS BANCOS</h1>
+            <p class="subtitulo">"Eles escondem isso no cofre para usar só com milionários. Eu copiei os arquivos e vou liberar para o povo."</p>
+            
+            <div style="font-size: 11px; color: #555; margin-top: 5px;">
+                FONTE: <span style="color: #00e676;">ANÔNIMA</span> | STATUS: <span style="color: #ff0000; font-weight: bold;">DISPONÍVEL POR POUCO TEMPO</span>
+            </div>
+        </div>
+
+        <p><strong>Eles estão tentando me calar. O jurídico dos bancos já notificou para derrubar este site.</strong></p>
+
+        <p>Meu nome é Roberto Menezes. Eu era Auditor de Risco e Crédito por 15 anos.</p>
+
+        <p>Você acha que o rico paga dívida? Não paga. Ele usa o <span class="highlight">TERMO DE PREJUÍZO FISCAL</span>.</p>
+
+        <p>É um documento interno (Código 892) que obriga o banco a limpar o nome aceitando 5% do valor.</p>
+
+        <div class="slots-box">
+            🔓 RESTAM APENAS <span id="slots-count" style="font-size: 20px;">14</span> CÓPIAS DO DOCUMENTO
+        </div>
+
+        <p>Eu desviei um lote desses documentos antes de sair do banco. Não é hack, é burocracia usada contra eles.</p>
+
+        <p>Ao enviar esse arquivo preenchido, o sistema do banco entende que você é um cliente VIP e libera seu Score automaticamente.</p>
+
+        <div class="roberto-box">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+                <strong style="color: #fff;">Roberto M. (Ex-Auditor)</strong>
+            </div>
+            "Entenda: O gerente não tem medo de advogado. Ele tem medo deste papel. O que te entrego agora é a CHAVE MESTRA. Você preenche, envia pelo App e a dívida sai da pasta 'Cobrança' para 'Acordo Automático' em 24h."
+        </div>
+
+        <div class="cta-box">
+            <h2>RESGATE SEU NOME HOJE</h2>
+            <p style="font-size: 13px; color: #aaa;">Acesso vitalício ao Documento + Manual de Envio</p>
+            
+            <div style="margin: 20px 0;">
+                <p class="price-old">Valor da Auditoria: R$ 1.340,00</p>
+                <div class="price-tag">R$ 67,00</div>
+                <p style="font-size: 11px; color: #ffff00;">(Taxa Única de Servidor Seguro)</p>
+            </div>
+            
+            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" onclick="trackClick()" class="btn-pulse">
+                BAIXAR DOCUMENTO AGORA
+            </a>
+            
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #333; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <i class="fab fa-whatsapp" style="color: #00e676; font-size: 20px;"></i>
+                <span style="font-size: 11px; color: #ddd; text-align: left;">
+                    Inclui meu <strong>WhatsApp Pessoal</strong><br>para garantir que o banco aceite.
+                </span>
+            </div>
+        </div>
+
+        <div class="comments-section">
+            <div style="color: #fff; margin-bottom: 10px; font-size: 14px;"><strong>QUEM USOU HOJE:</strong></div>
+            
+            <div class="comment-bubble">
+                <span class="name">Claudio M. (SP)</span>
+                <span class="text">Cara, baixei agora. É muito profissional o documento. Já preenchi e mandei no chat. O atendente mudou o tom na hora kkkk</span>
+                <div class="time">Há 2 minutos</div>
+            </div>
+
+            <div class="comment-bubble">
+                <span class="name">Fernanda S. (RJ)</span>
+                <span class="text">Gente, funciona msm pra cartão? Pq minha dívida é de 12 mil.</span>
+                <div class="time">Há 5 minutos</div>
+            </div>
+            
+             <div class="comment-bubble" style="margin-left: 20px; border-left: 2px solid #555;">
+                <span class="name">Roberto Menezes</span> <span style="background:#555; color:#fff; font-size:9px; padding:2px 4px; border-radius:3px;">AUTOR</span>
+                <span class="text">Oi Fernanda, funciona sim. O documento 892 cobre qualquer dívida bancária. Pode baixar.</span>
+                <div class="time">Há 1 minuto</div>
+            </div>
+        </div>
+        
+        <br><br>
+        <div style="text-align: center;">
+            <p style="font-size: 10px; color: #333;">COPYRIGHT 2026 © AUDITORIA BLINDADA</p>
+        </div>
+
+    </div>
 
     <script>
-        function nextStep(step) {
-            document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
-
-            if (step === 3) {
-                document.getElementById('step3').classList.add('active');
-                runLoading();
-            } else {
-                document.getElementById('step'+step).classList.add('active');
-            }
+        // 1. RASTREAMENTO DO BOTÃO (IMPORTANTE PRA OTIMIZAR)
+        function trackClick() {
+            fbq('track', 'InitiateCheckout');
         }
 
-        function runLoading() {
-            const texts = [
-                "Verificando Lei do Superendividamento...",
-                "Consultando Feirão Limpa Nome...",
-                "Localizando dívidas vendidas...",
-                "Calculando desconto máximo...",
-                "SUCESSO: Elegibilidade Confirmada!"
-            ];
-            
-            let i = 0;
-            const el = document.getElementById('loading-text');
-            
-            const interval = setInterval(() => {
-                el.innerText = texts[i];
-                i++;
-                if (i >= texts.length) {
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        nextStep(4);
-                        showNotification();
-                    }, 1000);
+        // 2. CONTADOR DE VAGAS (14 até 1)
+        let slots = 14;
+        const slotsDisplay = document.getElementById('slots-count');
+        
+        function decreaseSlots() {
+            if(slots > 1) {
+                // Diminui aleatoriamente
+                if(Math.random() > 0.5) {
+                    slots--;
+                    slotsDisplay.innerText = slots;
+                    slotsDisplay.style.color = "#fff";
+                    setTimeout(() => { slotsDisplay.style.color = "#ff0000"; }, 200);
                 }
-            }, 800);
+            } else {
+                slotsDisplay.innerText = "1 (RESERVADA)";
+            }
+            // Tempo aleatório entre descidas (3 a 10 segundos)
+            let nextDrop = Math.floor(Math.random() * 7000) + 3000;
+            setTimeout(decreaseSlots, nextDrop);
         }
+        setTimeout(decreaseSlots, 3000);
 
-        function showNotification() {
-            const el = document.getElementById('notif');
-            setTimeout(() => {
-                el.classList.add('show');
-                setTimeout(() => el.classList.remove('show'), 4000);
-            }, 2000);
-        }
+        // 3. CRONÔMETRO
+        document.addEventListener('DOMContentLoaded', function() {
+            let duration = 60 * 9 + 43; 
+            const display = document.querySelector('#countdown');
+            setInterval(function () {
+                let minutes = parseInt(duration / 60, 10);
+                let seconds = parseInt(duration % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                if (--duration < 0) duration = 0;
+            }, 1000);
+        });
+
+        // 4. NOTIFICAÇÕES POP-OUT (Focadas em Crédito)
+        (function() {
+            let area = document.getElementById('notification-area-injected');
+            if (!area) {
+                area = document.createElement('div');
+                area.id = 'notification-area-injected';
+                document.body.appendChild(area);
+            }
+
+            const actions = [
+                "recuperou R$ 2.000 de limite.", 
+                "baixou o Termo de Quitação.", 
+                "limpou o nome no Serasa.", 
+                "aumentou o Score para 780.",
+                "obrigou o banco a aceitar o acordo."
+            ];
+            const names = ["João M. (SP)", "Maria L. (RJ)", "Carlos B. (MG)", "Ana T. (BA)", "Pedro H. (SC)"];
+
+            function showNotification() {
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomAction = actions[Math.floor(Math.random() * actions.length)];
+                
+                const card = document.createElement('div');
+                card.className = 'notify-card-dark';
+                card.innerHTML = `
+                    <div style="background: #00e676; width: 8px; height: 8px; border-radius: 50%;"></div>
+                    <div>
+                        <strong style="color: #fff;">${randomName}</strong>
+                        <span style="color: #bbb; display:block;">${randomAction}</span>
+                    </div>
+                `;
+
+                area.appendChild(card);
+                
+                requestAnimationFrame(() => { 
+                    setTimeout(() => { 
+                        card.style.opacity = '1'; 
+                        card.style.transform = 'translateX(0)'; 
+                    }, 50); 
+                });
+
+                setTimeout(() => { 
+                    card.style.opacity = '0'; 
+                    card.style.transform = 'translateX(50px)'; 
+                    setTimeout(() => { card.remove(); }, 500); 
+                }, 4000);
+            }
+
+            function loop() {
+                const time = Math.floor(Math.random() * (6000 - 3000) + 3000); 
+                setTimeout(() => { showNotification(); loop(); }, time);
+            }
+            setTimeout(loop, 2000);
+        })();
     </script>
 </body>
 </html>
