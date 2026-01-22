@@ -202,39 +202,19 @@
 
         .scarcity { color: #d32f2f; font-weight: 700; margin-top: 15px; font-size: 13px; background: #ffebee; display: inline-block; padding: 5px 10px; border-radius: 20px; }
 
-        /* COMENTÁRIOS MODERNOS (2026 Style) */
+        /* COMENTÁRIOS MODERNOS */
         .comments-section { margin-top: 50px; border-top: 1px solid #f0f2f5; padding-top: 25px; }
         .comments-title { font-weight: 700; margin-bottom: 20px; font-size: 15px; color: #65676b; display: flex; justify-content: space-between; }
         
         .comment { display: flex; margin-bottom: 18px; gap: 10px; }
         .avatar { width: 36px; height: 36px; border-radius: 50%; background: #e4e6eb; flex-shrink: 0; object-fit: cover; }
-        
         .comment-content { flex: 1; }
-        
-        .comment-body { 
-            background: #f0f2f5; 
-            padding: 10px 14px; 
-            border-radius: 18px; 
-            display: inline-block;
-            min-width: 150px;
-        }
-        
+        .comment-body { background: #f0f2f5; padding: 10px 14px; border-radius: 18px; display: inline-block; min-width: 150px; }
         .name { font-weight: 700; font-size: 13px; color: #050505; margin-bottom: 2px; }
         .text { font-size: 14px; color: #050505; line-height: 1.4; }
-        
-        .comment-actions { 
-            font-size: 12px; 
-            color: #65676b; 
-            margin-top: 4px; 
-            margin-left: 12px; 
-            display: flex; 
-            gap: 15px; 
-            font-weight: 600;
-        }
-        .action-link { cursor: pointer; }
-        .action-link:hover { text-decoration: underline; }
+        .comment-actions { font-size: 12px; color: #65676b; margin-top: 4px; margin-left: 12px; display: flex; gap: 15px; font-weight: 600; }
 
-        /* NOTIFICAÇÃO FLUTUANTE */
+        /* NOTIFICAÇÃO FLUTUANTE (Cantinho) */
         #notification {
             position: fixed;
             bottom: 20px;
@@ -246,7 +226,7 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
             display: none;
             align-items: center;
-            z-index: 9999;
+            z-index: 9000;
             width: auto;
             max-width: 320px;
             border: 1px solid #f0f0f0;
@@ -254,17 +234,74 @@
             animation: slideIn 0.5s ease-out;
         }
         @keyframes slideIn { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
         #notification img { width: 42px; height: 42px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
         #notification p { font-size: 13px; margin: 0; line-height: 1.3; color: #333; }
         .notify-value { color: #28a745; font-weight: 700; font-size: 12px; }
+
+        /* MODAL DE ALERTA FINAL (Central) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            display: none; /* Começa invisível */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        .modal-box {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: zoomIn 0.3s ease-out;
+            border: 2px solid #d32f2f;
+        }
+        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        
+        .modal-icon { font-size: 50px; margin-bottom: 10px; }
+        .modal-title { font-size: 22px; font-weight: 900; color: #d32f2f; margin-bottom: 10px; line-height: 1.2; }
+        .modal-text { font-size: 16px; color: #555; margin-bottom: 25px; }
+        
+        .btn-modal-checkout {
+            background: #28a745;
+            color: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 15px;
+            animation: pulse 1s infinite;
+            text-transform: uppercase;
+        }
+        .btn-modal-close {
+            background: transparent;
+            color: #999;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            width: 100%;
+            font-weight: 500;
+        }
 
     </style>
 </head>
 <body>
 
     <div class="alert-bar">
-        ⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM 10 MINUTOS POR ORDEM JUDICIAL.
+        ⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM 10 MINUTOS.
     </div>
 
     <div class="container">
@@ -290,34 +327,29 @@
         <div class="bank-carousel-container">
             <div class="bank-title">👇 SELECIONE SEU BANCO (ARRASTE):</div>
             <div class="bank-carousel">
-                
                 <div class="bank-card">
                     <div class="bank-status">✅ SAQUE REALIZADO: 14:32</div>
                     <img src="inter.png" alt="Banco Inter">
                 </div>
-
                 <div class="bank-card">
                     <div class="bank-status">✅ TRANSFERÊNCIA RECEBIDA</div>
                     <img src="nubank.jfif" alt="Nubank">
                 </div>
-
                 <div class="bank-card">
                     <div class="bank-status">✅ ESTORNO TARIFAS</div>
                     <img src="bradesco.jfif" alt="Bradesco">
                 </div>
-
                 <div class="bank-card">
                     <div class="bank-status">✅ SALDO LIBERADO</div>
                     <img src="santander.jfif" alt="Santander">
                 </div>
-
                 <div class="bank-card">
                     <div class="bank-status">✅ BENEFÍCIO ATIVO</div>
                     <img src="caixa.jfif" alt="Caixa">
                 </div>
-
             </div>
         </div>
+
         <p>Acima você vê provas reais de quem usou o sistema hoje. Não é hacker. É um direito seu que está escondido.</p>
 
         <div class="cta-box">
@@ -348,7 +380,7 @@
                 🔓 QUERO O KIT COMPLETO<br><span>(Saque + Limpa Nome + Score)</span>
             </a>
             
-            <p class="scarcity">🔥 Restam apenas 3 licenças.</p>
+            <p class="scarcity" id="license-counter">🔥 Restam apenas <span id="count-num">3</span> licenças.</p>
         </div>
 
         <div class="comments-section">
@@ -356,22 +388,16 @@
                 <span>Comentários recentes</span>
                 <span>▼ Mais relevantes</span>
             </div>
-
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
                 <div class="comment-content">
                     <div class="comment-body">
                         <div class="name">Fernando Souza</div>
-                        <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 890,00. E ainda usei o termo pra limpar meu nome no Bradesco. Surreal.</div>
+                        <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 890,00. E ainda usei o termo pra limpar meu nome no Bradesco.</div>
                     </div>
-                    <div class="comment-actions">
-                        <span class="action-link">Curtir</span>
-                        <span class="action-link">Responder</span>
-                        <span>2 min</span>
-                    </div>
+                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>2 min</span></div>
                 </div>
             </div>
-
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
                 <div class="comment-content">
@@ -379,14 +405,9 @@
                         <div class="name">Carla Dias</div>
                         <div class="text">Gente, é verdade mesmo? Tô com medo de ser golpe, a esmola é demais kkk</div>
                     </div>
-                    <div class="comment-actions">
-                        <span class="action-link">Curtir</span>
-                        <span class="action-link">Responder</span>
-                        <span>5 min</span>
-                    </div>
+                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>5 min</span></div>
                 </div>
             </div>
-             
             <div class="comment" style="margin-left: 50px;">
                 <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
                 <div class="comment-content">
@@ -394,14 +415,9 @@
                         <div class="name">Marcos P.</div>
                         <div class="text">Carla, pode ir. Comprei achando que era só o saque e recebi o Kit todo. O termo de quitação funciona mesmo.</div>
                     </div>
-                    <div class="comment-actions">
-                        <span class="action-link">Curtir</span>
-                        <span class="action-link">Responder</span>
-                        <span>3 min</span>
-                    </div>
+                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>3 min</span></div>
                 </div>
             </div>
-
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar">
                 <div class="comment-content">
@@ -409,11 +425,7 @@
                         <div class="name">Juliana M.</div>
                         <div class="text">Tô chocada! Funciona no Bradesco tbm!!! Acabei de ver aqui.</div>
                     </div>
-                    <div class="comment-actions">
-                        <span class="action-link">Curtir</span>
-                        <span class="action-link">Responder</span>
-                        <span>12 min</span>
-                    </div>
+                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>12 min</span></div>
                 </div>
             </div>
         </div>
@@ -421,9 +433,7 @@
         <br><br>
         <center>
             <a href="#" style="color: #999; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
-            <p style="font-size: 11px; color: #ccc; margin-top: 10px;">Este site não tem vínculo com o Facebook ou entidades bancárias.</p>
         </center>
-
     </div>
 
     <div id="notification">
@@ -434,44 +444,77 @@
         </div>
     </div>
 
+    <div id="modal-alert" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-icon">🚨</div>
+            <div class="modal-title">ATENÇÃO: ESTOQUE CRÍTICO</div>
+            <p class="modal-text">O sistema detectou que <strong>resta apenas 1 licença</strong> disponível agora.</p>
+            
+            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-modal-checkout">
+                RESERVAR AGORA
+            </a>
+            
+            <a href="#" class="btn-modal-close" onclick="closeModal()">
+                Arriscar e continuar lendo...
+            </a>
+        </div>
+    </div>
+
     <script>
-        // Lógica para não errar gênero (Nome X Foto)
+        // Configuração de dados para notificações
         const profiles = [
-            { gender: 'men', names: ['Pedro', 'Lucas', 'Marcos', 'Rafael', 'Gustavo', 'Felipe', 'João', 'Bruno', 'Thiago', 'André'] },
-            { gender: 'women', names: ['Fernanda', 'Júlia', 'Ana', 'Carla', 'Mariana', 'Larissa', 'Camila', 'Beatriz', 'Patrícia', 'Amanda'] }
+            { gender: 'men', names: ['Pedro', 'Lucas', 'Marcos', 'Rafael'] },
+            { gender: 'women', names: ['Fernanda', 'Júlia', 'Ana', 'Carla'] }
         ];
 
-        function showNotification() {
-            // 1. Sorteia se é Homem ou Mulher
+        // Função para mostrar notificação de canto
+        function showToast() {
             const profileGroup = profiles[Math.floor(Math.random() * profiles.length)];
             const gender = profileGroup.gender;
-
-            // 2. Sorteia um nome dentro desse gênero
             const name = profileGroup.names[Math.floor(Math.random() * profileGroup.names.length)];
-
-            // 3. Pega uma foto compatível
             const imgId = Math.floor(Math.random() * 50);
-
-            // 4. Gera valor aleatório entre R$ 750 e R$ 2.479
             const value = Math.floor(Math.random() * (2479 - 750 + 1)) + 750;
             const formattedValue = value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-            // Atualiza o HTML
             document.getElementById('notify-name').innerText = name;
             document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
             document.getElementById('notify-value').innerText = `Ganhou ${formattedValue} de retorno`;
             
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
-            
-            setTimeout(() => {
-                notify.style.display = 'none';
-            }, 4000);
+            setTimeout(() => { notify.style.display = 'none'; }, 4000);
         }
 
-        // Mostra a primeira notificação após 3s e repete a cada 10s
-        setTimeout(showNotification, 3000);
-        setInterval(showNotification, 10000);
+        // Função para abrir o MODAL DE URGÊNCIA
+        function openUrgentModal() {
+            document.getElementById('modal-alert').style.display = 'flex';
+        }
+
+        // Função para fechar o Modal
+        function closeModal() {
+            document.getElementById('modal-alert').style.display = 'none';
+        }
+
+        // LOGICA DO TEMPO (Cronograma de Escassez)
+        
+        // 1. Inicia com 3 licenças
+        // 2 segundos: 1ª Compra (Sobra 2)
+        setTimeout(() => {
+            showToast();
+            document.getElementById('count-num').innerText = "2"; // Atualiza texto
+        }, 2000);
+
+        // 15 segundos: 2ª Compra (Sobra 1)
+        setTimeout(() => {
+            showToast();
+            document.getElementById('count-num').innerText = "1"; // Atualiza texto
+        }, 15000);
+
+        // 25 segundos: ALERTÃO NA TELA (Só resta 1)
+        setTimeout(() => {
+            openUrgentModal();
+        }, 25000);
+
     </script>
 </body>
 </html>
