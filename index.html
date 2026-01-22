@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>NOTÍCIA: Vazamento Protocolo 892</title>
+    <title>Consulta Pública - Protocolo de Ressarcimento</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700;900&display=swap" rel="stylesheet"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
     !function(f,b,e,v,n,t,s)
@@ -20,393 +19,316 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    fbq('init', '1773918999950681'); 
+    // SEU PIXEL ID 2711205062544057
+    fbq('init', '2711205062544057'); 
     fbq('track', 'PageView');
-    fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=2711205062544057&ev=PageView&noscript=1"
     /></noscript>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        :root {
+            --primary: #003366; 
+            --secondary: #0056b3;
+            --accent: #28a745; 
+            --bg: #f8f9fa;
+            --text: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
         
         body { 
-            background-color: #121212; /* Fundo Dark News */
-            color: #e0e0e0; 
-            line-height: 1.6; 
-            overflow-x: hidden;
+            background-color: var(--bg); 
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* HEADER ESTILO PORTAL G1 (DARK) */
-        .portal-header {
-            border-bottom: 1px solid #333;
-            padding: 10px 20px;
+        header {
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            background: #1f1f1f;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--accent);
         }
-        .portal-logo { font-weight: 900; letter-spacing: -1px; color: #fff; font-size: 20px; }
-        .portal-menu { color: #cc0000; font-size: 20px; }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 20px 100px 20px;
-        }
-
-        /* MANCHETE JORNALÍSTICA */
-        .editoria {
-            color: #cc0000; /* Vermelho G1 */
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 12px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        .manchete-titulo { 
-            font-family: 'Merriweather', serif; /* Fonte de Jornal */
-            font-size: 28px; 
-            line-height: 1.1; 
-            margin-bottom: 10px; 
-            color: #fff; 
-            font-weight: 900; 
-        }
-
-        .subtitulo { color: #aaa; font-size: 16px; line-height: 1.4; margin-bottom: 15px; }
         
-        .autor-data {
-            font-size: 11px;
-            color: #777;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .shield-icon { color: var(--primary); font-size: 24px; }
+        .logo-text { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; line-height: 1.2; }
+        .secure-badge { background: #e8f5e9; color: var(--accent); padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+
+        main {
+            flex: 1;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .progress-container { width: 100%; margin-bottom: 30px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500; }
+        .progress-track { background: #e9ecef; height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { background: var(--secondary); height: 100%; width: 20%; transition: width 0.5s ease; }
+
+        .card {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 100%;
+            text-align: center;
+            display: none; 
+            animation: slideUp 0.4s ease-out;
+        }
+        .card.active { display: block; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
+        p.desc { font-size: 15px; color: #555; margin-bottom: 25px; line-height: 1.5; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        
+        .btn {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 10px;
         }
 
-        .highlight { background: rgba(255, 255, 0, 0.2); color: #ffff00; font-weight: bold; padding: 0 2px; }
-        
-        p { margin-bottom: 15px; font-size: 18px; color: #ccc; text-align: left; }
-
-        /* BOX DE VAGAS COM BARRA DE PROGRESSO */
-        .slots-box {
-            background: #2a0a0a;
-            border: 1px solid #cc0000;
-            padding: 15px;
-            text-align: center;
-            border-radius: 8px;
-            margin: 20px 0;
-            box-shadow: 0 0 10px rgba(204,0,0,0.2);
-        }
-        .slots-text { color: #fff; font-weight: bold; font-size: 14px; margin-bottom: 5px; }
-        .slots-number { color: #ff3333; font-size: 24px; font-weight: 900; }
-        
-        /* CARTA DE VENDAS / COPY */
-        .story-block {
-            border-left: 3px solid #cc0000;
-            padding-left: 15px;
-            margin: 20px 0;
-            font-style: italic;
-            color: #ddd;
-        }
-
-        /* OFFER BOX AGRESSIVA */
-        .cta-box {
-            background: linear-gradient(180deg, #1e1e1e 0%, #000 100%);
-            border: 1px solid #333;
-            padding: 25px 15px;
-            text-align: center;
-            margin: 30px 0;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        .btn:hover, .btn:active {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            background: #f0f8ff;
         }
         
-        .price-tag {
-            font-size: 42px; 
-            color: #00e676; 
-            font-weight: 900; 
-            margin: 10px 0;
-            letter-spacing: -1px;
-            text-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
-        }
-
-        .btn-pulse {
-            background: #00c853; /* Verde Zap/Dinheiro */
-            color: #fff;
-            font-size: 20px;
-            font-weight: 900;
-            padding: 20px 10px;
-            text-decoration: none;
-            display: block;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.4);
-            animation: pulse-btn 2s infinite;
-            text-transform: uppercase;
+        .btn.primary {
+            background: var(--secondary);
+            color: white;
             border: none;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
         }
+        .btn.primary:hover { background: #004494; transform: translateY(-2px); }
 
-        @keyframes pulse-btn {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.7); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(0, 200, 83, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 200, 83, 0); }
+        .loader-content { text-align: center; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e9ecef;
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
         }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* COMENTÁRIOS ESTILO FACEBOOK 2026 */
-        .comments-section { margin-top: 40px; background: #1a1a1a; padding: 15px; border-radius: 8px; }
-        .fb-header { border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; font-size: 14px;}
-        
-        .comment-item { display: flex; gap: 10px; margin-bottom: 15px; }
-        .avatar { width: 36px; height: 36px; border-radius: 50%; background: #444; object-fit: cover;}
-        
-        .comment-content { flex: 1; }
-        .bubble { background: #2a2a2a; padding: 8px 12px; border-radius: 18px; display: inline-block; }
-        .c-name { color: #fff; font-weight: bold; font-size: 13px; display: block; }
-        .c-text { color: #ccc; font-size: 13px; line-height: 1.3; }
-        
-        .c-actions { font-size: 11px; color: #777; margin-top: 4px; margin-left: 5px; }
-        .c-actions span { margin-right: 10px; cursor: pointer; }
-        .c-actions span:hover { text-decoration: underline; }
-
-        /* NOTIFICAÇÕES POP-OUT REALISTAS */
-        #notification-area-injected {
-            position: fixed; top: 20px; right: 20px; width: auto; max-width: 90%;
-            z-index: 99999; pointer-events: none;
-            display: flex; flex-direction: column; align-items: flex-end;
-        }
-        
-        .notify-card {
-            background: rgba(255, 255, 255, 0.95); /* Branco levemente transparente pra contraste no dark */
-            color: #111;
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Roboto', sans-serif;
+        .terminal-log {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
             font-size: 12px;
-            pointer-events: auto;
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-left: 4px solid #00c853;
+            color: #333;
+            text-align: left;
+            height: 120px;
+            overflow: hidden;
+            border-left: 3px solid var(--secondary);
+            margin-top: 15px;
         }
-        .notify-img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+        .log-item { margin-bottom: 5px; display: none; }
+        .log-item.success { color: #28a745; }
+        .log-item.warning { color: #e67e22; }
 
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 11px;
+            color: #aaa;
+            border-top: 1px solid #eee;
+            margin-top: auto;
+            background: #fff;
+        }
+
+        .highlight { color: var(--secondary); font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <div class="portal-header">
-        <div class="portal-menu"><i class="fas fa-bars"></i></div>
-        <div class="portal-logo">FINANÇAS<span style="color:#cc0000">.G1</span></div>
-        <div class="portal-menu" style="font-size: 16px;"><i class="fas fa-search"></i></div>
-    </div>
+    <header>
+        <div class="logo-area">
+            <i class="fas fa-university shield-icon"></i>
+            <div class="logo-text">Sistema Nacional<br>de Verificação</div>
+        </div>
+        <div class="secure-badge">
+            <i class="fas fa-lock"></i> SSL SEGURO
+        </div>
+    </header>
 
-    <div class="container">
+    <main>
         
-        <span class="editoria">SEU BOLSO &bull; EXCLUSIVO</span>
-        <h1 class="manchete-titulo">Ex-Auditor vaza o "Protocolo 892" e ensina como forçar bancos a limparem o nome por R$ 67,00</h1>
-        <p class="subtitulo">Documento interno obriga instituições a aceitarem o "Prejuízo Fiscal" e restaurarem o crédito em 48 horas úteis.</p>
-        
-        <div class="autor-data">
-            <span>Por <strong>Redação Economia</strong></span>
-            <span>&bull; Atualizado há 12 minutos</span>
-        </div>
-
-        <p><strong>São Paulo</strong> – O que parecia impossível aconteceu. Um arquivo interno, conhecido como "Termo de Quitação 892", vazou dos servidores centrais.</p>
-
-        <p>Esse documento é a única ferramenta capaz de obrigar o banco a limpar o nome pelo valor mínimo, sem precisar de advogado.</p>
-
-        <p>O responsável pelo vazamento é Roberto Menezes, ex-auditor que trabalhou 15 anos no setor de risco.</p>
-
-        <div class="story-block">
-            "O banco já vendeu sua dívida como prejuízo. Eles recuperam o imposto e continuam te cobrando. É ilegal. Se você apresentar esse Termo assinado, eles são obrigados a dar baixa no sistema e liberar seu cartão de volta." — Roberto Menezes.
-        </div>
-
-        <p>Abaixo, o Auditor liberou um lote restrito de cópias do documento para download imediato.</p>
-
-        <div class="slots-box">
-            <div class="slots-text">📄 CÓPIAS DO TERMO RESTANTES:</div>
-            <div id="slots-count" class="slots-number">13</div>
-            <div style="font-size: 11px; color: #888; margin-top: 5px;">Lote liberado apenas para hoje (21/01/2026)</div>
-        </div>
-
-        <p><strong>Como funciona:</strong></p>
-        <ul style="margin-left: 20px; margin-bottom: 20px; color: #ccc;">
-            <li style="margin-bottom: 10px;">1. Você baixa o Termo (PDF Editável).</li>
-            <li style="margin-bottom: 10px;">2. Preenche com seus dados e assina.</li>
-            <li>3. Envia no chat ou e-mail do banco.</li>
-        </ul>
-        
-        <p>O resultado? O Score sobe e o limite de crédito volta a ser liberado, pois a pendência some do Banco Central (Registrato).</p>
-
-        <div class="cta-box">
-            <h2 style="color:#fff; font-size: 22px; margin-bottom: 5px;">LIMPE SEU NOME HOJE</h2>
-            <p style="font-size: 13px; color: #aaa;">Tenha acesso ao Termo + Manual de Envio</p>
-            
-            <div style="margin: 20px 0;">
-                <p style="font-size: 14px; text-decoration: line-through; color: #666;">Valor da Assessoria: R$ 1.340,00</p>
-                <div class="price-tag">R$ 67,00</div>
-                <p style="font-size: 12px; color: #ffff00; font-weight: bold;">(Taxa Única de Emissão)</p>
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Progresso da Análise</span>
+                <span id="percent-text">0%</span>
             </div>
-            
-            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" onclick="trackClick()" class="btn-pulse">
-                BAIXAR DOCUMENTO AGORA <i class="fas fa-download"></i>
-            </a>
-            
-            <p style="margin-top: 15px; font-size: 11px; color: #888;">
-                <i class="fas fa-lock"></i> Compra Segura. Você receberá o arquivo no seu e-mail imediatamente.
-            </p>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
         </div>
 
-        <div class="comments-section">
-            <div class="fb-header">Comentários mais relevantes</div>
+        <div id="step1" class="card active">
+            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h1>Uso de Aplicativo Bancário</h1>
+            <p class="desc">Para verificar a elegibilidade do seu CPF no <span class="highlight">Protocolo de 2026</span>, responda com sinceridade:</p>
+            <p class="desc" style="font-weight: 600;">Você possui o aplicativo de algum banco instalado no seu celular hoje?</p>
             
-            <div class="comment-item">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="bubble">
-                        <span class="c-name">Larissa Torres</span>
-                        <span class="c-text">Gente, eu tava devendo 4 mil no roxinho. Mandei o termo ontem a noite, hoje acordei com notificação que foi baixado! Tô tremendo kkkk</span>
-                    </div>
-                    <div class="c-actions">
-                        <span>Curtir</span> <span>Responder</span> <span>2 min</span>
-                    </div>
-                </div>
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep(2)">
+                    <i class="far fa-check-circle"></i> SIM, EU POSSUO
+                </button>
+                <button class="btn" onclick="nextStep(2)">
+                    <i class="far fa-times-circle"></i> NÃO POSSUO
+                </button>
             </div>
-
-            <div class="comment-item">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="bubble">
-                        <span class="c-name">Marcos Paulo</span>
-                        <span class="c-text">Funciona. Sou advogado e isso aí é a pura lei do superendividamento aplicada. O banco odeia, mas tem que aceitar. Valeu cada centavo.</span>
-                    </div>
-                    <div class="c-actions">
-                        <span>Curtir</span> <span>Responder</span> <span>15 min</span>
-                    </div>
-                </div>
-            </div>
-
-             <div class="comment-item">
-                <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertobdb.jpg?raw=true" class="avatar">
-                <div class="comment-content">
-                    <div class="bubble">
-                        <span class="c-name">Roberto Menezes <i class="fas fa-check-circle" style="color:#00c853; font-size:10px;"></i></span>
-                        <span class="c-text">Parabéns a quem conseguiu baixar. O sistema me avisou que restam poucas licenças, aproveitem antes que o banco derrube o site.</span>
-                    </div>
-                    <div class="c-actions">
-                        <span>Curtir</span> <span>Responder</span> <span>Agora mesmo</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        
-        <br><br>
-        <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px;">
-            <p style="font-size: 10px; color: #555;">Termos de Uso | Política de Privacidade | © 2026</p>
         </div>
 
-    </div>
+        <div id="step2" class="card">
+            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <h1>Frequência de Movimentação</h1>
+            <p class="desc">O sistema identificou uma possível pendência.</p>
+            <p class="desc" style="font-weight: 600;">Você realizou alguma transação (Pix, cartão ou boleto) nos últimos 7 dias?</p>
+            
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep(3)">
+                    <i class="far fa-check-circle"></i> SIM, RECENTEMENTE
+                </button>
+                <button class="btn" onclick="nextStep(3)">
+                    <i class="far fa-clock"></i> FAZ MAIS TEMPO
+                </button>
+            </div>
+        </div>
+
+        <div id="step3" class="card">
+            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1>Verificação Final</h1>
+            <p class="desc">Estamos prontos para consultar a base de dados.</p>
+            <p class="desc">Você confirma que é o titular da conta e deseja visualizar o saldo disponível para resgate?</p>
+            
+            <div class="btn-group">
+                <button class="btn primary" onclick="startLoading()">
+                    CONFIRMAR E CONSULTAR
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="card">
+            <div class="loader-content">
+                <div class="spinner"></div>
+                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Conectando ao Servidor...</h2>
+                <p style="font-size: 13px; color: #666;">Por favor, não feche esta página.</p>
+                
+                <div class="terminal-log" id="terminal">
+                    </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Copyright © 2026 - Todos os direitos reservados.</p>
+        <p style="margin-top: 5px;">Política de Privacidade | Termos de Uso | LGPD</p>
+    </footer>
 
     <script>
-        // 1. RASTREAMENTO DO BOTÃO
-        function trackClick() {
-            fbq('track', 'InitiateCheckout');
+        // ============================================
+        // LINK CORRIGIDO PARA SUA PÁGINA DE VENDAS
+        // ============================================
+        const redirectUrl = "pgblack.html"; 
+        // ============================================
+
+        function updateProgress(percent) {
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('percent-text').innerText = percent + '%';
         }
 
-        // 2. CONTADOR DE VAGAS (13 até 1 - Lento e Sincronizado)
-        let slots = 13;
-        const slotsDisplay = document.getElementById('slots-count');
-        
-        function decreaseSlots() {
-            // Só diminui se for maior que 1
-            if(slots > 1) {
-                // Diminui 1 unidade
-                slots--;
-                slotsDisplay.innerText = slots;
-                
-                // Efeito visual de alerta
-                slotsDisplay.style.color = "#fff";
-                setTimeout(() => { slotsDisplay.style.color = "#ff3333"; }, 300);
-            } else {
-                slotsDisplay.innerText = "1 (SUA RESERVA)";
-                return; // Para o loop
-            }
-
-            // Intervalo variável (entre 15 e 25 segundos) para não zerar rápido demais
-            // Isso acompanha as notificações sem parecer fake
-            let nextDrop = Math.floor(Math.random() * 10000) + 15000;
-            setTimeout(decreaseSlots, nextDrop);
+        function nextStep(step) {
+            if (navigator.vibrate) navigator.vibrate(50);
+            document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            if(step === 2) updateProgress(50);
+            if(step === 3) updateProgress(85);
         }
-        // Começa a cair depois de 5 segundos
-        setTimeout(decreaseSlots, 5000);
 
-        // 3. NOTIFICAÇÕES POP-OUT (A cada 10s aprox)
-        (function() {
-            let area = document.getElementById('notification-area-injected');
-            if (!area) {
-                area = document.createElement('div');
-                area.id = 'notification-area-injected';
-                document.body.appendChild(area);
-            }
+        function startLoading() {
+            if (navigator.vibrate) navigator.vibrate(50);
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('loading').classList.add('active');
+            updateProgress(90);
 
-            // Dados Realistas
-            const people = [
-                { name: "Mariana Costa (SP)", text: "conseguiu limpar o nome no Serasa.", img: "https://randomuser.me/api/portraits/women/65.jpg" },
-                { name: "Pedro H. Almeida (MG)", text: "baixou o Termo de Quitação.", img: "https://randomuser.me/api/portraits/men/43.jpg" },
-                { name: "Carla Dias (RJ)", text: "recuperou R$ 3.500 de limite.", img: "https://randomuser.me/api/portraits/women/22.jpg" },
-                { name: "Dr. Fábio Souza (PR)", text: "assinou o documento agora.", img: "https://randomuser.me/api/portraits/men/11.jpg" },
-                { name: "Amanda Lima (BA)", text: "teve o acordo aprovado pelo banco.", img: "https://randomuser.me/api/portraits/women/12.jpg" }
+            const terminal = document.getElementById('terminal');
+            const logs = [
+                { text: "> Iniciando conexão segura (SSL)...", delay: 500 },
+                { text: "> Validando dispositivo...", delay: 1500 },
+                { text: "> Acessando base de dados nacional...", delay: 2500, type: 'warning' },
+                { text: "> CPF Verificado. Status: ATIVO", delay: 3500, type: 'success' },
+                { text: "> Calculando valores pendentes...", delay: 4500 },
+                { text: "> PROTOCOLO AUTORIZADO!", delay: 5500, type: 'success' }
             ];
 
-            function showNotification() {
-                const person = people[Math.floor(Math.random() * people.length)];
-                
-                const card = document.createElement('div');
-                card.className = 'notify-card';
-                card.innerHTML = `
-                    <img src="${person.img}" class="notify-img">
-                    <div>
-                        <strong style="display:block; font-size:11px;">${person.name}</strong>
-                        <span style="color: #333;">${person.text}</span>
-                    </div>
-                `;
+            let logIndex = 0;
 
-                area.appendChild(card);
-                
-                // Animação Entrar
-                requestAnimationFrame(() => { 
-                    setTimeout(() => { 
-                        card.style.opacity = '1'; 
-                        card.style.transform = 'translateY(0)'; 
-                    }, 50); 
-                });
-
-                // Sair depois de 4s
-                setTimeout(() => { 
-                    card.style.opacity = '0'; 
-                    card.style.transform = 'translateY(-20px)'; 
-                    setTimeout(() => { card.remove(); }, 500); 
-                }, 4000);
-
-                // Próxima notificação: Entre 8 e 12 segundos (Média 10s)
-                let nextTime = Math.floor(Math.random() * 4000) + 8000;
-                setTimeout(showNotification, nextTime);
+            function addLog() {
+                if (logIndex < logs.length) {
+                    const log = logs[logIndex];
+                    setTimeout(() => {
+                        const p = document.createElement('div');
+                        p.className = 'log-item ' + (log.type || '');
+                        p.style.display = 'block';
+                        p.innerText = log.text;
+                        terminal.appendChild(p);
+                        terminal.scrollTop = terminal.scrollHeight;
+                        
+                        if (logIndex === logs.length - 1) {
+                            setTimeout(() => {
+                                updateProgress(100);
+                                window.location.href = redirectUrl;
+                            }, 1500);
+                        }
+                        
+                        logIndex++;
+                        addLog();
+                    }, logIndex === 0 ? log.delay : 1000); 
+                }
             }
-
-            // Primeira notificação em 3s
-            setTimeout(showNotification, 3000);
-        })();
+            addLog();
+        }
     </script>
 </body>
 </html>
