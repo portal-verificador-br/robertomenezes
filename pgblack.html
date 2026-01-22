@@ -97,7 +97,7 @@
 
         p { margin-bottom: 18px; font-size: 17px; color: #444; line-height: 1.7; }
         
-        /* CARROSSEL MODERNO */
+        /* CARROSSEL */
         .bank-carousel-container {
             margin: 30px -20px;
             padding: 20px;
@@ -135,7 +135,6 @@
             background: #fff;
         }
         .bank-card:active { transform: scale(0.98); }
-        
         .bank-card img { width: 100%; display: block; }
         
         .bank-status {
@@ -153,7 +152,7 @@
             text-transform: uppercase;
         }
 
-        /* BOX DE OFERTA MODERNA */
+        /* BOX DE OFERTA */
         .cta-box {
             background: #fffef0;
             border: 2px dashed #fbc02d;
@@ -177,8 +176,9 @@
             align-items: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
-        .bonus-check { color: #2e7d32; font-weight: 700; font-size: 14px; }
-        .bonus-price { text-decoration: line-through; color: #bbb; font-size: 13px; }
+        .bonus-check { color: #2e7d32; font-weight: 700; font-size: 14px; display: block; }
+        .bonus-desc { font-size: 13px; color: #666; margin-top: 3px; line-height: 1.3; display: block; }
+        .bonus-price { text-decoration: line-through; color: #bbb; font-size: 13px; white-space: nowrap; margin-left: 10px; }
 
         .btn-pulse {
             background: linear-gradient(to bottom, #28a745, #218838);
@@ -202,7 +202,7 @@
 
         .scarcity { color: #d32f2f; font-weight: 700; margin-top: 15px; font-size: 13px; background: #ffebee; display: inline-block; padding: 5px 10px; border-radius: 20px; }
 
-        /* COMENTÁRIOS MODERNOS */
+        /* COMENTÁRIOS */
         .comments-section { margin-top: 50px; border-top: 1px solid #f0f2f5; padding-top: 25px; }
         .comments-title { font-weight: 700; margin-bottom: 20px; font-size: 15px; color: #65676b; display: flex; justify-content: space-between; }
         
@@ -214,7 +214,7 @@
         .text { font-size: 14px; color: #050505; line-height: 1.4; }
         .comment-actions { font-size: 12px; color: #65676b; margin-top: 4px; margin-left: 12px; display: flex; gap: 15px; font-weight: 600; }
 
-        /* NOTIFICAÇÃO FLUTUANTE (Cantinho) */
+        /* NOTIFICAÇÃO FLUTUANTE */
         #notification {
             position: fixed;
             bottom: 20px;
@@ -238,16 +238,16 @@
         #notification p { font-size: 13px; margin: 0; line-height: 1.3; color: #333; }
         .notify-value { color: #28a745; font-weight: 700; font-size: 12px; }
 
-        /* MODAL DE ALERTA FINAL (Central) */
+        /* MODAL DE ALERTA FINAL */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             z-index: 9999;
-            display: none; /* Começa invisível */
+            display: none;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -354,20 +354,30 @@
 
         <div class="cta-box">
             <h2 style="color: #d32f2f; font-weight: 900; font-size: 22px; margin-bottom: 15px;">KIT CAIXA PRETA<br>(ACESSO COMPLETO)</h2>
-            <p style="font-size: 15px; color: #555;">Eu poderia cobrar R$ 1.000,00 fácil por esse conhecimento. Mas depois de ver tantos brasileiros sendo enganados lá dentro, minha missão agora é fazer justiça. Por isso derrubei o preço para um valor simbólico, para que qualquer brasileiro possa ter acesso hoje.</p>
+            
+            <p style="font-size: 15px; color: #555;">Eu poderia cobrar R$ 1.000,00 fácil por esse conhecimento. Mas depois de ver tantos brasileiros sendo enganados lá dentro, minha missão agora é fazer justiça.<br><br>Quero ajudar o máximo de famílias a <strong>recuperar o que é delas por direito</strong>. Por isso, derrubei o preço para um valor simbólico, para que <strong>qualquer brasileiro</strong> possa ter acesso hoje:</p>
             
             <div class="bonus-box">
-                <span class="bonus-check">✔ 01. CHAVE DE ATIVAÇÃO</span>
+                <div style="flex: 1;">
+                    <span class="bonus-check">✔ 01. CHAVE DE ATIVAÇÃO</span>
+                    <span class="bonus-desc">Libera imediatamente seu saldo retido pelo CPF.</span>
+                </div>
                 <span class="bonus-price">R$ 197</span>
             </div>
 
             <div class="bonus-box">
-                <span class="bonus-check">✔ 02. TERMO DE QUITAÇÃO</span>
+                <div style="flex: 1;">
+                    <span class="bonus-check">✔ 02. TERMO DE QUITAÇÃO BANCÁRIA</span>
+                    <span class="bonus-desc">Obriga o banco a aceitar <strong>R$ 67,00</strong> para zerar dívidas de até <strong>R$ 100.000</strong>.</span>
+                </div>
                 <span class="bonus-price">R$ 497</span>
             </div>
 
             <div class="bonus-box">
-                <span class="bonus-check">✔ 03. MANUAL SCORE TURBO</span>
+                <div style="flex: 1;">
+                    <span class="bonus-check">✔ 03. MANUAL SCORE TURBO</span>
+                    <span class="bonus-desc">O segredo para subir seu Score em 7 dias e pegar cartões Black.</span>
+                </div>
                 <span class="bonus-price">R$ 97</span>
             </div>
             
@@ -461,14 +471,15 @@
     </div>
 
     <script>
-        // Configuração de dados para notificações
+        // Dados de usuários (Separados por Gênero para foto e nome baterem)
         const profiles = [
-            { gender: 'men', names: ['Pedro', 'Lucas', 'Marcos', 'Rafael'] },
-            { gender: 'women', names: ['Fernanda', 'Júlia', 'Ana', 'Carla'] }
+            { gender: 'men', names: ['Pedro', 'Lucas', 'Marcos', 'Rafael', 'Felipe', 'João', 'Bruno'] },
+            { gender: 'women', names: ['Fernanda', 'Júlia', 'Ana', 'Carla', 'Mariana', 'Larissa', 'Beatriz'] }
         ];
 
-        // Função para mostrar notificação de canto
+        // Função de Notificação Flutuante
         function showToast() {
+            // Sorteia gênero, nome, foto e valor
             const profileGroup = profiles[Math.floor(Math.random() * profiles.length)];
             const gender = profileGroup.gender;
             const name = profileGroup.names[Math.floor(Math.random() * profileGroup.names.length)];
@@ -476,41 +487,40 @@
             const value = Math.floor(Math.random() * (2479 - 750 + 1)) + 750;
             const formattedValue = value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+            // Atualiza HTML
             document.getElementById('notify-name').innerText = name;
             document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
             document.getElementById('notify-value').innerText = `Ganhou ${formattedValue} de retorno`;
             
+            // Exibe e esconde
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
             setTimeout(() => { notify.style.display = 'none'; }, 4000);
         }
 
-        // Função para abrir o MODAL DE URGÊNCIA
         function openUrgentModal() {
             document.getElementById('modal-alert').style.display = 'flex';
         }
 
-        // Função para fechar o Modal
         function closeModal() {
             document.getElementById('modal-alert').style.display = 'none';
         }
 
-        // LOGICA DO TEMPO (Cronograma de Escassez)
+        // LÓGICA DO COUNTDOWN E MODAL
         
-        // 1. Inicia com 3 licenças
         // 2 segundos: 1ª Compra (Sobra 2)
         setTimeout(() => {
             showToast();
-            document.getElementById('count-num').innerText = "2"; // Atualiza texto
+            document.getElementById('count-num').innerText = "2";
         }, 2000);
 
         // 15 segundos: 2ª Compra (Sobra 1)
         setTimeout(() => {
             showToast();
-            document.getElementById('count-num').innerText = "1"; // Atualiza texto
+            document.getElementById('count-num').innerText = "1";
         }, 15000);
 
-        // 25 segundos: ALERTÃO NA TELA (Só resta 1)
+        // 25 segundos: ALERTA NA TELA
         setTimeout(() => {
             openUrgentModal();
         }, 25000);
