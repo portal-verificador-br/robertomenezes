@@ -89,11 +89,53 @@
 
         p { margin-bottom: 15px; font-size: 18px; color: #333; }
         
-        .print-screen {
+        /* ESTILO DO CARROSSEL DE BANCOS */
+        .bank-carousel-container {
+            margin: 20px -20px; /* Quebra margem do container */
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .bank-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #c00;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .bank-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch; /* Scroll suave no mobile */
+            scrollbar-width: none; /* Esconde scrollbar Firefox */
+        }
+        .bank-carousel::-webkit-scrollbar { display: none; /* Esconde scrollbar Chrome */ }
+        
+        .bank-card {
+            min-width: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .bank-card img {
             width: 100%;
-            border: 2px solid #000;
-            margin: 15px 0;
-            border-radius: 8px;
+            display: block;
+        }
+        .bank-status {
+            background: #28a745;
+            color: white;
+            font-size: 10px;
+            padding: 5px;
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: 10;
         }
 
         .cta-box {
@@ -105,12 +147,24 @@
             border-radius: 10px;
         }
 
+        .bonus-box {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: left;
+            font-size: 14px;
+        }
+        .bonus-check { color: #28a745; font-weight: bold; }
+        .bonus-price { text-decoration: line-through; color: #999; float: right; }
+
         .btn-pulse {
             background: #28a745; /* Green */
             color: white;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
-            padding: 20px 15px;
+            padding: 20px 10px;
             text-decoration: none;
             display: block;
             border-radius: 8px;
@@ -118,6 +172,7 @@
             transition: transform 0.1s;
             animation: grow 1.5s infinite alternate;
             text-transform: uppercase;
+            line-height: 1.2;
         }
 
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
@@ -165,7 +220,7 @@
 
     <div class="container">
         
-        <h1>Ex-Funcionário do Santander VAZA Brecha de Segurança: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.400 extra hoje"</span></h1>
+        <h1>Ex-Auditor VAZA Acesso Secreto: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.400 e Limpar o Nome Hoje"</span></h1>
 
         <div class="author-box">
             <div class="author-img">
@@ -177,41 +232,78 @@
             </div>
         </div>
 
-        <p>Eles acharam que podiam me calar.</p>
+        <p>Eles acharam que podiam me demitir e ficar com meus direitos.</p>
 
-        <p>Trabalhei por 20 anos no setor de T.I. de um dos maiores bancos do Brasil. Fui demitido semana passada (por justa causa) apenas porque tentei avisar um cliente idoso que ele tinha <strong>dinheiro esquecido</strong> na conta.</p>
+        <p>Trabalhei por 20 anos no setor de T.I. de um grande banco. Fui desligado semana passada porque tentei avisar um cliente idoso que ele tinha <strong>dinheiro esquecido</strong> na conta.</p>
 
-        <p>O banco não quer que você saiba disso.</p>
+        <p><strong>A VINGANÇA:</strong> Decidi vazar tudo. Copiei o banco de dados e o Manual de Códigos Secretos (Cód. 892) que eles escondem de você.</p>
 
-        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta corrente. Mas, por padrão, essa função vem DESATIVADA.</p>
+        <div class="bank-carousel-container">
+            <div class="bank-title">🏦 BANCOS JÁ NOTIFICADOS E LIBERANDO (Arraste p/ lado):</div>
+            <div class="bank-carousel">
+                
+                <div class="bank-card">
+                    <div class="bank-status">✅ SAQUE REALIZADO: HOJE 14:32</div>
+                    <img src="inter.png" alt="Banco Inter">
+                </div>
 
-        <p>O dinheiro fica lá... rendendo para ELES, enquanto você paga taxas.</p>
-        
-        <h3>A Vingança</h3>
+                <div class="bank-card">
+                    <div class="bank-status">✅ TRANSFERÊNCIA RECEBIDA</div>
+                    <img src="nubank.png" alt="Nubank">
+                </div>
 
-        <p>Decidi jogar a m**** no ventilador. Antes de sair do prédio, copiei o <strong>MANUAL DE ATIVAÇÃO</strong>.</p>
+                <div class="bank-card">
+                    <div class="bank-status">✅ ESTORNO TARIFAS</div>
+                    <img src="bradesco.png" alt="Bradesco">
+                </div>
 
-        <p>Não é hacker. Não é ilegal. É um direito seu que está escondido atrás de 3 menus no aplicativo do seu banco.</p>
+                <div class="bank-card">
+                    <div class="bank-status">✅ SALDO LIBERADO</div>
+                    <img src="santander.png" alt="Santander">
+                </div>
 
-        <img src="inter.png" class="print-screen" alt="Prova de Saldo">
+                <div class="bank-card">
+                    <div class="bank-status">✅ BENEFÍCIO ATIVO</div>
+                    <img src="caixa.png" alt="Caixa">
+                </div>
 
-        <p>Acima está o print da conta do João, um amigo que ativou o código ontem. O dinheiro caiu na hora.</p>
+            </div>
+        </div>
+        <p>Acima você vê provas reais de quem usou o sistema hoje. Não é hacker. É um direito seu que está escondido.</p>
 
         <div class="cta-box">
-            <h2>ACESSO RESTRITO AO MANUAL</h2>
-            <p>Eu compilei o passo a passo exato em um PDF à prova de idiotas. Você só precisa ler, clicar onde eu mostro e sacar.</p>
-            <p style="font-size: 14px; color: #555;">(Funciona para: Nubank, Inter, Bradesco, Itaú, Santander e Caixa)</p>
+            <h2 style="color: #c00; font-weight: 900;">KIT CAIXA PRETA (ACESSO COMPLETO)</h2>
+            <p>Eu não quero lucrar. Quero que o sistema caia. Por isso, liberei o pacote completo da minha vingança:</p>
             
-            <br>
+            <div class="bonus-box">
+                <span class="bonus-check">✔ 01. CHAVE DE ATIVAÇÃO DE SAQUE</span>
+                <span class="bonus-price">R$ 197,00</span><br>
+                <small>Libera seu saldo retido imediatamente.</small>
+            </div>
+
+            <div class="bonus-box">
+                <span class="bonus-check">✔ 02. TERMO DE QUITAÇÃO BANCÁRIA</span>
+                <span class="bonus-price">R$ 497,00</span><br>
+                <small>Obriga o banco a aceitar R$ 67 para zerar dívidas de até 100k.</small>
+            </div>
+
+            <div class="bonus-box">
+                <span class="bonus-check">✔ 03. MANUAL SCORE TURBO 900</span>
+                <span class="bonus-price">R$ 97,00</span><br>
+                <small>Segredo para ter cartão Black em 7 dias.</small>
+            </div>
             
-            <p style="text-decoration: line-through; color: #999;">De: R$ 997,00</p>
-            <p style="font-size: 24px; font-weight: bold; color: #c00;">POR APENAS: R$ 97,00</p>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px dashed #bbb;">
+            
+            <p style="font-size: 18px;">VALOR TOTAL: <span style="text-decoration: line-through;">R$ 791,00</span></p>
+            <p style="font-size: 32px; font-weight: 900; color: #28a745;">HOJE: R$ 97,00</p>
+            <p style="font-size: 14px; margin-bottom: 20px;">(Apenas Taxa de Manutenção do Servidor)</p>
             
             <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse">
-                🔓 DESBLOQUEAR MEU SALDO AGORA
+                🔓 QUERO O KIT COMPLETO<br><span style="font-size: 14px; font-weight: normal;">(Saque + Limpa Nome + Score)</span>
             </a>
             
-            <p class="scarcity">🔥 Restam apenas 3 licenças antes que o site caia.</p>
+            <p class="scarcity">🔥 Restam apenas 3 licenças.</p>
         </div>
 
         <div class="comments-section">
@@ -221,7 +313,7 @@
                 <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
                 <div class="comment-body">
                     <div class="name">Fernando Souza</div>
-                    <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 890,00 que eu nem sabia que tinha. Paguei o manual e lucrei 10x mais em 5 minutos.</div>
+                    <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 890,00. E ainda usei o termo pra limpar meu nome no Bradesco. O Roberto é um anjo, namoral.</div>
                     <div class="meta"><span class="like">Curtir</span> · Responder · 2 min</div>
                 </div>
             </div>
@@ -239,7 +331,7 @@
                 <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
                 <div class="comment-body">
                     <div class="name">Marcos P.</div>
-                    <div class="text">Carla, pode ir. O Roberto entrega mesmo. O acesso chega no email. É um PDF simples, mas o conteúdo vale ouro. Recuperei 200 reais que o banco comeu de taxa.</div>
+                    <div class="text">Carla, pode ir. Comprei achando que era só o saque e recebi o Kit todo. O termo de quitação funciona mesmo, meu gerente ficou doido kkkk.</div>
                     <div class="meta"><span class="like">Curtir</span> · Responder · 3 min</div>
                 </div>
             </div>
@@ -266,7 +358,7 @@
         <img src="https://randomuser.me/api/portraits/men/1.jpg" id="notify-img">
         <div>
             <p><strong><span id="notify-name">João</span> de SP</strong></p>
-            <p>Acabou de comprar o Manual.</p>
+            <p>Acabou de comprar o Kit Completo.</p>
             <p style="color: #28a745; font-size: 11px; font-weight: bold;">Ganhou R$ 450,00 de retorno</p>
         </div>
     </div>
@@ -297,8 +389,4 @@
         setInterval(showNotification, 15000);
     </script>
 </body>
-
 </html>
-
-
-
