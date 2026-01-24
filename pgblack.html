@@ -97,69 +97,134 @@
 
         p { margin-bottom: 18px; font-size: 17px; color: #444; line-height: 1.7; }
         
-        /* CARROSSEL */
-        .bank-carousel-container {
+        /* NOVO CARROSSEL DE BENEFÍCIOS */
+        .benefit-carousel-container {
             margin: 30px -20px;
             padding: 20px;
             background: #f8faff;
             border-top: 1px solid #edf2f7;
             border-bottom: 1px solid #edf2f7;
         }
-        .bank-title {
-            font-size: 13px;
+        .benefit-title {
+            font-size: 14px;
             font-weight: 800;
-            color: #d32f2f;
+            color: #2c3e50;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            text-align: center;
         }
-        .bank-carousel {
+        .benefit-carousel {
             display: flex;
             overflow-x: auto;
             gap: 15px;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            padding-left: 10px;
+            padding-right: 10px;
             scrollbar-width: none;
         }
-        .bank-carousel::-webkit-scrollbar { display: none; }
+        .benefit-carousel::-webkit-scrollbar { display: none; }
         
-        .bank-card {
-            min-width: 260px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            position: relative;
-            transition: transform 0.2s;
+        .benefit-card {
+            min-width: 240px;
             background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #eee;
         }
-        .bank-card:active { transform: scale(0.98); }
-        .bank-card img { width: 100%; display: block; }
-        
-        .bank-status {
-            background: rgba(40, 167, 69, 0.95);
-            backdrop-filter: blur(5px);
-            color: white;
-            font-size: 11px;
-            padding: 6px;
+        /* Ajuste para a imagem ficar vertical bonita (estilo celular) */
+        .benefit-card img { 
+            width: 100%; 
+            height: 320px; /* Altura fixa para ficar padronizado */
+            object-fit: cover; 
+            display: block; 
+        }
+        .benefit-content {
+            padding: 15px;
             text-align: center;
+        }
+        .benefit-content h3 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #d32f2f;
+            margin-bottom: 5px;
+        }
+        .benefit-content p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+        
+        .delivery-note {
+            text-align: center;
+            font-size: 13px;
+            color: #28a745;
             font-weight: 700;
-            position: absolute;
-            top: 0;
+            margin-top: 10px;
+            background: #e8f5e9;
+            padding: 8px;
+            border-radius: 8px;
+            display: inline-block;
             width: 100%;
-            z-index: 10;
-            text-transform: uppercase;
+        }
+
+        /* CARTA DO ROBERTO */
+        .roberto-letter {
+            background: #fffbea;
+            border: 1px solid #f9e79f;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px 0 10px 0;
+            position: relative;
+        }
+        .roberto-letter:before {
+            content: '⚠️ LER COM ATENÇÃO';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #f1c40f;
+            color: #333;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .roberto-title {
+            font-weight: 900;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .roberto-text {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.6;
+        }
+        .roberto-signature {
+            margin-top: 15px;
+            font-weight: 700;
+            text-align: right;
+            color: #555;
+            font-style: italic;
         }
 
         /* BOX DE OFERTA */
         .cta-box {
-            background: #fffef0;
-            border: 2px dashed #fbc02d;
+            background: #fff;
+            border: 2px dashed #ccc;
             padding: 25px;
             text-align: center;
-            margin: 35px 0;
+            margin: 20px 0;
             border-radius: 20px;
+        }
+        /* Destaque para o CTA Box quando tiver a oferta */
+        .cta-box.final-offer {
+            background: #fffef0;
+            border: 2px dashed #fbc02d;
             box-shadow: 0 10px 30px rgba(251, 192, 45, 0.1);
         }
 
@@ -324,43 +389,61 @@
 
         <p><strong>A VINGANÇA:</strong> Decidi vazar tudo. Copiei o banco de dados e o Manual de Códigos Secretos (Cód. 892) que eles escondem de você.</p>
 
-        <div class="bank-carousel-container">
-            <div class="bank-title">👇 SALDOS DESBLOQUEADOS COM A CHAVE HOJE (ARRASTE):</div>
-            <div class="bank-carousel">
-                <div class="bank-card">
-                    <div class="bank-status">✅ SAQUE DESBLOQUEADO: 14:32</div>
-                    <img src="inter.png" alt="Banco Inter">
+        <div class="benefit-carousel-container">
+            <div class="benefit-title">🔓 O QUE O SISTEMA VAI LIBERAR NO SEU CELULAR (Arraste):</div>
+            <div class="benefit-carousel">
+                
+                <div class="benefit-card">
+                    <img src="https://placehold.co/400x600/0a0a0a/FFF?text=FOTO+CHAVE" alt="Chave de Saque">
+                    <div class="benefit-content">
+                        <h3>🔑 1. Chave de Saque</h3>
+                        <p>Libere o acesso aos seus <strong>Rendimentos Ocultos</strong> e saldos retidos no Banco Central.</p>
+                    </div>
                 </div>
-                <div class="bank-card">
-                    <div class="bank-status">✅ TRANSFERÊNCIA RECEBIDA</div>
-                    <img src="santander.jfif" alt="Nubank">
+
+                <div class="benefit-card">
+                    <img src="https://placehold.co/400x600/0a0a0a/FFF?text=FOTO+TERMO" alt="Termo de Quitação">
+                    <div class="benefit-content">
+                        <h3>📄 2. Termo de Quitação</h3>
+                        <p>Use o documento secreto para zerar dívidas de até R$ 100k pagando o valor mínimo.</p>
+                    </div>
                 </div>
-                <div class="bank-card">
-                    <div class="bank-status">✅ ESTORNO TARIFAS</div>
-                    <img src="bradesco.jfif" alt="Bradesco">
+
+                <div class="benefit-card">
+                    <img src="https://placehold.co/400x600/0a0a0a/FFF?text=FOTO+SCORE" alt="Score Turbo">
+                    <div class="benefit-content">
+                        <h3>🚀 3. Score Turbo</h3>
+                        <p>Aumente seu Score em 7 dias e consiga cartões com <strong>limites altos</strong> aprovados na hora.</p>
+                    </div>
                 </div>
-                <div class="bank-card">
-                    <div class="bank-status">✅ SALDO LIBERADO</div>
-                    <img src="nubank.jfif" alt="Santander">
-                </div>
-                <div class="bank-card">
-                    <div class="bank-status">✅ BENEFÍCIO ATIVO</div>
-                    <img src="caixa.jfif" alt="Caixa">
-                </div>
+            </div>
+            
+            <div class="delivery-note">
+                📧 <strong>ENTREGA IMEDIATA:</strong> O acesso chega no seu e-mail em menos de 2 minutos.
             </div>
         </div>
 
-        <p>Acima você vê provas reais de quem usou o sistema hoje. Não é hacker. É um direito seu que está escondido.</p>
+        <p>Acima você vê exatamente o que vai acontecer no seu celular. Não é hacker. É um direito seu que está escondido no sistema bancário.</p>
 
-        <div class="cta-box">
+        <div class="roberto-letter">
+            <div class="roberto-title">⚠️ POR QUE COBRAR R$ 97,00?</div>
+            <div class="roberto-text">
+                <p>Pessoal, aqui é o Roberto. Muita gente me pergunta: <em>"Se você já descobriu como sacar essa grana toda, por que cobrar R$ 97,00?"</em></p>
+                <p>Vou ser 100% transparente: <strong>Eu não preciso do seu dinheiro.</strong> Graças a Deus, minha vida financeira já está resolvida.</p>
+                <p>O valor de R$ 97,00 serve apenas para pagar a <strong>TAXA DE ATIVAÇÃO DO SERVIDOR</strong> que faz a varredura no seu CPF. Eu não tenho como pagar para todo mundo.</p>
+                <p><strong>🤝 MEU COMPROMISSO COM VOCÊ:</strong></p>
+                <p>Pague a taxa de R$ 97,00, libere seu saque e limpe seu nome. Se precisar, me chame no WhatsApp Pessoal (que está na área de membros) e eu <strong>te devolvo os R$ 97,00</strong> do meu próprio bolso. Eu só quero que você vença.</p>
+            </div>
+            <div class="roberto-signature">- Roberto M.</div>
+        </div>
+
+        <div class="cta-box final-offer">
             <h2 style="color: #d32f2f; font-weight: 900; font-size: 22px; margin-bottom: 15px;">KIT CAIXA PRETA<br>(ACESSO COMPLETO)</h2>
-            
-            <p style="font-size: 15px; color: #555;">Eu poderia cobrar R$ 1.000,00 fácil por esse conhecimento. Mas depois de ver tantos brasileiros sendo enganados lá dentro, minha missão agora é fazer justiça.<br><br>Quero ajudar o máximo de famílias a <strong>recuperar o que é delas por direito</strong>. Por isso, derrubei o preço para um valor simbólico, para que <strong>qualquer brasileiro</strong> possa ter acesso hoje:</p>
             
             <div class="bonus-box">
                 <div style="flex: 1;">
                     <span class="bonus-check">✔ 01. CHAVE DE ATIVAÇÃO</span>
-                    <span class="bonus-desc">Libera imediatamente seu saldo retido pelo CPF.</span>
+                    <span class="bonus-desc">Rendimentos Ocultos + Saldos Retidos.</span>
                 </div>
                 <span class="bonus-price">R$ 197</span>
             </div>
@@ -368,7 +451,7 @@
             <div class="bonus-box">
                 <div style="flex: 1;">
                     <span class="bonus-check">✔ 02. TERMO DE QUITAÇÃO BANCÁRIA</span>
-                    <span class="bonus-desc">Obriga o banco a aceitar <strong>R$ 67,00 (valor mínimo)</strong> para zerar dívidas de até <strong>R$ 100.000</strong>.</span>
+                    <span class="bonus-desc">Zerar dívidas de até <strong>R$ 100.000</strong>.</span>
                 </div>
                 <span class="bonus-price">R$ 497</span>
             </div>
@@ -376,7 +459,7 @@
             <div class="bonus-box">
                 <div style="flex: 1;">
                     <span class="bonus-check">✔ 03. MANUAL SCORE TURBO</span>
-                    <span class="bonus-desc">O segredo para turbinar seu Score em 7 dias e ter cartões de alto limite e empréstimo na hora.</span>
+                    <span class="bonus-desc">Score alto e Limite Aprovado na hora.</span>
                 </div>
                 <span class="bonus-price">R$ 97</span>
             </div>
@@ -385,6 +468,7 @@
             
             <p style="font-size: 16px; color: #777; margin-bottom: 5px;">VALOR TOTAL: <span style="text-decoration: line-through;">R$ 791,00</span></p>
             <p style="font-size: 36px; font-weight: 900; color: #28a745; letter-spacing: -1px;">HOJE: R$ 97,00</p>
+            <p style="font-size: 14px; color: #555;">(Taxa Única de Servidor)</p>
             
             <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse">
                 🔓 QUERO O KIT COMPLETO<br><span>(Saque + Limpa Nome + Score)</span>
@@ -473,58 +557,55 @@
     <script>
         // Dados de usuários (Separados por Gênero para foto e nome baterem)
         const profiles = [
-            { gender: 'men', names: ['Pedro', 'Lucas', 'Marcos', 'Rafael', 'Felipe', 'João', 'Bruno'] },
-            { gender: 'women', names: ['Fernanda', 'Júlia', 'Ana', 'Carla', 'Mariana', 'Larissa', 'Beatriz'] }
+            { gender: 'men', names: ['Pedro', 'Lucas', 'Marcos', 'Rafael', 'Felipe', 'João', 'Bruno', 'Thiago', 'Matheus'] },
+            { gender: 'women', names: ['Ana', 'Maria', 'Julia', 'Bruna', 'Fernanda', 'Patricia', 'Larissa', 'Camila'] }
         ];
 
-        // Função de Notificação Flutuante
-        function showToast() {
-            // Sorteia gênero, nome, foto e valor
-            const profileGroup = profiles[Math.floor(Math.random() * profiles.length)];
-            const gender = profileGroup.gender;
-            const name = profileGroup.names[Math.floor(Math.random() * profileGroup.names.length)];
-            const imgId = Math.floor(Math.random() * 50);
-            const value = Math.floor(Math.random() * (2479 - 750 + 1)) + 750;
-            const formattedValue = value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        // Valores de Saque simulados
+        const values = ['R$ 890,00', 'R$ 1.450,00', 'R$ 2.300,00', 'R$ 560,00', 'R$ 3.120,00'];
 
-            // Atualiza HTML
+        function showNotification() {
+            const genderIndex = Math.floor(Math.random() * 2);
+            const genderData = profiles[genderIndex];
+            const name = genderData.names[Math.floor(Math.random() * genderData.names.length)];
+            const imgId = Math.floor(Math.random() * 70); // RandomUser tem ~100 fotos
+            const value = values[Math.floor(Math.random() * values.length)];
+
+            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${genderData.gender}/${imgId}.jpg`;
             document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
-            document.getElementById('notify-value').innerText = `Ganhou ${formattedValue} de retorno`;
-            
-            // Exibe e esconde
-            const notify = document.getElementById('notification');
-            notify.style.display = 'flex';
-            setTimeout(() => { notify.style.display = 'none'; }, 4000);
+            document.getElementById('notify-value').innerText = `Sacou ${value} agora`;
+
+            const notif = document.getElementById('notification');
+            notif.style.display = 'flex';
+
+            setTimeout(() => {
+                notif.style.display = 'none';
+            }, 4000);
         }
 
-        function openUrgentModal() {
+        // Loop de notificações (a cada 10-20 segundos)
+        setInterval(showNotification, 15000);
+
+        // Contador de Licenças
+        let count = 3;
+        const countEl = document.getElementById('count-num');
+        setInterval(() => {
+            if (count > 1) {
+                if (Math.random() > 0.7) { // 30% de chance de diminuir
+                    count--;
+                    countEl.innerText = count;
+                }
+            }
+        }, 8000);
+
+        // Modal de Saída (Mouse Leave) e Tempo
+        setTimeout(() => {
             document.getElementById('modal-alert').style.display = 'flex';
-        }
+        }, 120000); // Aparece depois de 2 minutos se a pessoa não comprar
 
         function closeModal() {
             document.getElementById('modal-alert').style.display = 'none';
         }
-
-        // LÓGICA DO COUNTDOWN E MODAL
-        
-        // 2 segundos: 1ª Compra (Sobra 2)
-        setTimeout(() => {
-            showToast();
-            document.getElementById('count-num').innerText = "2";
-        }, 2000);
-
-        // 15 segundos: 2ª Compra (Sobra 1)
-        setTimeout(() => {
-            showToast();
-            document.getElementById('count-num').innerText = "1";
-        }, 15000);
-
-        // 25 segundos: ALERTA NA TELA
-        setTimeout(() => {
-            openUrgentModal();
-        }, 25000);
-
     </script>
 </body>
 </html>
