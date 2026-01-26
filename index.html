@@ -6,7 +6,6 @@
     <title>Consulta Pública - Protocolo de Ressarcimento</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
@@ -19,13 +18,10 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // SEU PIXEL ID 2711205062544057
-    fbq('init', '2711205062544057'); 
+    fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2711205062544057&ev=PageView&noscript=1"
-    /></noscript>
+
     <style>
         :root {
             --primary: #003366; 
@@ -33,16 +29,23 @@
             --accent: #28a745; 
             --bg: #f8f9fa;
             --text: #333;
+            --danger: #c4170c;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
         
-        body { 
-            background-color: var(--bg); 
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        body { background-color: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+
+        .timer-bar {
+            background: var(--danger);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         header {
@@ -89,10 +92,7 @@
         }
         .card.active { display: block; }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         h1 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
         p.desc { font-size: 15px; color: #555; margin-bottom: 25px; line-height: 1.5; }
@@ -109,71 +109,46 @@
             color: #444;
             cursor: pointer;
             transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
         }
 
-        .btn:hover, .btn:active {
-            border-color: var(--secondary);
-            color: var(--secondary);
-            background: #f0f8ff;
-        }
+        .btn:active { border-color: var(--secondary); color: var(--secondary); background: #f0f8ff; }
         
         .btn.primary {
             background: var(--secondary);
             color: white;
             border: none;
             box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+            animation: pulse 1.5s infinite;
         }
-        .btn.primary:hover { background: #004494; transform: translateY(-2px); }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
         .loader-content { text-align: center; }
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #e9ecef;
-            border-top: 5px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px auto;
+            width: 50px; height: 50px; border: 5px solid #e9ecef; border-top: 5px solid var(--accent);
+            border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .terminal-log {
-            background: #f1f1f1;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            color: #333;
-            text-align: left;
-            height: 120px;
-            overflow: hidden;
-            border-left: 3px solid var(--secondary);
-            margin-top: 15px;
+            background: #f1f1f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;
+            font-size: 12px; color: #333; text-align: left; height: 120px; overflow: hidden;
+            border-left: 3px solid var(--secondary); margin-top: 15px;
         }
-        .log-item { margin-bottom: 5px; display: none; }
+        .log-item { margin-bottom: 5px; }
         .log-item.success { color: #28a745; }
-        .log-item.warning { color: #e67e22; }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 11px;
-            color: #aaa;
-            border-top: 1px solid #eee;
-            margin-top: auto;
-            background: #fff;
-        }
-
-        .highlight { color: var(--secondary); font-weight: 700; }
+        footer { text-align: center; padding: 20px; font-size: 11px; color: #aaa; border-top: 1px solid #eee; margin-top: auto; background: #fff; }
     </style>
 </head>
 <body>
+
+    <div class="timer-bar">
+        ⚠️ O ACESSO EXPIRA EM: <span id="main-timer">10:00</span>
+    </div>
 
     <header>
         <div class="logo-area">
@@ -186,28 +161,27 @@
     </header>
 
     <main>
-        
         <div class="progress-container">
             <div class="progress-label">
-                <span>Progresso da Análise</span>
-                <span id="percent-text">0%</span>
+                <span>Análise de Elegibilidade</span>
+                <span id="percent-text">20%</span>
             </div>
             <div class="progress-track">
-                <div class="progress-fill" id="progress-bar"></div>
+                <div class="progress-fill" id="progress-bar" style="width: 20%;"></div>
             </div>
         </div>
 
         <div id="step1" class="card active">
             <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-mobile-alt"></i>
+                <i class="fas fa-user-shield"></i>
             </div>
-            <h1>Uso de Aplicativo Bancário</h1>
-            <p class="desc">Para verificar a elegibilidade do seu CPF no <span class="highlight">Protocolo de 2026</span>, responda com sinceridade:</p>
-            <p class="desc" style="font-weight: 600;">Você possui o aplicativo de algum banco instalado no seu celular hoje?</p>
+            <h1>Verificação Inicial</h1>
+            <p class="desc">Para garantir a segurança dos dados, confirme:</p>
+            <p class="desc" style="font-weight: 600;">Você possui uma conta bancária ativa para recebimento de valores?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-check-circle"></i> SIM, EU POSSUO
+                    <i class="far fa-check-circle"></i> SIM, POSSUO
                 </button>
                 <button class="btn" onclick="nextStep(2)">
                     <i class="far fa-times-circle"></i> NÃO POSSUO
@@ -216,34 +190,31 @@
         </div>
 
         <div id="step2" class="card">
-            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-calendar-check"></i>
-            </div>
-            <h1>Frequência de Movimentação</h1>
-            <p class="desc">O sistema identificou uma possível pendência.</p>
-            <p class="desc" style="font-weight: 600;">Você realizou alguma transação (Pix, cartão ou boleto) nos últimos 7 dias?</p>
+            <h1>Regulamentação 2026</h1>
+            <p class="desc">O Protocolo 892 exige movimentação recente.</p>
+            <p class="desc" style="font-weight: 600;">Você utilizou o Pix ou Cartão nos últimos 30 dias?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-check-circle"></i> SIM, RECENTEMENTE
+                    <i class="far fa-check-circle"></i> SIM, UTILIZEI
                 </button>
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-clock"></i> FAZ MAIS TEMPO
+                    <i class="far fa-clock"></i> NÃO UTILIZEI
                 </button>
             </div>
         </div>
 
         <div id="step3" class="card">
-            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-shield-alt"></i>
+            <div style="margin-bottom: 15px; color: var(--accent); font-size: 40px;">
+                <i class="fas fa-unlock-alt"></i>
             </div>
-            <h1>Verificação Final</h1>
-            <p class="desc">Estamos prontos para consultar a base de dados.</p>
-            <p class="desc">Você confirma que é o titular da conta e deseja visualizar o saldo disponível para resgate?</p>
+            <h1>Acesso Quase Pronto</h1>
+            <p class="desc">Detectamos uma pré-aprovação para o seu perfil.</p>
+            <p class="desc">Deseja acessar a matéria completa e gerar sua chave de ativação agora?</p>
             
             <div class="btn-group">
                 <button class="btn primary" onclick="startLoading()">
-                    CONFIRMAR E CONSULTAR
+                    ACESSAR CONTEÚDO VAZADO
                 </button>
             </div>
         </div>
@@ -251,27 +222,29 @@
         <div id="loading" class="card">
             <div class="loader-content">
                 <div class="spinner"></div>
-                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Conectando ao Servidor...</h2>
-                <p style="font-size: 13px; color: #666;">Por favor, não feche esta página.</p>
-                
-                <div class="terminal-log" id="terminal">
-                    </div>
+                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Sincronizando Dados...</h2>
+                <div class="terminal-log" id="terminal"></div>
             </div>
         </div>
-
     </main>
 
     <footer>
-        <p>Copyright © 2026 - Todos os direitos reservados.</p>
-        <p style="margin-top: 5px;">Política de Privacidade | Termos de Uso | LGPD</p>
+        <p>Copyright © 2026 - Protocolo 892</p>
     </footer>
 
     <script>
-        // ============================================
-        // LINK CORRIGIDO PARA SUA PÁGINA DE VENDAS
-        // ============================================
-        const redirectUrl = "pgblack.html"; 
-        // ============================================
+        let timeLeft = 600;
+        function startTimer() {
+            const timerDisplay = document.getElementById('main-timer');
+            setInterval(() => {
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                s = s < 10 ? '0' + s : s;
+                timerDisplay.innerText = `${m}:${s}`;
+                if (timeLeft > 0) timeLeft--;
+            }, 1000);
+        }
+        startTimer();
 
         function updateProgress(percent) {
             document.getElementById('progress-bar').style.width = percent + '%';
@@ -279,7 +252,6 @@
         }
 
         function nextStep(step) {
-            if (navigator.vibrate) navigator.vibrate(50);
             document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
             if(step === 2) updateProgress(50);
@@ -287,47 +259,30 @@
         }
 
         function startLoading() {
-            if (navigator.vibrate) navigator.vibrate(50);
             document.getElementById('step3').classList.remove('active');
             document.getElementById('loading').classList.add('active');
-            updateProgress(90);
+            updateProgress(95);
 
             const terminal = document.getElementById('terminal');
             const logs = [
-                { text: "> Iniciando conexão segura (SSL)...", delay: 500 },
-                { text: "> Validando dispositivo...", delay: 1500 },
-                { text: "> Acessando base de dados nacional...", delay: 2500, type: 'warning' },
-                { text: "> CPF Verificado. Status: ATIVO", delay: 3500, type: 'success' },
-                { text: "> Calculando valores pendentes...", delay: 4500 },
-                { text: "> PROTOCOLO AUTORIZADO!", delay: 5500, type: 'success' }
+                { t: "> Abrindo túnel de segurança...", d: 500 },
+                { t: "> Verificando credenciais...", d: 1200 },
+                { t: "> Acesso autorizado pelo Auditor.", d: 2000, s: true }
             ];
 
-            let logIndex = 0;
-
-            function addLog() {
-                if (logIndex < logs.length) {
-                    const log = logs[logIndex];
-                    setTimeout(() => {
-                        const p = document.createElement('div');
-                        p.className = 'log-item ' + (log.type || '');
-                        p.style.display = 'block';
-                        p.innerText = log.text;
-                        terminal.appendChild(p);
-                        terminal.scrollTop = terminal.scrollHeight;
-                        
-                        if (logIndex === logs.length - 1) {
-                            setTimeout(() => {
-                                updateProgress(100);
-                                window.location.href = redirectUrl;
-                            }, 1500);
-                        }
-                        
-                        logIndex++;
-                        addLog();
-                    }, logIndex === 0 ? log.delay : 1000); 
-                }
-            }
-            addLog();
+            logs.forEach((log, i) => {
+                setTimeout(() => {
+                    const p = document.createElement('div');
+                    p.className = 'log-item ' + (log.s ? 'success' : '');
+                    p.innerText = log.t;
+                    terminal.appendChild(p);
+                    if (i === logs.length - 1) {
+                        setTimeout(() => {
+                            window.location.href = "pgblack.html";
+                        }, 1000);
+                    }
+                }, log.d);
+            });
         }
     </script>
 </body>
