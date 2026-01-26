@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Reembolso Bancário - Ativo</title>
+    <title>G1 - Notícia Urgente: Vazamento Bancário</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,17 +30,17 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        body { background-color: #fff; color: #333; line-height: 1.6; -webkit-font-smoothing: antialiased; }
         
-        .alert-bar {
-            background: linear-gradient(90deg, #d32f2f, #b71c1c);
+        /* BARRA DE URGÊNCIA (ESTILO G1/NOTÍCIA) */
+        .breaking-news {
+            background: #c4170c;
             color: #fff;
+            padding: 10px;
             text-align: center;
-            padding: 12px;
             font-weight: 700;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            font-size: 14px;
+            text-transform: uppercase;
             animation: pulse 2s infinite;
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.9; } 100% { opacity: 1; } }
@@ -48,614 +48,323 @@
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background: #fff;
-            padding: 25px 20px;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 20px 20px 80px 20px; /* Espaço embaixo pro botão flutuante se quiser */
         }
 
+        /* MANCHETE JORNALÍSTICA */
+        .headline-box { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .tag { color: #c4170c; font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 5px; display: block; }
         h1 {
-            font-size: 24px;
-            color: #111;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            line-height: 1.2;
             font-weight: 800;
+            margin-bottom: 10px;
             letter-spacing: -0.5px;
         }
+        .sub-headline { font-size: 16px; color: #555; line-height: 1.5; font-weight: 400; }
         
-        .highlight { 
-            background: linear-gradient(120deg, #ffd700 0%, #ffeb3b 100%);
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #000;
-        }
+        .meta-info { font-size: 12px; color: #777; margin-top: 15px; display: flex; align-items: center; }
+        .meta-info span { margin-right: 15px; }
+        .red-dot { width: 8px; height: 8px; background: #c4170c; border-radius: 50%; display: inline-block; margin-right: 5px; }
 
-        .author-box {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .author-img {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #eee;
-            margin-right: 12px;
-            overflow: hidden;
-            border: 2px solid #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .author-info strong { font-size: 15px; color: #333; display: block; }
-        .date { font-size: 13px; color: #888; display: block; margin-top: 2px; }
+        /* CORPO DO TEXTO */
+        .story-text p { margin-bottom: 18px; font-size: 17px; color: #333; line-height: 1.6; }
+        .story-text strong { font-weight: 700; color: #000; }
+        .highlight-bg { background: #fff8e1; padding: 2px 5px; border-radius: 3px; border-bottom: 2px solid #ffc107; }
 
-        p { margin-bottom: 18px; font-size: 17px; color: #444; line-height: 1.7; }
-        
-        /* NOVO CARROSSEL DE BENEFÍCIOS */
-        .benefit-carousel-container {
-            margin: 30px -20px;
+        /* CARROSSEL DE PROVAS */
+        .proof-box {
+            background: #f4f4f4;
+            border-left: 4px solid #c4170c;
             padding: 20px;
-            background: #f8faff;
-            border-top: 1px solid #edf2f7;
-            border-bottom: 1px solid #edf2f7;
+            margin: 30px -20px;
         }
-        .benefit-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            text-align: center;
-        }
-        .benefit-carousel {
+        .proof-title { font-weight: 800; font-size: 14px; text-transform: uppercase; margin-bottom: 15px; color: #333; padding-left: 20px; }
+        
+        .carousel {
             display: flex;
             overflow-x: auto;
             gap: 15px;
-            padding-bottom: 15px;
-            padding-left: 10px;
-            padding-right: 10px;
+            padding: 0 20px 15px 20px;
             scrollbar-width: none;
         }
-        .benefit-carousel::-webkit-scrollbar { display: none; }
+        .carousel::-webkit-scrollbar { display: none; }
         
-        .benefit-card {
-            min-width: 240px;
+        .card {
+            min-width: 250px;
             background: #fff;
-            border-radius: 12px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border: 1px solid #eee;
+            border: 1px solid #ddd;
         }
-        .benefit-card img { 
-            width: 100%; 
-            height: 320px; 
-            object-fit: cover; 
-            display: block; 
-        }
-        .benefit-content {
-            padding: 15px;
-            text-align: center;
-        }
-        .benefit-content h3 {
-            font-size: 15px;
-            font-weight: 800;
-            color: #d32f2f;
-            margin-bottom: 5px;
-        }
-        .benefit-content p {
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 0;
-            line-height: 1.4;
-        }
-        
-        .delivery-note {
-            text-align: center;
-            font-size: 13px;
-            color: #28a745;
-            font-weight: 700;
-            margin-top: 10px;
-            background: #e8f5e9;
-            padding: 8px;
-            border-radius: 8px;
-            display: inline-block;
-            width: 100%;
-        }
+        .card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+        .card-body { padding: 15px; }
+        .card h3 { font-size: 16px; font-weight: 800; color: #c4170c; margin-bottom: 5px; }
+        .card p { font-size: 13px; color: #555; line-height: 1.4; margin: 0; }
 
-        /* CARTA DO ROBERTO */
-        .roberto-letter {
-            background: #fffbea;
-            border: 1px solid #f9e79f;
+        /* CARTA ROBERTO */
+        .personal-note {
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
             padding: 20px;
             border-radius: 12px;
-            margin: 30px 0 10px 0;
+            margin: 30px 0;
             position: relative;
         }
-        .roberto-letter:before {
-            content: '⚠️ LER COM ATENÇÃO';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #f1c40f;
-            color: #333;
-            font-size: 11px;
-            font-weight: 800;
-            padding: 4px 10px;
-            border-radius: 20px;
-        }
-        .roberto-title {
-            font-weight: 900;
-            font-size: 18px;
-            color: #333;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .roberto-text {
-            font-size: 15px;
-            color: #444;
-            line-height: 1.6;
-        }
-        .roberto-signature {
-            margin-top: 15px;
-            font-weight: 700;
-            text-align: right;
-            color: #555;
-            font-style: italic;
+        .note-icon { position: absolute; top: -20px; left: 20px; width: 40px; height: 40px; background: #2e7d32; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .note-title { margin-left: 30px; font-weight: 800; color: #2e7d32; font-size: 16px; margin-bottom: 10px; }
+        .signature { font-family: 'Times New Roman', serif; font-style: italic; font-size: 18px; margin-top: 15px; text-align: right; color: #000; }
+        .stamp { 
+            border: 3px double #c4170c; 
+            color: #c4170c; 
+            display: inline-block; 
+            padding: 5px 10px; 
+            transform: rotate(-5deg); 
+            font-size: 12px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            margin-top: 10px;
+            float: right;
+            clear: both;
         }
 
-        /* BOX DE OFERTA */
-        .cta-box {
+        /* OFERTA */
+        .offer-box {
             background: #fff;
-            border: 2px dashed #ccc;
-            padding: 25px;
-            text-align: center;
-            margin: 20px 0;
-            border-radius: 20px;
-        }
-        .cta-box.final-offer {
-            background: #fffef0;
-            border: 2px dashed #fbc02d;
-            box-shadow: 0 10px 30px rgba(251, 192, 45, 0.1);
-        }
-
-        .bonus-box {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            padding: 12px 15px;
-            margin: 10px 0;
-            text-align: left;
-            font-size: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .bonus-check { color: #2e7d32; font-weight: 700; font-size: 14px; display: block; }
-        .bonus-desc { font-size: 13px; color: #666; margin-top: 3px; line-height: 1.3; display: block; }
-        .bonus-price { text-decoration: line-through; color: #bbb; font-size: 13px; white-space: nowrap; margin-left: 10px; }
-
-        .btn-pulse {
-            background: linear-gradient(to bottom, #28a745, #218838);
-            color: white;
-            font-size: 18px;
-            font-weight: 800;
-            padding: 18px 20px;
-            text-decoration: none;
-            display: block;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
-            transition: all 0.2s;
-            animation: grow 2s infinite alternate;
-            text-transform: uppercase;
-            line-height: 1.2;
-            margin-top: 20px;
-        }
-        .btn-pulse span { font-size: 13px; font-weight: 500; opacity: 0.9; text-transform: none; }
-
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.03); } }
-
-        .scarcity { color: #d32f2f; font-weight: 700; margin-top: 15px; font-size: 13px; background: #ffebee; display: inline-block; padding: 5px 10px; border-radius: 20px; }
-
-        /* COMENTÁRIOS */
-        .comments-section { margin-top: 50px; border-top: 1px solid #f0f2f5; padding-top: 25px; }
-        .comments-title { font-weight: 700; margin-bottom: 20px; font-size: 15px; color: #65676b; display: flex; justify-content: space-between; }
-        
-        .comment { display: flex; margin-bottom: 18px; gap: 10px; }
-        .avatar { width: 36px; height: 36px; border-radius: 50%; background: #e4e6eb; flex-shrink: 0; object-fit: cover; }
-        .comment-content { flex: 1; }
-        .comment-body { background: #f0f2f5; padding: 10px 14px; border-radius: 18px; display: inline-block; min-width: 150px; }
-        .name { font-weight: 700; font-size: 13px; color: #050505; margin-bottom: 2px; }
-        .text { font-size: 14px; color: #050505; line-height: 1.4; }
-        .comment-actions { font-size: 12px; color: #65676b; margin-top: 4px; margin-left: 12px; display: flex; gap: 15px; font-weight: 600; }
-
-        /* NOTIFICAÇÃO FLUTUANTE */
-        #notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 12px 16px;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-            display: none;
-            align-items: center;
-            z-index: 9000;
-            width: auto;
-            max-width: 320px;
-            border: 1px solid #f0f0f0;
-            border-left: 4px solid #28a745;
-            animation: slideIn 0.5s ease-out;
-        }
-        @keyframes slideIn { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        #notification img { width: 42px; height: 42px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
-        #notification p { font-size: 13px; margin: 0; line-height: 1.3; color: #333; }
-        .notify-value { color: #28a745; font-weight: 700; font-size: 12px; }
-
-        /* MODAL DE ALERTA FINAL */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 9999;
-            display: none;
-            justify-content: center;
-            align-items: center;
+            border: 2px dashed #333;
             padding: 20px;
-            backdrop-filter: blur(5px);
-        }
-        .modal-box {
-            background: #fff;
-            padding: 30px 20px;
-            border-radius: 20px;
+            border-radius: 15px;
             text-align: center;
-            max-width: 400px;
-            width: 100%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            animation: zoomIn 0.3s ease-out;
-            border: 2px solid #d32f2f;
+            margin-top: 30px;
         }
-        @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .price-tag { font-size: 38px; font-weight: 900; color: #28a745; margin: 10px 0; letter-spacing: -1px; }
+        .old-price { text-decoration: line-through; color: #999; font-size: 16px; }
         
-        .modal-icon { font-size: 50px; margin-bottom: 10px; }
-        .modal-title { font-size: 22px; font-weight: 900; color: #d32f2f; margin-bottom: 10px; line-height: 1.2; }
-        .modal-text { font-size: 16px; color: #555; margin-bottom: 25px; }
-        
-        .btn-modal-checkout {
+        .btn-main {
             background: #28a745;
             color: #fff;
-            padding: 15px;
-            border-radius: 12px;
             text-decoration: none;
+            padding: 18px 20px;
+            display: block;
+            border-radius: 8px;
             font-weight: 800;
             font-size: 18px;
-            display: block;
-            margin-bottom: 15px;
-            animation: pulse 1s infinite;
             text-transform: uppercase;
+            box-shadow: 0 4px 0 #1e7e34;
+            transition: transform 0.1s;
+            margin-top: 15px;
+            line-height: 1.3;
         }
-        .btn-modal-close {
-            background: transparent;
-            color: #999;
+        .btn-main:active { transform: translateY(4px); box-shadow: none; }
+        .btn-main span { font-size: 12px; font-weight: 500; display: block; opacity: 0.9; text-transform: none; margin-top: 2px; }
+
+        .keys-counter {
+            background: #fff3cd;
+            color: #856404;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 14px;
-            display: block;
-            width: 100%;
-            font-weight: 500;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-top: 15px;
+            border: 1px solid #ffeeba;
         }
+
+        /* POP-UP NOTIFICAÇÃO */
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            z-index: 9999;
+            border-left: 4px solid #28a745;
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            max-width: 90%;
+            width: 300px;
+        }
+        .toast-show { transform: translateX(0); }
+        .toast-img { width: 35px; height: 35px; border-radius: 50%; margin-right: 12px; background: #eee; object-fit: cover; }
+        .toast-text { font-size: 12px; line-height: 1.3; color: #333; }
+        .toast-bold { font-weight: 700; color: #000; }
 
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">
-        ⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM 10 MINUTOS.
+    <div class="breaking-news">
+        🚨 PLANTÃO URGENTE: SITE PODE SAIR DO AR A QUALQUER MOMENTO.
     </div>
 
     <div class="container">
         
-        <h1>Ex-Auditor VAZA Acesso Secreto: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.530 e Limpar o Nome Hoje"</span></h1>
-
-        <div class="author-box">
-            <div class="author-img">
-                <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Roberto">
-            </div>
-            <div class="author-info">
-                <strong>Por: Roberto M.</strong>
-                <span class="date">Ex-Auditor Sênior • Atualizado há 17 min</span>
+        <div class="headline-box">
+            <span class="tag">Escândalo Financeiro</span>
+            <h1>EX-AUDITOR SÊNIOR É DEMITIDO POR "AJUDAR DEMAIS" E VAZA O CÓDIGO 892 NA INTERNET</h1>
+            <p class="sub-headline">Bancos tentam derrubar este site. Veja como ativar sua Chave de Saque e pegar o Termo de Quitação Carimbado antes que bloqueiem.</p>
+            
+            <div class="meta-info">
+                <span><div class="red-dot"></div>AO VIVO</span>
+                <span>Por: Redação Investiga</span>
+                <span>Há 12 min</span>
             </div>
         </div>
 
-        <div style="background: #fff; padding: 10px 0;">
-            <p>Eles acharam que podiam me demitir e ficar com meus direitos, mas mexeram com o cara errado.</p>
+        <div class="story-text">
+            <p><strong>Roberto Menezes</strong>, auditor com 20 anos de carreira, jamais imaginou que seria demitido por fazer a coisa certa.</p>
             
-            <p>Trabalhei por 20 anos no setor de T.I. de um grande banco. Fui desligado semana passada porque tentei avisar um cliente idoso que ele tinha <strong>dinheiro esquecido</strong> na conta e o banco estava ocultando.</p>
+            <p>"Eu vi um senhor humilde chorando na agência. Ele ia perder a casa por uma dívida de R$ 3.000, sendo que o sistema mostrava que ele tinha R$ 5.800 em <span class="highlight-bg">Rendimentos Ocultos</span> parados na conta", revela Roberto.</p>
+            
+            <p>Esses rendimentos (conhecidos internamente como <strong>Protocolo 892</strong>) são gerados por taxas cobradas indevidamente no passado. Pela lei, o dinheiro é seu. Mas os bancos escondem a opção de saque.</p>
+            
+            <p><strong>A VINGANÇA:</strong> "Ativei a chave para aquele senhor escondido. O banco descobriu, me demitiu e ameaçou me processar por quebra de sigilo. Agora, vou vazar tudo. Não quero dinheiro, quero justiça."</p>
 
-            <div style="background: #f8f9fa; border-left: 4px solid #d32f2f; padding: 15px; margin: 20px 0; border-radius: 4px;">
-                <h3 style="color: #d32f2f; font-size: 18px; font-weight: 800; margin-bottom: 10px; text-transform: uppercase;">🚫 O QUE É O "PROTOCOLO 892"?</h3>
-                
-                <p style="font-size: 15px; margin-bottom: 10px;">Você não vai ver isso no Jornal Nacional. O <strong>Protocolo 892</strong> é uma função oculta no sistema do Banco Central (conhecida internamente como "Devolução Automática").</p>
-                
-                <p style="font-size: 15px; margin-bottom: 10px;"><strong>A VERDADE É A SEGUINTE:</strong> Durante anos, toda vez que você pagou uma conta ou usou o cartão, o banco cobrou uma taxa "invisível" a mais.</p>
-                
-                <p style="font-size: 15px; margin-bottom: 0;">Pela lei, esse dinheiro <strong>É SEU</strong> e deveria voltar para você como Cashback. Mas os bancos deixam essa função desligada no sistema para lucrar bilhões em cima do seu CPF.</p>
-            </div>
-
-            <p><strong>A VINGANÇA:</strong> Antes de sair, eu usei minha senha de auditor e copiei o <strong>passo a passo exato</strong>. Eu transformei isso em um <strong>PDF Digital</strong> direto ao ponto.</p>
-            
-            <p>Você não precisa instalar nada no seu celular. É um método de <strong>COPIAR E COLAR</strong>. Você vai copiar exatamente os códigos que eu deixei prontos e colar no aplicativo do seu banco para ativar seu saque imediatamente.</p>
-            
-            <p>E não é só o dinheiro do Saque. Você vai limpar seu nome em todos os bancos com o termo de quitação (utilizado por CNPJ e clientes com renda comprovada de R$ 25.000) e fazer seu Score subir automaticamente. É a solução definitiva para sua vida financeira.</p>
+            <p>Roberto compilou os códigos em uma <strong>Ferramenta de Ativação</strong> e vazou também o documento mais temido pelos banqueiros: o Termo de Quitação.</p>
         </div>
 
-        <div class="benefit-carousel-container">
-            <div class="benefit-title">👇 VEJA O RESULTADO NA MINHA TELA (Arraste):</div>
-            <div class="benefit-carousel">
-                
-                <div class="benefit-card">
-                    <img src="1768406035009.jpg" alt="Chave de Saque">
-                    <div class="benefit-content">
-                        <h3>🔑 1. Chave de Saque</h3>
-                        <p>Libere o acesso aos seus <strong>Rendimentos Ocultos</strong> ativando sua chave de saque.</p>
+        <div class="proof-box">
+            <div class="proof-title">👇 VEJA O RESULTADO NA MINHA TELA (Funciona em Qualquer Banco):</div>
+            
+            <div class="carousel">
+                <div class="card">
+                    <img src="itau-saque.jpg" alt="Chave Ativada">
+                    <div class="card-body">
+                        <h3>1. CHAVE DE ATIVAÇÃO 892</h3>
+                        <p>A ferramenta gera o código exato para liberar seus Rendimentos Ocultos direto no app do seu banco.</p>
                     </div>
                 </div>
 
-                <div class="benefit-card">
+                <div class="card">
                     <img src="IMG_20260124_155738.png" alt="Termo de Quitação">
-                    <div class="benefit-content">
-                        <h3>📄 2. Termo de Quitação</h3>
-                        <p>Preencha e envie o documento ao banco para zerar dívidas de até R$ 100k pagando o valor mínimo.</p>
+                    <div class="card-body">
+                        <h3>2. TERMO DE QUITAÇÃO (CARIMBADO)</h3>
+                        <p>O documento digital já vai com o <strong>Carimbo Oficial de Auditor</strong> do Roberto. Basta apresentar e o banco é obrigado a aceitar a quitação da dívida pelo valor original.</p>
                     </div>
                 </div>
 
-                <div class="benefit-card">
+                <div class="card">
                     <img src="IMG_20260124_155715.png" alt="Score Turbo">
-                    <div class="benefit-content">
-                        <h3>🚀 3. Score Turbo</h3>
-                        <p>Cole o script de aumento de Score para ter cartões com <strong>limites altos</strong> na hora.</p>
+                    <div class="card-body">
+                        <h3>3. SCORE TURBO (BÔNUS)</h3>
+                        <p>O script interno para fazer seu Score subir em 7 dias e conseguir cartões Black.</p>
                     </div>
                 </div>
             </div>
-            
-            <div class="delivery-note">
-                📧 <strong>ENTREGA IMEDIATA:</strong> O PDF chega no seu e-mail em menos de 2 minutos.
-            </div>
         </div>
 
-        <div class="roberto-letter">
-            <div class="roberto-title">⚠️ POR QUE COBRAR R$ 97,00?</div>
-            <div class="roberto-text">
-                <p>Pessoal, aqui é o Roberto. Muita gente me pergunta: <em>"Se você já descobriu como sacar essa grana toda, por que cobrar R$ 97,00?"</em></p>
-                <p>Vou ser 100% transparente: <strong>Eu não preciso do seu dinheiro.</strong> Graças a Deus, minha vida financeira já está resolvida.</p>
-                <p>O valor de R$ 97,00 serve apenas para pagar a <strong>A TAXA DE EMISSÃO POR CPF</strong> que hospeda os arquivos dentro do servidor. Eu não tenho como pagar para todo mundo porque são milhões de pessoas sacando o seu próprio direito.</p>
-                <p><strong>🤝 MEU COMPROMISSO COM VOCÊ:</strong></p>
-                <p>Pague a taxa de R$ 97,00, baixe o arquivo e copie os códigos. Se precisar, me chame no WhatsApp Pessoal (será enviado o link no seu email) e eu <strong>te devolvo os R$ 97,00</strong> do meu próprio bolso. Eu só quero que você vença.</p>
-            </div>
-            <div class="roberto-signature">- Roberto M.</div>
+        <div class="personal-note">
+            <div class="note-icon">📞</div>
+            <div class="note-title">RECADO PESSOAL DO ROBERTO:</div>
+            <p style="font-size: 15px; margin-bottom: 10px;">"Eu sei que parece bom demais pra ser verdade. O banco quer que você pense isso."</p>
+            <p style="font-size: 15px; margin-bottom: 10px;">"Para provar que é real, <strong>vou te passar meu WhatsApp Pessoal</strong> junto com o acesso. Se você tiver qualquer dúvida na hora de sacar ou de usar o Termo, me chama que eu te ajudo pessoalmente."</p>
+            <p style="font-size: 15px; margin-bottom: 0;">"Eu garanto que funciona. Meu nome e meu carimbo estão em jogo."</p>
+            
+            <div class="signature">Roberto Menezes</div>
+            <div class="stamp">AUDITOR SÊNIOR<br>MATRÍCULA 892-SP<br>VÁLIDO</div>
         </div>
 
-        <div class="cta-box final-offer">
-            <h2 style="color: #d32f2f; font-weight: 900; font-size: 22px; margin-bottom: 15px;">KIT CAIXA PRETA<br>(ACESSO COMPLETO)</h2>
+        <div class="offer-box">
+            <p style="font-size: 14px; text-transform: uppercase; font-weight: 700; color: #555;">TAXA ÚNICA DE SERVIDOR (Anti-Derrubada)</p>
+            <div class="old-price">De: R$ 997,00 (Preço de Gerente)</div>
+            <div class="price-tag">Por: R$ 97,00</div>
             
-            <div class="bonus-box">
-                <div style="flex: 1;">
-                    <span class="bonus-check">✔ 01. CHAVE DE ATIVAÇÃO</span>
-                    <span class="bonus-desc">Copie e Cole este código para ativar o saque isento dos seus Rendimentos Ocultos.</span>
-                </div>
-                <span class="bonus-price">R$ 997</span>
+            <div class="keys-counter">
+                🔥 RESTAM APENAS <span id="key-count" style="color: #c4170c; font-size: 16px;">6</span> CHAVES DE ATIVAÇÃO.
             </div>
 
-            <div class="bonus-box">
-                <div style="flex: 1;">
-                    <span class="bonus-check">✔ 02. PDF TERMO DE QUITAÇÃO</span>
-                    <span class="bonus-desc">Zerar dívidas de até <strong>R$ 100.000</strong>.</span>
-                </div>
-                <span class="bonus-price">R$ 497</span>
-            </div>
-
-            <div class="bonus-box">
-                <div style="flex: 1;">
-                    <span class="bonus-check">✔ 03. MÉTODO SCORE TURBO</span>
-                    <span class="bonus-desc">Score alto e Limite Aprovado na hora.</span>
-                </div>
-                <span class="bonus-price">R$ 97</span>
-            </div>
-            
-            <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #ddd;">
-            
-            <p style="font-size: 16px; color: #777; margin-bottom: 5px;">VALOR TOTAL: <span style="text-decoration: line-through;">R$ 1.591,00</span></p>
-            <p style="font-size: 36px; font-weight: 900; color: #28a745; letter-spacing: -1px;">HOJE: R$ 97,00</p>
-            <p style="font-size: 14px; color: #555;">(Taxa Única de Ativação)</p>
-            
-            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse">
-                🔓 RESOLVER MINHA VIDA FINANCEIRA<br><span>(Liberar Saque + Limpar Nome + Aumentar Score)</span>
+            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-main" onclick="return checkStock()">
+                GERAR CHAVE DE ATIVAÇÃO
+                <span>(Incluso: Termo Carimbado + Suporte no Zap)</span>
             </a>
             
-            <p class="scarcity" id="license-counter">🔥 Restam apenas <span id="count-num">3</span> licenças.</p>
+            <p style="font-size: 12px; margin-top: 15px; color: #777;">🔒 Importante: O sistema libera apenas 1 Chave por CPF para evitar fraudes.</p>
         </div>
 
-        <div class="comments-section">
-            <div class="comments-title">
-                <span>Comentários recentes</span>
-                <span>▼ Mais relevantes</span>
-            </div>
-            
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-body">
-                        <div class="name">Fernando Souza</div>
-                        <div class="text">Cara, achei que ia ser difícil mas é ridículo de fácil. É um PDF com os textos, eu só copiei e colei no chat do Nubank e liberou R$ 890,00 na hora.</div>
-                    </div>
-                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>2 min</span></div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-body">
-                        <div class="name">Carla Dias</div>
-                        <div class="text">Gente, é verdade mesmo? Tô com medo de comprar e não conseguir fazer kkk</div>
-                    </div>
-                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>5 min</span></div>
-                </div>
-            </div>
-
-            <div class="comment" style="margin-left: 50px;">
-                <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-body">
-                        <div class="name">Marcos Oliveira</div>
-                        <div class="text">Carla, pode ir. Eu sou péssimo com celular e consegui. É só ler o guia e copiar o que o Roberto manda. O termo de quitação funciona mesmo, limpei meu nome no Itaú.</div>
-                    </div>
-                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>3 min</span></div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-body">
-                        <div class="name">Juliana Martins</div>
-                        <div class="text">Meu Score foi de 340 pra 820 em uma semana!!! Só segui o passo a passo do PDF. Finalmente consegui meu cartão de crédito aprovado 😭😭</div>
-                    </div>
-                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>12 min</span></div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-body">
-                        <div class="name">Ricardo Mendes</div>
-                        <div class="text">Paguei os 97 com medo, mas recuperei quase 2 mil reais só de taxas antigas. Valeu cada centavo Roberto, vc é o cara!</div>
-                    </div>
-                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>15 min</span></div>
-                </div>
-            </div>
-            
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-body">
-                        <div class="name">Amanda Costa</div>
-                        <div class="text">Alguém sabe se funciona pro Bradesco??</div>
-                    </div>
-                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>20 min</span></div>
-                </div>
-            </div>
-
-             <div class="comment" style="margin-left: 50px;">
-                <img src="https://randomuser.me/api/portraits/men/55.jpg" class="avatar">
-                <div class="comment-content">
-                    <div class="comment-body">
-                        <div class="name">Paulo Renato</div>
-                        <div class="text">Amanda, funciona sim. Fiz no Bradesco e na Caixa. O código é universal, o Roberto explica no guia.</div>
-                    </div>
-                    <div class="comment-actions"><span class="action-link">Curtir</span><span class="action-link">Responder</span><span>18 min</span></div>
-                </div>
-            </div>
-
-        </div>
-        
         <br><br>
         <center>
-            <a href="#" style="color: #999; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
+            <p style="font-size: 11px; color: #aaa;">Copyright 2024 - Todos os direitos reservados.<br>Este site não tem vínculo com o Banco Central ou Facebook.</p>
         </center>
+
     </div>
 
-    <div id="notification">
-        <img src="" id="notify-img">
-        <div>
-            <p><strong><span id="notify-name"></span></strong> acabou de comprar.</p>
-            <p class="notify-value" id="notify-value"></p>
-        </div>
-    </div>
-
-    <div id="modal-alert" class="modal-overlay">
-        <div class="modal-box">
-            <div class="modal-icon">🚨</div>
-            <div class="modal-title">ATENÇÃO: ESTOQUE CRÍTICO</div>
-            <p class="modal-text">O sistema detectou que <strong>resta apenas 1 licença</strong> disponível agora.</p>
-            
-            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-modal-checkout">
-                RESERVAR AGORA
-            </a>
-            
-            <a href="#" class="btn-modal-close" onclick="closeModal()">
-                Arriscar e continuar lendo...
-            </a>
+    <div id="toast" class="toast-notification">
+        <img src="" id="toast-img" class="toast-img">
+        <div class="toast-text">
+            <span class="toast-bold" id="toast-name">Nome</span> acabou de ativar a chave no <span class="toast-bold" id="toast-bank">Banco</span>.
         </div>
     </div>
 
     <script>
-        // Dados de usuários (Separados por Gênero para foto e nome baterem)
-        const profiles = [
-            { gender: 'men', names: ['Pedro', 'Lucas', 'Marcos', 'Rafael', 'Felipe', 'João', 'Bruno', 'Thiago', 'Matheus'] },
-            { gender: 'women', names: ['Ana', 'Maria', 'Julia', 'Bruna', 'Fernanda', 'Patricia', 'Larissa', 'Camila'] }
-        ];
+        // LÓGICA DO POP-UP E CONTADOR
+        const names = ['Fernanda O.', 'Ricardo M.', 'Juliana S.', 'Carlos E.', 'Bruna A.', 'João P.'];
+        const banks = ['Nubank', 'Itaú', 'Bradesco', 'Caixa', 'Santander', 'Inter'];
+        
+        let keysLeft = 6;
+        const countEl = document.getElementById('key-count');
+        const toast = document.getElementById('toast');
+        const toastName = document.getElementById('toast-name');
+        const toastBank = document.getElementById('toast-bank');
+        const toastImg = document.getElementById('toast-img');
 
-        // Valores de Saque simulados
-        const values = ['R$ 890,00', 'R$ 1.450,00', 'R$ 2.300,00', 'R$ 560,00', 'R$ 3.120,00'];
+        function showToast() {
+            if (keysLeft <= 1) return; // Para no 1
 
-        function showNotification() {
-            const genderIndex = Math.floor(Math.random() * 2);
-            const genderData = profiles[genderIndex];
-            const name = genderData.names[Math.floor(Math.random() * genderData.names.length)];
-            const imgId = Math.floor(Math.random() * 70); // RandomUser tem ~100 fotos
-            const value = values[Math.floor(Math.random() * values.length)];
+            // Escolhe dados aleatórios
+            const name = names[Math.floor(Math.random() * names.length)];
+            const bank = banks[Math.floor(Math.random() * banks.length)];
+            const imgId = Math.floor(Math.random() * 50) + 1;
+            const gender = Math.random() > 0.5 ? 'women' : 'men';
 
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${genderData.gender}/${imgId}.jpg`;
-            document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-value').innerText = `Sacou ${value} agora`;
+            // Atualiza o Toast
+            toastName.innerText = name;
+            toastBank.innerText = bank;
+            toastImg.src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
 
-            const notif = document.getElementById('notification');
-            notif.style.display = 'flex';
+            // Mostra o Toast
+            toast.classList.add('toast-show');
 
+            // Diminui o contador
             setTimeout(() => {
-                notif.style.display = 'none';
+                keysLeft--;
+                countEl.innerText = keysLeft;
+                
+                // Se chegou no 1, muda a cor e texto para urgência máxima
+                if (keysLeft === 1) {
+                    countEl.innerText = "1 (ÚLTIMA)";
+                    countEl.parentElement.style.background = "#ffcdd2";
+                    countEl.parentElement.style.color = "#c62828";
+                    countEl.parentElement.style.border = "1px solid #c62828";
+                    // Para o loop
+                }
+            }, 1000); // Diminui o contador 1s depois de mostrar o toast
+
+            // Esconde o Toast
+            setTimeout(() => {
+                toast.classList.remove('toast-show');
             }, 4000);
+
+            // Agenda o próximo (tempo aleatório entre 5s e 10s)
+            if (keysLeft > 1) {
+                const nextTime = Math.floor(Math.random() * 5000) + 5000;
+                setTimeout(showToast, nextTime);
+            }
         }
 
-        // Loop de notificações (a cada 10-20 segundos)
-        setInterval(showNotification, 15000);
+        // Começa o ciclo 3 segundos após carregar
+        setTimeout(showToast, 3000);
 
-        // Contador de Licenças
-        let count = 3;
-        const countEl = document.getElementById('count-num');
-        setInterval(() => {
-            if (count > 1) {
-                if (Math.random() > 0.7) { // 30% de chance de diminuir
-                    count--;
-                    countEl.innerText = count;
-                }
-            }
-        }, 8000);
-
-        // Modal de Saída (Mouse Leave) e Tempo
-        setTimeout(() => {
-            document.getElementById('modal-alert').style.display = 'flex';
-        }, 120000); // Aparece depois de 2 minutos se a pessoa não comprar
-
-        function closeModal() {
-            document.getElementById('modal-alert').style.display = 'none';
+        function checkStock() {
+            // Função só pra dar um ar de verificação no botão
+            return true; 
         }
     </script>
+
 </body>
 </html>
