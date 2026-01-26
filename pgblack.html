@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G1 - Notícia Urgente: Vazamento Bancário</title>
+    <title>Plantão Urgente: Vazamento Bancário</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,12 +39,13 @@
             padding: 10px;
             text-align: center;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             animation: pulse 2s infinite;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.9; } 100% { opacity: 1; } }
 
@@ -59,8 +60,21 @@
         .tag { color: #c4170c; font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 5px; display: block; }
         h1 { font-size: 26px; color: #1a1a1a; line-height: 1.2; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
         .sub-headline { font-size: 16px; color: #555; line-height: 1.5; font-weight: 400; }
-        .meta-info { font-size: 12px; color: #777; margin-top: 15px; display: flex; align-items: center; }
-        .red-dot { width: 8px; height: 8px; background: #c4170c; border-radius: 50%; display: inline-block; margin-right: 5px; }
+        
+        /* META INFO (CORRIGIDO: COM ESPAÇAMENTO CLARO) */
+        .meta-info { 
+            font-size: 12px; 
+            color: #777; 
+            margin-top: 15px; 
+            display: flex; 
+            align-items: center; 
+            flex-wrap: wrap;
+            gap: 10px; /* Garante espaço entre os itens */
+        }
+        .meta-item { display: flex; align-items: center; white-space: nowrap; }
+        .red-dot { width: 8px; height: 8px; background: #c4170c; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+        .separator { color: #ccc; }
 
         /* TEXTO */
         .story-text p { margin-bottom: 18px; font-size: 17px; color: #333; line-height: 1.6; }
@@ -141,9 +155,11 @@
             <p class="sub-headline">Bancos tentam derrubar este site. Veja como ativar sua Chave de Saque e pegar o Termo de Quitação Carimbado antes que bloqueiem.</p>
             
             <div class="meta-info">
-                <span><div class="red-dot"></div>AO VIVO</span>
-                <span>Por: Redação Investiga</span>
-                <span>Há 12 min</span>
+                <div class="meta-item"><div class="red-dot"></div><strong style="color: #c4170c; margin-left: 5px;">AO VIVO</strong></div>
+                <span class="separator">•</span>
+                <div class="meta-item">Por: Redação Investiga</div>
+                <span class="separator">•</span>
+                <div class="meta-item">Há 12 min</div>
             </div>
         </div>
 
@@ -319,11 +335,20 @@
     </div>
 
     <script>
-        // LÓGICA DO POP-UP SINCRONIZADA
-        const names = ['Fernanda O.', 'Ricardo M.', 'Juliana S.', 'Carlos E.', 'Bruna A.', 'João P.'];
+        // LISTAS SEPARADAS PARA GARANTIR GÊNERO CORRETO
+        const profilesMen = [
+            { name: 'Ricardo M.' }, { name: 'João P.' }, { name: 'Carlos E.' }, 
+            { name: 'Fernando S.' }, { name: 'Bruno A.' }, { name: 'André L.' }
+        ];
+        
+        const profilesWomen = [
+            { name: 'Fernanda O.' }, { name: 'Juliana S.' }, { name: 'Bruna A.' }, 
+            { name: 'Camila R.' }, { name: 'Patrícia L.' }, { name: 'Mariana C.' }
+        ];
+
         const banks = ['Nubank', 'Itaú', 'Bradesco', 'Caixa', 'Santander', 'Inter'];
         
-        let keysLeft = 9; // Começa com 9 para dar tempo de descer
+        let keysLeft = 9; 
         const countEl = document.getElementById('key-count');
         const toast = document.getElementById('toast');
         const toastName = document.getElementById('toast-name');
@@ -332,29 +357,39 @@
         const toastMsg = document.getElementById('toast-msg');
 
         function showToast() {
-            if (keysLeft <= 1) return; // Para no 1
+            if (keysLeft <= 1) return; 
 
             // 1. Atualiza o contador GLOBAL
             keysLeft--;
-            countEl.innerText = keysLeft; // Atualiza o texto na página também
+            countEl.innerText = keysLeft;
 
-            // 2. Prepara os dados do Toast
-            const name = names[Math.floor(Math.random() * names.length)];
+            // 2. Decide aleatoriamente se é Homem ou Mulher
+            const isMan = Math.random() > 0.5;
+            let name, genderFolder;
+            
+            if (isMan) {
+                const profile = profilesMen[Math.floor(Math.random() * profilesMen.length)];
+                name = profile.name;
+                genderFolder = 'men';
+            } else {
+                const profile = profilesWomen[Math.floor(Math.random() * profilesWomen.length)];
+                name = profile.name;
+                genderFolder = 'women';
+            }
+
             const bank = banks[Math.floor(Math.random() * banks.length)];
-            const imgId = Math.floor(Math.random() * 50) + 1;
-            const gender = Math.random() > 0.5 ? 'women' : 'men';
+            const imgId = Math.floor(Math.random() * 60) + 1; // 1 a 60
 
+            // 3. Atualiza os elementos
             toastName.innerText = name;
             toastBank.innerText = bank;
-            toastImg.src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
-            
-            // 3. A mensagem do Toast mostra quantas sobraram AGORA
+            toastImg.src = `https://randomuser.me/api/portraits/${genderFolder}/${imgId}.jpg`;
             toastMsg.innerText = `🔥 RESTAM ${keysLeft} CÓPIAS`;
 
             // 4. Mostra o Toast
             toast.classList.add('toast-show');
 
-            // 5. Lógica de fim de estoque (Urgência Visual)
+            // 5. Lógica de fim de estoque (Urgência)
             if (keysLeft === 1) {
                 countEl.innerText = "1 (ÚLTIMA)";
                 countEl.parentElement.style.background = "#ffcdd2";
@@ -367,7 +402,7 @@
                 toast.classList.remove('toast-show');
             }, 4000);
 
-            // 7. Agenda o próximo (tempo aleatório rápido pra gerar pressão)
+            // 7. Próxima notificação
             if (keysLeft > 1) {
                 const nextTime = Math.floor(Math.random() * 6000) + 4000;
                 setTimeout(showToast, nextTime);
