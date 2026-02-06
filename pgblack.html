@@ -54,7 +54,7 @@
         .comment { display: flex; margin-bottom: 15px; }
         .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
         .comment-body { background: #f0f2f5; padding: 10px; border-radius: 18px; width: 100%; }
-        .name { font-weight: bold; font-size: 14px; color: #385898; }
+        .name { font-weight: bold; font-size: 14px; color: #000; } /* COR ALTERADA PARA PRETO */
         .text { font-size: 14px; margin-top: 2px; }
         .meta { font-size: 12px; color: #65676b; margin-top: 5px; font-weight: bold; }
 
@@ -122,7 +122,7 @@
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Fernando Souza</div>
+                    <div class="name">Fernando Henrique Souza</div>
                     <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 990,00 que eu nem sabia que tinha. Valeu Roberto!</div>
                     <div class="meta">Curtir · Responder · 2 min</div>
                 </div>
@@ -140,7 +140,7 @@
             <div class="comment" style="margin-left: 50px;">
                 <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Marcos Pimentel</div>
+                    <div class="name">Marcos Pimentel de Oliveira</div>
                     <div class="text">Carla, pode ir sem medo. O Roberto é ponta firme. Ativei a chave de rendimentos aqui e caiu tudo certinho.</div>
                     <div class="meta">Curtir · Responder · 3 min</div>
                 </div>
@@ -149,7 +149,7 @@
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/52.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Anderson Silva</div>
+                    <div class="name">Anderson Silva Cavalcante</div>
                     <div class="text">Trabalhei em banco e sei que o que ele fala é real. Ativei hoje cedo e já fiz o primeiro saque. Top!</div>
                     <div class="meta">Curtir · Responder · 12 min</div>
                 </div>
@@ -158,7 +158,7 @@
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Juliana Martins</div>
+                    <div class="name">Juliana Martins da Costa</div>
                     <div class="text">O suporte no whats é muito bom, me ajudou a clicar no menu certo do Bradesco. Nota 10.</div>
                     <div class="meta">Curtir · Responder · 22 min</div>
                 </div>
@@ -170,6 +170,42 @@
                     <div class="name">Bruno Oliveira</div>
                     <div class="text">Ativação concluída! Dinheiro no bolso em menos de 15 minutos.</div>
                     <div class="meta">Curtir · Responder · 45 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/45.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Tereza Cristina dos Santos</div>
+                    <div class="text">Tava precisando muito desse dinheiro pra pagar o cartão. Muito obrigada por compartilhar isso Roberto!</div>
+                    <div class="meta">Curtir · Responder · 1h</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/60.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Luiz Carlos Menezes</div>
+                    <div class="text">No Itaú funcionou de primeira. O passo a passo é bem explicado e não tem erro.</div>
+                    <div class="meta">Curtir · Responder · 1h</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/33.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Patrícia Helena Rocha</div>
+                    <div class="text">Meu marido não acreditou, mas quando viu o saldo aumentando ele ficou doido kkkkk. Recomendo dms.</div>
+                    <div class="meta">Curtir · Responder · 2h</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/18.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Rodrigo Pereira Lima</div>
+                    <div class="text">Pensei q era só pra banco grande mas no Inter tbm deu. Show de bola.</div>
+                    <div class="meta">Curtir · Responder · 3h</div>
                 </div>
             </div>
         </div>
@@ -191,10 +227,11 @@
     </div>
 
     <script>
+        // Nomes exclusivos para o pop-out (diferentes dos comentários)
         const compradores = [
-            {n: "João Silva", s: "men"}, {n: "Ricardo Santos", s: "men"},
-            {n: "Ana Ferreira", s: "women"}, {n: "Beatriz Costa", s: "women"},
-            {n: "Thiago Souza", s: "men"}, {n: "Camila Rocha", s: "women"}
+            {n: "Marcelo Vigário", s: "men"}, {n: "Samuel Castro de Assis", s: "men"},
+            {n: "Fernanda Luiza", s: "women"}, {n: "Clara Maria Rezende", s: "women"},
+            {n: "Vitor Barbosa Lima", s: "men"}, {n: "Jaqueline Farias", s: "women"}
         ];
 
         let copias = 3;
@@ -202,7 +239,7 @@
         function showNotification() {
             if (copias <= 0) return;
             const comp = compradores[Math.floor(Math.random() * compradores.length)];
-            const imgId = Math.floor(Math.random() * 50);
+            const imgId = Math.floor(Math.random() * 50) + 10; // offset para evitar fotos iguais
             document.getElementById('notify-name').innerText = comp.n;
             document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${comp.s}/${imgId}.jpg`;
             const notify = document.getElementById('notification');
