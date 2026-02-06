@@ -44,7 +44,11 @@
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
         .story-text p { margin-bottom: 18px; font-size: 16px; color: #1c1e21; }
-        .highlight-bg { background: #fff8e1; font-weight: 700; padding: 2px 4px; }
+        .highlight-bg { background: #fff8e1; font-weight: 700; padding: 2px 4px; border-bottom: 2px solid #ffc107; }
+
+        .roberto-box { background: #f8f9fa; border-left: 4px solid #1877f2; padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+        .roberto-box h4 { color: #1877f2; margin-bottom: 10px; text-transform: uppercase; font-size: 14px; }
+        .roberto-box p { font-style: italic; font-size: 15px; color: #444; }
 
         .proof-box { background: #f0f2f5; padding: 20px 0; margin: 20px -20px; }
         .carousel { display: flex; overflow-x: auto; gap: 12px; padding: 0 20px 15px 20px; scrollbar-width: none; }
@@ -55,8 +59,8 @@
         .card h3 { font-size: 14px; font-weight: 700; color: #1c1e21; }
 
         .offer-box { background: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .price-tag { font-size: 34px; font-weight: 900; color: #1a7f37; margin: 5px 0; }
-        .old-price { text-decoration: line-through; color: #65676b; font-size: 14px; }
+        .price-tag { font-size: 38px; font-weight: 900; color: #1a7f37; margin: 5px 0; }
+        .old-price { text-decoration: line-through; color: #65676b; font-size: 14px; display: block; }
         
         .btn-main { background: #1877f2; color: #fff; text-decoration: none; padding: 16px; display: block; border-radius: 6px; font-weight: 700; font-size: 17px; margin-top: 15px; cursor: pointer; border:none; width: 100%; text-align: center;}
         .btn-main span { font-size: 12px; font-weight: 400; display: block; opacity: 0.9; margin-top: 4px; }
@@ -86,12 +90,12 @@
 </head>
 <body>
 
-    <div class="breaking-news">⚠️ URGENTE: AUDITORIA REVELA SEGREDO DOS BANCOS PARA LIMPAR O NOME.</div>
+    <div class="breaking-news">⚠️ URGENTE: AUDITOR REVELA COMO OBRIGAR O BANCO A LIMPAR SEU NOME.</div>
 
     <div class="container">
         <div class="headline-box">
-            <span class="tag">Exclusivo</span>
-            <h1>EX-AUDITOR É DEMITIDO POR AJUDAR DEMAIS: "NÃO AGUENTEI VER O POVO SENDO ENGANADO"</h1>
+            <span class="tag">Justiça Financeira</span>
+            <h1>EX-AUDITOR É DEMITIDO POR AJUDAR DEMAIS: "ELES QUEREM QUE VOCÊ PAGUE JUROS PRA SEMPRE"</h1>
             <div class="meta-info">
                 <div class="meta-item"><div class="red-dot"></div><strong style="color: #c4170c;">AO VIVO</strong></div>
                 <span>•</span>
@@ -100,80 +104,88 @@
         </div>
 
         <div class="story-text">
-            <p>O Auditor Sênior <strong>Roberto Menezes</strong> foi desligado de uma grande instituição financeira após imprimir e entregar para clientes o <span class="highlight-bg">Termo de Quitação Oficial</span>.</p>
-            <p>"Eles me mandaram embora porque eu estava ajudando demais as pessoas a saírem das dívidas pagando apenas o valor justo, sem os juros abusivos que o banco esconde", afirmou Roberto.</p>
+            <p>O Auditor Sênior <strong>Roberto Menezes</strong> vazou hoje o documento que as agências bancárias tentam esconder a sete chaves: o <span class="highlight-bg">Termo de Quitação Carimbado</span>.</p>
+            
+            <div class="roberto-box">
+                <h4>Fala do Roberto:</h4>
+                <p>"É muito simples. Eu vazei o modelo oficial que a gente usava lá dentro. Você só precisa preencher seus dados e enviar para o banco pelo app ou agência. Pela <b>Lei 14.181 (Lei do Superendividamento)</b>, o banco é <b>obrigado</b> a aceitar e reduzir sua dívida em até 95%. O meu carimbo de Auditor Sênior no documento garante a autenticidade que eles não podem ignorar."</p>
+            </div>
+
+            <p>Com esse protocolo, dívidas que eram de R$ 20.000 estão sendo quitadas por menos de R$ 800, removendo o nome do SPC/Serasa em até 48 horas.</p>
         </div>
 
         <div class="proof-box">
             <div class="carousel">
-                <div class="card"><img src="IMG_20260124_155738.png"><div class="card-body"><h3>1. TERMO DE QUITAÇÃO</h3></div></div>
+                <div class="card"><img src="IMG_20260124_155738.png"><div class="card-body"><h3>1. TERMO CARIMBADO</h3></div></div>
                 <div class="card"><img src="IMG_20260124_155715.png"><div class="card-body"><h3>2. SCRIPT SCORE 900</h3></div></div>
                 <div class="card"><img src="1768406035009.jpg"><div class="card-body"><h3>3. CONSULTA RENDIMENTOS</h3></div></div>
             </div>
         </div>
 
         <div class="offer-box">
-            <div class="old-price">Taxa Bancária: R$ 997,00</div>
-            <div class="price-tag">Emissão: R$ 97,00</div>
-            <p style="font-weight:700; color:#1c1e21; font-size: 13px;">⚠️ Taxa única de manutenção (Termo + Script de Score).</p>
+            <span class="old-price">Taxa Bancária: R$ 997,00</span>
+            <span class="old-price" style="margin-bottom: 10px;">Honorários Advogado: R$ 400,00</span>
+            <p style="font-size: 14px; font-weight: 700; color: #d32f2f;">Emissão pelo meu servidor hoje:</p>
+            <div class="price-tag">R$ 97,00</div>
+            <p style="font-weight:700; color:#1c1e21; font-size: 13px;">⚠️ Valor único para acesso vitalício ao Termo + Script.</p>
             <button class="btn-main" onclick="abrirQuizz()">EMITIR MEU TERMO AGORA <span>(Válido para dívidas até R$ 100k)</span></button>
         </div>
 
         <div class="comments-wrapper">
-            <div class="fb-header"><span>412 comentários</span> <span>Mais recentes</span></div>
+            <div class="fb-header"><span>538 comentários</span> <span>Mais recentes</span></div>
             
             <div class="fb-comment">
-                <img src="https://i.pravatar.cc/150?u=12" class="fb-avatar">
+                <img src="https://i.pravatar.cc/150?u=32" class="fb-avatar">
                 <div style="flex: 1;">
                     <div class="fb-bubble">
-                        <span class="fb-name">Marcio Oliveira</span>
-                        <span class="fb-text">O Roberto é um anjo, paguei os 97 e em 10 minutos meu termo tava no e-mail. Levei no banco e a dívida de 15k caiu pra 600 reais!</span>
+                        <span class="fb-name">Marcos Vinicius</span>
+                        <span class="fb-text">Levei o termo carimbado na agência do Bradesco e o gerente nem discutiu. Minha dívida de 14k caiu pra 520 reais. Valeu Roberto!</span>
                     </div>
-                    <div class="fb-actions">Curtir · Responder · 2 min</div>
+                    <div class="fb-actions">Curtir · Responder · 4 min</div>
                 </div>
             </div>
 
             <div class="fb-comment">
-                <img src="https://i.pravatar.cc/150?u=45" class="fb-avatar">
+                <img src="https://i.pravatar.cc/150?u=47" class="fb-avatar">
                 <div style="flex: 1;">
                     <div class="fb-bubble">
-                        <span class="fb-name">Dona Maria Aparecida</span>
-                        <span class="fb-text">Eu tava desesperada com o nome sujo e sem crédito pra nada. Usei o termo e o script do score e hoje meu limite subiu pra 4 mil. Deus abençoe vcs.</span>
+                        <span class="fb-name">Juliana Rocha</span>
+                        <span class="fb-text">Tinha medo de ser mentira, mas o documento é oficial mesmo. Meu nome limpou em 2 dias e meu score já subiu pra 810. Muito obrigada!</span>
                     </div>
-                    <div class="fb-actions">Curtir · Responder · 8 min</div>
+                    <div class="fb-actions">Curtir · Responder · 12 min</div>
                 </div>
             </div>
 
             <div class="fb-comment">
-                <img src="https://i.pravatar.cc/150?u=23" class="fb-avatar">
+                <img src="https://i.pravatar.cc/150?u=88" class="fb-avatar">
                 <div style="flex: 1;">
                     <div class="fb-bubble">
-                        <span class="fb-name">Jorge Luiz</span>
-                        <span class="fb-text">Muito real, minha filha viu na internet e fez pra mim. O banco aceitou o termo carimbado na hora. O gerente ficou sem palavras.</span>
+                        <span class="fb-name">Seu Ademar Gonçalves</span>
+                        <span class="fb-text">Aposentado sofre com juro de empréstimo. Esse termo do Roberto me salvou, parei de pagar aquela parcela absurda.</span>
                     </div>
-                    <div class="fb-actions">Curtir · Responder · 15 min</div>
+                    <div class="fb-actions">Curtir · Responder · 21 min</div>
                 </div>
             </div>
 
             <div class="fb-comment">
-                <img src="https://i.pravatar.cc/150?u=33" class="fb-avatar">
+                <img src="https://i.pravatar.cc/150?u=92" class="fb-avatar">
                 <div style="flex: 1;">
                     <div class="fb-bubble">
-                        <span class="fb-name">Luciana Mendes</span>
-                        <span class="fb-text">Gente, façam sem medo. Eu tava devendo cartão de crédito há 3 anos e esse termo limpou tudo por uma merreca. Melhor investimento.</span>
+                        <span class="fb-name">Carla Bittencourt</span>
+                        <span class="fb-text">Gente, é só preencher e mandar. O banco não pode negar porque tem a lei escrita no termo. Fiz no Santander e deu certo.</span>
                     </div>
-                    <div class="fb-actions">Curtir · Responder · 22 min</div>
+                    <div class="fb-actions">Curtir · Responder · 34 min</div>
                 </div>
             </div>
 
             <div class="fb-comment">
-                <img src="https://i.pravatar.cc/150?u=56" class="fb-avatar">
+                <img src="https://i.pravatar.cc/150?u=11" class="fb-avatar">
                 <div style="flex: 1;">
                     <div class="fb-bubble">
-                        <span class="fb-name">Paulo Roberto</span>
-                        <span class="fb-text">Meu score tava 200, usei o script do auditor e foi pra 890 em menos de uma semana. Já consegui financiar meu carro.</span>
+                        <span class="fb-name">Bruno Henrique</span>
+                        <span class="fb-text">O script de score é o diferencial. Consegui financiar minha moto ontem, coisa que o banco negava há 2 anos.</span>
                     </div>
-                    <div class="fb-actions">Curtir · Responder · 31 min</div>
+                    <div class="fb-actions">Curtir · Responder · 55 min</div>
                 </div>
             </div>
         </div>
@@ -186,37 +198,37 @@
     <div id="quizz-overlay">
         <div class="quizz-card" id="q1">
             <h2>PASSO 1 DE 3</h2>
-            <p style="margin-bottom:20px">Em qual banco você possui a dívida principal?</p>
+            <p style="margin-bottom:20px">Em qual banco você precisa aplicar o Termo?</p>
             <div class="quizz-options">
                 <button class="opt-btn" onclick="next(2)">Itaú / Bradesco / Santander</button>
-                <button class="opt-btn" onclick="next(2)">Nubank / Inter / Neon</button>
+                <button class="opt-btn" onclick="next(2)">Nubank / Inter / Digio</button>
                 <button class="opt-btn" onclick="next(2)">Caixa / Banco do Brasil</button>
-                <button class="opt-btn" onclick="next(2)">Outros / Financeiras</button>
+                <button class="opt-btn" onclick="next(2)">Outros Bancos / Financeiras</button>
             </div>
         </div>
         
         <div class="quizz-card" id="q2" style="display:none">
             <h2>PASSO 2 DE 3</h2>
-            <p style="margin-bottom:20px">Qual o valor aproximado da dívida?</p>
+            <p style="margin-bottom:20px">Qual o valor total das dívidas hoje?</p>
             <div class="quizz-options">
                 <button class="opt-btn" onclick="next(3)">Até R$ 5.000</button>
                 <button class="opt-btn" onclick="next(3)">De R$ 10.000 a R$ 50.000</button>
-                <button class="opt-btn" onclick="next(3)">Mais de R$ 100.000</button>
+                <button class="opt-btn" onclick="next(3)">Acima de R$ 100.000</button>
             </div>
         </div>
 
         <div class="quizz-card" id="q3" style="display:none">
             <h2>PASSO 3 DE 3</h2>
-            <p style="margin-bottom:20px">Deseja que o Auditor Roberto assine seu Termo agora?</p>
+            <p style="margin-bottom:20px">Deseja o carimbo oficial do Auditor Roberto?</p>
             <div class="quizz-options">
-                <button class="opt-btn" onclick="startProc()">SIM, GERAR TERMO + SCORE 900</button>
+                <button class="opt-btn" onclick="startProc()">SIM, GERAR TERMO CARIMBADO</button>
             </div>
         </div>
 
         <div class="quizz-card" id="loading" style="display:none">
-            <h2 id="L-title">AUDITANDO DÉBITOS...</h2>
+            <h2 id="L-title">CARIMBANDO TERMO...</h2>
             <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
-            <p class="status-text" id="status" style="font-size: 13px; color: #65676b;">Localizando juros abusivos...</p>
+            <p class="status-text" id="status" style="font-size: 13px; color: #65676b;">Aplicando Lei 14.181...</p>
         </div>
     </div>
 
@@ -224,7 +236,7 @@
         <img src="" id="toast-img" class="toast-img">
         <div class="toast-text">
             <span style="font-weight: 700;" id="toast-name">Nome</span> acaba de emitir o Termo.
-            <br><span style="color: #1a7f37; font-weight: 700;">Dívida reduzida em 95%!</span>
+            <br><span style="color: #1a7f37; font-weight: 700;">Redução de 95% aprovada!</span>
         </div>
     </div>
 
@@ -244,7 +256,7 @@
             let bar = document.getElementById('bar');
             let status = document.getElementById('status');
             let w = 0;
-            const msgs = ["Localizando juros abusivos...", "Aplicando Lei do Superendividamento...", "Gerando Termo Carimbado...", "PROTOCOLADO! REDIRECIONANDO..."];
+            const msgs = ["Auditando CPF...", "Anexando Carimbo de Auditor Sênior...", "Gerando Script de Score...", "CONCLUÍDO! REDIRECIONANDO..."];
             let i = setInterval(() => {
                 if(w >= 100) {
                     clearInterval(i);
@@ -260,18 +272,27 @@
             }, 45);
         }
 
-        const nomes = ["Ricardo Silva", "João Pereira", "Carlos Lima", "Fernando Souza", "Ana Paula", "Maria Eduarda", "Juliana Costa", "Bruna Alves"];
+        // Sistema de Notificação Inteligente (Gênero Combinado)
+        const homens = ["Ricardo Silva", "João Pereira", "Carlos Lima", "Fernando Souza", "Bruno Alves", "Paulo Roberto", "Marcelo Santos"];
+        const mulheres = ["Ana Paula", "Maria Eduarda", "Juliana Costa", "Bruna Alves", "Carla Bittencourt", "Luciana Mendes", "Sandra Regina"];
+
         function showToast() {
-            const nome = nomes[Math.floor(Math.random()*nomes.length)];
-            const imgId = Math.floor(Math.random()*70);
+            const isHomem = Math.random() > 0.5;
+            const nome = isHomem ? homens[Math.floor(Math.random()*homens.length)] : mulheres[Math.floor(Math.random()*mulheres.length)];
+            const generoImg = isHomem ? "men" : "women";
+            const imgId = Math.floor(Math.random()*50);
+            
             document.getElementById('toast-name').innerText = nome;
-            document.getElementById('toast-img').src = `https://i.pravatar.cc/150?u=${imgId}`;
+            document.getElementById('toast-img').src = `https://randomuser.me/api/portraits/${generoImg}/${imgId}.jpg`;
+            
             const t = document.getElementById('toast');
             t.classList.add('toast-show');
-            setTimeout(() => t.classList.remove('toast-show'), 4000);
-            setTimeout(showToast, Math.random()*8000 + 6000);
+            
+            // Tempo aparecendo: 3 segundos | Intervalo entre um e outro: 8 a 12 segundos
+            setTimeout(() => t.classList.remove('toast-show'), 3000);
+            setTimeout(showToast, Math.random()*4000 + 8000); 
         }
-        setTimeout(showToast, 3000);
+        setTimeout(showToast, 5000);
     </script>
 </body>
 </html>
