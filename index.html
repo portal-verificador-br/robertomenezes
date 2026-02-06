@@ -177,29 +177,29 @@
             </div>
             <h1>Verificação Inicial</h1>
             <p class="desc">Para garantir a segurança dos dados, confirme:</p>
-            <p class="desc" style="font-weight: 600;">Qual a origem da sua dívida principal??</p>
+            <p class="desc" style="font-weight: 600;">Você possui uma conta bancária ativa para recebimento de valores?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-check-circle"></i> Cartão de Crédito / Empréstimo Bancário
+                    <i class="far fa-check-circle"></i> SIM, POSSUO
                 </button>
                 <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-times-circle"></i> Contas de Consumo / Outros
+                    <i class="far fa-times-circle"></i> NÃO POSSUO
                 </button>
             </div>
         </div>
 
         <div id="step2" class="card">
             <h1>Regulamentação 2026</h1>
-            <p class="desc">O Protocolo 892 exige dívida com tempo mínimo de 45 dias.</p>
-            <p class="desc" style="font-weight: 600;">Há quanto tempo você está com restrição no CPF e sem acesso a crédito?</p>
+            <p class="desc">O Protocolo 892 exige movimentação recente.</p>
+            <p class="desc" style="font-weight: 600;">Você utilizou o Pix ou Cartão nos últimos 30 dias?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-check-circle"></i> Entre 1 e 3 anos
+                    <i class="far fa-check-circle"></i> SIM, UTILIZEI
                 </button>
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-clock"></i> Mais de 5 anos
+                    <i class="far fa-clock"></i> NÃO UTILIZEI
                 </button>
             </div>
         </div>
@@ -209,8 +209,8 @@
                 <i class="fas fa-unlock-alt"></i>
             </div>
             <h1>Acesso Quase Pronto</h1>
-            <p class="desc">Detectamos uma cópia do Termo para o seu perfil.</p>
-            <p class="desc">Deseja acessar a matéria completa e gerar seu Termo agora?</p>
+            <p class="desc">Detectamos uma pré-aprovação para o seu perfil.</p>
+            <p class="desc">Deseja acessar a matéria completa e gerar sua chave de ativação agora?</p>
             
             <div class="btn-group">
                 <button class="btn primary" onclick="startLoading()">
