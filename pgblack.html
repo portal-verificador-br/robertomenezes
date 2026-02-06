@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Reembolso Bancário - Ativo</title>
+    <title>Protocolo de Ativação Digital - Roberto M.</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,6 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    
-    // ATENÇÃO: SUBSTITUA ABAIXO PELO SEU ID SE NECESSÁRIO
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
@@ -27,149 +25,67 @@
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
     /></noscript>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
         
         .alert-bar {
-            background-color: #c00;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            animation: pulse 2s infinite;
+            background-color: #c00; color: #fff; text-align: center; padding: 10px;
+            font-weight: bold; font-size: 0.9rem; animation: pulse 2s infinite;
         }
+        @keyframes pulse { 0% { background-color: #c00; } 50% { background-color: #e00; } 100% { background-color: #c00; } }
 
-        @keyframes pulse {
-            0% { background-color: #c00; }
-            50% { background-color: #e00; }
-            100% { background-color: #c00; }
-        }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            font-size: 26px;
-            color: #111;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 900;
-        }
-        
+        h1 { font-size: 26px; color: #111; line-height: 1.2; margin-bottom: 15px; text-align: center; font-weight: 900; }
         .highlight { color: #c00; background: yellow; padding: 0 5px; }
 
-        .author-box {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
-        
-        .author-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #ddd;
-            margin-right: 10px;
-            overflow: hidden;
-        }
-        
+        .author-box { display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .author-img { width: 50px; height: 50px; border-radius: 50%; background: #ddd; margin-right: 10px; overflow: hidden; border: 2px solid #28a745; }
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        
         .date { font-size: 12px; color: #666; }
 
         p { margin-bottom: 15px; font-size: 18px; color: #333; }
-        
-        .print-screen {
-            width: 100%;
-            border: 2px solid #000;
-            margin: 15px 0;
-            border-radius: 8px;
-        }
+        .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
 
-        .cta-box {
-            background-color: #fff9c4;
-            border: 2px dashed #fbc02d;
-            padding: 20px;
-            text-align: center;
-            margin: 30px 0;
-            border-radius: 10px;
-        }
+        .cta-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 20px; text-align: center; margin: 30px 0; border-radius: 10px; }
 
         .btn-pulse {
-            background: #28a745; /* Green */
-            color: white;
-            font-size: 22px;
-            font-weight: bold;
-            padding: 20px 15px;
-            text-decoration: none;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 4px 0 #1e7e34;
-            transition: transform 0.1s;
-            animation: grow 1.5s infinite alternate;
-            text-transform: uppercase;
+            background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px 15px;
+            text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34;
+            animation: grow 1.5s infinite alternate; text-transform: uppercase;
         }
-        
-        /* NOVO ESTILO DO BOX WHATSAPP */
-        .whatsapp-guarantee {
-            background-color: #e8f5e9;
-            border: 1px solid #4caf50;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 15px;
-            text-align: left;
-            font-size: 14px;
-            color: #1b5e20;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
-        .btn-pulse:active { transform: translateY(4px); box-shadow: none; }
-
-        .scarcity { color: #c00; font-weight: bold; margin-top: 10px; font-size: 14px; }
-
-        /* Fake Comments */
-        .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
-        .comment { display: flex; margin-bottom: 15px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin-right: 10px; }
-        .comment-body { background: #f0f2f5; padding: 10px; border-radius: 15px; width: 100%; }
-        .name { font-weight: bold; font-size: 14px; color: #385898; }
-        .text { font-size: 14px; }
-        .meta { font-size: 12px; color: #65676b; margin-top: 5px; }
-        .like { color: #65676b; cursor: pointer; }
-
-        /* Sales Notification Popup */
-        #notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            display: none;
-            align-items: center;
-            z-index: 1000;
-            width: 300px;
-            border-left: 5px solid #28a745;
+        .whatsapp-guarantee {
+            background-color: #e8f5e9; border: 1px solid #4caf50; border-radius: 8px;
+            padding: 15px; margin-top: 15px; text-align: left; font-size: 14px;
+            color: #1b5e20; display: flex; align-items: center; gap: 10px;
         }
-        #notification img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
-        #notification p { font-size: 13px; margin: 0; line-height: 1.3; }
-        
-        .blur-text { filter: blur(4px); user-select: none; }
+
+        .scarcity { color: #c00; font-weight: bold; margin-top: 10px; font-size: 16px; }
+
+        /* Estilo Comentários Facebook 2026 */
+        .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
+        .fb-header { font-weight: bold; margin-bottom: 15px; color: #4b4f56; font-size: 14px; }
+        .comment { display: flex; margin-bottom: 15px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
+        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; }
+        .name { font-weight: bold; font-size: 13px; color: #385898; margin-bottom: 2px; }
+        .text { font-size: 14px; color: #1c1e21; line-height: 1.3; }
+        .meta { font-size: 12px; color: #65676b; margin-top: 5px; font-weight: bold; }
+
+        /* Notification Popup */
+        #notification {
+            position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 12px;
+            border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none;
+            align-items: center; z-index: 1000; width: 280px; border: 1px solid #e0e0e0;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn { from { transform: translateX(-120%); } to { transform: translateX(0); } }
+        #notification img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; }
+        #notification p { font-size: 13px; margin: 0; line-height: 1.2; color: #333; }
     </style>
 </head>
 <body>
@@ -180,7 +96,7 @@
 
     <div class="container">
         
-        <h1>Ex-Funcionário do Itaú VAZA Brecha de Segurança: <span class="highlight">"CPFs com saldo retido podem sacar até R$ 2.940,00 extra hoje"</span></h1>
+        <h1>Ex-Funcionário vaza Brecha: <span class="highlight">"Contas com Ativação Pendente liberam saldo hoje"</span></h1>
 
         <div class="author-box">
             <div class="author-img">
@@ -192,161 +108,134 @@
             </div>
         </div>
 
-        <p>Eles acharam que podiam me calar.</p>
+        <p>Eles tentaram esconder, mas eu não podia ficar calado.</p>
 
-        <p>Trabalhei por 20 anos no setor de T.I. de um dos maiores bancos do Brasil. Fui demitido semana passada (por justa causa) apenas porque tentei avisar um cliente idoso que ele tinha <strong>dinheiro esquecido</strong> na conta.</p>
+        <p>Após anos no setor de T.I., descobri que milhares de contas possuem <b>Ativações de Rendimento</b> pendentes. O dinheiro fica parado no banco, gerando lucro para eles, enquanto deveria estar no seu bolso.</p>
 
-        <p>O banco não quer que você saiba disso.</p>
+        <p>Não é sorteio. É um <strong>procedimento técnico</strong> de ativação de saldo retido que 99% das pessoas desconhecem.</p>
 
-        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta bancária. Mas, por padrão, essa função vem DESATIVADA.</p>
-
-        <p>O dinheiro fica lá... rendendo para ELES, enquanto você paga taxas.</p>
-        
-        <h3>A Vingança</h3>
-
-        <p>Decidi jogar a m**** no ventilador. Antes de sair do prédio, copiei o <strong>MANUAL DE ATIVAÇÃO</strong>.</p>
-
-        <p>Não é hacker. Não é ilegal. É um direito seu que está escondido atrás de 3 menus no aplicativo do seu banco.</p>
-
-        <img src="inter.png" class="print-screen" alt="Prova de Saldo">
-
-        <p>Acima está o print da conta do Renan, um amigo que ativou o código ontem. O dinheiro caiu na hora.</p>
+        <img src="inter.png" class="print-screen" alt="Ativação Concluída">
 
         <div class="cta-box">
-            <h2>ACESSO RESTRITO AO MANUAL</h2>
-            <p>Eu compilei o passo a passo exato em um PDF à prova de idiotas. Você só precisa ler, clicar onde eu mostro e sacar.</p>
-            <p style="font-size: 14px; color: #555;">(Funciona para: Nubank, Inter, Bradesco, Itaú, Santander e Caixa)</p>
+            <h2 style="font-size: 20px; margin-bottom: 10px;">LIBERAR ACESSO À ATIVAÇÃO</h2>
+            <p style="font-size: 14px; color: #555;">(Válido para Nubank, Itaú, Bradesco, Santander e Inter)</p>
             
-            <br>
+            <p style="text-decoration: line-through; color: #999; margin-top: 15px; font-size: 16px;">De: R$ 197,00</p>
+            <p style="font-size: 28px; font-weight: 900; color: #28a745;">POR APENAS: R$ 27,90</p>
             
-            <p style="text-decoration: line-through; color: #999;">De: R$ 997,00</p>
-            <p style="font-size: 24px; font-weight: bold; color: #c00;">POR APENAS: R$ 97,00</p>
-            
-            <p style="font-size: 11px; color: #555; margin-top: -10px; margin-bottom: 20px; line-height: 1.3;">
-                *Taxa única de manutenção para manter o servidor seguro e ativo. Não viso lucro com essa informação, apenas cobrir os custos para que o sistema não caia.
-            </p>
-            
-            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse">
-                🔓 DESBLOQUEAR MEU SALDO AGORA
+            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse" onclick="fbq('track', 'InitiateCheckout');">
+                🔓 ATIVAR MEUS RENDIMENTOS AGORA
             </a>
-            
+
             <div class="whatsapp-guarantee">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width: 30px; height: 30px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width: 35px;">
                 <div>
-                    <strong>Incluso na licença:</strong><br>
-                    Ao liberar seu acesso você recebe meu <b>WhatsApp Pessoal</b>. Se tiver qualquer dúvida para sacar, me chame e faremos o processo juntos.
+                    <strong>Suporte Direto com o Roberto:</strong><br>
+                    Ao garantir sua ativação, você recebe meu <b>WhatsApp pessoal</b>. Se tiver qualquer dúvida, eu mesmo faço o processo com você.
                 </div>
             </div>
 
-            <p class="scarcity">🔥 Restam apenas 3 licenças.</p>
+            <p class="scarcity">🔥 Restam apenas <span id="contador-vagas">3</span> ativações para o seu CPF.</p>
         </div>
 
-        <div style="background-color: #f8f9fa; border: 2px dashed #000; padding: 25px; margin: 30px 0; border-radius: 12px; text-align: left;">
-            <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                <img src="https://cdn-icons-png.flaticon.com/512/9426/9426996.png" style="width: 50px; height: 50px; margin-right: 15px;">
-                <h3 style="margin: 0; color: #1c1e21; font-weight: 900; font-size: 20px; text-transform: uppercase;">Desafio: Saque ou PIX</h3>
-            </div>
-            
-            <p style="font-size: 16px; color: #333; margin-bottom: 10px;">
-                A consulta anterior já confirmou que <strong>seu CPF possui valores retidos</strong>. O dinheiro é seu por direito.
-            </p>
-            
-            <p style="font-size: 16px; color: #333; font-weight: bold;">
-                Mas eu quero tirar todo o peso das suas costas.
-            </p>
-
-            <p style="font-size: 15px; color: #555; background: #e8f5e9; padding: 10px; border-left: 4px solid #28a745; border-radius: 4px;">
-                🔒 <strong>GARANTIA PESSOAL:</strong> Se você seguir o passo a passo e, por qualquer motivo técnico, não conseguir <strong>transferir o valor para sua conta</strong>, me chame no WhatsApp. Eu não quero seus R$ 97. Eu te devolvo o valor da licença via <strong>PIX</strong> na hora.
+        <div style="border: 2px solid #28a745; padding: 20px; border-radius: 12px; background: #f8fff9; margin-bottom: 30px;">
+            <h3 style="color: #1b5e20; font-size: 18px; margin-bottom: 10px; text-align: center;">🤝 COMPROMISSO ROBERTO M.</h3>
+            <p style="font-size: 15px; color: #333; text-align: center;">
+                Se você fizer a ativação e não visualizar seu saldo em até 24h, basta me chamar no WhatsApp. <b>Eu te devolvo cada centavo via PIX na hora.</b> Meu objetivo é expor o que os bancos escondem, não o seu dinheiro.
             </p>
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 15px;">196 Comentários</p>
+            <p class="fb-header">214 Comentários</p>
 
             <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Fernando Souza</div>
-                    <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 990,00 que eu nem sabia que tinha.</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 2 min</div>
+                    <div class="name">Ricardo Oliveira</div>
+                    <div class="text">Gente, eu tava desconfiado, mas o Roberto me atendeu no zap e deu tudo certo. Acabei de ativar o rendimento oculto aqui no Itaú. Surreal!</div>
+                    <div class="meta">Curtir · Responder · 2 min</div>
                 </div>
             </div>
 
             <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Carla Dias</div>
-                    <div class="text">Gente, é verdade mesmo? Tô com medo de ser golpe.</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 5 min</div>
+                    <div class="name">Camila Ferreira</div>
+                    <div class="text">Funciona mesmo! Paguei os 27 e em 10 minutos já tava com o manual. Já fiz a primeira ativação no Nubank.</div>
+                    <div class="meta">Curtir · Responder · 5 min</div>
                 </div>
             </div>
-             
+
             <div class="comment" style="margin-left: 50px;">
-                <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
+                <img src="https://randomuser.me/api/portraits/men/15.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Marcos Pimentel</div>
-                    <div class="text">Carla, pode ir. O Roberto entrega mesmo. O acesso chega no email. É um PDF simples, mas o conteúdo vale ouro. Recuperei 1400 reais que o banco comeu de taxa.</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 3 min</div>
+                    <div class="name">Marcos Vinícius</div>
+                    <div class="text">Pode ir sem medo Camila, o cara é honesto. Se não der certo ele devolve o pix na hora, mas o passo a passo é muito fácil.</div>
+                    <div class="meta">Curtir · Responder · 3 min</div>
                 </div>
             </div>
 
             <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Juliana Martins</div>
-                    <div class="text">Tô chocada! Funciona no Bradesco tbm!!!</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 12 min</div>
+                    <div class="name">Sandra Regina</div>
+                    <div class="text">Graças a Deus encontrei isso. O banco me cobrou taxa a vida inteira e agora recuperei tudo ativando o sistema. Obrigada Roberto!</div>
+                    <div class="meta">Curtir · Responder · 12 min</div>
                 </div>
             </div>
         </div>
-        
-        <br><br>
-        <center>
-            <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" style="color: #666; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
-            <p style="font-size: 10px; color: #999; margin-top: 10px;">Este site não tem vínculo com o Facebook ou entidades bancárias. Os resultados podem variar.</p>
-        </center>
 
+        <center style="margin-top: 30px; padding-bottom: 20px;">
+            <p style="font-size: 10px; color: #999;">Este site não tem vínculo com o Facebook ou instituições bancárias. Resultados baseados em protocolos técnicos de ativação de conta.</p>
+        </center>
     </div>
 
     <div id="notification">
-        <img src="https://randomuser.me/api/portraits/men/1.jpg" id="notify-img">
+        <img src="" id="notify-img">
         <div>
-            <p><strong><span id="notify-name">João</span> de SP</strong></p>
-            <p>Acabou de comprar o Manual.</p>
-            <p style="color: #28a745; font-size: 11px; font-weight: bold;"><span id="notify-value">Ganhou R$ 1.950,00 de retorno</span></p>
+            <p><strong><span id="notify-name"></span></strong></p>
+            <p id="notify-text"></p>
         </div>
     </div>
 
     <script>
-        const names = ['Pedro', 'Lucas', 'Fernanda', 'Marcos', 'Júlia', 'Rafael', 'Ana', 'Gustavo'];
-        const locs = ['SP', 'RJ', 'MG', 'RS', 'BA', 'PR'];
-        
-        function showNotification() {
-            const name = names[Math.floor(Math.random() * names.length)];
-            const loc = locs[Math.floor(Math.random() * locs.length)];
-            const imgId = Math.floor(Math.random() * 50);
-            const gender = Math.random() > 0.5 ? 'men' : 'women';
-            
-            // GERA VALOR ALEATÓRIO ENTRE 1400 e 2890
-            const randomValue = Math.floor(Math.random() * (2890 - 1400 + 1) + 1400);
+        const compradores = [
+            {n: "Marcos Silva", s: "men"},
+            {n: "Ricardo Santos", s: "men"},
+            {n: "Ana Julia Ferreira", s: "women"},
+            {n: "Beatriz Costa", s: "women"},
+            {n: "Thiago Souza", s: "men"},
+            {n: "Camila Rocha", s: "women"},
+            {n: "José Eduardo", s: "men"},
+            {n: "Luciana Mendes", s: "women"}
+        ];
 
-            document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
+        let copias = 3;
+
+        function showNotification() {
+            if (copias <= 0) return;
+
+            const comp = compradores[Math.floor(Math.random() * compradores.length)];
+            const imgId = Math.floor(Math.random() * 70);
             
-            // ATUALIZA O TEXTO COM O VALOR NOVO
-            document.getElementById('notify-value').innerText = `Ganhou R$ ${randomValue},00 de retorno`;
+            document.getElementById('notify-name').innerText = comp.n;
+            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${comp.s}/${imgId}.jpg`;
+            document.getElementById('notify-text').innerText = "Acabou de realizar uma Ativação.";
             
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
-            
-            setTimeout(() => {
-                notify.style.display = 'none';
-            }, 4000);
+
+            // Diminui o contador de vagas
+            copias--;
+            document.getElementById('contador-vagas').innerText = copias;
+
+            setTimeout(() => { notify.style.display = 'none'; }, 5000);
         }
 
-        // Show first notification after 3 seconds, then every 15 seconds
-        setTimeout(showNotification, 3000);
-        setInterval(showNotification, 15000);
+        // Pop-outs espaçados para não parecer spam
+        setTimeout(showNotification, 4000);
+        setTimeout(showNotification, 18000);
+        setTimeout(showNotification, 35000);
     </script>
 </body>
 </html>
