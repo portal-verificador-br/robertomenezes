@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantão Urgente: Vazamento Bancário</title>
+    <title>Plantão Urgente: Auditoria Bancária 2026</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,166 +28,180 @@
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #fff; color: #333; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; -webkit-font-smoothing: antialiased; }
         
-        .breaking-news { background: #c4170c; color: #fff; padding: 10px; text-align: center; font-weight: 700; font-size: 13px; text-transform: uppercase; animation: pulse 2s infinite; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.9; } 100% { opacity: 1; } }
+        .breaking-news { background: #c4170c; color: #fff; padding: 12px; text-align: center; font-weight: 700; font-size: 14px; text-transform: uppercase; animation: pulse 2s infinite; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.8; } 100% { opacity: 1; } }
 
-        .container { max-width: 600px; margin: 0 auto; padding: 20px 20px 40px 20px; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
 
-        .headline-box { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        .headline-box { margin-bottom: 20px; }
         .tag { color: #c4170c; font-weight: 700; font-size: 13px; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        h1 { font-size: 26px; color: #1a1a1a; line-height: 1.2; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.5px; }
+        h1 { font-size: 24px; color: #1a1a1a; line-height: 1.2; font-weight: 800; margin-bottom: 10px; }
         
-        .meta-info { font-size: 12px; color: #777; margin-top: 15px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .meta-item { display: flex; align-items: center; white-space: nowrap; }
-        .red-dot { width: 8px; height: 8px; background: #c4170c; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
+        .meta-info { font-size: 13px; color: #65676b; margin-top: 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #ebedf0; padding-bottom: 15px; }
+        .red-dot { width: 8px; height: 8px; background: #c4170c; border-radius: 50%; display: inline-block; animation: blink 1s infinite; }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
-        .separator { color: #ccc; }
 
-        .story-text p { margin-bottom: 18px; font-size: 17px; color: #333; }
-        .highlight-bg { background: #fff8e1; padding: 2px 5px; border-radius: 3px; border-bottom: 2px solid #ffc107; }
+        .story-text p { margin-bottom: 18px; font-size: 16px; color: #1c1e21; }
+        .highlight-bg { background: #fff8e1; font-weight: 700; padding: 2px 4px; }
 
-        .proof-box { background: #f4f4f4; border-left: 4px solid #c4170c; padding: 20px; margin: 30px -20px; }
-        .proof-title { font-weight: 800; font-size: 14px; text-transform: uppercase; margin-bottom: 15px; color: #333; padding-left: 20px; }
-        .carousel { display: flex; overflow-x: auto; gap: 15px; padding: 0 20px 15px 20px; scrollbar-width: none; }
+        .proof-box { background: #f0f2f5; padding: 20px 0; margin: 20px -20px; }
+        .carousel { display: flex; overflow-x: auto; gap: 12px; padding: 0 20px 15px 20px; scrollbar-width: none; }
         .carousel::-webkit-scrollbar { display: none; }
-        .card { min-width: 250px; background: #fff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #ddd; }
-        .card img { width: 100%; height: 300px; object-fit: cover; display: block; }
-        .card-body { padding: 15px; }
-        .card h3 { font-size: 16px; font-weight: 800; color: #c4170c; margin-bottom: 5px; }
+        .card { min-width: 220px; background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #ddd; }
+        .card img { width: 100%; height: 280px; object-fit: cover; }
+        .card-body { padding: 10px; text-align: center; }
+        .card h3 { font-size: 14px; font-weight: 700; color: #1c1e21; }
 
-        .personal-note { background: #e8f5e9; border: 1px solid #c8e6c9; padding: 20px; border-radius: 12px; margin: 30px 0; position: relative; }
-        .note-icon { position: absolute; top: -20px; left: 20px; width: 40px; height: 40px; background: #2e7d32; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .signature { font-family: 'Times New Roman', serif; font-style: italic; font-size: 18px; margin-top: 15px; text-align: right; }
-        .stamp { border: 3px double #c4170c; color: #c4170c; display: inline-block; padding: 5px 10px; transform: rotate(-5deg); font-size: 12px; font-weight: 800; text-transform: uppercase; margin-top: 10px; float: right; clear: both; }
-
-        .offer-box { background: #fff; border: 2px dashed #333; padding: 20px; border-radius: 15px; text-align: center; margin-top: 30px; }
-        .price-tag { font-size: 38px; font-weight: 900; color: #28a745; margin: 10px 0; }
-        .old-price { text-decoration: line-through; color: #999; font-size: 16px; }
+        .offer-box { background: #fff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .price-tag { font-size: 34px; font-weight: 900; color: #1a7f37; margin: 5px 0; }
+        .old-price { text-decoration: line-through; color: #65676b; font-size: 14px; }
         
-        .btn-main { background: linear-gradient(to bottom, #28a745, #218838); color: #fff; text-decoration: none; padding: 18px 20px; display: block; border-radius: 8px; font-weight: 800; font-size: 18px; text-transform: uppercase; margin-top: 15px; cursor: pointer; border:none; width: 100%; animation: grow 2s infinite alternate; }
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
-        .btn-main span { font-size: 12px; font-weight: 500; display: block; opacity: 0.9; text-transform: none; }
+        .btn-main { background: #1877f2; color: #fff; text-decoration: none; padding: 16px; display: block; border-radius: 6px; font-weight: 700; font-size: 17px; margin-top: 15px; cursor: pointer; border:none; width: 100%; }
+        .btn-main span { font-size: 12px; font-weight: 400; display: block; opacity: 0.9; margin-top: 4px; }
 
-        /* QUIZZ OVERLAY */
-        #quizz-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); display: none; z-index: 10000; align-items: center; justify-content: center; padding: 20px; color: #fff; }
-        .quizz-card { background: #111; border: 1px solid #28a745; padding: 30px; border-radius: 20px; width: 100%; max-width: 450px; text-align: center; }
-        .quizz-card h2 { color: #28a745; margin-bottom: 20px; font-size: 22px; }
-        .quizz-options { display: flex; flex-direction: column; gap: 12px; }
-        .opt-btn { background: #222; color: #fff; border: 1px solid #444; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: 600; text-align: left; }
-        .progress-bar { width: 100%; height: 12px; background: #333; border-radius: 10px; overflow: hidden; margin: 20px 0; }
-        .progress-fill { width: 0%; height: 100%; background: #28a745; transition: 0.1s; }
-        .status-text { font-size: 13px; color: #aaa; font-style: italic; }
+        /* QUIZZ OVERLAY ATUALIZADO */
+        #quizz-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.98); display: none; z-index: 10000; align-items: center; justify-content: center; padding: 20px; color: #1c1e21; }
+        .quizz-card { background: #fff; border: 1px solid #ddd; padding: 25px; border-radius: 12px; width: 100%; max-width: 450px; text-align: center; box-shadow: 0 12px 28px rgba(0,0,0,0.2); }
+        .quizz-card h2 { color: #1877f2; margin-bottom: 15px; font-size: 20px; font-weight: 800; }
+        .quizz-options { display: flex; flex-direction: column; gap: 10px; }
+        .opt-btn { background: #f0f2f5; color: #1c1e21; border: 1px solid #ddd; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: 600; text-align: left; transition: 0.2s; }
+        .opt-btn:hover { background: #e4e6eb; }
+        .progress-bar { width: 100%; height: 8px; background: #e4e6eb; border-radius: 10px; overflow: hidden; margin: 20px 0; }
+        .progress-fill { width: 0%; height: 100%; background: #1877f2; transition: 0.3s; }
 
-        /* FACEBOOK COMMENTS */
-        .comments-wrapper { margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
-        .fb-comment { display: flex; gap: 10px; margin-bottom: 15px; }
-        .fb-avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
-        .fb-bubble { background: #f0f2f5; padding: 10px; border-radius: 18px; }
-        .fb-name { font-weight: 600; font-size: 13px; display: block; }
+        /* FACEBOOK COMMENTS 2026 STYLE */
+        .comments-wrapper { margin-top: 30px; }
+        .fb-header { font-weight: 700; color: #65676b; font-size: 14px; margin-bottom: 15px; display: flex; justify-content: space-between; }
+        .fb-comment { display: flex; gap: 8px; margin-bottom: 16px; }
+        .fb-avatar { width: 36px; height: 36px; border-radius: 50%; }
+        .fb-bubble { background: #f0f2f5; padding: 8px 12px; border-radius: 18px; position: relative; }
+        .fb-name { font-weight: 700; font-size: 13px; color: #050505; }
+        .fb-text { font-size: 14px; color: #050505; }
+        .fb-actions { font-size: 12px; color: #65676b; font-weight: 700; margin-top: 4px; margin-left: 12px; }
 
         /* TOAST */
-        .toast-notification { position: fixed; top: 20px; right: 20px; background: #fff; padding: 12px 15px; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); display: flex; align-items: center; z-index: 9999; border-left: 4px solid #28a745; transform: translateX(150%); transition: 0.5s; width: 320px; }
-        .toast-show { transform: translateX(0); }
-        .toast-img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; }
+        .toast-notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(150%); background: #fff; padding: 10px 15px; border-radius: 50px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: flex; align-items: center; z-index: 9999; border: 1px solid #ddd; transition: 0.5s; width: 90%; max-width: 350px; }
+        .toast-show { transform: translateX(-50%) translateY(0); }
+        .toast-img { width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; }
+        .toast-text { font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <div class="breaking-news">🚨 PLANTÃO URGENTE: SITE PODE SAIR DO AR A QUALQUER MOMENTO.</div>
+    <div class="breaking-news">⚠️ URGENTE: O BANCO TENTOU DERRUBAR ESTE DOCUMENTO HOJE.</div>
 
     <div class="container">
         <div class="headline-box">
-            <span class="tag">Escândalo Financeiro</span>
-            <h1>EX-AUDITOR SÊNIOR É DEMITIDO POR "AJUDAR DEMAIS" E VAZA O CÓDIGO 892 NA INTERNET</h1>
+            <span class="tag">Auditoria Bancária</span>
+            <h1>EX-AUDITOR DEMITIDO REVELA: "ELES ME MANDARAM EMBORA PORQUE ENSINEI O POVO A LIMPAR O NOME"</h1>
             <div class="meta-info">
                 <div class="meta-item"><div class="red-dot"></div><strong style="color: #c4170c;">AO VIVO</strong></div>
-                <span class="separator">•</span>
-                <div class="meta-item">Por: Redação Investiga</div>
-                <span class="separator">•</span>
-                <div class="meta-item">Há 12 min</div>
+                <span>•</span>
+                <div>Atualizado em: 2026</div>
             </div>
         </div>
 
         <div class="story-text">
-            <p><strong>Roberto Menezes</strong>, auditor com 20 anos de carreira, vazou a <strong>Ferramenta de Ativação</strong> que libera saque dos rendimentos ocultos e gera o Termo de Quitação Carimbado.</p>
+            <p><strong>Roberto Menezes</strong>, auditor sênior com 20 anos de casa, foi desligado após vazar o modelo oficial do <span class="highlight-bg">Termo de Quitação Carimbado</span>.</p>
+            <p>Este documento obriga os bancos a aceitarem o pagamento de dívidas pelo valor original, removendo até 95% dos juros acumulados pela <strong>Lei do Superendividamento</strong>.</p>
         </div>
 
         <div class="proof-box">
             <div class="carousel">
-                <div class="card"><img src="1768406035009.jpg"><div class="card-body"><h3>1. CHAVE DE ATIVAÇÃO 892</h3></div></div>
-                <div class="card"><img src="IMG_20260124_155738.png"><div class="card-body"><h3>2. TERMO DE QUITAÇÃO</h3></div></div>
-                <div class="card"><img src="IMG_20260124_155715.png"><div class="card-body"><h3>3. SCORE TURBO</h3></div></div>
+                <div class="card"><img src="IMG_20260124_155738.png"><div class="card-body"><h3>1. TERMO DE QUITAÇÃO</h3></div></div>
+                <div class="card"><img src="IMG_20260124_155715.png"><div class="card-body"><h3>2. SCRIPT SCORE 900</h3></div></div>
+                <div class="card"><img src="1768406035009.jpg"><div class="card-body"><h3>3. CONSULTA RENDIMENTOS</h3></div></div>
             </div>
         </div>
 
         <div class="offer-box">
-            <div class="old-price">De: R$ 997,00</div>
-            <div class="price-tag">Por: R$ 97,00</div>
-            <p style="font-weight:700; color:#856404; background:#fff3cd; padding:5px; border-radius:5px;">🔥 RESTAM APENAS <span id="key-count">9</span> CHAVES.</p>
-            <button class="btn-main" onclick="abrirQuizz()">GERAR CHAVE DE ATIVAÇÃO <span>(Incluso: Termo Carimbado + Suporte no Zap)</span></button>
+            <div class="old-price">Taxa Bancária: R$ 997,00</div>
+            <div class="price-tag">Emissão: R$ 97,00</div>
+            <p style="font-weight:700; color:#1c1e21; font-size: 13px;">⚠️ Taxa única para manutenção do sistema de auditoria.</p>
+            <button class="btn-main" onclick="abrirQuizz()">EMITIR MEU TERMO AGORA <span>(Válido para dívidas até R$ 100k)</span></button>
         </div>
 
         <div class="comments-wrapper">
+            <div class="fb-header"><span>247 comentários</span> <span>Mais recentes</span></div>
+            
             <div class="fb-comment">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="fb-avatar">
-                <div class="fb-content"><div class="fb-bubble"><span class="fb-name">Marcos Vinicius</span><span class="fb-text">Acabei de ativar no Santander e saquei R$ 1.890,00. O Roberto não mente.</span></div></div>
+                <img src="https://randomuser.me/api/portraits/men/15.jpg" class="fb-avatar">
+                <div>
+                    <div class="fb-bubble"><span class="fb-name">Carlos Eduardo</span><span class="fb-text">Minha dívida de 12k no Itaú caiu pra 450 reais com esse papel. O gerente quase teve um infarto kkkkk valeu Roberto!</span></div>
+                    <div class="fb-actions">Curtir · Responder · 2 min</div>
+                </div>
             </div>
+
             <div class="fb-comment">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="fb-avatar">
-                <div class="fb-content"><div class="fb-bubble"><span class="fb-name">Patricia Lima</span><span class="fb-text">O termo de quitação funcionou no Bradesco! Baixaram minha dívida de 17k pra 200 reais.</span></div></div>
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="fb-avatar">
+                <div>
+                    <div class="fb-bubble"><span class="fb-name">Sandra Helena</span><span class="fb-text">Meu filho disse que era golpe, mas eu fiz escondida e meu nome limpou ontem! O score subiu pra 840 e já peguei um cartão novo.</span></div>
+                    <div class="fb-actions">Curtir · Responder · 5 min</div>
+                </div>
+            </div>
+
+            <div class="fb-comment">
+                <img src="https://randomuser.me/api/portraits/men/82.jpg" class="fb-avatar">
+                <div>
+                    <div class="fb-bubble"><span class="fb-name">Ricardo Santos</span><span class="fb-text">Gente, funciona mesmo. Paguei a taxa de emissão e o documento chegou no e-mail na hora. Já enviei pro banco.</span></div>
+                    <div class="fb-actions">Curtir · Responder · 12 min</div>
+                </div>
             </div>
         </div>
 
-        <div class="offer-box" style="background: #fafafa; border: 1px solid #ddd;">
-            <button class="btn-main" onclick="abrirQuizz()">QUERO ATIVAR MINHA CHAVE AGORA</button>
+        <div class="offer-box" style="background: #fafafa; border: none;">
+            <button class="btn-main" onclick="abrirQuizz()">QUERO LIMPAR MEU NOME HOJE</button>
         </div>
     </div>
 
     <div id="quizz-overlay">
         <div class="quizz-card" id="q1">
             <h2>PASSO 1 DE 3</h2>
-            <p style="margin-bottom:20px">Qual seu banco para gerar a chave?</p>
+            <p style="margin-bottom:20px">Qual o valor total das suas dívidas hoje?</p>
             <div class="quizz-options">
-                <button class="opt-btn" onclick="next(2)">Nubank / Itaú / Bradesco</button>
-                <button class="opt-btn" onclick="next(2)">Caixa / Banco do Brasil</button>
-                <button class="opt-btn" onclick="next(2)">Santander / Inter / Outros</button>
+                <button class="opt-btn" onclick="next(2)">Até R$ 5.000</button>
+                <button class="opt-btn" onclick="next(2)">De R$ 10.000 a R$ 50.000</button>
+                <button class="opt-btn" onclick="next(2)">Mais de R$ 100.000</button>
             </div>
         </div>
+        
         <div class="quizz-card" id="q2" style="display:none">
             <h2>PASSO 2 DE 3</h2>
-            <p style="margin-bottom:20px">Qual o tipo de conta?</p>
+            <p style="margin-bottom:20px">Há quanto tempo você está com o nome sujo?</p>
             <div class="quizz-options">
-                <button class="opt-btn" onclick="next(3)">Conta Corrente</button>
-                <button class="opt-btn" onclick="next(3)">Conta Poupança</button>
+                <button class="opt-btn" onclick="next(3)">Menos de 1 ano</button>
+                <button class="opt-btn" onclick="next(3)">Mais de 2 anos</button>
+                <button class="opt-btn" onclick="next(3)">Mais de 5 anos</button>
             </div>
         </div>
+
         <div class="quizz-card" id="q3" style="display:none">
             <h2>PASSO 3 DE 3</h2>
-            <p style="margin-bottom:20px">Deseja o Score Turbo incluso?</p>
+            <p style="margin-bottom:20px">Deseja incluir o Script de Score 900 para voltar a ter crédito?</p>
             <div class="quizz-options">
-                <button class="opt-btn" onclick="startProc()">Sim, gerar chave + termo + score</button>
-                <button class="opt-btn" onclick="startProc()">Sim, apenas chave e termo</button>
+                <button class="opt-btn" onclick="startProc()">Sim, quero o Termo + Score Turbo</button>
+                <button class="opt-btn" onclick="startProc()">Sim, apenas o Termo de Quitação</button>
             </div>
         </div>
+
         <div class="quizz-card" id="loading" style="display:none">
-            <h2 id="L-title">PROCESSANDO...</h2>
+            <h2 id="L-title">AUDITANDO CPF...</h2>
             <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
-            <p class="status-text" id="status">Conectando ao sistema...</p>
+            <p class="status-text" id="status" style="font-size: 13px; color: #65676b;">Consultando banco de dados...</p>
         </div>
     </div>
 
     <div id="toast" class="toast-notification">
         <img src="" id="toast-img" class="toast-img">
         <div class="toast-text">
-            <span style="font-weight: 700;" id="toast-name">Nome</span> ativou no <span id="toast-bank">Banco</span>.
-            <span class="toast-highlight" id="toast-msg">🔥 RESTAM 9 CÓPIAS</span>
+            <span style="font-weight: 700;" id="toast-name">Nome</span> acaba de emitir o Termo.
+            <br><span style="color: #1a7f37; font-weight: 700;" id="toast-msg">Dívida reduzida em 95%!</span>
         </div>
     </div>
 
     <script>
-        // LÓGICA DO QUIZZ
         function abrirQuizz() {
             document.getElementById('quizz-overlay').style.display = 'flex';
             fbq('track', 'ViewContent');
@@ -203,12 +217,12 @@
             let bar = document.getElementById('bar');
             let status = document.getElementById('status');
             let w = 0;
-            const msgs = ["Gerando Chave Única...", "Localizando Termo Carimbado...", "Sincronizando Score...", "CONCLUÍDO! REDIRECIONANDO..."];
+            const msgs = ["Localizando débitos ocultos...", "Aplicando Lei 14.181...", "Gerando Termo Carimbado...", "LIBERADO! REDIRECIONANDO..."];
             let i = setInterval(() => {
                 if(w >= 100) {
                     clearInterval(i);
                     fbq('track', 'InitiateCheckout');
-                    window.location.href = "https://go.perfectpay.com.br/PPU38CQ7973";
+                    window.location.href = "https://go.perfectpay.com.br/PPU38CQ7973"; // Mantive seu Link
                 } else {
                     w++; bar.style.width = w + '%';
                     if(w==20) status.innerText = msgs[0];
@@ -216,33 +230,26 @@
                     if(w==80) status.innerText = msgs[2];
                     if(w==98) status.innerText = msgs[3];
                 }
-            }, 50);
+            }, 45);
         }
 
-        // NOTIFICAÇÕES CORRIGIDAS (FOTO/NOME)
-        const h = ["Ricardo M.", "João P.", "Carlos E.", "Fernando S.", "Bruno A."];
-        const m = ["Fernanda O.", "Juliana S.", "Bruna A.", "Camila R.", "Patrícia L."];
-        const b = ['Nubank', 'Itaú', 'Bradesco', 'Caixa', 'Santander'];
+        const h = ["Marcos S.", "João P.", "Carlos E.", "Fernando S.", "Bruno A."];
+        const m = ["Fernanda O.", "Juliana S.", "Maria A.", "Camila R.", "Patrícia L."];
         let stock = 9;
 
         function showToast() {
-            if (stock <= 1) return;
-            stock--;
-            document.getElementById('key-count').innerText = stock;
             const isH = Math.random() > 0.5;
             const nome = isH ? h[Math.floor(Math.random()*h.length)] : m[Math.floor(Math.random()*m.length)];
             const gen = isH ? 'men' : 'women';
             const imgId = Math.floor(Math.random()*50)+1;
             
             document.getElementById('toast-name').innerText = nome;
-            document.getElementById('toast-bank').innerText = b[Math.floor(Math.random()*b.length)];
             document.getElementById('toast-img').src = `https://randomuser.me/api/portraits/${gen}/${imgId}.jpg`;
-            document.getElementById('toast-msg').innerText = `🔥 RESTAM ${stock} CÓPIAS`;
             
             const t = document.getElementById('toast');
             t.classList.add('toast-show');
             setTimeout(() => t.classList.remove('toast-show'), 4000);
-            setTimeout(showToast, Math.random()*6000 + 4000);
+            setTimeout(showToast, Math.random()*8000 + 5000);
         }
         setTimeout(showToast, 3000);
     </script>
