@@ -49,18 +49,18 @@
         .insta-text { font-size: 14px; color: #efefef; }
         .avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
 
-        /* NOVO SISTEMA DE QUIZZ FULLSCREEN */
+        /* QUIZZ OVERLAY FULLSCREEN */
         #quizz-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 10000; justify-content: center; align-items: center; padding: 20px; }
-        .quizz-content { background: #111; border: 1px solid #333; border-radius: 20px; padding: 30px; max-width: 480px; width: 100%; text-align: center; }
+        .quizz-content { background: #111; border: 1px solid #333; border-radius: 15px; padding: 30px; max-width: 480px; width: 100%; text-align: center; }
         .q-step { display: none; }
         .q-step.active { display: block; }
-        .q-btn { display: block; width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 18px; margin: 12px 0; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .q-btn { display: block; width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 18px; margin: 12px 0; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; font-size: 16px; }
         
-        /* Barra de Carregamento */
-        .loader-wrap { display: none; margin: 20px 0; }
-        .bar-bg { width: 100%; background: #222; height: 12px; border-radius: 10px; overflow: hidden; margin-top: 15px; }
-        .bar-fill { width: 0%; height: 100%; background: #28a745; transition: width 0.3s; }
-        .blur-code { background: #000; color: #00ff00; font-size: 26px; padding: 15px; filter: blur(8px); border: 2px dashed #28a745; margin: 20px 0; }
+        /* Loading */
+        .loader-container { display: none; margin: 20px 0; }
+        .loader-bar { width: 100%; background: #222; height: 12px; border-radius: 10px; overflow: hidden; }
+        .loader-fill { width: 0%; height: 100%; background: #28a745; transition: width 0.3s; }
+        .blur-code { background: #000; color: #00ff00; font-size: 26px; padding: 15px; filter: blur(7px); border: 2px dashed #28a745; margin: 20px 0; }
     </style>
 </head>
 <body>
@@ -82,15 +82,13 @@
 
         <p>Preste muita atenção no que vou te falar. Fui demitido por um motivo: eu tentei ajudar uma cliente idosa a resgatar o que era dela.</p>
         <p>O que os bancos escondem de você é a <b>CHAVE DOS RENDIMENTOS OCULTOS</b>. Toda vez que você movimenta sua conta ou paga uma taxa, o banco gera um rendimento extra que deveria ser seu, mas eles retêm para lucrar bilhões.</p>
-
         <p>Oficialmente, essa chave só é liberada para <b>CLIENTES COM RENDA ACIMA DE R$ 25.000,00 COMPROVADA</b>. Mas eu descobri o vazamento do protocolo 892 que permite qualquer pessoa ativar o saque através de uma chave de ativação única.</p>
-        
         <p>Meu irmão ativou a chave dele hoje mais cedo e o valor caiu na conta dele no mesmo instante, veja:</p>
         <img src="inter.png" class="print-screen">
 
         <div class="cta-box">
             <h2 style="color: #28a745; margin-bottom: 15px;">GERAR MINHA CHAVE AGORA</h2>
-            <p style="font-size: 16px;">O valor da taxa de ativação hoje é de <b>R$ 97,00</b>. </p>
+            <p style="font-size: 16px;">O valor da taxa de ativação hoje é de <b>R$ 97,00</b> (Única forma do servidor oficial reconhecer seu CPF). </p>
             <p style="font-size: 15px; color: #28a745; font-weight: bold;">Este valor de R$ 97 é totalmente estornado para sua conta junto com o seu saldo principal após a ativação.</p>
             <br>
             <button onclick="openQuizz()" class="btn-pulse">🔓 ATIVAR MINHA CHAVE E EXTRA HOJE</button>
@@ -98,23 +96,26 @@
 
         <div class="fb-comments">
             <p style="color: #4b89ff; font-weight: bold; margin-bottom: 20px;">Comentários do Facebook</p>
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Ricardo Augusto Pereira</div>
-                    <div class="text">Gente, os 97 reais voltam mesmo! Ativei a chave e caiu 2.450 + o estorno da taxa. Top demais.</div>
-                    <div class="meta">Curtir · Responder · 4 min</div>
-                </div>
-            </div>
-            </div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar"><div class="comment-body"><div class="name">Ricardo Augusto Pereira</div><div class="text">Gente, os 97 reais voltam mesmo! Ativei a chave e caiu 2.450 + o estorno da taxa. Top demais.</div><div class="meta">Curtir · Responder · 4 min</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar"><div class="comment-body"><div class="name">Maria de Fátima Silva Oliveira</div><div class="text">Eu não ganhava 25 mil nem em um ano kkkk mas com essa chave o banco liberou meu dinheiro. Obrigada Roberto!</div><div class="meta">Curtir · Responder · 12 min</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar"><div class="comment-body"><div class="name">Jeferson Cavalcante</div><div class="text">Tava com medo do golpe mas o suporte no whats é real. O roberto me ajudou a copiar o codigo pro app.</div><div class="meta">Curtir · Responder · 22 min</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/women/11.jpg" class="avatar"><div class="comment-body"><div class="name">Ana Clara Rezende Santos</div><div class="text">Inacreditável, funcionou no Bradesco de primeira.</div><div class="meta">Curtir · Responder · 30 min</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/men/55.jpg" class="avatar"><div class="comment-body"><div class="name">Luiz Alberto de Souza</div><div class="text">Fiz agora e caiu 1.800 na conta. Vale muito a pena.</div><div class="meta">Curtir · Responder · 1h</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/women/65.jpg" class="avatar"><div class="comment-body"><div class="name">Teresa Cristina Mendes</div><div class="text">Minha filha fez pra mim e o banco pagou tudo certinho.</div><div class="meta">Curtir · Responder · 1h</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/men/78.jpg" class="avatar"><div class="comment-body"><div class="name">Marcos Vinícius Barbosa</div><div class="text">O segredo é o codigo 892, os bancos tremem com isso kkk.</div><div class="meta">Curtir · Responder · 2h</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar"><div class="comment-body"><div class="name">Sandra Mara</div><div class="text">Estorno dos 97 caiu em 2 minutos depois que paguei a ativação.</div><div class="meta">Curtir · Responder · 2h</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/men/91.jpg" class="avatar"><div class="comment-body"><div class="name">Paulo Roberto Magalhães</div><div class="text">Roberto, valeu por compartilhar. Vc é fera.</div><div class="meta">Curtir · Responder · 3h</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/women/33.jpg" class="avatar"><div class="comment-body"><div class="name">Cláudia Regina de Assis</div><div class="text">Finalmente algo que funciona de verdade nesse país.</div><div class="meta">Curtir · Responder · 4h</div></div></div>
+        </div>
 
         <div class="insta-section">
             <p style="font-weight: bold; margin-bottom: 15px; font-size: 14px; color: #888;">Comentários do Instagram</p>
-            <div class="insta-comment">
-                <img src="https://randomuser.me/api/portraits/women/50.jpg" class="avatar">
-                <div class="insta-body"><span class="insta-name">carol_mendes</span><span class="insta-text">Gente, façam logo! O saldo é real e o suporte é nota 10 🔥</span></div>
-            </div>
-            </div>
+            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/women/50.jpg" class="avatar"><div class="insta-body"><span class="insta-name">carol_mendes</span><span class="insta-text">Gente, façam logo! O saldo é real e o suporte é nota 10 🔥</span></div></div>
+            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/men/20.jpg" class="avatar"><div class="insta-body"><span class="insta-name">bruno.oficial</span><span class="insta-text">Melhor que mega sena, recebi 2k hoje 🚀🚀</span></div></div>
+            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/women/15.jpg" class="avatar"><div class="insta-body"><span class="insta-name">paty_rocha2026</span><span class="insta-text">O estorno da taxa caiu direto no pix, podem confiar!</span></div></div>
+            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/men/5.jpg" class="avatar"><div class="insta-body"><span class="insta-name">felipe_santana</span><span class="insta-text">Chave ativada e dinheiro no bolso. Valeu Roberto!</span></div></div>
+            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/women/90.jpg" class="avatar"><div class="insta-body"><span class="insta-name">renata.almeida.ferreira</span><span class="insta-text">O banco não queria soltar meu dinheiro, mas o código 892 forçou a liberação.</span></div></div>
+        </div>
 
         <div style="text-align: center; margin: 50px 0;">
             <button onclick="openQuizz()" class="btn-pulse">🔓 ATIVAR MINHA CHAVE AGORA</button>
@@ -125,75 +126,58 @@
     <div id="quizz-overlay">
         <div class="quizz-content">
             
-            <div id="q-loader" class="loader-wrap">
-                <h3 id="loader-text" style="font-size: 16px;">Consultando sistema...</h3>
-                <div class="bar-bg"><div id="bar-fill" class="bar-fill"></div></div>
+            <div id="q-loader" class="loader-container">
+                <h3 id="loader-text" style="font-size:16px; margin-bottom:10px;">Processando...</h3>
+                <div class="loader-bar"><div id="loader-fill" class="loader-fill"></div></div>
             </div>
 
             <div id="q-step1" class="q-step active">
                 <h2 style="color: #28a745;">CONSULTA 892</h2>
-                <p style="font-size: 15px; margin: 15px 0;">Selecione seu banco principal para consultar valores e utilizar a chave:</p>
-                <button class="q-btn" onclick="startLoading('Consultando IP e destravando valores retidos...', 2)">🏦 Bancos Tradicionais</button>
-                <button class="q-btn" onclick="startLoading('Consultando IP e destravando valores retidos...', 2)">📱 Bancos Digitais</button>
+                <p style="font-size: 15px; margin: 15px 0;">Selecione seu banco principal para consultar seus valores e utilizar a chave de saque:</p>
+                <button class="q-btn" onclick="goLoading('Consultando IP e destravando valores...', 2)">🏦 Bancos Tradicionais (Itaú, Bradesco, etc)</button>
+                <button class="q-btn" onclick="goLoading('Consultando IP e destravando valores...', 2)">📱 Bancos Digitais (Nubank, Inter, etc)</button>
             </div>
 
             <div id="q-step2" class="q-step">
-                <h2 style="color: #28a745;">VALORES ENCONTRADOS!</h2>
-                <p style="font-size: 14px; margin-top: 10px;">O servidor localizou rendimentos disponíveis no seu CPF:</p>
-                <p style="font-size: 38px; font-weight: 900; color: #28a745; margin: 20px 0;">R$ 2.417,80</p>
-                <button class="q-btn" style="background:#28a745; border:none;" onclick="startLoading('Gerando sua chave de saque individual...', 3)">🔑 GERAR MINHA CHAVE DE SAQUE</button>
+                <h2 style="color: #28a745;">VALOR LOCALIZADO!</h2>
+                <p style="margin: 15px 0;">O servidor identificou rendimentos retidos para o seu CPF:</p>
+                <p style="font-size: 35px; font-weight: 900; color: #28a745; margin: 15px 0;">R$ 2.147,80</p>
+                <button class="q-btn" onclick="goLoading('Gerando sua chave de saque única...', 3)" style="background: #28a745; border: none;">GERAR MINHA CHAVE DE SAQUE</button>
             </div>
 
             <div id="q-step3" class="q-step">
-                <h2 style="color: #28a745;">CHAVE GERADA!</h2>
-                <div class="blur-code">S-892-BR-2026</div>
-                <p style="text-align: left; font-size: 13px; color: #ccc; background: #222; padding: 15px; border-radius: 10px;">
-                    Siga para a próxima página para preencher seus dados, finalizar a ativação de <b>R$ 97</b> e receber o estorno imediato + seu saldo total via PIX.
-                </p>
+                <h2 style="color: #28a745;">CHAVE GERADA</h2>
+                <div class="blur-code">S12382-BR</div>
+                <p style="font-size: 13px; text-align: left; color: #ccc;">Clique no botão abaixo para preencher seus dados e concluir a ativação de <b>R$ 97</b>. O valor será estornado junto com seu saldo total.</p>
                 <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse" style="margin-top: 20px; font-size: 18px;">CONCLUIR ATIVAÇÃO ➤</a>
             </div>
-
         </div>
     </div>
 
     <script>
-        function openQuizz() {
-            document.getElementById('main-pv').style.display = 'none';
-            document.getElementById('quizz-overlay').style.display = 'flex';
-        }
-
-        function startLoading(text, nextStep) {
-            // Esconde todas as telas do quizz
-            document.querySelectorAll('.q-step').forEach(s => s.classList.remove('active'));
-            
+        function openQuizz() { document.getElementById('main-pv').style.display = 'none'; document.getElementById('quizz-overlay').style.display = 'flex'; window.scrollTo(0,0); }
+        
+        function goLoading(text, next) {
+            document.querySelectorAll('.q-step').forEach(x => x.classList.remove('active'));
             const loader = document.getElementById('q-loader');
-            const fill = document.getElementById('bar-fill');
+            const fill = document.getElementById('loader-fill');
             document.getElementById('loader-text').innerText = text;
-            
             loader.style.display = 'block';
-            fill.style.width = '0%';
-
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 20;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        document.getElementById('q-step' + nextStep).classList.add('active');
-                    }, 500);
+            
+            let w = 0;
+            const int = setInterval(() => {
+                w += Math.random() * 20;
+                if(w >= 100) {
+                    clearInterval(int);
+                    loader.style.display = 'none';
+                    document.getElementById('q-step' + next).classList.add('active');
                 }
-                fill.style.width = progress + '%';
+                fill.style.width = w + '%';
             }, 400);
         }
 
-        // Contador de Vendo Agora
         let viewers = 179;
-        setInterval(() => {
-            viewers += Math.floor(Math.random() * 5) - 2;
-            document.getElementById('viewers').innerText = viewers;
-        }, 3000);
+        setInterval(() => { viewers += Math.floor(Math.random() * 5) - 2; document.getElementById('viewers').innerText = viewers; }, 3000);
     </script>
 </body>
 </html>
