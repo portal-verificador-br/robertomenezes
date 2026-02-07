@@ -43,12 +43,23 @@
         .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
 
         .cta-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 20px; text-align: center; margin: 30px 0; border-radius: 10px; }
-        .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px 15px; text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34; animation: grow 1.5s infinite alternate; text-transform: uppercase; }
+        .btn-pulse { background: #28a745; color: white; font-size: 20px; font-weight: bold; padding: 20px 15px; text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34; animation: grow 1.5s infinite alternate; text-transform: uppercase; cursor: pointer; border: none; width: 100%; }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
-        .whatsapp-guarantee { background-color: #e8f5e9; border: 1px solid #4caf50; border-radius: 8px; padding: 10px; margin-top: 15px; text-align: left; font-size: 14px; color: #1b5e20; display: flex; align-items: center; gap: 10px; }
-        .scarcity { color: #c00; font-weight: bold; margin-top: 10px; font-size: 14px; }
+        /* QUIZZ E GERADOR */
+        #quizz-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; justify-content: center; align-items: center; padding: 20px; }
+        .quizz-content { background: #111; border: 1px solid #333; border-radius: 15px; padding: 25px; max-width: 500px; width: 100%; text-align: center; color: white; }
+        .quizz-step { display: none; }
+        .quizz-step.active { display: block; }
+        .q-btn { display: block; width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 15px; margin: 10px 0; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: left; font-size: 16px; }
+        .q-btn:hover { border-color: #00ff00; background: #2a2a2a; }
+        
+        .loading-bar { width: 100%; background: #333; height: 15px; border-radius: 10px; overflow: hidden; margin: 20px 0; }
+        .progress { width: 0%; height: 100%; background: #00ff00; transition: width 0.1s; }
+        
+        .blur-code { background: #000; color: #00ff00; font-size: 28px; font-weight: bold; padding: 15px; border: 2px dashed #00ff00; letter-spacing: 4px; filter: blur(6px); margin: 20px 0; user-select: none; }
 
+        /* COMENTÁRIOS */
         .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
         .comment { display: flex; margin-bottom: 15px; }
         .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
@@ -94,29 +105,15 @@
             <p style="text-decoration: line-through; color: #999;">Ativação pelo Banco: R$ 997,00</p>
             <p style="font-size: 24px; font-weight: bold; color: #c00;">PELO MEU SERVIDOR HOJE APENAS: R$ 97,00</p>
             
-            <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse" onclick="fbq('track', 'InitiateCheckout');">
+            <button onclick="openQuizz()" class="btn-pulse">
                 🔓 DESBLOQUEAR MEU SALDO AGORA
-            </a>
+            </button>
             
-            <div class="whatsapp-guarantee">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width: 30px;">
-                <div>
-                    <strong>Incluso na licença:</strong> Você recebe meu <b>WhatsApp Pessoal</b>. Se tiver dúvida para ativar a chave de rendimentos, me chame e faremos juntos.
-                </div>
-            </div>
             <p class="scarcity">🔥 Restam apenas <span id="contador-vagas">3</span> licenças disponíveis.</p>
-        </div>
-
-        <div style="background-color: #f8f9fa; border: 2px dashed #28a745; padding: 20px; margin: 30px 0; border-radius: 12px;">
-            <p style="font-size: 16px; color: #333; font-weight: bold; text-align: center; margin-bottom: 10px;">🛡️ MINHA PROMESSA: ATIVAÇÃO OU PIX</p>
-            <p style="font-size: 15px; color: #333; line-height: 1.4;">
-                Se você comprar e achar que é mentira, ou não conseguir sacar seus rendimentos, basta me mandar uma mensagem. <b>Eu vou te estornar o valor na hora via PIX.</b> Sem perguntas. O risco é todo meu.
-            </p>
         </div>
 
         <div class="comments-section">
             <p style="font-weight: bold; margin-bottom: 15px;">203 Comentários</p>
-
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/1.jpg" class="avatar">
                 <div class="comment-body">
@@ -125,7 +122,6 @@
                     <div class="meta">Curtir · Responder · 2 min</div>
                 </div>
             </div>
-
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/2.jpg" class="avatar">
                 <div class="comment-body">
@@ -134,85 +130,58 @@
                     <div class="meta">Curtir · Responder · 5 min</div>
                 </div>
             </div>
-
-            <div class="comment" style="margin-left: 50px;">
-                <img src="https://randomuser.me/api/portraits/men/3.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Marcos Pimentel de Oliveira</div>
-                    <div class="text">Carla, pode ir sem medo. O Roberto é ponta firme. Ativei a chave de rendimentos aqui e caiu tudo certinho.</div>
-                    <div class="meta">Curtir · Responder · 3 min</div>
-                </div>
             </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/4.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Anderson Silva Cavalcante</div>
-                    <div class="text">Trabalhei em banco e sei que o que ele fala é real. Ativei hoje cedo e já fiz o primeiro saque. Top!</div>
-                    <div class="meta">Curtir · Responder · 12 min</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/5.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Juliana Martins da Costa</div>
-                    <div class="text">O suporte no whats é muito bom, me ajudou a clicar no menu certo do Bradesco. Nota 10.</div>
-                    <div class="meta">Curtir · Responder · 22 min</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/6.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Bruno Oliveira</div>
-                    <div class="text">Ativação concluída! Dinheiro no bolso em menos de 15 minutos.</div>
-                    <div class="meta">Curtir · Responder · 45 min</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/7.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Tereza Cristina dos Santos</div>
-                    <div class="text">Tava precisando muito desse dinheiro pra pagar o cartão. Muito obrigada por compartilhar isso Roberto!</div>
-                    <div class="meta">Curtir · Responder · 1h</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/8.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Luiz Carlos Menezes</div>
-                    <div class="text">No Itaú funcionou de primeira. O passo a passo é bem explicado e não tem erro.</div>
-                    <div class="meta">Curtir · Responder · 1h</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/9.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Patrícia Helena Rocha</div>
-                    <div class="text">Meu marido não acreditou, mas quando viu o saldo aumentando ele ficou doido kkkkk. Recomendo dms.</div>
-                    <div class="meta">Curtir · Responder · 2h</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/10.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Rodrigo Pereira Lima</div>
-                    <div class="text">Pensei q era só pra banco grande mas no Inter tbm deu. Show de bola.</div>
-                    <div class="meta">Curtir · Responder · 3h</div>
-                </div>
-            </div>
-        </div>
 
         <div style="text-align: center; margin-top: 40px;">
-            <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse">
-                🔓 ATIVAR MINHA CHAVE DE RENDIMENTOS
-            </a>
+            <button onclick="openQuizz()" style="background:none; border:none; color:#28a745; font-weight:bold; cursor:pointer; text-decoration:underline;">
+                Ativar Chave de Rendimentos Manualmente
+            </button>
             <p style="font-size: 10px; color: #999; margin-top: 20px;">Copyright 2026 - Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <div id="quizz-overlay">
+        <div class="quizz-content">
+            
+            <div class="quizz-step active" id="step1">
+                <h2 style="color: #00ff00; margin-bottom: 10px;">PASSO 1/2</h2>
+                <p style="font-size: 16px; margin-bottom: 20px;">Em qual banco você possui conta ativa para receber os rendimentos?</p>
+                <button class="q-btn" onclick="nextStep(2)">🏦 Bancos Físicos (Caixa, BB, Itaú...)</button>
+                <button class="q-btn" onclick="nextStep(2)">📱 Bancos Digitais (Nubank, Inter, C6...)</button>
+                <button class="q-btn" onclick="nextStep(2)">🔑 Outros / Receber via PIX</button>
+            </div>
+
+            <div class="quizz-step" id="step2">
+                <h2 style="color: #00ff00; margin-bottom: 10px;">PASSO 2/2</h2>
+                <p style="text-align: left; font-size: 14px; margin-bottom: 20px;">
+                    A Chave de Acesso é gerada pelo <strong>Sistema Nacional de Protocolos (Lei 13.709)</strong>. Ao gerar, o saldo será vinculado ao seu CPF para resgate imediato. Você está ciente que deve preencher seus dados corretamente na página seguinte?
+                </p>
+                <button class="q-btn" onclick="startLoading()" style="text-align: center; background: #00ff00; color: #000; border: none;">ESTOU CIENTE, GERAR MINHA CHAVE</button>
+            </div>
+
+            <div class="quizz-step" id="stepLoading">
+                <h2 id="loadText">Conectando...</h2>
+                <div class="loading-bar"><div class="progress" id="bar"></div></div>
+                <p id="statusMsg" style="font-size: 12px; color: #888;">Iniciando varredura no servidor federal...</p>
+            </div>
+
+            <div class="quizz-step" id="stepFinal">
+                <h2 style="color: #00ff00;">CHAVE LOCALIZADA!</h2>
+                <p style="font-size: 14px; margin-top: 10px;">Sua chave individual foi gerada com sucesso:</p>
+                
+                <div class="blur-code">S12382-BR</div>
+
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; text-align: left; border-left: 4px solid #00ff00; margin-bottom: 20px;">
+                    <p style="font-size: 13px; line-height: 1.4;">
+                        <strong>⚠️ IMPORTANTE:</strong> Para sua segurança, a chave está oculta. Para liberar o código e o acesso ao saldo, <strong>preencha seus dados na página seguinte</strong> e finalize a ativação. O guia será enviado ao seu e-mail em até 2 minutos.
+                    </p>
+                </div>
+
+                <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse" style="animation: none;">
+                    FINALIZAR ATIVAÇÃO AGORA ➤
+                </a>
+            </div>
+
         </div>
     </div>
 
@@ -220,43 +189,58 @@
         <img src="" id="notify-img">
         <div>
             <p><strong><span id="notify-name"></span></strong></p>
-            <p>Acabou de adquirir o Manual.</p>
+            <p>Acabou de ativar a Chave.</p>
         </div>
     </div>
 
     <script>
-        // Imagens de 11 a 16 para garantir que não batam com os comentários (1 a 10)
+        function openQuizz() { document.getElementById('quizz-overlay').style.display = 'flex'; }
+
+        function nextStep(step) {
+            document.querySelectorAll('.quizz-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+        }
+
+        function startLoading() {
+            nextStep('Loading');
+            let bar = document.getElementById('bar');
+            let status = document.getElementById('statusMsg');
+            let loadText = document.getElementById('loadText');
+            let width = 0;
+            let interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    nextStep('Final');
+                } else {
+                    width++;
+                    bar.style.width = width + '%';
+                    if(width == 30) { status.innerText = "Localizando registros no CPF..."; loadText.innerText = "Acessando Servidor Nacional..."; }
+                    if(width == 70) { status.innerText = "Gerando Protocolo Lei 13.709..."; loadText.innerText = "Vinculando Chave S12382..."; }
+                }
+            }, 40);
+        }
+
+        // Script das notificações e contador de vagas mantido
         const compradores = [
             {n: "Marcelo Vigário", s: "men", id: 11}, 
             {n: "Samuel Castro de Assis", s: "men", id: 12},
-            {n: "Fernanda Luiza", s: "women", id: 13}, 
-            {n: "Clara Maria Rezende", s: "women", id: 14},
-            {n: "Vitor Barbosa Lima", s: "men", id: 15}, 
-            {n: "Jaqueline Farias", s: "women", id: 16}
+            {n: "Fernanda Luiza", s: "women", id: 13}
         ];
-
         let copias = 3;
         let indexPop = 0;
-
         function showNotification() {
             if (copias <= 0 || indexPop >= compradores.length) return;
-            
             const comp = compradores[indexPop];
             document.getElementById('notify-name').innerText = comp.n;
             document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${comp.s}/${comp.id}.jpg`;
-            
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
-
-            copias--;
-            indexPop++;
+            copias--; indexPop++;
             document.getElementById('contador-vagas').innerText = copias;
             setTimeout(() => { notify.style.display = 'none'; }, 4000);
         }
-
         setTimeout(showNotification, 5000);
         setTimeout(showNotification, 18000);
-        setTimeout(showNotification, 35000);
     </script>
 </body>
 </html>
