@@ -5,246 +5,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vazamento Código 892 - Saque Liberado</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #000; color: #fff; line-height: 1.6; overflow-x: hidden; }
+        body { background-color: #000; color: #fff; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         
-        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 12px; font-weight: bold; font-size: 0.9rem; position: sticky; top: 0; z-index: 999; }
-        .container { max-width: 600px; margin: 0 auto; background: #000; padding: 20px; }
-        
-        h1 { font-size: 24px; color: #fff; line-height: 1.2; margin-bottom: 20px; font-weight: 900; }
-        .highlight { color: #fff; background: #c00; padding: 0 5px; }
-
-        .author-box { display: flex; align-items: center; margin: 25px 0; border-bottom: 1px solid #222; padding-bottom: 15px; }
-        .author-img { width: 55px; height: 55px; border-radius: 50%; border: 2px solid #28a745; margin-right: 15px; overflow: hidden; }
+        /* Layout PV */
+        #pv-content { display: block; }
+        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 12px; font-weight: bold; font-size: 0.9rem; }
+        h1 { font-size: 24px; margin: 20px 0; font-weight: 900; }
+        .highlight { background: #c00; padding: 0 5px; }
+        .author-box { display: flex; align-items: center; margin: 20px 0; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        .author-img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid #28a745; margin-right: 15px; overflow: hidden; }
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        .date { font-size: 12px; color: #888; }
+        .btn-pulse { background: #28a745; color: white; font-size: 18px; font-weight: bold; padding: 20px; text-decoration: none; display: block; border-radius: 10px; text-align: center; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; width: 100%; }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.05); } }
 
-        .online-now { background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; color: #00ff00; padding: 10px; border-radius: 8px; font-size: 14px; display: flex; align-items: center; gap: 8px; margin-bottom: 20px; font-weight: bold; width: fit-content; }
-        .dot { height: 8px; width: 8px; background-color: #00ff00; border-radius: 50%; display: inline-block; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-        p { margin-bottom: 20px; font-size: 18px; color: #ccc; }
-        b { color: #fff; }
-
-        .print-screen { width: 100%; border: 2px solid #333; margin: 15px 0; border-radius: 12px; }
-
-        .cta-box { background: #111; border: 2px solid #28a745; padding: 25px; text-align: center; margin: 40px 0; border-radius: 15px; }
-        .btn-pulse { background: #28a745; color: white; font-size: 20px; font-weight: bold; padding: 22px; text-decoration: none; display: block; border-radius: 10px; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; width: 100%; }
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.03); } }
-
-        /* FACEBOOK DARK */
-        .fb-comments { margin-top: 50px; background: #000; border-top: 1px solid #222; padding-top: 20px; }
-        .comment { display: flex; margin-bottom: 20px; padding-bottom: 15px; }
-        .comment-body { margin-left: 12px; background: #1a1a1a; padding: 12px; border-radius: 15px; width: 100%; }
-        .name { font-weight: bold; font-size: 14px; color: #fff; }
-        .text { font-size: 14px; color: #ccc; margin-top: 4px; }
-        .meta { font-size: 11px; color: #888; margin-top: 8px; font-weight: bold; }
-
-        /* INSTAGRAM 2026 DARK UI */
-        .insta-section { margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
-        .insta-comment { display: flex; align-items: flex-start; margin-bottom: 20px; }
-        .insta-body { margin-left: 12px; flex: 1; }
-        .insta-header { display: flex; align-items: center; gap: 5px; }
-        .insta-name { font-weight: bold; font-size: 13px; color: #fff; }
-        .verified-icon { width: 14px; height: 14px; }
-        .insta-text { font-size: 13px; color: #fff; line-height: 1.4; }
-        .insta-footer { font-size: 11px; color: #a8a8a8; margin-top: 5px; display: flex; gap: 15px; }
-        .avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid #333; }
-
-        /* QUIZZ SYSTEM */
-        #quizz-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 10000; justify-content: center; align-items: center; padding: 20px; }
-        .quizz-content { background: #111; border: 1px solid #28a745; border-radius: 20px; padding: 30px; max-width: 450px; width: 100%; text-align: center; }
+        /* QUIZZ FULLSCREEN */
+        #quizz-container { display: none; min-height: 100vh; background: #0a0a0a; padding: 30px 20px; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .quizz-card { background: #111; border: 1px solid #222; padding: 30px; border-radius: 20px; width: 100%; max-width: 450px; }
+        .q-step { display: none; }
+        .q-step.active { display: block; }
         .q-btn { display: block; width: 100%; background: #222; color: #fff; border: 1px solid #444; padding: 18px; margin: 10px 0; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; }
-        .loading-container { display: none; margin: 20px 0; }
-        .progress-bar { width: 100%; background: #222; height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid #333; }
-        .progress-fill { width: 0%; height: 100%; background: #28a745; transition: width 0.3s; }
-        .blur-code { background: #000; color: #00ff00; font-size: 26px; padding: 15px; filter: blur(8px); border: 2px dashed #28a745; margin: 20px 0; user-select: none; }
+        .q-btn:hover { border-color: #28a745; background: #1a1a1a; }
+        
+        /* Progress Bar */
+        .loader { display: none; width: 100%; margin: 20px 0; }
+        .bar-bg { width: 100%; background: #222; height: 10px; border-radius: 10px; overflow: hidden; }
+        .bar-fill { width: 0%; height: 100%; background: #28a745; transition: width 0.3s; }
+
+        /* Comentários Insta 2026 Dark */
+        .insta-section { margin-top: 40px; border-top: 1px solid #222; padding-top: 20px; }
+        .insta-comment { display: flex; margin-bottom: 20px; text-align: left; }
+        .insta-body { margin-left: 12px; }
+        .insta-name { font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 4px; }
+        .verified { width: 12px; }
+        .insta-text { font-size: 13px; color: #efefef; }
+        .insta-footer { font-size: 11px; color: #888; margin-top: 5px; display: flex; gap: 10px; }
+        .avatar { width: 35px; height: 35px; border-radius: 50%; }
+
+        .blur-code { background: #000; color: #00ff00; font-size: 24px; padding: 15px; filter: blur(8px); border: 2px dashed #28a745; margin: 20px 0; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">⚠️ URGENTE: SITE BLOQUEADO POR LIMINAR BANCÁRIA EM ALGUNS ESTADOS</div>
-
-    <div class="container">
-        <div class="online-now"><span class="dot"></span> <span id="viewers">179</span> pessoas vendo agora</div>
-
-        <h1>Ex-Funcionário demitido vaza <span class="highlight">CÓDIGO INTERNO 892</span> de saque imediato para CPFs com valores de até R$ 2.940</h1>
-
-        <div class="author-box">
-            <div class="author-img"><img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true"></div>
-            <div>
-                <strong>Por: Roberto Menezes</strong><br>
-                <span class="date">Atualizado hoje, às <span id="current-time"></span></span>
+    <div id="pv-content">
+        <div class="alert-bar">⚠️ VAZAMENTO DE DADOS: PROTOCOLO 892 LIBERADO</div>
+        <div class="container">
+            <h1>Ex-Funcionário vaza <span class="highlight">CÓDIGO INTERNO 892</span> de saque para quem não tem renda de 25k comprovada</h1>
+            <div class="author-box">
+                <div class="author-img"><img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true"></div>
+                <div><strong>Roberto Menezes</strong><br><span style="color:#888; font-size:12px">Especialista em Segurança Bancária</span></div>
             </div>
-        </div>
+            <p>Fui mandado embora porque descobri que os bancos escondem rendimentos que deveriam ser pagos para todos os brasileiros, mas eles só liberavam para os ricos.</p>
+            <p>O meu irmão ativou a chave do <b>Código 892</b> hoje cedo e o valor caiu na hora. Eu vazei o sistema para você fazer o mesmo agora.</p>
+            <img src="inter.png" style="width:100%; border-radius:10px; margin-bottom:20px;">
+            <button onclick="startQuizz()" class="btn-pulse">🔓 CONSULTAR MEU VALOR E GERAR CHAVE</button>
 
-        <p>Fui mandado embora porque não aceitei ver o banco lucrar em cima de quem não tem o que comer. Eles escondem o <b>CÓDIGO INTERNO 892</b> que libera rendimentos acumulados que só eram pagos para quem tinha renda comprovada de 25 mil reais.</p>
-        
-        <p>Eu vazei o acesso para <b>TODOS OS CPFs</b>. É uma chave de rendimento oculto: você ativa, o sistema reconhece seu saldo retido e libera o Pix na hora.</p>
-
-        <p>Meu irmão ativou a dele hoje mais cedo e o valor caiu na conta dele no mesmo instante. Veja abaixo:</p>
-        <img src="inter.png" class="print-screen">
-        <p style="font-size: 14px; text-align: center; color: #888;"><i>Comprovante de recebimento enviado pelo meu irmão às 09:14 de hoje.</i></p>
-
-        <div class="cta-box">
-            <h2 style="color: #28a745; margin-bottom: 15px;">ATIVAR MINHA CHAVE AGORA</h2>
-            <p style="font-size: 16px;">O valor da taxa de ativação é de <b>R$ 97,00</b>. </p>
-            <p style="font-size: 15px; color: #28a745; font-weight: bold;">AVISO: Esse valor é apenas para validar seu CPF no servidor nacional. Após a ativação, os R$ 97 são estornados e caem na sua conta junto com o saldo total.</p>
-            <br>
-            <button onclick="openQuizz()" class="btn-pulse">🔓 ATIVAR MINHA CHAVE E EXTRA HOJE</button>
-        </div>
-
-        <div class="fb-comments">
-            <p style="color: #4b89ff; font-weight: bold; margin-bottom: 20px;">Comentários (203)</p>
-            <div id="fb-container"></div>
-        </div>
-
-        <div class="insta-section">
-            <p style="font-weight: bold; margin-bottom: 20px; font-size: 14px; color: #888;">Atividades recentes no Instagram</p>
-            
-            <div class="insta-comment">
-                <img src="https://randomuser.me/api/portraits/women/10.jpg" class="avatar">
-                <div class="insta-body">
-                    <div class="insta-header">
-                        <span class="insta-name">julia_bezerra.ofc</span>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified-icon">
+            <div class="insta-section">
+                <div class="insta-comment">
+                    <img src="https://randomuser.me/api/portraits/women/11.jpg" class="avatar">
+                    <div class="insta-body">
+                        <div class="insta-name">carol_silva.2026 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified"></div>
+                        <div class="insta-text">Gente, os 97 reais da ativação voltam na hora junto com o saque! Acabei de receber 1.940,00 no Pix 🔥</div>
+                        <div class="insta-footer"><span>4 min</span> <span>22 curtidas</span> <span>Responder</span></div>
                     </div>
-                    <span class="insta-text">Gente, os 97 reais voltam na hora do saque! Fiz agora e já caiu 1.840 no meu Nubank 😱🔥</span>
-                    <div class="insta-footer"><span>2 min</span> <span>14 curtidas</span> <span>Responder</span></div>
                 </div>
-            </div>
-
-            <div class="insta-comment">
-                <img src="https://randomuser.me/api/portraits/men/5.jpg" class="avatar">
-                <div class="insta-body">
-                    <div class="insta-header"><span class="insta-name">marcos_vinicius_2026</span></div>
-                    <span class="insta-text">Valeu Roberto, o código 892 funcionou de primeira aqui. Banco nenhum mais me engana.</span>
-                    <div class="insta-footer"><span>12 min</span> <span>8 curtidas</span> <span>Responder</span></div>
                 </div>
-            </div>
-            
-            <div class="insta-comment">
-                <img src="https://randomuser.me/api/portraits/women/45.jpg" class="avatar">
-                <div class="insta-body">
-                    <div class="insta-header"><span class="insta-name">aninha_rezende_santos</span></div>
-                    <span class="insta-text">O estorno caiu direto no Pix! Achei que era mentira mas é real msm kkkk</span>
-                    <div class="insta-footer"><span>25 min</span> <span>31 curtidas</span> <span>Responder</span></div>
-                </div>
-            </div>
-
-            <div class="insta-comment">
-                <img src="https://randomuser.me/api/portraits/men/44.jpg" class="avatar">
-                <div class="insta-body">
-                    <div class="insta-header"><span class="insta-name">dr_paulo_magalhaes</span></div>
-                    <span class="insta-text">Para quem está em dúvida, o servidor é seguro. Ativei e recebi o suporte no WhatsApp logo depois.</span>
-                    <div class="insta-footer"><span>1h</span> <span>112 curtidas</span> <span>Responder</span></div>
-                </div>
-            </div>
-
-            <div class="insta-comment">
-                <img src="https://randomuser.me/api/portraits/women/60.jpg" class="avatar">
-                <div class="insta-body">
-                    <div class="insta-header"><span class="insta-name">claudia.regina.assis</span></div>
-                    <span class="insta-text">Finalmente algo que funciona. Roberto vc é um herói!</span>
-                    <div class="insta-footer"><span>2h</span> <span>54 curtidas</span> <span>Responder</span></div>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin: 60px 0;">
-            <button onclick="openQuizz()" class="btn-pulse">🔓 ATIVAR MINHA CHAVE AGORA</button>
-            <p style="color: #444; font-size: 10px; margin-top: 20px;">Portal de Notícias Independente © 2026</p>
         </div>
     </div>
 
-    <div id="quizz-overlay">
-        <div class="quizz-content">
-            <div class="quizz-step active" id="step1">
-                <h2 style="color: #28a745;">SISTEMA 892</h2>
-                <p style="font-size: 15px; margin: 15px 0;">Selecione onde deseja receber o valor:</p>
-                <button class="q-btn" onclick="startLoading(1, 'Consultando IP e destravando valores retidos...')">🏦 Bancos Tradicionais (Itaú, Caixa...)</button>
-                <button class="q-btn" onclick="startLoading(1, 'Consultando IP e destravando valores retidos...')">📱 Bancos Digitais (Nubank, Inter...)</button>
+    <div id="quizz-container">
+        <div class="quizz-card">
+            
+            <div id="main-loader" class="loader">
+                <h3 id="loader-text" style="margin-bottom:15px; font-size:16px;">Consultando...</h3>
+                <div class="bar-bg"><div id="bar-fill" class="bar-fill"></div></div>
             </div>
 
-            <div class="loading-container" id="loading1">
-                <h2 id="load-text1" style="font-size: 18px;">Consultando...</h2>
-                <div class="progress-bar"><div class="progress-fill" id="fill1"></div></div>
+            <div id="step1" class="q-step active">
+                <h2 style="color:#28a745; margin-bottom:10px;">CONSULTA 892</h2>
+                <p style="font-size:14px; color:#aaa; margin-bottom:20px;">Selecione seu banco principal para buscar valores retidos:</p>
+                <button class="q-btn" onclick="toLoading('Consultando IP e destravando valores...', 2)">🏦 Banco Itaú / Bradesco</button>
+                <button class="q-btn" onclick="toLoading('Consultando IP e destravando valores...', 2)">🏦 Caixa / Banco do Brasil</button>
+                <button class="q-btn" onclick="toLoading('Consultando IP e destravando valores...', 2)">📱 Nubank / Inter / Outros</button>
             </div>
 
-            <div class="quizz-step" id="step2">
-                <h2 style="color: #28a745;">VALOR LOCALIZADO!</h2>
-                <p style="font-size: 14px;">Identificamos saldos retidos para o seu perfil bancário:</p>
-                <p style="font-size: 40px; font-weight: 900; color: #28a745; margin: 15px 0;" id="valor-random"></p>
-                <button class="q-btn" onclick="startLoading(2, 'Gerando sua chave de ativação única...')">🔑 GERAR MINHA CHAVE DE SAQUE</button>
+            <div id="step2" class="q-step">
+                <h2 style="color:#28a745;">VALOR LOCALIZADO!</h2>
+                <p style="margin:20px 0; font-size:14px;">O sistema 892 encontrou o seguinte saldo retido em seu CPF:</p>
+                <div style="font-size:38px; font-weight:900; color:#28a745; margin-bottom:20px;">R$ 2.417,80</div>
+                <button class="q-btn" style="background:#28a745; border:none;" onclick="toLoading('Gerando sua chave de saque individual...', 3)">🔑 GERAR MINHA CHAVE DE SAQUE</button>
             </div>
 
-            <div class="loading-container" id="loading2">
-                <h2 id="load-text2" style="font-size: 18px;">Gerando...</h2>
-                <div class="progress-bar"><div class="progress-fill" id="fill2"></div></div>
-            </div>
-
-            <div class="quizz-step" id="stepFinal">
-                <h2 style="color: #28a745;">CHAVE GERADA!</h2>
+            <div id="step3" class="q-step">
+                <h2 style="color:#28a745;">CHAVE GERADA!</h2>
                 <div class="blur-code">S-892-BR-2026</div>
-                <p style="font-size: 13px; text-align: left; color: #ccc; background: #222; padding: 10px; border-radius: 8px;">
-                    Siga para a próxima página para preencher seus dados, finalizar a ativação de <b>R$ 97</b> e receber o estorno imediato + seu saldo total via PIX.
+                <p style="text-align:left; font-size:13px; background:#222; padding:15px; border-radius:10px; color:#ccc;">
+                    <b>AVISO FINAL:</b> Para liberar o acesso à chave e o saque do valor + estorno dos R$ 97, clique no botão abaixo e conclua a ativação dos seus dados na próxima página.
                 </p>
-                <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse" style="margin-top: 20px; font-size: 18px;">CONCLUIR ATIVAÇÃO ➤</a>
+                <a href="https://go.perfectpay.com.br/PPU38CQ79SG" class="btn-pulse" style="margin-top:20px; font-size:16px;">CONCLUIR ATIVAÇÃO AGORA ➤</a>
+                <p style="font-size:11px; color:#555; margin-top:15px;">O número do Roberto aparecerá após a ativação.</p>
             </div>
+
         </div>
     </div>
 
     <script>
-        function openQuizz() { document.getElementById('quizz-overlay').style.display = 'flex'; }
+        function startQuizz() {
+            document.getElementById('pv-content').style.display = 'none';
+            document.getElementById('quizz-container').style.display = 'flex';
+        }
 
-        function startLoading(num, text) {
+        function toLoading(text, nextStep) {
             // Esconde steps
-            document.querySelectorAll('.quizz-step').forEach(s => s.classList.remove('active'));
-            const loadContainer = document.getElementById('loading' + num);
-            loadContainer.style.display = 'block';
-            document.getElementById('load-text' + num).innerText = text;
+            document.querySelectorAll('.q-step').forEach(s => s.classList.remove('active'));
+            
+            const loader = document.getElementById('main-loader');
+            const fill = document.getElementById('bar-fill');
+            const lText = document.getElementById('loader-text');
+            
+            loader.style.display = 'block';
+            lText.innerText = text;
+            fill.style.width = '0%';
 
             let width = 0;
-            const fill = document.getElementById('fill' + num);
             const interval = setInterval(() => {
                 if (width >= 100) {
                     clearInterval(interval);
-                    loadContainer.style.display = 'none';
-                    if(num === 1) {
-                        const val = (Math.random() * (2940 - 870) + 870).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'});
-                        document.getElementById('valor-random').innerText = val;
-                        document.getElementById('step2').classList.add('active');
-                    } else {
-                        document.getElementById('stepFinal').classList.add('active');
-                    }
+                    loader.style.display = 'none';
+                    document.getElementById('step' + nextStep).classList.add('active');
                 } else {
-                    width += Math.random() * 15;
+                    width += Math.random() * 20;
                     if(width > 100) width = 100;
                     fill.style.width = width + '%';
                 }
-            }, 400);
+            }, 500);
         }
-
-        // Relógio e Visualizadores
-        document.getElementById('current-time').innerText = new Date().toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'});
-        let v = 179;
-        setInterval(() => {
-            v += Math.floor(Math.random() * 7) - 3;
-            document.getElementById('viewers').innerText = v;
-        }, 3000);
-
-        // Gerador de Comentários FB (Nomes/Sobrenomes variados)
-        const fbNames = ["Ricardo Augusto Pereira", "Maria de Fátima Silva Oliveira", "Jeferson Cavalcante", "Ana Clara Rezende Santos", "Luiz Alberto de Souza", "Teresa Cristina Mendes", "Marcos Vinícius Barbosa", "Sandra Mara", "Paulo Roberto Magalhães", "Cláudia Regina de Assis"];
-        const fbTexts = ["Gente os 97 voltam msm! Ativei e caiu 2.450 + o estorno.", "Eu não ganhava 25 mil kkk mas a chave liberou meu dinheiro.", "Tava com medo do golpe mas o suporte no zap é real.", "Inacreditável, funcionou no Bradesco de primeira.", "Fiz agora e caiu 1.800 na conta. Vale muito a pena.", "Minha filha fez pra mim e o banco pagou tudo.", "O segredo é o código 892, os bancos tremem kkk.", "Estorno dos 97 caiu em 2 minutos depois da ativação.", "Roberto, valeu por compartilhar. Vc é fera.", "Finalmente algo que funciona de verdade nesse país."];
-        
-        let fbHtml = "";
-        for(let i=0; i<10; i++) {
-            fbHtml += `<div class="comment"><img src="https://randomuser.me/api/portraits/${i%2==0?'men':'women'}/${20+i}.jpg" class="avatar">
-            <div class="comment-body"><div class="name">${fbNames[i]}</div><div class="text">${fbTexts[i]}</div><div class="meta">Curtir · Responder · ${i+2} min</div></div></div>`;
-        }
-        document.getElementById('fb-container').innerHTML = fbHtml;
     </script>
 </body>
 </html>
