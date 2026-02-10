@@ -2,11 +2,12 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Reembolso Bancário</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Consulta Pública - Protocolo de Ressarcimento</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -16,235 +17,273 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1773918999950681');
+    
+    fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
-    /></noscript>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f0f2f5; }
-        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 14px; }
-        .container { max-width: 600px; margin: 0 auto; background: #fff; min-height: 100vh; position: relative; }
-        .page { display: none; padding: 20px; }
-        .page.active { display: block; }
-        .online-tag { background: #000; color: #00ff00; text-align: center; font-size: 10px; padding: 5px; font-weight: bold; }
-        .btn-modern { font-family: 'Montserrat', sans-serif; background: #28a745; color: white; font-size: 20px; font-weight: 900; padding: 20px; border-radius: 50px; text-align: center; display: block; width: 100%; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; }
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
-        .loading-circle { border: 8px solid #f3f3f3; border-top: 8px solid #28a745; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 20px auto; }
+        :root {
+            --primary: #003366; 
+            --secondary: #0056b3;
+            --accent: #28a745; 
+            --bg: #f8f9fa;
+            --text: #333;
+            --danger: #c4170c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        body { background-color: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+
+        .timer-bar {
+            background: var(--danger);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header {
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .shield-icon { color: var(--primary); font-size: 24px; }
+        .logo-text { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; line-height: 1.2; }
+        .secure-badge { background: #e8f5e9; color: var(--accent); padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .progress-container { width: 100%; margin-bottom: 30px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500; }
+        .progress-track { background: #e9ecef; height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { background: var(--secondary); height: 100%; width: 20%; transition: width 0.5s ease; }
+
+        .card {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 100%;
+            text-align: center;
+            display: none; 
+            animation: slideUp 0.4s ease-out;
+        }
+        .card.active { display: block; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
+        p.desc { font-size: 15px; color: #555; margin-bottom: 25px; line-height: 1.5; }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        
+        .btn {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn:active { border-color: var(--secondary); color: var(--secondary); background: #f0f8ff; }
+        
+        .btn.primary {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+        .loader-content { text-align: center; }
+        .spinner {
+            width: 50px; height: 50px; border: 5px solid #e9ecef; border-top: 5px solid var(--accent);
+            border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;
+        }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .comment-item { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .comment-item img { width: 45px; height: 45px; border-radius: 50%; }
-        .comment-name { color: #000; font-weight: 700; font-size: 15px; }
-        .comment-text { font-size: 15px; color: #1c1e21; margin-top: 2px; }
-        .comment-meta { font-size: 12px; color: #90949c; margin-top: 5px; }
+
+        .terminal-log {
+            background: #f1f1f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;
+            font-size: 12px; color: #333; text-align: left; height: 120px; overflow: hidden;
+            border-left: 3px solid var(--secondary); margin-top: 15px;
+        }
+        .log-item { margin-bottom: 5px; }
+        .log-item.success { color: #28a745; }
+
+        footer { text-align: center; padding: 20px; font-size: 11px; color: #aaa; border-top: 1px solid #eee; margin-top: auto; background: #fff; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM QUALQUER MOMENTO POR ORDEM JUDICIAL</div>
-    <div class="online-tag">● <span id="online-count">284</span> PESSOAS VENDO AGORA</div>
-
-    <div class="container">
-        
-        <div id="p1" class="page active">
-            <h1 class="text-[26px] font-[900] text-center leading-tight mb-4">Ex-Auditor Sênior VAZA Brecha de Segurança: <span class="bg-yellow-300 text-[#c00] px-1">"CPFs com saldo retido podem sacar até R$ 2.940,00 extra hoje"</span></h1>
-            
-            <div class="flex items-center mb-4 border-b pb-4">
-                <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true" class="w-12 h-12 rounded-full mr-3">
-                <div><p class="text-sm font-bold">Por: Roberto M.</p><p class="text-[10px] text-gray-500">Atualizado: Hoje, às 05:27</p></div>
-            </div>
-
-            <p class="text-lg mb-4">Preste muita atenção no que vou te falar. Fui demitido após 20 anos no Santander por um motivo: eu tentei ajudar uma cliente idosa que estava sem dinheiro para comprar remédio e tentou fazer um empréstimo de R$ 150,00. Não aguentei ver o banco negando aquilo e ativei a chave de rendimentos para resgatar o que era dela. 20 minutos depois me mandaram embora.</p>
-            <p class="text-lg mb-4">O que os bancos escondem de você é a <b>CHAVE DOS RENDIMENTOS OCULTOS</b> Internamente chamamos de CÓDIGO 892. Toda vez que você movimenta sua conta ou paga uma taxa, o banco gera um rendimento extra que deveria ser seu, mas eles retêm para lucrar bilhões.</p>
-            <p class="text-lg mb-4">Oficialmente pela Lei nº 8.036 essa chave só é liberada para <b>CLIENTES COM RENDA ACIMA DE R$ 25.000,00 COMPROVADA</b>. Mas eu copiei o acesso antes de sair do prédio do protocolo que permite qualquer pessoa consultar seu saldo e ativar o saque através de uma chave de ativação única. É simples: você só precisa gerar, ativar sua chave no seu banco e pronto, saque seu saldo dos rendimentos ocultos. Após a ativação você irá receber meu Whatsapp Pessoal, se tiver alguma dúvida é só me chamar que eu te ajudo.</p>
-            
-            <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/inter.png?raw=true" class="w-full border-2 border-black rounded-lg my-4 shadow-lg">
-
-            <div class="bg-yellow-50 border-2 border-dashed border-yellow-400 p-6 rounded-xl text-center my-6">
-                <button onclick="trackVC(); nextPage(2)" class="btn-modern">CONSULTAR VALORES DE RENDIMENTOS</button>
-            </div>
-
-            <div class="mt-10">
-                <p class="font-bold border-b pb-2 mb-4">209 Comentários</p>
-                <div class="comment-item">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg">
-                    <div><p class="comment-name">Fernando Souza de Andrade</p><p class="comment-text">Fiz agora e apareceu 1940 reais! Roberto, Deus te abençoe por isso.</p><p class="comment-meta">Curtir · Responder · 2 min</p></div>
-                </div>
-                <div class="comment-item">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg">
-                    <div><p class="comment-name">Mariana Cavalcante Lins</p><p class="comment-text">O valor caiu em 2 minutos na minha conta do Nubank. Chocada!</p><p class="comment-meta">Curtir · Responder · 5 min</p></div>
-                </div>
-            </div>
-        </div>
-
-        <div id="p2" class="page">
-            <h2 class="text-xl font-black text-center mb-8 italic uppercase">PARA CONSULTAR SEUS RENDIMENTOS INSIRA SEU CPF ABAIXO:</h2>
-            <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-5 bg-gray-100 rounded-full outline-none font-bold text-center text-xl mb-6 border-2 border-transparent focus:border-green-500" placeholder="000.000.000-00">
-            <button onclick="trackVC(); loader(3, 4, 'Consultando Banco de Dados Central (API)...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
-        </div>
-
-        <div id="p3" class="page text-center py-20">
-            <div class="loading-circle"></div>
-            <h3 id="load-text" class="text-xl font-bold">Processando...</h3>
-        </div>
-
-        <div id="p4" class="page text-center">
-            <h2 class="text-3xl font-black text-green-600 mb-6 uppercase">Valor Localizado!</h2>
-            <div class="bg-gray-900 text-white p-10 rounded-2xl mb-8">
-                <p class="text-[10px] font-bold text-gray-400 uppercase mb-2">Rendimentos Acumulados 2021-2025</p>
-                <p class="text-5xl font-black">R$ <span id="rand_val">0,00</span></p>
-            </div>
-            <button onclick="trackVC(); nextPage(5)" class="btn-modern">GERAR CHAVE DE SAQUE</button>
-        </div>
-
-        <div id="p5" class="page text-center">
-            <h2 class="text-xl font-black mb-6 uppercase">SELECIONE O BANCO QUE IRÁ UTILIZAR SUA CHAVE:</h2>
-            <div class="grid grid-cols-2 gap-2 mb-8">
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">ITAÚ</div>
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BRADESCO</div>
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">CAIXA</div>
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">NUBANK</div>
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">SANTANDER</div>
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">INTER</div>
-            </div>
-            <button onclick="trackVC(); loader(6, 7, 'Gerando Chave Criptografada...', 6000)" class="btn-modern">GERAR CHAVE</button>
-        </div>
-
-        <div id="p6" class="page text-center py-20">
-            <div class="loading-circle"></div>
-            <h3 class="text-lg font-bold">Criptografando Assinatura Digital de Saque (SHA-256)...</h3>
-        </div>
-
-        <div id="p7" class="page text-center">
-            <h2 class="text-xl font-black mb-6 uppercase italic">Chave de Saque Gerada com Sucesso!</h2>
-            <div class="bg-gray-100 p-6 text-2xl font-mono font-black border-2 border-dashed border-gray-400 mb-8 rounded-xl">892-TX-2026</div>
-            <button onclick="trackVC(); finalLoader()" class="btn-modern">ATIVAR CHAVE E SACAR RENDIMENTOS</button>
-        </div>
-
-        <div id="p8" class="page text-center py-20">
-            <div class="loading-circle" style="border-top-color:#c00"></div>
-            <p class="text-5xl font-black" id="final-pct">0%</p>
-            <h3 class="text-lg font-bold mt-4">Integrando transmissão de dados com a instituição destino...</h3>
-        </div>
-
-        <div id="p9" class="page text-center">
-            <div class="border-t-8 border-red-600 p-6 shadow-xl">
-                <h3 class="text-2xl font-black text-red-600 mb-4 uppercase">Erro de Ativação</h3>
-                <p class="text-sm mb-6">O Servidor não localizou o pagamento da <b>Taxa de Chave para Saque de Rendimentos (TAC).</b> Realize o pagamento da taxa do seu Token de Segurança para validar o Protocolo 892 e liberar o resgate imediatamente..</p>
-                <div class="bg-gray-100 p-6 rounded-xl mb-6"><p class="text-4xl font-black">R$ 27,00</p></div>
-                <button onclick="trackIC(); nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR CHAVE</button>
-            </div>
-        </div>
-
-        <div id="p10" class="page">
-            <h2 class="text-xl font-black text-center mb-2 uppercase italic">Finalize a Ativação da sua Chave</h2>
-            
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-                <p class="text-[12px] text-blue-900 leading-tight">
-                    <b>AUTENTICAÇÃO PENDENTE:</b> Esta taxa de R$ 27,00 é processada pelo terminal do Diretor Financeiro responsável pela liberação: 
-                    <br><span class="text-sm font-bold uppercase underline">EMMANUEL VICTOR</span>.
-                </p>
-            </div>
-
-            <div class="border p-6 rounded-3xl text-center bg-gray-50 shadow-inner">
-                <p class="text-red-600 font-bold mb-4">⏳ EXPIRA EM: <span id="timer">05:00</span></p>
-                
-                <img src="qrcode.png" class="mx-auto mb-6 border-4 border-white shadow-md max-w-[200px]">
-                
-                <p class="text-[10px] font-bold text-gray-400 uppercase mb-2">Código PIX Copia e Cola:</p>
-                <input type="text" id="pixCode" readonly value="INSIRA_SEU_CODIGO_PIX_AQUI_DA_INFINITY" class="w-full p-3 bg-white border rounded-lg text-[10px] mb-2 text-center font-mono">
-                
-                <button onclick="copyPix()" class="w-full bg-blue-600 text-white font-black py-4 rounded-full mb-6 text-sm">COPIAR CÓDIGO PIX</button>
-                
-                <hr class="my-6">
-
-                <button onclick="btnJaPaguei()" class="w-full bg-green-600 text-white font-black py-5 rounded-2xl text-lg shadow-lg animate-bounce">
-                    ✅ JÁ PAGUEI, LIBERAR MEU SALDO
-                </button>
-
-                <p class="text-[9px] text-gray-400 uppercase font-bold mt-6 tracking-widest">Protocolo 892 - Diretor Emmanuel Victor</p>
-            </div>
-        </div>
-
+    <div class="timer-bar">
+        ⚠️ O ACESSO EXPIRA EM: <span id="main-timer">10:00</span>
     </div>
 
+    <header>
+        <div class="logo-area">
+            <i class="fas fa-university shield-icon"></i>
+            <div class="logo-text">Sistema Nacional<br>de Verificação</div>
+        </div>
+        <div class="secure-badge">
+            <i class="fas fa-lock"></i> SSL SEGURO
+        </div>
+    </header>
+
+    <main>
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Análise de Elegibilidade</span>
+                <span id="percent-text">20%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-bar" style="width: 20%;"></div>
+            </div>
+        </div>
+
+        <div id="step1" class="card active">
+            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <h1>Verificação Inicial</h1>
+            <p class="desc">Para garantir a segurança dos dados, confirme:</p>
+            <p class="desc" style="font-weight: 600;">Você possui uma conta bancária ativa para recebimento de valores?</p>
+            
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep(2)">
+                    <i class="far fa-check-circle"></i> SIM, POSSUO
+                </button>
+                <button class="btn" onclick="nextStep(2)">
+                    <i class="far fa-times-circle"></i> NÃO POSSUO
+                </button>
+            </div>
+        </div>
+
+        <div id="step2" class="card">
+            <h1>Regulamentação 2026</h1>
+            <p class="desc">O Protocolo 892 exige movimentação recente.</p>
+            <p class="desc" style="font-weight: 600;">Você utilizou o Pix ou Cartão nos últimos 30 dias?</p>
+            
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep(3)">
+                    <i class="far fa-check-circle"></i> SIM, UTILIZEI
+                </button>
+                <button class="btn" onclick="nextStep(3)">
+                    <i class="far fa-clock"></i> NÃO UTILIZEI
+                </button>
+            </div>
+        </div>
+
+        <div id="step3" class="card">
+            <div style="margin-bottom: 15px; color: var(--accent); font-size: 40px;">
+                <i class="fas fa-unlock-alt"></i>
+            </div>
+            <h1>Acesso Quase Pronto</h1>
+            <p class="desc">Detectamos uma pré-aprovação para o seu perfil.</p>
+            <p class="desc">Deseja acessar a matéria completa e gerar sua chave de ativação agora?</p>
+            
+            <div class="btn-group">
+                <button class="btn primary" onclick="startLoading()">
+                    ACESSAR CONTEÚDO VAZADO
+                </button>
+            </div>
+        </div>
+
+        <div id="loading" class="card">
+            <div class="loader-content">
+                <div class="spinner"></div>
+                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Sincronizando Dados...</h2>
+                <div class="terminal-log" id="terminal"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright © 2026 - Protocolo 892</p>
+    </footer>
+
     <script>
-        // Funções do Pixel
-        function trackVC() { fbq('track', 'ViewContent'); }
-        function trackIC() { fbq('track', 'InitiateCheckout'); }
-        function trackPur() { fbq('track', 'Purchase', {value: 27.00, currency: 'BRL'}); }
-
-        function btnJaPaguei() {
-            trackPur();
-            // Redireciona para o WhatsApp
-            window.location.href = "https://wa.me/5511983836605?text=Já realizei o pagamento da taxa de 27 reais e quero liberar meu saldo agora!";
-        }
-
-        function copyPix() {
-            var copyText = document.getElementById("pixCode");
-            copyText.select();
-            copyText.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            alert("Código PIX copiado com sucesso!");
-        }
-
-        // Navegação e Lógica Original (Inalterada)
-        function nextPage(n) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('p' + n).classList.add('active');
-            window.scrollTo(0,0);
-            if(n === 4) {
-                let v = (Math.random() * (2940.80 - 1800.00) + 1800.00).toFixed(2);
-                document.getElementById('rand_val').innerText = v.replace('.', ',');
-            }
-            if(n === 10) startTimer();
-        }
-
-        function loader(curr, next, text, time) {
-            nextPage(curr);
-            document.getElementById('load-text').innerText = text;
-            setTimeout(() => nextPage(next), time);
-        }
-
-        function finalLoader() {
-            nextPage(8);
-            let p = 0;
-            let t = setInterval(() => {
-                p++;
-                document.getElementById('final-pct').innerText = p + "%";
-                if(p >= 99) { clearInterval(t); setTimeout(() => nextPage(9), 1500); }
-            }, 60);
-        }
-
+        let timeLeft = 600;
         function startTimer() {
-            let t = 300, m, s;
-            let timerInterval = setInterval(() => {
-                m = parseInt(t / 60, 10); s = parseInt(t % 60, 10);
-                document.getElementById('timer').textContent = (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
-                if (--t < 0) { clearInterval(timerInterval); }
+            const timerDisplay = document.getElementById('main-timer');
+            setInterval(() => {
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                s = s < 10 ? '0' + s : s;
+                timerDisplay.innerText = `${m}:${s}`;
+                if (timeLeft > 0) timeLeft--;
             }, 1000);
         }
+        startTimer();
 
-        function mask(i, m) {
-            let v = i.value.replace(/\D/g, "");
-            let k = 0; let res = "";
-            for (let char of m) {
-                if (char === "#") { res += v[k] || ""; k++; } 
-                else { if (v[k]) res += char; }
-            }
-            i.value = res;
+        function updateProgress(percent) {
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('percent-text').innerText = percent + '%';
         }
 
-        function sel(el) {
-            document.querySelectorAll('#p5 div').forEach(d => { d.style.borderColor = "#ddd"; d.style.backgroundColor = "transparent"; });
-            el.style.borderColor = "#28a745"; el.style.backgroundColor = "#e8f5e9";
+        function nextStep(step) {
+            document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            if(step === 2) updateProgress(50);
+            if(step === 3) updateProgress(85);
         }
 
-        setInterval(() => {
-            document.getElementById('online-count').innerText = Math.floor(Math.random() * (312 - 270 + 1)) + 270;
-        }, 3000);
+        function startLoading() {
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('loading').classList.add('active');
+            updateProgress(95);
+
+            const terminal = document.getElementById('terminal');
+            const logs = [
+                { t: "> Abrindo túnel de segurança...", d: 500 },
+                { t: "> Verificando credenciais...", d: 1200 },
+                { t: "> Acesso autorizado pelo Auditor.", d: 2000, s: true }
+            ];
+
+            logs.forEach((log, i) => {
+                setTimeout(() => {
+                    const p = document.createElement('div');
+                    p.className = 'log-item ' + (log.s ? 'success' : '');
+                    p.innerText = log.t;
+                    terminal.appendChild(p);
+                    if (i === logs.length - 1) {
+                        setTimeout(() => {
+                            window.location.href = "pgblack.html";
+                        }, 1000);
+                    }
+                }, log.d);
+            });
+        }
     </script>
 </body>
 </html>
