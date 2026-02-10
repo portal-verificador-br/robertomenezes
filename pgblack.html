@@ -8,66 +8,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '1773918999950681'); 
-    fbq('track', 'PageView');
-    fbq('track', 'ViewContent');
-    </script>
-    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
-        
-        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 0.9rem; animation: pulse 2s infinite; }
+        body { background-color: #f0f2f5; color: #1c1e21; }
+        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 0.8rem; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { background-color: #c00; } 50% { background-color: #e00; } 100% { background-color: #c00; } }
-
-        .container { max-width: 600px; margin: 0 auto; background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
-        
+        .container { max-width: 600px; margin: 0 auto; background: #fff; position: relative; min-height: 100vh; }
         .page { display: none; padding: 20px; }
         .page.active { display: block; }
-
+        
+        /* Popup Superior Esquerdo */
+        .online-tag { position: absolute; top: 50px; left: 10px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 9px; z-index: 50; }
+        
+        /* Título Original Mantido */
         h1 { font-size: 26px; color: #111; line-height: 1.2; margin-bottom: 15px; text-align: center; font-weight: 900; }
         .highlight { color: #c00; background: yellow; padding: 0 5px; }
 
-        .author-box { display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-        .author-img { width: 50px; height: 50px; border-radius: 50%; background: #ddd; margin-right: 10px; overflow: hidden; }
-        .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        .date { font-size: 12px; color: #666; }
-
-        p { margin-bottom: 15px; font-size: 18px; color: #333; }
-        .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
-
-        .cta-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 20px; text-align: center; margin: 30px 0; border-radius: 10px; }
-        
-        .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px 15px; text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34; animation: grow 1.5s infinite alternate; text-transform: uppercase; border:none; cursor:pointer; width: 100%; }
+        .btn-pulse { background: #28a745; color: white; font-size: 20px; font-weight: bold; padding: 18px; text-decoration: none; display: block; border-radius: 8px; text-align: center; animation: grow 1.5s infinite alternate; border:none; cursor:pointer; width: 100%; text-transform: uppercase; }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
-        .loading-circle { border: 8px solid #f3f3f3; border-top: 8px solid #28a745; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 20px auto; }
+        .loading-circle { border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 20px auto; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .online-status { position: absolute; top: 10px; right: 15px; background: rgba(0,0,0,0.7); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
-        .dot { height: 7px; width: 7px; background-color: #2ecc71; border-radius: 50%; display: inline-block; }
-
-        /* Comentários Estilo FB */
-        .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
-        .comment { display: flex; margin-bottom: 15px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin-right: 10px; }
-        .comment-body { background: #f0f2f5; padding: 10px; border-radius: 15px; width: 100%; }
-        .name { font-weight: bold; font-size: 14px; color: #385898; }
-        .text { font-size: 14px; }
-        .meta { font-size: 12px; color: #65676b; margin-top: 5px; }
+        /* Checkout Seco */
+        .checkout-box { border: 1px solid #ddd; border-radius: 12px; padding: 20px; margin-top: 20px; background: #fafafa; }
+        .timer { color: #c00; font-weight: 900; font-size: 18px; }
     </style>
 </head>
 <body>
@@ -75,206 +42,124 @@
     <div class="alert-bar">⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM 10 MINUTOS POR ORDEM JUDICIAL.</div>
 
     <div class="container">
-        <div class="online-status"><span class="dot"></span> <span id="val_online">298</span> ONLINE</div>
+        <div class="online-tag">🟢 <span id="online-count">287</span> PESSOAS VENDO AGORA</div>
 
-        <div id="page1" class="page active">
+        <div id="p1" class="page active">
             <h1>Ex-Funcionário do Itaú VAZA Brecha de Segurança: <span class="highlight">"CPFs com saldo retido podem sacar até R$ 2.940,00 extra hoje"</span></h1>
 
-            <div class="author-box">
-                <div class="author-img">
-                    <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true" alt="Roberto">
-                </div>
-                <div>
-                    <strong>Por: Roberto M.</strong><br>
-                    <span class="date">Atualizado: Hoje, às 05:27</span>
-                </div>
+            <div class="flex items-center mb-4 border-b pb-4">
+                <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/robertoitau.png?raw=true" class="w-12 h-12 rounded-full mr-3">
+                <div><strong>Por: Roberto M.</strong><br><span class="text-xs text-gray-500">Atualizado: Hoje, às 05:27</span></div>
             </div>
 
-            <p>Eles acharam que podiam me calar.</p>
-            <p>Trabalhei por 20 anos no setor de T.I. de um dos maiores bancos do Brasil. Fui demitido semana passada (por justa causa) apenas porque tentei avisar um cliente idoso que ele tinha <strong>dinheiro esquecido</strong> na conta.</p>
-            <p>O banco não quer que você saiba disso.</p>
-            <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta bancária. Mas, por padrão, essa função vem DESATIVADA.</p>
-            <p>O dinheiro fica lá... rendendo para ELES, enquanto você paga taxas.</p>
-            
-            <h3>A Vingança</h3>
-            <p>Decidi jogar a m**** no ventilador. Antes de sair do prédio, copiei o <strong>MANUAL DE ATIVAÇÃO</strong>.</p>
-            <p>Não é hacker. Não é ilegal. É um direito seu que está escondido atrás de 3 menus no aplicativo do seu banco.</p>
+            <p style="font-size: 18px; margin-bottom: 15px;">Eles acharam que podiam me calar.</p>
+            <p style="font-size: 18px; margin-bottom: 15px;">Trabalhei por 20 anos no setor de T.I. de um dos maiores bancos do Brasil. Fui demitido semana passada (por justa causa) apenas porque tentei avisar um cliente idoso que ele tinha <strong>dinheiro esquecido</strong> na conta.</p>
+            <p style="font-size: 18px; margin-bottom: 15px;">O banco não quer que você saiba disso.</p>
+            <p style="font-size: 18px; margin-bottom: 15px;">Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong> (Cód. 892), que gera rendimentos diários na sua conta bancária. Mas, por padrão, essa função vem DESATIVADA.</p>
 
-            <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/inter.png?raw=true" class="print-screen" alt="Prova de Saldo">
+            <img src="https://github.com/portal-verificador-br/robertomenezes/blob/main/inter.png?raw=true" class="w-full border-2 border-black rounded-lg my-4 shadow-lg">
 
-            <div class="cta-box">
-                <h2 style="font-weight: 900; font-size: 22px;">CONSULTAR VALORES DISPONÍVEIS</h2>
-                <p style="font-size: 14px; color: #555; margin-bottom: 20px;">Verifique gratuitamente se o seu CPF possui saldo retido pelo Protocolo 892.</p>
+            <div style="background:#fff9c4; border: 2px dashed #fbc02d; padding: 20px; text-align: center; border-radius: 10px; margin: 20px 0;">
+                <h2 class="font-black text-xl mb-4">CONSULTA DE VALORES</h2>
                 <button onclick="nextPage(2)" class="btn-pulse">🔓 CONSULTAR MEU SALDO AGORA</button>
-                <p style="font-size: 11px; color: #c00; font-weight: bold; margin-top: 15px;">🔥 Restam apenas 3 consultas gratuitas para sua região.</p>
             </div>
 
-            <div class="comments-section">
-                <p style="font-weight: bold; margin-bottom: 15px;">208 Comentários</p>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Fernando Souza</div>
-                        <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 990,00 que eu nem sabia que tinha.</div>
-                        <div class="meta">Curtir · Responder · 2 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Mariana Cavalcante de Oliveira</div>
-                        <div class="text">O Roberto é um anjo. Consegui pagar minha conta de luz atrasada com esse saldo.</div>
-                        <div class="meta">Curtir · Responder · 5 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Marcos Pimentel Junior</div>
-                        <div class="text">Recuperei 1400 reais. O banco come nosso dinheiro todo dia e a gente nem vê.</div>
-                        <div class="meta">Curtir · Responder · 8 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/women/21.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Carla Dias Camargo</div>
-                        <div class="text">Funcionou aqui no Bradesco! No começo achei estranho mas o valor caiu certinho.</div>
-                        <div class="meta">Curtir · Responder · 12 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/men/88.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">João Paulo Medeiros</div>
-                        <div class="text">Fiz a consulta e liberou 2100. Paguei a taxa da chave e caiu na hora. Valeu demais!</div>
-                        <div class="meta">Curtir · Responder · 15 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/women/65.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Beatriz Ferreira Neves</div>
-                        <div class="text">Muito simples de fazer. O vídeo do Roberto explica tudo certinho.</div>
-                        <div class="meta">Curtir · Responder · 20 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/men/52.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Ricardo Augusto Pereira</div>
-                        <div class="text">Ativei no Itaú. O gerente nem acredita que eu descobri isso kkkk.</div>
-                        <div class="meta">Curtir · Responder · 25 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/women/50.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Sandra Regina Alencar</div>
-                        <div class="text">Deu certo pra mim e pro meu marido. Recomendo pra todo mundo.</div>
-                        <div class="meta">Curtir · Responder · 30 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/men/22.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">André Luis Costa</div>
-                        <div class="text">A chave 892 é real mesmo. O banco central devia obrigar eles a avisarem isso.</div>
-                        <div class="meta">Curtir · Responder · 40 min</div>
-                    </div>
-                </div>
-                <div class="comment">
-                    <img src="https://randomuser.me/api/portraits/women/33.jpg" class="avatar">
-                    <div class="comment-body">
-                        <div class="name">Patrícia Guedes Lima</div>
-                        <div class="text">Obrigada Roberto! Saquei R$ 850,00 que tavam parados lá desde 2022.</div>
-                        <div class="meta">Curtir · Responder · 1 hora</div>
-                    </div>
-                </div>
+            <div class="mt-8 border-t pt-6 space-y-4">
+                <p class="font-bold">208 Comentários</p>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Fernando Souza</p><p class="text-sm">Fiz no app do Nubank e apareceu R$ 990,00 que eu nem sabia. Valeu!</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Mariana Cavalcante de Oliveira</p><p class="text-sm">O valor caiu em 10 minutos. Roberto vc é fera.</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/men/12.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Marcos Pimentel Junior</p><p class="text-sm">O banco come nosso dinheiro e a gente nem vê. Recuperei 1400.</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/women/21.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Carla Dias Camargo</p><p class="text-sm">Consegui sacar aqui no Bradesco. Muito bom!</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/men/88.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">João Paulo Medeiros</p><p class="text-sm">Liberou 2100 pra mim. Top demais.</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/women/65.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Beatriz Ferreira Neves</p><p class="text-sm">Simples e rápido. Recomendo.</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/men/52.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Ricardo Augusto Pereira</p><p class="text-sm">Ativado no Itaú. O gerente ficou sem entender nada rs.</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/women/50.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Sandra Regina Alencar</p><p class="text-sm">Eu e meu marido já sacamos. Obrigada!</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">André Luis Costa</p><p class="text-sm">A chave 892 é a melhor coisa que ja vi.</p></div></div>
+                <div class="flex gap-2 bg-gray-50 p-3 rounded-lg"><img src="https://randomuser.me/api/portraits/women/33.jpg" class="w-10 h-10 rounded-full"><div><p class="text-xs font-bold text-blue-800">Patrícia Guedes Lima</p><p class="text-sm">Saquei R$ 850 hoje cedo. Valeu Roberto.</p></div></div>
             </div>
         </div>
 
-        <div id="page2" class="page">
-            <h2 style="font-weight: 900; text-align: center; color: #004a8d;">AMBIENTE SEGURO DE CONSULTA</h2>
-            <p style="font-size: 14px; text-align: center; color: #666; margin-bottom: 25px;">Insira os dados abaixo para localizar valores retroativos vinculados ao seu CPF.</p>
-            
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="text" placeholder="Nome Completo" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-weight: bold; outline: none;">
-                <input type="tel" placeholder="CPF" oninput="mask(this, '###.###.###-##')" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-weight: bold; outline: none;">
-                <input type="tel" placeholder="Data de Nascimento" oninput="mask(this, '##/##/####')" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-weight: bold; outline: none;">
-                <input type="tel" placeholder="WhatsApp p/ Comprovante" oninput="mask(this, '(##) #####-####')" style="padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-weight: bold; outline: none;">
+        <div id="p2" class="page">
+            <h2 class="text-xl font-black text-center mb-6">CONSULTA SEGURA PROTOCOLO 892</h2>
+            <div class="space-y-4">
+                <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-4 bg-gray-100 rounded-lg outline-none font-bold" placeholder="Digite seu CPF">
+                <p class="text-[10px] text-gray-400 text-center uppercase font-bold">🔒 Seus dados estão protegidos pela LGPD</p>
+                <button onclick="loader(3, 4, 'Localizando valores retidos...')" class="btn-pulse">CONSULTAR VALORES</button>
             </div>
-            
-            <button onclick="startLoading(3, 4, 'Consultando base de dados bancária...')" class="btn-pulse" style="margin-top: 25px;">VERIFICAR MEU SALDO</button>
-            <center><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Certificado_Seguran%C3%A7a.png" style="width: 120px; margin-top: 15px; opacity: 0.5;"></center>
         </div>
 
-        <div id="page3" class="page text-center py-20">
+        <div id="p3" class="page text-center py-20">
             <div class="loading-circle"></div>
-            <h3 id="status_txt" style="font-weight: bold; color: #444; margin-top: 20px;">Processando solicitação...</h3>
-            <p style="font-size: 11px; color: #999; margin-top: 10px;">Criptografia ponta-a-ponta ativa.</p>
+            <h3 id="load-text" class="text-lg font-bold">Consultando Database...</h3>
         </div>
 
-        <div id="page4" class="page text-center">
-            <div style="background: #e8f5e9; color: #2e7d32; padding: 20px; border-radius: 20px; margin-bottom: 20px;">
-                <h2 style="font-weight: 900; font-size: 24px;">VALOR LOCALIZADO!</h2>
-                <p style="font-size: 14px; font-weight: bold;">CPF verificado com sucesso.</p>
+        <div id="p4" class="page text-center">
+            <h2 class="text-2xl font-black text-green-600 mb-4 italic">VALOR LOCALIZADO!</h2>
+            <div class="bg-gray-100 p-8 rounded-2xl mb-8">
+                <p class="text-xs font-bold text-gray-400 uppercase mb-2">Saldo pronto para saque</p>
+                <p class="text-5xl font-black text-gray-900">R$ <span id="rand_val">0,00</span></p>
             </div>
-            
-            <div style="background: #111; color: #fff; padding: 30px; border-radius: 15px; margin-bottom: 30px;">
-                <span style="font-size: 10px; color: #aaa; font-weight: bold; text-transform: uppercase;">Saldo retroativo Protocolo 892</span>
-                <div style="font-size: 42px; font-weight: 900; color: #28a745;">R$ 2.844,12</div>
-            </div>
-
             <button onclick="nextPage(5)" class="btn-pulse">GERAR MINHA CHAVE DE SAQUE</button>
         </div>
 
-        <div id="page5" class="page">
-            <h2 style="font-weight: 900; text-align: center; margin-bottom: 20px;">ONDE QUER RECEBER?</h2>
-            <div style="display: grid; grid-cols: 2; gap: 10px;">
-                <div onclick="selectB(this)" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-weight: bold; cursor: pointer; text-align: center;">NUBANK</div>
-                <div onclick="selectB(this)" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-weight: bold; cursor: pointer; text-align: center;">ITAÚ</div>
-                <div onclick="selectB(this)" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-weight: bold; cursor: pointer; text-align: center;">CAIXA</div>
-                <div onclick="selectB(this)" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-weight: bold; cursor: pointer; text-align: center;">BRADESCO</div>
-                <div onclick="selectB(this)" style="padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-weight: bold; cursor: pointer; text-align: center;">OUTRO BANCO</div>
+        <div id="p5" class="page text-center">
+            <h2 class="text-xl font-black mb-6">ONDE DESEJA RECEBER?</h2>
+            <div class="grid grid-cols-2 gap-3 mb-8">
+                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">NUBANK</div>
+                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">ITAÚ</div>
+                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">CAIXA</div>
+                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">BRADESCO</div>
+                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">INTER</div>
+                <div onclick="sel(this)" class="p-4 border-2 rounded-lg font-bold cursor-pointer">OUTROS</div>
             </div>
-            <button onclick="startLoading(6, 7, 'Gerando Chave Digital...')" class="btn-pulse" style="margin-top: 25px;">GERAR E VALIDAR CHAVE</button>
+            <button onclick="loader(6, 7, 'Criptografando Chave...')" class="btn-pulse">CONFIRMAR BANCO</button>
         </div>
 
-        <div id="page6" class="page text-center py-20">
-            <div class="loading-circle" style="border-top-color: #004a8d;"></div>
-            <h3 id="status_txt_2" style="font-weight: bold; color: #444; margin-top: 20px;">Gerando Chave...</h3>
+        <div id="p6" class="page text-center py-20">
+            <div class="loading-circle"></div>
+            <h3 id="load-text-2" class="text-lg font-bold">Gerando e Validando Chave...</h3>
         </div>
 
-        <div id="page7" class="page text-center">
-            <h2 style="font-weight: 900; margin-bottom: 10px;">CHAVE GERADA COM SUCESSO!</h2>
-            <div style="background: #f8f9fa; border: 2px dashed #004a8d; padding: 20px; font-family: monospace; font-size: 20px; font-weight: bold; margin: 20px 0;">
-                892-TX-2026-BANC
-            </div>
-            <p style="font-size: 14px; color: #666; margin-bottom: 30px;">O saldo de R$ 2.844,12 foi vinculado a esta chave. Só falta ativar a integração com seu banco.</p>
-            <button onclick="finalLoading()" class="btn-pulse">ATIVAR CHAVE E SACAR</button>
+        <div id="p7" class="page text-center">
+            <h2 class="text-xl font-black mb-4 italic uppercase">Chave de Ativação Gerada</h2>
+            <div class="bg-yellow-50 border-2 border-dashed border-yellow-400 p-6 text-2xl font-mono font-black mb-6">892-TX-2026</div>
+            <button onclick="finalLoader()" class="btn-pulse">ATIVAR CHAVE E ENVIAR PIX</button>
         </div>
 
-        <div id="page8" class="page text-center py-20">
-            <div class="loading-circle" style="border-top-color: #c00;"></div>
-            <p style="font-size: 32px; font-weight: 900;" id="final_pct">0%</p>
-            <h3 id="status_f" style="font-weight: bold; color: #444; margin-top: 20px;">Ativando Chave 892...</h3>
+        <div id="p8" class="page text-center py-20">
+            <div class="loading-circle" style="border-top-color:#c00"></div>
+            <p class="text-4xl font-black" id="final-pct">0%</p>
+            <h3 class="text-lg font-bold mt-4" id="status-f">Integrando chave ao banco...</h3>
         </div>
 
-        <div id="page9" class="page">
-            <div style="background: #fff; border-top: 8px solid #c00; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-radius: 0 0 15px 15px;">
-                <div style="color: #c00; font-size: 50px; margin-bottom: 10px;">⚠️</div>
-                <h3 style="font-weight: 900; font-size: 22px;">TRANSFERÊNCIA BLOQUEADA</h3>
-                <p style="font-size: 14px; color: #666; margin-top: 15px;">A Central de Chaves Bancária identificou um valor retroativo superior a R$ 2.500,00. Por normas de segurança, é obrigatório o pagamento da <b>Tarifa de Chave Central (TAC)</b> para ativação do protocolo.</p>
-                
-                <div style="background: #f0f2f5; padding: 20px; border-radius: 15px; margin: 20px 0;">
-                    <span style="font-size: 10px; font-weight: bold; color: #999; text-transform: uppercase;">Valor da Tarifa de Ativação</span>
-                    <div style="font-size: 38px; font-weight: 900; color: #111;">R$ 97,00</div>
+        <div id="p9" class="page text-center">
+            <div class="bg-white border-t-8 border-red-600 p-8 shadow-2xl rounded-b-xl">
+                <h3 class="text-2xl font-black text-red-600 mb-4">TRANSFERÊNCIA BLOQUEADA</h3>
+                <p class="text-sm text-gray-600 mb-6">O banco exige o pagamento da <b>Taxa de Chave Central (TAC)</b> para liberar valores superiores a R$ 2.500,00.</p>
+                <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                    <p class="text-[10px] font-bold text-gray-400 uppercase">Valor para ativação</p>
+                    <p class="text-3xl font-black">R$ 97,00</p>
                 </div>
-
-                <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse" style="background: #c00; text-decoration: none;">LIBERAR MEU PIX AGORA</a>
-                <p style="font-size: 10px; color: #999; margin-top: 15px;">*O valor da tarifa é estornado automaticamente após o saque.</p>
+                <button onclick="nextPage(10)" class="btn-pulse" style="background:#c00">LIBERAR MEU PIX AGORA</button>
             </div>
+        </div>
+
+        <div id="p10" class="page">
+            <h2 class="text-xl font-black text-center mb-2 uppercase italic">Finalize a ativação da sua chave</h2>
+            <p class="text-center text-sm text-gray-500 mb-6">Ative no seu banco para gerar seu saque imediato.</p>
+            
+            <div class="checkout-box text-center">
+                <p class="text-xs font-bold uppercase text-gray-400">Esta chave expira em:</p>
+                <div class="timer mb-4" id="timer">05:00</div>
+                
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CHAVE_PIX_FAKE" class="mx-auto mb-4 border p-2 bg-white">
+                
+                <button onclick="copyPix()" class="w-full bg-blue-600 text-white font-black py-4 rounded-lg mb-4 uppercase text-sm">Copia e Cola PIX</button>
+                
+                <p class="text-[10px] text-gray-400 leading-tight">Ao realizar o pagamento, o sistema identifica automaticamente e o saldo de <b>R$ <span id="check_val">2.844</span></b> é enviado para sua conta cadastrada.</p>
+            </div>
+            
+            <p class="text-center text-[9px] text-gray-300 mt-10 uppercase font-bold tracking-tighter">Ativação processada via Protocolo de Criptografia Bancária End-to-End v8.9.2</p>
         </div>
 
     </div>
@@ -282,45 +167,51 @@
     <script>
         function nextPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + n).classList.add('active');
+            document.getElementById('p' + n).classList.add('active');
             window.scrollTo(0,0);
+            if(n === 4) {
+                let v = (Math.random() * (2940.40 - 1400.00) + 1400.00).toFixed(2);
+                document.getElementById('rand_val').innerText = v.replace('.', ',');
+                document.getElementById('check_val').innerText = v.replace('.', ',');
+            }
+            if(n === 10) startTimer();
         }
 
-        function startLoading(curr, next, text) {
+        function loader(curr, next, text) {
             nextPage(curr);
-            let s = document.getElementById('status_txt');
-            let s2 = document.getElementById('status_txt_2');
-            let p = 0;
-            let t = setInterval(() => {
-                p++;
-                if(p == 30) { if(s) s.innerText = "Buscando taxas retroativas..."; if(s2) s2.innerText = "Criptografando Chave..."; }
-                if(p == 60) { if(s) s.innerText = "Validando dados no Servidor Central..."; if(s2) s2.innerText = "Validando no seu banco..."; }
-                if(p >= 100) { clearInterval(t); nextPage(next); }
-            }, 40); // Consulta rápida como você pediu
+            document.getElementById('load-text').innerText = text;
+            setTimeout(() => nextPage(next), 2000);
         }
 
-        function finalLoading() {
+        function finalLoader() {
             nextPage(8);
             let p = 0;
-            let bar = document.getElementById('final_pct');
-            let status = document.getElementById('status_f');
+            let bar = document.getElementById('final-pct');
+            let status = document.getElementById('status-f');
             let t = setInterval(() => {
                 p++;
                 bar.innerText = p + "%";
-                if(p == 20) status.innerText = "Criptografando protocolo de envio...";
-                if(p == 50) status.innerText = "Sincronizando com Banco Central...";
-                if(p == 85) status.innerText = "Finalizando integração bancária...";
+                if(p == 30) status.innerText = "Sincronizando com Banco Central...";
+                if(p == 80) status.innerText = "Validando Tarifa de Transferência...";
                 if(p >= 99) {
                     clearInterval(t);
-                    setTimeout(() => { nextPage(9); }, 1500);
+                    setTimeout(() => nextPage(9), 1000);
                 }
-            }, 80);
+            }, 60);
         }
 
-        function selectB(el) {
-            document.querySelectorAll('#page5 div').forEach(d => d.style.borderColor = "#ddd");
-            el.style.borderColor = "#004a8d";
-            el.style.backgroundColor = "#f0f8ff";
+        function startTimer() {
+            let duration = 300;
+            let display = document.getElementById('timer');
+            let timer = duration, minutes, seconds;
+            setInterval(() => {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                display.textContent = minutes + ":" + seconds;
+                if (--timer < 0) timer = 0;
+            }, 1000);
         }
 
         function mask(i, m) {
@@ -333,9 +224,16 @@
             i.value = res;
         }
 
+        function sel(el) {
+            document.querySelectorAll('#p5 div').forEach(d => d.classList.remove('bg-blue-100', 'border-blue-500'));
+            el.classList.add('bg-blue-100', 'border-blue-500');
+        }
+
+        function copyPix() { alert("Código PIX Copiado!"); }
+
         setInterval(() => {
             let c = Math.floor(Math.random() * (312 - 270 + 1)) + 270;
-            document.getElementById('val_online').innerText = c;
+            document.getElementById('online-count').innerText = c;
         }, 3000);
     </script>
 </body>
