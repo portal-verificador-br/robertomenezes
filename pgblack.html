@@ -22,10 +22,16 @@
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
+
+    // Função para disparar o Checkout no clique do WhatsApp
+    function dispararCheckout() {
+        fbq('track', 'InitiateCheckout');
+    }
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
     /></noscript>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
@@ -150,7 +156,6 @@
         }
         #notification img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
         #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; }
-        #notification .dot { height: 8px; width: 8px; background: #28a745; border-radius: 50%; display: inline-block; margin-right: 5px; }
 
     </style>
 </head>
@@ -162,7 +167,7 @@
 
     <div class="container">
         
-        <h1>Ex-Funcionário do Santander VAZA Brecha de Segurança: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.895,50 extra hoje"</span></h1>
+        <h1>Ex-Funcionário do Santander VAZA Brecha de Segurança: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.400 extra hoje"</span></h1>
 
         <div class="author-box">
             <div class="author-img">
@@ -204,7 +209,7 @@
             <p style="text-decoration: line-through; color: #999;">De: R$ 997,00</p>
             <p style="font-size: 24px; font-weight: bold; color: #c00;">POR APENAS: R$ 97,00</p>
             
-            <a href="https://wa.me/5511983836605?text=Quero%20desbloquear%20meu%20saldo%20agora" class="btn-pulse">
+            <a href="https://wa.me/5511983836605?text=Quero%20desbloquear%20meu%20saldo%20agora" onclick="dispararCheckout()" class="btn-pulse">
                 🔓 DESBLOQUEAR MEU SALDO AGORA
             </a>
             
@@ -283,7 +288,7 @@
         
         <br><br>
         <center>
-            <a href="https://wa.me/5511983836605" style="color: #666; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
+            <a href="https://wa.me/5511983836605" onclick="dispararCheckout()" style="color: #666; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
             <p style="font-size: 10px; color: #999; margin-top: 10px;">Este site não tem vínculo com o Facebook ou entidades bancárias. Os resultados podem variar.</p>
         </center>
 
@@ -294,20 +299,21 @@
         <div class="info">
             <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
             <p>Acabou de liberar o acesso.</p>
-            <p style="color: #28a745; font-size: 12px; font-weight: bold;"><span class="dot"></span>Saldo de R$ <span id="notify-val"></span> resgatado</p>
+            <p style="color: #28a745; font-size: 12px; font-weight: bold;">Saldo de R$ <span id="notify-val"></span> resgatado</p>
         </div>
     </div>
 
     <script>
+        // Dados para o Pop-up (Gênero batendo com Nome)
         const data = [
             {n: 'Pedro', g: 'men', l: 'SP', v: '850,00'},
             {n: 'Lucas', g: 'men', l: 'MG', v: '1.240,00'},
-            {n: 'Fernanda', g: 'women', l: 'RJ', v: '620,00'},
             {n: 'Marcos', g: 'men', l: 'PR', v: '2.100,00'},
-            {n: 'Júlia', g: 'women', l: 'BA', v: '450,00'},
             {n: 'Rafael', g: 'men', l: 'RS', v: '980,00'},
-            {n: 'Ana', g: 'women', l: 'SC', v: '1.300,00'},
-            {n: 'Gustavo', g: 'men', l: 'GO', v: '770,00'}
+            {n: 'Gustavo', g: 'men', l: 'GO', v: '770,00'},
+            {n: 'Fernanda', g: 'women', l: 'RJ', v: '620,00'},
+            {n: 'Júlia', g: 'women', l: 'BA', v: '450,00'},
+            {n: 'Ana', g: 'women', l: 'SC', v: '1.300,00'}
         ];
         
         function showNotification() {
@@ -324,12 +330,10 @@
             
             setTimeout(() => {
                 notify.style.display = 'none';
-            }, 5000); // Fica 5 segundos na tela
+            }, 5000); 
         }
 
-        // Primeira notificação após 8 segundos (mais demorado como pediu)
         setTimeout(showNotification, 8000);
-        // Próximas a cada 20 segundos
         setInterval(showNotification, 20000);
     </script>
 </body>
