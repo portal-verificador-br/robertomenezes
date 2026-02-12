@@ -19,7 +19,6 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // ATENÇÃO: SUBSTITUA ABAIXO PELO SEU ID
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
@@ -106,7 +105,7 @@
         }
 
         .btn-pulse {
-            background: #28a745; /* Green */
+            background: #28a745; 
             color: white;
             font-size: 22px;
             font-weight: bold;
@@ -122,39 +121,37 @@
 
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
-        .btn-pulse:active { transform: translateY(4px); box-shadow: none; }
-
         .scarcity { color: #c00; font-weight: bold; margin-top: 10px; font-size: 14px; }
 
-        /* Fake Comments */
-        .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
-        .comment { display: flex; margin-bottom: 15px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin-right: 10px; }
-        .comment-body { background: #f0f2f5; padding: 10px; border-radius: 15px; width: 100%; }
-        .name { font-weight: bold; font-size: 14px; color: #385898; }
-        .text { font-size: 14px; }
-        .meta { font-size: 12px; color: #65676b; margin-top: 5px; }
-        .like { color: #65676b; cursor: pointer; }
+        /* Comentários Layout 2026 */
+        .comments-section { margin-top: 40px; border-top: 1px solid #e1e4e8; padding-top: 20px; }
+        .fb-header { font-weight: bold; color: #4b4f56; font-size: 15px; margin-bottom: 20px; }
+        .comment { display: flex; margin-bottom: 20px; }
+        .avatar { width: 44px; height: 44px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
+        .comment-content { background: #f0f2f5; padding: 12px 16px; border-radius: 20px; flex: 1; }
+        .name { color: #385898; font-weight: bold; font-size: 14px; margin-bottom: 2px; display: block; }
+        .text { font-size: 14px; color: #1c1e21; line-height: 1.4; }
+        .comment-footer { font-size: 12px; color: #606770; margin-top: 5px; margin-left: 15px; }
 
-        /* Sales Notification Popup */
+        /* Notification Popup */
         #notification {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             background: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             display: none;
             align-items: center;
             z-index: 1000;
-            width: 300px;
-            border-left: 5px solid #28a745;
+            width: 290px;
+            border: 1px solid #eee;
         }
-        #notification img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
-        #notification p { font-size: 13px; margin: 0; line-height: 1.3; }
-        
-        .blur-text { filter: blur(4px); user-select: none; }
+        #notification img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
+        #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; }
+        #notification .dot { height: 8px; width: 8px; background: #28a745; border-radius: 50%; display: inline-block; margin-right: 5px; }
+
     </style>
 </head>
 <body>
@@ -215,41 +212,71 @@
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 15px;">196 Comentários</p>
+            <div class="fb-header">201 Comentários</div>
 
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Fernando Souza</div>
-                    <div class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 890,00 que eu nem sabia que tinha. Paguei o manual e lucrei 10x mais em 5 minutos.</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 2 min</div>
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Fernando Souza</span>
+                        <p class="text">Cara, eu tô tremendo... fiz no app do Nubank e apareceu R$ 890,00 que eu nem sabia que tinha. Paguei o manual e lucrei 10x mais em 5 minutos.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 2 min</div>
                 </div>
             </div>
 
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Carla Dias</div>
-                    <div class="text">Gente, é verdade mesmo? Tô com medo de ser golpe.</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 5 min</div>
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Carla Dias</span>
+                        <p class="text">Gente, é verdade mesmo? Tô com medo de ser golpe.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 5 min</div>
                 </div>
             </div>
              
             <div class="comment" style="margin-left: 50px;">
                 <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Marcos P.</div>
-                    <div class="text">Carla, pode ir. O Roberto entrega mesmo. O acesso chega no email. É um PDF simples, mas o conteúdo vale ouro. Recuperei 200 reais que o banco comeu de taxa.</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 3 min</div>
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Marcos P.</span>
+                        <p class="text">Carla, pode ir. O Roberto entrega mesmo. Ele me atendeu no WhatsApp e mandou tudo. Já recuperei 200 reais que o banco comeu de taxa.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 3 min</div>
                 </div>
             </div>
 
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Juliana M.</div>
-                    <div class="text">Tô chocada! Funciona no Bradesco tbm!!!</div>
-                    <div class="meta"><span class="like">Curtir</span> · Responder · 12 min</div>
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Juliana M.</span>
+                        <p class="text">Tô chocada! Funciona no Bradesco tbm!!! O suporte do zap me ajudou a achar o menu certinho.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 12 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Ricardo Almeida</span>
+                        <p class="text">Trabalhei em banco tbm e sei que isso existe. O Roberto foi corajoso de vazar. Consegui resgatar R$ 1.150 aqui agora.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 18 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Sônia Regina</span>
+                        <p class="text">Obrigada Roberto! Consegui pagar minha conta de luz atrasada com esse saldo oculto da Caixa. Gratidão!</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 25 min</div>
                 </div>
             </div>
         </div>
@@ -263,36 +290,47 @@
     </div>
 
     <div id="notification">
-        <img src="https://randomuser.me/api/portraits/men/1.jpg" id="notify-img">
-        <div>
-            <p><strong><span id="notify-name">João</span> de SP</strong></p>
-            <p>Acabou de comprar o Manual.</p>
-            <p style="color: #28a745; font-size: 11px; font-weight: bold;">Ganhou R$ 450,00 de retorno</p>
+        <img src="" id="notify-img">
+        <div class="info">
+            <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
+            <p>Acabou de liberar o acesso.</p>
+            <p style="color: #28a745; font-size: 12px; font-weight: bold;"><span class="dot"></span>Saldo de R$ <span id="notify-val"></span> resgatado</p>
         </div>
     </div>
 
     <script>
-        const names = ['Pedro', 'Lucas', 'Fernanda', 'Marcos', 'Júlia', 'Rafael', 'Ana', 'Gustavo'];
-        const locs = ['SP', 'RJ', 'MG', 'RS', 'BA', 'PR'];
+        const data = [
+            {n: 'Pedro', g: 'men', l: 'SP', v: '850,00'},
+            {n: 'Lucas', g: 'men', l: 'MG', v: '1.240,00'},
+            {n: 'Fernanda', g: 'women', l: 'RJ', v: '620,00'},
+            {n: 'Marcos', g: 'men', l: 'PR', v: '2.100,00'},
+            {n: 'Júlia', g: 'women', l: 'BA', v: '450,00'},
+            {n: 'Rafael', g: 'men', l: 'RS', v: '980,00'},
+            {n: 'Ana', g: 'women', l: 'SC', v: '1.300,00'},
+            {n: 'Gustavo', g: 'men', l: 'GO', v: '770,00'}
+        ];
         
         function showNotification() {
-            const name = names[Math.floor(Math.random() * names.length)];
-            const imgId = Math.floor(Math.random() * 50);
-            const gender = Math.random() > 0.5 ? 'men' : 'women';
+            const item = data[Math.floor(Math.random() * data.length)];
+            const imgId = Math.floor(Math.random() * 70);
             
-            document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
+            document.getElementById('notify-name').innerText = item.n;
+            document.getElementById('notify-loc').innerText = item.l;
+            document.getElementById('notify-val').innerText = item.v;
+            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${item.g}/${imgId}.jpg`;
             
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
             
             setTimeout(() => {
                 notify.style.display = 'none';
-            }, 4000);
+            }, 5000); // Fica 5 segundos na tela
         }
 
-        setTimeout(showNotification, 3000);
-        setInterval(showNotification, 15000);
+        // Primeira notificação após 8 segundos (mais demorado como pediu)
+        setTimeout(showNotification, 8000);
+        // Próximas a cada 20 segundos
+        setInterval(showNotification, 20000);
     </script>
 </body>
 </html>
