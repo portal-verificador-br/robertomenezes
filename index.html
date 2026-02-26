@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consulta Privada - Protocolo de Ressarcimento</title>
+    <title>Consulta Pública - Protocolo de Ressarcimento</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -177,7 +177,7 @@
             </div>
             <h1>Verificação Inicial</h1>
             <p class="desc">Para garantir a segurança dos dados, confirme:</p>
-            <p class="desc" style="font-weight: 600;">Você possui uma conta bancária ativa para recebimento de valores?</p>
+            <p class="desc" style="font-weight: 600;">Possui conta bancária (ativa ou encerrada) nos últimos 5 anos?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(2)">
@@ -192,14 +192,14 @@
         <div id="step2" class="card">
             <h1>Regulamentação 2026</h1>
             <p class="desc">O Protocolo 892 exige movimentação bancária.</p>
-            <p class="desc" style="font-weight: 600;">Você utilizou o Pix ou Cartão nos últimos 90 dias?</p>
+            <p class="desc" style="font-weight: 600;">Já recebeu algum estorno automático de taxas abusivas do seu banco?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-check-circle"></i> SIM, UTILIZEI
+                    <i class="far fa-check-circle"></i> SIM, JÁ RECEBI
                 </button>
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-clock"></i> NÃO UTILIZEI
+                    <i class="far fa-clock"></i> NÃO, NUNCA RECEBI NADA
                 </button>
             </div>
         </div>
@@ -209,8 +209,8 @@
                 <i class="fas fa-unlock-alt"></i>
             </div>
             <h1>Acesso Quase Pronto</h1>
-            <p class="desc">Você foi aprovado por Roberto Menezes ao acesso 892.</p>
-            <p class="desc">Deseja acessar a matéria completa e gerar seu saque de rendimentos agora?</p>
+            <p class="desc">Acesso liberado por Roberto Menezes (ID #976892)</p>
+            <p class="desc">Deseja acessar a matéria completa do Código 892 agora?</p>
             
             <div class="btn-group">
                 <button class="btn primary" onclick="startLoading()">
