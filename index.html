@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consulta Pública - Protocolo de Ressarcimento</title>
+    <title>SISTEMA DE VERIFICAÇÃO - CÓDIGO 892</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
@@ -21,231 +21,214 @@
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
-
     <style>
         :root {
-            --primary: #003366; 
-            --secondary: #0056b3;
-            --accent: #28a745; 
-            --bg: #f8f9fa;
-            --text: #333;
-            --danger: #c4170c;
+            --primary: #FFD700; /* Dourado */
+            --bg-dark: #0a0a0a; /* Preto Puro */
+            --card-bg: #1a1a1a;
+            --accent: #e60000; /* Vermelho Alerta */
+            --text-light: #ffffff;
+            --success: #00ff00;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         
-        body { background-color: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+        body { 
+            background-color: var(--bg-dark); 
+            color: var(--text-light); 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-        .timer-bar {
-            background: var(--danger);
+        /* Barra de Urgência Ultra Agressiva */
+        .urgency-bar {
+            background: var(--accent);
             color: #fff;
-            padding: 10px;
+            padding: 12px;
             text-align: center;
-            font-weight: 700;
-            font-size: 13px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            font-weight: 900;
+            font-size: 14px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
         }
 
         header {
-            background: #fff;
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: var(--card-bg);
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 3px solid var(--accent);
+            border-bottom: 2px solid var(--primary);
         }
         
-        .logo-area { display: flex; align-items: center; gap: 10px; }
-        .shield-icon { color: var(--primary); font-size: 24px; }
-        .logo-text { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; line-height: 1.2; }
-        .secure-badge { background: #e8f5e9; color: var(--accent); padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
-
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .shield-icon { color: var(--primary); font-size: 28px; filter: drop-shadow(0 0 5px var(--primary)); }
+        .logo-text { font-size: 15px; font-weight: 900; color: #fff; text-transform: uppercase; line-height: 1.1; }
+        
         main {
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 15px;
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             margin: 0 auto;
         }
 
-        .progress-container { width: 100%; margin-bottom: 30px; }
-        .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500; }
-        .progress-track { background: #e9ecef; height: 8px; border-radius: 4px; overflow: hidden; }
-        .progress-fill { background: var(--secondary); height: 100%; width: 20%; transition: width 0.5s ease; }
+        /* Barra de Progresso Moderna */
+        .progress-box { width: 100%; margin-bottom: 25px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; font-weight: 700; color: var(--primary); }
+        .progress-track { background: #333; height: 12px; border-radius: 10px; border: 1px solid #444; }
+        .progress-fill { background: linear-gradient(90deg, #FFD700, #FFA500); height: 100%; width: 15%; transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 10px; }
 
+        /* Card Moderno */
         .card {
-            background: #fff;
-            padding: 30px 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            background: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 20px;
+            border: 1px solid #333;
             width: 100%;
             text-align: center;
             display: none; 
-            animation: slideUp 0.4s ease-out;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .card.active { display: block; }
+        .card.active { display: block; animation: zoomIn 0.3s ease-out; }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
-        h1 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
-        p.desc { font-size: 15px; color: #555; margin-bottom: 25px; line-height: 1.5; }
+        h1 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 15px; line-height: 1.2; }
+        .highlight { color: var(--primary); }
 
-        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .btn-group { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
         
+        /* Botões Agressivos */
         .btn {
-            background: #fff;
-            border: 2px solid #e0e0e0;
-            padding: 18px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #444;
+            background: #222;
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 900;
+            color: #fff;
             cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            transition: 0.3s;
+            text-transform: uppercase;
         }
 
-        .btn:active { border-color: var(--secondary); color: var(--secondary); background: #f0f8ff; }
+        .btn:active { transform: scale(0.95); background: var(--primary); color: #000; }
         
-        .btn.primary {
-            background: var(--secondary);
-            color: white;
+        /* Botão Final com Pulsação */
+        .btn-final {
+            background: linear-gradient(180deg, #ffcc00 0%, #ff9900 100%);
+            color: #000 !important;
             border: none;
-            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
-            animation: pulse 1.5s infinite;
+            box-shadow: 0 5px 20px rgba(255, 204, 0, 0.4);
+            animation: pulseBtn 1.5s infinite;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-        .loader-content { text-align: center; }
-        .spinner {
-            width: 50px; height: 50px; border: 5px solid #e9ecef; border-top: 5px solid var(--accent);
-            border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;
+        @keyframes pulseBtn { 
+            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); transform: scale(1); }
+            50% { box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); transform: scale(1.05); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); transform: scale(1); }
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .terminal-log {
-            background: #f1f1f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;
-            font-size: 12px; color: #333; text-align: left; height: 120px; overflow: hidden;
-            border-left: 3px solid var(--secondary); margin-top: 15px;
+        /* Terminal de Auditoria */
+        .terminal-box {
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--success);
+            text-align: left;
+            border: 1px solid #333;
+            margin-top: 20px;
+            min-height: 100px;
         }
-        .log-item { margin-bottom: 5px; }
-        .log-item.success { color: #28a745; }
 
-        footer { text-align: center; padding: 20px; font-size: 11px; color: #aaa; border-top: 1px solid #eee; margin-top: auto; background: #fff; }
+        footer { text-align: center; padding: 25px; font-size: 11px; color: #555; background: var(--bg-dark); }
     </style>
 </head>
 <body>
 
-    <div class="timer-bar">
-        ⚠️ O ACESSO EXPIRA EM: <span id="main-timer">10:00</span>
+    <div class="urgency-bar">
+        ⚠️ ATENÇÃO: VERIFICAÇÃO OBRIGATÓRIA PARA CPF ATIVOS EM 2026
     </div>
 
     <header>
         <div class="logo-area">
-            <i class="fas fa-university shield-icon"></i>
-            <div class="logo-text">Sistema Nacional<br>de Verificação</div>
+            <i class="fas fa-fingerprint shield-icon"></i>
+            <div class="logo-text">AUDITORIA FEDERAL<br><span style="color:var(--primary)">CÓDIGO 892</span></div>
         </div>
-        <div class="secure-badge">
-            <i class="fas fa-lock"></i> SSL SEGURO
+        <div style="font-size: 12px; color: var(--success); font-weight: bold;">
+            <i class="fas fa-circle" style="font-size: 8px; vertical-align: middle;"></i> SISTEMA ATIVO
         </div>
     </header>
 
     <main>
-        <div class="progress-container">
+        <div class="progress-box">
             <div class="progress-label">
-                <span>Análise de Elegibilidade</span>
-                <span id="percent-text">20%</span>
+                <span>ESTÁGIO DE ANÁLISE</span>
+                <span id="percent-text">15%</span>
             </div>
             <div class="progress-track">
-                <div class="progress-fill" id="progress-bar" style="width: 20%;"></div>
+                <div class="progress-fill" id="progress-bar" style="width: 15%;"></div>
             </div>
         </div>
 
         <div id="step1" class="card active">
-            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-user-shield"></i>
-            </div>
-            <h1>Verificação Inicial</h1>
-            <p class="desc">Para garantir a segurança dos dados, confirme:</p>
-            <p class="desc" style="font-weight: 600;">Possui conta bancária (ativa ou encerrada) nos últimos 5 anos?</p>
+            <h1>O seu banco possui <span class="highlight">Valores Acumulados</span>?</h1>
+            <p style="color: #aaa; font-size: 14px;">Você movimentou sua conta (pagou boletos, recebeu PIX ou usou cartão) nos últimos 5 anos?</p>
             
             <div class="btn-group">
-                <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-check-circle"></i> SIM, POSSUO
-                </button>
-                <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-times-circle"></i> NÃO POSSUO
-                </button>
+                <button class="btn" onclick="nextStep(2)">SIM, MOVIMENTEI</button>
+                <button class="btn" onclick="nextStep(2)">NÃO TENHO CERTEZA</button>
             </div>
         </div>
 
         <div id="step2" class="card">
-            <h1>Protocolo de segurança</h1>
-            <p class="desc">O Protocolo 892 exige transparência de dados.</p>
-            <p class="desc" style="font-weight: 600;">Já recebeu algum estorno automático de taxas abusivas do seu banco?</p>
+            <h1>Você já foi <span class="highlight">vítima de taxas</span> abusivas?</h1>
+            <p style="color: #aaa; font-size: 14px;">O banco já descontou "Tarifa de Conta" ou "Anuidade" sem o seu consentimento?</p>
             
             <div class="btn-group">
-                <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-check-circle"></i> SIM, JÁ RECEBI
-                </button>
-                <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-clock"></i> NÃO, NUNCA RECEBI NADA
-                </button>
+                <button class="btn" onclick="nextStep(3)">SIM, MUITAS VEZES</button>
+                <button class="btn" onclick="nextStep(3)">NÃO SEI DIZER</button>
             </div>
         </div>
 
         <div id="step3" class="card">
-            <div style="margin-bottom: 15px; color: var(--accent); font-size: 40px;">
-                <i class="fas fa-unlock-alt"></i>
+            <div style="color: var(--success); font-size: 50px; margin-bottom: 10px;">
+                <i class="fas fa-check-double"></i>
             </div>
-            <h1>Acesso Quase Pronto</h1>
-            <p class="desc">Acesso liberado por Roberto Menezes (ID #976892)</p>
-            <p class="desc">Deseja acessar a matéria completa do Código 892 agora?</p>
+            <h1>ACESSO <span class="highlight">LIBERADO!</span></h1>
+            <p style="font-weight: bold; font-size: 16px; margin-bottom: 10px;">Identificamos pendências no Protocolo 892 para o seu perfil.</p>
+            <p style="color: #aaa; font-size: 14px;">O Manual do Ex-Auditor Roberto Menezes está disponível para download imediato.</p>
             
             <div class="btn-group">
-                <button class="btn primary" onclick="startLoading()">
-                    ACESSAR CONTEÚDO VAZADO
+                <button class="btn btn-final" onclick="triggerAndRedirect()">
+                    VER MEU SALDO E SACAR AGORA
                 </button>
             </div>
         </div>
 
         <div id="loading" class="card">
-            <div class="loader-content">
-                <div class="spinner"></div>
-                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Sincronizando Dados...</h2>
-                <div class="terminal-log" id="terminal"></div>
-            </div>
+            <h2 style="color: var(--primary); font-size: 18px;">SINCRONIZANDO COM O BANCO CENTRAL...</h2>
+            <div class="terminal-box" id="terminal"></div>
         </div>
     </main>
 
     <footer>
-        <p>Copyright © 2026 - Protocolo 892</p>
+        PROTOCOLO SEGURO 2026 - SISTEMA DE RECUPERAÇÃO DE ATIVOS<br>
+        Todos os dados são criptografados de ponta a ponta.
     </footer>
 
     <script>
-        let timeLeft = 600;
-        function startTimer() {
-            const timerDisplay = document.getElementById('main-timer');
-            setInterval(() => {
-                let m = Math.floor(timeLeft / 60);
-                let s = timeLeft % 60;
-                s = s < 10 ? '0' + s : s;
-                timerDisplay.innerText = `${m}:${s}`;
-                if (timeLeft > 0) timeLeft--;
-            }, 1000);
-        }
-        startTimer();
-
         function updateProgress(percent) {
             document.getElementById('progress-bar').style.width = percent + '%';
             document.getElementById('percent-text').innerText = percent + '%';
@@ -254,34 +237,41 @@
         function nextStep(step) {
             document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
-            if(step === 2) updateProgress(50);
-            if(step === 3) updateProgress(85);
+            if(step === 2) updateProgress(55);
+            if(step === 3) updateProgress(92);
         }
 
-        function startLoading() {
+        function triggerAndRedirect() {
+            // Dispara o evento ViewContent no Pixel antes de sair
+            fbq('track', 'ViewContent', {
+                content_name: 'Acesso Manual 892',
+                content_category: 'Reembolso Bancario'
+            });
+
+            // Inicia o efeito de carregamento de auditoria antes do redirect
             document.getElementById('step3').classList.remove('active');
             document.getElementById('loading').classList.add('active');
-            updateProgress(95);
+            updateProgress(100);
 
             const terminal = document.getElementById('terminal');
             const logs = [
-                { t: "> Abrindo túnel de segurança...", d: 500 },
-                { t: "> Verificando credenciais...", d: 1200 },
-                { t: "> Acesso autorizado pelo Auditor.", d: 2000, s: true }
+                "> Conectando ao Servidor de Auditoria...",
+                "> Localizando Protocolo 892...",
+                "> Extraindo Manual de Saque...",
+                "> REDIRECIONANDO PARA ÁREA SEGURA..."
             ];
 
-            logs.forEach((log, i) => {
+            logs.forEach((text, i) => {
                 setTimeout(() => {
                     const p = document.createElement('div');
-                    p.className = 'log-item ' + (log.s ? 'success' : '');
-                    p.innerText = log.t;
+                    p.innerText = text;
                     terminal.appendChild(p);
                     if (i === logs.length - 1) {
                         setTimeout(() => {
                             window.location.href = "pgblack.html";
-                        }, 1000);
+                        }, 800);
                     }
-                }, log.d);
+                }, i * 600);
             });
         }
     </script>
