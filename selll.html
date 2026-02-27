@@ -74,6 +74,29 @@
             border: none;
         }
 
+        /* Botão Flutuante de Som */
+        .sound-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .sound-btn i { font-size: 18px; color: var(--primary); }
+
         .content {
             max-width: 450px;
             background: var(--card);
@@ -100,20 +123,21 @@
             text-align: left;
         }
 
+        /* Botão CTA Ajustado e Menor */
         .cta-btn {
             display: inline-block;
             background: linear-gradient(180deg, #ffcc00 0%, #ff9900 100%);
             color: #000;
-            width: 100%;
-            padding: 22px;
-            border-radius: 12px;
+            width: 90%; /* Reduzido de 100% para 90% */
+            padding: 18px; /* Reduzido de 22px para 18px */
+            border-radius: 10px;
             font-weight: 900;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 17px;
-            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.3);
+            font-size: 15px; /* Reduzido de 17px para 15px */
+            box-shadow: 0 6px 15px rgba(255, 204, 0, 0.3);
             animation: pulse 1.5s infinite;
-            margin-top: 10px;
+            margin-top: 15px;
             cursor: pointer;
             border: none;
         }
@@ -153,8 +177,13 @@
     </div>
 
     <div class="video-wrapper">
+        <div class="sound-btn" id="soundBtn" onclick="toggleSound()">
+            <i class="fas fa-volume-up"></i> LIGAR SOM
+        </div>
+
         <iframe 
-            src="https://www.youtube.com/embed/vdJ7PintBJw?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1" 
+            id="videoRoberto"
+            src="https://www.youtube.com/embed/vdJ7PintBJw?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&modestbranding=1&enablejsapi=1" 
             allow="autoplay; encrypted-media" 
             allowfullscreen>
         </iframe>
@@ -170,7 +199,7 @@
         <p>Leia a matéria completa abaixo com calma. O servidor está instável devido ao alto número de acessos, então não feche esta página.</p>
 
         <a href="pgblack.html" onclick="fbq('track', 'Lead');" class="cta-btn">
-            ACESSAR MATÉRIA E LIBERAR SAQUE
+            ACESSAR MATÉRIA COMPLETA
         </a>
     </div>
 
@@ -180,6 +209,19 @@
     </div>
 
     <script>
+        // Função para ligar o som ao clicar no botão flutuante
+        function toggleSound() {
+            const iframe = document.getElementById('videoRoberto');
+            const btn = document.getElementById('soundBtn');
+            
+            // Envia comando para o YouTube via API para tirar o mute
+            iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+            
+            // Esconde o botão de som
+            btn.style.display = 'none';
+        }
+
+        // Notificações de Prova Social
         const nomes = ["Marcos S.", "Cláudia R.", "José Oliveira", "Sueli M.", "Ricardo F.", "Ana Paula G.", "Roberto V.", "Felipe Moraes"];
         const acoes = ["acabou de consultar o saldo", "recebeu R$ 1.240 via PIX", "entrou no servidor seguro", "ativou o Código 892"];
 
