@@ -21,12 +21,13 @@
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
+
     <style>
         :root {
-            --primary: #FFD700; /* Dourado */
-            --bg-dark: #0a0a0a; /* Preto Puro */
+            --primary: #FFD700; 
+            --bg-dark: #0a0a0a; 
             --card-bg: #1a1a1a;
-            --accent: #e60000; /* Vermelho Alerta */
+            --accent: #e60000; 
             --text-light: #ffffff;
             --success: #00ff00;
         }
@@ -42,17 +43,15 @@
             overflow-x: hidden;
         }
 
-        /* Barra de Urgência Ultra Agressiva */
         .urgency-bar {
             background: var(--accent);
             color: #fff;
             padding: 12px;
             text-align: center;
             font-weight: 900;
-            font-size: 14px;
+            font-size: 13px;
             text-transform: uppercase;
             box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5);
-            position: relative;
             z-index: 10;
         }
 
@@ -66,8 +65,8 @@
         }
         
         .logo-area { display: flex; align-items: center; gap: 12px; }
-        .shield-icon { color: var(--primary); font-size: 28px; filter: drop-shadow(0 0 5px var(--primary)); }
-        .logo-text { font-size: 15px; font-weight: 900; color: #fff; text-transform: uppercase; line-height: 1.1; }
+        .shield-icon { color: var(--primary); font-size: 28px; }
+        .logo-text { font-size: 15px; font-weight: 900; text-transform: uppercase; line-height: 1.1; }
         
         main {
             flex: 1;
@@ -81,84 +80,50 @@
             margin: 0 auto;
         }
 
-        /* Barra de Progresso Moderna */
         .progress-box { width: 100%; margin-bottom: 25px; }
         .progress-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; font-weight: 700; color: var(--primary); }
-        .progress-track { background: #333; height: 12px; border-radius: 10px; border: 1px solid #444; }
-        .progress-fill { background: linear-gradient(90deg, #FFD700, #FFA500); height: 100%; width: 15%; transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-radius: 10px; }
+        .progress-track { background: #333; height: 10px; border-radius: 10px; }
+        .progress-fill { background: var(--primary); height: 100%; width: 10%; transition: width 0.4s; border-radius: 10px; }
 
-        /* Card Moderno */
         .card {
             background: var(--card-bg);
-            padding: 35px 25px;
-            border-radius: 20px;
+            padding: 30px 20px;
+            border-radius: 15px;
             border: 1px solid #333;
             width: 100%;
             text-align: center;
             display: none; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .card.active { display: block; animation: zoomIn 0.3s ease-out; }
+        .card.active { display: block; animation: fadeIn 0.3s; }
 
-        @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        h1 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 15px; line-height: 1.2; }
+        h1 { font-size: 20px; font-weight: 900; margin-bottom: 15px; }
         .highlight { color: var(--primary); }
 
-        .btn-group { display: flex; flex-direction: column; gap: 15px; margin-top: 25px; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         
-        /* Botões Agressivos */
         .btn {
             background: #222;
             border: 1px solid #444;
-            padding: 20px;
-            border-radius: 12px;
-            font-size: 17px;
+            padding: 18px;
+            border-radius: 10px;
+            font-size: 15px;
             font-weight: 900;
             color: #fff;
             cursor: pointer;
-            transition: 0.3s;
             text-transform: uppercase;
         }
 
-        .btn:active { transform: scale(0.95); background: var(--primary); color: #000; }
+        .btn:active { background: var(--primary); color: #000; }
         
-        /* Botão Final com Pulsação */
-        .btn-final {
-            background: linear-gradient(180deg, #ffcc00 0%, #ff9900 100%);
-            color: #000 !important;
-            border: none;
-            box-shadow: 0 5px 20px rgba(255, 204, 0, 0.4);
-            animation: pulseBtn 1.5s infinite;
-        }
-
-        @keyframes pulseBtn { 
-            0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); transform: scale(1); }
-            50% { box-shadow: 0 0 0 15px rgba(255, 204, 0, 0); transform: scale(1.05); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); transform: scale(1); }
-        }
-
-        /* Terminal de Auditoria */
-        .terminal-box {
-            background: #000;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            color: var(--success);
-            text-align: left;
-            border: 1px solid #333;
-            margin-top: 20px;
-            min-height: 100px;
-        }
-
-        footer { text-align: center; padding: 25px; font-size: 11px; color: #555; background: var(--bg-dark); }
+        footer { text-align: center; padding: 20px; font-size: 10px; color: #444; }
     </style>
 </head>
 <body>
 
     <div class="urgency-bar">
-        ⚠️ ATENÇÃO: VERIFICAÇÃO OBRIGATÓRIA PARA CPF ATIVOS EM 2026
+        ⚠️ VERIFICAÇÃO OBRIGATÓRIA PARA CPF ATIVOS EM 2026
     </div>
 
     <header>
@@ -166,66 +131,53 @@
             <i class="fas fa-fingerprint shield-icon"></i>
             <div class="logo-text">AUDITORIA FEDERAL<br><span style="color:var(--primary)">CÓDIGO 892</span></div>
         </div>
-        <div style="font-size: 12px; color: var(--success); font-weight: bold;">
-            <i class="fas fa-circle" style="font-size: 8px; vertical-align: middle;"></i> SISTEMA ATIVO
-        </div>
     </header>
 
     <main>
         <div class="progress-box">
             <div class="progress-label">
-                <span>ESTÁGIO DE ANÁLISE</span>
-                <span id="percent-text">15%</span>
+                <span>ANÁLISE DE CPF</span>
+                <span id="percent-text">10%</span>
             </div>
             <div class="progress-track">
-                <div class="progress-fill" id="progress-bar" style="width: 15%;"></div>
+                <div class="progress-fill" id="progress-bar"></div>
             </div>
         </div>
 
         <div id="step1" class="card active">
-            <h1>O seu banco possui <span class="highlight">Valores Acumulados</span>?</h1>
-            <p style="color: #aaa; font-size: 14px;">Você movimentou sua conta (pagou boletos, recebeu PIX ou usou cartão) nos últimos 5 anos?</p>
-            
+            <h1>Você possui <span class="highlight">conta ativa</span> ou utilizou cartões nos últimos 5 anos?</h1>
             <div class="btn-group">
-                <button class="btn" onclick="nextStep(2)">SIM, MOVIMENTEI</button>
-                <button class="btn" onclick="nextStep(2)">NÃO TENHO CERTEZA</button>
+                <button class="btn" onclick="nextStep(2)">SIM, UTILIZO SEMPRE</button>
+                <button class="btn" onclick="nextStep(2)">TENHO CONTAS ANTIGAS</button>
             </div>
         </div>
 
         <div id="step2" class="card">
-            <h1>Você já foi <span class="highlight">vítima de taxas</span> abusivas?</h1>
-            <p style="color: #aaa; font-size: 14px;">O banco já descontou "Tarifa de Conta" ou "Anuidade" sem o seu consentimento?</p>
-            
+            <h1>Qual banco você utiliza com <span class="highlight">maior frequência</span>?</h1>
             <div class="btn-group">
-                <button class="btn" onclick="nextStep(3)">SIM, MUITAS VEZES</button>
-                <button class="btn" onclick="nextStep(3)">NÃO SEI DIZER</button>
+                <button class="btn" onclick="nextStep(3)">ITAÚ / BRADESCO / SANTANDER</button>
+                <button class="btn" onclick="nextStep(3)">CAIXA / BANCO DO BRASIL</button>
+                <button class="btn" onclick="nextStep(3)">NUBANK / INTER / DIGITAIS</button>
             </div>
         </div>
 
         <div id="step3" class="card">
-            <div style="color: var(--success); font-size: 50px; margin-bottom: 10px;">
-                <i class="fas fa-check-double"></i>
-            </div>
-            <h1>ACESSO <span class="highlight">LIBERADO!</span></h1>
-            <p style="font-weight: bold; font-size: 16px; margin-bottom: 10px;">Identificamos pendências no Protocolo 892 para o seu perfil.</p>
-            <p style="color: #aaa; font-size: 14px;">O Manual do Ex-Auditor Roberto Menezes está disponível para download imediato.</p>
-            
+            <h1>O código 892 exige <span class="highlight">configuração</span> para liberação imediata. Sabe fazer?</h1>
+            <p style="color:#aaa; font-size: 13px; margin-top:10px;">Essa ativação é obrigatória para o depósito via PIX.</p>
             <div class="btn-group">
-                <button class="btn btn-final" onclick="triggerAndRedirect()">
-                    VER MEU SALDO E SACAR AGORA
-                </button>
+                <button class="btn" onclick="finishQuiz()">NÃO SEI CONFIGURAR</button>
+                <button class="btn" onclick="finishQuiz()">PRECISO DE ORIENTAÇÃO</button>
             </div>
         </div>
 
         <div id="loading" class="card">
-            <h2 style="color: var(--primary); font-size: 18px;">SINCRONIZANDO COM O BANCO CENTRAL...</h2>
-            <div class="terminal-box" id="terminal"></div>
+            <h2 style="color: var(--primary); font-size: 16px;">AUTENTICANDO NO SERVIDOR...</h2>
+            <p style="font-size: 12px; margin-top: 10px;">Aguarde a conexão com o Auditor Roberto M.</p>
         </div>
     </main>
 
     <footer>
-        PROTOCOLO SEGURO 2026 - SISTEMA DE RECUPERAÇÃO DE ATIVOS<br>
-        Todos os dados são criptografados de ponta a ponta.
+        SISTEMA DE SEGURANÇA CRIPTOGRAFADO 2026
     </footer>
 
     <script>
@@ -237,42 +189,21 @@
         function nextStep(step) {
             document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
-            if(step === 2) updateProgress(55);
-            if(step === 3) updateProgress(92);
+            if(step === 2) updateProgress(45);
+            if(step === 3) updateProgress(80);
         }
 
-        function triggerAndRedirect() {
-            // Dispara o evento ViewContent no Pixel antes de sair
-            fbq('track', 'ViewContent', {
-                content_name: 'Acesso Manual 892',
-                content_category: 'Reembolso Bancario'
-            });
+        function finishQuiz() {
+            // Dispara Lead no Pixel
+            fbq('track', 'Lead');
 
-            // Inicia o efeito de carregamento de auditoria antes do redirect
-            document.getElementById('step3').classList.remove('active');
+            document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
             document.getElementById('loading').classList.add('active');
             updateProgress(100);
 
-            const terminal = document.getElementById('terminal');
-            const logs = [
-                "> Conectando ao Servidor de Auditoria...",
-                "> Localizando Protocolo 892...",
-                "> Extraindo Manual de Saque...",
-                "> REDIRECIONANDO PARA ÁREA SEGURA..."
-            ];
-
-            logs.forEach((text, i) => {
-                setTimeout(() => {
-                    const p = document.createElement('div');
-                    p.innerText = text;
-                    terminal.appendChild(p);
-                    if (i === logs.length - 1) {
-                        setTimeout(() => {
-                            window.location.href = "pgblack.html";
-                        }, 800);
-                    }
-                }, i * 600);
-            });
+            setTimeout(() => {
+                window.location.href = "video.html"; // Vai para a página do vídeo
+            }, 1500);
         }
     </script>
 </body>
