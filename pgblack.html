@@ -44,7 +44,7 @@
 
         @keyframes pulse {
             0% { background-color: #c00; }
-            50% { background-color: #e00; }
+            50=75% { background-color: #e00; }
             100% { background-color: #c00; }
         }
 
@@ -247,6 +247,17 @@
                     <div class="comment-footer">Curtir · Responder · 2 min</div>
                 </div>
             </div>
+
+            <div class="comment reply" style="margin-left: 80px;">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" class="avatar-s">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Beatriz Oliveira</span>
+                        <p class="text">@Maria do Carmo no meu caiu em 15 minutos via Pix!! É muito rápido, o manual explica direitinho kkkk Boa sorte! 🥰</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 1 min</div>
+                </div>
+            </div>
              
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
@@ -345,17 +356,18 @@
     </div>
 
     <script>
+        // Banco de imagens exclusivo para notificações (Pop-outs), diferente dos comentários
         const data = [
-            {n: 'Pedro Henrique', g: 'men', id: 11},
-            {n: 'Lucas Silveira', g: 'men', id: 22},
-            {n: 'Marcos Oliveira', g: 'men', id: 35},
-            {n: 'Rafael Costa', g: 'men', id: 48},
-            {n: 'Gustavo Lima', g: 'men', id: 59},
-            {n: 'Fernanda Souza', g: 'women', id: 10},
-            {n: 'Júlia Martins', g: 'women', id: 15},
-            {n: 'Ana Paula Rocha', g: 'women', id: 21},
-            {n: 'Carla Dias', g: 'women', id: 25},
-            {n: 'Mariana Azevedo', g: 'women', id: 33}
+            {n: 'Pedro Henrique', g: 'men', id: 61},
+            {n: 'Lucas Silveira', g: 'men', id: 62},
+            {n: 'Marcos Oliveira', g: 'men', id: 63},
+            {n: 'Rafael Costa', g: 'men', id: 64},
+            {n: 'Gustavo Lima', g: 'men', id: 65},
+            {n: 'Fernanda Souza', g: 'women', id: 61},
+            {n: 'Júlia Martins', g: 'women', id: 62},
+            {n: 'Ana Paula Rocha', g: 'women', id: 63},
+            {n: 'Carla Dias', g: 'women', id: 64},
+            {n: 'Mariana Azevedo', g: 'women', id: 65}
         ];
         
         function showNotification() {
