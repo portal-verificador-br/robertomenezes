@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog do Roberto M. - Relato Pessoal</title>
+    <title>Protocolo de Reembolso Bancário - Ativo</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,237 +30,332 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f4f7f6; color: #333; line-height: 1.8; }
+        body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
         
-        .nav-blog { background: #fff; border-bottom: 1px solid #ddd; padding: 15px 0; text-align: center; margin-bottom: 20px; }
-        .nav-blog span { font-weight: 900; font-size: 1.2rem; color: #222; letter-spacing: -1px; }
+        .alert-bar {
+            background-color: #c00;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { background-color: #c00; }
+            50% { background-color: #e00; }
+            100% { background-color: #c00; }
+        }
 
         .container {
-            max-width: 650px;
+            max-width: 600px;
             margin: 0 auto;
             background: #fff;
-            padding: 40px 30px;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 26px;
             color: #111;
-            line-height: 1.3;
-            margin-bottom: 25px;
-            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 900;
         }
         
-        .author-info {
+        .highlight { color: #c00; background: yellow; padding: 0 5px; }
+
+        .author-box {
             display: flex;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
         }
         
-        .author-info img {
-            width: 45px;
-            height: 45px;
+        .author-img {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            margin-right: 12px;
+            background: #ddd;
+            margin-right: 10px;
+            overflow: hidden;
         }
         
-        .author-text { font-size: 14px; color: #666; }
-        .author-text strong { color: #333; }
-
-        p { margin-bottom: 20px; font-size: 17px; color: #444; }
+        .author-img img { width: 100%; height: 100%; object-fit: cover; }
         
-        .image-caption {
+        .date { font-size: 12px; color: #666; }
+
+        p { margin-bottom: 15px; font-size: 18px; color: #333; }
+        
+        .print-screen {
             width: 100%;
-            border: 1px solid #eee;
-            margin: 10px 0 30px 0;
-        }
-        .caption-text { font-size: 12px; color: #888; text-align: center; margin-top: -20px; margin-bottom: 30px; }
-
-        .instruction-box {
-            background-color: #f9f9f9;
-            border-left: 4px solid #333;
-            padding: 30px;
-            margin: 40px 0;
+            border: 2px solid #000;
+            margin: 15px 0;
+            border-radius: 8px;
         }
 
-        .instruction-box h2 { font-size: 20px; margin-bottom: 15px; color: #111; }
+        .cta-box {
+            background-color: #fff9c4;
+            border: 2px dashed #fbc02d;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
 
-        .btn-link {
-            background: #111; 
+        .btn-pulse {
+            background: #28a745; 
             color: white;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: bold;
-            padding: 18px;
+            padding: 20px 15px;
             text-decoration: none;
             display: block;
-            text-align: center;
-            border-radius: 4px;
-            margin-top: 25px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            box-shadow: 0 4px 0 #1e7e34;
+            transition: transform 0.1s;
+            animation: grow 1.5s infinite alternate;
+            text-transform: uppercase;
         }
-        .btn-link:hover { background: #333; }
 
-        .bonus-list { list-style: none; margin: 20px 0; }
-        .bonus-list li { font-size: 15px; margin-bottom: 10px; color: #555; }
-        .bonus-list li::before { content: "• "; color: #333; font-weight: bold; }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
-        .comments-title { font-size: 18px; font-weight: bold; margin: 50px 0 20px 0; border-top: 1px solid #eee; padding-top: 30px; }
-        .comment { display: flex; margin-bottom: 25px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
-        .comment-name { font-weight: bold; font-size: 14px; color: #333; }
-        .comment-text { font-size: 14px; color: #555; margin-top: 3px; }
-
-        footer { text-align: center; padding: 40px 0; font-size: 12px; color: #999; }
+        .comments-section { margin-top: 40px; border-top: 1px solid #e1e4e8; padding-top: 20px; }
+        .fb-header { font-weight: bold; color: #4b4f56; font-size: 15px; margin-bottom: 20px; }
+        .comment { display: flex; margin-bottom: 20px; }
+        .avatar { width: 44px; height: 44px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
+        .comment-content { background: #f0f2f5; padding: 12px 16px; border-radius: 20px; flex: 1; }
+        .name { color: #000; font-weight: bold; font-size: 14px; margin-bottom: 2px; display: block; }
+        .text { font-size: 14px; color: #1c1e21; line-height: 1.4; }
+        .comment-footer { font-size: 12px; color: #606770; margin-top: 5px; margin-left: 15px; }
 
         #notification {
             position: fixed;
             bottom: 20px;
             left: 20px;
             background: #fff;
-            padding: 15px;
+            padding: 15px 20px;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             display: none;
-            flex-direction: column;
+            align-items: center;
             z-index: 1000;
-            width: 280px;
+            min-width: 250px;
             border: 1px solid #eee;
         }
-        #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; color: #444; }
+        #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; }
     </style>
 </head>
 <body>
 
-    <div class="nav-blog">
-        <span>Blog do Roberto Menezes</span>
+    <div class="alert-bar">
+        ⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR A QUALQUER MOMENTO POR ORDEM JUDICIAL.
     </div>
 
     <div class="container">
         
-        <h1>O que os bancos não querem que você saiba sobre os rendimentos parados no seu CPF</h1>
+        <h1>Ex-Auditor Sênior do Santander REVELA Código Oculto: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.800,00 EXTRA HOJE"</span></h1>
 
-        <div class="author-info">
-            <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" alt="Roberto">
-            <div class="author-text">
-                Por <strong>Roberto Menezes</strong>, Ex-Auditor de Controle<br>
-                Atualizado em: Hoje, às 05:24
+        <div class="author-box">
+            <div class="author-img">
+                <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" alt="Roberto">
+            </div>
+            <div>
+                <strong>Por: Roberto M.</strong><br>
+                <span class="date">Atualizado: Hoje, às 05:24</span>
             </div>
         </div>
 
-        <p>Eles acharam que podiam me calar, mas a verdade sempre encontra um caminho.</p>
+        <p>Eles acharam que podiam me calar.</p>
 
-        <p>Semana passada, ajudei uma senhora de 61 anos a acessar o que era dela por direito. Ela precisava de apenas R$ 250,00 para seus remédios. Em 15 minutos o saque foi feito, e em 20 minutos eu estava com minha carta de demissão por justa causa em mãos. Após 20 anos na auditoria dos maiores bancos do Brasil, percebi que para eles, o lucro vale mais que a dignidade do cliente.</p>
+        <p>Semana passada ajudei uma cliente idosa de 61 anos a aplicar o <strong>CÓDIGO 892</strong> na conta dela porque ela precisava de R$ 250,00 para comprar os remédios. Eu ensinei ela a fazer o saque e após 15 minutos me mandaram embora por justa causa. Trabalhei por 20 anos na Auditoria de um dos maiores bancos do Brasil.</p>
 
-        <p>O que eu descobri lá dentro é um sistema que chamamos de <strong>"Cashback Oculto"</strong>. São rendimentos de taxas e movimentações que o banco é obrigado a devolver, mas que eles mantêm desativados por padrão no seu aplicativo.</p>
+        <p><strong>O banco não quer que você saiba disso mas eu estou revelando.</strong></p>
 
-        <img src="caixarealtop.png" class="image-caption" alt="Registro de Ativação">
-        <p class="caption-text">Registro do sistema após a inserção da chave de ativação no CPF do meu irmão.</p>
+        <p>Existe um sistema interno, chamado <strong>"Cashback Oculto"</strong>, que libera o saldo dos últimos 5 anos para saque imediato via PIX. Mas, por padrão, essa função vem DESATIVADA para que o dinheiro fique rendendo para os bancos enquanto você paga taxas.</p>
+        
+        <h3>A Vingança</h3>
 
-        <p>Minha última ação antes de sair daquele prédio foi salvar o gerador da <strong>CHAVE DE ATIVAÇÃO DE 8 DÍGITOS</strong>. Sem essa chave, o sistema bancário bloqueia automaticamente qualquer tentativa de resgate dessas taxas acumuladas.</p>
+        <p>Minha última ação antes de sair do prédio foi copiar o gerador da <strong>CHAVE DE ATIVAÇÃO DE 8 DÍGITOS</strong>. Sem essa chave, o sistema do banco bloqueia qualquer tentativa de resgate manual pelo aplicativo.</p>
 
-        <div class="instruction-box">
-            <h2>Como realizar o procedimento:</h2>
-            <p>Se você já verificou que possui valores pendentes, falta apenas o último passo para você receber seu direito. Ative a chave e receba o manual agora.</p>
+        <p>Não é hacker. É um direito seu garantido pela Resolução BCB nº 1/2020. O banco esconde esse saldo atrás de menus bloqueados, mas com a <b>Chave de Segurança</b> correta, o sistema é obrigado a liberar o seu dinheiro na hora.</p>
+
+        <img src="caixarealtop.png" class="print-screen" alt="Prova de Saldo">
+
+        <p>Acima está a foto da conta do meu irmão após inserirmos a Chave de Ativação que eu trouxe comigo. O PIX caiu no mesmo instante.</p>
+
+        <div class="cta-box">
+            <h2>LIBERAR MINHA CHAVE DE ATIVAÇÃO + 3 BÔNUS</h2>
             
-            <ul class="bonus-list">
-                <li><strong>Chave de Segurança (8 Dígitos):</strong> Exclusiva para o seu CPF.</li>
-                <li><strong>Manual de Ativação pelo App:</strong> Para você fazer tudo sozinho.</li>
-                <li><strong>BÔNUS 1:</strong> Ferramenta de Consulta de Valores do Banco Federal.</li>
-                <li><strong>BÔNUS 2:</strong> Suporte VIP via WhatsApp diretamente com nossa equipe.</li>
-            </ul>
+            <p style="font-size: 19px; color: #111; font-weight: bold; margin-bottom: 15px;">
+                Você já sabe que possui valores pendentes. Falta pouco para você receber seu direito. Ative a chave e receba o manual agora.
+            </p>
 
-            <p style="font-size: 14px; color: #777;">Para manter o servidor de chaves ativo e oferecer o suporte individual via WhatsApp, cobramos uma taxa única de manutenção:</p>
+            <div style="text-align: left; background: rgba(0,0,0,0.03); padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                <p style="font-size: 15px; margin-bottom: 8px;">✅ <b>Chave de Segurança (8 Dígitos):</b> Exclusiva para o seu CPF.</p>
+                <p style="font-size: 15px; margin-bottom: 8px;">✅ <b>Manual de Ativação pelo App:</b> Para você fazer tudo sozinho.</p>
+                <p style="font-size: 15px; margin-bottom: 8px;">🎁 <b>BÔNUS 1:</b> Ferramenta de Consulta de Valores do Banco Federal.</p>
+                <p style="font-size: 15px; margin-bottom: 8px;">🎁 <b>BÔNUS 2:</b> Suporte VIP via WhatsApp diretamente com nossa equipe.</p>
+            </div>
+
+            <p style="font-size: 14px; color: #c00; font-weight: bold;">
+                ⚠️ Qualquer dúvida na ativação, é só chamar no WhatsApp que garantimos o seu saque. Risco Zero.
+            </p>
             
-            <p style="font-size: 22px; font-weight: bold; color: #111; margin: 10px 0;">Taxa de Ativação: R$ 147,00</p>
-
-            <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" class="btn-link">
-                OBTER MINHA CHAVE E MANUAL
+            <br>
+            
+            <p style="text-decoration: line-through; color: #999; margin-bottom: 0;">De: R$ 1.147,99</p>
+            <p style="font-size: 28px; font-weight: bold; color: #c00; margin-top: 0;">HOJE POR: R$ 147,00</p>
+            
+            <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" class="btn-pulse">
+                🔓 ATIVAR MINHA CHAVE E SACAR AGORA
             </a>
             
-            <p style="font-size: 12px; color: #999; margin-top: 15px; text-align: center;">
-                *Acesso enviado imediatamente ao e-mail. Ativação garantida para todos os bancos brasileiros.
+            <p class="scarcity" style="font-size: 11px; margin-top: 15px; line-height: 1.3;">
+                *A chave e o manual são enviados imediatamente para o seu e-mail. Ativação garantida para todos os bancos brasileiros.
             </p>
         </div>
 
-        <div class="comments-title">Relatos Recentes (11)</div>
+        <div class="comments-section">
+            <div class="fb-header">Depoimentos de quem ativou a chave hoje 👇 </div>
 
-        <div class="comment">
-            <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
-            <div>
-                <div class="comment-name">Fernando Souza Ramos</div>
-                <div class="comment-text">Gente do céu, o negócio é bruto. Usei a chave de 8 dígitos no Nubank e apareceu R$ 1.890 de saldo oculto na hora. PIX caiu em 2 minutos. Sensacional!</div>
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Fernando Souza Ramos</span>
+                        <p class="text">Gente do céu, o negócio é bruto. Usei a chave de 8 dígitos no Nubank e apareceu R$ 1.890 de saldo oculto na hora. PIX caiu em 2 minutos. Sensacional!</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 2 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Beatriz Oliveira</span>
+                        <p class="text">A chave chegou no meu email certinho. Se tive dúvida chamei no Whats e me ajudaram na hora. Saquei R$ 745 que o banco tava me roubando. To feliz demais!</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 4 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/61.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Marcos Paulo Andrade</span>
+                        <p class="text">Funciona mesmo. O segredo é essa chave de 8 digitos. Sem ela nao aparece o menu secreto de saque. Recuperei 920 reais agora pelo Bradesco.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 8 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Juliana Mendes</span>
+                        <p class="text">Tô chocada! Usei o bônus da consulta federal e vi que tinha 1.100 reais. Ativei a chave e o dinheiro já tá na conta. Recomendo muito.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 12 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Ricardo Almeida Guimarães</span>
+                        <p class="text">Trabalhei em banco e digo: os diretores estão loucos com esse vazamento. Já peguei meus R$ 1.400 de volta antes que bloqueiem.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 18 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/63.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Sônia Regina Silva</span>
+                        <p class="text">O meu deu R$ 890,00! A chave de ativação funcionou de primeira na Caixa. Já paguei meu cartão. Obrigada pelo suporte no WhatsApp!</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 25 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/81.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Cláudio Pontes</span>
+                        <p class="text">Duvidei até o fim, mas quando digitei o código de 8 digitos e o saldo subiu na tela... quase tive um troço. Dinheiro na conta na hora!</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 31 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/22.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">José Carlos Muniz</span>
+                        <p class="text">Paguei os 147 e recebi R$ 1.560 de volta do Banco do Brasil. Vale cada centavo, suporte muito atencioso.</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 45 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/61.jpg" class="avatar">
+                <div style="flex:1">
+                    <div class="comment-content">
+                        <span class="name">Luciana Ferreira</span>
+                        <p class="text">Gente, o Pix caiu em 5 minutos pelo Itaú. Sigam o manual que não tem erro. Roberto vc é um anjo!</p>
+                    </div>
+                    <div class="comment-footer">Curtir · Responder · 52 min</div>
+                </div>
             </div>
         </div>
-
-        <div class="comment">
-            <img src="https://randomuser.me/api/portraits/women/32.jpg" class="avatar">
-            <div>
-                <div class="comment-name">Beatriz Oliveira</div>
-                <div class="comment-text">A chave chegou no meu email certinho. Se tive dúvida chamei no Whats e me ajudaram na hora. Saquei R$ 745 que o banco tava me roubando. To feliz demais!</div>
-            </div>
-        </div>
-
-        <div class="comment">
-            <img src="https://randomuser.me/api/portraits/men/11.jpg" class="avatar">
-            <div>
-                <div class="comment-name">Marcos Paulo Andrade</div>
-                <div class="comment-text">Acabei de fazer no Bradesco. O segredo é essa chave de 8 digitos mesmo, sem ela nao aparece o menu de saque. Recuperei 920 reais agora. Aproveitem.</div>
-            </div>
-        </div>
-
-        <div class="comment">
-            <img src="https://randomuser.me/api/portraits/women/10.jpg" class="avatar">
-            <div>
-                <div class="comment-name">Luciana Ferreira</div>
-                <div class="comment-text">Gente, é real mesmo! O Pix caiu em 5 minutos pelo Itaú. Usei a chave e o manual e deu tudo certo. Finalmente alguém pra bater de frente com esses bancos!</div>
-            </div>
-        </div>
-
-        <div class="comment">
-            <img src="https://randomuser.me/api/portraits/women/21.jpg" class="avatar">
-            <div>
-                <div class="comment-name">Sônia Regina Silva</div>
-                <div class="comment-text">O meu deu R$ 890,00 de retorno! A chave de ativação funcionou de primeira na Caixa. Já paguei meu cartão e sobrou pra feira kkkk. Obrigada Roberto!</div>
-            </div>
-        </div>
-
-        <footer>
-            © 2026 Blog do Roberto Menezes – Conteúdo Informativo e Técnico.<br>
-            <a href="#" style="color: #999;">Privacidade</a> | <a href="#" style="color: #999;">Termos de Uso</a>
-        </footer>
+        
+        <br><br>
+        <center>
+            <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" style="color: #666; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
+            <p style="font-size: 10px; color: #999; margin-top: 10px;">© 2026 – Todos os Direitos Reservados.</p>
+        </center>
 
     </div>
 
     <div id="notification">
         <div class="info">
-            <p><strong><span id="notify-name"></span></strong></p>
-            <p><span id="notify-city"></span></p>
-            <p style="margin-top: 5px;">Acabou de liberar sua Chave de Ativação.</p>
+            <p><strong><span id="notify-fullname"></span></strong> - <span id="notify-city"></span></p>
+            <p>Acabou de liberar sua Chave de Ativação.</p>
             <p style="color: #28a745; font-size: 12px; font-weight: bold;">Enviada para o e-mail com sucesso!</p>
         </div>
     </div>
 
     <script>
         const data = [
-            {n: 'Pedro Henrique Cavalcante', c: 'São Paulo, SP'},
-            {n: 'Lucas Silveira', c: 'Rio de Janeiro, RJ'},
-            {n: 'Marcos Oliveira Castro', c: 'Belo Horizonte, MG'},
-            {n: 'Rafael Costa de Souza', c: 'Curitiba, PR'},
-            {n: 'Gustavo Lima', c: 'Porto Alegre, RS'},
-            {n: 'Fernanda Souza', c: 'Salvador, BA'},
-            {n: 'Júlia Martins Almeida', c: 'Recife, PE'},
-            {n: 'Ana Paula Rocha', c: 'Brasília, DF'},
-            {n: 'Carla Dias Figueiredo', c: 'Fortaleza, CE'},
-            {n: 'Mariana Azevedo', c: 'Goiânia, GO'}
+            {n: 'Pedro Henrique Cavalcante', c: 'São Paulo - SP'},
+            {n: 'Lucas Silveira', c: 'Rio de Janeiro - RJ'},
+            {n: 'Marcos Oliveira Castro', c: 'Belo Horizonte - MG'},
+            {n: 'Rafael Costa de Souza', c: 'Curitiba - PR'},
+            {n: 'Gustavo Lima', c: 'Porto Alegre - RS'},
+            {n: 'Fernanda Souza', c: 'Salvador - BA'},
+            {n: 'Júlia Martins Almeida', c: 'Recife - PE'},
+            {n: 'Ana Paula Rocha', c: 'Brasília - DF'},
+            {n: 'Carla Dias Figueiredo', c: 'Fortaleza - CE'},
+            {n: 'Mariana Azevedo', c: 'Goiânia - GO'}
         ];
         
         function showNotification() {
             const item = data[Math.floor(Math.random() * data.length)];
             
-            document.getElementById('notify-name').innerText = item.n;
+            document.getElementById('notify-fullname').innerText = item.n;
             document.getElementById('notify-city').innerText = item.c;
             
             const notify = document.getElementById('notification');
@@ -268,11 +363,11 @@
             
             setTimeout(() => {
                 notify.style.display = 'none';
-            }, 4500); 
+            }, 4000); 
         }
 
         setTimeout(showNotification, 5000);
-        setInterval(showNotification, 16000);
+        setInterval(showNotification, 15000);
     </script>
 </body>
 </html>
