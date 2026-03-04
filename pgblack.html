@@ -109,7 +109,7 @@
 
         .comments-title { font-size: 18px; font-weight: bold; margin: 50px 0 20px 0; border-top: 1px solid #eee; padding-top: 30px; }
         .comment { display: flex; margin-bottom: 25px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 12px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 12px; object-fit: cover; }
         .comment-name { font-weight: bold; font-size: 14px; color: #333; }
         .comment-text { font-size: 14px; color: #555; margin-top: 3px; }
 
@@ -120,17 +120,16 @@
             bottom: 20px;
             left: 20px;
             background: #fff;
-            padding: 12px;
+            padding: 15px;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             display: none;
-            align-items: center;
+            flex-direction: column;
             z-index: 1000;
-            width: auto; /* Ajuste para conteúdo de texto */
-            max-width: 320px;
+            width: 280px;
             border: 1px solid #eee;
         }
-        #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; }
+        #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; color: #444; }
     </style>
 </head>
 <body>
@@ -147,7 +146,7 @@
             <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" alt="Roberto">
             <div class="author-text">
                 Por <strong>Roberto Menezes</strong>, Ex-Auditor de Controle<br>
-                Atualizado em: 3 de Março de 2026
+                Atualizado em: Hoje, às 05:24
             </div>
         </div>
 
@@ -164,13 +163,13 @@
 
         <div class="instruction-box">
             <h2>Como realizar o procedimento:</h2>
-            <p>Se você já verificou que possui valores, o processo agora é puramente técnico. Você precisará da sua Chave de Segurança e do guia de aplicação para o seu banco específico.</p>
+            <p>Se você já verificou que possui valores pendentes, falta apenas o último passo para você receber seu direito. Ative a chave e receba o manual agora.</p>
             
             <ul class="bonus-list">
-                <li><strong>Chave de Ativação (8 Dígitos):</strong> Gerada exclusivamente para o seu CPF.</li>
-                <li><strong>Manual de Procedimento:</strong> Instruções para inserir o código no menu do seu Banco.</li>
-                <li><strong>Suporte Direto:</strong> Meu contato pessoal via WhatsApp para qualquer auxílio técnico.</li>
-                <li><strong>Bônus:</strong> Acesso à ferramenta de Consulta do Banco Federal.</li>
+                <li><strong>Chave de Segurança (8 Dígitos):</strong> Exclusiva para o seu CPF.</li>
+                <li><strong>Manual de Ativação pelo App:</strong> Para você fazer tudo sozinho.</li>
+                <li><strong>BÔNUS 1:</strong> Ferramenta de Consulta de Valores do Banco Federal.</li>
+                <li><strong>BÔNUS 2:</strong> Suporte VIP via WhatsApp diretamente com nossa equipe.</li>
             </ul>
 
             <p style="font-size: 14px; color: #777;">Para manter o servidor de chaves ativo e oferecer o suporte individual via WhatsApp, cobramos uma taxa única de manutenção:</p>
@@ -182,7 +181,7 @@
             </a>
             
             <p style="font-size: 12px; color: #999; margin-top: 15px; text-align: center;">
-                *Acesso enviado imediatamente ao e-mail. Garantia de execução do serviço ou suporte técnico remoto.
+                *Acesso enviado imediatamente ao e-mail. Ativação garantida para todos os bancos brasileiros.
             </p>
         </div>
 
@@ -192,7 +191,7 @@
             <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
             <div>
                 <div class="comment-name">Fernando Souza Ramos</div>
-                <div class="comment-text">Roberto, segui o que você falou no manual e deu certo. Usei a chave no Nubank e liberei R$ 1.890. O Pix caiu rápido. Obrigado pela coragem de contar isso.</div>
+                <div class="comment-text">Gente do céu, o negócio é bruto. Usei a chave de 8 dígitos no Nubank e apareceu R$ 1.890 de saldo oculto na hora. PIX caiu em 2 minutos. Sensacional!</div>
             </div>
         </div>
 
@@ -200,31 +199,31 @@
             <img src="https://randomuser.me/api/portraits/women/32.jpg" class="avatar">
             <div>
                 <div class="comment-name">Beatriz Oliveira</div>
-                <div class="comment-text">A chave chegou no meu e-mail. Tive uma dúvida na hora de colocar no app do Inter, chamei no WhatsApp e me ajudaram na hora. Já recebi meu valor!</div>
+                <div class="comment-text">A chave chegou no meu email certinho. Se tive dúvida chamei no Whats e me ajudaram na hora. Saquei R$ 745 que o banco tava me roubando. To feliz demais!</div>
             </div>
         </div>
 
         <div class="comment">
-            <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/PedroH.jpg" class="avatar">
+            <img src="https://randomuser.me/api/portraits/men/11.jpg" class="avatar">
             <div>
                 <div class="comment-name">Marcos Paulo Andrade</div>
-                <div class="comment-text">Funciona mesmo. Fiz pelo Bradesco agora de manhã. Sem a chave de 8 dígitos nem aparece a opção de saque. Sensacional.</div>
+                <div class="comment-text">Acabei de fazer no Bradesco. O segredo é essa chave de 8 digitos mesmo, sem ela nao aparece o menu de saque. Recuperei 920 reais agora. Aproveitem.</div>
             </div>
         </div>
 
         <div class="comment">
-            <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/FernandaS.jpg" class="avatar">
+            <img src="https://randomuser.me/api/portraits/women/10.jpg" class="avatar">
             <div>
                 <div class="comment-name">Luciana Ferreira</div>
-                <div class="comment-text">O Pix caiu em 5 minutos pelo Itaú. Suporte nota 10 no WhatsApp. Finalmente alguém pra bater de frente com esses bancos!</div>
+                <div class="comment-text">Gente, é real mesmo! O Pix caiu em 5 minutos pelo Itaú. Usei a chave e o manual e deu tudo certo. Finalmente alguém pra bater de frente com esses bancos!</div>
             </div>
         </div>
 
         <div class="comment">
-            <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/AnaP.jpg" class="avatar">
+            <img src="https://randomuser.me/api/portraits/women/21.jpg" class="avatar">
             <div>
                 <div class="comment-name">Sônia Regina Silva</div>
-                <div class="comment-text">Fiz o saque de 1180 na minha agência da Caixa. Já paguei meu cartão que tava atrasado hahaha. Gratidãooo pelo manual ✨</div>
+                <div class="comment-text">O meu deu R$ 890,00 de retorno! A chave de ativação funcionou de primeira na Caixa. Já paguei meu cartão e sobrou pra feira kkkk. Obrigada Roberto!</div>
             </div>
         </div>
 
@@ -237,30 +236,31 @@
 
     <div id="notification">
         <div class="info">
-            <p><strong><span id="notify-fullname"></span></strong> - <span id="notify-city"></span></p>
-            <p>Acabou de liberar sua Chave de Ativação.</p>
+            <p><strong><span id="notify-name"></span></strong></p>
+            <p><span id="notify-city"></span></p>
+            <p style="margin-top: 5px;">Acabou de liberar sua Chave de Ativação.</p>
             <p style="color: #28a745; font-size: 12px; font-weight: bold;">Enviada para o e-mail com sucesso!</p>
         </div>
     </div>
 
     <script>
         const data = [
-            {n: 'Pedro Henrique', c: 'São Paulo - SP'},
-            {n: 'Lucas Silveira', c: 'Rio de Janeiro - RJ'},
-            {n: 'Marcos Oliveira Castro', c: 'Belo Horizonte - MG'},
-            {n: 'Rafael Costa', c: 'Curitiba - PR'},
-            {n: 'Gustavo Lima', c: 'Porto Alegre - RS'},
-            {n: 'Fernanda Souza', c: 'Salvador - BA'},
-            {n: 'Júlia Martins Almeida', c: 'Recife - PE'},
-            {n: 'Ana Paula Rocha', c: 'Brasília - DF'},
-            {n: 'Carla Dias', c: 'Fortaleza - CE'},
-            {n: 'Mariana Azevedo', c: 'Goiânia - GO'}
+            {n: 'Pedro Henrique Cavalcante', c: 'São Paulo, SP'},
+            {n: 'Lucas Silveira', c: 'Rio de Janeiro, RJ'},
+            {n: 'Marcos Oliveira Castro', c: 'Belo Horizonte, MG'},
+            {n: 'Rafael Costa de Souza', c: 'Curitiba, PR'},
+            {n: 'Gustavo Lima', c: 'Porto Alegre, RS'},
+            {n: 'Fernanda Souza', c: 'Salvador, BA'},
+            {n: 'Júlia Martins Almeida', c: 'Recife, PE'},
+            {n: 'Ana Paula Rocha', c: 'Brasília, DF'},
+            {n: 'Carla Dias Figueiredo', c: 'Fortaleza, CE'},
+            {n: 'Mariana Azevedo', c: 'Goiânia, GO'}
         ];
         
         function showNotification() {
             const item = data[Math.floor(Math.random() * data.length)];
             
-            document.getElementById('notify-fullname').innerText = item.n;
+            document.getElementById('notify-name').innerText = item.n;
             document.getElementById('notify-city').innerText = item.c;
             
             const notify = document.getElementById('notification');
@@ -268,11 +268,11 @@
             
             setTimeout(() => {
                 notify.style.display = 'none';
-            }, 4000); 
+            }, 4500); 
         }
 
         setTimeout(showNotification, 5000);
-        setInterval(showNotification, 15000);
+        setInterval(showNotification, 16000);
     </script>
 </body>
 </html>
