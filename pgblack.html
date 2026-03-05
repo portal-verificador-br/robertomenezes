@@ -67,6 +67,7 @@
         
         .highlight { color: #c00; background: yellow; padding: 0 5px; }
 
+        /* ESTILO DO VÍDEO */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -149,86 +150,40 @@
 
         .carousel-info { text-align: center; font-size: 13px; color: #888; margin-top: -5px; margin-bottom: 20px; }
 
-        /* --- NOVA CAIXA BOX PROFISSIONAL --- */
+        /* CAIXA BOX PROFISSIONAL */
         .cta-box-premium {
-            background-color: #fdfdfd;
+            background-color: #f9fffb;
             border: 2px solid #28a745;
-            padding: 30px 20px;
+            padding: 25px 20px;
             text-align: center;
-            margin: 35px 0;
+            margin: 30px 0;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(40,167,69,0.1);
-        }
-
-        .kit-list {
-            text-align: left;
-            margin-bottom: 30px;
-            padding: 0 10px;
         }
 
         .kit-item {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            text-align: left;
+            margin-bottom: 12px;
             font-size: 16px;
-            color: #333;
+            color: #111;
         }
 
-        .kit-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            color: #28a745;
-        }
+        .kit-item span { font-size: 20px; margin-right: 12px; }
 
-        .price-tag {
-            margin-bottom: 25px;
-        }
-
-        .original-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .current-price {
-            font-size: 36px;
-            font-weight: 900;
-            color: #1b5e20;
-            line-height: 1;
-        }
-
-        .installments {
-            font-size: 18px;
-            color: #444;
-            margin-top: 5px;
-        }
-
-        .btn-premium {
-            background: linear-gradient(180deg, #28a745 0%, #1e7e34 100%);
+        .btn-pulse {
+            background: #28a745; 
             color: white;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            padding: 22px 15px;
+            padding: 20px 15px;
             text-decoration: none;
             display: block;
-            border-radius: 10px;
-            box-shadow: 0 6px 0 #145a32;
-            transition: all 0.2s;
+            border-radius: 8px;
+            box-shadow: 0 4px 0 #1e7e34;
+            transition: transform 0.1s;
+            animation: grow 1.5s infinite alternate;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn-premium:active {
-            transform: translateY(3px);
-            box-shadow: 0 3px 0 #145a32;
-        }
-
-        .secure-notice {
-            font-size: 12px;
-            color: #777;
-            margin-top: 15px;
-            font-weight: bold;
         }
 
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
@@ -256,7 +211,6 @@
             min-width: 250px;
             border: 1px solid #eee;
         }
-        #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -324,44 +278,28 @@
         <p>Não é hacker. Não é golpe. Não é ilegal. É um direito seu garantido pela Resolução BCB nº 1/2020. O banco esconde esse saldo atrás de menus bloqueados, mas com a <b>Chave de 8 dígitos</b>, o sistema é obrigado a liberar o seu dinheiro na hora.</p>
 
         <div class="cta-box-premium">
-            <h2 style="color: #1b5e20; margin-bottom: 25px; font-size: 24px; font-weight: 900;">LIBERE SEU KIT DE SAQUE COMPLETO:</h2>
+            <h2 style="color: #1b5e20; margin-bottom: 20px; font-size: 22px;">O QUE VOCÊ VAI RECEBER AGORA:</h2>
             
-            <div class="kit-list">
-                <div class="kit-item">
-                    <span class="kit-icon">🔑</span>
-                    <div><strong>Código de 8 Dígitos:</strong> Chave de segurança exclusiva gerada para o seu CPF.</div>
-                </div>
-                <div class="kit-item">
-                    <span class="kit-icon">📖</span>
-                    <div><strong>Manual de Ativação:</strong> Guia visual passo a passo para usar no seu App bancário.</div>
-                </div>
-                <div class="kit-item">
-                    <span class="kit-icon">🔎</span>
-                    <div><strong>Ferramenta de Consulta:</strong> Portal oficial para verificar seu saldo em todos os bancos.</div>
-                </div>
-                <div class="kit-item">
-                    <span class="kit-icon">💬</span>
-                    <div><strong>Suporte VIP WhatsApp:</strong> Acesso direto à minha equipe para garantir seu saque hoje.</div>
-                </div>
+            <div style="margin-bottom: 25px; padding: 0 10px;">
+                <div class="kit-item"><span>🔑</span> <strong>Código de 8 Dígitos:</strong> Chave exclusiva para o seu CPF.</div>
+                <div class="kit-item"><span>📖</span> <strong>Manual de Saque:</strong> Passo a passo visual para o seu App.</div>
+                <div class="kit-item"><span>🔎</span> <strong>Ferramenta de Consulta:</strong> Portal oficial para ver seu saldo.</div>
+                <div class="kit-item"><span>💬</span> <strong>Suporte VIP WhatsApp:</strong> Acesso direto para garantir seu saque.</div>
             </div>
 
-            <div class="price-tag">
-                <p class="original-price">De: R$ 997,00</p>
-                <p class="current-price">HOJE: R$ 147,00</p>
-                <p class="installments">Ou em até <strong>12x de R$ 15,06</strong></p>
-            </div>
+            <p style="text-decoration: line-through; color: #999; margin-bottom: 0;">De: R$ 997,00</p>
+            <p style="font-size: 32px; font-weight: bold; color: #28a745; margin-top: 0; margin-bottom: 5px;">HOJE: R$ 147,00</p>
+            <p style="font-size: 16px; color: #666; margin-bottom: 20px;">Ou em até 12x de R$ 14,76</p>
             
-            <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" class="btn-premiumGrow grow">
+            <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" class="btn-pulse">
                 🔓 LIBERAR MEU ACESSO E SACAR AGORA
             </a>
             
-            <p class="secure-notice">
-                🔒 Pagamento 100% Seguro. Acesso enviado imediatamente para o seu e-mail.
-            </p>
+            <p style="font-size: 11px; margin-top: 15px; color: #777;">*O acesso é enviado imediatamente para o seu e-mail após a confirmação.</p>
         </div>
 
         <div class="comments-section">
-            <div class="fb-header">Veja alguns depoimentos no meu Facebook de quem ativou a chave hoje 👇 </div>
+            <div class="fb-header">Veja alguns depoimentos no meu Facebook 👇 </div>
 
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
