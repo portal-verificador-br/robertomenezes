@@ -67,110 +67,65 @@
         
         .highlight { color: #c00; background: yellow; padding: 0 5px; }
 
-        /* --- ESTILO DO VÍDEO TIPO JORNAL --- */
+        /* ESTILO DO VÍDEO */
         .video-container {
-            position: relative;
-            width: 100%;
-            background: #000;
-            border-radius: 4px;
-            margin: 20px 0;
-            overflow: hidden;
-            border: 2px solid #ddd;
-        }
-        .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            overflow: hidden;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            background: #000;
         }
-        .video-wrapper iframe {
+        .video-container iframe {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
-        .audio-alert {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            font-size: 13px;
-            padding: 5px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         .author-box {
             display: flex;
             align-items: center;
-            margin: 20px 0;
+            margin-bottom: 20px;
             border-bottom: 1px solid #ddd;
             padding-bottom: 10px;
         }
         
-        .author-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #ddd;
-            margin-right: 10px;
-            overflow: hidden;
-        }
-        
+        .author-img { width: 50px; height: 50px; border-radius: 50%; background: #ddd; margin-right: 10px; overflow: hidden; }
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        
         .date { font-size: 12px; color: #666; }
 
         p { margin-bottom: 15px; font-size: 18px; color: #333; }
         
-        .print-screen {
-            width: 100%;
-            border: 2px solid #000;
-            margin: 15px 0;
-            border-radius: 8px;
-        }
+        .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
 
-        .step-carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            gap: 15px;
-            padding: 20px 0;
-            margin: 10px 0;
-            scrollbar-width: none; 
-        }
+        /* CARROSSEL */
+        .step-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 20px 0; margin: 10px 0; scrollbar-width: none; }
         .step-carousel::-webkit-scrollbar { display: none; }
-
-        .step-card {
-            min-width: 85%;
-            scroll-snap-align: center;
-            padding: 20px;
-            border-radius: 12px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .step-card { min-width: 85%; scroll-snap-align: center; padding: 20px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center; }
         .step-card h4 { font-size: 20px; margin-bottom: 10px; font-weight: 900; text-transform: uppercase; }
         .step-card p { font-size: 15px; margin-bottom: 0; color: white; line-height: 1.4; }
-        
-        .step-1 { background: #004aad; } 
-        .step-2 { background: #008f39; } 
-        .step-3 { background: #e67e22; } 
-        .step-4 { background: #d4af37; } 
-        .step-5 { background: #34495e; } 
-
+        .step-1 { background: #004aad; } .step-2 { background: #008f39; } .step-3 { background: #e67e22; } .step-4 { background: #d4af37; } .step-5 { background: #34495e; }
         .carousel-info { text-align: center; font-size: 13px; color: #888; margin-top: -5px; margin-bottom: 20px; }
 
-        .cta-box {
-            background-color: #f9fffb;
+        /* CAIXA BOX PROFISSIONAL */
+        .cta-box-pro {
+            background-color: #fdfdfd;
             border: 2px solid #28a745;
             padding: 25px 20px;
             text-align: center;
-            margin: 30px 0;
+            margin: 35px 0;
             border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(40,167,69,0.1);
         }
 
         .btn-pulse {
             background: #28a745; 
             color: white;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             padding: 22px 15px;
             text-decoration: none;
@@ -193,20 +148,7 @@
         .text { font-size: 14px; color: #1c1e21; line-height: 1.4; }
         .comment-footer { font-size: 12px; color: #606770; margin-top: 5px; margin-left: 15px; }
 
-        #notification {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #fff;
-            padding: 15px 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            display: none;
-            align-items: center;
-            z-index: 1000;
-            min-width: 250px;
-            border: 1px solid #eee;
-        }
+        #notification { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 15px 20px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: none; align-items: center; z-index: 1000; min-width: 250px; border: 1px solid #eee; }
         #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; }
     </style>
 </head>
@@ -220,17 +162,6 @@
         
         <h1>Ex-Auditor Sênior do Santander REVELA Código Oculto: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.800,00 EXTRA HOJE"</span></h1>
 
-        <div class="video-container">
-            <div class="audio-alert">🔊 CLIQUE NO VÍDEO PARA ATIVAR O SOM</div>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO?autoplay=1&mute=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <p><strong>Eu não sou famoso, mas o que eu descobri fez os grandes bancos tentarem me calar judicialmente.</strong></p>
-
-        <p>Você provavelmente nunca viu meu rosto na TV, e existe um motivo para isso. O que eu revelei foi tão impactante que se tornou o assunto mais comentado nos bastidores bancários. Eu sou um ex-auditor que foi mandado embora simplesmente por não aceitar que o banco esconda esse dinheiro de você.</p>
-
         <div class="author-box">
             <div class="author-img">
                 <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" alt="Roberto">
@@ -241,105 +172,92 @@
             </div>
         </div>
 
-        <p>Eles acharam que podiam me calar.</p>
+        <p>Eles acharam que podiam me calar. Trabalhei por 20 anos na Auditoria de um dos maiores bancos do Brasil e o que eu descobri vai mudar sua vida.</p>
 
-        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong>, que opera através de uma Chave de Integração do Servidor (Código 892). Ao realizar a ativação dessa chave, o sistema desbloqueia instantaneamente o saldo retroativo de taxas dos últimos 5 anos para saque imediato.</p>
-        
+        <p>Semana passada ajudei uma cliente idosa de 61 anos a aplicar o <strong>CÓDIGO 892</strong> na conta dela porque ela precisava de R$ 250,00 para comprar os remédios.</p>
+
         <img src="caixarealtop.png" class="print-screen" alt="Prova de Saldo">
+
+        <div class="video-container">
+            <iframe src="https://youtu.be/gwzWlANKTRA?si=EXsC5JtSpuOyY6sD" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <h2 style="text-align: center; font-size: 22px; background: yellow; color: #000; padding: 10px; margin: 20px 0; font-weight: 900;">ASSISTA O VÍDEO ACIMA PARA LIBERAR SEU SAQUE</h2>
+
+        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong>, que opera através de uma Chave de Integração do Servidor (Código 892). Ao realizar a ativação dessa chave, o sistema desbloqueia instantaneamente o saldo retroativo de taxas dos últimos 5 anos.</p>
 
         <h2 style="text-align: center; font-size: 20px; margin-top: 20px;">COMO FUNCIONA O SEU SAQUE?</h2>
         <div class="step-carousel">
             <div class="step-card step-1">
                 <h4>1. Receba sua Chave</h4>
-                <p>Após finalizar, você recebe no seu e-mail a sua Chave Federal de 8 Dígitos e o acesso ao Portal de Consulta oficial.</p>
+                <p>Após finalizar, você recebe no seu e-mail a sua Chave Federal de 8 Dígitos exclusiva.</p>
             </div>
             <div class="step-card step-2">
                 <h4>2. Consulte seu Saldo</h4>
-                <p>Use a ferramenta para ver o valor exato de todas as taxas que os bancos esconderam no seu CPF nos últimos 5 anos.</p>
+                <p>Use a ferramenta para ver o valor exato das taxas escondidas no seu CPF nos últimos 5 anos.</p>
             </div>
             <div class="step-card step-3">
                 <h4>3. Ative no Seu Banco</h4>
-                <p>Siga o manual e insira sua chave dentro do seu aplicativo bancário para ativar e liberar seu saque.</p>
+                <p>Siga o manual e insira sua chave dentro do seu aplicativo bancário para liberar seu saque.</p>
             </div>
             <div class="step-card step-4">
                 <h4>4. Saque com Segurança</h4>
-                <p>O banco pedirá seu Reconhecimento Facial para confirmar sua identidade na hora de finalizar o saque.</p>
+                <p>O banco pedirá seu Reconhecimento Facial para confirmar sua identidade na hora de sacar.</p>
             </div>
             <div class="step-card step-5">
                 <h4>5. Chave Única por CPF</h4>
-                <p>Válido para todos os bancos nacionais (Físicos ou Digitais).</p>
+                <p>Válido para todos os bancos nacionais (Físicos ou Digitais). Escolha o banco com mais tarifas acumuladas.</p>
             </div>
         </div>
         <p class="carousel-info">Arraste para o lado para ver o passo a passo ➔</p>
         
         <h3>A Vingança</h3>
-
         <p>Não é hacker. Não é golpe. É um direito seu garantido pela Resolução BCB nº 1/2020. Com a <b>Chave de 8 dígitos</b>, o sistema é obrigado a liberar o seu dinheiro na hora.</p>
 
-        <div class="cta-box">
-            <h2 style="color: #1b5e20; margin-bottom: 20px; font-size: 22px;">O QUE VOCÊ VAI RECEBER AGORA:</h2>
+        <div class="cta-box-pro">
+            <h2 style="color: #1b5e20; margin-bottom: 20px; font-size: 24px; font-weight: 900;">VOCÊ VAI RECEBER AGORA:</h2>
             
             <div style="text-align: left; padding: 0 10px; margin-bottom: 25px;">
-                <p style="font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; color: #333;">
+                <p style="font-size: 17px; margin-bottom: 12px; display: flex; align-items: center; color: #111;">
                     <span style="font-size: 22px; margin-right: 12px;">🔑</span> 
                     <strong>Código de 8 Dígitos:</strong> Chave de segurança exclusiva para o seu CPF.
                 </p>
-                <p style="font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; color: #333;">
+                <p style="font-size: 17px; margin-bottom: 12px; display: flex; align-items: center; color: #111;">
                     <span style="font-size: 22px; margin-right: 12px;">📖</span> 
                     <strong>Manual de Saque:</strong> Passo a passo visual para ativar no seu App bancário.
                 </p>
-                <p style="font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; color: #333;">
+                <p style="font-size: 17px; margin-bottom: 12px; display: flex; align-items: center; color: #111;">
                     <span style="font-size: 22px; margin-right: 12px;">🔎</span> 
                     <strong>Ferramenta de Consulta:</strong> Portal oficial para ver seu saldo em todos os bancos.
                 </p>
-                <p style="font-size: 16px; margin-bottom: 12px; display: flex; align-items: center; color: #333;">
+                <p style="font-size: 17px; margin-bottom: 12px; display: flex; align-items: center; color: #111;">
                     <span style="font-size: 22px; margin-right: 12px;">💬</span> 
                     <strong>Suporte VIP WhatsApp:</strong> Acesso direto à minha equipe para garantir seu saque hoje.
                 </p>
             </div>
 
             <p style="text-decoration: line-through; color: #999; margin-bottom: 0; font-size: 16px;">De: R$ 997,00</p>
-            <p style="font-size: 32px; font-weight: bold; color: #28a745; margin-top: 0; margin-bottom: 20px;">HOJE POR: R$ 147,00</p>
+            <p style="font-size: 34px; font-weight: bold; color: #28a745; margin-top: 0; margin-bottom: 5px;">HOJE: R$ 147,00</p>
+            <p style="font-size: 18px; color: #444; margin-bottom: 20px;">Ou em até <strong>12x de R$ 14,76</strong></p>
             
             <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" class="btn-pulse">
-                🔓 LIBERAR MEU KIT DE SAQUE COMPLETO
+                🔓 LIBERAR MEU ACESSO E SACAR AGORA
             </a>
             
-            <p class="scarcity" style="font-size: 11px; margin-top: 15px; line-height: 1.3;">
-                *A chave e o manual são enviados imediatamente para o seu e-mail. Ativação e saque garantido para todos os bancos brasileiros.
-            </p>
+            <p style="font-size: 12px; margin-top: 15px; color: #777; font-weight: bold;">*O acesso é enviado imediatamente para o seu e-mail após a confirmação.</p>
         </div>
 
         <div class="comments-section">
-            <div class="fb-header">Depoimentos de quem ativou a chave hoje 👇 </div>
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
-                <div style="flex:1">
-                    <div class="comment-content">
-                        <span class="name">Fernando Souza Ramos</span>
-                        <p class="text">Gente do céu o negócio é bruto.. Usei a chave de 8 dígitos no Nubank e apareceu R$ 1.890 de saldo oculto na hora. PIX caiu em 2 minutos. Sensacional!</p>
-                    </div>
-                    <div class="comment-footer">Curtir · Responder · 2 min</div>
-                </div>
-            </div>
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/61.jpg" class="avatar">
-                <div style="flex:1">
-                    <div class="comment-content">
-                        <span class="name">Luciana Ferreira</span>
-                        <p class="text">Gente eu fiz o saque pela agência na boca do caixa, realmente eles não tem como negar recebi tudo dos últimos anos. Roberto vc é um anjo!</p>
-                    </div>
-                    <div class="comment-footer">Curtir · Responder · 52 min</div>
-                </div>
-            </div>
+            <div class="fb-header">Veja alguns depoimentos de quem ativou a chave e fez o saque hoje 👇</div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar"><div style="flex:1"><div class="comment-content"><span class="name">Fernando Souza Ramos</span><p class="text">Gente o negócio é bruto.. Usei a chave no Nubank e apareceu R$ 1.890 na hora!</p></div><div class="comment-footer">Curtir · 2 min</div></div></div>
+            <div class="comment"><img src="https://randomuser.me/api/portraits/women/32.jpg" class="avatar"><div style="flex:1"><div class="comment-content"><span class="name">Beatriz Oliveira</span><p class="text">A chave chegou no email certinho. Saquei 1.745 que o banco tava me roubando. To feliz demais!</p></div><div class="comment-footer">Curtir · 4 min</div></div></div>
         </div>
         
         <br><br>
         <center>
-            <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" style="color: #666; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
+            <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" style="color: #666; font-size: 12px; text-decoration: none;">Termos de Uso | Privacidade</a>
             <p style="font-size: 10px; color: #999; margin-top: 10px;">© 2026 – Todos os Direitos Reservados.</p>
         </center>
-
     </div>
 
     <div id="notification">
@@ -351,13 +269,7 @@
     </div>
 
     <script>
-        const data = [
-            {n: 'Pedro Henrique Cavalcante', c: 'São Paulo - SP'},
-            {n: 'Lucas Silveira', c: 'Rio de Janeiro - RJ'},
-            {n: 'Marcos Oliveira Castro', c: 'Belo Horizonte - MG'},
-            {n: 'Rafael Costa de Souza', c: 'Curitiba - PR'}
-        ];
-        
+        const data = [{n: 'Pedro Henrique Cavalcante', c: 'São Paulo - SP'}, {n: 'Lucas Silveira', c: 'Rio de Janeiro - RJ'}, {n: 'Marcos Oliveira Castro', c: 'Belo Horizonte - MG'}];
         function showNotification() {
             const item = data[Math.floor(Math.random() * data.length)];
             document.getElementById('notify-fullname').innerText = item.n;
