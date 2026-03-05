@@ -67,6 +67,7 @@
         
         .highlight { color: #c00; background: yellow; padding: 0 5px; }
 
+        /* ESTILO DO VÍDEO */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
@@ -75,6 +76,7 @@
             margin: 20px 0;
             border-radius: 12px;
             background: #000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         .video-container iframe {
             position: absolute;
@@ -92,22 +94,63 @@
             padding-bottom: 10px;
         }
         
-        .author-img { width: 50px; height: 50px; border-radius: 50%; background: #ddd; margin-right: 10px; overflow: hidden; }
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+        
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
+        
         .date { font-size: 12px; color: #666; }
 
         p { margin-bottom: 15px; font-size: 18px; color: #333; }
         
-        .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
+        .print-screen {
+            width: 100%;
+            border: 2px solid #000;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
 
-        .step-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 15px; padding: 20px 0; margin: 10px 0; scrollbar-width: none; }
+        .step-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 15px;
+            padding: 20px 0;
+            margin: 10px 0;
+            scrollbar-width: none; 
+        }
         .step-carousel::-webkit-scrollbar { display: none; }
-        .step-card { min-width: 85%; scroll-snap-align: center; padding: 20px; border-radius: 12px; color: white; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; justify-content: center; }
+
+        .step-card {
+            min-width: 85%;
+            scroll-snap-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         .step-card h4 { font-size: 20px; margin-bottom: 10px; font-weight: 900; text-transform: uppercase; }
         .step-card p { font-size: 15px; margin-bottom: 0; color: white; line-height: 1.4; }
-        .step-1 { background: #004aad; } .step-2 { background: #008f39; } .step-3 { background: #e67e22; } .step-4 { background: #d4af37; } .step-5 { background: #34495e; }
+        
+        .step-1 { background: #004aad; } 
+        .step-2 { background: #008f39; } 
+        .step-3 { background: #e67e22; } 
+        .step-4 { background: #d4af37; } 
+        .step-5 { background: #34495e; }
+
         .carousel-info { text-align: center; font-size: 13px; color: #888; margin-top: -5px; margin-bottom: 20px; }
 
+        /* NOVA CAIXA BOX PROFISSIONAL */
         .cta-box-pro {
             background-color: #f9fffb;
             border: 2px solid #28a745;
@@ -143,7 +186,20 @@
         .text { font-size: 14px; color: #1c1e21; line-height: 1.4; }
         .comment-footer { font-size: 12px; color: #606770; margin-top: 5px; margin-left: 15px; }
 
-        #notification { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 15px 20px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); display: none; align-items: center; z-index: 1000; min-width: 250px; border: 1px solid #eee; }
+        #notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            display: none;
+            align-items: center;
+            z-index: 1000;
+            min-width: 250px;
+            border: 1px solid #eee;
+        }
         #notification .info p { font-size: 13px; margin: 0; line-height: 1.4; }
     </style>
 </head>
@@ -177,7 +233,7 @@
 
         <p><strong>O banco não quer que você saiba disso mas eu estou revelando.</strong></p>
 
-        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong>, que opera através de uma Chave de Integração do Servidor (Código 892). Ao realizar a ativação dessa chave, o sistema desbloqueia instantaneamente o saldo retroativo de taxas dos últimos 5 anos para saque imediato.</p>
+        <p>Existe um protocolo interno, chamado <strong>"Cashback Oculto"</strong>, que opera através de uma Chave de Integração do Servidor (Código 892). Ao realizar a ativação dessa chave, o sistema desbloqueia instantaneamente o saldo retroativo de taxas dos últimos 5 anos para saque imediato. Mas por padrão, essa função vem DESATIVADA para que o dinheiro fique rendendo para os bancos enquanto você paga taxas.</p>
         
         <img src="caixarealtop.png" class="print-screen" alt="Prova de Saldo">
 
@@ -193,7 +249,7 @@
             </div>
             <div class="step-card step-3">
                 <h4>3. Ative no Seu Banco</h4>
-                <p>Siga o manual e insira sua chave dentro do seu aplicativo bancário para ativar e liberar seu saque.</p>
+                <p>Siga o manual e insira sua chave dentro do seu aplicativo bancário para ativar e liberar seu saque. Eu não preciso dos seus dados ou senhas!</p>
             </div>
             <div class="step-card step-4">
                 <h4>4. Saque com Segurança</h4>
@@ -201,16 +257,15 @@
             </div>
             <div class="step-card step-5">
                 <h4>5. Chave Única por CPF</h4>
-                <p>Válido para todos os bancos nacionais (Físicos ou Digitais).</p>
+                <p>Válido para todos os bancos nacionais (Físicos ou Digitais). Escolha o banco com mais tarifas nos últimos 5 anos para realizar o seu saque do Código 892.</p>
             </div>
         </div>
         <p class="carousel-info">Arraste para o lado para ver o passo a passo ➔</p>
-        
         <h3>A Vingança</h3>
 
         <p>Minha última ação antes de sair do prédio foi copiar o gerador da <strong>CHAVE DE ATIVAÇÃO DE 8 DÍGITOS</strong>. Sem essa chave, o sistema do banco bloqueia qualquer tentativa de resgate manual pelo aplicativo.</p>
 
-        <p>Não é hacker. Não é golpe. Não é ilegal. É um direito seu garantido pela Resolução BCB nº 1/2020. Com a <b>Chave de 8 dígitos</b>, o sistema é obrigado a liberar o seu dinheiro na hora.</p>
+        <p>Não é hacker. Não é golpe. Não é ilegal. É um direito seu garantido pela Resolução BCB nº 1/2020. O banco esconde esse saldo atrás de menus bloqueados, mas com a <b>Chave de 8 dígitos</b>, o sistema é obrigado a liberar o seu dinheiro na hora.</p>
 
         <div class="cta-box-pro">
             <h2 style="color: #1b5e20; margin-bottom: 20px; font-size: 22px;">O QUE VOCÊ VAI RECEBER AGORA:</h2>
@@ -235,8 +290,8 @@
             </div>
 
             <p style="text-decoration: line-through; color: #999; margin-bottom: 0;">De: R$ 997,00</p>
-            <p style="font-size: 28px; font-weight: bold; color: #c00; margin-top: 0;">HOJE POR: R$ 147,00</p>
-            <p style="font-size: 16px; color: #444; margin-bottom: 20px;">Ou em até <strong>12x de R$ 14,76</strong></p>
+            <p style="font-size: 32px; font-weight: bold; color: #28a745; margin-top: 0; margin-bottom: 5px;">HOJE: R$ 147,00</p>
+            <p style="font-size: 16px; color: #666; margin-bottom: 20px;">Ou em até <strong>12x de R$ 14,76</strong></p>
             
             <a href="https://pay.kirvano.com/84611697-56b2-4576-9db4-6e88c05dc402" onclick="dispararCheckout()" class="btn-pulse">
                 🔓 LIBERAR MEU ACESSO E SACAR AGORA
