@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <script>
     !function(f,b,e,v,n,t,s)
@@ -18,21 +18,24 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+    
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
+    /></noscript>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
         body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
         
-        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 0.85rem; animation: pulse 2s infinite; }
+        .alert-bar { background-color: #c00; color: #fff; text-align: center; padding: 10px; font-weight: bold; font-size: 0.9rem; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { background-color: #c00; } 50% { background-color: #e00; } 100% { background-color: #c00; } }
 
         .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        
-        h1 { font-size: 24px; color: #111; line-height: 1.2; margin-bottom: 15px; text-align: center; font-weight: 900; }
+        h1 { font-size: 26px; color: #111; line-height: 1.2; margin-bottom: 15px; text-align: center; font-weight: 900; }
         .highlight { color: #c00; background: yellow; padding: 0 5px; }
 
         .author-box { display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
@@ -40,53 +43,44 @@
         .author-img img { width: 100%; height: 100%; object-fit: cover; }
         .date { font-size: 12px; color: #666; }
 
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0; border-radius: 8px; background: #000; border: 2px solid #ddd; }
+        /* VÍDEO DO JORNAL */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 20px 0; border-radius: 8px; background: #000; }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
         p { margin-bottom: 15px; font-size: 18px; color: #333; }
         .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
 
-        .cta-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 25px 15px; text-align: center; margin: 30px 0; border-radius: 10px; }
-        
-        .btn-pulse { 
-            background: #28a745; 
-            color: white; 
-            font-size: 20px; 
-            font-weight: bold; 
-            padding: 18px 10px; 
-            text-decoration: none; 
-            display: block; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 0 #1e7e34; 
-            animation: grow 1.5s infinite alternate; 
-            text-transform: uppercase; 
-            line-height: 1.2;
-        }
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.03); } }
+        .cta-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 20px; text-align: center; margin: 30px 0; border-radius: 10px; }
+        .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px 15px; text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34; animation: grow 1.5s infinite alternate; text-transform: uppercase; }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
 
         .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
         .comment { display: flex; margin-bottom: 15px; }
-        .avatar { width: 45px; height: 45px; border-radius: 50%; margin-right: 10px; }
-        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 15px; width: 100%; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin-right: 10px; }
+        .comment-body { background: #f0f2f5; padding: 10px; border-radius: 15px; width: 100%; }
         .name { font-weight: bold; font-size: 14px; color: #385898; }
-        .text { font-size: 15px; margin-top: 3px; }
+        .text { font-size: 14px; }
 
-        #notification { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #fff; padding: 10px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; width: 90%; max-width: 320px; border-left: 5px solid #28a745; }
+        #notification { position: fixed; bottom: 20px; right: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; width: 300px; border-left: 5px solid #28a745; }
         #notification img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
-        #notification p { font-size: 12px; margin: 0; line-height: 1.3; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR POR ORDEM JUDICIAL.</div>
+    <div class="alert-bar">⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM BREVE POR ORDEM JUDICIAL.</div>
 
     <div class="container">
         
-        <h1>Ex-Auditor Sênior REVELA Brecha de Segurança: <span class="highlight">"Qualquer CPF pode sacar saldo extra hoje"</span></h1>
+        <h1>Ex-Auditor Sênior REVELA Brecha de Segurança: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.400 extra hoje"</span></h1>
 
         <div class="author-box">
-            <div class="author-img"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png"></div>
-            <div><strong>Por: Roberto M.</strong><br><span class="date">Atualizado: 6 de Março de 2026</span></div>
+            <div class="author-img">
+                <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" alt="Roberto">
+            </div>
+            <div>
+                <strong>Por: Roberto M.</strong><br>
+                <span class="date">Atualizado: Hoje, às 08:00</span>
+            </div>
         </div>
 
         <p>Eles acharam que podiam me calar.</p>
@@ -97,89 +91,60 @@
             <iframe src="https://www.youtube.com/embed/gwzWlANKTRA?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
         </div>
 
-        <p>O banco não quer que você saiba disso.</p>
-
-        <p>Existe um protocolo interno, chamado <strong>"Código 892"</strong>, que libera o resgate de taxas e rendimentos ocultos. Mas, por padrão, o banco mantém isso DESATIVADO.</p>
-        
-        <h3>A Vingança</h3>
-
-        <p>Antes de sair do prédio pela última vez, copiei o <strong>MANUAL DE ATIVAÇÃO</strong> exato para liberar esse saldo via PIX.</p>
-
-        <p>Não é hacker. É um direito seu que está escondido no sistema do banco. Basta seguir o manual e sacar.</p>
+        <p>Existe um protocolo chamado <strong>"Código 892"</strong> que libera o resgate de taxas ocultas. O banco mantém isso DESATIVADO por padrão.</p>
 
         <img src="inter.png" class="print-screen" alt="Prova de Saldo">
 
         <div class="cta-box">
-            <h2 style="font-size: 20px; margin-bottom: 10px;">ACESSO AO MANUAL DE ATIVAÇÃO</h2>
-            <p style="font-size: 16px;">O passo a passo para você sacar seu saldo retroativo agora.</p>
-            
-            <p style="text-decoration: line-through; color: #999; margin-bottom: 0;">De: R$ 997,00</p>
-            <p style="font-size: 30px; font-weight: bold; color: #c00; margin-top: 0;">POR: R$ 97,00</p>
-            
+            <h2>ACESSO AO MANUAL DE ATIVAÇÃO</h2>
+            <p>Eu compilei o passo a passo exato. Você só precisa ler, ativar e sacar.</p>
+            <br>
+            <p style="text-decoration: line-through; color: #999;">De: R$ 997,00</p>
+            <p style="font-size: 24px; font-weight: bold; color: #c00;">POR APENAS: R$ 97,00</p>
+            <br>
             <a href="https://pay.kirvano.com/d7afc5e8-9553-408a-9278-b87ab2bf6992" class="btn-pulse" onclick="fbq('track', 'InitiateCheckout');">
                 🔓 DESBLOQUEAR MEU SALDO AGORA
             </a>
-            
-            <p style="color: #c00; font-weight: bold; margin-top: 15px; font-size: 14px;">🔥 Restam apenas 3 licenças disponíveis.</p>
+            <p style="color: #c00; font-weight: bold; margin-top: 10px; font-size: 14px;">🔥 Restam apenas 3 licenças antes do site cair.</p>
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 15px;">Aposentados que já ativaram:</p>
-
+            <p style="font-weight: bold; margin-bottom: 15px;">234 Comentários</p>
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
                 <div class="comment-body">
                     <div class="name">Fernando Souza</div>
-                    <div class="text">Fiz agora no app do banco e apareceu R$ 890,00 que eu nem sabia. O manual explica tudo certinho. Valeu Roberto!</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Maria de Lourdes</div>
-                    <div class="text">Eu estava com medo de ser golpe mas minha neta me ajudou a comprar e realmente o dinheiro caiu no PIX! Obrigada.</div>
+                    <div class="text">Fiz agora no app e apareceu R$ 890,00 que eu nem sabia. Recuperei em 5 minutos!</div>
                 </div>
             </div>
         </div>
-
-        <br>
-        <center>
-            <p style="font-size: 10px; color: #999;">Termos de Uso | Privacidade<br>Este site não tem vínculo com o Facebook ou instituições bancárias.</p>
-        </center>
     </div>
 
     <div id="notification">
         <img src="" id="notify-img">
         <div>
             <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
-            <p>Acabou de ativar o saque.</p>
-            <p style="color: #28a745; font-size: 11px; font-weight: bold;">Recebeu R$ 510,00 via PIX</p>
+            <p>Acabou de comprar o Manual.</p>
+            <p style="color: #28a745; font-size: 11px; font-weight: bold;">Ganhou R$ 450,00 de retorno</p>
         </div>
     </div>
 
     <script>
-        const names = ['Tereza', 'José', 'Maria', 'Antônio', 'Francisca', 'João', 'Lourdes', 'Sebastião'];
-        const locs = ['SP', 'MG', 'RJ', 'RS', 'BA', 'PR', 'SC'];
-        
+        const names = ['Pedro', 'Maria', 'Tereza', 'João'];
+        const locs = ['SP', 'RJ', 'MG', 'BA'];
         function showNotification() {
             const name = names[Math.floor(Math.random() * names.length)];
             const loc = locs[Math.floor(Math.random() * locs.length)];
-            const imgId = Math.floor(Math.random() * 70);
-            const gender = Math.random() > 0.5 ? 'men' : 'women';
-            
+            const imgId = Math.floor(Math.random() * 50);
             document.getElementById('notify-name').innerText = name;
             document.getElementById('notify-loc').innerText = loc;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
-            
+            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/men/${imgId}.jpg`;
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
-            
             setTimeout(() => { notify.style.display = 'none'; }, 4000);
         }
-
-        setTimeout(showNotification, 4000);
-        setInterval(showNotification, 18000);
+        setTimeout(showNotification, 3000);
+        setInterval(showNotification, 15000);
     </script>
 </body>
 </html>
