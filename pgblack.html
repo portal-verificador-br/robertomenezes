@@ -57,12 +57,11 @@
         .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin-right: 10px; }
         .comment-body { background: #f0f2f5; padding: 10px; border-radius: 15px; width: 100%; }
         
-        .name { font-weight: bold; font-size: 14px; color: #000; } /* NOME PRETO */
+        .name { font-weight: bold; font-size: 14px; color: #000; }
         .text { font-size: 14px; }
         .meta { font-size: 12px; color: #65676b; margin-top: 5px; }
 
-        #notification { position: fixed; bottom: 20px; right: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; width: 300px; border-left: 5px solid #28a745; }
-        #notification img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
+        #notification { position: fixed; bottom: 20px; right: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; width: 260px; border-left: 5px solid #28a745; }
         #notification p { font-size: 13px; margin: 0; line-height: 1.3; }
     </style>
 </head>
@@ -71,7 +70,7 @@
     <div class="alert-bar">⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM 10 MINUTOS POR ORDEM JUDICIAL.</div>
 
     <div class="container">
-        <h1>Ex-Funcionário do Santander VAZA Brecha de Segurança: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.940 extra hoje"</span></h1>
+        <h1>Ex-Funcionário do Santander VAZA Brecha de Segurança: <span class="highlight">"Qualquer CPF pode sacar até R$ 2.400 extra hoje"</span></h1>
 
         <div class="author-box">
             <div class="author-img"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png"></div>
@@ -119,7 +118,7 @@
                 <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
                 <div class="comment-body">
                     <div class="name">Carla Dias Cavalcante</div>
-                    <div class="text">Gente, é verdade mesmo? Tô com medo de ser golpe.</div>
+                    <div class="text">Gente, alguém sabe se é seguro mesmo?</div>
                     <div class="meta">Curtir · Responder · 5 min</div>
                 </div>
             </div>
@@ -153,7 +152,6 @@
     </div>
 
     <div id="notification">
-        <img src="" id="notify-img">
         <div>
             <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
             <p>Acabou de adquirir o Manual.</p>
@@ -166,10 +164,8 @@
         function showNotification() {
             const name = names[Math.floor(Math.random() * names.length)];
             const loc = locs[Math.floor(Math.random() * locs.length)];
-            const imgId = Math.floor(Math.random() * 50);
             document.getElementById('notify-name').innerText = name;
             document.getElementById('notify-loc').innerText = loc;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/men/${imgId}.jpg`;
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
             setTimeout(() => { notify.style.display = 'none'; }, 4000);
