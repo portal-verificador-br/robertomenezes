@@ -11,31 +11,26 @@
         
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        /* HEADER & TITULO ORIGINAL */
         h1 { font-size: 30px; font-weight: 900; text-align: center; line-height: 1.1; margin: 20px 0; text-transform: uppercase; letter-spacing: -1px; }
         .highlight { color: #00ff41; }
 
-        /* AUTOR */
         .author { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 50px; width: fit-content; }
         .author img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #00ff41; }
         .author span { font-weight: 700; font-size: 14px; }
 
-        /* CARROSSEL MODERNO */
         .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 15px; margin: 25px 0; scrollbar-width: none; }
         .carousel img { flex: 0 0 100%; border-radius: 20px; border: 1px solid #222; snap-align: start; }
 
-        /* TEXTO AGRESSIVO */
         .copy-content { font-size: 18px; color: #ccc; }
         .copy-content p { margin-bottom: 20px; }
         .copy-content b { color: #fff; }
 
-        /* BOX DE DESTAQUE */
+        /* RITUAL DOS 15K */
         .info-card { background: linear-gradient(145deg, #111, #080808); border: 1px solid #222; border-left: 4px solid #00ff41; padding: 20px; border-radius: 15px; margin: 30px 0; }
+        .ritual-title { color: #00ff41; font-weight: 900; font-size: 20px; text-transform: uppercase; margin-bottom: 10px; display: block; }
 
-        /* CTA IMPACTANTE */
         .cta-section { background: #111; padding: 30px 20px; border-radius: 25px; border: 1px solid #222; text-align: center; margin-top: 40px; }
-        .price-old { font-size: 16px; text-decoration: line-through; color: #666; }
-        .price-main { font-size: 50px; font-weight: 900; color: #00ff41; display: block; margin: -5px 0 15px 0; }
+        .price-main { font-size: 50px; font-weight: 900; color: #00ff41; display: block; margin-bottom: 15px; }
         
         .btn-main { 
             background: #00ff41; color: #000; text-decoration: none; display: block; 
@@ -46,25 +41,25 @@
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
         .vagas-box { margin-top: 15px; font-weight: 900; color: #ff3e3e; font-size: 14px; text-transform: uppercase; }
+        .garantia { margin-top: 15px; font-size: 13px; color: #888; font-weight: bold; }
 
-        /* NOTIFICAÇÃO ESTILO IOS/MODERNA */
+        /* NOTIFICAÇÃO SUPERIOR ESQUERDO */
         #notify {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            position: fixed; top: 20px; left: 20px;
             background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
-            color: #000; padding: 12px 20px; border-radius: 20px; 
+            color: #000; padding: 12px 18px; border-radius: 15px; 
             display: none; align-items: center; gap: 12px; z-index: 9999;
-            width: 90%; max-width: 350px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            max-width: 280px; box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border-bottom: 3px solid #00ff41;
         }
-        #notify img { width: 35px; height: 35px; border-radius: 10px; }
-        #notify-text { font-size: 13px; font-weight: 600; line-height: 1.2; }
-        #notify-text b { color: #008000; }
+        #notify-text { font-size: 12px; font-weight: 700; line-height: 1.2; }
     </style>
 </head>
 <body>
 
     <div class="container">
         <div class="author">
-            <img src="https://github.com/emanuel/perfil.png" alt="Emanuel">
+            <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" alt="Emanuel">
             <span>Emanuel @ Black Safe</span>
         </div>
 
@@ -77,9 +72,9 @@
         </div>
 
         <div class="carousel">
-            <img src="print1.png" alt="CTR 16%">
-            <img src="print2.png" alt="Venda 800">
-            <img src="print3.png" alt="Faturamento">
+            <img src="print_metrica.png" alt="CTR 16%">
+            <img src="print_venda.png" alt="Venda 800">
+            <img src="print_resultado.png" alt="Faturamento">
         </div>
 
         <div class="copy-content">
@@ -89,9 +84,14 @@
                 Eu vim do nada, cresci em <b>Pirituba, zona oeste de São Paulo</b>. Os gurus ensinam a pagar sites caros, mas eu nunca usei HostGator até ver que o domínio é gratuito. Guarda o dinheiro pro tráfego pago. Enrolação eu deixo pra eles.
             </div>
 
-            <p>Meu produto é um <b>PDF direto</b>. Você só precisa fazer o que eu mostro, aplicar a estrutura e esperar a notificação de venda aprovada. É o <b>Ritual dos 15K</b> acontecendo na sua conta.</p>
+            <div class="info-card" style="border-left-color: #fff;">
+                <span class="ritual-title">O RITUAL DOS 15K</span>
+                Eu trabalho com apenas <b>15 alunos por vez</b> para dar total atenção no privado, ligação e chamada. Só abro novas vagas quando <b>todos os 15 batem a meta de R$ 15 mil em uma semana</b>. Quando o objetivo é cumprido, eu renovo a turma.
+            </div>
 
             <p>Você prefere escalar produto mixuruca para ter ROI de 2... ou prefere fazer uma venda de <b>R$ 800 a R$ 3.000</b> e relaxar o resto do mês com um salário no bolso?</p>
+            
+            <p>Meu produto é um <b>PDF direto</b>. Você só precisa fazer o que eu mostro, aplicar a estrutura e esperar a venda aprovada.</p>
         </div>
 
         <div class="carousel">
@@ -100,43 +100,40 @@
         </div>
 
         <div class="cta-section">
-            <span class="price-old">De R$ 497,00 por apenas</span>
             <span class="price-main">R$ 97,00</span>
             
             <a href="LINK_TICTO" class="btn-main">
                 QUERO A ESTRUTURA + PRIVADO
             </a>
             
-            <div class="vagas-box" id="vagas-text">Faltam 15 vagas para fechar a turma</div>
+            <div class="vagas-box" id="vagas-text">Restam apenas 15 vagas no Ritual</div>
+            <div class="garantia">15K EM 7 DIAS OU SEU DINHEIRO DE VOLTA</div>
         </div>
 
-        <footer style="text-align: center; padding: 40px 0; opacity: 0.2; font-size: 12px;">
-            Emanuel | Black Safe Strategy | Pirituba, SP
+        <footer style="text-align: center; padding: 40px 0; opacity: 0.2; font-size: 11px;">
+            Emanuel | Black Safe Strategy | Pirituba, Z/O de SP
         </footer>
     </div>
 
     <div id="notify">
-        <img src="https://cdn-icons-png.flaticon.com/512/179/179309.png">
         <div id="notify-text">
-            <b>Venda Aprovada!</b><br>
-            <span id="buyer-name"></span> acabou de entrar no Ritual.
+            🚀 <b>Venda Aprovada!</b><br>
+            <span id="buyer-name"></span> entrou no Ritual dos 15K.
         </div>
     </div>
 
     <script>
-        // Lógica de Vagas
         let v = 15;
         function decVagas() {
-            if (v > 2) {
+            if (v > 1) {
                 v--;
-                document.getElementById('vagas-text').innerText = `Faltam ${v} vagas para fechar a turma`;
+                document.getElementById('vagas-text').innerText = `Restam apenas ${v} vagas no Ritual`;
                 showPop();
             }
-            setTimeout(decVagas, Math.random() * (40000 - 15000) + 15000);
+            setTimeout(decVagas, Math.random() * (50000 - 20000) + 20000);
         }
 
-        // Pop-up Moderno
-        const ns = ['Ricardo', 'Felipe', 'André', 'Bruno', 'Thiago', 'Marcos', 'Lucas'];
+        const ns = ['Ricardo M.', 'Felipe S.', 'André L.', 'Bruno O.', 'Thiago R.', 'Marcos V.', 'Lucas P.'];
         function showPop() {
             document.getElementById('buyer-name').innerText = ns[Math.floor(Math.random() * ns.length)];
             const p = document.getElementById('notify');
