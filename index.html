@@ -3,156 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emanuel | O Ritual dos 15K</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Emanuel - Estratégia Black Safe</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '1773918999950681'); 
-    fbq('track', 'PageView');
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1773918999950681'); 
+        fbq('track', 'PageView');
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: #050505; color: #e0e0e0; line-height: 1.6; }
+        body { background-color: #0d0d0d; color: #e0e0e0; line-height: 1.8; }
+        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
         
-        .container { max-width: 550px; margin: 0 auto; padding: 20px; }
+        h1 { font-size: 32px; font-weight: 900; text-align: center; color: #fff; line-height: 1.2; margin-bottom: 30px; text-transform: uppercase; }
+        .highlight { color: #00ff41; text-shadow: 0 0 10px rgba(0,255,65,0.3); }
 
-        h1 { font-size: 32px; color: #fff; line-height: 1.1; margin-bottom: 25px; text-align: center; font-weight: 900; text-transform: uppercase; }
-        .highlight { color: #00ff41; }
+        .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 15px; margin: 30px 0; scrollbar-width: none; }
+        .carousel img { flex: 0 0 90%; border-radius: 15px; border: 2px solid #333; snap-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-        .author-box { display: flex; align-items: center; margin-bottom: 30px; background: #111; padding: 15px; border-radius: 15px; border: 1px solid #222; }
-        .author-img { width: 65px; height: 65px; border-radius: 50%; background: #333; margin-right: 15px; overflow: hidden; border: 2px solid #00ff41; }
-        .author-img img { width: 100%; height: 100%; object-fit: cover; }
-        
-        /* CARROSSEL DE PRINTS E DEPOIMENTOS */
-        .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 15px; margin: 25px 0; scrollbar-width: none; }
-        .carousel::-webkit-scrollbar { display: none; }
-        .carousel img { flex: 0 0 100%; border-radius: 12px; border: 1px solid #333; snap-align: start; box-shadow: 0 0 20px rgba(0,255,65,0.1); }
+        .section-text { margin-bottom: 25px; font-size: 18px; color: #b0b0b0; }
+        .section-text b { color: #fff; }
 
-        .text-block { margin-bottom: 25px; font-size: 18px; color: #ccc; }
-        b { color: #fff; }
+        .card { background: #161616; padding: 25px; border-radius: 20px; border-left: 5px solid #00ff41; margin: 30px 0; }
+        .ritual-tag { background: #00ff41; color: #000; padding: 5px 10px; font-weight: 900; border-radius: 5px; font-size: 12px; margin-bottom: 10px; display: inline-block; }
 
-        .ritual-box { background: linear-gradient(145deg, #111, #000); border: 1px solid #00ff41; padding: 25px; border-radius: 20px; margin: 30px 0; }
-        .ritual-box h2 { color: #00ff41; font-size: 22px; margin-bottom: 15px; text-transform: uppercase; text-align: center; }
+        .cta-box { text-align: center; margin-top: 50px; padding: 30px; background: #1a1a1a; border-radius: 20px; border: 1px solid #333; }
+        .price-now { font-size: 42px; font-weight: 900; color: #00ff41; margin-bottom: 20px; }
 
-        .cta-box { background-color: #00ff41; padding: 25px; text-align: center; margin: 30px 0; border-radius: 15px; color: #000; }
-        .price { font-size: 42px; font-weight: 900; display: block; margin-bottom: 5px; }
-
-        .btn-black {
-            background: #000; color: #00ff41; font-size: 20px; font-weight: 900; padding: 20px; 
-            text-decoration: none; display: block; border-radius: 10px; text-transform: uppercase;
+        .btn-black-safe { 
+            background: #00ff41; color: #000; text-align: center; display: block; 
+            padding: 22px; border-radius: 50px; font-weight: 900; 
+            font-size: 22px; text-decoration: none; text-transform: uppercase;
             animation: pulse 1.5s infinite;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        /* POP OUT LATERAL ESTILO ROBERTO */
         #notification {
-            position: fixed; bottom: 20px; right: 20px; background: #fff; color: #000; padding: 15px; 
-            border-radius: 12px; display: none; align-items: center; z-index: 1000; width: 280px; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8); border-left: 6px solid #00ff41;
+            position: fixed; bottom: 20px; right: 20px; background: #fff; color: #000; 
+            padding: 15px; border-radius: 12px; display: none; align-items: center; 
+            z-index: 9999; width: 280px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); 
+            border-left: 6px solid #00ff41;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        
-        <h1>O FIM DA ENROLAÇÃO: COPIE A MINHA ESTRUTURA <span class="highlight">BLACK SAFE</span></h1>
-
-        <div class="author-box">
-            <div class="author-img">
-                <img src="https://github.com/SEU_USER/SUA_REPO/blob/main/emanuel.png?raw=true" alt="Emanuel">
-            </div>
-            <div>
-                <strong>Emanuel</strong><br>
-                <span style="font-size: 12px; color: #00ff41;">Mentor do Ritual dos 15K</span>
-            </div>
-        </div>
-
-        <div class="text-block">
-            Vou ser direto: gastei 2 anos e mais de <b>R$ 5 mil</b> sustentando guru até entender que o segredo não é o produto, mas a <b>estratégia e a oferta agressiva</b>.
-        </div>
+        <h1>O Segredo para faturar <span class="highlight">R$ 15 MIL EM 7 DIAS</span> com a estrutura Black Safe</h1>
 
         <div class="carousel">
-            <img src="https://github.com/SEU_USER/SUA_REPO/blob/main/print1.png?raw=true" alt="CTR 16%">
-            <img src="https://github.com/SEU_USER/SUA_REPO/blob/main/print2.png?raw=true" alt="Venda 800">
-            <img src="https://github.com/SEU_USER/SUA_REPO/blob/main/print3.png?raw=true" alt="Venda 3000">
+            <img src="notebook_ctr.png" alt="CTR 16%">
+            <img src="venda_800.png" alt="Venda Alta">
+            <img src="venda_3000.png" alt="Venda 3k">
         </div>
 
-        <div class="text-block">
-            Os gurus te ensinam a gastar com HostGator e domínios caros. Eu te digo: <b>nunca usei host até ver que o domínio pode ser gratuito.</b> Ninguém se importa com isso. Guarda esse dinheiro pro tráfego pago. Eu trabalho com oferta agressiva e dinheiro no bolso.
+        <div class="section-text">
+            Eu vou ser bem direto: depois de 2 anos gastando mais de <b>R$ 5 mil com Facebook</b>, eu descobri que o segredo não é o produto, é a <b>estratégia e a oferta</b>. 
         </div>
 
-        <div class="ritual-box">
-            <h2>O Ritual dos 15K</h2>
-            <p style="font-size: 16px; text-align: center;">Eu trabalho com meus alunos até eles faturarem <b>R$ 15 mil em 7 dias</b>, assim como eu fiz saindo de Pirituba. <br><br> Abri apenas <b>15 vagas</b> para dar atenção total no privado, chamada e grupo. Quando todos baterem a meta, eu libero a turma e só então abro novas vagas. É simples: você faz o que eu mostro e o resultado vem.</p>
+        <div class="section-text">
+            Muitos gurus te ensinam a pagar sites caros e HostGator. Eu te digo: <b>eu nunca usei HostGator até ver que o domínio é gratuito</b>. Ninguém se importa com isso. Guarda o seu dinheiro para o tráfego pago. Eu trabalho com oferta agressiva e dinheiro no bolso, enrolação eu deixo para eles.
         </div>
 
-        <p style="text-align: center; font-weight: bold; color: #00ff41;">DEPOIMENTOS DOS ALUNOS NO RITUAL:</p>
+        <div class="card">
+            <span class="ritual-tag">O RITUAL DO EMANUEL</span><br>
+            "Eu trabalho com meus alunos no privado e em chamadas até eles faturarem <b>R$ 15 mil em uma semana</b>, exatamente como eu fiz saindo de Pirituba. Abri apenas <b>15 vagas extras</b> para dar atenção total. Quando essa turma bater a meta, eu encerro e só abro para novos alunos depois."
+        </div>
+
+        <div class="section-text">
+            Você prefere ficar escalando produto mixuruca para ter um ROI de 2... ou prefere um orçamento fixo e fazer <b>vendas de R$ 800 a R$ 3.000</b> e "relaxar" o resto do mês com o lucro de um salário no bolso? 
+        </div>
+
+        <p style="text-align: center; font-weight: bold; color: #00ff41; margin-bottom: 10px;">DEPOIMENTOS DOS ALUNOS:</p>
         <div class="carousel">
-            <img src="https://github.com/SEU_USER/SUA_REPO/blob/main/depo1.png?raw=true" alt="Depoimento 1">
-            <img src="https://github.com/SEU_USER/SUA_REPO/blob/main/depo2.png?raw=true" alt="Depoimento 2">
+            <img src="depoimento1.png" alt="Resultado Aluno">
+            <img src="depoimento2.png" alt="Resultado Aluno">
         </div>
 
-        <div class="text-block">
-            O que eu te entrego é 1 PDF direto. Sem enrolação. Você só precisa aplicar a estrutura, colocar a oferta agressiva e esperar a notificação de venda aprovada. 
+        <div class="section-text">
+            O que você vai receber não é um "curso" de 100 aulas. É <b>1 PDF direto</b>. Você só precisa fazer o que eu mostro, aplicar a estrutura e esperar a notificação de venda aprovada cair no seu celular.
         </div>
 
         <div class="cta-box">
-            <span style="font-size: 18px; font-weight: bold;">ÚLTIMAS VAGAS PARA O RITUAL:</span>
-            <span class="price">R$ 97,00</span>
+            <p style="color: #888; text-decoration: line-through;">De R$ 497,00 por apenas:</p>
+            <p class="price-now">R$ 97,00</p>
             
-            <a href="SEU_LINK_TICTO" class="btn-black" onclick="fbq('track', 'InitiateCheckout');">
-                🔓 ACESSAR ESTRUTURA + MEU PRIVADO
+            <a href="SEU_LINK_TICTO" class="btn-black-safe" onclick="fbq('track', 'InitiateCheckout');">
+                🔓 COPIAR ESTRUTURA + MEU PRIVADO
             </a>
-            <p style="color: #000; font-weight: bold; margin-top: 15px; font-size: 14px;" id="vagas">RESTAM 9 VAGAS DISPONÍVEIS.</p>
+
+            <p style="color: #ff3e3e; font-weight: bold; margin-top: 15px;" id="vagas">Faltam 11 vagas para fechar a turma</p>
         </div>
 
-        <div class="text-block" style="text-align: center;">
-            Sua jornada de perda de dinheiro acaba aqui. <b>Sua jornada de lucro real começa agora.</b>
+        <div class="section-text" style="text-align: center; margin-top: 30px;">
+            Sua jornada de enrolação acaba aqui. <b>O dinheiro no bolso começa agora.</b>
         </div>
 
-        <center style="margin-top: 50px; opacity: 0.3; font-size: 12px;">
-            <p>Emanuel | Estratégia Black Safe © 2026</p>
+        <center style="margin-top: 60px; opacity: 0.3; font-size: 11px;">
+            <p>Emanuel - Pirituba, SP © 2026</p>
         </center>
     </div>
 
     <div id="notification">
-        <p>🚀 <b><span id="notify-name"></span></b> acabou de entrar para o <b>Ritual dos 15K!</b></p>
+        <p>🚀 <b><span id="notify-name"></span></b> acaba de entrar no <b>Ritual dos 15K!</b></p>
     </div>
 
     <script>
-        // Vagas diminuindo
-        let restam = 9;
+        // Lógica de vagas diminuindo devagar
+        let restam = 11;
         function updateVagas() {
             if (restam > 2) {
                 restam--;
-                document.getElementById('vagas').innerText = `RESTAM ${restam} VAGAS DISPONÍVEIS.`;
+                document.getElementById('vagas').innerText = `Faltam ${restam} vagas para fechar a turma`;
             }
-            setTimeout(updateVagas, Math.random() * (60000 - 20000) + 20000);
+            setTimeout(updateVagas, Math.random() * (60000 - 30000) + 30000);
         }
-        setTimeout(updateVagas, 25000);
+        setTimeout(updateVagas, 20000);
 
-        // Notificações estilo Roberto
-        const names = ['André Silva', 'Felipe Santos', 'Ricardo M.', 'Bruno Oliveira', 'Lucas P.'];
+        // Notificações Laterais
+        const names = ['André L.', 'Felipe S.', 'Ricardo M.', 'Bruno O.', 'Lucas P.', 'Gustavo F.'];
         function showNotification() {
             document.getElementById('notify-name').innerText = names[Math.floor(Math.random() * names.length)];
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
             setTimeout(() => { notify.style.display = 'none'; }, 5000);
         }
-        setInterval(showNotification, 45000);
+        setInterval(showNotification, 40000);
     </script>
 </body>
 </html>
