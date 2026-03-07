@@ -2,210 +2,102 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SISTEMA DE VERIFICAÇÃO - CÓDIGO 892</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estratégia Black Safe - 15K em 7 Dias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    
-    fbq('init', '1773918999950681'); 
-    fbq('track', 'PageView');
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1773918999950681'); 
+        fbq('track', 'PageView');
     </script>
-
     <style>
-        :root {
-            --primary: #FFD700; 
-            --bg-dark: #0a0a0a; 
-            --card-bg: #1a1a1a;
-            --accent: #e60000; 
-            --text-light: #ffffff;
-            --success: #00ff00;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: #0a0a0a; color: #fff; line-height: 1.6; }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
         
-        body { 
-            background-color: var(--bg-dark); 
-            color: var(--text-light); 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh;
-            overflow-x: hidden;
+        h1 { font-size: 28px; font-weight: 900; text-align: center; color: #00ff41; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; }
+        .highlight { background: #00ff41; color: #000; padding: 2px 5px; }
+
+        /* CARROSSEL DE PRINTS */
+        .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 10px; margin-bottom: 25px; scrollbar-width: none; }
+        .carousel img { flex: 0 0 100%; border-radius: 12px; border: 2px solid #333; snap-align: start; }
+
+        .copy-box { background: #1a1a1a; padding: 20px; border-radius: 15px; border: 1px solid #333; margin-bottom: 30px; }
+        .copy-box p { font-size: 17px; margin-bottom: 15px; color: #ccc; }
+        .copy-box strong { color: #fff; }
+
+        .cta-button { 
+            background: linear-gradient(90deg, #00ff41, #00cc33); 
+            color: #000; text-align: center; display: block; 
+            padding: 20px; border-radius: 12px; font-weight: 900; 
+            font-size: 20px; text-decoration: none; 
+            text-transform: uppercase; animation: pulse 1.5s infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
         }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        .urgency-bar {
-            background: var(--accent);
-            color: #fff;
-            padding: 12px;
-            text-align: center;
-            font-weight: 900;
-            font-size: 13px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.5);
-            z-index: 10;
+        .scarcity { text-align: center; color: #ff3e3e; font-weight: bold; margin-top: 10px; font-size: 14px; }
+
+        /* POP OUT COLORIDO */
+        #notification {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: #fff; color: #000; padding: 12px 20px; border-radius: 50px;
+            display: none; align-items: center; z-index: 9999; width: 90%; max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid #00ff41;
         }
-
-        header {
-            background: var(--card-bg);
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .logo-area { display: flex; align-items: center; gap: 12px; }
-        .shield-icon { color: var(--primary); font-size: 28px; }
-        .logo-text { font-size: 15px; font-weight: 900; text-transform: uppercase; line-height: 1.1; }
-        
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
-        }
-
-        .progress-box { width: 100%; margin-bottom: 25px; }
-        .progress-label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; font-weight: 700; color: var(--primary); }
-        .progress-track { background: #333; height: 10px; border-radius: 10px; }
-        .progress-fill { background: var(--primary); height: 100%; width: 10%; transition: width 0.4s; border-radius: 10px; }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 15px;
-            border: 1px solid #333;
-            width: 100%;
-            text-align: center;
-            display: none; 
-        }
-        .card.active { display: block; animation: fadeIn 0.3s; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        h1 { font-size: 20px; font-weight: 900; margin-bottom: 15px; }
-        .highlight { color: var(--primary); }
-
-        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-        
-        .btn {
-            background: #222;
-            border: 1px solid #444;
-            padding: 18px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 900;
-            color: #fff;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        .btn:active { background: var(--primary); color: #000; }
-        
-        footer { text-align: center; padding: 20px; font-size: 10px; color: #444; }
+        #notification b { color: #008000; }
     </style>
 </head>
 <body>
 
-    <div class="urgency-bar">
-        ⚠️ VERIFICAÇÃO OBRIGATÓRIA PARA LIBERAÇÃO DE ACESSO
+    <div class="container">
+        <h1>Como eu usei a estrutura <span class="highlight">Black Safe</span> para faturar R$ 15 mil em 7 dias</h1>
+
+        <div class="carousel">
+            <img src="foto_notebook.png" alt="CTR 16%">
+            <img src="print_vendas_800.png" alt="Venda R$ 800">
+            <img src="print_vendas_3000.png" alt="Venda R$ 3000">
+        </div>
+
+        <div class="copy-box">
+            <p>Vou ser direto: gastei 2 anos e mais de R$ 5 mil batendo a cabeça no Facebook até entender que o segredo não é o produto, mas a <strong>estratégia e a oferta</strong>.</p>
+            <p>Descobri o lado 'Black' do marketing, mas criei o <strong>Black Safe</strong>: agressivo na conversão, mas 100% limpo na entrega.</p>
+            <p>Sou de <strong>Pirituba</strong>, vim do nada e não estou aqui para te dar golpe. Faturei <strong>R$ 15 mil em uma semana</strong> quando parei de ser empregado do Meta e fiz o algoritmo trabalhar para mim.</p>
+            <p>Você prefere se matar para fazer 10 vendas mixurucas ou fazer <strong>UMA venda de R$ 800 a R$ 3.000</strong> e relaxar o resto da semana?</p>
+        </div>
+
+        <a href="LINK_DA_TICTO_OU_KIRVANO" class="cta-button" onclick="fbq('track', 'InitiateCheckout');">
+            QUERO A ESTRUTURA + GRUPO VIP
+        </a>
+        <p class="scarcity">⚠️ RESTAM APENAS 7 VAGAS NO GRUPO DOS 50.</p>
+
+        <center style="margin-top: 40px; opacity: 0.5; font-size: 12px;">
+            <p>Pirituba/SP - Estratégia Black Safe © 2026</p>
+        </center>
     </div>
 
-    <header>
-        <div class="logo-area">
-            <i class="fas fa-fingerprint shield-icon"></i>
-            <div class="logo-text">SISTEMA DE AUDITORIA FEDERAL<br><span style="color:var(--primary)">CÓDIGO 892</span></div>
-        </div>
-    </header>
-
-    <main>
-        <div class="progress-box">
-            <div class="progress-label">
-                <span>ANÁLISE DE PERFIL</span>
-                <span id="percent-text">10%</span>
-            </div>
-            <div class="progress-track">
-                <div class="progress-fill" id="progress-bar"></div>
-            </div>
-        </div>
-
-        <div id="step1" class="card active">
-            <h1>VOCÊ POSSUI <span class="highlight">CONTA ATIVA</span> EM BANCOS BRASILEIROS HÁ MAIS DE 5 ANOS?</h1>
-            <div class="btn-group">
-                <button class="btn" onclick="nextStep(2)">SIM, HÁ MUITOS ANOS</button>
-                <button class="btn" onclick="nextStep(2)">NÃO, MENOS DE 5 ANOS</button>
-            </div>
-        </div>
-
-        <div id="step2" class="card">
-            <h1>QUAL BANCO VOCÊ UTILIZA COM <span class="highlight">MAIOR FREQUÊNCIA?</span>?</h1>
-            <div class="btn-group">
-                <button class="btn" onclick="nextStep(3)">ITAÚ / BRADESCO / SANTANDER</button>
-                <button class="btn" onclick="nextStep(3)">CAIXA / BANCO DO BRASIL / OUTROS</button>
-                <button class="btn" onclick="nextStep(3)">NUBANK / INTER / DIGITAIS</button>
-            </div>
-        </div>
-
-        <div id="step3" class="card">
-            <h1>O CÓDIGO 892 EXIGE <span class="highlight">ATIVAÇÃO</span> PARA LIBERAÇÃO IMEDIATA DO SAQUE. VOCÊ SABE FAZER?</h1>
-            <p style="color:#aaa; font-size: 13px; margin-top:10px;">Essa ativação é obrigatória para o depósito via PIX.</p>
-            <div class="btn-group">
-                <button class="btn" onclick="finishQuiz()">NÃO, PRECISO DE ORIENTAÇÃO</button>
-                <button class="btn" onclick="finishQuiz()">SIM, EU SEI CONFIGURAR</button>
-            </div>
-        </div>
-
-        <div id="loading" class="card">
-            <h2 style="color: var(--primary); font-size: 16px;">AUTENTICANDO NO SERVIDOR...</h2>
-            <p style="font-size: 12px; margin-top: 10px;">Aguarde a conexão com o Auditor Roberto M.</p>
-        </div>
-    </main>
-
-    <footer>
-        SISTEMA DE SEGURANÇA CRIPTOGRAFADO 2026
-    </footer>
+    <div id="notification">
+        <p>🚀 <b><span id="notify-name"></span></b> de <span id="notify-loc"></span> acabou de entrar no <b>Grupo dos 50!</b></p>
+    </div>
 
     <script>
-        function updateProgress(percent) {
-            document.getElementById('progress-bar').style.width = percent + '%';
-            document.getElementById('percent-text').innerText = percent + '%';
+        const names = ['Marcos Silva', 'Rafael Oliveira', 'Ana Beatriz', 'Gustavo Pereira', 'Lucas Mendes', 'Juliana Alencar'];
+        const locs = ['São Paulo', 'Rio de Janeiro', 'Curitiba', 'Belo Horizonte', 'Salvador'];
+        function showNotification() {
+            document.getElementById('notify-name').innerText = names[Math.floor(Math.random() * names.length)];
+            document.getElementById('notify-loc').innerText = locs[Math.floor(Math.random() * locs.length)];
+            const notify = document.getElementById('notification');
+            notify.style.display = 'flex';
+            setTimeout(() => { notify.style.display = 'none'; }, 4000);
         }
-
-        function nextStep(step) {
-            document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
-            document.getElementById('step' + step).classList.add('active');
-            if(step === 2) updateProgress(45);
-            if(step === 3) updateProgress(80);
-        }
-
-        function finishQuiz() {
-            // Dispara Lead no Pixel
-            fbq('track', 'Lead');
-
-            document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
-            document.getElementById('loading').classList.add('active');
-            updateProgress(100);
-
-            // Redireciona para a página principal (pgblack)
-            setTimeout(() => {
-                window.location.href = "pgblack.html"; 
-            }, 1500);
-        }
+        setInterval(showNotification, 12000);
     </script>
 </body>
 </html>
