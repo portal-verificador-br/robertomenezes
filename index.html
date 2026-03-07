@@ -3,162 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emanuel - Estratégia Black Safe</title>
+    <title>Emanuel - Black Safe</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1773918999950681'); 
-        fbq('track', 'PageView');
-    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: #0d0d0d; color: #e0e0e0; line-height: 1.8; }
-        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+        body { background-color: #080808; color: #fff; line-height: 1.6; }
         
-        h1 { font-size: 32px; font-weight: 900; text-align: center; color: #fff; line-height: 1.2; margin-bottom: 30px; text-transform: uppercase; }
-        .highlight { color: #00ff41; text-shadow: 0 0 10px rgba(0,255,65,0.3); }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        .author-box { display: flex; align-items: center; margin-bottom: 25px; background: #161616; padding: 15px; border-radius: 12px; border: 1px solid #333; }
-        .author-img { width: 60px; height: 60px; border-radius: 50%; background: #333; margin-right: 15px; overflow: hidden; border: 2px solid #00ff41; }
-        .author-img img { width: 100%; height: 100%; object-fit: cover; }
+        /* HEADER & TITULO ORIGINAL */
+        h1 { font-size: 30px; font-weight: 900; text-align: center; line-height: 1.1; margin: 20px 0; text-transform: uppercase; letter-spacing: -1px; }
+        .highlight { color: #00ff41; }
 
-        .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 15px; margin: 30px 0; scrollbar-width: none; }
-        .carousel img { flex: 0 0 90%; border-radius: 15px; border: 2px solid #333; snap-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        /* AUTOR */
+        .author { display: flex; align-items: center; gap: 12px; margin-bottom: 25px; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 50px; width: fit-content; }
+        .author img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #00ff41; }
+        .author span { font-weight: 700; font-size: 14px; }
 
-        .section-text { margin-bottom: 25px; font-size: 18px; color: #b0b0b0; }
-        .section-text b { color: #fff; }
+        /* CARROSSEL MODERNO */
+        .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 15px; margin: 25px 0; scrollbar-width: none; }
+        .carousel img { flex: 0 0 100%; border-radius: 20px; border: 1px solid #222; snap-align: start; }
 
-        .card { background: #161616; padding: 25px; border-radius: 20px; border-left: 5px solid #00ff41; margin: 30px 0; }
+        /* TEXTO AGRESSIVO */
+        .copy-content { font-size: 18px; color: #ccc; }
+        .copy-content p { margin-bottom: 20px; }
+        .copy-content b { color: #fff; }
 
-        /* CTA AGRESSIVO */
-        .cta-box { text-align: center; margin-top: 50px; padding: 30px; background: #1a1a1a; border-radius: 20px; border: 2px solid #333; }
-        .price-now { font-size: 48px; font-weight: 900; color: #00ff41; margin-bottom: 10px; display: block; }
+        /* BOX DE DESTAQUE */
+        .info-card { background: linear-gradient(145deg, #111, #080808); border: 1px solid #222; border-left: 4px solid #00ff41; padding: 20px; border-radius: 15px; margin: 30px 0; }
+
+        /* CTA IMPACTANTE */
+        .cta-section { background: #111; padding: 30px 20px; border-radius: 25px; border: 1px solid #222; text-align: center; margin-top: 40px; }
+        .price-old { font-size: 16px; text-decoration: line-through; color: #666; }
+        .price-main { font-size: 50px; font-weight: 900; color: #00ff41; display: block; margin: -5px 0 15px 0; }
         
-        .btn-black-safe { 
-            background: linear-gradient(180deg, #00ff41 0%, #008f24 100%); 
-            color: #000; text-align: center; display: block; 
-            padding: 25px; border-radius: 12px; font-weight: 900; 
-            font-size: 24px; text-decoration: none; text-transform: uppercase;
-            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.3); transition: 0.3s;
-            animation: grow 1.5s infinite alternate;
+        .btn-main { 
+            background: #00ff41; color: #000; text-decoration: none; display: block; 
+            padding: 22px; border-radius: 15px; font-weight: 900; font-size: 20px;
+            text-transform: uppercase; box-shadow: 0 10px 40px rgba(0, 255, 65, 0.3);
+            animation: pulse 1.5s infinite;
         }
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-        .vagas-counter { color: #ff3e3e; font-weight: 900; font-size: 18px; margin-top: 20px; text-transform: uppercase; }
+        .vagas-box { margin-top: 15px; font-weight: 900; color: #ff3e3e; font-size: 14px; text-transform: uppercase; }
 
-        /* POP OUT ESTILO ROBERTO */
-        #notification {
-            position: fixed; bottom: 20px; right: 20px; background: #fff; color: #000; 
-            padding: 15px; border-radius: 12px; display: none; align-items: center; 
-            z-index: 9999; width: 300px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
-            border-left: 8px solid #00ff41; animation: slideIn 0.5s ease;
+        /* NOTIFICAÇÃO ESTILO IOS/MODERNA */
+        #notify {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            color: #000; padding: 12px 20px; border-radius: 20px; 
+            display: none; align-items: center; gap: 12px; z-index: 9999;
+            width: 90%; max-width: 350px; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-        #notification p { font-size: 14px; line-height: 1.4; margin: 0; font-weight: 500; }
-        #notification b { color: #008000; }
+        #notify img { width: 35px; height: 35px; border-radius: 10px; }
+        #notify-text { font-size: 13px; font-weight: 600; line-height: 1.2; }
+        #notify-text b { color: #008000; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>O Segredo para faturar <span class="highlight">R$ 15 MIL EM 7 DIAS</span> com a estrutura Black Safe</h1>
-
-        <div class="author-box">
-            <div class="author-img"><img src="emanuel_perfil.png"></div>
-            <div><strong>Emanuel</strong><br><span style="font-size: 12px; color: #00ff41;">Mentor do Ritual dos 15K</span></div>
+        <div class="author">
+            <img src="https://github.com/emanuel/perfil.png" alt="Emanuel">
+            <span>Emanuel @ Black Safe</span>
         </div>
 
-        <div class="section-text">
-            Eu vou ser bem direto: depois de 2 anos gastando mais de <b>R$ 5 mil com Facebook</b>, eu descobri que o segredo não é o produto, é a <b>estratégia e a oferta</b>. 
-        </div>
+        <h1>Como eu usei a estrutura <span class="highlight">Black Safe</span> para faturar R$ 15 mil em 7 dias</h1>
 
-        <div class="section-text">
-            Descobri o lado <b>Black Hat</b> da coisa. E ao invés de ser mais um golpista, estudei o que eles fazem e estruturei de uma forma limpa. Eu chamo de <b>Black Safe</b>.
-        </div>
-
-        <div class="carousel">
-            <img src="notebook_ctr.png" alt="CTR 16%">
-            <img src="venda_800.png" alt="Venda de R$ 800">
-            <img src="venda_3000.png" alt="Venda de R$ 3.000">
-        </div>
-
-        <div class="section-text">
-            De outubro pra cá fiquei desempregado e aproveitei para estudar o marketing digital. Acredite: <b>faturei R$ 15 mil reais em 1 semana</b> quando coloquei em prática a estrutura <b>Black Safe</b>.
-        </div>
-
-        <div class="card">
-            "Eu vim do nada, cresci em <b>Pirituba, Zona Oeste de São Paulo</b>. Sei que os gurus ensinam a pagar sites e HostGator, mas eu nunca usei isso até ver que o domínio é gratuito. Ninguém se importa com isso. Guarda o seu dinheiro pro tráfego."
-        </div>
-
-        <div class="section-text">
-            Você prefere ficar escalando produto mixuruca para ter um ROI de 2... ou prefere um orçamento fixo e fazer <b>vendas de R$ 800 a R$ 3.000</b> e "relaxar" o resto do mês com o lucro de um salário no bolso? 
-        </div>
-
-        <div class="card" style="border-left: 5px solid #fff;">
-            <b>O RITUAL:</b> Eu trabalho com meus alunos no privado e em chamadas até eles faturarem 15 mil também. Abri vaga pra mais 15 só, porque assim dou atenção pessoal, ligação e chamada. Quando baterem a meta, eu renovo a turma.
-        </div>
-
-        <div class="section-text">
-            O que eu te entrego é <b>1 PDF direto</b>. Você só precisa fazer o que eu mostro, aplicar a estrutura e esperar a notificação de venda aprovada. Sua jornada de enrolação acaba aqui.
-        </div>
-
-        <p style="text-align: center; font-weight: bold; color: #00ff41; margin-bottom: 10px;">PROVAS REAIS DOS ALUNOS:</p>
-        <div class="carousel">
-            <img src="depoimento1.png" alt="Resultado Aluno">
-            <img src="depoimento2.png" alt="Resultado Aluno">
-        </div>
-
-        <div class="cta-box">
-            <p style="color: #888; text-decoration: line-through; font-size: 18px;">De R$ 497,00 por apenas:</p>
-            <span class="price-now">R$ 97,00</span>
+        <div class="copy-content">
+            <p>Eu vou ser bem direto: depois de 2 anos gastando mais de <b>R$ 5 mil com Facebook</b>, eu descobri que o segredo não é o produto, e sim a <b>estratégia e oferta</b>.</p>
             
-            <a href="SEU_LINK_TICTO" class="btn-black-safe" onclick="fbq('track', 'InitiateCheckout');">
-                🔓 COPIAR ESTRUTURA + PRIVADO DO EMANUEL
-            </a>
-
-            <div class="vagas-counter" id="vagas">RESTAM 15 VAGAS DISPONÍVEIS</div>
+            <p>Descobri o lado <b>Black Hat</b> da coisa. Estudei o que os <b>Big Players</b> fazem e estruturei de uma forma limpa que eu chamo de <b>Black Safe</b>.</p>
         </div>
 
-        <center style="margin-top: 60px; opacity: 0.3; font-size: 11px;">
-            <p>Emanuel - Pirituba, Z/O de SP © 2026</p>
-        </center>
+        <div class="carousel">
+            <img src="print1.png" alt="CTR 16%">
+            <img src="print2.png" alt="Venda 800">
+            <img src="print3.png" alt="Faturamento">
+        </div>
+
+        <div class="copy-content">
+            <p>De outubro pra cá fiquei desempregado e aproveitei para estudar. Acredite: <b>faturei R$ 15 mil reais em 1 semana</b> quando resolvi por em prática a estrutura Black Safe.</p>
+            
+            <div class="info-card">
+                Eu vim do nada, cresci em <b>Pirituba, zona oeste de São Paulo</b>. Os gurus ensinam a pagar sites caros, mas eu nunca usei HostGator até ver que o domínio é gratuito. Guarda o dinheiro pro tráfego pago. Enrolação eu deixo pra eles.
+            </div>
+
+            <p>Meu produto é um <b>PDF direto</b>. Você só precisa fazer o que eu mostro, aplicar a estrutura e esperar a notificação de venda aprovada. É o <b>Ritual dos 15K</b> acontecendo na sua conta.</p>
+
+            <p>Você prefere escalar produto mixuruca para ter ROI de 2... ou prefere fazer uma venda de <b>R$ 800 a R$ 3.000</b> e relaxar o resto do mês com um salário no bolso?</p>
+        </div>
+
+        <div class="carousel">
+            <img src="depo1.png" alt="Aluno 1">
+            <img src="depo2.png" alt="Aluno 2">
+        </div>
+
+        <div class="cta-section">
+            <span class="price-old">De R$ 497,00 por apenas</span>
+            <span class="price-main">R$ 97,00</span>
+            
+            <a href="LINK_TICTO" class="btn-main">
+                QUERO A ESTRUTURA + PRIVADO
+            </a>
+            
+            <div class="vagas-box" id="vagas-text">Faltam 15 vagas para fechar a turma</div>
+        </div>
+
+        <footer style="text-align: center; padding: 40px 0; opacity: 0.2; font-size: 12px;">
+            Emanuel | Black Safe Strategy | Pirituba, SP
+        </footer>
     </div>
 
-    <div id="notification">
-        <p>🚀 <b><span id="notify-name"></span></b> acaba de entrar no <b>Ritual dos 15K!</b></p>
+    <div id="notify">
+        <img src="https://cdn-icons-png.flaticon.com/512/179/179309.png">
+        <div id="notify-text">
+            <b>Venda Aprovada!</b><br>
+            <span id="buyer-name"></span> acabou de entrar no Ritual.
+        </div>
     </div>
 
     <script>
-        // Lógica de vagas sincronizada com as compras
-        let vagas = 15;
-        function updateVagas() {
-            if (vagas > 2) {
-                vagas--;
-                document.getElementById('vagas').innerText = `RESTAM ${vagas} VAGAS DISPONÍVEIS`;
-                showNotification();
+        // Lógica de Vagas
+        let v = 15;
+        function decVagas() {
+            if (v > 2) {
+                v--;
+                document.getElementById('vagas-text').innerText = `Faltam ${v} vagas para fechar a turma`;
+                showPop();
             }
-            // Diminui entre 20 e 50 segundos
-            let tempo = Math.random() * (50000 - 20000) + 20000;
-            setTimeout(updateVagas, tempo);
+            setTimeout(decVagas, Math.random() * (40000 - 15000) + 15000);
         }
 
-        const names = ['André L.', 'Felipe S.', 'Ricardo M.', 'Bruno O.', 'Lucas P.', 'Gustavo F.', 'Marcos V.', 'Thiago R.'];
-        function showNotification() {
-            document.getElementById('notify-name').innerText = names[Math.floor(Math.random() * names.length)];
-            const notify = document.getElementById('notification');
-            notify.style.display = 'flex';
-            setTimeout(() => { notify.style.display = 'none'; }, 5000);
+        // Pop-up Moderno
+        const ns = ['Ricardo', 'Felipe', 'André', 'Bruno', 'Thiago', 'Marcos', 'Lucas'];
+        function showPop() {
+            document.getElementById('buyer-name').innerText = ns[Math.floor(Math.random() * ns.length)];
+            const p = document.getElementById('notify');
+            p.style.display = 'flex';
+            setTimeout(() => { p.style.display = 'none'; }, 4000);
         }
 
-        // Começa a rodar depois de 10 segundos
-        setTimeout(updateVagas, 10000);
+        setTimeout(decVagas, 8000);
     </script>
 </body>
 </html>
