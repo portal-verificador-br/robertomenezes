@@ -25,6 +25,10 @@
         h1 { font-size: 32px; font-weight: 900; text-align: center; color: #fff; line-height: 1.2; margin-bottom: 30px; text-transform: uppercase; }
         .highlight { color: #00ff41; text-shadow: 0 0 10px rgba(0,255,65,0.3); }
 
+        .author-box { display: flex; align-items: center; margin-bottom: 25px; background: #161616; padding: 15px; border-radius: 12px; border: 1px solid #333; }
+        .author-img { width: 60px; height: 60px; border-radius: 50%; background: #333; margin-right: 15px; overflow: hidden; border: 2px solid #00ff41; }
+        .author-img img { width: 100%; height: 100%; object-fit: cover; }
+
         .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 15px; margin: 30px 0; scrollbar-width: none; }
         .carousel img { flex: 0 0 90%; border-radius: 15px; border: 2px solid #333; snap-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
@@ -32,25 +36,33 @@
         .section-text b { color: #fff; }
 
         .card { background: #161616; padding: 25px; border-radius: 20px; border-left: 5px solid #00ff41; margin: 30px 0; }
-        .ritual-tag { background: #00ff41; color: #000; padding: 5px 10px; font-weight: 900; border-radius: 5px; font-size: 12px; margin-bottom: 10px; display: inline-block; }
 
-        .cta-box { text-align: center; margin-top: 50px; padding: 30px; background: #1a1a1a; border-radius: 20px; border: 1px solid #333; }
-        .price-now { font-size: 42px; font-weight: 900; color: #00ff41; margin-bottom: 20px; }
-
+        /* CTA AGRESSIVO */
+        .cta-box { text-align: center; margin-top: 50px; padding: 30px; background: #1a1a1a; border-radius: 20px; border: 2px solid #333; }
+        .price-now { font-size: 48px; font-weight: 900; color: #00ff41; margin-bottom: 10px; display: block; }
+        
         .btn-black-safe { 
-            background: #00ff41; color: #000; text-align: center; display: block; 
-            padding: 22px; border-radius: 50px; font-weight: 900; 
-            font-size: 22px; text-decoration: none; text-transform: uppercase;
-            animation: pulse 1.5s infinite;
+            background: linear-gradient(180deg, #00ff41 0%, #008f24 100%); 
+            color: #000; text-align: center; display: block; 
+            padding: 25px; border-radius: 12px; font-weight: 900; 
+            font-size: 24px; text-decoration: none; text-transform: uppercase;
+            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.3); transition: 0.3s;
+            animation: grow 1.5s infinite alternate;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
+        .vagas-counter { color: #ff3e3e; font-weight: 900; font-size: 18px; margin-top: 20px; text-transform: uppercase; }
+
+        /* POP OUT ESTILO ROBERTO */
         #notification {
             position: fixed; bottom: 20px; right: 20px; background: #fff; color: #000; 
             padding: 15px; border-radius: 12px; display: none; align-items: center; 
-            z-index: 9999; width: 280px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); 
-            border-left: 6px solid #00ff41;
+            z-index: 9999; width: 300px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
+            border-left: 8px solid #00ff41; animation: slideIn 0.5s ease;
         }
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+        #notification p { font-size: 14px; line-height: 1.4; margin: 0; font-weight: 500; }
+        #notification b { color: #008000; }
     </style>
 </head>
 <body>
@@ -58,10 +70,9 @@
     <div class="container">
         <h1>O Segredo para faturar <span class="highlight">R$ 15 MIL EM 7 DIAS</span> com a estrutura Black Safe</h1>
 
-        <div class="carousel">
-            <img src="notebook_ctr.png" alt="CTR 16%">
-            <img src="venda_800.png" alt="Venda Alta">
-            <img src="venda_3000.png" alt="Venda 3k">
+        <div class="author-box">
+            <div class="author-img"><img src="emanuel_perfil.png"></div>
+            <div><strong>Emanuel</strong><br><span style="font-size: 12px; color: #00ff41;">Mentor do Ritual dos 15K</span></div>
         </div>
 
         <div class="section-text">
@@ -69,45 +80,54 @@
         </div>
 
         <div class="section-text">
-            Muitos gurus te ensinam a pagar sites caros e HostGator. Eu te digo: <b>eu nunca usei HostGator até ver que o domínio é gratuito</b>. Ninguém se importa com isso. Guarda o seu dinheiro para o tráfego pago. Eu trabalho com oferta agressiva e dinheiro no bolso, enrolação eu deixo para eles.
+            Descobri o lado <b>Black Hat</b> da coisa. E ao invés de ser mais um golpista, estudei o que eles fazem e estruturei de uma forma limpa. Eu chamo de <b>Black Safe</b>.
+        </div>
+
+        <div class="carousel">
+            <img src="notebook_ctr.png" alt="CTR 16%">
+            <img src="venda_800.png" alt="Venda de R$ 800">
+            <img src="venda_3000.png" alt="Venda de R$ 3.000">
+        </div>
+
+        <div class="section-text">
+            De outubro pra cá fiquei desempregado e aproveitei para estudar o marketing digital. Acredite: <b>faturei R$ 15 mil reais em 1 semana</b> quando coloquei em prática a estrutura <b>Black Safe</b>.
         </div>
 
         <div class="card">
-            <span class="ritual-tag">O RITUAL DO EMANUEL</span><br>
-            "Eu trabalho com meus alunos no privado e em chamadas até eles faturarem <b>R$ 15 mil em uma semana</b>, exatamente como eu fiz saindo de Pirituba. Abri apenas <b>15 vagas extras</b> para dar atenção total. Quando essa turma bater a meta, eu encerro e só abro para novos alunos depois."
+            "Eu vim do nada, cresci em <b>Pirituba, Zona Oeste de São Paulo</b>. Sei que os gurus ensinam a pagar sites e HostGator, mas eu nunca usei isso até ver que o domínio é gratuito. Ninguém se importa com isso. Guarda o seu dinheiro pro tráfego."
         </div>
 
         <div class="section-text">
             Você prefere ficar escalando produto mixuruca para ter um ROI de 2... ou prefere um orçamento fixo e fazer <b>vendas de R$ 800 a R$ 3.000</b> e "relaxar" o resto do mês com o lucro de um salário no bolso? 
         </div>
 
-        <p style="text-align: center; font-weight: bold; color: #00ff41; margin-bottom: 10px;">DEPOIMENTOS DOS ALUNOS:</p>
+        <div class="card" style="border-left: 5px solid #fff;">
+            <b>O RITUAL:</b> Eu trabalho com meus alunos no privado e em chamadas até eles faturarem 15 mil também. Abri vaga pra mais 15 só, porque assim dou atenção pessoal, ligação e chamada. Quando baterem a meta, eu renovo a turma.
+        </div>
+
+        <div class="section-text">
+            O que eu te entrego é <b>1 PDF direto</b>. Você só precisa fazer o que eu mostro, aplicar a estrutura e esperar a notificação de venda aprovada. Sua jornada de enrolação acaba aqui.
+        </div>
+
+        <p style="text-align: center; font-weight: bold; color: #00ff41; margin-bottom: 10px;">PROVAS REAIS DOS ALUNOS:</p>
         <div class="carousel">
             <img src="depoimento1.png" alt="Resultado Aluno">
             <img src="depoimento2.png" alt="Resultado Aluno">
         </div>
 
-        <div class="section-text">
-            O que você vai receber não é um "curso" de 100 aulas. É <b>1 PDF direto</b>. Você só precisa fazer o que eu mostro, aplicar a estrutura e esperar a notificação de venda aprovada cair no seu celular.
-        </div>
-
         <div class="cta-box">
-            <p style="color: #888; text-decoration: line-through;">De R$ 497,00 por apenas:</p>
-            <p class="price-now">R$ 97,00</p>
+            <p style="color: #888; text-decoration: line-through; font-size: 18px;">De R$ 497,00 por apenas:</p>
+            <span class="price-now">R$ 97,00</span>
             
             <a href="SEU_LINK_TICTO" class="btn-black-safe" onclick="fbq('track', 'InitiateCheckout');">
-                🔓 COPIAR ESTRUTURA + MEU PRIVADO
+                🔓 COPIAR ESTRUTURA + PRIVADO DO EMANUEL
             </a>
 
-            <p style="color: #ff3e3e; font-weight: bold; margin-top: 15px;" id="vagas">Faltam 11 vagas para fechar a turma</p>
-        </div>
-
-        <div class="section-text" style="text-align: center; margin-top: 30px;">
-            Sua jornada de enrolação acaba aqui. <b>O dinheiro no bolso começa agora.</b>
+            <div class="vagas-counter" id="vagas">RESTAM 15 VAGAS DISPONÍVEIS</div>
         </div>
 
         <center style="margin-top: 60px; opacity: 0.3; font-size: 11px;">
-            <p>Emanuel - Pirituba, SP © 2026</p>
+            <p>Emanuel - Pirituba, Z/O de SP © 2026</p>
         </center>
     </div>
 
@@ -116,26 +136,29 @@
     </div>
 
     <script>
-        // Lógica de vagas diminuindo devagar
-        let restam = 11;
+        // Lógica de vagas sincronizada com as compras
+        let vagas = 15;
         function updateVagas() {
-            if (restam > 2) {
-                restam--;
-                document.getElementById('vagas').innerText = `Faltam ${restam} vagas para fechar a turma`;
+            if (vagas > 2) {
+                vagas--;
+                document.getElementById('vagas').innerText = `RESTAM ${vagas} VAGAS DISPONÍVEIS`;
+                showNotification();
             }
-            setTimeout(updateVagas, Math.random() * (60000 - 30000) + 30000);
+            // Diminui entre 20 e 50 segundos
+            let tempo = Math.random() * (50000 - 20000) + 20000;
+            setTimeout(updateVagas, tempo);
         }
-        setTimeout(updateVagas, 20000);
 
-        // Notificações Laterais
-        const names = ['André L.', 'Felipe S.', 'Ricardo M.', 'Bruno O.', 'Lucas P.', 'Gustavo F.'];
+        const names = ['André L.', 'Felipe S.', 'Ricardo M.', 'Bruno O.', 'Lucas P.', 'Gustavo F.', 'Marcos V.', 'Thiago R.'];
         function showNotification() {
             document.getElementById('notify-name').innerText = names[Math.floor(Math.random() * names.length)];
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
             setTimeout(() => { notify.style.display = 'none'; }, 5000);
         }
-        setInterval(showNotification, 40000);
+
+        // Começa a rodar depois de 10 segundos
+        setTimeout(updateVagas, 10000);
     </script>
 </body>
 </html>
