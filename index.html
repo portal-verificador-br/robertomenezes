@@ -3,63 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spray Pet Hálito de Ouro - Método Natural</title>
+    <title>Spray Pet Hálito de Ouro</title>
     <style>
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; background-color: #f4f9f4; }
-        .header { background: #27ae60; color: white; text-align: center; padding: 40px 20px; }
-        .header h1 { margin: 0; font-size: 2.5em; }
-        .container { max-width: 800px; margin: auto; padding: 20px; }
-        .highlight { color: #27ae60; font-weight: bold; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .bonus { border-left: 5px solid #f1c40f; padding-left: 15px; background: #fffdf0; }
-        .cta-button { display: block; background: #2ecc71; color: white; text-align: center; padding: 20px; text-decoration: none; font-size: 1.5em; font-weight: bold; border-radius: 50px; margin: 30px 0; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
-        .cta-button:hover { transform: scale(1.05); background: #27ae60; }
-        .footer-sticky { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); text-align: center; display: block; }
-        .price { font-size: 1.8em; color: #e74c3c; font-weight: bold; }
-        img { max-width: 100%; border-radius: 10px; }
+        :root { --primary: #27ae60; --secondary: #2ecc71; --accent: #f1c40f; --text: #333; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f7f0; color: var(--text); }
+        
+        /* Header */
+        .header { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; text-align: center; padding: 40px 20px; border-radius: 0 0 30px 30px; }
+        .header h1 { margin: 0; font-size: 2.2em; line-height: 1.2; }
+        
+        .container { max-width: 500px; margin: auto; padding: 15px; }
+
+        /* Espaço para sua Imagem do GitHub */
+        .image-placeholder { width: 100%; height: 250px; background: #e0e0e0; border: 3px dashed #27ae60; border-radius: 15px; margin: -20px auto 20px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Blocos Coloridos */
+        .card { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-bottom: 4px solid var(--secondary); }
+        .card h2, .card h3 { color: var(--primary); margin-top: 0; }
+        
+        .bonus-card { background: #fffdf0; border: 2px solid var(--accent); border-radius: 20px; padding: 20px; margin-bottom: 20px; }
+        
+        /* Pop-out de Compra (Simulado) */
+        #notification { position: fixed; bottom: 80px; left: 10px; right: 10px; background: white; padding: 10px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; z-index: 99; animation: fadeInUp 0.5s; font-size: 0.9em; border-left: 5px solid var(--secondary); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Depoimentos */
+        .testimonial { background: #fefefe; padding: 15px; border-radius: 15px; font-style: italic; margin-bottom: 10px; border: 1px solid #eee; }
+        .testimonial b { display: block; color: var(--primary); font-style: normal; margin-top: 5px; }
+
+        /* Garantia */
+        .garantia { text-align: center; padding: 20px; background: #eee; border-radius: 15px; margin-top: 20px; }
+        .garantia img { width: 60px; margin-bottom: 10px; }
+
+        /* Botão Fixo */
+        .footer-sticky { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 12px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); text-align: center; z-index: 100; }
+        .btn-compra { background: #2ecc71; color: white; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; font-size: 1.2em; display: inline-block; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>Diga Adeus ao "Bafo de Onça" do seu Pet! 🐾</h1>
-        <p>Aprenda a fazer o Spray Natural que elimina o mau hálito e o tártaro sem precisar gastar fortunas no veterinário.</p>
+        <p>Receita Natural e Segura</p>
     </div>
 
     <div class="container">
-        <div class="card">
-            <h2>Você evita os "lambeijos" do seu melhor amigo por causa do cheiro forte?</h2>
-            <p>Muitas vezes o mau hálito não é apenas sujeira, mas acúmulo de bactérias que podem causar doenças graves no coração e rins do seu cão.</p>
-            <p>Com o nosso <span class="highlight">Guia Spray Pet Hálito de Ouro</span>, você vai aprender receitas caseiras, seguras e baratas para manter a boca dele sempre fresquinha.</p>
+        <div class="image-placeholder">
+            <span style="color: #666;">Sua Foto do GitHub Aqui</span>
+        </div>
+
+        <div id="notification">
+            <span style="font-size: 20px;">✅</span>
+            <div><b>Mariana Silva</b> acabou de comprar o Guia!</div>
         </div>
 
         <div class="card">
+            <h3>Você evita os "lambeijos"?</h3>
+            <p>O mau hálito pode indicar bactérias que atacam o coração do seu cão. Proteja quem você ama com o nosso <b>Guia Spray Hálito de Ouro</b>.</p>
+        </div>
+
+        <div class="card" style="border-bottom-color: #3498db;">
             <h3>O que você vai receber:</h3>
-            <ul>
-                <li><strong>Receita do Spray Mestre:</strong> Ingredientes naturais e bactericidas.</li>
-                <li><strong>Passo a Passo em Vídeo/PDF:</strong> Simples de fazer em 2 minutos.</li>
-                <li><strong>Manual de Aplicação:</strong> Como fazer seu pet aceitar o spray sem estresse.</li>
+            <ul style="padding-left: 20px;">
+                <li><b>Spray Mestre:</b> Natural e bactericida.</li>
+                <li><b>Vídeo Passo a Passo:</b> Pronto em 2 minutos.</li>
+                <li><b>Manual de Aplicação:</b> Sem estresse.</li>
             </ul>
         </div>
 
-        <div class="card bonus">
-            <h3>🎁 BÔNUS EXCLUSIVOS:</h3>
-            <p>✅ <strong>Bônus 1:</strong> Receita do Chá Fortalecedor (Gengivas Blindadas).</p>
-            <p>✅ <strong>Bônus 2:</strong> Guia de Alimentos Detonadores de Tártaro.</p>
+        <div class="bonus-card">
+            <h3 style="margin: 0;">🎁 BÔNUS EXCLUSIVOS:</h3>
+            <p>✅ <b>Chá Fortalecedor</b> de Gengivas.</p>
+            <p>✅ <b>Petiscos Caseiros</b> Limpa-Tártaro.</p>
         </div>
 
-        <div style="text-align: center;">
-            <p>Tudo isso por apenas:</p>
-            <span class="price">R$ 29,90</span>
-            <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="cta-button">QUERO O GUIA AGORA!</a>
-            <p>💳 Pagamento Seguro | Acesso Imediato</p>
+        <h3>O que as donas de Pet estão dizendo:</h3>
+        <div class="testimonial">
+            "O bafinho do Thor sumiu em 4 dias! Me arrependi de não ter comprado antes."
+            <b>— Ana Cláudia, dona de um Golden</b>
         </div>
-        
-        <div style="height: 100px;"></div> </div>
+        <div class="testimonial">
+            "Muito fácil de fazer, os ingredientes eu já tinha em casa. Recomendo!"
+            <b>— Roberta Lima, dona de 2 Poodles</b>
+        </div>
+
+        <div class="garantia">
+            <img src="https://cdn-icons-png.flaticon.com/512/10309/10309339.png" alt="Garantia">
+            <h4>Garantia Incondicional de 7 Dias</h4>
+            <p style="font-size: 0.8em;">Se não funcionar, devolvemos seu dinheiro sem perguntas!</p>
+        </div>
+
+        <div style="height: 100px;"></div>
+    </div>
 
     <div class="footer-sticky">
-        <a href="SEU_LINK_DE_CHECKOUT_AQUI" style="text-decoration: none; color: white; background: #2ecc71; padding: 12px 30px; border-radius: 25px; font-weight: bold; display: inline-block;">COMPRAR POR R$ 29,90</a>
+        <a href="SEU_LINK_KIWIFY" class="btn-compra">COMPRAR POR R$ 29,90</a>
     </div>
+
+    <script>
+        // Script simples para trocar os nomes no pop-out
+        const nomes = ["Camila Souza", "Beatriz Oliveira", "Fernanda Costa", "Juliana Melo", "Patrícia Lima"];
+        setInterval(() => {
+            const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
+            document.getElementById('notification').innerHTML = `<span style="font-size: 20px;">✅</span><div><b>${nomeAleatorio}</b> acabou de comprar o Guia!</div>`;
+        }, 8000);
+    </script>
 
 </body>
 </html>
