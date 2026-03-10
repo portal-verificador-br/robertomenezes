@@ -3,160 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spray Pet Hálito de Ouro</title>
+    <title>Spray Pet Hálito de Ouro - Método Natural</title>
     <style>
-        body { font-family: 'Helvetica', Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f9f7; color: #333; }
-        .container { max-width: 500px; margin: auto; padding: 0; background: white; }
+        :root { --primary: #27ae60; --secondary: #2ecc71; --accent: #f39c12; --text: #333; --bg: #f4f9f4; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: var(--bg); color: var(--text); line-height: 1.6; }
         
-        /* Seção 1: Header Verde (Print 1) */
-        .header-verde { background: #2ecc71; color: white; text-align: center; padding: 50px 20px; }
-        .header-verde h1 { font-size: 38px; margin: 0; font-weight: bold; line-height: 1.1; }
-        .header-verde p { font-size: 19px; margin-top: 20px; line-height: 1.4; }
+        /* Header Verde */
+        .header { background-color: var(--primary); color: white; text-align: center; padding: 40px 20px; }
+        .header h1 { margin: 0; font-size: 2.5em; font-weight: bold; }
+        .header p { margin-top: 15px; font-size: 1.2em; opacity: 0.9; }
 
-        /* Seção 2: Imagem do GitHub (Onde você marcou o círculo) */
-        .img-github { width: 100%; display: block; }
+        .container { max-width: 600px; margin: auto; padding: 20px; }
 
-        /* Seção 3: Texto de Dor (Print 1 e 2) */
-        .bloco-branco { padding: 30px 20px; border-bottom: 1px solid #eee; }
-        .bloco-branco h2 { font-size: 26px; line-height: 1.3; font-weight: bold; color: #333; }
-        .highlight-verde { color: #2ecc71; font-weight: bold; }
-        .bg-verde-text { background: #2ecc71; color: white; padding: 2px 6px; border-radius: 4px; }
+        /* Blocos brancos de conteúdo */
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .card h2 { color: var(--primary); font-size: 1.8em; margin-top: 0; }
+        .card p { font-size: 1.1em; color: #555; }
 
-        /* Seção 4: O que você vai receber (Print 2) */
-        .receber-lista { padding: 30px 20px; }
-        .receber-lista h3 { font-size: 24px; margin-bottom: 20px; }
-        .item-check { display: flex; align-items: flex-start; margin-bottom: 15px; font-size: 18px; line-height: 1.4; }
-        .item-check:before { content: '●'; color: #333; margin-right: 12px; font-size: 14px; margin-top: 4px; }
-
-        /* Seção 5: Bônus (Print 3 e 4) */
-        .bonus-section { margin: 20px; border: 2px solid #f1c40f; border-radius: 15px; background: #fffdf0; padding: 20px; }
-        .bonus-header { color: #d35400; font-size: 28px; font-weight: bold; text-align: center; margin-bottom: 20px; }
-        .item-seta { display: flex; align-items: center; margin-bottom: 12px; font-size: 18px; color: #333; }
-        .item-seta:before { content: '➔'; color: #2ecc71; margin-right: 10px; font-weight: bold; }
-        .bonus-gratis { text-align: center; color: #e74c3c; font-weight: bold; font-size: 22px; margin: 20px 0; }
-
-        /* Seção 6: Depoimentos (Print 4 e 5) */
-        .depoimentos-titulo { text-align: center; font-size: 24px; font-weight: bold; margin-top: 40px; }
-        .depoimento-card { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
-        .depoimento-card p { font-size: 18px; color: #666; line-height: 1.5; }
-        .depoimento-card img { width: 90px; height: 90px; border-radius: 50%; margin: 15px 0; }
-        .nome-user { color: #3498db; font-weight: bold; font-size: 18px; }
-        .estrelas { color: #f1c40f; font-size: 22px; margin: 5px 0; }
-
-        /* Seção 7: Preço e CTA (Print 6) */
-        .preco-section { background: #000; color: white; text-align: center; padding: 50px 20px; }
-        .preco-de { text-decoration: line-through; color: #f1c40f; font-size: 24px; font-weight: bold; }
-        .preco-por { font-size: 80px; font-weight: bold; margin: 10px 0; }
-        .btn-compra { background: #2ecc71; color: white; text-decoration: none; padding: 20px; border-radius: 50px; font-weight: bold; font-size: 20px; display: block; margin: 20px 0; }
-
-        /* Seção 8: Garantia (Print 7 e 8) */
-        .garantia-section { text-align: center; padding: 50px 20px; }
-        .garantia-selo { width: 180px; margin-bottom: 20px; }
-        .garantia-section h2 { font-size: 26px; margin-bottom: 20px; }
-        .garantia-section p { font-size: 17px; line-height: 1.6; color: #444; text-align: justify; }
-
-        /* Pop-out Superior Esquerdo */
-        #popout {
-            position: fixed; top: 15px; left: 15px; background: white; 
-            padding: 12px 18px; border-radius: 10px; box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            display: none; align-items: center; gap: 12px; z-index: 10000;
-            border-left: 6px solid #2ecc71; font-size: 14px; animation: slideIn 0.5s;
+        /* ESPAÇO PARA SUA FOTO DO GITHUB (Entre os textos) */
+        .img-placeholder-GitHub {
+            width: 100%;
+            height: 250px; /* Altura sugerida */
+            background: #e0e0e0;
+            border: 3px dashed var(--secondary);
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        @keyframes slideIn { from { transform: translateX(-110%); } to { transform: translateX(0); } }
+        .img-placeholder-GitHub img { max-width: 100%; max-height: 100%; border-radius: 8px; }
 
-        /* FAQ */
-        .faq-section { padding: 30px 20px; background: white; }
+        /* Bloco "O que você vai receber" (ARRUMADO) */
+        .receber-container { background: #fff; padding: 25px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #eee; }
+        .receber-header { font-size: 1.6em; color: #333; margin-bottom: 20px; text-align: center; font-weight: bold; }
+        .receber-item { display: flex; align-items: flex-start; margin-bottom: 18px; border-bottom: 1px solid #f9f9f9; padding-bottom: 10px; }
+        .receber-icon { color: var(--secondary); font-size: 1.4em; margin-right: 15px; margin-top: 2px; }
+        .receber-content { flex: 1; }
+        .receber-title { font-weight: bold; color: var(--primary); font-size: 1.1em; }
+        .receber-desc { color: #666; font-size: 0.95em; }
+
+        /* Bloco de Bônus (ARRUMADO E NOVO) */
+        .bonus-card { background: #fffdf0; border: 2px solid var(--accent); padding: 25px; border-radius: 12px; margin-bottom: 20px; position: relative; }
+        .bonus-title { color: #d35400; font-size: 1.8em; text-align: center; margin-top: 0; font-weight: bold; }
+        .bonus-item { display: flex; align-items: center; margin-bottom: 12px; font-size: 1.1em; color: #444; }
+        .bonus-icon { color: var(--secondary); margin-right: 12px; font-size: 1.2em; }
+        .bonus-highlight { background: var(--accent); color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; font-weight: bold; margin-left: auto; }
+
+        /* Botão Fixo de Compra */
+        .footer-sticky { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); text-align: center; z-index: 100; }
+        .btn-compra { background-color: var(--secondary); color: white; text-decoration: none; padding: 18px 40px; border-radius: 50px; font-size: 1.3em; font-weight: bold; transition: background 0.2s; display: inline-block; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
+        .btn-compra:hover { background-color: var(--primary); }
     </style>
 </head>
 <body>
 
-    <div id="popout">
-        <span style="font-size: 20px;">✅</span>
-        <div id="popout-text"><b>Mariana Silva</b> acabou de adquirir o Spray...</div>
+    <div class="header">
+        <h1>Diga Adeus ao "Bafo de Onça" do seu Pet! 🐾</h1>
+        <p>Aprenda a fazer o Spray Natural que elimina o mau hálito e o tártaro sem precisar gastar fortunas no veterinário.</p>
     </div>
 
     <div class="container">
-        <div class="header-verde">
-            <h1>Diga Adeus ao "Bafo de Onça" do seu Pet! 🐾</h1>
-            <p>Aprenda a fazer o Spray Natural que elimina o mau hálito e o tártaro sem precisar gastar fortunas no veterinário.</p>
-        </div>
-
-        <img src="LINK_DA_SUA_IMAGEM_AQUI" class="img-github" alt="Imagem Produto">
-
-        <div class="bloco-branco">
-            <h2>Você evita os "lambeijos" do seu melhor amigo por causa do cheiro forte?</h2>
-            <p>Muitas vezes o mau hálito não é apenas sujeira, mas acúmulo de bactérias que podem causar doenças graves no coração e rins do seu cão.</p>
-            <p>Com o nosso <span class="highlight-verde">Guia Spray Pet Hálito de Ouro</span>, você vai aprender receitas caseiras, seguras e baratas para manter a boca dele sempre fresquinha.</p>
-        </div>
-
-        <div class="receber-lista">
-            <h3>O que você vai receber:</h3>
-            <div class="item-check"><b>Receita do Spray Mestre:</b> Ingredientes naturais e bactericidas.</div>
-            <div class="item-check"><b>Passo a Passo em Vídeo/PDF:</b> Simples de fazer em 2 minutos.</div>
-            <div class="item-check"><b>Manual de Aplicação:</b> Como fazer seu pet aceitar o spray sem estresse.</div>
-        </div>
-
-        <div class="bonus-section">
-            <div class="bonus-header">BÔNUS</div>
-            <div class="item-seta">Lista de alimentos proibidos</div>
-            <div class="item-seta">Frutas ideais para seu pet</div>
-            <div class="item-seta">Dicas nutricionais de alimentação</div>
-            <div class="item-seta">Receitas de petiscos saudáveis</div>
-            <hr>
-            <div class="bonus-gratis">Leve o Bônus Gratuitamente</div>
-        </div>
-
-        <div class="depoimentos-titulo">VEJA OS <span class="bg-verde-text">DEPOIMENTOS DE QUEM JÁ COMPROU</span></div>
         
-        <div class="depoimento-card">
-            <p>"Sempre sofri para fazer meu Shihtzu comer a ração porque ele ficava enjoado, depois que comprei os ebooks ele nunca mais deu trabalho com isso"</p>
-            <img src="https://i.pravatar.cc/150?u=rafa" alt="User">
-            <div class="nome-user">Rafaela Almeida</div>
-            <div class="estrelas">★★★★★</div>
+        <div class="card">
+            <h2>Você evita os "lambeijos" do seu melhor amigo?</h2>
+            <p>Muitas vezes o mau hálito não é apenas sujeira, mas acúmulo de bactérias que podem causar doenças graves no coração e rins do seu cão.</p>
+            <p>Com o nosso Guia Spray Pet Hálito de Ouro, você vai aprender receitas caseiras, seguras e baratas.</p>
         </div>
 
-        <div class="depoimento-card">
-            <p>"Achei que fosse gastar muito para fazer uma comida saudável, mas as receitas são bem fáceis e baratas mesmo. Aprovado!"</p>
-            <img src="https://i.pravatar.cc/150?u=amanda" alt="User">
-            <div class="nome-user">Amanda Garcia</div>
-            <div class="estrelas">★★★★★</div>
+        <div class="img-placeholder-GitHub">
+            <span style="color: #666;">Foto do Lambeijo Aqui (Link do GitHub)</span>
         </div>
 
-        <div class="preco-section">
-            <p style="font-size: 22px; font-weight: bold;">De <span class="preco-de">69,90</span> por apenas</p>
-            <div class="preco-por">29,90</div>
-            <a href="SEU_LINK_DE_COMPRA" class="btn-compra">SIM! EU QUERO EBOOK DE RECEITAS POR R$29,90</a>
-            <p>💳 Compra Segura | Satisfação Garantida | Privacidade</p>
-            <p style="font-size: 14px; margin-top: 20px;">O E-book vai em formato PDF e você poderá visualizar todo o conteúdo em seu celular, tablet ou computador.</p>
+        <div class="receber-container">
+            <div class="receber-header">O que você vai receber:</div>
+            
+            <div class="receber-item">
+                <span class="receber-icon">●</span>
+                <div class="receber-content">
+                    <div class="receber-title">Receita do Spray Mestre:</div>
+                    <div class="receber-desc">Ingredientes naturais e bactericidas.</div>
+                </div>
+            </div>
+            
+            <div class="receber-item">
+                <span class="receber-icon">●</span>
+                <div class="receber-content">
+                    <div class="receber-title">Passo a Passo em Vídeo/PDF:</div>
+                    <div class="receber-desc">Simples de fazer em 2 minutos.</div>
+                </div>
+            </div>
+            
+            <div class="receber-item">
+                <span class="receber-icon">●</span>
+                <div class="receber-content">
+                    <div class="receber-title">Manual de Aplicação:</div>
+                    <div class="receber-desc">Como fazer seu pet aceitar o spray sem estresse.</div>
+                </div>
+            </div>
         </div>
 
-        <div class="garantia-section">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Garantia_7_dias.png/600px-Garantia_7_dias.png" class="garantia-selo" alt="Garantia">
-            <h2>Satisfação Garantida e Risco Zero!</h2>
-            <p>Eu acredito tanto que este e-book irá te gerar um ótimo resultado que te ofereço uma garantia de 7 dias para você experimentar o conteúdo. Se você acreditar que nossas receitas não te ajudaram nem um pouco, se não ficar satisfeito com o conteúdo ou se você se arrepender por qualquer outro motivo, basta me enviar um e-mail e eu devolvo 100% do seu dinheiro. Sem questionamentos e sem burocracia.</p>
+        <div class="bonus-card">
+            <div class="bonus-title">🎁 BÔNUS EXCLUSIVOS:</div>
+            
+            <div class="bonus-item">
+                <span class="bonus-icon">✓</span>
+                <span><b>Bônus 1:</b> Acesso ao Grupo VIP (WhatsApp)</span>
+                <span class="bonus-highlight">GRÁTIS</span>
+            </div>
+            
+            <div class="bonus-item">
+                <span class="bonus-icon">✓</span>
+                <span><b>Bônus 2:</b> Guia de Massagem Relaxante p/ Aplicação</span>
+                <span class="bonus-highlight">GRÁTIS</span>
+            </div>
+            
+            <div class="bonus-item">
+                <span class="bonus-icon">✓</span>
+                <span>Dicas Nutricionais de Alimentação</span>
+            </div>
+            
+            <div class="bonus-item">
+                <span class="bonus-icon">✓</span>
+                <span>Checklist da Saúde Bucal</span>
+            </div>
         </div>
 
-        <div style="height: 50px;"></div>
+        <div style="height: 100px;"></div> </div>
+
+    <div class="footer-sticky">
+        <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn-compra">COMPRAR POR R$ 29,90</a>
     </div>
 
-    <script>
-        const nomes = ["Mariana Silva", "Beatriz Oliveira", "Fernanda Costa Souza", "Juliana Melo", "Patrícia Lima", "Carla Mendes Rocha", "Amanda Garcia", "Luciana Pereira", "Renata Vasconcelos"];
-        const popout = document.getElementById('popout');
-        const popoutText = document.getElementById('popout-text');
-
-        function togglePopout() {
-            const nome = nomes[Math.floor(Math.random() * nomes.length)];
-            popoutText.innerHTML = `<b>${nome}</b> acabou de adquirir o Spray...`;
-            
-            popout.style.display = 'flex';
-            
-            setTimeout(() => {
-                popout.style.display = 'none';
-            }, 6000); // Fica 6 segundos na tela
-        }
-
-        setInterval(togglePopout, 30000); // A cada 30 segundos
-        setTimeout(togglePopout, 3000); // Primeira vez em 3 segundos
-    </script>
 </body>
 </html>
