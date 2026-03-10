@@ -5,112 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spray Pet Hálito de Ouro</title>
     <style>
-        :root { --primary: #27ae60; --secondary: #2ecc71; --accent: #f1c40f; --text: #333; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f9f4; color: var(--text); }
+        body { font-family: 'Helvetica', Arial, sans-serif; margin: 0; padding: 0; background-color: #f7f9f7; color: #333; }
+        .container { max-width: 500px; margin: auto; padding: 0; }
         
-        .header { background: #27ae60; color: white; text-align: center; padding: 30px 15px; }
-        .container { max-width: 500px; margin: auto; padding: 15px; }
+        /* Header Verde */
+        .header { background: #2ecc71; color: white; text-align: center; padding: 40px 20px; }
+        .header h1 { font-size: 32px; margin: 0; font-weight: bold; line-height: 1.2; }
+        .header p { font-size: 18px; margin-top: 15px; opacity: 0.9; }
 
-        /* ESPAÇO PARA SUA FOTO DO GITHUB */
-        .img-container { width: 100%; border-radius: 15px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 2px solid #fff; }
-        .img-container img { width: 100%; display: block; }
+        /* Imagem GitHub */
+        .img-hero { width: 100%; display: block; background: #fff; }
 
-        /* Blocos de Texto Original */
-        .card { background: white; padding: 20px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .card h2 { color: var(--primary); font-size: 1.4em; margin-top: 0; }
+        /* Blocos Brancos Arredondados */
+        .content-block { background: white; margin: 15px; padding: 25px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .content-block h2 { font-size: 22px; line-height: 1.3; margin-top: 0; }
         
-        .bonus-card { background: #fffdf0; border: 2px dashed var(--accent); padding: 20px; border-radius: 15px; }
+        .highlight-green { background: #2ecc71; color: white; padding: 2px 5px; border-radius: 3px; }
 
-        /* POP-OUT REALISTA (Aparece e Some) */
-        #notification { 
-            position: fixed; bottom: 90px; left: 20px; right: 20px; 
-            background: white; padding: 12px; border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-            display: none; align-items: center; gap: 10px; z-index: 999;
-            border-left: 6px solid var(--secondary);
-            font-size: 0.9em;
+        /* Lista de Benefícios Pique Print */
+        .list-item { display: flex; align-items: flex-start; margin-bottom: 15px; font-size: 16px; }
+        .list-item:before { content: '➔'; color: #2ecc71; margin-right: 10px; font-weight: bold; }
+
+        /* Pop-out Superior Esquerdo */
+        #popout {
+            position: fixed; top: 20px; left: 10px; background: white; 
+            padding: 10px 15px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: none; align-items: center; gap: 10px; z-index: 9999;
+            border-left: 5px solid #2ecc71; font-size: 13px; animation: slideIn 0.5s forwards;
         }
+        @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
 
-        /* Depoimentos e Garantia */
-        .testimonial { background: #fff; padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #eee; font-style: italic; }
-        .garantia { text-align: center; padding: 20px; opacity: 0.8; }
+        /* Depoimentos */
+        .testimonial { text-align: center; margin-bottom: 30px; padding: 10px; }
+        .testimonial img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; border: 3px solid #2ecc71; }
+        .testimonial p { font-size: 16px; color: #666; font-style: italic; }
+        .stars { color: #f1c40f; font-size: 20px; margin-bottom: 10px; }
 
-        /* Botão Fixo */
-        .footer-sticky { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px; box-shadow: 0 -5px 15px rgba(0,0,0,0.1); text-align: center; }
-        .btn { background: #2ecc71; color: white; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; display: block; font-size: 1.1em; }
+        /* Garantia */
+        .garantia-section { text-align: center; padding: 30px 20px; background: white; }
+        .garantia-img { width: 150px; margin-bottom: 15px; }
+
+        /* Botão de Compra Sticky */
+        .footer-cta { position: fixed; bottom: 0; width: 100%; background: white; padding: 15px 0; text-align: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
+        .btn-green { background: #2ecc71; color: white; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; font-size: 18px; display: inline-block; width: 85%; }
     </style>
 </head>
 <body>
 
+    <div id="popout">
+        <span style="font-size: 18px;">✅</span>
+        <div id="popout-text"><b>Juliana</b> de SP acabou de comprar!</div>
+    </div>
+
     <div class="header">
         <h1>Diga Adeus ao "Bafo de Onça" do seu Pet! 🐾</h1>
+        <p>Aprenda a fazer o Spray Natural que elimina o mau hálito e o tártaro.</p>
     </div>
 
     <div class="container">
-        <div class="img-container">
-            <img src="LINK_DA_SUA_FOTO_DO_GITHUB_AQUI" alt="Spray Pet">
+        <img src="LINK_DA_SUA_IMAGEM_AQUI" class="img-hero" alt="Produto">
+
+        <div class="content-block">
+            <h2>Você evita os "lambeijos" do seu melhor amigo por causa do <span class="highlight-green">cheiro forte?</span></h2>
+            <p>Com o nosso <b>Guia Spray Pet Hálito de Ouro</b>, você vai aprender receitas caseiras, seguras e baratas.</p>
         </div>
 
-        <div class="card">
-            <h2>Você evita os "lambeijos"?</h2>
-            <p>O mau hálito pode indicar bactérias que atacam o coração do seu cão. Proteja quem você ama com o nosso <b>Guia Spray Hálito de Ouro</b>.</p>
+        <div class="content-block">
+            <h3 style="color:#2ecc71">O que você vai receber:</h3>
+            <div class="list-item"><b>Receita do Spray Mestre:</b> Ingredientes naturais.</div>
+            <div class="list-item"><b>Passo a Passo em Vídeo/PDF:</b> Pronto em 2 minutos.</div>
+            <div class="list-item"><b>Manual de Aplicação:</b> Sem estresse.</div>
         </div>
 
-        <div class="card">
-            <h3>O que você vai receber:</h3>
-            <ul>
-                <li><b>Spray Mestre:</b> Natural e bactericida.</li>
-                <li><b>Vídeo Passo a Passo:</b> Pronto em 2 minutos.</li>
-                <li><b>Manual de Aplicação:</b> Sem estresse.</li>
-            </ul>
+        <div class="content-block" style="border: 2px solid #f1c40f;">
+            <h3 style="color: #e67e22; margin-top:0;">🎁 BÔNUS GRATUITOS:</h3>
+            <div class="list-item">Lista de alimentos proibidos</div>
+            <div class="list-item">Chá para fortalecer gengivas</div>
+            <div class="list-item">Receitas de petiscos saudáveis</div>
         </div>
 
-        <div class="bonus-card">
-            <h3>🎁 BÔNUS EXCLUSIVOS:</h3>
-            <p>✅ <b>Chá Fortalecedor</b> de Gengivas.</p>
-            <p>✅ <b>Petiscos Caseiros</b> Limpa-Tártaro.</p>
+        <div class="content-block">
+            <h3 style="text-align:center">VEJA OS <span class="highlight-green">DEPOIMENTOS</span></h3>
+            <div class="testimonial">
+                <p>"Sempre sofri com o bafo do meu pet, depois do spray ele nunca mais deu trabalho!"</p>
+                <img src="https://i.pravatar.cc/150?u=rafaela" alt="Rafaela">
+                <div class="stars">★★★★★</div>
+                <b>Rafaela Almeida</b><br><small>Minas Gerais</small>
+            </div>
         </div>
 
-        <h3 style="margin-top:30px">Depoimentos:</h3>
-        <div class="testimonial">"O bafinho do Thor sumiu em 4 dias!" <b>— Ana Cláudia</b></div>
-        <div class="testimonial">"Muito fácil de fazer, recomendo!" <b>— Roberta Lima</b></div>
-
-        <div class="garantia">
-            <p>🛡️ <b>Garantia Incondicional de 7 Dias</b></p>
+        <div class="garantia-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Garantia_7_dias.png/600px-Garantia_7_dias.png" class="garantia-img" alt="Garantia 7 Dias">
+            <h2>Satisfação Garantida e Risco Zero!</h2>
+            <p>Se você não ficar satisfeito com o conteúdo, basta me enviar um e-mail e eu devolvo 100% do seu dinheiro.</p>
         </div>
-        
-        <div style="height: 80px;"></div>
+
+        <div style="height: 100px;"></div>
     </div>
 
-    <div id="notification">
-        <span style="font-size: 20px;">✅</span>
-        <div id="notif-text"><b>Mariana Silva</b> acabou de comprar!</div>
-    </div>
-
-    <div class="footer-sticky">
-        <a href="SEU_LINK_DE_COMPRA" class="btn">COMPRAR POR R$ 29,90</a>
+    <div class="footer-cta">
+        <a href="SEU_LINK_DE_COMPRA" class="btn-green">COMPRAR POR R$ 29,90</a>
     </div>
 
     <script>
-        const nomes = ["Camila Souza", "Beatriz Oliveira", "Fernanda Costa", "Juliana Melo", "Patrícia Lima", "Carla Mendes", "Amanda Rocha"];
-        const notification = document.getElementById('notification');
-        const notifText = document.getElementById('notif-text');
+        const nomes = ["Mariana", "Ana", "Carla", "Beatriz", "Fernanda", "Patrícia", "Roberta"];
+        const cidades = ["SP", "RJ", "MG", "RS", "BA", "PR", "SC"];
+        const popout = document.getElementById('popout');
+        const popoutText = document.getElementById('popout-text');
 
-        function showNotification() {
+        function togglePopout() {
             const nome = nomes[Math.floor(Math.random() * nomes.length)];
-            notifText.innerHTML = `<b>${nome}</b> acabou de comprar!`;
+            const cidade = cidades[Math.floor(Math.random() * cidades.length)];
+            popoutText.innerHTML = `<b>${nome}</b> de ${cidade} acabou de comprar!`;
             
-            notification.style.display = 'flex'; // Aparece
+            popout.style.display = 'flex';
             
             setTimeout(() => {
-                notification.style.display = 'none'; // Some depois de 4 segundos
-            }, 4000);
+                popout.style.display = 'none';
+            }, 5000); // Fica 5 segundos na tela
         }
 
-        // Inicia o ciclo: aparece a cada 12 segundos para parecer real
-        setInterval(showNotification, 12000);
-        setTimeout(showNotification, 3000); // Primeira notificação logo que abre
+        // Aparece a cada 30 segundos
+        setInterval(togglePopout, 30000);
+        // Primeira aparição em 3 segundos
+        setTimeout(togglePopout, 3000);
     </script>
-
 </body>
 </html>
