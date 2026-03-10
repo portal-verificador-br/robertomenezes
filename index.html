@@ -3,162 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Vendas - Spray Pet</title>
+    <title>Spray Pet Hálito de Ouro</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 0; color: #333; }
         .container { max-width: 500px; margin: 0 auto; background-color: #f2f2f2; }
         
-        /* Headline Estilo Print 1 */
-        .headline-container { background-color: #28a745; color: white; text-align: center; padding: 30px 15px; }
-        .headline-container h1 { font-size: 28px; margin: 0; line-height: 1.2; font-weight: bold; }
+        /* Headline Verde */
+        .headline { background-color: #28a745; color: white; text-align: center; padding: 35px 15px; }
+        .headline h1 { font-size: 26px; margin: 0; line-height: 1.2; font-weight: bold; }
 
-        /* Blocos brancos arredondados */
-        .card { background-color: white; margin: 15px; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .card h2 { font-size: 20px; line-height: 1.4; margin-top: 0; }
-        .card p { font-size: 16px; line-height: 1.5; color: #444; }
+        /* Blocos de Conteúdo */
+        .card { background-color: white; margin: 15px; padding: 25px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.08); }
+        .card h2 { font-size: 22px; line-height: 1.3; margin-top: 0; font-weight: bold; }
+        .card p { font-size: 16px; line-height: 1.5; color: #444; margin-bottom: 0; }
         
-        /* Lista com bolinhas estilo Print 2 */
-        .list-item { display: flex; align-items: flex-start; margin-bottom: 12px; font-size: 16px; }
-        .list-item::before { content: "●"; color: #333; font-size: 12px; margin-right: 10px; margin-top: 4px; }
+        /* Espaços de Imagem (GitHub) */
+        .img-github { width: 100%; display: block; background: #ddd; }
 
-        /* Bônus Estilo Print 3/4 */
-        .bonus-box { border: 2px solid #ffc107; border-radius: 10px; background-color: #fffdec; padding: 20px; margin: 15px; }
-        .bonus-box h3 { color: #d97706; text-align: center; font-size: 24px; margin-top: 0; }
-        .bonus-item { display: flex; align-items: center; font-size: 16px; margin-bottom: 10px; }
-        .bonus-item::before { content: "➔"; color: #28a745; margin-right: 8px; font-weight: bold; }
-        .bonus-footer { text-align: center; color: #dc3545; font-weight: bold; font-size: 18px; margin-top: 15px; }
+        /* Lista de Benefícios */
+        .list-box { padding: 10px 0; }
+        .item { display: flex; align-items: flex-start; margin-bottom: 15px; font-size: 17px; font-weight: 500; }
+        .item:before { content: "●"; color: #333; margin-right: 12px; font-size: 14px; margin-top: 2px; }
 
-        /* Depoimentos */
-        .testimonial-section { padding: 10px; }
-        .testimonial-card { text-align: center; padding: 20px; border-bottom: 1px solid #ddd; }
-        .testimonial-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px; border: 2px solid #28a745; }
-        .testimonial-card p { font-style: italic; font-size: 15px; }
-        .stars { color: #ffc107; font-size: 18px; margin-bottom: 5px; }
-        .name { font-weight: bold; color: #007bff; }
+        /* Bloco de Bônus Amarelo */
+        .bonus-card { border: 2px solid #ffc107; border-radius: 10px; background-color: #fffdec; padding: 25px; margin: 15px; }
+        .bonus-title { color: #d97706; text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 20px; }
+        .bonus-item { display: flex; align-items: center; font-size: 17px; margin-bottom: 12px; font-weight: 500; }
+        .bonus-item:before { content: "➔"; color: #28a745; margin-right: 10px; font-weight: bold; }
+        .bonus-tag { text-align: center; color: #dc3545; font-weight: bold; font-size: 20px; margin-top: 15px; display: block; }
 
-        /* Preço Estilo Print 6 */
-        .price-container { background-color: black; color: white; text-align: center; padding: 50px 20px; }
-        .price-old { text-decoration: line-through; color: #ffc107; font-size: 20px; }
-        .price-new { font-size: 70px; font-weight: bold; margin: 10px 0; }
-        .btn-buy { background-color: #28a745; color: white; text-decoration: none; padding: 15px; border-radius: 50px; display: block; font-size: 18px; font-weight: bold; margin-top: 20px; text-transform: uppercase; }
+        /* Depoimentos Humanos */
+        .depo-section { background: white; margin: 15px; border-radius: 10px; padding: 10px 0; }
+        .depo-card { text-align: center; padding: 25px 20px; border-bottom: 1px solid #eee; }
+        .depo-card:last-child { border-bottom: none; }
+        .stars { color: #ffc107; font-size: 20px; margin-bottom: 10px; }
+        .depo-card p { font-size: 16px; line-height: 1.5; color: #555; font-style: italic; }
+        .depo-card img { width: 85px; height: 85px; border-radius: 50%; margin-top: 15px; border: 2px solid #28a745; }
+        .user-name { display: block; margin-top: 10px; font-weight: bold; color: #007bff; font-size: 16px; }
 
-        /* Garantia Estilo Print 8 */
-        .garantia-box { text-align: center; padding: 40px 20px; background-color: white; }
-        .garantia-box img { width: 150px; margin-bottom: 20px; }
-        .garantia-box p { font-size: 14px; text-align: justify; line-height: 1.6; }
+        /* Bloco de Preço Preto */
+        .cta-black { background-color: black; color: white; text-align: center; padding: 60px 20px; }
+        .old-price { text-decoration: line-through; color: #ffc107; font-size: 22px; }
+        .new-price { font-size: 85px; font-weight: bold; margin: 10px 0; }
+        .buy-button { background-color: #28a745; color: white; text-decoration: none; padding: 20px; border-radius: 50px; display: block; font-size: 22px; font-weight: bold; margin-top: 25px; text-transform: uppercase; }
 
-        /* Imagens do GitHub */
-        .img-placeholder { width: 100%; display: block; }
+        /* Garantia */
+        .garantia { text-align: center; padding: 50px 20px; background: white; }
+        .garantia img { width: 160px; margin-bottom: 25px; }
+        .garantia p { font-size: 15px; text-align: justify; line-height: 1.6; color: #444; }
 
         /* Pop-out Superior Esquerdo */
-        #popout {
+        #buy-pop {
             position: fixed; top: 15px; left: 10px; background: white; 
-            padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            display: none; align-items: center; gap: 10px; z-index: 1000;
-            border-left: 5px solid #28a745; font-size: 13px; animation: fadeIn 0.5s;
+            padding: 12px 18px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: none; align-items: center; gap: 12px; z-index: 10000;
+            border-left: 6px solid #28a745; font-size: 14px; animation: slideDown 0.5s;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <div id="popout">
-        <span style="font-size: 18px;">✅</span>
-        <div id="popout-text"><b>Mariana Silva</b> acabou de adquirir o Spray...</div>
+    <div id="buy-pop">
+        <span style="font-size: 20px;">✅</span>
+        <div id="pop-txt"><b>Juliana Ferreira</b> acabou de adquirir o Spray...</div>
     </div>
 
     <div class="container">
-        <div class="headline-container">
+        <div class="headline">
             <h1>Diga Adeus ao "Bafo de Onça" do seu Pet! 🐾</h1>
         </div>
 
-        <img src="LINK_DA_IMAGEM_PRINCIPAL" class="img-placeholder" alt="Imagem do Produto">
+        <img src="LINK_GITHUB_FOTO_1" class="img-github" alt="Foto Produto">
 
         <div class="card">
             <h2>Você evita os "lambeijos" do seu melhor amigo por causa do cheiro forte?</h2>
-            <p>Muitas vezes o mau hálito não é apenas sujeira, mas acúmulo de bactérias que podem causar doenças graves no coração e rins do seu cão.</p>
+            <p>Muitas vezes o mau hálito não é apenas sujeira, mas acúmulo de bactérias que atacam a saúde do seu cão.</p>
         </div>
 
-        <img src="LINK_DA_FOTO_BEIJO_PET" class="img-placeholder" alt="Beijo no Pet">
+        <img src="LINK_GITHUB_FOTO_BEIJO" class="img-github" alt="Foto Beijo">
 
         <div class="card">
-            <h3 style="margin-top:0">O que você vai receber:</h3>
-            <div class="list-item"><b>Receita do Spray Mestre:</b> Ingredientes naturais e bactericidas.</div>
-            <div class="list-item"><b>Passo a Passo em Vídeo/PDF:</b> Simples de fazer em 2 minutos.</div>
-            <div class="list-item"><b>Manual de Aplicação:</b> Como fazer seu pet aceitar sem estresse.</div>
+            <h3>O que você vai receber:</h3>
+            <div class="list-box">
+                <div class="item"><b>Receita do Spray Mestre:</b> Natural e bactericida.</div>
+                <div class="item"><b>Passo a Passo em Vídeo/PDF:</b> Pronto em 2 minutos.</div>
+                <div class="item"><b>Manual de Aplicação:</b> Sem estresse para o pet.</div>
+            </div>
         </div>
 
-        <div class="bonus-box">
-            <h3>BÔNUS</h3>
-            <div class="bonus-item">Grupo Vip no WhatsApp (Pais e Mães de Pet)</div>
+        <div class="bonus-card">
+            <div class="bonus-title">BÔNUS</div>
+            <div class="bonus-item">Grupo VIP WhatsApp (Mamães de Pet)</div>
             <div class="bonus-item">Guia de Massagem p/ Acalmar o Cão</div>
             <div class="bonus-item">Dicas Nutricionais de Alimentação</div>
-            <div class="bonus-item">Checklist de Higiene Semanal</div>
+            <div class="bonus-item">Checklist de Higiene Bucal</div>
             <div class="bonus-footer">Leve o Bônus Gratuitamente</div>
         </div>
 
-        <div class="testimonial-section">
-            <h2 style="text-align:center">Depoimentos</h2>
-            <div class="testimonial-card">
+        <div class="depo-section">
+            <h2 style="text-align:center; padding-top:20px;">Depoimentos Reais</h2>
+            
+            <div class="depo-card">
                 <div class="stars">★★★★★</div>
-                <p>"O bafinho do meu Shihtzu sumiu em 3 dias! Muito prático."</p>
-                <img src="https://i.pravatar.cc/100?u=1" alt="User">
-                <div class="name">Rafaela Almeida</div>
+                <p>"O bafinho do meu Shihtzu sumiu em 3 dias! Me arrependi de não ter feito antes."</p>
+                <img src="https://i.pravatar.cc/100?u=a1">
+                <span class="user-name">Rafaela Almeida Souza</span>
             </div>
-            <div class="testimonial-card">
+
+            <div class="depo-card">
                 <div class="stars">★★★★★</div>
-                <p>"As receitas são baratas e funcionam de verdade. Recomendo."</p>
-                <img src="https://i.pravatar.cc/100?u=2" alt="User">
-                <div class="name">Amanda Garcia Castro</div>
+                <p>"As receitas são muito fáceis. O Thor agora pode me lamber à vontade!"</p>
+                <img src="https://i.pravatar.cc/100?u=a2">
+                <span class="user-name">Amanda Garcia Castro</span>
             </div>
-            <div class="testimonial-card">
+
+            <div class="depo-card">
                 <div class="stars">★★★★★</div>
-                <p>"O grupo do WhatsApp é ótimo para tirar dúvidas!"</p>
-                <img src="https://i.pravatar.cc/100?u=3" alt="User">
-                <div class="name">Juliana Costa Melo</div>
+                <p>"O grupo do WhatsApp é maravilhoso, as dicas de lá valem ouro."</p>
+                <img src="https://i.pravatar.cc/100?u=a3">
+                <span class="user-name">Juliana Costa Melo</span>
             </div>
-            <div class="testimonial-card">
+
+            <div class="depo-card">
                 <div class="stars">★★★★★</div>
-                <p>"Finalmente consegui chegar perto do meu cachorro sem sentir cheiro ruim."</p>
-                <img src="https://i.pravatar.cc/100?u=4" alt="User">
-                <div class="name">Patrícia Lima</div>
+                <p>"Não gasto mais com limpeza de tártaro cara no vet. Esse spray resolve."</p>
+                <img src="https://i.pravatar.cc/100?u=a4">
+                <span class="user-name">Patrícia Lima Vasconcelos</span>
             </div>
-            <div class="testimonial-card">
+
+            <div class="depo-card">
                 <div class="stars">★★★★★</div>
-                <p>"O vídeo explicando como aplicar ajudou muito aqui em casa."</p>
-                <img src="https://i.pravatar.cc/100?u=5" alt="User">
-                <div class="name">Fernanda Oliveira Santos</div>
+                <p>"Meu cachorro aceitou super bem a massagem e a aplicação. Nota 10!"</p>
+                <img src="https://i.pravatar.cc/100?u=a5">
+                <span class="user-name">Fernanda Oliveira Santos</span>
             </div>
         </div>
 
-        <div class="price-container">
-            <span class="price-old">De R$ 69,90 por apenas</span>
-            <div class="price-new">29,90</div>
-            <a href="SEU_LINK_AQUI" class="btn-buy">Sim! Eu quero o Spray por R$ 29,90</a>
-            <p style="margin-top:20px; font-size:12px">Compra Segura | Acesso Imediato</p>
+        <div class="cta-black">
+            <span class="old-price">De R$ 69,90 por apenas</span>
+            <div class="new-price">29,90</div>
+            <a href="SEU_LINK_AQUI" class="buy-button">Sim! Quero o Spray agora</a>
         </div>
 
-        <div class="garantia-box">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Garantia_7_dias.png/600px-Garantia_7_dias.png" alt="Garantia">
-            <h2>Satisfação Garantida ou seu Dinheiro de Volta!</h2>
-            <p>Eu acredito tanto que este conteúdo irá te gerar um ótimo resultado que te ofereço uma garantia de 7 dias para você experimentar o conteúdo. Se você não ficar satisfeito, basta me enviar um e-mail e eu devolvo 100% do seu dinheiro. Sem questionamentos e sem burocracia.</p>
+        <div class="garantia">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Garantia_7_dias.png/600px-Garantia_7_dias.png">
+            <h2>Garantia de 7 Dias!</h2>
+            <p>Eu acredito tanto que este conteúdo irá te gerar um ótimo resultado que te ofereço uma garantia de 7 dias. Se você não ficar satisfeito, basta me enviar um e-mail e eu devolvo 100% do seu dinheiro. Sem questionamentos e sem burocracia.</p>
         </div>
     </div>
 
     <script>
-        const nomes = ["Mariana Silva", "Beatriz Oliveira", "Fernanda Santos", "Juliana Melo", "Patrícia Lima", "Carla Rocha", "Amanda Garcia", "Renata Vasconcelos", "Luciana Pereira"];
-        const popout = document.getElementById('popout');
-        const popoutText = document.getElementById('popout-text');
+        const nomes = ["Mariana Silva", "Beatriz Oliveira", "Fernanda Santos", "Juliana Melo", "Patrícia Lima", "Carla Rocha", "Amanda Garcia", "Renata Vasconcelos", "Luciana Pereira", "Fernanda Souza", "Juliana Cardoso"];
+        const pop = document.getElementById('buy-pop');
+        const txt = document.getElementById('pop-txt');
 
-        function showPopout() {
-            const nome = nomes[Math.floor(Math.random() * nomes.length)];
-            popoutText.innerHTML = `<b>${nome}</b> acabou de adquirir o Spray...`;
-            popout.style.display = 'flex';
-            setTimeout(() => { popout.style.display = 'none'; }, 5000);
+        function trigger() {
+            const n = nomes[Math.floor(Math.random() * nomes.length)];
+            txt.innerHTML = `<b>${n}</b> acabou de adquirir o Spray...`;
+            pop.style.display = 'flex';
+            setTimeout(() => { pop.style.display = 'none'; }, 6000);
         }
 
-        setInterval(showPopout, 30000); // A cada 30 segundos
-        setTimeout(showPopout, 3000); // Primeira vez em 3 segundos
+        setInterval(trigger, 30000); 
+        setTimeout(trigger, 3000); 
     </script>
 </body>
 </html>
