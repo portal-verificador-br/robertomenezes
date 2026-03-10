@@ -6,49 +6,51 @@
     <title>Spray Pet Hálito de Ouro</title>
     <style>
         body { font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 0; color: #333; }
-        .container { max-width: 500px; margin: 0 auto; background-color: #f2f2f2; }
+        .container { max-width: 500px; margin: 0 auto; background-color: #f2f2f2; padding-bottom: 50px; }
         
-        /* Headline Verde */
+        /* Header Verde */
         .header-verde { background-color: #28a745; color: white; text-align: center; padding: 40px 20px; }
         .header-verde h1 { font-size: 30px; margin: 0; font-weight: bold; line-height: 1.1; }
+        .header-verde p { font-size: 16px; margin-top: 15px; line-height: 1.4; opacity: 0.9; }
 
         /* Blocos Brancos */
         .bloco-branco { background-color: white; margin: 15px; padding: 25px; border-radius: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .bloco-branco h2 { font-size: 24px; margin-top: 0; line-height: 1.2; }
-        .bloco-branco p { font-size: 17px; line-height: 1.5; color: #444; }
-
+        
         /* Imagens GitHub */
         .img-placeholder { width: 100%; display: block; background-color: #ddd; }
 
-        /* O que você vai receber - ALINHADO IGUAL PRINT */
-        .lista-receber { list-style: none; padding: 0; margin: 20px 0 0 0; text-align: left; }
-        .lista-receber li { position: relative; padding-left: 25px; margin-bottom: 15px; font-size: 17px; line-height: 1.4; }
+        /* Botão Verde de CTA */
+        .btn-verde { background-color: #28a745; color: white; text-decoration: none; padding: 18px; border-radius: 50px; display: block; font-size: 20px; font-weight: bold; text-align: center; margin: 15px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3); }
+
+        /* Lista Alinhada */
+        .lista-receber { list-style: none; padding: 0; margin: 20px 0 0 0; }
+        .lista-receber li { position: relative; padding-left: 25px; margin-bottom: 15px; font-size: 17px; }
         .lista-receber li::before { content: "●"; position: absolute; left: 0; color: #333; font-size: 14px; top: 2px; }
 
-        /* Bônus Amarelo */
-        .bonus-box { border: 2px solid #ffc107; border-radius: 15px; background-color: #fffdec; padding: 25px; margin: 15px; text-align: center; }
-        .bonus-box h3 { color: #d97706; font-size: 28px; margin-top: 0; }
-        .item-bonus { text-align: left; font-size: 17px; margin-bottom: 10px; padding-left: 20px; position: relative; }
+        /* Bônus */
+        .bonus-box { border: 2px solid #ffc107; border-radius: 15px; background-color: #fffdec; padding: 25px; margin: 15px; }
+        .bonus-box h3 { color: #d97706; font-size: 28px; margin-top: 0; text-align: center; }
+        .item-bonus { font-size: 17px; margin-bottom: 10px; padding-left: 20px; position: relative; }
         .item-bonus::before { content: "➔"; position: absolute; left: 0; color: #28a745; font-weight: bold; }
-        .bonus-gratis { color: #dc3545; font-weight: bold; font-size: 20px; margin-top: 20px; display: block; }
 
-        /* DEPOIMENTOS - FOTO EM CIMA, TEXTO EMBAIXO */
-        .depoimento-container { text-align: center; padding: 30px 20px; border-bottom: 1px solid #ddd; }
-        .depoimento-container img { width: 90px; height: 90px; border-radius: 50%; border: 3px solid #28a745; margin-bottom: 15px; }
+        /* DEPOIMENTOS */
+        .depoimento-container { text-align: center; padding: 30px 20px; border-bottom: 1px solid #ddd; background: white; margin: 0 15px; }
+        .depoimento-container img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #28a745; margin-bottom: 15px; object-fit: cover; }
         .stars { color: #ffc107; font-size: 22px; margin-bottom: 10px; }
-        .depoimento-container p { font-size: 18px; line-height: 1.5; color: #555; font-style: italic; margin-bottom: 10px; }
-        .depoimento-container b { font-size: 17px; color: #007bff; }
+        .depoimento-container b { color: #007bff; }
 
-        /* CTA PRETO */
-        .cta-preto { background-color: black; color: white; text-align: center; padding: 60px 20px; }
+        /* CTA PRETO COM IMAGEM DO PRODUTO */
+        .cta-preto { background-color: black; color: white; text-align: center; padding: 40px 20px; }
+        .img-produto-valor { width: 180px; margin: 0 auto 20px; display: block; }
         .old-price { text-decoration: line-through; color: #ffc107; font-size: 22px; }
-        .new-price { font-size: 85px; font-weight: bold; margin: 10px 0; }
-        .btn-verde { background-color: #28a745; color: white; text-decoration: none; padding: 20px; border-radius: 50px; display: block; font-size: 22px; font-weight: bold; margin-top: 25px; text-transform: uppercase; }
+        .new-price { font-size: 85px; font-weight: bold; margin: 5px 0; }
 
-        /* Garantia */
-        .garantia { padding: 50px 20px; text-align: center; background: white; }
-        .garantia img { width: 180px; margin-bottom: 25px; }
-        .garantia p { text-align: justify; font-size: 16px; line-height: 1.6; }
+        /* FAQ */
+        .faq-section { background: white; margin: 15px; padding: 20px; border-radius: 15px; }
+        .faq-item { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .faq-item b { display: block; font-size: 18px; color: #28a745; margin-bottom: 5px; }
+        .faq-item p { margin: 0; font-size: 16px; color: #555; }
 
         /* POP-OUT SUPERIOR ESQUERDO */
         #pop-venda {
@@ -70,12 +72,15 @@
     <div class="container">
         <div class="header-verde">
             <h1>Diga Adeus ao "Bafo de Onça" do seu Pet! 🐾</h1>
+            <p>Receita natural que milhares de papais e mamães de pet estão utilizando para eliminar o MAU HÁLITO de seu cãozinho de forma FÁCIL e com INGREDIENTES BARATOS E CASEIROS.</p>
         </div>
 
-        <img src="FOTO_GITHUB_1" class="img-placeholder">
+        <img src="FOTO_GITHUB_PRINCIPAL" class="img-placeholder">
+
+        <a href="LINK_CHECKOUT" class="btn-verde">QUERO GARANTIR MEU ACESSO</a>
 
         <div class="bloco-branco">
-            <h2>Você evita os "lambeijos" do seu melhor amigo?</h2>
+            <h2>Você evita os "lambeijos"?</h2>
             <p>O mau hálito pode indicar bactérias graves. Com o <b>Guia Spray Pet Hálito de Ouro</b>, você resolve isso em casa.</p>
         </div>
 
@@ -84,7 +89,7 @@
         <div class="bloco-branco">
             <h3 style="margin-top:0">O que você vai receber:</h3>
             <ul class="lista-receber">
-                <li><b>Receita do Spray Mestre:</b> Natural e bactericida.</li>
+                <li><b>Receita do Spray Mestre:</b> Ingredientes naturais e bactericidas.</li>
                 <li><b>Passo a Passo em Vídeo/PDF:</b> Pronto em 2 minutos.</li>
                 <li><b>Manual de Aplicação:</b> Sem estresse para o pet.</li>
             </ul>
@@ -92,66 +97,70 @@
 
         <div class="bonus-box">
             <h3>BÔNUS</h3>
-            <div class="item-bonus">Grupo VIP WhatsApp (Pais de Pet)</div>
+            <div class="item-bonus">Grupo VIP WhatsApp (Comunidade)</div>
             <div class="item-bonus">Guia de Massagem p/ Acalmar</div>
-            <div class="item-bonus">Dicas Nutricionais</div>
-            <div class="item-bonus">Checklist Higiene Bucal</div>
-            <span class="bonus-gratis">LEVE OS BÔNUS GRATUITAMENTE</span>
+            <div class="item-bonus">Dicas Nutricionais Caseiras</div>
+            <div class="item-bonus">Checklist Saúde Bucal</div>
         </div>
 
-        <div style="background: white; margin: 15px; border-radius: 15px;">
-            <h2 style="text-align:center; padding-top:20px;">DEPOIMENTOS</h2>
-            
-            <div class="depoimento-container">
-                <img src="https://i.pravatar.cc/150?u=1">
-                <div class="stars">★★★★★</div>
-                <p>"O bafinho do Thor sumiu em 3 dias! Me arrependi de não ter feito antes."</p>
-                <b>Rafaela Almeida Souza</b>
-            </div>
+        <h2 style="text-align:center; margin-top:40px;">DEPOIMENTOS</h2>
+        
+        <div class="depoimento-container">
+            <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Ana">
+            <div class="stars">★★★★★</div>
+            <p>"O bafinho do Thor sumiu em 3 dias! Me arrependi de não ter feito antes."</p>
+            <b>Ana Paula Rodrigues</b>
+        </div>
 
-            <div class="depoimento-container">
-                <img src="https://i.pravatar.cc/150?u=2">
-                <div class="stars">★★★★★</div>
-                <p>"Receitas fáceis e baratas. Meu cachorro agora pode lamber à vontade!"</p>
-                <b>Amanda Garcia Castro</b>
-            </div>
+        <div class="depoimento-container">
+            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Carla">
+            <div class="stars">★★★★★</div>
+            <p>"Receitas fáceis e baratas. Meu cachorro agora pode me lamber à vontade!"</p>
+            <b>Carla Oliveira Santos</b>
+        </div>
 
-            <div class="depoimento-container">
-                <img src="https://i.pravatar.cc/150?u=3">
-                <div class="stars">★★★★★</div>
-                <p>"O grupo do WhatsApp é maravilhoso, as dicas valem ouro."</p>
-                <b>Juliana Costa Melo</b>
-            </div>
+        <div class="depoimento-container">
+            <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=150" alt="Beatriz">
+            <div class="stars">★★★★★</div>
+            <p>"Finalmente um método que funciona sem gastar fortuna no vet."</p>
+            <b>Beatriz Souza Lima</b>
+        </div>
 
-            <div class="depoimento-container">
-                <img src="https://i.pravatar.cc/150?u=4">
-                <div class="stars">★★★★★</div>
-                <p>"Finalmente um método que funciona sem gastar fortuna no vet."</p>
-                <b>Patrícia Lima Vasconcelos</b>
+        <div class="faq-section">
+            <h2 style="text-align:center">Dúvidas Frequentes</h2>
+            <div class="faq-item">
+                <b>São produtos caseiros?</b>
+                <p>Sim! Todos os ingredientes você encontra facilmente em qualquer supermercado ou farmácia por um custo baixíssimo.</p>
             </div>
-
-            <div class="depoimento-container">
-                <img src="https://i.pravatar.cc/150?u=5">
-                <div class="stars">★★★★★</div>
-                <p>"A aplicação é super tranquila com a técnica de massagem."</p>
-                <b>Fernanda Oliveira Santos</b>
+            <div class="faq-item">
+                <b>Resultados em quantos dias?</b>
+                <p>Muitos clientes relatam uma melhora drástica no hálito entre 3 a 7 dias de uso contínuo do spray.</p>
+            </div>
+            <div class="faq-item">
+                <b>Como funciona o acesso?</b>
+                <p>Assim que o pagamento for confirmado, você recebe o guia completo no seu e-mail para acessar pelo celular ou computador.</p>
+            </div>
+            <div class="faq-item">
+                <b>É seguro para o cachorro?</b>
+                <p>Sim, as receitas utilizam apenas elementos naturais que não agridem o estômago nem a mucosa bucal do animal.</p>
             </div>
         </div>
 
         <div class="cta-preto">
+            <img src="FOTO_DO_LIVRO_PRODUTO_AQUI" class="img-produto-valor" alt="Guia Hálito de Ouro">
             <span class="old-price">De R$ 69,90 por apenas</span>
             <div class="new-price">29,90</div>
-            <a href="LINK_CHECKOUT" class="btn-verde">QUERO O SPRAY AGORA</a>
+            <a href="LINK_CHECKOUT" class="btn-verde">QUERO MEU GUIA AGORA</a>
         </div>
 
-        <div class="garantia">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Garantia_7_dias.png/600px-Garantia_7_dias.png">
-            <p>Eu acredito tanto que este conteúdo irá te gerar um ótimo resultado que te ofereço uma garantia de 7 dias. Se você não ficar satisfeito, basta me enviar um e-mail e eu devolvo 100% do seu dinheiro. Sem questionamentos e sem burocracia.</p>
+        <div class="bloco-branco" style="text-align:center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Garantia_7_dias.png/600px-Garantia_7_dias.png" style="width:150px">
+            <p style="text-align:justify">Eu acredito tanto que este conteúdo irá te gerar um ótimo resultado que te ofereço uma garantia de 7 dias. Se você não ficar satisfeito, devolvemos 100% do seu dinheiro.</p>
         </div>
     </div>
 
     <script>
-        const nomes = ["Mariana Silva", "Beatriz Oliveira", "Fernanda Santos", "Juliana Melo", "Patrícia Lima", "Carla Rocha", "Amanda Garcia", "Renata Vasconcelos", "Luciana Pereira"];
+        const nomes = ["Mariana Silva", "Beatriz Oliveira", "Fernanda Santos", "Juliana Melo", "Patrícia Lima", "Carla Rocha", "Amanda Garcia"];
         const pop = document.getElementById('pop-venda');
         const txt = document.getElementById('txt-pop');
 
