@@ -3,158 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estratégia Black Safe - Método Pirituba</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1773918999950681'); 
-        fbq('track', 'PageView');
-    </script>
+    <title>Spray Pet Hálito de Ouro - Método Natural</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: #0d0d0d; color: #e0e0e0; line-height: 1.8; overflow-x: hidden; }
-        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
-        
-        h1 { font-size: 32px; font-weight: 900; text-align: center; color: #fff; line-height: 1.2; margin-bottom: 30px; text-transform: uppercase; }
-        .highlight { color: #00ff41; text-shadow: 0 0 10px rgba(0,255,65,0.3); }
-
-        /* CARROSSEL DE PRINTS */
-        .carousel { display: flex; overflow-x: auto; snap-type: x mandatory; gap: 15px; margin: 30px 0; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-        .carousel img { flex: 0 0 90%; border-radius: 15px; border: 2px solid #333; snap-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-
-        .section-text { margin-bottom: 25px; font-size: 18px; color: #b0b0b0; }
-        .section-text b { color: #fff; }
-
-        .card { background: #161616; padding: 25px; border-radius: 20px; border-left: 5px solid #00ff41; margin: 30px 0; }
-
-        .cta-box { text-align: center; margin-top: 50px; padding: 30px; background: #1a1a1a; border-radius: 20px; border: 1px solid #333; }
-        .price-tag { font-size: 14px; text-decoration: line-through; color: #666; margin-bottom: 5px; }
-        .price-now { font-size: 42px; font-weight: 900; color: #00ff41; margin-bottom: 5px; }
-        .guarantee-text { color: #ff3e3e; font-weight: bold; font-size: 14px; margin-bottom: 20px; display: block; }
-
-        .btn-black-safe { 
-            background: #00ff41; color: #000; text-align: center; display: block; 
-            padding: 22px; border-radius: 50px; font-weight: 900; 
-            font-size: 22px; text-decoration: none; text-transform: uppercase;
-            box-shadow: 0 15px 40px rgba(0, 255, 65, 0.2); transition: 0.3s;
-        }
-        .btn-black-safe:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0, 255, 65, 0.4); }
-
-        /* VAGAS DINÂMICAS */
-        .vagas-counter { background: rgba(255, 62, 62, 0.1); color: #ff3e3e; padding: 10px; border-radius: 10px; font-weight: bold; display: inline-block; margin-top: 15px; border: 1px solid #ff3e3e; }
-
-        /* POP OUT ESTILO NOTIFICAÇÃO SUPERIOR ESQUERDA */
-        #notification {
-            position: fixed; top: 20px; left: 20px; background: rgba(255, 255, 255, 0.95); color: #000; 
-            padding: 12px 18px; border-radius: 15px; display: none; align-items: center; 
-            z-index: 9999; width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
-            border-bottom: 4px solid #00ff41; animation: slideDown 0.5s ease;
-            backdrop-filter: blur(10px);
-        }
-        @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        #notification p { font-size: 13px; line-height: 1.4; margin: 0; font-weight: 600; }
-        #notification b { color: #008000; }
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; background-color: #f4f9f4; }
+        .header { background: #27ae60; color: white; text-align: center; padding: 40px 20px; }
+        .header h1 { margin: 0; font-size: 2.5em; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .highlight { color: #27ae60; font-weight: bold; }
+        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        .bonus { border-left: 5px solid #f1c40f; padding-left: 15px; background: #fffdf0; }
+        .cta-button { display: block; background: #2ecc71; color: white; text-align: center; padding: 20px; text-decoration: none; font-size: 1.5em; font-weight: bold; border-radius: 50px; margin: 30px 0; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
+        .cta-button:hover { transform: scale(1.05); background: #27ae60; }
+        .footer-sticky { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 10px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); text-align: center; display: block; }
+        .price { font-size: 1.8em; color: #e74c3c; font-weight: bold; }
+        img { max-width: 100%; border-radius: 10px; }
     </style>
 </head>
 <body>
 
+    <div class="header">
+        <h1>Diga Adeus ao "Bafo de Onça" do seu Pet! 🐾</h1>
+        <p>Aprenda a fazer o Spray Natural que elimina o mau hálito e o tártaro sem precisar gastar fortunas no veterinário.</p>
+    </div>
+
     <div class="container">
-        <h1>O Segredo para Vender <span class="highlight">R$ 800 todos os dias</span> sem ser um "escravo" do Meta</h1>
-
-        <div class="carousel">
-            <img src="notebook_ctr.png" alt="Métricas Reais">
-            <img src="print_venda_alta.png" alt="Venda de R$ 800">
-            <img src="print_pix_recebido.png" alt="Faturamento Semanal">
-        </div>
-
-        <div class="section-text">
-            Eu vou ser bem direto com você: depois de 2 anos gastando mais de <b>R$ 5 mil testando tudo o que os gurus ensinam</b>, eu descobri que o segredo não é o produto. O segredo é a <b>estratégia e a oferta agressiva</b>.
-        </div>
-
-        <div class="section-text">
-            Eu mergulhei no que chamam de <b>"Black Hat"</b>. Mas em vez de ser mais um golpista espalhando mentiras, eu estudei a fundo o que os <b>Big Players</b> fazem e estruturei de uma forma limpa de rodar. É o que eu chamo de <b>Black Safe</b>.
+        <div class="card">
+            <h2>Você evita os "lambeijos" do seu melhor amigo por causa do cheiro forte?</h2>
+            <p>Muitas vezes o mau hálito não é apenas sujeira, mas acúmulo de bactérias que podem causar doenças graves no coração e rins do seu cão.</p>
+            <p>Com o nosso <span class="highlight">Guia Spray Pet Hálito de Ouro</span>, você vai aprender receitas caseiras, seguras e baratas para manter a boca dele sempre fresquinha.</p>
         </div>
 
         <div class="card">
-            "Fiquei desempregado em outubro. Usei esse tempo para transformar o Meta no meu desafiante, e não no meu amigo. O resultado? <b>Faturei R$ 15 mil em apenas uma semana</b> usando essa exata estrutura".
+            <h3>O que você vai receber:</h3>
+            <ul>
+                <li><strong>Receita do Spray Mestre:</strong> Ingredientes naturais e bactericidas.</li>
+                <li><strong>Passo a Passo em Vídeo/PDF:</strong> Simples de fazer em 2 minutos.</li>
+                <li><strong>Manual de Aplicação:</strong> Como fazer seu pet aceitar o spray sem estresse.</li>
+            </ul>
         </div>
 
-        <div class="section-text">
-            Eu vim do nada, cresci em <b>Pirituba, zona oeste de São Paulo</b>. Eu sei o que é ralar e não ver o dinheiro sobrar. Os gurus ensinam a pagar sites caros e HostGator, mas eu te digo: <b>eu nunca usei HostGator até ver que o domínio é gratuito</b>. Ninguém se importa com isso. Guarda o seu dinheiro pro tráfego pago. Enrolação eu deixo pra eles.
+        <div class="card bonus">
+            <h3>🎁 BÔNUS EXCLUSIVOS:</h3>
+            <p>✅ <strong>Bônus 1:</strong> Receita do Chá Fortalecedor (Gengivas Blindadas).</p>
+            <p>✅ <strong>Bônus 2:</strong> Guia de Alimentos Detonadores de Tártaro.</p>
         </div>
 
-        <div class="section-text">
-            O marketing é um jogo de teste. Eu resolvi testar valores de vendas maiores usando o <b>Black Safe</b>. É a combinação perfeita. <b>Pense bem:</b> você prefere se matar escalando orçamento para fazer 10 vendas e ter um ROI de 2... ou prefere um orçamento fixo e fazer <b>UMA venda de R$ 800 a R$ 3.000</b> e relaxar o resto do mês com um salário no bolso? No meu caso, como eu gosto de dinheiro, estou sempre movimentando o lucro.
+        <div style="text-align: center;">
+            <p>Tudo isso por apenas:</p>
+            <span class="price">R$ 29,90</span>
+            <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="cta-button">QUERO O GUIA AGORA!</a>
+            <p>💳 Pagamento Seguro | Acesso Imediato</p>
         </div>
-
-        <div class="card" style="border-left: 5px solid #fff;">
-            <b>O RITUAL DOS 15K:</b> Eu trabalho com meus alunos pessoalmente, via privado, ligação e chamada até eles faturarem <b>R$ 15 mil em 7 dias</b>, como eu faço. Abri vaga para apenas mais 15 pessoas agora para dar atenção total. Quando todos baterem a meta, eu libero a turma e só então renovo.
-        </div>
-
-        <div class="section-text">
-            Eu não estou aqui para te dar golpe ou atrasar sua vida. Eu não preciso disso. Estou aqui para te dar acesso à minha estrutura e colocar dinheiro no seu bolso. Meu produto é um <b>PDF direto</b>, você só precisa fazer o que eu mostro, aplicar a oferta agressiva e esperar a notificação de venda aprovada cair. Sua jornada de enrolação acaba aqui e o seu faturamento começa agora.
-        </div>
-
-        <p style="text-align: center; font-weight: bold; color: #00ff41; margin-bottom: 10px;">PROVAS REAIS DOS ALUNOS NO RITUAL:</p>
-        <div class="carousel">
-            <img src="depoimento1.png" alt="Resultado Aluno">
-            <img src="depoimento2.png" alt="Resultado Aluno">
-        </div>
-
-        <div class="cta-box">
-            <p style="font-size: 16px; margin-bottom: 15px; color: #ccc;">
-                Eu poderia cobrar R$ 997,00 por essa estrutura, mas decidi abaixar o preço por hoje para dar acesso a quem realmente quer mudar de vida.
-            </p>
-            <p class="price-tag">De R$ 997,00 por apenas:</p>
-            <p class="price-now">R$ 97,00</p>
-            <span class="guarantee-text">15K EM 7 DIAS OU SEU DINHEIRO DE VOLTA</span>
-            
-            <a href="LINK_DA_TICTO" class="btn-black-safe" onclick="fbq('track', 'InitiateCheckout');">
-                🔓 COPIAR ESTRUTURA + PRIVADO DO EMANUEL
-            </a>
-
-            <div class="vagas-counter" id="vagas">Faltam 15 vagas no Grupo VIP</div>
-        </div>
-
-        <center style="margin-top: 60px; opacity: 0.3; font-size: 11px;">
-            <p>Emanuel - Pirituba, SP © 2026</p>
-        </center>
-    </div>
-
-    <div id="notification">
-        <p>🚀 <b><span id="notify-name"></span></b> acaba de entrar no <b>Ritual dos 15K!</b></p>
-    </div>
-
-    <script>
-        // Lógica das Vagas (Sincronizada com o Ritual)
-        let vagas = 15;
-        function updateVagas() {
-            if (vagas > 2) {
-                vagas--;
-                document.getElementById('vagas').innerText = `Faltam ${vagas} vagas no Grupo VIP`;
-                showNotification();
-            }
-            let nextTimeout = Math.random() * (60000 - 30000) + 30000; 
-            setTimeout(updateVagas, nextTimeout);
-        }
-        setTimeout(updateVagas, 15000);
-
-        // Notificações Superiores Esquerdas
-        const names = ['André Luiz', 'Ricardo M.', 'Felipe Santos', 'Marcos Oliveira', 'Bruno Souza', 'Thiago P.'];
         
-        function showNotification() {
-            document.getElementById('notify-name').innerText = names[Math.floor(Math.random() * names.length)];
-            const notify = document.getElementById('notification');
-            notify.style.display = 'flex';
-            setTimeout(() => { notify.style.display = 'none'; }, 5000);
-        }
-    </script>
+        <div style="height: 100px;"></div> </div>
+
+    <div class="footer-sticky">
+        <a href="SEU_LINK_DE_CHECKOUT_AQUI" style="text-decoration: none; color: white; background: #2ecc71; padding: 12px 30px; border-radius: 25px; font-weight: bold; display: inline-block;">COMPRAR POR R$ 29,90</a>
+    </div>
+
 </body>
 </html>
