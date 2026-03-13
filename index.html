@@ -10,13 +10,13 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background: #f2f2f2; /* Fundo cinza claro igual ao print */
+    background: #f2f2f2; 
     color: #222;
     line-height: 1.6;
 }
 
 .container {
-    max-width: 500px; /* Largura mobile-focus conforme prints */
+    max-width: 500px; 
     margin: auto;
     padding: 0;
 }
@@ -41,7 +41,7 @@ h1 {
     opacity: 0.9;
 }
 
-/* Blocos de Conteúdo brancos arredondados */
+/* Blocos de Conteúdo */
 .section-card {
     background: white;
     margin: 15px;
@@ -55,7 +55,6 @@ h1 {
     display: block;
 }
 
-/* Espaço para você subir as fotos no GitHub */
 .github-img {
     margin: 15px 0;
     background: #ddd;
@@ -65,7 +64,7 @@ h1 {
 .btn {
     display: block;
     text-align: center;
-    background: #28a745; /* Verde conforme os prints */
+    background: #28a745; 
     color: white;
     padding: 18px;
     font-size: 19px;
@@ -81,7 +80,6 @@ h1 {
     position: relative;
 }
 
-/* Checkmark igual ao print */
 .benefits p::before {
     content: "●";
     position: absolute;
@@ -90,7 +88,7 @@ h1 {
     font-size: 14px;
 }
 
-/* Bloco de Valor Preto conforme print 6 */
+/* Bloco de Valor Preto */
 .price-box {
     background: black;
     color: white;
@@ -106,7 +104,7 @@ h1 {
     line-height: 1;
 }
 
-/* Depoimentos: Foto em cima, Texto embaixo */
+/* Depoimentos */
 .testimonial-block {
     text-align: center;
     padding: 20px;
@@ -168,6 +166,28 @@ h1 {
     to { transform: translateX(0); }
 }
 
+/* BLOCOS DE BÔNUS COLORIDOS */
+.bonus-card {
+    background: #f0fff4; /* Verde bem claro para dar cor */
+    border: 2px solid #28a745;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.bonus-card h3 {
+    color: #1e7e34;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+
+.bonus-card b {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
 .guarantee {
     text-align: center;
     padding: 20px;
@@ -178,19 +198,6 @@ footer {
     font-size: 11px;
     padding: 20px;
     color: #999;
-}
-
-.bonus-card {
-    border: 2px dashed #28a745;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.bonus-card h3 {
-    color: #28a745;
-    margin-top: 0;
 }
 </style>
 </head>
@@ -222,22 +229,6 @@ footer {
     <div class="section-card">
         <h2>O problema que quase ninguém percebe</h2>
         <p>Muitos donos acham que o mau hálito em cachorro é normal. Mas na maioria das vezes ele está ligado a acúmulo de bactérias na boca do animal.</p>
-        <p>A boa notícia é que alguns donos descobriram uma forma simples de melhorar isso usando um spray preparado em casa.</p>
-    </div>
-
-    <div class="github-img">
-        <img src="https://via.placeholder.com/500x300?text=Foto+Beijando+Pet+GitHub" alt="Beijo no Pet">
-    </div>
-
-    <div class="section-card">
-        <h2>O que é o Método Hálito de Ouro</h2>
-        <p>Um guia simples mostrando como preparar um spray caseiro que ajuda a melhorar o cheiro da boca do seu cachorro.</p>
-        <div class="benefits">
-            <p>✔ ingredientes simples</p>
-            <p>✔ preparo rápido</p>
-            <p>✔ método fácil de aplicar</p>
-            <p>✔ pode ser feito em casa</p>
-        </div>
     </div>
 
     <div class="section-card">
@@ -249,7 +240,7 @@ footer {
             <p>Aprenda a técnica correta para aplicar o spray sem estressar seu cão, tornando o momento relaxante.</p>
         </div>
 
-        <div class="bonus-card" style="margin-top:20px">
+        <div class="bonus-card">
             <h3>BÔNUS 2</h3>
             <b>10 Receitas de Petiscos Saudáveis</b>
             <p>Receitas naturais que ajudam na limpeza mecânica dos dentes e complementam o tratamento.</p>
@@ -258,47 +249,19 @@ footer {
 
     <div class="section-card">
         <h2 style="text-align:center">Depoimentos</h2>
-
         <div class="testimonial-block">
             <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="M">
             <div class="testimonial-text">“Depois que comecei a usar esse método o hálito do meu cachorro melhorou muito.”</div>
             <b>— Mariana R.</b>
         </div>
-
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="H">
-            <div class="testimonial-text">“Eu não sabia que dava para fazer algo assim em casa.”</div>
-            <b>— Carlos M.</b>
-        </div>
-
         <div class="testimonial-block">
             <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="M">
             <div class="testimonial-text">“Minha casa não tem mais aquele cheiro forte. O spray resolveu rápido!”</div>
             <b>— Fernanda S.</b>
         </div>
-
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="M">
-            <div class="testimonial-text">“Finalmente um método natural que não agride o estômago dele.”</div>
-            <b>— Juliana L.</b>
-        </div>
-
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="H">
-            <div class="testimonial-text">“Excelente custo benefício. Recomendo a todos.”</div>
-            <b>— Ricardo T.</b>
-        </div>
-    </div>
-
-    <div class="faq-box">
-        <h2 style="text-align:center">Dúvidas Frequentes</h2>
-        <div class="faq-item"><b>São produtos caseiros?</b><p>Sim! O guia foca em ingredientes que você encontra no mercado ou farmácia.</p></div>
-        <div class="faq-item"><b>Resultados em quantos dias?</b><p>A maioria dos donos percebe melhora já na primeira semana de aplicação.</p></div>
-        <div class="faq-item"><b>Como funciona?</b><p>Você aprenderá a criar o spray e a forma correta de borrifar na boca do cão.</p></div>
     </div>
 
     <div class="price-box">
-        <img src="https://via.placeholder.com/200x200?text=Foto+Produto+Livro" class="img-produto-valor" alt="Produto">
         <p>Acesso imediato</p>
         <span style="text-decoration: line-through; color: #777;">De R$ 67</span>
         <span class="price">R$27</span>
@@ -309,12 +272,12 @@ footer {
 
         <div class="guarantee">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Garantia_7_dias.png/600px-Garantia_7_dias.png" style="width:100px"><br>
-            Garantia de 7 dias. Se não gostar, você pode pedir reembolso.
+            Garantia de 7 dias.
         </div>
     </div>
 
     <footer>
-        Este site não é afiliado ao Facebook ou Meta. Resultados podem variar de pessoa para pessoa.
+        Este site não é afiliado ao Facebook ou Meta.
     </footer>
 
 </div>
@@ -331,13 +294,13 @@ footer {
         
         setTimeout(() => {
             notification.style.display = 'none';
-        }, 3000); // Reduzido para 3 segundos na tela
+        }, 3000); // Fica 3 segundos na tela
     }
 
-    // Intervalo aumentado para 45 segundos para aparecer menos vezes
-    setInterval(showNotification, 45000); 
+    // Aciona a cada 35 segundos
+    setInterval(showNotification, 35000);
     
-    // Primeira notificação demora mais para aparecer (10 segundos após abrir a página)
+    // Primeiro aviso 10 segundos após abrir
     setTimeout(showNotification, 10000);
 </script>
 
