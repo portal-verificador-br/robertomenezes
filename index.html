@@ -179,6 +179,19 @@ footer {
     padding: 20px;
     color: #999;
 }
+
+.bonus-card {
+    border: 2px dashed #28a745;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.bonus-card h3 {
+    color: #28a745;
+    margin-top: 0;
+}
 </style>
 </head>
 
@@ -186,7 +199,7 @@ footer {
 
 <div id="notification">
     <span style="font-size: 18px;">✅</span>
-    <div id="notif-text"><b>Mariana Silva</b> acabou de adquirir o Spray...</div>
+    <div id="notif-text"><b>Mariana Silva</b> acabou de adquirir o método Spray Hálito de Ouro</div>
 </div>
 
 <div class="container">
@@ -228,11 +241,19 @@ footer {
     </div>
 
     <div class="section-card">
-        <h2>O que você vai aprender</h2>
-        <p>• Como preparar o spray</p>
-        <p>• Como aplicar no cachorro</p>
-        <p>• Dicas de higiene bucal pet</p>
-        <p>• Como reduzir o cheiro forte do hálito</p>
+        <h2 style="text-align:center">BÔNUS EXCLUSIVOS</h2>
+        
+        <div class="bonus-card">
+            <h3>BÔNUS 1</h3>
+            <b>Spray Pet - Guia da Massagem para Aplicação</b>
+            <p>Aprenda a técnica correta para aplicar o spray sem estressar seu cão, tornando o momento relaxante.</p>
+        </div>
+
+        <div class="bonus-card" style="margin-top:20px">
+            <h3>BÔNUS 2</h3>
+            <b>10 Receitas de Petiscos Saudáveis</b>
+            <p>Receitas naturais que ajudam na limpeza mecânica dos dentes e complementam o tratamento.</p>
+        </div>
     </div>
 
     <div class="section-card">
@@ -305,18 +326,19 @@ footer {
 
     function showNotification() {
         const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
-        notifText.innerHTML = `<b>${nomeAleatorio}</b> acabou de adquirir o Spray...`;
+        notifText.innerHTML = `<b>${nomeAleatorio}</b> acabou de adquirir o método Spray Hálito de Ouro`;
         notification.style.display = 'flex';
         
         setTimeout(() => {
             notification.style.display = 'none';
-        }, 5000); // Fica 5 segundos na tela
+        }, 3000); // Reduzido para 3 segundos na tela
     }
 
-    // Aciona a cada 30 segundos conforme solicitado
-    setInterval(showNotification, 30000);
-    // Primeiro aviso 3 segundos após abrir
-    setTimeout(showNotification, 3000);
+    // Intervalo aumentado para 45 segundos para aparecer menos vezes
+    setInterval(showNotification, 45000); 
+    
+    // Primeira notificação demora mais para aparecer (10 segundos após abrir a página)
+    setTimeout(showNotification, 10000);
 </script>
 
 </body>
