@@ -3,353 +3,413 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Método Hálito de Ouro</title>
+<title>Método Spray Pet Hálito de Ouro</title>
 
 <style>
-/* Estilo Base */
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    background: #f2f2f2; 
-    color: #222;
-    line-height: 1.6;
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+margin:0;
+background:#f2f2f2;
+color:#222;
+line-height:1.6;
 }
 
-.container {
-    max-width: 500px; 
-    margin: auto;
-    padding: 0;
+.container{
+max-width:500px;
+margin:auto;
 }
 
-.header-box {
-    background: #28a745;
-    color: white;
-    padding: 30px 15px;
-    text-align: center;
+.header-box{
+background:#28a745;
+color:#fff;
+padding:30px 15px;
+text-align:center;
 }
 
-h1 {
-    font-size: 26px;
-    margin: 0;
-    line-height: 1.2;
+h1{
+font-size:26px;
+margin:0;
+line-height:1.2;
 }
 
-.sub {
-    font-size: 16px;
-    margin-top: 15px;
-    opacity: 0.9;
+.sub{
+font-size:16px;
+margin-top:15px;
+opacity:.9;
 }
 
-.section-card {
-    background: white;
-    margin: 15px;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.section-card{
+background:#fff;
+margin:15px;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
 
-.hero img, .github-img img {
-    width: 100%;
-    display: block;
+.hero img{
+width:100%;
+display:block;
 }
 
-.github-img {
-    margin: 15px 0;
-    background: #ddd;
-    min-height: 200px;
+.github-img img{
+width:100%;
+display:block;
 }
 
-.btn {
-    display: block;
-    text-align: center;
-    background: #28a745; 
-    color: white;
-    padding: 18px;
-    font-size: 19px;
-    font-weight: bold;
-    border-radius: 50px;
-    text-decoration: none;
-    margin: 20px 15px 5px 15px; /* Ajustado para dar espaço aos selos */
+.btn{
+display:block;
+text-align:center;
+background:#28a745;
+color:#fff;
+padding:18px;
+font-size:19px;
+font-weight:bold;
+border-radius:50px;
+text-decoration:none;
+margin:20px 15px;
 }
 
-/* Selos em baixo do botão */
-.security-seals {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+.security-seals{
+display:flex;
+justify-content:center;
+margin-bottom:20px;
 }
 
-.security-seals img {
-    width: 120px; /* Ajuste conforme necessário */
-    opacity: 0.7;
+.security-seals img{
+width:120px;
+opacity:.7;
 }
 
-.benefits p {
-    margin: 10px 0;
-    padding-left: 25px;
-    position: relative;
+.benefits p{
+margin:10px 0;
+padding-left:25px;
+position:relative;
 }
 
-.benefits p::before {
-    content: "●";
-    position: absolute;
-    left: 0;
-    color: #333;
-    font-size: 14px;
+.benefits p::before{
+content:"✔";
+position:absolute;
+left:0;
+color:#28a745;
 }
 
-.price-box {
-    background: black;
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 30px;
+.price-box{
+background:#000;
+color:#fff;
+text-align:center;
+padding:40px 20px;
+margin-top:30px;
 }
 
-.price {
-    font-size: 70px;
-    font-weight: bold;
-    display: block;
-    line-height: 1;
+.price{
+font-size:70px;
+font-weight:bold;
+display:block;
+line-height:1;
 }
 
-.testimonial-block {
-    text-align: center;
-    padding: 20px;
-    border-bottom: 1px solid #eee;
+.testimonial-block{
+text-align:center;
+padding:20px;
+border-bottom:1px solid #eee;
 }
 
-.testimonial-block img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 3px solid #28a745;
-    margin-bottom: 10px;
-    object-fit: cover;
+.testimonial-block img{
+width:80px;
+height:80px;
+border-radius:50%;
+border:3px solid #28a745;
+margin-bottom:10px;
+object-fit:cover;
 }
 
-.testimonial-text {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 5px;
+.testimonial-text{
+font-style:italic;
+color:#555;
 }
 
-.faq-box {
-    background: white;
-    margin: 15px;
-    padding: 20px;
-    border-radius: 12px;
+.faq-box{
+background:#fff;
+margin:15px;
+padding:20px;
+border-radius:12px;
 }
 
-.faq-item {
-    margin-bottom: 15px;
+.faq-item{
+margin-bottom:15px;
 }
 
-.faq-item b {
-    color: #28a745;
-    display: block;
+.faq-item b{
+color:#28a745;
 }
 
-#notification {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background: white;
-    padding: 12px 15px;
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    display: none;
-    align-items: center;
-    gap: 10px;
-    z-index: 10000;
-    border-left: 5px solid #28a745;
-    font-size: 13px;
-    animation: slideIn 0.5s;
+.bonus-card{
+background:#f0fff4;
+border:2px solid #28a745;
+padding:15px;
+margin-top:15px;
+border-radius:8px;
+text-align:center;
 }
 
-@keyframes slideIn {
-    from { transform: translateX(-110%); }
-    to { transform: translateX(0); }
+.guarantee{
+text-align:center;
+padding:20px;
 }
 
-.bonus-card {
-    background: #f0fff4; 
-    border: 2px solid #28a745;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 8px;
-    text-align: center;
+footer{
+text-align:center;
+font-size:11px;
+padding:20px;
+color:#999;
 }
 
-.bonus-card h3 {
-    color: #1e7e34;
-    margin: 0 0 5px 0;
+/* POPUP */
+
+#notification{
+position:fixed;
+bottom:20px;
+left:15px;
+background:#fff;
+padding:12px 14px;
+border-radius:8px;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+display:none;
+align-items:center;
+gap:10px;
+z-index:10000;
+border-left:5px solid #28a745;
+font-size:13px;
+animation:slideUp .5s;
+max-width:260px;
 }
 
-.guarantee {
-    text-align: center;
-    padding: 20px;
+@keyframes slideUp{
+from{transform:translateY(100px);opacity:0;}
+to{transform:translateY(0);opacity:1;}
 }
 
-footer {
-    text-align: center;
-    font-size: 11px;
-    padding: 20px;
-    color: #999;
+/* BOTAO FIXO MOBILE */
+
+.btn-fixo{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#28a745;
+color:#fff;
+text-align:center;
+padding:18px;
+font-size:18px;
+font-weight:bold;
+text-decoration:none;
+z-index:9999;
+box-shadow:0 -4px 10px rgba(0,0,0,.2);
 }
+
 </style>
 </head>
 
 <body>
 
 <div id="notification">
-    <span style="font-size: 18px;">✅</span>
-    <div id="notif-text"><b>Mariana Silva</b> acabou de adquirir o método Spray Hálito de Ouro</div>
+🐶 <div id="notif-text"></div>
 </div>
 
 <div class="container">
 
-    <div class="header-box">
-        <h1>Seu cachorro está com mau hálito forte?</h1>
-        <p class="sub">
-            Receita natural que milhares de papais e mamães de pet estão utilizando para eliminar o MAU HÁLITO de seu cãozinho de forma FÁCIL e com INGREDIENTES BARATOS E CASEIROS.
-        </p>
-    </div>
+<div class="header-box">
+<h1>Seu cachorro está com BAFO FORTE?</h1>
+<p class="sub">
+Receita natural em spray que donos estão usando para melhorar o hálito do cachorro em poucos dias.
+</p>
+</div>
 
-    <div class="hero">
-        <img src="primeira.png" alt="cachorro">
-    </div>
+<div class="hero">
+<img src="primeira.png">
+</div>
 
-    <a href="https://pay.cakto.com.br/88vonay_803820" class="btn">
-        QUERO O MÉTODO HÁLITO DE OURO POR R$ 29,90
-    </a>
-    <div class="security-seals">
-        <img src="garantia.jpg" alt="Compra Segura">
-    </div>
+<a href="https://pay.cakto.com.br/88vonay_803820" class="btn">
+QUERO O MÉTODO HÁLITO DE OURO POR R$29,90
+</a>
 
-    <div class="section-card">
-        <h2>O problema que quase ninguém percebe</h2>
-        <p>Muitos donos acham que o mau hálito em cachorro é normal. Mas na maioria das vezes ele está ligado a acúmulo de bactérias na boca do animal.</p>
-        <p>A boa notícia é que alguns donos descobriram uma forma simples de melhorar isso usando um spray preparado em casa.</p>
-    </div>
+<div class="security-seals">
+<img src="garantia.jpg">
+</div>
 
-    <div class="github-img">
-        <img src="kikisss.jfif" alt="Beijo no Pet">
-    </div>
+<div class="section-card">
+<h2>O problema que quase ninguém percebe</h2>
+<p>Muitos donos acham que o mau hálito em cachorro é normal.</p>
+<p>Na verdade isso geralmente está ligado a bactérias acumuladas na boca do animal.</p>
+<p>Alguns donos descobriram uma forma simples de melhorar isso com um spray natural preparado em casa.</p>
+</div>
 
-    <div class="section-card">
-        <h2>O que é o Método Hálito de Ouro</h2>
-        <p>Um guia simples mostrando como preparar um spray caseiro que ajuda a melhorar o cheiro da boca do seu cachorro.</p>
-        <div class="benefits">
-            <p>✔ ingredientes simples</p>
-            <p>✔ preparo rápido</p>
-            <p>✔ método fácil de aplicar</p>
-            <p>✔ pode ser feito em casa</p>
-        </div>
-    </div>
+<div class="github-img">
+<img src="kikisss.jfif">
+</div>
 
-    <div class="section-card">
-        <h2>O que você vai aprender</h2>
-        <p>• Como preparar o spray</p>
-        <p>• Como aplicar no cachorro</p>
-        <p>• Dicas de higiene bucal pet</p>
-        <p>• Como reduzir o cheiro forte do hálito</p>
-    </div>
+<div class="section-card">
+<h2>O que é o Método Spray Pet Hálito de Ouro</h2>
 
-    <div class="section-card">
-        <h2 style="text-align:center">BÔNUS EXCLUSIVOS</h2>
-        <div class="bonus-card">
-            <h3>BÔNUS 1</h3>
-            <b>Spray Pet - Guia da Massagem para Aplicação</b>
-            <p>Aprenda a técnica correta para aplicar o spray sem estressar seu cão.</p>
-        </div>
-        <div class="bonus-card">
-            <h3>BÔNUS 2</h3>
-            <b>10 Receitas de Petiscos Saudáveis</b>
-            <p>Receitas naturais que ajudam na limpeza dos dentes e complementam o tratamento.</p>
-        </div>
-    </div>
+<p>Um guia simples ensinando a preparar um spray natural que ajuda a melhorar o cheiro da boca do cachorro.</p>
 
-    <div class="section-card">
-        <h2 style="text-align:center">Depoimentos</h2>
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="M">
-            <div class="testimonial-text">“Depois que comecei a usar esse método o hálito do meu cachorro melhorou muito.”</div>
-            <b>— Mariana R.</b>
-        </div>
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="H">
-            <div class="testimonial-text">“Eu não sabia que dava para fazer algo assim em casa.”</div>
-            <b>— Carlos M.</b>
-        </div>
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="M">
-            <div class="testimonial-text">“Minha casa não tem mais aquele cheiro forte. O spray resolveu rápido!”</div>
-            <b>— Fernanda S.</b>
-        </div>
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="M">
-            <div class="testimonial-text">“Finalmente um método natural que não agride o estômago dele.”</div>
-            <b>— Juliana L.</b>
-        </div>
-        <div class="testimonial-block">
-            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="H">
-            <div class="testimonial-text">“Excelente custo benefício. Recomendo a todos.”</div>
-            <b>— Ricardo T.</b>
-        </div>
-    </div>
+<div class="benefits">
+<p>ingredientes simples</p>
+<p>preparo rápido</p>
+<p>aplicação fácil</p>
+<p>pode ser feito em casa</p>
+</div>
+</div>
 
-    <div class="faq-box">
-        <h2 style="text-align:center">Dúvidas Frequentes</h2>
-        <div class="faq-item"><b>São produtos caseiros?</b><p>Sim! O guia foca em ingredientes que você encontra no mercado ou farmácia.</p></div>
-        <div class="faq-item"><b>Resultados em quantos dias?</b><p>A maioria dos donos percebe melhora já na primeira semana de aplicação.</p></div>
-        <div class="faq-item"><b>Como funciona?</b><p>Você aprenderá a criar o spray e a forma correta de borrifar na boca do cão.</p></div>
-    </div>
+<div class="section-card">
+<h2>O que você vai aprender</h2>
+<p>• Como preparar o spray</p>
+<p>• Como aplicar corretamente</p>
+<p>• Dicas de higiene bucal pet</p>
+<p>• Como reduzir o mau hálito</p>
+</div>
 
-    <div class="price-box">
-        <img src="primeira.png" class="img-produto-valor" alt="Produto">
-        <p>Acesso imediato</p>
-        <span style="text-decoration: line-through; color: #777;">De R$ 67</span>
-        <span class="price">R$29,90</span>
-        
-        <a href="https://pay.cakto.com.br/88vonay_803820" class="btn">
-            QUERO O MÉTODO HÁLITO DE OURO POR R$ 29,90
-        </a>
-        <div class="security-seals">
-            <img src="" alt="garantia.jpg">
-        </div>
+<div class="section-card">
+<h2 style="text-align:center">BÔNUS EXCLUSIVOS</h2>
 
-        <div class="guarantee">
-            <img src="selo.jpg" style="width:100px"><br>
-            Garantia de 7 dias. Se não gostar, você pode pedir reembolso.
-        </div>
-    </div>
+<div class="bonus-card">
+<h3>BÔNUS 1</h3>
+<b>Spray Anti Coceira Natural</b>
+<p>Receita simples para aliviar coceiras no pet.</p>
+</div>
 
-    <footer>
-        Este site não é afiliado ao Facebook ou Meta. Resultados podem variar de pessoa para pessoa.
-    </footer>
+<div class="bonus-card">
+<h3>BÔNUS 2</h3>
+<b>Spray Calmante para Cachorro Ansioso</b>
+<p>Ajuda o pet a ficar mais relaxado.</p>
+</div>
+
+<div class="bonus-card">
+<h3>BÔNUS 3</h3>
+<b>Spray Neutralizador de Cheiro</b>
+<p>Para manter o pelo do cachorro cheiroso.</p>
+</div>
 
 </div>
 
+<div class="section-card">
+<h2 style="text-align:center">Depoimentos</h2>
+
+<div class="testimonial-block">
+<img src="https://randomuser.me/api/portraits/women/1.jpg">
+<div class="testimonial-text">
+Depois que comecei a usar o método o hálito do meu cachorro melhorou muito.
+</div>
+<b>— Mariana R.</b>
+</div>
+
+<div class="testimonial-block">
+<img src="https://randomuser.me/api/portraits/men/1.jpg">
+<div class="testimonial-text">
+Eu não sabia que dava para fazer algo assim em casa.
+</div>
+<b>— Carlos M.</b>
+</div>
+
+<div class="testimonial-block">
+<img src="https://randomuser.me/api/portraits/women/2.jpg">
+<div class="testimonial-text">
+Minha casa não tem mais aquele cheiro forte.
+</div>
+<b>— Fernanda S.</b>
+</div>
+
+</div>
+
+<div class="faq-box">
+
+<h2 style="text-align:center">Dúvidas Frequentes</h2>
+
+<div class="faq-item">
+<b>São ingredientes caseiros?</b>
+<p>Sim. O guia usa ingredientes simples encontrados em mercado ou farmácia.</p>
+</div>
+
+<div class="faq-item">
+<b>Em quanto tempo melhora?</b>
+<p>Muitos donos relatam melhora na primeira semana.</p>
+</div>
+
+<div class="faq-item">
+<b>Como recebo?</b>
+<p>O acesso é imediato após a compra.</p>
+</div>
+
+</div>
+
+<div class="price-box">
+
+<p>Acesso imediato</p>
+
+<span style="text-decoration:line-through;color:#777">De R$67</span>
+
+<span class="price">R$29,90</span>
+
+<a href="https://pay.cakto.com.br/88vonay_803820" class="btn">
+QUERO O MÉTODO HÁLITO DE OURO
+</a>
+
+<div class="guarantee">
+<img src="selo.jpg" style="width:100px"><br>
+Garantia de 7 dias.
+</div>
+
+</div>
+
+<footer>
+Este site não é afiliado ao Facebook ou Meta.
+</footer>
+
+</div>
+
+<a href="https://pay.cakto.com.br/88vonay_803820" class="btn-fixo">
+QUERO O MÉTODO POR R$29,90
+</a>
+
 <script>
-    const nomes = ["Camila Souza", "Ricardo Mendes", "Patrícia Lima", "Gustavo Rocha", "Elena Dias", "Marcos Oliveira", "Soraia Gomes"];
-    const notification = document.getElementById('notification');
-    const notifText = document.getElementById('notif-text');
 
-    function showNotification() {
-        const nomeAleatorio = nomes[Math.floor(Math.random() * nomes.length)];
-        notifText.innerHTML = `<b>${nomeAleatorio}</b> acabou de adquirir o método Spray Hálito de Ouro`;
-        notification.style.display = 'flex';
-        
-        setTimeout(() => {
-            notification.style.display = 'none';
-        }, 3000); 
-    }
+const nomes=[
+"Mariana Souza",
+"Carlos Oliveira Santos",
+"Fernanda A. Ribeiro",
+"Juliana Costa",
+"Bruno Martins L.",
+"Patrícia Fernandes",
+"Ricardo Almeida Neto",
+"Camila R. Duarte",
+"Lucas Pereira",
+"Tatiane Silva Rocha",
+"Eduardo M. Lima",
+"Amanda Carvalho",
+"Gustavo Mendes Filho"
+];
 
-    setInterval(showNotification, 35000);
-    setTimeout(showNotification, 10000);
+const notification=document.getElementById("notification");
+const notifText=document.getElementById("notif-text");
+
+function showNotification(){
+
+const nome=nomes[Math.floor(Math.random()*nomes.length)];
+
+notifText.innerHTML="<b>"+nome+"</b> acabou de adquirir o Método Spray Pet Hálito de Ouro";
+
+notification.style.display="flex";
+
+setTimeout(()=>{
+notification.style.display="none";
+},4000);
+
+}
+
+setTimeout(showNotification,8000);
+setInterval(showNotification,30000);
+
 </script>
 
 </body>
