@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -91,6 +90,13 @@ body {
     text-decoration: none;
     margin: 20px;
     box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
 }
 
 .price-box {
@@ -107,17 +113,6 @@ body {
     font-weight: 800;
     display: block;
     color: #22C55E;
-}
-
-.payment-info{
-    margin-top:15px;
-    font-size:14px;
-    color:#CBD5F5;
-}
-
-.highlight-pix{
-    color:#22C55E;
-    font-weight:700;
 }
 
 .testimonial {
@@ -145,7 +140,21 @@ body {
     text-align: center;
 }
 
-.faq-item b { color: #16A34A; }
+/* FAQ AJUSTADO */
+.faq-item {
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.faq-item b { 
+    color: #16A34A; 
+    display: block;
+    margin-bottom: 5px;
+}
+
+.faq-item p {
+    margin: 0;
+}
 
 .guarantee { text-align: center; padding: 25px; }
 .guarantee img { width: 100px; margin-bottom: 10px; }
@@ -189,7 +198,10 @@ footer { text-align: center; font-size: 11px; padding: 40px 20px 100px 20px; col
     z-index: 10000;
     border: 1px solid #E2E8F0;
     font-size: 13px;
+    animation: fadeInDown 0.5s;
 }
+
+@keyframes fadeInDown { from { opacity: 0; transform: translate(-50%, -20px); } to { opacity: 1; transform: translate(-50%, 0); } }
 </style>
 </head>
 
@@ -221,6 +233,10 @@ QUERO ACESSAR O MÉTODO AGORA
 <p>O método mostra uma forma simples de ajudar na higiene bucal usando um spray natural preparado em casa.</p>
 </div>
 
+<div style="padding: 0 20px;">
+    <img src="kikisss.jfif" style="width: 100%; border-radius: 15px;">
+</div>
+
 <div class="section">
 <h2>O que você aprende</h2>
 <div class="benefits">
@@ -233,65 +249,80 @@ QUERO ACESSAR O MÉTODO AGORA
 
 <div class="section">
 <h2 style="text-align:center">Bônus Exclusivos</h2>
-<div class="bonus"><b>Spray Anti Coceira Natural</b><p>Alívio rápido para coceiras.</p></div>
-<div class="bonus"><b>Spray Calmante</b><p>Ajuda seu pet a relaxar.</p></div>
-<div class="bonus"><b>Spray Neutralizador</b><p>Elimina odores fortes.</p></div>
+<div class="bonus">
+<b>Spray Anti Coceira Natural</b>
+<p>Receita simples para aliviar coceiras.</p>
+</div>
+<div class="bonus">
+<b>Spray Calmante para Pets Ansiosos</b>
+<p>Ajuda o cachorro a ficar mais relaxado.</p>
+</div>
+<div class="bonus">
+<b>Spray Neutralizador de Cheiro</b>
+<p>Para deixar o pelo cheiroso.</p>
+</div>
 </div>
 
 <div class="section">
 <h2 style="text-align:center">Depoimentos</h2>
-
 <div class="testimonial">
 <img src="https://randomuser.me/api/portraits/women/1.jpg">
-<p>Melhorou muito o hálito do meu cachorro.</p>
+<p>Depois que usei o método o hálito do meu cachorro melhorou muito.</p>
 <b>Mariana Souza</b>
 </div>
-
 <div class="testimonial">
 <img src="https://randomuser.me/api/portraits/men/2.jpg">
-<p>Não sabia que era tão simples.</p>
-<b>Carlos O. Santos</b>
+<p>Eu não sabia que dava para fazer algo assim em casa.</p>
+<b>Carlos Oliveira</b>
+</div>
+<div class="testimonial">
+<img src="https://randomuser.me/api/portraits/women/3.jpg">
+<p>A casa não fica mais com aquele cheiro forte.</p>
+<b>Fernanda Ribeiro</b>
+</div>
 </div>
 
-</div>
-
-<div class="section">
+<div class="faq">
 <h2 style="text-align:center">Dúvidas Frequentes</h2>
 
 <div class="faq-item">
-<b>Faz mal pro cachorro?</b>
-<p>Não. Ingredientes naturais e seguros seguindo o método.</p>
+<b>Funciona para todas as raças?</b>
+<p>Sim! O método foi testado e aprovado para todas as raças e tamanhos de cachorros.</p>
 </div>
 
 <div class="faq-item">
-<b>Quando vejo resultado?</b>
-<p>Normalmente na primeira semana.</p>
+<b>São ingredientes simples?</b>
+<p>Sim. Os ingredientes são fáceis de encontrar em mercado ou farmácia.</p>
 </div>
 
+<div class="faq-item">
+<b>Esse spray pode fazer mal para o cachorro?</b>
+<p>Não. A receita utiliza ingredientes naturais quando preparados da forma correta ensinada no guia.</p>
+</div>
+
+<div class="faq-item">
+<b>Em quanto tempo melhora?</b>
+<p>Muitos donos relatam melhora já na primeira semana.</p>
+</div>
+
+<div class="faq-item">
+<b>Como recebo o método?</b>
+<p>O acesso é liberado imediatamente após a compra.</p>
+</div>
 </div>
 
 <div class="price-box">
-
-<p>Acesso imediato</p>
-
+<p>Cartão em até 12x de R$ 3,70</p>
 <span style="text-decoration:line-through;color:#777">De R$67</span>
-
 <span class="price">R$29,90</span>
-
-<div class="payment-info">
-💳 Cartão: até 12x<br>
-⚡ <span class="highlight-pix">PIX com desconto aplicado</span>
-</div>
-
+<p style="color: #22C55E; font-weight: bold; margin-top: 5px;">(Pix com desconto aplicado)</p>
 <a href="https://checkout.payt.com.br/139e69afc5fd646f492efde2b6935c3d?payment=pix" class="btn">
 QUERO O MÉTODO AGORA
 </a>
-
 <div class="guarantee">
 <img src="selo.jpg">
 <p>Garantia incondicional de 7 dias.</p>
 </div>
-
 </div>
 
 <footer>
@@ -301,27 +332,25 @@ Este site não é afiliado ao Facebook ou Meta.
 </div>
 
 <a href="https://checkout.payt.com.br/139e69afc5fd646f492efde2b6935c3d?payment=pix" class="btn-fixo">
-QUERO ACESSAR AGORA
+QUERO ACESSAR O MÉTODO AGORA
 </a>
 
 <script>
 let viewers=Math.floor(Math.random()*15)+18;
 document.getElementById("viewCount").innerText=viewers;
 
-const nomes=["Mariana Souza","Carlos O. Santos","Fernanda Ribeiro","Juliana Costa","Bruno Martins","Patrícia Fernandes","Ricardo Almeida","Camila Duarte"];
-
+const nomes=["Mariana Souza", "Carlos O. Santos", "Fernanda Ribeiro", "Juliana Costa", "Bruno Martins", "Patrícia Fernandes", "Ricardo Almeida", "Camila Duarte", "Lucas Pereira", "Tatiane Rocha"];
 const notification=document.getElementById("notification");
 const notifText=document.getElementById("notif-text");
 
 function showNotification(){
 const nome=nomes[Math.floor(Math.random()*nomes.length)];
-notifText.innerHTML="<b>"+nome+"</b> acabou de comprar";
+notifText.innerHTML="<b>"+nome+"</b> acabou de adquirir o método";
 notification.style.display="flex";
-setTimeout(()=>{notification.style.display="none";},4000);
+setTimeout(()=>{ notification.style.display="none"; },4000);
 }
-
-setTimeout(showNotification,6000);
-setInterval(showNotification,25000);
+setTimeout(showNotification,7000);
+setInterval(showNotification,28000);
 </script>
 
 </body>
