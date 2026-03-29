@@ -1,360 +1,334 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Método Spray Pet Hálito de Ouro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Consulta Pública - Protocolo de Ressarcimento</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    // SEU PIXEL ID 2711205062544057
+    fbq('init', '2711205062544057'); 
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2711205062544057&ev=PageView&noscript=1"
+    /></noscript>
+    <style>
+        :root {
+            --primary: #003366; 
+            --secondary: #0056b3;
+            --accent: #28a745; 
+            --bg: #f8f9fa;
+            --text: #333;
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    background: #F1F5F9;
-    color: #1E293B;
-    line-height: 1.5;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-.container {
-    max-width: 500px;
-    margin: auto;
-    background: #fff;
-    min-height: 100vh;
-}
+        header {
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .logo-area { display: flex; align-items: center; gap: 10px; }
+        .shield-icon { color: var(--primary); font-size: 24px; }
+        .logo-text { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; line-height: 1.2; }
+        .secure-badge { background: #e8f5e9; color: var(--accent); padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
 
-.hero {
-    background: linear-gradient(180deg, #16A34A 0%, #15803D 100%);
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-}
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
-.hero h1 {
-    font-size: 28px;
-    font-weight: 800;
-    margin: 0;
-    line-height: 1.2;
-}
+        .progress-container { width: 100%; margin-bottom: 30px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500; }
+        .progress-track { background: #e9ecef; height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { background: var(--secondary); height: 100%; width: 20%; transition: width 0.5s ease; }
 
-.hero p {
-    margin-top: 15px;
-    font-size: 16px;
-    color: #DCFCE7;
-}
+        .card {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 100%;
+            text-align: center;
+            display: none; 
+            animation: slideUp 0.4s ease-out;
+        }
+        .card.active { display: block; }
 
-.hero img {
-    width: 100%;
-    margin-top: 25px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-.section {
-    padding: 30px 20px;
-}
+        h1 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
+        p.desc { font-size: 15px; color: #555; margin-bottom: 25px; line-height: 1.5; }
 
-.section h2 {
-    margin-top: 0;
-    font-size: 22px;
-    font-weight: 800;
-}
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        
+        .btn {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #444;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
 
-.benefits p {
-    margin: 12px 0;
-    padding: 12px 15px 12px 40px;
-    position: relative;
-    background: #F1F5F9;
-    border-radius: 12px;
-}
+        .btn:hover, .btn:active {
+            border-color: var(--secondary);
+            color: var(--secondary);
+            background: #f0f8ff;
+        }
+        
+        .btn.primary {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
+        }
+        .btn.primary:hover { background: #004494; transform: translateY(-2px); }
 
-.benefits p::before {
-    content: "✓";
-    position: absolute;
-    left: 15px;
-    color: #16A34A;
-    font-weight: 900;
-}
+        .loader-content { text-align: center; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #e9ecef;
+            border-top: 5px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-.btn {
-    display: block;
-    text-align: center;
-    background: #22C55E;
-    color: #fff;
-    padding: 20px;
-    font-size: 18px;
-    font-weight: 800;
-    border-radius: 16px;
-    text-decoration: none;
-    margin: 20px;
-    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
-    animation: pulse 2s infinite;
-}
+        .terminal-log {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #333;
+            text-align: left;
+            height: 120px;
+            overflow: hidden;
+            border-left: 3px solid var(--secondary);
+            margin-top: 15px;
+        }
+        .log-item { margin-bottom: 5px; display: none; }
+        .log-item.success { color: #28a745; }
+        .log-item.warning { color: #e67e22; }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-    100% { transform: scale(1); }
-}
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 11px;
+            color: #aaa;
+            border-top: 1px solid #eee;
+            margin-top: auto;
+            background: #fff;
+        }
 
-.price-box {
-    background: #0F172A;
-    color: #fff;
-    text-align: center;
-    padding: 50px 25px;
-    margin-top: 30px;
-    border-radius: 30px 30px 0 0;
-}
-
-.price {
-    font-size: 60px;
-    font-weight: 800;
-    display: block;
-    color: #22C55E;
-}
-
-.testimonial {
-    text-align: center;
-    padding: 25px;
-    border: 1px solid #E2E8F0;
-    border-radius: 20px;
-    margin-bottom: 20px;
-}
-
-.testimonial img {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 3px solid #22C55E;
-    margin-bottom: 15px;
-}
-
-.bonus {
-    background: #F0FDF4;
-    border: 2px dashed #22C55E;
-    padding: 20px;
-    margin-top: 15px;
-    border-radius: 16px;
-    text-align: center;
-}
-
-.faq-item {
-    margin-bottom: 20px;
-    padding: 0 20px;
-}
-
-.faq-item b { 
-    color: #16A34A; 
-    display: block;
-    margin-bottom: 5px;
-}
-
-.faq-item p {
-    margin: 0;
-}
-
-.guarantee { text-align: center; padding: 25px; }
-.guarantee img { width: 100px; margin-bottom: 10px; }
-
-.viewing {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: #EF4444;
-}
-
-footer { text-align: center; font-size: 11px; padding: 40px 20px 100px 20px; color: #94A3B8; }
-
-.btn-fixo {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    background: #22C55E;
-    color: #fff;
-    text-align: center;
-    padding: 18px;
-    font-size: 16px;
-    font-weight: 800;
-    border-radius: 14px;
-    text-decoration: none;
-    z-index: 9999;
-}
-
-#notification {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #fff;
-    padding: 10px 20px;
-    border-radius: 50px;
-    display: none;
-    align-items: center;
-    gap: 10px;
-    z-index: 10000;
-    border: 1px solid #E2E8F0;
-    font-size: 13px;
-    animation: fadeInDown 0.5s;
-}
-
-@keyframes fadeInDown { from { opacity: 0; transform: translate(-50%, -20px); } to { opacity: 1; transform: translate(-50%, 0); } }
-</style>
+        .highlight { color: var(--secondary); font-weight: 700; }
+    </style>
 </head>
-
 <body>
 
-<div id="notification">
-🐶 <div id="notif-text"></div>
-</div>
+    <header>
+        <div class="logo-area">
+            <i class="fas fa-university shield-icon"></i>
+            <div class="logo-text">Sistema Nacional<br>de Verificação</div>
+        </div>
+        <div class="secure-badge">
+            <i class="fas fa-lock"></i> SSL SEGURO
+        </div>
+    </header>
 
-<div class="container">
+    <main>
+        
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Progresso da Análise</span>
+                <span id="percent-text">0%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-bar"></div>
+            </div>
+        </div>
 
-<div class="hero">
-<h1>Seu cachorro está com mau hálito forte?</h1>
-<p>Aprenda a preparar um spray natural que muitos donos estão usando para melhorar o hálito do cachorro em poucos dias.</p>
-<img src="toptop.png">
-</div>
+        <div id="step1" class="card active">
+            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
+                <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h1>Uso de Aplicativo Bancário</h1>
+            <p class="desc">Para verificar a elegibilidade do seu CPF no <span class="highlight">Protocolo de 2026</span>, responda com sinceridade:</p>
+            <p class="desc" style="font-weight: 600;">Você possui o aplicativo de algum banco instalado no seu celular hoje?</p>
+            
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep(2)">
+                    <i class="far fa-check-circle"></i> SIM, EU POSSUO
+                </button>
+                <button class="btn" onclick="nextStep(2)">
+                    <i class="far fa-times-circle"></i> NÃO POSSUO
+                </button>
+            </div>
+        </div>
 
-<a href="https://checkout.payt.com.br/139e69afc5fd646f492efde2b6935c3d?payment=pix" class="btn">
-QUERO TESTAR O SPRAY AGORA
-</a>
+        <div id="step2" class="card">
+            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <h1>Frequência de Movimentação</h1>
+            <p class="desc">O sistema identificou uma possível pendência.</p>
+            <p class="desc" style="font-weight: 600;">Você realizou alguma transação (Pix, cartão ou boleto) nos últimos 7 dias?</p>
+            
+            <div class="btn-group">
+                <button class="btn" onclick="nextStep(3)">
+                    <i class="far fa-check-circle"></i> SIM, RECENTEMENTE
+                </button>
+                <button class="btn" onclick="nextStep(3)">
+                    <i class="far fa-clock"></i> FAZ MAIS TEMPO
+                </button>
+            </div>
+        </div>
 
-<div class="viewing">
-<span id="viewCount"></span> pessoas estão vendo essa página agora
-</div>
+        <div id="step3" class="card">
+            <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1>Verificação Final</h1>
+            <p class="desc">Estamos prontos para consultar a base de dados.</p>
+            <p class="desc">Você confirma que é o titular da conta e deseja visualizar o saldo disponível para resgate?</p>
+            
+            <div class="btn-group">
+                <button class="btn primary" onclick="startLoading()">
+                    CONFIRMAR E CONSULTAR
+                </button>
+            </div>
+        </div>
 
-<div class="section">
-<h2>Por que o mau hálito acontece?</h2>
-<p>Muitos cachorros acumulam bactérias na boca com o tempo. Isso gera aquele cheiro forte que incomoda os donos... E você acaba evitando os lambeijos e até os carinhos.</p>
-<p>O método mostra uma forma simples de ajudar na higiene bucal usando um spray natural preparado em casa. Rápido e prático.</p>
-</div>
+        <div id="loading" class="card">
+            <div class="loader-content">
+                <div class="spinner"></div>
+                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Conectando ao Servidor...</h2>
+                <p style="font-size: 13px; color: #666;">Por favor, não feche esta página.</p>
+                
+                <div class="terminal-log" id="terminal">
+                    </div>
+            </div>
+        </div>
 
-<div style="padding: 0 20px;">
-    <img src="kikisss.jfif" style="width: 100%; border-radius: 15px;">
-</div>
+    </main>
 
-<div class="section">
-<h2>O que você vai aprender</h2>
-<div class="benefits">
-<p>Como preparar o spray natural</p>
-<p>Como aplicar corretamente</p>
-<p>Dicas de higiene bucal pet</p>
-<p>Como reduzir o mau hálito</p>
-</div>
-</div>
+    <footer>
+        <p>Copyright © 2026 - Todos os direitos reservados.</p>
+        <p style="margin-top: 5px;">Política de Privacidade | Termos de Uso | LGPD</p>
+    </footer>
 
-<div class="section">
-<h2 style="text-align:center">🎁Bônus Exclusivos🎁</h2>
-<div class="bonus">
-<b>Método Spray Anti Coceira Natural</b>
-<p>Aprenda como aliviar a coceira do seu pet e manter a pele saudável no dia a dia. Ideal para evitar irritações, desconforto e aquele incômodo constante de se coçar.</p>
-</div>
-<div class="bonus">
-<b>Método Spray Calmante para Pets Ansiosos</b>
-<p>Receita natural de reduzir a ansiedade do seu cachorro. Ajudam seu pet a ficar mais calmo, menos agitado e com comportamento equilibrado.</p>
-</div>
-<div class="bonus">
-<b>Método Spray Neutralizador de Cheiro</b>
-<p>Receita prática para acabar com mau cheiro em casa, no ambiente e no próprio pet. Deixe ele sempre cheiroso.</p>
-</div>
-</div>
+    <script>
+        // ============================================
+        // LINK CORRIGIDO PARA SUA PÁGINA DE VENDAS
+        // ============================================
+        const redirectUrl = "pgblack.html"; 
+        // ============================================
 
-<div class="section">
-<h2 style="text-align:center">Depoimentos</h2>
-<div class="testimonial">
-<img src="https://randomuser.me/api/portraits/women/1.jpg">
-<p>Aqui em casa todo mundo reclamava do cheiro do Théo. Depois do spray melhorou muito, ficou bem mais tranquilo.</p>
-<b>Jaqueline Oliveira</b>
-</div>
-<div class="testimonial">
-<img src="https://randomuser.me/api/portraits/women/53.jpg">
-<p>Sério, mudou demais. O hálito do meu shitzu era insuportável, agora tá normal, nem parece o mesmo</p>
-<b>Lucia Fagundes</b>
-</div>
-<div class="testimonial">
-<img src="https://randomuser.me/api/portraits/women/69.jpg">
-<p>Usei sem muita expectativa e me surpreendi. Em poucos dias já deu diferença e até voltei a deixar ele me lamber kkk..</p>
-<b>Fernanda Ribeiro Andrade</b>
-</div>
-</div>
+        function updateProgress(percent) {
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('percent-text').innerText = percent + '%';
+        }
 
-<div class="faq">
-<h2 style="text-align:center">Dúvidas Frequentes</h2>
+        function nextStep(step) {
+            if (navigator.vibrate) navigator.vibrate(50);
+            document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            if(step === 2) updateProgress(50);
+            if(step === 3) updateProgress(85);
+        }
 
-<div class="faq-item">
-<b>Funciona para todas as raças?</b>
-<p>Sim! O método é aprovado para todas as raças e tamanhos de cachorros.</p>
-</div>
+        function startLoading() {
+            if (navigator.vibrate) navigator.vibrate(50);
+            document.getElementById('step3').classList.remove('active');
+            document.getElementById('loading').classList.add('active');
+            updateProgress(90);
 
-<div class="faq-item">
-<b>São ingredientes simples?</b>
-<p>Sim. Os ingredientes são fáceis de encontrar em qualquer mercado ou feira.</p>
-</div>
+            const terminal = document.getElementById('terminal');
+            const logs = [
+                { text: "> Iniciando conexão segura (SSL)...", delay: 500 },
+                { text: "> Validando dispositivo...", delay: 1500 },
+                { text: "> Acessando base de dados nacional...", delay: 2500, type: 'warning' },
+                { text: "> CPF Verificado. Status: ATIVO", delay: 3500, type: 'success' },
+                { text: "> Calculando valores pendentes...", delay: 4500 },
+                { text: "> PROTOCOLO AUTORIZADO!", delay: 5500, type: 'success' }
+            ];
 
-<div class="faq-item">
-<b>Esse spray pode fazer mal para meu cachorro?</b>
-<p>Não. A receita utiliza ingredientes naturais quando preparados e aplicado da forma correta ensinada no guia.</p>
-</div>
+            let logIndex = 0;
 
-<div class="faq-item">
-<b>Em quanto tempo melhora?</b>
-<p>Muitos donos relatam melhora já na primeira semana.</p>
-</div>
-
-<div class="faq-item">
-<b>Como recebo o método?</b>
-<p>O acesso é liberado imediatamente após a compra. Será enviado no seu email.</p>
-</div>
-</div>
-
-<div class="price-box">
-<p>Se você chegou até aqui, já sabe que o mau hálito do seu cachorro é um problema.
-Resolva isso agora com o e-book Spray Hálito de Ouro e leve +3 bônus exclusivos totalmente gratuitos por apenas:</p>
-
-<img src="toptopsegunda.png" style="width: 100%; border-radius: 15px; margin-bottom: 20px;">
-
-<span style="text-decoration:line-through;color:#777">De R$67</span>
-<span class="price">R$29,90</span>
-<p style="color: #22C55E; font-weight: bold; margin-top: 5px;">(Pix com desconto aplicado)</p>
-<a href="https://checkout.payt.com.br/139e69afc5fd646f492efde2b6935c3d?payment=pix" class="btn">
-SIM, QUERO O SPRAY + BÔNUS AGORA
-</a>
-<div class="guarantee">
-<img src="selo.jpg">
-<p>Eu acredito tanto que este e-book irá te gerar um ótimo resultado que te ofereço uma garantia de 7 dias para você experimentar o conteúdo. Se você acreditar que nossas receitas não te ajudaram nem um pouco, se não ficar satisfeito com o conteúdo ou se você se arrepender por qualquer outro motivo, basta me enviar um e-mail e eu devolvo 100% do seu dinheiro. Sem questionamentos e sem burocracia..</p>
-</div>
-</div>
-
-<footer>
-Spray Pet Hálito de Ouro. Todos os direitos reservados.
-</footer>
-
-</div>
-
-<a href="https://checkout.payt.com.br/139e69afc5fd646f492efde2b6935c3d?payment=pix" class="btn-fixo">
-QUERO ELIMINAR O MAU HÁLITO DO MEU PET
-</a>
-
-<script>
-let viewers=Math.floor(Math.random()*15)+18;
-document.getElementById("viewCount").innerText=viewers;
-
-const nomes=["Mariana Souza", "Carlos O. Santos", "Fernanda Ribeiro", "Juliana Costa", "Bruno Martins", "Patrícia Fernandes", "Ricardo Almeida", "Camila Duarte", "Lucas Pereira", "Tatiane Rocha"];
-const notification=document.getElementById("notification");
-const notifText=document.getElementById("notif-text");
-
-function showNotification(){
-const nome=nomes[Math.floor(Math.random()*nomes.length)];
-notifText.innerHTML="<b>"+nome+"</b> acabou de adquirir o método";
-notification.style.display="flex";
-setTimeout(()=>{ notification.style.display="none"; },4000);
-}
-setTimeout(showNotification,7000);
-setInterval(showNotification,28000);
-</script>
-
+            function addLog() {
+                if (logIndex < logs.length) {
+                    const log = logs[logIndex];
+                    setTimeout(() => {
+                        const p = document.createElement('div');
+                        p.className = 'log-item ' + (log.type || '');
+                        p.style.display = 'block';
+                        p.innerText = log.text;
+                        terminal.appendChild(p);
+                        terminal.scrollTop = terminal.scrollHeight;
+                        
+                        if (logIndex === logs.length - 1) {
+                            setTimeout(() => {
+                                updateProgress(100);
+                                window.location.href = redirectUrl;
+                            }, 1500);
+                        }
+                        
+                        logIndex++;
+                        addLog();
+                    }, logIndex === 0 ? log.delay : 1000); 
+                }
+            }
+            addLog();
+        }
+    </script>
 </body>
 </html>
