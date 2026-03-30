@@ -48,9 +48,11 @@
         p { margin-bottom: 15px; font-size: 18px; color: #333; }
         .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
 
-        /* BOX DA VINGANÇA ESTILIZADO */
-        .vinganca-box { background-color: #fff9c4; border: 2px dashed #fbc02d; padding: 20px; border-radius: 10px; margin: 25px 0; font-style: italic; color: #444; text-align: left; }
-        .vinganca-box strong { color: #c00; }
+        /* NOVA CAIXA BOX MODERNA */
+        .vinganca-box { background-color: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; margin: 25px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.05); text-align: left; }
+        .vinganca-box h3 { font-size: 18px; color: #0044cc; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .vinganca-box p { font-size: 16px; color: #555; font-style: italic; margin-bottom: 0; line-height: 1.5; }
+        .vinganca-box strong { color: #cc0000; }
 
         .cta-box { background-color: #f8f9fa; border: 1px solid #ddd; padding: 20px; text-align: center; margin: 30px 0; border-radius: 10px; }
         .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px 15px; text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34; animation: grow 1.5s infinite alternate; text-transform: uppercase; }
@@ -96,8 +98,8 @@
         <p>Acima está a foto da conta do João, um amigo que ativou o código ontem usando o manual. O dinheiro caiu na hora.</p>
 
         <div class="vinganca-box">
-            <p><strong>"Eu não ia sair de mãos vazias daquele prédio..."</strong><br><br>
-            Antes de passar pela roleta do banco pela última vez, eu decidi que a festa deles ia acabar. <strong>Copiei os protocolos de ativação do saque do Código 892</strong> e o manual de configuração completa. Agora, estou liberando isso para você recuperar o que é seu por direito.</p>
+            <h3><i class="fas fa-history"></i> A Retaliação do Roberto (Há 7 dias)</h3>
+            <p>"Eu não ia sair de mãos vazias daquele prédio... Antes de passar pela roleta do banco pela última vez, eu decidi que a festa deles ia acabar. <strong>Copiei os protocolos de ativação do saque do Código 892</strong> e o manual de configuração completa. Agora, estou liberando isso para você recuperar o que é seu por direito."</p>
         </div>
 
         <div class="cta-box">
@@ -124,11 +126,20 @@
             </div>
 
             <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Sandra R. Cavalcante</div>
+                    <div class="text">Gente, eu tava desesperada! Consegui sacar R$ 1.900,00 no Itaú agora de manhã. Consegui pagar o aluguel que tava atrasado e ainda fiz a compra do mês. Que Deus te abençoe Roberto, vc salvou minha família! 🙌✨</div>
+                    <div class="meta">Curtir · Responder · 5 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
                 <div class="comment-body">
                     <div class="name">Carla Cavalcante</div>
                     <div class="text">Gente, alguém sabe se é seguro mesmo?</div>
-                    <div class="meta">Curtir · Responder · 5 min</div>
+                    <div class="meta">Curtir · Responder · 8 min</div>
                 </div>
             </div>
             <div class="comment" style="margin-left: 50px;">
@@ -136,7 +147,25 @@
                 <div class="comment-body">
                     <div class="name">Marcos Pereira da Silva</div>
                     <div class="text">Carla, pode ir. O Roberto entrega mesmo. O acesso chega no email. O conteúdo vale ouro.</div>
-                    <div class="meta">Curtir · Responder · 3 min</div>
+                    <div class="meta">Curtir · Responder · 6 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/78.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Antônio Carlos de Almeida</div>
+                    <div class="text">Eu confesso que estava descrente, achei que era golpe de internet. Mas paguei pra ver e funcionou no Banco do Brasil! Caiu R$ 740 na hora. O pix cai direto no CPF. Muito obrigado!</div>
+                    <div class="meta">Curtir · Responder · 15 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Ricardo Augusto</div>
+                    <div class="text">Finalmente algo que funciona sem enrolação nesse Brasil. Valeu muito a pena.</div>
+                    <div class="meta">Curtir · Responder · 22 min</div>
                 </div>
             </div>
         </div>
@@ -166,5 +195,6 @@
         setTimeout(showNotification, 3000);
         setInterval(showNotification, 15000);
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
 </html>
