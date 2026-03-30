@@ -48,15 +48,25 @@
         p { margin-bottom: 15px; font-size: 18px; color: #333; }
         .print-screen { width: 100%; border: 2px solid #000; margin: 15px 0; border-radius: 8px; }
 
-        /* NOVA CAIXA BOX MODERNA */
-        .vinganca-box { background-color: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; margin: 25px 0; box-shadow: 0 2px 6px rgba(0,0,0,0.05); text-align: left; }
-        .vinganca-box h3 { font-size: 18px; color: #0044cc; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        .vinganca-box p { font-size: 16px; color: #555; font-style: italic; margin-bottom: 0; line-height: 1.5; }
-        .vinganca-box strong { color: #cc0000; }
+        /* BOX DA VINGANÇA - ESTILO CITAÇÃO (OPÇÃO 2) */
+        .quote-box { background-color: #f9f9f9; border-left: 6px solid #0044cc; padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+        .quote-title { font-weight: 900; color: #0044cc; font-size: 18px; margin-bottom: 10px; text-transform: uppercase; }
+        .quote-text { font-style: italic; color: #1a1a1a; font-weight: 500; font-size: 16px; line-height: 1.6; }
 
-        .cta-box { background-color: #f8f9fa; border: 1px solid #ddd; padding: 20px; text-align: center; margin: 30px 0; border-radius: 10px; }
-        .btn-pulse { background: #28a745; color: white; font-size: 22px; font-weight: bold; padding: 20px 15px; text-decoration: none; display: block; border-radius: 8px; box-shadow: 0 4px 0 #1e7e34; animation: grow 1.5s infinite alternate; text-transform: uppercase; }
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.02); } }
+        /* BOX DE OFERTA MODERNO - GRADIENTE E PROFISSIONAL */
+        .offer-card { background: linear-gradient(180deg, #ffffff 0%, #eef6ff 100%); border: 2px solid #0044cc; padding: 25px; border-radius: 15px; margin: 35px 0; text-align: center; box-shadow: 0 10px 25px rgba(0,68,204,0.1); }
+        .offer-card h2 { color: #0044cc; font-weight: 900; font-size: 22px; margin-bottom: 15px; }
+        .price-old { text-decoration: line-through; color: #888; font-size: 16px; }
+        .price-new { font-size: 32px; font-weight: 900; color: #28a745; margin: 5px 0; }
+        .btn-buy { background: #28a745; color: white; font-size: 22px; font-weight: 900; padding: 20px; text-decoration: none; display: block; border-radius: 10px; box-shadow: 0 6px 0 #1e7e34; margin: 20px 0; animation: grow 1.5s infinite alternate; text-transform: uppercase; }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.03); } }
+        .support-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; color: #25d366; font-weight: bold; font-size: 14px; margin-top: 15px; }
+
+        /* FAQ SEÇÃO */
+        .faq-section { margin-top: 40px; text-align: left; }
+        .faq-item { border-bottom: 1px solid #ddd; padding: 15px 0; cursor: pointer; }
+        .faq-question { font-weight: bold; font-size: 16px; color: #111; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { display: none; font-size: 14px; color: #555; margin-top: 10px; padding-left: 5px; border-left: 2px solid #0044cc; }
 
         .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
         .comment { display: flex; margin-bottom: 15px; }
@@ -97,20 +107,49 @@
 
         <p>Acima está a foto da conta do João, um amigo que ativou o código ontem usando o manual. O dinheiro caiu na hora.</p>
 
-        <div class="vinganca-box">
-            <h3><i class="fas fa-history"></i> A Retaliação do Roberto (Há 7 dias)</h3>
-            <p>"Eu não ia sair de mãos vazias daquele prédio... Antes de passar pela roleta do banco pela última vez, eu decidi que a festa deles ia acabar. <strong>Copiei os protocolos de ativação do saque do Código 892</strong> e o manual de configuração completa. Agora, estou liberando isso para você recuperar o que é seu por direito."</p>
+        <div class="quote-box">
+            <div class="quote-title">A Retaliação do Roberto (Vazamento Exclusivo)</div>
+            <p class="quote-text">"Eu não ia sair de mãos vazias daquele prédio... Antes de passar pela roleta do banco pela última vez, eu decidi que a festa deles ia acabar. Copiei os protocolos de ativação do saque do Código 892 e o manual de configuração completa. Agora, estou liberando isso para você recuperar o que é seu por direito."</p>
         </div>
 
-        <div class="cta-box">
-            <h2>ACESSO RESTRITO AO MANUAL</h2>
-            <p>Eu compilei o passo a passo exato em um PDF à prova de idiotas. Você só precisa ler, clicar onde eu mostro e ativar sua chave.</p>
-            <p style="font-size: 14px; color: #555;">(Saque Garantido para: Nubank, Inter, Bradesco, Banco do Brasil, Itaú, Sicredi, Santander e Caixa)</p>
-            <br>
-            <p style="text-decoration: line-through; color: #999;">De: R$ 997,00</p>
-            <p style="font-size: 24px; font-weight: bold; color: #c00;">POR APENAS: R$ 97,00</p>
-            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pulse" onclick="fbq('track', 'InitiateCheckout');">🔓 DESBLOQUEAR MEU SALDO AGORA</a>
-            <p style="color: #c00; font-weight: bold; margin-top: 10px; font-size: 14px;">🔥 Chave Inclusa. Restam apenas 3 licenças antes que o site caia.</p>
+        <div class="offer-card">
+            <h2>ACESSO COMPLETO AO PROTOCOLO</h2>
+            <p style="font-size: 16px; color: #555;">Eu organizei os <strong>arquivos e prints de configuração</strong> que extraí do banco em um guia visual à prova de idiotas.</p>
+            <div style="margin: 15px 0;">
+                <p class="price-old">De: R$ 997,00</p>
+                <p class="price-new">POR APENAS R$ 97,00</p>
+            </div>
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-buy" onclick="fbq('track', 'InitiateCheckout');">
+                🔓 DESBLOQUEAR MEU SALDO AGORA
+            </a>
+            <p style="color: #c00; font-weight: bold; font-size: 14px;">✅ CHAVE DE 8 DÍGITOS INCLUSA</p>
+            <div class="support-whatsapp">
+                <i class="fab fa-whatsapp"></i> Suporte total pelo meu WhatsApp pessoal até finalizar seu saque.
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h3 style="margin-bottom: 20px; border-bottom: 2px solid #0044cc; padding-bottom: 5px;">Dúvidas Frequentes</h3>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Como eu ativo o código? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">A ativação é feita diretamente pelo aplicativo oficial do seu banco no celular, seguindo as imagens do manual até finalizar o saque via Pix.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Eu não entendo de celular, vou conseguir? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Sim! O manual foi feito com prints reais e setas indicando cada passo. Se você sabe abrir o WhatsApp, você consegue fazer.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">O banco pode bloquear minha conta? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Não. O Código 892 é um direito de ressarcimento de tarifas previsto em lei. Você está apenas exercendo seu direito de correntista.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Quanto tempo demora para o dinheiro cair? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Após finalizar a ativação no seu app, o saldo geralmente é liberado na sua conta principal entre 15 a 40 minutos.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Como eu recebo o acesso? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">O envio é imediato e automático por e-mail e WhatsApp assim que a inscrição for confirmada.</div>
+            </div>
         </div>
 
         <div class="comments-section">
@@ -179,6 +218,15 @@
     </div>
 
     <script>
+        function toggleFaq(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            const isVisible = answer.style.display === 'block';
+            answer.style.display = isVisible ? 'none' : 'block';
+            icon.classList.toggle('fa-chevron-up', !isVisible);
+            icon.classList.toggle('fa-chevron-down', isVisible);
+        }
+
         const names = ['Pedro Henrique', 'José Carlos Nunes', 'Maria Eduarda', 'Marcos Silva de Andrade', 'Júlia Mendes Martins', 'Rafael Oliveira', 'Ana Beatriz', 'Gustavo Pereira'];
         const locs = ['SP', 'RJ', 'MG', 'RS', 'BA', 'PR'];
         function showNotification() {
