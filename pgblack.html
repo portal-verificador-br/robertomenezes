@@ -1,78 +1,73 @@
-<script>
-    const chat = document.getElementById('chat');
-    const typing = document.getElementById('typing-indicator');
-    let userName = "";
-    let currentMsg = 0;
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta Oficial - Sistema de Restituição</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; color: #1c1e21; }
+        .header { background: #0044cc; color: white; padding: 12px; text-align: center; font-weight: bold; font-size: 13px; position: sticky; top: 0; z-index: 999; }
+        .container { max-width: 450px; margin: 10px auto; background: white; min-height: 100vh; padding: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        
+        /* Balão de Mensagem */
+        .msg-bot { background: #e4e6eb; padding: 12px; border-radius: 18px; border-bottom-left-radius: 4px; margin-bottom: 15px; font-size: 15px; line-height: 1.4; display: block; width: fit-content; max-width: 90%; }
+        .perfil { display: flex; align-items: center; margin-bottom: 5px; }
+        .perfil img { width: 28px; height: 28px; border-radius: 50%; margin-right: 8px; }
+        .perfil span { font-size: 12px; font-weight: bold; color: #0044cc; }
 
-    const messages = [
-        { type: 'bot', text: 'Olá! Sou a Amélia, assistente virtual do <b>Consultor Roberto Silva</b>. Bem-vindo ao sistema de auditoria bancária.' },
-        { type: 'bot', text: 'Identificamos um saldo pendente de restituição vinculado a contas ativas nos últimos 15 anos. Para começarmos, <b>qual o seu nome completo?</b>', input: 'text', placeholder: 'Digite seu nome...', btn: 'Continuar' },
-        { type: 'bot', text: 'Prazer, {name}! Agora, informe seu <b>CPF</b> para consultarmos a base da Instituição Financeira e calcular os juros abusivos.', input: 'tel', placeholder: '000.000.000-00', btn: 'Validar CPF' },
-        { type: 'bot', text: 'Estamos realizando a Auditoria de Contas... Isso pode levar alguns segundos ⏳' },
-        { type: 'bot', text: '<b>RESULTADO DA AUDITORIA CONCLUÍDO!</b><br><br>Consultor Roberto Silva liberou o seu extrato de restituição.' },
-        { type: 'bot', html: `<div class="extrato-box"><p style="margin:0; font-size:12px; color:#666;">SALDO TOTAL DISPONÍVEL</p><div class="valor-grande">R$ 2.487,30</div><p style="margin:5px 0 0 0; font-size:11px; color:#28a745;"><b>LIBERAÇÃO VIA PIX IMEDIATA</b></p></div>` },
-        { type: 'bot', text: 'Para que o banco realize o estorno imediato para sua conta, o sistema exige a emissão da <b>Certidão de Regularidade de Saque</b>.' },
-        { type: 'bot', text: 'Esta certidão tem um custo único de <b>R$ 37,00</b>. <br><br>⚠️ <b>IMPORTANTE:</b> Este valor de R$ 37,00 é integralmente <b>REEMBOLSADO</b> para você junto com o seu saque de R$ 2.487,30.' },
-        { type: 'bot', text: 'Ou seja, você paga a taxa agora e recebe <b>R$ 2.524,30</b> no seu PIX em até 10 minutos. Podemos emitir sua certidão?' },
-        { type: 'bot', html: `<a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-checkout" onclick="fbq('track', 'InitiateCheckout');">✅ EMITIR CERTIDÃO E RECEBER PIX</a>` }
-    ];
+        /* Extrato Estilizado */
+        .extrato { background: #fff; border: 2px dashed #28a745; padding: 20px; text-align: center; border-radius: 12px; margin: 20px 0; }
+        .valor { font-size: 32px; font-weight: 900; color: #28a745; margin: 10px 0; }
+        
+        /* Botão de Pagamento */
+        .btn-pix { background: #28a745; color: white; text-decoration: none; display: block; padding: 20px; border-radius: 10px; text-align: center; font-weight: 900; font-size: 18px; box-shadow: 0 4px 0 #1e7e34; margin-top: 20px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        
+        .footer-info { font-size: 12px; color: #777; text-align: center; margin-top: 30px; padding: 20px; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
 
-    function showMessage() {
-        if (currentMsg >= messages.length) return;
+    <div class="header">🏦 SISTEMA FEDERAL DE RESTITUIÇÃO BANCÁRIA</div>
 
-        typing.style.display = 'block';
-        chat.appendChild(typing);
-        window.scrollTo(0, document.body.scrollHeight);
+    <div class="container">
+        <div class="perfil">
+            <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png">
+            <span>Consultor Roberto Silva</span>
+        </div>
+        <div class="msg-bot">
+            Olá! Identificamos valores retidos no seu CPF referentes a tarifas bancárias cobradas indevidamente entre 2010 e 2024.
+        </div>
 
-        setTimeout(() => {
-            typing.style.display = 'none';
-            const msgData = messages[currentMsg];
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'message bot-msg';
-            
-            let header = `<div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>`;
-            
-            if (msgData.html) {
-                msgDiv.innerHTML = header + msgData.html;
-            } else {
-                let text = msgData.text.replace('{name}', userName);
-                msgDiv.innerHTML = header + text;
-            }
+        <div class="msg-bot">
+            Após auditoria completa no sistema, os valores foram liberados para transferência via PIX. Confira seu extrato oficial abaixo:
+        </div>
 
-            chat.appendChild(msgDiv);
-            window.scrollTo(0, document.body.scrollHeight);
+        <div class="extrato">
+            <p style="margin:0; font-weight: bold; color: #666;">VALOR DISPONÍVEL PARA SAQUE:</p>
+            <div class="valor">R$ 2.487,30</div>
+            <p style="margin:0; font-size: 13px; color: #28a745;">✅ <b>PROTOCOLO DE LIBERAÇÃO ATIVO</b></p>
+        </div>
 
-            if (msgData.input) {
-                const inputDiv = document.createElement('div');
-                inputDiv.className = 'user-input-box';
-                inputDiv.style.display = 'block';
-                inputDiv.innerHTML = `
-                    <input type="${msgData.input}" id="user-field-${currentMsg}" class="input-field" placeholder="${msgData.placeholder}">
-                    <button class="btn-send" id="btn-action-${currentMsg}">${msgData.btn}</button>
-                `;
-                chat.appendChild(inputDiv);
-                window.scrollTo(0, document.body.scrollHeight);
-                
-                document.getElementById(`btn-action-${currentMsg}`).addEventListener('click', function() {
-                    const val = document.getElementById(`user-field-${currentMsg}`).value;
-                    if (val.length < 3) {
-                        alert('Por favor, preencha os dados corretamente.');
-                        return;
-                    }
-                    if (currentMsg === 1) userName = val.split(' ')[0];
-                    inputDiv.style.display = 'none';
-                    currentMsg++;
-                    showMessage();
-                });
-            } else {
-                currentMsg++;
-                // Se for a mensagem de "Auditoria de Contas", espera um pouco mais pra dar realismo
-                let delay = (currentMsg === 4) ? 4000 : 2000;
-                setTimeout(showMessage, delay);
-            }
-        }, 1200);
-    }
+        <div class="msg-bot">
+            Para realizar o saque agora, é necessário a emissão da <b>Certidão de Regularidade de Saque</b>. 
+        </div>
+        
+        <div class="msg-bot" style="background: #fff3cd; border: 1px solid #ffeeba;">
+            ⚠️ <b>IMPORTANTE:</b> O custo da certidão é de <b>R$ 37,00</b>. Este valor é <b>TOTALMENTE REEMBOLSADO</b> junto com o seu saque de R$ 2.487,30. <br><br>
+            Você pagará R$ 37 e receberá um total de <b>R$ 2.524,30</b> no seu PIX em até 10 minutos.
+        </div>
 
-    // Inicia o chat assim que a página carrega
-    window.onload = showMessage;
-</script>
+        <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pix">
+            EMITIR CERTIDÃO E RECEBER PIX ➔
+        </a>
+
+        <div class="footer-info">
+            <p><b>Instituição Responsável:</b> Consultoria Administrativa de Crédito</p>
+            <p>Segurança Criptografada SSL - Protocolo Lei 14.XXX/26</p>
+        </div>
+    </div>
+
+</body>
+</html>
