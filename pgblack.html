@@ -3,108 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monetiza Insta - Processando Saque</title>
+    <title>Monetiza Insta - Resumo</title>
     <style>
-        :root { --primary: #d6005d; --bg: #f8f9fa; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; padding: 20px 0; }
-        .app-container { width: 90%; max-width: 420px; margin: auto; background: white; border-radius: 25px; padding: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        :root { --primary: #d6005d; --success: #28a745; --bg: #f4f7f6; }
+        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; }
+        .app { width: 100%; max-width: 400px; margin: auto; min-height: 100vh; background: white; padding: 20px; box-sizing: border-box; }
+        
+        /* Utility */
+        .hidden { display: none; }
+        .card { background: #fff; border-radius: 15px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 20px; }
         
         /* Header */
-        .header { display: flex; align-items: center; margin-bottom: 20px; font-weight: 800; font-size: 18px; color: #333; }
-        .header img { width: 32px; margin-right: 10px; }
+        .header { display: flex; align-items: center; font-weight: bold; margin-bottom: 20px; }
+        .header img { width: 28px; margin-right: 8px; }
 
-        /* Card de Saldo com Animação */
-        .balance-card { background: linear-gradient(135deg, #d6005d 0%, #ff4d94 100%); color: white; padding: 25px; border-radius: 18px; margin-bottom: 20px; }
-        .balance-label { font-size: 13px; opacity: 0.9; margin-bottom: 5px; }
-        .balance-value { font-size: 32px; font-weight: bold; }
-
-        /* Barras de Progresso Animadas */
-        .task-box { margin-bottom: 20px; }
-        .task-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px; font-weight: 600; }
-        .progress-bg { height: 12px; background: #eee; border-radius: 10px; overflow: hidden; margin-bottom: 15px; }
-        .progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 2.5s ease-out; }
-
-        /* Formulário */
-        .form-group { margin-bottom: 15px; }
-        label { font-size: 13px; color: #555; display: block; margin-bottom: 6px; }
-        select, input { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 10px; font-size: 15px; outline: none; box-sizing: border-box; }
-
-        /* Botão Sigilo */
-        .btn-sacar { 
-            display: block; width: 100%; padding: 18px; background: var(--primary); color: white; 
-            text-align: center; text-decoration: none; border-radius: 12px; font-weight: bold; 
-            font-size: 17px; margin-top: 10px; box-shadow: 0 4px 15px rgba(214, 0, 93, 0.3);
-        }
+        /* Tela 1: Dashboard */
+        .balance-box { background: linear-gradient(135deg, var(--primary), #ff4d94); color: white; border-radius: 15px; padding: 20px; }
+        .progress-bar { height: 8px; background: #eee; border-radius: 10px; margin: 10px 0; overflow: hidden; }
+        .fill { height: 100%; background: var(--primary); width: 0%; transition: 2s; }
+        
+        /* Tela 2: Resumo (A que você pediu) */
+        .status-badge { background: #e8f5e9; color: var(--success); padding: 8px; border-radius: 8px; font-size: 13px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
+        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+        .tax-box { background: #fff3f8; border: 1px dashed var(--primary); border-radius: 10px; padding: 15px; margin-top: 15px; }
+        
+        .btn { display: block; width: 100%; padding: 16px; background: var(--primary); color: white; text-align: center; text-decoration: none; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; }
+        
+        /* Temporizador */
+        .timer { color: #d6005d; font-weight: bold; text-align: center; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-<div class="app-container">
-    <div class="header">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Insta">
-        MONETIZA INSTA
-    </div>
-
-    <div class="balance-card">
-        <div class="balance-label">Saldo disponível</div>
-        <div class="balance-value">R$ <span id="saldo">0,00</span></div>
-    </div>
-
-    <div class="task-box">
-        <div class="task-row"><span>Vídeos assistidos</span><span id="txt-vid">0/50</span></div>
-        <div class="progress-bg"><div class="progress-fill" id="bar-vid"></div></div>
-
-        <div class="task-row"><span>Tempo na plataforma</span><span id="txt-time">0/1000</span></div>
-        <div class="progress-bg"><div class="progress-fill" id="bar-time"></div></div>
-    </div>
-
-    <div class="form-saque">
-        <div class="form-group">
-            <label>Tipo de chave PIX</label>
-            <select>
-                <option value="cpf">CPF</option>
-                <option value="tel">Telefone</option>
-                <option value="email">E-mail</option>
-                <option value="aleatoria">Chave Aleatória</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Sua Chave PIX</label>
-            <input type="text" placeholder="Digite sua chave...">
+<div class="app">
+    <div id="tela1">
+        <div class="header"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"> MONETIZA INSTA</div>
+        <div class="balance-box">
+            <div style="font-size: 12px; opacity: 0.8;">Saldo disponível</div>
+            <div style="font-size: 30px; font-weight: bold;">R$ <span id="saldo">0,00</span></div>
         </div>
         
-        <a href="SEU_LINK_DO_CHECKOUT_SIGILO_AQUI" class="btn-sacar">
-            Sacar Agora
-        </a>
+        <div style="margin-top:20px;">
+            <div style="display:flex; justify-content:space-between; font-size:12px;"><span>Vídeos Assistidos</span><span>50/50</span></div>
+            <div class="progress-bar"><div class="fill" id="f1"></div></div>
+            <div style="display:flex; justify-content:space-between; font-size:12px;"><span>Tempo de Uso</span><span>1000/1000</span></div>
+            <div class="progress-bar"><div class="fill" id="f2"></div></div>
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <label style="font-size: 12px; color: #666;">Tipo de Chave</label>
+            <select id="tipoPix" style="width:100%; padding:10px; margin: 8px 0; border-radius:8px; border:1px solid #ddd;">
+                <option>CPF</option>
+                <option>Celular</option>
+                <option>E-mail</option>
+                <option>Chave Aleatória</option>
+            </select>
+            <input type="text" placeholder="Digite sua chave PIX" style="width:100%; padding:12px; box-sizing:border-box; border-radius:8px; border:1px solid #ddd;">
+            <button class="btn" style="margin-top:15px;" onclick="irParaResumo()">SOLICITAR SAQUE</button>
+        </div>
+    </div>
+
+    <div id="tela2" class="hidden">
+        <div class="timer">Tempo restante: <span id="clock">09:00</span></div>
+        <div class="status-badge">✓ Nome do Usuário Pré-aprovado</div>
+        
+        <div class="card">
+            <div class="info-row"><span>Saldo Disponível</span><strong>R$ 4.334,72</strong></div>
+            <div class="info-row"><span>Status</span><span style="color:var(--success)">Aguardando Taxa</span></div>
+        </div>
+
+        <div class="tax-box">
+            <div style="font-weight: bold; color: var(--primary); margin-bottom: 5px;">Contribuição de Segurança</div>
+            <p style="font-size: 12px; color: #444; margin: 0;">O Banco Central exige uma taxa de <b>R$ 21,32</b> para liberação imediata. Este valor será <b>estornado</b> para sua conta em até 1 minuto após o saque.</p>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <div class="info-row" style="border:none;"><span>Valor a receber:</span><strong style="font-size:18px;">R$ 4.334,72</strong></div>
+            <a href="SEU_LINK_DO_CHECKOUT_SIGILO_AQUI" class="btn">CONFIRMAR E LIBERAR AGORA</a>
+        </div>
     </div>
 </div>
 
 <script>
-    // Função para animar o saldo e as barras ao carregar a página
+    // Animação inicial
     window.onload = function() {
-        let saldoFinal = 4334.72;
-        let saldoAtual = 0;
-        let saldoElement = document.getElementById('saldo');
-        
-        // Animação do Saldo (Subindo)
-        let countSaldo = setInterval(() => {
-            saldoAtual += 103.50; // Velocidade do contador
-            if (saldoAtual >= saldoFinal) {
-                saldoElement.innerText = "4.334,72";
-                clearInterval(countSaldo);
-            } else {
-                saldoElement.innerText = saldoAtual.toLocaleString('pt-BR', {minimumFractionDigits: 2});
-            }
+        let s = 0;
+        let int = setInterval(() => {
+            s += 115.50;
+            if(s >= 4334.72) { document.getElementById('saldo').innerText = "4.334,72"; clearInterval(int); }
+            else { document.getElementById('saldo').innerText = s.toLocaleString('pt-BR'); }
         }, 30);
-
-        // Animação das Barras
-        setTimeout(() => {
-            document.getElementById('bar-vid').style.width = "100%";
-            document.getElementById('bar-time').style.width = "100%";
-            document.getElementById('txt-vid').innerText = "50/50";
-            document.getElementById('txt-time').innerText = "1000/1000";
+        setTimeout(() => { 
+            document.getElementById('f1').style.width = "100%"; 
+            document.getElementById('f2').style.width = "100%"; 
         }, 500);
-    };
+    }
+
+    function irParaResumo() {
+        document.getElementById('tela1').classList.add('hidden');
+        document.getElementById('tela2').classList.remove('hidden');
+        startTimer(540); // 9 minutos
+    }
+
+    function startTimer(duration) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+            document.getElementById('clock').textContent = "0" + minutes + ":" + seconds;
+            if (--timer < 0) timer = duration;
+        }, 1000);
+    }
 </script>
 
 </body>
