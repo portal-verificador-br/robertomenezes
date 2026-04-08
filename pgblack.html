@@ -3,117 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monetiza Insta - Resumo</title>
+    <title>Portal de Utilidade Pública - Auditoria Financeira</title>
     <style>
-        :root { --primary: #d6005d; --success: #28a745; --bg: #f4f7f6; }
-        body { font-family: -apple-system, system-ui, sans-serif; background: var(--bg); margin: 0; }
-        .app { width: 100%; max-width: 400px; margin: auto; min-height: 100vh; background: white; padding: 20px; box-sizing: border-box; }
-        
-        /* Utility */
-        .hidden { display: none; }
-        .card { background: #fff; border-radius: 15px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 20px; }
-        
-        /* Header */
-        .header { display: flex; align-items: center; font-weight: bold; margin-bottom: 20px; }
-        .header img { width: 28px; margin-right: 8px; }
+        /* Reset básico e fontes */
+        * { margin: 0; padding: 0; box-box: border-box; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; }
 
-        /* Tela 1: Dashboard */
-        .balance-box { background: linear-gradient(135deg, var(--primary), #ff4d94); color: white; border-radius: 15px; padding: 20px; }
-        .progress-bar { height: 8px; background: #eee; border-radius: 10px; margin: 10px 0; overflow: hidden; }
-        .fill { height: 100%; background: var(--primary); width: 0%; transition: 2s; }
+        /* Topo do Portal */
+        header { background-color: #003366; color: white; padding: 10px 0; text-align: center; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        .container { max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+        /* Conteúdo da Matéria */
+        .content { padding: 20px; }
+        .tag { color: #d32f2f; font-weight: bold; font-size: 14px; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        h1 { font-size: 24px; color: #1a1a1a; line-height: 1.2; margin-bottom: 15px; }
+        .lead { font-size: 17px; color: #555; margin-bottom: 15px; font-weight: 500; }
         
-        /* Tela 2: Resumo (A que você pediu) */
-        .status-badge { background: #e8f5e9; color: var(--success); padding: 8px; border-radius: 8px; font-size: 13px; font-weight: bold; margin-bottom: 15px; display: inline-block; }
-        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #eee; font-size: 14px; }
-        .tax-box { background: #fff3f8; border: 1px dashed var(--primary); border-radius: 10px; padding: 15px; margin-top: 15px; }
-        
-        .btn { display: block; width: 100%; padding: 16px; background: var(--primary); color: white; text-align: center; text-decoration: none; border-radius: 12px; font-weight: bold; border: none; cursor: pointer; }
-        
-        /* Temporizador */
-        .timer { color: #d6005d; font-weight: bold; text-align: center; margin-bottom: 10px; }
+        .author-line { border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 8px 0; font-size: 12px; color: #888; margin-bottom: 20px; }
+        .author-line strong { color: #333; }
+
+        /* Área do Quiz/Verificação */
+        .quiz-card { background: #f9f9f9; border: 2px solid #003366; border-radius: 8px; padding: 20px; margin-top: 20px; text-align: center; }
+        .quiz-card h2 { font-size: 18px; margin-bottom: 15px; color: #003366; }
+
+        .btn-check { 
+            background-color: #28a745; 
+            color: white; 
+            text-decoration: none; 
+            padding: 15px 20px; 
+            border-radius: 5px; 
+            display: block; 
+            font-weight: bold; 
+            font-size: 18px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn-check:hover { background-color: #218838; }
+
+        .security-badge { margin-top: 15px; font-size: 11px; color: #777; display: flex; align-items: center; justify-content: center; gap: 5px; }
     </style>
 </head>
 <body>
 
-<div class="app">
-    <div id="tela1">
-        <div class="header"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"> MONETIZA INSTA</div>
-        <div class="balance-box">
-            <div style="font-size: 12px; opacity: 0.8;">Saldo disponível</div>
-            <div style="font-size: 30px; font-weight: bold;">R$ <span id="saldo">0,00</span></div>
-        </div>
+<header>
+    Painel de Restituição Financeira - 2026
+</header>
+
+<div class="container">
+    <div class="content">
+        <span class="tag">Economia / Agora é Oficial</span>
+        <h1>Auditoria independente libera consulta para restituição de taxas abusivas em contratos bancários</h1>
+        <p class="lead">Brasileiros que quitaram empréstimos ou utilizaram cartões de crédito podem ter valores retidos para saque via PIX.</p>
         
-        <div style="margin-top:20px;">
-            <div style="display:flex; justify-content:space-between; font-size:12px;"><span>Vídeos Assistidos</span><span>50/50</span></div>
-            <div class="progress-bar"><div class="fill" id="f1"></div></div>
-            <div style="display:flex; justify-content:space-between; font-size:12px;"><span>Tempo de Uso</span><span>1000/1000</span></div>
-            <div class="progress-bar"><div class="fill" id="f2"></div></div>
+        <div class="author-line">
+            Publicado por <strong>Redação Central</strong> | Atualizado há 14 minutos
         </div>
 
-        <div class="card" style="margin-top:20px;">
-            <label style="font-size: 12px; color: #666;">Tipo de Chave</label>
-            <select id="tipoPix" style="width:100%; padding:10px; margin: 8px 0; border-radius:8px; border:1px solid #ddd;">
-                <option>CPF</option>
-                <option>Celular</option>
-                <option>E-mail</option>
-                <option>Chave Aleatória</option>
-            </select>
-            <input type="text" placeholder="Digite sua chave PIX" style="width:100%; padding:12px; box-sizing:border-box; border-radius:8px; border:1px solid #ddd;">
-            <button class="btn" style="margin-top:15px;" onclick="irParaResumo()">SOLICITAR SAQUE</button>
-        </div>
-    </div>
+        <p>A nova resolução permite que o sistema de auditoria identifique cobranças indevidas de tarifas administrativas e taxas de juros acima do teto em contratos já finalizados.</p>
 
-    <div id="tela2" class="hidden">
-        <div class="timer">Tempo restante: <span id="clock">09:00</span></div>
-        <div class="status-badge">✓ Nome do Usuário Pré-aprovado</div>
-        
-        <div class="card">
-            <div class="info-row"><span>Saldo Disponível</span><strong>R$ 4.334,72</strong></div>
-            <div class="info-row"><span>Status</span><span style="color:var(--success)">Aguardando Taxa</span></div>
-        </div>
+        <div class="quiz-card" id="fluxo-verificacao">
+            <h2>Consulte sua Elegibilidade abaixo:</h2>
+            
+            <p style="font-size: 14px; margin-bottom: 20px;">Você possui ou possuiu algum destes serviços nos últimos 10 anos?</p>
+            
+            <div style="text-align: left; margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 10px;">
+                    <input type="checkbox"> Cartão de Crédito
+                </label>
+                <label style="display: block; margin-bottom: 10px;">
+                    <input type="checkbox"> Empréstimo Pessoal / Consignado
+                </label>
+                <label style="display: block; margin-bottom: 10px;">
+                    <input type="checkbox"> Financiamento de Veículo/Imóvel
+                </label>
+            </div>
 
-        <div class="tax-box">
-            <div style="font-weight: bold; color: var(--primary); margin-bottom: 5px;">Contribuição de Segurança</div>
-            <p style="font-size: 12px; color: #444; margin: 0;">O Banco Central exige uma taxa de <b>R$ 21,32</b> para liberação imediata. Este valor será <b>estornado</b> para sua conta em até 1 minuto após o saque.</p>
-        </div>
-
-        <div style="margin-top: 20px;">
-            <div class="info-row" style="border:none;"><span>Valor a receber:</span><strong style="font-size:18px;">R$ 4.334,72</strong></div>
-            <a href="https://pay.checkoutpixes.com/checkout/cmno3t5gq02ha1yqmetvdd6v6?offer=D3VNASJ" class="btn">CONFIRMAR E LIBERAR AGORA</a>
+            <button class="btn-check" onclick="proximaEtapa()">VERIFICAR MEU CPF</button>
+            
+            <div class="security-badge">
+                <img src="https://cdn-icons-png.flaticon.com/512/2541/2541170.png" width="12" alt="lock">
+                Conexão Segura e Criptografada
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    // Animação inicial
-    window.onload = function() {
-        let s = 0;
-        let int = setInterval(() => {
-            s += 115.50;
-            if(s >= 4334.72) { document.getElementById('saldo').innerText = "4.334,72"; clearInterval(int); }
-            else { document.getElementById('saldo').innerText = s.toLocaleString('pt-BR'); }
-        }, 30);
-        setTimeout(() => { 
-            document.getElementById('f1').style.width = "100%"; 
-            document.getElementById('f2').style.width = "100%"; 
-        }, 500);
-    }
-
-    function irParaResumo() {
-        document.getElementById('tela1').classList.add('hidden');
-        document.getElementById('tela2').classList.remove('hidden');
-        startTimer(540); // 9 minutos
-    }
-
-    function startTimer(duration) {
-        var timer = duration, minutes, seconds;
-        setInterval(function () {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            document.getElementById('clock').textContent = "0" + minutes + ":" + seconds;
-            if (--timer < 0) timer = duration;
-        }, 1000);
+    function proximaEtapa() {
+        // Aqui você insere a lógica para levar o usuário para a captura do CPF
+        // ou para a tela de animação de "Consultando Banco de Dados"
+        alert("Iniciando varredura no banco de dados da Auditoria...");
     }
 </script>
 
