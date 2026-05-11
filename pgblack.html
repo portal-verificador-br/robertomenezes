@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocolo de Resgate Bancário - Consulta Ativa</title>
+    <title>Protocolo de Resgate Bancário - Ativo</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-    <!-- Pixel do Facebook -->
+    <!-- Pixel Facebook -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -24,185 +24,130 @@
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
+    /></noscript>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f4f6f8; color: #1c1e21; line-height: 1.6; }
+        body { background-color: #f0f2f5; color: #1c1e21; line-height: 1.6; }
         
-        .alert-bar {
-            background-color: #1a1a1a;
-            color: #ffcc00;
-            text-align: center;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 0.85rem;
-            border-bottom: 3px solid #ffcc00;
-        }
+        .alert-bar { background-color: #1a1a1a; color: #ffcc00; text-align: center; padding: 10px; font-weight: bold; font-size: 0.85rem; border-bottom: 2px solid #ffcc00; }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        }
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { font-size: 24px; color: #111; line-height: 1.2; margin-bottom: 15px; text-align: left; font-weight: 900; }
+        .highlight { background: #fff200; padding: 0 5px; border-radius: 4px; }
 
-        h1 {
-            font-size: 24px;
-            color: #1a1a1a;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            text-align: left;
-            font-weight: 900;
-        }
-        
-        .highlight { background: #fff200; padding: 2px 5px; border-radius: 3px; }
+        .author-box { display: flex; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .author-img { width: 50px; height: 50px; border-radius: 50%; background: #ddd; margin-right: 10px; overflow: hidden; border: 2px solid #28a745; }
+        .author-img img { width: 100%; height: 100%; object-fit: cover; }
+        .date { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .author-box {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            background: #f8f9fa;
-            padding: 10px;
-            border-radius: 8px;
-        }
-        
-        .author-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            margin-right: 12px;
-            border: 2px solid #28a745;
-        }
-        
-        .author-img img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-        
-        .date { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 15px 0; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        p { margin-bottom: 18px; font-size: 17px; color: #444; }
-        
-        .verified-badge {
-            background: #e8f5e9;
-            color: #2e7d32;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 13px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
+        p { margin-bottom: 15px; font-size: 17px; color: #333; }
+        .print-screen { width: 100%; border: 1px solid #ccc; margin: 15px 0; border-radius: 8px; }
 
-        .cta-box {
-            background-color: #fff;
-            border: 2px solid #28a745;
-            padding: 25px;
-            text-align: center;
-            margin: 35px 0;
-            border-radius: 12px;
-            position: relative;
-        }
+        /* BOX DA VINGANÇA */
+        .quote-box { background-color: #f9f9f9; border-left: 6px solid #28a745; padding: 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+        .quote-title { font-weight: 900; color: #1b5e20; font-size: 16px; margin-bottom: 10px; text-transform: uppercase; }
+        .quote-text { font-style: italic; color: #1a1a1a; font-weight: 500; font-size: 16px; line-height: 1.6; }
 
-        .btn-pulse {
-            background: #28a745;
-            color: white;
-            font-size: 20px;
-            font-weight: 900;
-            padding: 22px 10px;
-            text-decoration: none;
-            display: block;
-            border-radius: 8px;
-            box-shadow: 0 6px 0 #1e7e34;
-            transition: all 0.2s;
-            animation: grow 1.8s infinite ease-in-out;
-            text-transform: uppercase;
-        }
+        /* BOX DE OFERTA */
+        .offer-card { background: #fff; border: 2px solid #28a745; padding: 25px; border-radius: 15px; margin: 35px 0; text-align: center; box-shadow: 0 10px 25px rgba(40,167,69,0.1); }
+        .offer-card h2 { color: #1b5e20; font-weight: 900; font-size: 22px; margin-bottom: 15px; }
+        .price-old { text-decoration: line-through; color: #888; font-size: 16px; }
+        .price-new { font-size: 32px; font-weight: 900; color: #28a745; margin: 5px 0; }
+        .btn-buy { background: #28a745; color: white; font-size: 20px; font-weight: 900; padding: 20px; text-decoration: none; display: block; border-radius: 10px; box-shadow: 0 6px 0 #1e7e34; margin: 20px 0; animation: grow 1.5s infinite alternate; text-transform: uppercase; }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.03); } }
 
-        @keyframes grow { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        /* FAQ SEÇÃO */
+        .faq-section { margin-top: 40px; text-align: left; }
+        .faq-item { border-bottom: 1px solid #ddd; padding: 15px 0; cursor: pointer; }
+        .faq-question { font-weight: bold; font-size: 16px; color: #111; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { display: none; font-size: 14px; color: #555; margin-top: 10px; padding-left: 5px; border-left: 2px solid #28a745; }
 
-        .scarcity { color: #d32f2f; font-weight: bold; margin-top: 15px; font-size: 14px; }
+        .comments-section { margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px; }
+        .comment { display: flex; margin-bottom: 15px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin-right: 10px; }
+        .comment-body { background: #f0f2f5; padding: 10px; border-radius: 15px; width: 100%; }
+        .name { font-weight: bold; font-size: 14px; color: #385898; }
+        .text { font-size: 14px; }
+        .meta { font-size: 12px; color: #65676b; margin-top: 5px; }
 
-        /* Comentários Estilo Facebook */
-        .comments-section { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
-        .comment { display: flex; margin-bottom: 20px; }
-        .avatar { width: 36px; height: 36px; border-radius: 50%; margin-right: 10px; }
-        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: auto; max-width: 85%; }
-        .name { font-weight: bold; font-size: 13px; color: #385898; margin-bottom: 2px; }
-        .text { font-size: 14px; color: #1c1e21; }
-        .meta { font-size: 12px; color: #65676b; margin-top: 5px; font-weight: bold; }
-
-        /* Notification */
-        #notification {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #fff;
-            padding: 12px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            display: none;
-            align-items: center;
-            z-index: 1000;
-            border-left: 6px solid #28a745;
-        }
-        #notification img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; }
-        #notification p { font-size: 12px; margin: 0; line-height: 1.4; color: #333; }
+        #notification { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; width: 260px; border-left: 5px solid #28a745; }
+        #notification p { font-size: 13px; margin: 0; line-height: 1.3; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">
-        SISTEMA DE CONSULTA LIBERADO: PROTOCOLO VIGENTE POR TEMPO LIMITADO
-    </div>
+    <div class="alert-bar">VAGA LIBERADA: CONSULTA DE VALORES ATÉ R$ 3.100,00 DISPONÍVEL HOJE</div>
 
     <div class="container">
-        <div class="verified-badge">✓ CONTEÚDO VERIFICADO PELO PROTOCOLO DE RESGATE</div>
-        
-        <h1>Ex-Bancário revela como liberar o <span class="highlight">Resgate de Taxas Retidas</span> que os bancos escondem no seu CPF</h1>
+        <h1>Ex-Auditor Bancário vaza brecha no sistema: <span class="highlight">"Brasileiros têm entre R$ 850 e R$ 3.100 retidos para resgate imediato"</span></h1>
 
         <div class="author-box">
-            <div class="author-img">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Roberto">
-            </div>
-            <div>
-                <strong>Relato de: Roberto M. (Ex-Analista de Sistemas)</strong><br>
-                <span class="date">Publicado em: <script>document.write(new Date().toLocaleDateString('pt-BR'))</script></span>
-            </div>
+            <div class="author-img"><img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/robertoitau.png"></div>
+            <div><strong>Por: Roberto M. (Ex-Auditor de Riscos)</strong><br><span class="date">Atualizado: Hoje, às 08:30</span></div>
         </div>
 
-        <p>Eu trabalhei 12 anos no setor de compensação de um grande banco e vi milhares de brasileiros perdendo dinheiro todos os meses.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/gwzWlANKTRA?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe>
+        </div>
 
-        <p>Você já percebeu que o banco te cobra "taxa de conta", "seguro de cartão" ou juros sobre juros em empréstimos? O que eles não contam é que **uma parte desse valor fica guardada em uma conta residual** que o banco é obrigado a te devolver se você solicitar da forma correta.</p>
-
-        <p>Mas como eles não querem que você saque, eles escondem essa opção em menus que ninguém acessa.</p>
+        <p><strong>⚠️ Assista ao vídeo antes que o sistema saia do ar.</strong></p>
         
-        <p><strong>A média de resgate para quem usa conta corrente há mais de 2 anos varia entre R$ 299,00 e R$ 750,00.</strong></p>
+        <p>Meu nome é Roberto e trabalhei no "coração" de um dos maiores bancos do Brasil. Fui desligado após revelar que os bancos escondem um saldo acumulado de **tarifas indevidas** que deveriam ser devolvidas automaticamente.</p>
 
-        <p>Depois que fui desligado por tentar facilitar esse processo para os clientes, eu decidi criar um guia simples mostrando exatamente onde clicar para fazer a varredura no seu CPF e solicitar o estorno imediato.</p>
+        <p>O que chamamos de **Protocolo de Resgate** permite que qualquer pessoa com CPF ativo recupere de **R$ 850,00 a R$ 3.100,00** em valores acumulados de seguros não solicitados, taxas de manutenção abusivas e juros retroativos.</p>
 
-        <div class="cta-box">
-            <h3 style="margin-bottom: 15px; color: #1a1a1a;">CONSULTAR MEU SALDO RETIDO</h3>
-            <p style="font-size: 15px;">Acesse agora o <strong>Protocolo de Resgate</strong> e veja o valor acumulado no seu CPF nos últimos 5 anos.</p>
-            
-            <div style="margin: 20px 0;">
-                <span style="text-decoration: line-through; color: #999; font-size: 18px;">R$ 197,00</span><br>
-                <span style="font-size: 28px; font-weight: 900; color: #28a745;">APENAS R$ 67,00</span>
+        <p>Este dinheiro já é seu. O banco apenas o mantém "congelado" esperando que você nunca reclame. Mas com os códigos certos de acesso, a liberação via PIX é instantânea.</p>
+
+        <img src="caixarealtop.png" class="print-screen" alt="Comprovante de Saque Alto">
+
+        <div class="quote-box">
+            <div class="quote-title">O SEGREDO DOS GRANDES BANCOS</div>
+            <p class="quote-text">"Eles não querem que você saiba que existe um fundo de reserva para essas devoluções. Se 10% da população soubesse como acessar esse protocolo, os bancos perderiam bilhões em um único dia. Minha missão agora é garantir que você pegue o que te pertence."</p>
+        </div>
+
+        <div class="offer-card">
+            <h2>LIBERAR ACESSO AO PROTOCOLO</h2>
+            <p style="font-size: 16px; color: #555;">Tenha acesso ao manual passo a passo e aos <strong>códigos de ativação</strong> para solicitar seu estorno hoje mesmo.</p>
+            <div style="margin: 15px 0;">
+                <p class="price-old">De: R$ 197,00</p>
+                <p class="price-new">POR APENAS R$ 67,00</p>
             </div>
-            
-            <a href="SUA_URL_DA_KIRVANO_OU_SIGILOPAY" class="btn-pulse">
-                🔓 LIBERAR PROTOCOLO DE RESGATE
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-buy" onclick="fbq('track', 'InitiateCheckout');">
+                🔓 RESGATAR MEUS VALORES AGORA 
             </a>
-            
-            <p class="scarcity">⚠️ Atenção: Acesso disponível para apenas mais 7 pessoas hoje.</p>
+            <p style="color: #28a745; font-weight: bold; font-size: 14px;">✅ PROTOCOLO ATUALIZADO (MAIO/2026)</p>
+        </div>
+
+        <div class="faq-section">
+            <h3 style="margin-bottom: 20px; border-bottom: 2px solid #28a745; padding-bottom: 5px;">Perguntas Frequentes</h3>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Qual o valor mínimo que posso receber? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Com base nos nossos dados, o valor mínimo identificado para contas com mais de 2 anos de uso é de R$ 850,00.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Preciso ir até o banco? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Não. Todo o processo é feito pelo celular, através do sistema de auditoria que ensinamos no manual. O dinheiro cai direto na sua conta principal.</div>
+            </div>
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Quanto tempo para o dinheiro cair? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Após seguir o passo a passo e enviar a solicitação de estorno, o processamento bancário leva de 30 minutos a 2 horas para liquidar via PIX.</div>
+            </div>
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 20px; font-size: 14px;">Comentários Recentes (142)</p>
+            <p style="font-weight: bold; margin-bottom: 15px;">Mais recentes</p>
 
             <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/46.jpg" class="avatar">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Ricardo Alencar</div>
-                    <div class="text">Cara, sensacional. Achei que era papo furado, mas caiu R$ 412,00 de taxas de uma conta que eu nem usava mais. Valeu cada centavo do guia!</div>
+                    <div class="name">Ricardo Almeida Santos</div>
+                    <div class="text">Mano, surreal! Fiz a consulta e tinha R$ 1.240,00 parados no Bradesco. Já saquei e caiu na hora. Roberto é o cara!</div>
                     <div class="meta">Curtir · Responder · 4 min</div>
                 </div>
             </div>
@@ -210,65 +155,61 @@
             <div class="comment">
                 <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Maria Eduarda</div>
-                    <div class="text">O meu deu R$ 320,00! Já fiz o pedido pelo app como o Roberto ensina e caiu no Pix em 24h. Obrigada!</div>
+                    <div class="name">Beatriz Souza</div>
+                    <div class="text">Eu achei que era brincadeira, mas recuperei R$ 2.900,00 de uma conta antiga que eu nem usava mais. Salvou meu mês! 🙏</div>
                     <div class="meta">Curtir · Responder · 12 min</div>
                 </div>
             </div>
 
-            <div class="comment" style="margin-left: 45px; border-left: 2px solid #ddd; padding-left: 10px;">
-                <img src="https://randomuser.me/api/portraits/men/15.jpg" class="avatar">
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/67.jpg" class="avatar">
                 <div class="comment-body">
-                    <div class="name">Felipe Souza</div>
-                    <div class="text">Maria, você fez pelo Bradesco ou Itaú? O meu é Bradesco e deu certo tbm.</div>
-                    <div class="meta">Curtir · Responder · 8 min</div>
+                    <div class="name">Claudio Mendes</div>
+                    <div class="text">O meu deu R$ 890,00. Pensei que ia ser mais, mas pelo valor do manual valeu MUITO a pena. Recomendo.</div>
+                    <div class="meta">Curtir · Responder · 21 min</div>
                 </div>
             </div>
         </div>
-        
-        <footer style="text-align: center; padding: 40px 0 20px; border-top: 1px solid #eee; margin-top: 30px;">
-            <p style="font-size: 12px; color: #999;">
-                &copy; 2026 Protocolo de Resgate Bancário Profissional<br>
-                <a href="#" style="color: #999;">Privacidade</a> | <a href="#" style="color: #999;">Termos de Uso</a>
-            </p>
-        </footer>
-
     </div>
 
     <div id="notification">
-        <img src="" id="notify-img">
         <div>
             <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
-            <p id="notify-text"></p>
-            <p style="color: #28a745; font-size: 11px; font-weight: bold; margin-top: 2px;">✓ Resgate Confirmado</p>
+            <p>Acabou de resgatar <strong>R$ <span id="notify-val"></span></strong></p>
+            <p style="color: #28a745; font-size: 11px; font-weight: bold;">Transferência PIX Concluída ✓</p>
         </div>
     </div>
 
     <script>
-        const names = ['Marcos', 'Lucas', 'Sandra', 'Roberto', 'Juliana', 'Rafael', 'Patrícia', 'Gustavo', 'Beatriz'];
-        const locs = ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Porto Alegre', 'Salvador', 'Curitiba'];
-        const values = ['R$ 312,00', 'R$ 450,50', 'R$ 527,00', 'R$ 299,00', 'R$ 680,00', 'R$ 415,00'];
+        function toggleFaq(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            const isVisible = answer.style.display === 'block';
+            answer.style.display = isVisible ? 'none' : 'block';
+            icon.classList.toggle('fa-chevron-up', !isVisible);
+            icon.classList.toggle('fa-chevron-down', isVisible);
+        }
+
+        const names = ['André Silva', 'Carlos Alberto', 'Juliana Lima', 'Marcos V.', 'Patrícia G.', 'Rodrigo F.', 'Sérgio M.', 'Tatiane R.'];
+        const locs = ['São Paulo', 'Curitiba', 'Belo Horizonte', 'Porto Alegre', 'Salvador', 'Brasília'];
         
         function showNotification() {
             const name = names[Math.floor(Math.random() * names.length)];
             const loc = locs[Math.floor(Math.random() * locs.length)];
-            const val = values[Math.floor(Math.random() * values.length)];
-            const imgId = Math.floor(Math.random() * 70);
-            const gender = Math.random() > 0.5 ? 'men' : 'women';
+            const val = (Math.random() * (3100 - 850) + 850).toFixed(2);
             
-            document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-loc').innerText = loc;
-            document.getElementById('notify-text').innerText = `Acaba de resgatar ${val}`;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
-            
-            const notify = document.getElementById('notification');
-            notify.style.display = 'flex';
-            
-            setTimeout(() => { notify.style.display = 'none'; }, 5000);
+            if(document.getElementById('notify-name')) {
+                document.getElementById('notify-name').innerText = name;
+                document.getElementById('notify-loc').innerText = loc;
+                document.getElementById('notify-val').innerText = val;
+                const notify = document.getElementById('notification');
+                notify.style.display = 'flex';
+                setTimeout(() => { notify.style.display = 'none'; }, 4000);
+            }
         }
-
-        setTimeout(showNotification, 4000);
-        setInterval(showNotification, 18000);
+        setTimeout(showNotification, 3000);
+        setInterval(showNotification, 12000);
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </body>
 </html>
