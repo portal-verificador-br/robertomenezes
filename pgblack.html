@@ -3,184 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Auditoria - Protocolo Oficial</title>
+    <title>Protocolo de Resgate Bancário - Consulta Ativa</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Pixel do Facebook -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '1773918999950681'); 
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
+    </script>
+
     <style>
-        /* CSS BASE */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #f0f2f5; color: #333; }
-        header { background-color: #002e5d; color: white; padding: 12px; text-align: center; font-size: 13px; font-weight: bold; position: sticky; top: 0; z-index: 100; }
-        .container { width: 100%; max-width: 500px; margin: 0 auto; background: white; min-height: 100vh; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background-color: #f4f6f8; color: #1c1e21; line-height: 1.6; }
         
-        /* BARRA DE ESCASSEZ */
-        .scarcity-bar { background: #ffeb3b; color: #000; padding: 8px; text-align: center; font-size: 13px; font-weight: bold; border-bottom: 1px solid #ddd; }
+        .alert-bar {
+            background-color: #1a1a1a;
+            color: #ffcc00;
+            text-align: center;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border-bottom: 3px solid #ffcc00;
+        }
 
-        /* SEÇÕES */
-        .section { padding: 20px; display: none; }
-        .active { display: block; }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
 
-        /* ESTILO QUIZ */
-        h2 { font-size: 22px; color: #002e5d; margin-bottom: 20px; text-align: center; line-height: 1.3; }
-        .btn-quiz { display: block; width: 100%; background: #f8f9fa; border: 2px solid #002e5d; color: #002e5d; padding: 15px; margin-bottom: 12px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; transition: 0.3s; }
-        .btn-quiz:active { background: #002e5d; color: white; }
+        h1 {
+            font-size: 24px;
+            color: #1a1a1a;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            text-align: left;
+            font-weight: 900;
+        }
+        
+        .highlight { background: #fff200; padding: 2px 5px; border-radius: 3px; }
 
-        /* LOADING */
-        .loading-box { text-align: center; padding: 40px 20px; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid #28a745; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .author-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .author-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-right: 12px;
+            border: 2px solid #28a745;
+        }
+        
+        .author-img img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        
+        .date { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* PÁGINA DE VENDAS (RESULTADO) */
-        .result-card { background: #e7f3ff; border: 2px dashed #002e5d; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
-        .price-big { font-size: 36px; color: #28a745; font-weight: bold; margin: 10px 0; }
-        .headline-red { color: #d32f2f; font-size: 24px; font-weight: bold; line-height: 1.2; margin-bottom: 15px; }
-        .img-fluid { width: 100%; border-radius: 8px; margin-bottom: 15px; }
+        p { margin-bottom: 18px; font-size: 17px; color: #444; }
+        
+        .verified-badge {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
 
-        /* DEPOIMENTOS FACEBOOK */
-        .fb-comments { border-top: 1px solid #e9ebee; margin-top: 30px; padding-top: 15px; }
-        .comment { display: flex; margin-bottom: 15px; font-size: 13px; }
-        .comment img { width: 36px; height: 36px; border-radius: 50%; margin-right: 10px; }
-        .comment-content { background: #f2f3f5; padding: 8px 12px; border-radius: 15px; flex: 1; }
-        .comment-name { font-weight: bold; color: #365899; }
+        .cta-box {
+            background-color: #fff;
+            border: 2px solid #28a745;
+            padding: 25px;
+            text-align: center;
+            margin: 35px 0;
+            border-radius: 12px;
+            position: relative;
+        }
 
-        /* BOTÃO DE COMPRA */
-        .cta-box { text-align: center; padding: 20px; background: #f9f9f9; border-radius: 10px; margin-top: 20px; }
-        .btn-cta { display: block; background: #28a745; color: white; padding: 20px; text-decoration: none; border-radius: 8px; font-size: 20px; font-weight: bold; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .btn-pulse {
+            background: #28a745;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 22px 10px;
+            text-decoration: none;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 6px 0 #1e7e34;
+            transition: all 0.2s;
+            animation: grow 1.8s infinite ease-in-out;
+            text-transform: uppercase;
+        }
 
-        /* POPUP */
-        #popup-venda { position: fixed; bottom: 15px; left: 15px; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: none; align-items: center; z-index: 1000; border-left: 4px solid #28a745; animation: slideIn 0.5s; }
-        @keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+        @keyframes grow { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+        .scarcity { color: #d32f2f; font-weight: bold; margin-top: 15px; font-size: 14px; }
+
+        /* Comentários Estilo Facebook */
+        .comments-section { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; }
+        .comment { display: flex; margin-bottom: 20px; }
+        .avatar { width: 36px; height: 36px; border-radius: 50%; margin-right: 10px; }
+        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: auto; max-width: 85%; }
+        .name { font-weight: bold; font-size: 13px; color: #385898; margin-bottom: 2px; }
+        .text { font-size: 14px; color: #1c1e21; }
+        .meta { font-size: 12px; color: #65676b; margin-top: 5px; font-weight: bold; }
+
+        /* Notification */
+        #notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: none;
+            align-items: center;
+            z-index: 1000;
+            border-left: 6px solid #28a745;
+        }
+        #notification img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; }
+        #notification p { font-size: 12px; margin: 0; line-height: 1.4; color: #333; }
     </style>
 </head>
 <body>
 
-<header>SISTEMA DE AUDITORIA TARIFÁRIA - PROTOCOLO R892</header>
-<div class="scarcity-bar">Vagas para consulta liberadas até: <span id="timer">15:00</span></div>
-
-<div class="container">
-    
-    <div id="quiz" class="section active">
-        <br>
-        <h2>Verifique se você tem valores a receber nos últimos 5 anos</h2>
-        <p style="text-align:center; margin-bottom:20px; color:#666;">Responda rápido para iniciar a busca:</p>
-        
-        <p><b>1. Você possui conta em banco (Itaú, Bradesco, Santander, BB, etc)?</b></p>
-        <div class="btn-quiz" onclick="nextStep('quiz2')">Sim, possuo</div>
-        <div class="btn-quiz" onclick="nextStep('quiz2')">Não possuo</div>
-
-        <div id="quiz2" style="display:none; margin-top:20px;">
-            <p><b>2. Já fez algum empréstimo ou usou cartão de crédito desde 2019?</b></p>
-            <div class="btn-quiz" onclick="nextStep('loading')">Sim, várias vezes</div>
-            <div class="btn-quiz" onclick="nextStep('loading')">Raramente</div>
-        </div>
+    <div class="alert-bar">
+        SISTEMA DE CONSULTA LIBERADO: PROTOCOLO VIGENTE POR TEMPO LIMITADO
     </div>
 
-    <div id="loading" class="section">
-        <div class="loading-box">
-            <div class="spinner"></div>
-            <h3 id="load-text">Cruzando dados com o Banco Central...</h3>
-            <p style="color:#666; font-size:14px; margin-top:10px;">Não feche esta página.</p>
-        </div>
-    </div>
-
-    <div id="pv" class="section">
-        <div class="result-card">
-            <p>CONSULTA FINALIZADA!</p>
-            <div class="price-big">R$ 2.748,50</div>
-            <p style="font-size:13px;">Estimativa de restituição disponível</p>
-        </div>
-
-        <h1 class="headline-red">Eles me demitiram para esconder esse código, mas agora ele é seu.</h1>
+    <div class="container">
+        <div class="verified-badge">✓ CONTEÚDO VERIFICADO PELO PROTOCOLO DE RESGATE</div>
         
-        <img src="LINK_DA_ROBERTA_CARRO_AQUI" class="img-fluid" alt="Roberta">
-        <p style="font-size:12px; text-align:center; color:#666; margin-top:-10px;"><i>Foto registrada logo após minha demissão.</i></p>
+        <h1>Ex-Bancário revela como liberar o <span class="highlight">Resgate de Taxas Retidas</span> que os bancos escondem no seu CPF</h1>
 
-        <p>Meu nome é <b>Roberta</b>. Fui auditora sênior por 12 anos. Quando descobri que os bancos escondiam esse dinheiro dos clientes, fui posta na rua.</p>
-        <br>
-        <p>Mas eu trouxe o <b>Protocolo de Ativação</b>. Com ele, você não precisa de advogado para recuperar suas taxas.</p>
-
-        <div style="background:#f4f4f4; padding:15px; border-radius:8px; margin:20px 0;">
-            <p><b>O que você recebe agora:</b></p>
-            <p>✅ Gerador de Requerimentos Oficial</p>
-            <p>✅ Mapa de Cliques (Passo a passo)</p>
-            <p>✅ Acesso Vitalício ao Sistema</p>
+        <div class="author-box">
+            <div class="author-img">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Roberto">
+            </div>
+            <div>
+                <strong>Relato de: Roberto M. (Ex-Analista de Sistemas)</strong><br>
+                <span class="date">Publicado em: <script>document.write(new Date().toLocaleDateString('pt-BR'))</script></span>
+            </div>
         </div>
+
+        <p>Eu trabalhei 12 anos no setor de compensação de um grande banco e vi milhares de brasileiros perdendo dinheiro todos os meses.</p>
+
+        <p>Você já percebeu que o banco te cobra "taxa de conta", "seguro de cartão" ou juros sobre juros em empréstimos? O que eles não contam é que **uma parte desse valor fica guardada em uma conta residual** que o banco é obrigado a te devolver se você solicitar da forma correta.</p>
+
+        <p>Mas como eles não querem que você saque, eles escondem essa opção em menus que ninguém acessa.</p>
+        
+        <p><strong>A média de resgate para quem usa conta corrente há mais de 2 anos varia entre R$ 299,00 e R$ 750,00.</strong></p>
+
+        <p>Depois que fui desligado por tentar facilitar esse processo para os clientes, eu decidi criar um guia simples mostrando exatamente onde clicar para fazer a varredura no seu CPF e solicitar o estorno imediato.</p>
 
         <div class="cta-box">
-            <p style="text-decoration:line-through; color:#999;">De R$ 497,00</p>
-            <p style="font-size:20px;">Por apenas <b>R$ 97,00</b></p>
-            <br>
-            <a href="LINK_DO_SEU_CHECKOUT_AQUI" class="btn-cta">ATIVAR MEU SAQUE AGORA</a>
-            <p style="font-size:11px; margin-top:10px; color:#666;">Acesso enviado imediatamente via E-mail e WhatsApp.</p>
+            <h3 style="margin-bottom: 15px; color: #1a1a1a;">CONSULTAR MEU SALDO RETIDO</h3>
+            <p style="font-size: 15px;">Acesse agora o <strong>Protocolo de Resgate</strong> e veja o valor acumulado no seu CPF nos últimos 5 anos.</p>
+            
+            <div style="margin: 20px 0;">
+                <span style="text-decoration: line-through; color: #999; font-size: 18px;">R$ 197,00</span><br>
+                <span style="font-size: 28px; font-weight: 900; color: #28a745;">APENAS R$ 67,00</span>
+            </div>
+            
+            <a href="SUA_URL_DA_KIRVANO_OU_SIGILOPAY" class="btn-pulse">
+                🔓 LIBERAR PROTOCOLO DE RESGATE
+            </a>
+            
+            <p class="scarcity">⚠️ Atenção: Acesso disponível para apenas mais 7 pessoas hoje.</p>
         </div>
 
-        <div class="fb-comments">
-            <p style="font-weight:bold; color:#4b4f56; margin-bottom:15px;">Comentários (14)</p>
-            
+        <div class="comments-section">
+            <p style="font-weight: bold; margin-bottom: 20px; font-size: 14px;">Comentários Recentes (142)</p>
+
             <div class="comment">
-                <img src="https://i.pravatar.cc/100?u=1" alt="Dona Neide">
-                <div class="comment-content">
-                    <span class="comment-name">Dona Neide Lopes</span>
-                    <p>O meu caiu hoje! R$ 1.240 direto na conta. Achei que era mentira da Roberta mas é sério.</p>
+                <img src="https://randomuser.me/api/portraits/men/46.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Ricardo Alencar</div>
+                    <div class="text">Cara, sensacional. Achei que era papo furado, mas caiu R$ 412,00 de taxas de uma conta que eu nem usava mais. Valeu cada centavo do guia!</div>
+                    <div class="meta">Curtir · Responder · 4 min</div>
                 </div>
             </div>
 
             <div class="comment">
-                <img src="https://i.pravatar.cc/100?u=2" alt="Marcos">
-                <div class="comment-content">
-                    <span class="comment-name">Marcos Oliveira</span>
-                    <p>Valeu cada centavo. O gerente do banco até tentou me enrolar, mas com o documento pronto não teve conversa.</p>
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Maria Eduarda</div>
+                    <div class="text">O meu deu R$ 320,00! Já fiz o pedido pelo app como o Roberto ensina e caiu no Pix em 24h. Obrigada!</div>
+                    <div class="meta">Curtir · Responder · 12 min</div>
+                </div>
+            </div>
+
+            <div class="comment" style="margin-left: 45px; border-left: 2px solid #ddd; padding-left: 10px;">
+                <img src="https://randomuser.me/api/portraits/men/15.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Felipe Souza</div>
+                    <div class="text">Maria, você fez pelo Bradesco ou Itaú? O meu é Bradesco e deu certo tbm.</div>
+                    <div class="meta">Curtir · Responder · 8 min</div>
                 </div>
             </div>
         </div>
-        <br>
-        <center><img src="LINK_DOS_SELOS_DE_SEGURANÇA_AQUI" width="180" style="opacity:0.5;"></center>
-        <br>
-    </div>
-</div>
+        
+        <footer style="text-align: center; padding: 40px 0 20px; border-top: 1px solid #eee; margin-top: 30px;">
+            <p style="font-size: 12px; color: #999;">
+                &copy; 2026 Protocolo de Resgate Bancário Profissional<br>
+                <a href="#" style="color: #999;">Privacidade</a> | <a href="#" style="color: #999;">Termos de Uso</a>
+            </p>
+        </footer>
 
-<div id="popup-venda">
-    <div style="background:#28a745; color:white; border-radius:50%; width:24px; height:24px; text-align:center; line-height:24px; font-weight:bold;">✓</div>
-    <div style="margin-left:10px; font-size:12px;">
-        <span id="nome-pop">Maria S.</span> acaba de ativar o protocolo!
     </div>
-</div>
 
-<script>
-    // LÓGICA DE NAVEGAÇÃO
-    function nextStep(stepId) {
-        if(stepId === 'quiz2') {
-            document.getElementById('quiz2').style.display = 'block';
-        } else {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(stepId).classList.add('active');
+    <div id="notification">
+        <img src="" id="notify-img">
+        <div>
+            <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
+            <p id="notify-text"></p>
+            <p style="color: #28a745; font-size: 11px; font-weight: bold; margin-top: 2px;">✓ Resgate Confirmado</p>
+        </div>
+    </div>
+
+    <script>
+        const names = ['Marcos', 'Lucas', 'Sandra', 'Roberto', 'Juliana', 'Rafael', 'Patrícia', 'Gustavo', 'Beatriz'];
+        const locs = ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Porto Alegre', 'Salvador', 'Curitiba'];
+        const values = ['R$ 312,00', 'R$ 450,50', 'R$ 527,00', 'R$ 299,00', 'R$ 680,00', 'R$ 415,00'];
+        
+        function showNotification() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const loc = locs[Math.floor(Math.random() * locs.length)];
+            const val = values[Math.floor(Math.random() * values.length)];
+            const imgId = Math.floor(Math.random() * 70);
+            const gender = Math.random() > 0.5 ? 'men' : 'women';
             
-            if(stepId === 'loading') {
-                setTimeout(() => { document.getElementById('load-text').innerText = "Verificando saldo retido..."; }, 1500);
-                setTimeout(() => { document.getElementById('load-text').innerText = "Liberando Protocolo R892..."; }, 3000);
-                setTimeout(() => { nextStep('pv'); }, 4500);
-            }
+            document.getElementById('notify-name').innerText = name;
+            document.getElementById('notify-loc').innerText = loc;
+            document.getElementById('notify-text').innerText = `Acaba de resgatar ${val}`;
+            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
+            
+            const notify = document.getElementById('notification');
+            notify.style.display = 'flex';
+            
+            setTimeout(() => { notify.style.display = 'none'; }, 5000);
         }
-    }
 
-    // CRONÔMETRO
-    let time = 900;
-    const timerElement = document.getElementById('timer');
-    setInterval(() => {
-        let min = Math.floor(time / 60);
-        let sec = time % 60;
-        timerElement.innerText = `${min}:${sec < 10 ? '0'+sec : sec}`;
-        if(time > 0) time--;
-    }, 1000);
-
-    // POPUPS DE VENDA
-    const nomes = ["Seu José", "Dona Sueli", "Ricardo M.", "Ana Paula", "Claudio F.", "Marinalva S."];
-    setInterval(() => {
-        document.getElementById('nome-pop').innerText = nomes[Math.floor(Math.random()*nomes.length)];
-        const pop = document.getElementById('popup-venda');
-        pop.style.display = 'flex';
-        setTimeout(() => { pop.style.display = 'none'; }, 5000);
-    }, 15000);
-</script>
-
+        setTimeout(showNotification, 4000);
+        setInterval(showNotification, 18000);
+    </script>
 </body>
 </html>
