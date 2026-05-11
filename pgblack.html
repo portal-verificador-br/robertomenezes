@@ -9,12 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* CORES ALTERADAS CONFORME PEDIDO */
         :root { 
-            --primary: #004ead; /* Azul dos prints */
-            --secondary: #16a34a; /* Verde dos prints */
+            --primary: #004ead; 
+            --secondary: #16a34a; 
             --text: #1a1a1a; 
-            --bg: #f4f7f9; /* Fundo gelo institucional */
+            --bg: #f4f7f9; 
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
@@ -28,12 +27,10 @@
 
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        /* HERO */
         .hero { text-align: center; margin-bottom: 20px; }
         .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.1; color: #111; margin-top: 15px; }
         .hl-blue { color: var(--primary); }
 
-        /* ROBERTO BOX */
         .roberto-box { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .roberto-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
         .roberto-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #eee; object-fit: cover; }
@@ -41,7 +38,6 @@
         .roberto-info span { font-size: 11px; font-weight: 700; color: #777; }
         .roberto-text { font-size: 14px; color: #444; line-height: 1.5; font-weight: 500; font-style: italic; border-left: 3px solid var(--primary); padding-left: 10px; }
 
-        /* FORM */
         .form-card { background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .form-card h2 { font-size: 19px; text-align: center; margin-bottom: 20px; font-weight: 900; color: var(--secondary); }
         .input-group { margin-bottom: 15px; }
@@ -49,31 +45,26 @@
         input { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; font-weight: 600; outline: none; background: #f9f9f9; }
         .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
 
-        /* STATS */
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 25px 0; text-align: center; }
         .stat-item b { font-size: 17px; color: var(--primary); display: block; }
         .stat-item span { font-size: 10px; font-weight: 800; color: #999; }
 
-        /* DEPOIMENTOS */
         .depo-title { font-weight: 900; font-size: 17px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px; }
         .card-depo { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; }
         .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
         .val-rec { color: var(--secondary); font-weight: 900; font-size: 16px; }
         .depo-text { font-size: 13px; color: #555; line-height: 1.5; }
 
-        /* STEPS */
         .steps { background: #fff; border-radius: 20px; padding: 25px; margin: 30px 0; border: 1px solid #eee; }
         .step-item { display: flex; gap: 15px; margin-bottom: 20px; }
         .step-num { background: var(--primary); color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
 
-        /* POPUP NOTIFICAÇÃO */
         #notification-box { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 1000; transform: translateY(150%); transition: 0.5s ease; border-left: 5px solid var(--secondary); max-width: 400px; margin: 0 auto; }
         #notification-box.show { transform: translateY(0); }
         .notif-img { width: 40px; height: 40px; border-radius: 50%; background: #eee; }
         .notif-text b { font-size: 12px; display: block; color: #111; }
         .notif-text span { font-size: 11px; color: var(--secondary); font-weight: 700; }
 
-        /* ETAPA 2 & 3 */
         .loader-circle { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .bank-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; font-weight: 700; }
@@ -236,7 +227,7 @@
                     </div>
                 </div>
 
-                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="text-decoration: none; display: block; text-align: center;">🔓 PAGAR R$ 97 E LIBERAR MEU SAQUE</a>
+                <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="text-decoration: none; display: block; text-align: center;">🔓 ATIVAR MINHA LICENÇA E SACAR AGORA</a>
 
                 <div style="display: flex; justify-content: space-around; margin-top: 20px;">
                     <div style="text-align: center;"><i class="fas fa-bolt" style="color: #ffcc00;"></i><p style="font-size: 9px; font-weight: 800;">PIX NA HORA</p></div>
@@ -245,7 +236,7 @@
                 </div>
 
                 <p style="font-size: 13px; color: #555; background: #f8fafc; padding: 15px; border-radius: 12px; margin-top: 25px; line-height: 1.4; border: 1px solid #eee;">
-                    <b>Roberto:</b> "<span class="u-nome"></span>, eu sei que parece bom demais. Mas esse dinheiro é seu de direito. A licença é só pra cobrir o custo do sistema."
+                    <b>Roberto:</b> "<span class="u-nome"></span>, eu sei que parece bom demais. Mas esse dinheiro é seu de direito. A licença é só pra confirmar que o saque é de uma conta ativa."
                 </p>
             </div>
         </div>
@@ -265,7 +256,6 @@
     </div>
 
     <script>
-        // Mascara CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
