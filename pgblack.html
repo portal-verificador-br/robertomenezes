@@ -3,168 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sistema de Auditoria Privada</title>
-    
+    <title>Protocolo Secreto - Auditoria 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root { --primary: #00ff41; --bg: #050505; --card: #121212; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        :root { --primary: #00ff41; --bg: #0a0a0a; --accent: #ff0000; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: #fff; line-height: 1.6; }
         
-        body { background-color: var(--bg); color: #fff; overflow-x: hidden; }
+        .top-warning { background: var(--accent); color: #fff; text-align: center; padding: 10px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* HEADER ESTILO APP */
-        .app-header { background: #000; padding: 15px; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-        .live-status { display: flex; align-items: center; gap: 5px; font-size: 10px; color: #ff0000; text-transform: uppercase; font-weight: 900; }
-        .dot { width: 8px; height: 8px; background: #ff0000; border-radius: 50%; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        .hero { padding: 25px 20px; text-align: center; }
-        .hero h1 { font-size: 24px; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
-        .badge-auditor { background: #1a1a1a; color: #aaa; padding: 5px 12px; border-radius: 50px; font-size: 11px; border: 1px solid #333; margin-bottom: 10px; display: inline-block; }
+        /* HEADLINE AGRESSIVA */
+        .headline-section { text-align: center; padding: 20px 0; }
+        .headline-section h1 { font-size: 26px; font-weight: 900; line-height: 1.2; color: #fff; }
+        .hl-green { color: var(--primary); }
 
-        .roberto-box { background: var(--card); border-radius: 15px; padding: 20px; margin-bottom: 25px; border-left: 4px solid var(--primary); text-align: left; }
-        .roberto-box p { font-size: 15px; color: #ccc; line-height: 1.4; margin-bottom: 10px; }
+        /* TEXTO DE VENDAS (A HISTÓRIA) */
+        .vsl-text { background: #111; border: 1px solid #222; padding: 20px; border-radius: 15px; margin-bottom: 30px; }
+        .vsl-text p { margin-bottom: 15px; font-size: 16px; color: #d1d1d1; }
+        .vsl-text b { color: #fff; }
+
+        .roberto-quote { border-left: 3px solid var(--primary); padding-left: 15px; margin: 20px 0; font-style: italic; color: #aaa; }
+
+        /* O SCANNER (A FERRAMENTA) */
+        .scanner-box { background: #fff; color: #000; border-radius: 20px; padding: 30px 20px; box-shadow: 0 0 30px rgba(0,255,65,0.2); }
+        .scanner-box h2 { text-align: center; font-size: 20px; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
         
-        /* FORM E SCANNER */
-        .main-card { background: #fff; color: #000; border-radius: 20px; padding: 25px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .main-card h2 { font-size: 18px; font-weight: 900; margin-bottom: 20px; text-align: center; color: #000; }
+        label { display: block; font-size: 11px; font-weight: 900; color: #666; margin-bottom: 5px; text-transform: uppercase; }
+        input { width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 10px; border: 2px solid #ddd; font-size: 16px; font-weight: 600; }
         
-        label { display: block; font-size: 11px; font-weight: 900; color: #666; margin-bottom: 5px; margin-left: 5px; }
-        input { width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 2px solid #eee; background: #f9f9f9; font-size: 16px; font-weight: 600; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--primary); }
+        .btn-check { background: #000; color: var(--primary); width: 100%; padding: 20px; border: none; border-radius: 10px; font-size: 18px; font-weight: 900; cursor: pointer; text-transform: uppercase; }
 
-        .btn-scan { background: #000; color: var(--primary); width: 100%; padding: 20px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        
-        /* LOADING */
-        #scanner-ui { display: none; text-align: center; }
-        .scanner-circle { width: 80px; height: 80px; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; margin: 20px auto; animation: spin 1s linear infinite; }
+        /* ESTADOS DO SCANNER */
+        #loading-ui, #result-ui { display: none; text-align: center; }
+        .loader { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; margin: 20px auto; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* RESULTADO AGRESSIVO */
-        #result-ui { display: none; }
-        .amount-display { background: #f0fff4; border: 2px solid var(--primary); padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
-        .amount-display span { font-size: 12px; font-weight: 900; color: #2d5a27; text-transform: uppercase; }
-        .amount-display h3 { font-size: 42px; font-weight: 900; color: #000; letter-spacing: -1px; }
 
-        .cta-final { background: #00c853; color: #fff; text-align: center; padding: 22px; border-radius: 12px; display: block; text-decoration: none; font-weight: 900; font-size: 18px; box-shadow: 0 6px 0 #007e33; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .amount-card { background: #f0fff4; border: 2px solid var(--primary); padding: 20px; border-radius: 15px; margin: 20px 0; }
+        .amount-card span { font-size: 12px; font-weight: 900; color: #2d5a27; }
+        .amount-card h3 { font-size: 40px; font-weight: 900; color: #000; }
 
-        .trust-line { margin-top: 20px; display: flex; justify-content: center; gap: 15px; filter: grayscale(1); opacity: 0.5; }
+        .cta-pay { background: #00c853; color: #fff; padding: 22px; border-radius: 10px; display: block; text-decoration: none; font-weight: 900; font-size: 20px; margin-top: 15px; text-align: center; box-shadow: 0 6px 0 #007e33; }
+
+        .footer-info { margin-top: 40px; text-align: center; font-size: 11px; color: #444; }
     </style>
 </head>
 <body>
 
-    <div class="app-header">
-        <div class="logo" style="font-weight: 900; font-size: 14px;"><i class="fas fa-fingerprint" style="color: var(--primary);"></i> SASO v.4.0</div>
-        <div class="live-status"><div class="dot"></div> Sistema Ativo</div>
-    </div>
+    <div class="top-warning">CUIDADO: ESTA PÁGINA PODE SER DERRUBADA A QUALQUER MOMENTO</div>
 
-    <div class="hero">
-        <div class="badge-auditor">POR: ROBERTO (EX-AUDITOR SÊNIOR)</div>
-        <h1>Recupere o Saldo que os Bancos <span style="color: var(--primary);">Esconderam de Você</span></h1>
+    <div class="container">
         
-        <div class="roberto-box">
-            <p><strong>"Eu cansei de ver o sistema lucrar bilhões."</strong></p>
-            <p>Usei minha experiência de 12 anos em auditoria para criar este scanner. Ele encontra valores que o banco 'esqueceu' de te avisar.</p>
+        <div class="headline-section">
+            <h1>EX-AUDITOR REVELA: <span class="hl-green">O "SALDO ESQUECIDO"</span> QUE OS BANCOS TENTARAM ESCONDER DE VOCÊ</h1>
         </div>
 
-        <!-- AREA DE INTERAÇÃO -->
-        <div class="main-card">
+        <div class="vsl-text">
+            <p>Meu nome é <b>Roberto</b>. Durante 12 anos, eu fui auditor sênior em um dos maiores bancos do Brasil. Eu vi como eles lucram com o <b>seu silêncio</b>.</p>
             
-            <!-- ETAPA 1: LOGIN/FORM -->
-            <div id="step-form">
-                <h2>INICIAR CONSULTA GRÁTIS</h2>
-                <label>CPF DO BENEFICIÁRIO</label>
+            <p>Você sabia que bilhões de reais em taxas abusivas, seguros não contratados e juros de contas antigas ficam retidos todos os anos? Os bancos não te avisam porque, por lei, se você não reclamar em até 5 anos, o dinheiro vira lucro deles.</p>
+            
+            <div class="roberto-quote">
+                "Eu cansei de ser cúmplice disso. Por isso, desenvolvi uma ferramenta independente que varre o sistema bancário em busca de ativos vinculados ao seu CPF."
+            </div>
+
+            <p>A ferramenta <b>S.A.S.O (Sistema de Auditoria de Saldos Ocultos)</b> cruza dados de 14 instituições financeiras e identifica exatamente quanto você tem direito a receber agora.</p>
+            
+            <p><b>Faça a consulta abaixo gratuitamente e descubra o seu saldo:</b></p>
+        </div>
+
+        <!-- BOX DA FERRAMENTA -->
+        <div class="scanner-box">
+            
+            <!-- PASSO 1: ENTRADA -->
+            <div id="input-ui">
+                <h2>CONSULTAR CPF AGORA</h2>
+                <label>DIGITE SEU CPF</label>
                 <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
                 
-                <label>TELEFONE (WHATSAPP)</label>
-                <input type="tel" id="tel" placeholder="(11) 99999-9999">
-
-                <button class="btn-scan" onclick="startSearch()">
-                    CONSULTAR AGORA <i class="fas fa-chevron-right"></i>
+                <button class="btn-check" onclick="runScanner()">
+                    VERIFICAR MEU SALDO <i class="fas fa-search"></i>
                 </button>
+                <p style="font-size: 10px; color: #999; text-align: center; margin-top: 10px;">Consulta criptografada e 100% segura.</p>
             </div>
 
-            <!-- ETAPA 2: SCANNER (DEMORA REALISTA) -->
-            <div id="scanner-ui">
-                <div class="scanner-circle"></div>
-                <h3 id="status-msg" style="color: #000; font-size: 16px; font-weight: 900;">Conectando ao Banco Central...</h3>
-                <p style="color: #666; font-size: 12px; margin-top: 10px;">Aguarde, estamos varrendo 14 instituições financeiras...</p>
+            <!-- PASSO 2: SCANNER -->
+            <div id="loading-ui">
+                <div class="loader"></div>
+                <h3 id="status" style="font-size: 16px;">Conectando à base de dados...</h3>
+                <p style="font-size: 12px; color: #777; margin-top: 10px;">Localizando registros de 2018 a 2026...</p>
             </div>
 
-            <!-- ETAPA 3: RESULTADO + CTA -->
+            <!-- PASSO 3: RESULTADO -->
             <div id="result-ui">
-                <div class="amount-display">
-                    <span>SALDO TOTAL LOCALIZADO</span>
-                    <h3 id="valor-final">R$ 0,00</h3>
+                <div class="amount-card">
+                    <span>SALDO TOTAL ENCONTRADO</span>
+                    <h3 id="valor-saque">R$ 0,00</h3>
                 </div>
-                
-                <p style="color: #333; font-size: 14px; text-align: left; margin-bottom: 20px;">
-                    <i class="fas fa-check-circle" style="color: #00c853;"></i> <b>Acesso Liberado!</b> Para sacar este valor agora via PIX, finalize a licença de auditoria abaixo.
+                <p style="font-size: 13px; text-align: left; margin-bottom: 15px;">
+                    <b>ATENÇÃO:</b> Este valor já está pronto para transferência. Para gerar o protocolo de saque e receber via PIX em até 15 minutos, finalize sua licença de auditoria.
                 </p>
-
-                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="cta-final">
-                    SAQUE IMEDIATO VIA PIX
+                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="cta-pay">
+                    RECEBER VIA PIX AGORA
                 </a>
-                
-                <p style="color: #999; font-size: 10px; margin-top: 15px; text-align: center;">
-                    *Taxa única de R$ 97,00 para custos de processamento e auditoria federal.
-                </p>
+                <p style="font-size: 10px; color: #999; margin-top: 15px;">Taxa única de manutenção: R$ 97,00</p>
             </div>
 
         </div>
 
-        <div class="trust-line">
-            <img src="https://logodownload.org/wp-content/uploads/2020/02/pix-bc-logo.png" height="20">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_do_Banco_Central_do_Brasil.svg/1200px-Logo_do_Banco_Central_do_Brasil.svg.png" height="20">
+        <div class="footer-info">
+            <p>S.A.S.O - Auditoria Independente de Ativos Bancários<br>
+            Este site não possui vínculo com o Governo Federal ou Instituições Bancárias Oficiais. Somos uma ferramenta privada de consulta de ativos residuais.</p>
         </div>
 
     </div>
 
     <script>
-        // Máscara Simples de CPF
+        // Mascara CPF
         document.getElementById('cpf').addEventListener('input', function (e) {
-            var value = e.target.value.replace(/\D/g, '');
-            if (value.length > 11) value = value.slice(0, 11);
-            e.target.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
 
-        function startSearch() {
+        function runScanner() {
             const cpf = document.getElementById('cpf').value;
-            if(cpf.length < 14) { alert("CPF Inválido"); return; }
+            if(cpf.length < 14) { alert("Informe um CPF válido"); return; }
 
-            document.getElementById('step-form').style.display = 'none';
-            document.getElementById('scanner-ui').style.display = 'block';
+            document.getElementById('input-ui').style.display = 'none';
+            document.getElementById('loading-ui').style.display = 'block';
 
             const msgs = [
-                "Buscando Ativos Retidos...",
-                "Varrendo Contas Inativas...",
-                "Localizando Tarifas Abusivas...",
-                "Consultando Seguro de Cartão...",
-                "Gerando Protocolo de Saque..."
+                "Buscando contas inativas...",
+                "Localizando tarifas de manutenção...",
+                "Calculando juros e correções...",
+                "Varrendo seguros não reclamados...",
+                "Finalizando relatório de resgate..."
             ];
-            
+
             let i = 0;
-            const interval = setInterval(() => {
+            const timer = setInterval(() => {
                 if(i < msgs.length) {
-                    document.getElementById('status-msg').innerText = msgs[i];
+                    document.getElementById('status').innerText = msgs[i];
                     i++;
                 } else {
-                    clearInterval(interval);
-                    showResult();
+                    clearInterval(timer);
+                    showFinal();
                 }
-            }, 5500); // Demora realista: aprox 27 segundos total
+            }, 4500); // 22.5 segundos de "processamento"
         }
 
-        function showResult() {
-            const final = (Math.random() * (3100 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
-            document.getElementById('valor-final').innerText = "R$ " + final;
-            document.getElementById('scanner-ui').style.display = 'none';
+        function showFinal() {
+            const val = (Math.random() * (3100 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+            document.getElementById('valor-saque').innerText = "R$ " + val;
+            document.getElementById('loading-ui').style.display = 'none';
             document.getElementById('result-ui').style.display = 'block';
         }
     </script>
-
 </body>
 </html>
