@@ -6,7 +6,6 @@
     <title>Consulta Pública - Protocolo de Ressarcimento</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script>
@@ -19,13 +18,13 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     
-    // SEU PIXEL ID 1773918999950681
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2711205062544057&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
     /></noscript>
+
     <style>
         :root {
             --primary: #003366; 
@@ -37,22 +36,11 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
         
-        body { 
-            background-color: var(--bg); 
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+        body { background-color: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
 
         header {
-            background: #fff;
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 3px solid var(--accent);
+            background: #fff; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex; align-items: center; justify-content: space-between; border-bottom: 3px solid var(--accent);
         }
         
         .logo-area { display: flex; align-items: center; gap: 10px; }
@@ -60,17 +48,7 @@
         .logo-text { font-size: 14px; font-weight: 700; color: var(--primary); text-transform: uppercase; line-height: 1.2; }
         .secure-badge { background: #e8f5e9; color: var(--accent); padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
 
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+        main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; max-width: 500px; margin: 0 auto; }
 
         .progress-container { width: 100%; margin-bottom: 30px; }
         .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #666; margin-bottom: 5px; font-weight: 500; }
@@ -78,21 +56,12 @@
         .progress-fill { background: var(--secondary); height: 100%; width: 20%; transition: width 0.5s ease; }
 
         .card {
-            background: #fff;
-            padding: 30px 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            width: 100%;
-            text-align: center;
-            display: none; 
-            animation: slideUp 0.4s ease-out;
+            background: #fff; padding: 30px 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            width: 100%; text-align: center; display: none; animation: slideUp 0.4s ease-out;
         }
         .card.active { display: block; }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         h1 { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 15px; }
         p.desc { font-size: 15px; color: #555; margin-bottom: 25px; line-height: 1.5; }
@@ -100,76 +69,32 @@
         .btn-group { display: flex; flex-direction: column; gap: 12px; }
         
         .btn {
-            background: #fff;
-            border: 2px solid #e0e0e0;
-            padding: 18px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #444;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            background: #fff; border: 2px solid #e0e0e0; padding: 18px; border-radius: 8px;
+            font-size: 16px; font-weight: 600; color: #444; cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
         }
 
-        .btn:hover, .btn:active {
-            border-color: var(--secondary);
-            color: var(--secondary);
-            background: #f0f8ff;
-        }
+        .btn:active { border-color: var(--secondary); color: var(--secondary); background: #f0f8ff; }
         
-        .btn.primary {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            box-shadow: 0 4px 10px rgba(0,86,179,0.3);
-        }
-        .btn.primary:hover { background: #004494; transform: translateY(-2px); }
+        .btn.primary { background: var(--secondary); color: white; border: none; box-shadow: 0 4px 10px rgba(0,86,179,0.3); }
 
         .loader-content { text-align: center; }
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #e9ecef;
-            border-top: 5px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px auto;
+            width: 50px; height: 50px; border: 5px solid #e9ecef; border-top: 5px solid var(--accent);
+            border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px auto;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .terminal-log {
-            background: #f1f1f1;
-            padding: 15px;
-            border-radius: 6px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            color: #333;
-            text-align: left;
-            height: 120px;
-            overflow: hidden;
-            border-left: 3px solid var(--secondary);
-            margin-top: 15px;
+            background: #f1f1f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;
+            font-size: 12px; color: #333; text-align: left; height: 140px; overflow: hidden;
+            border-left: 3px solid var(--secondary); margin-top: 15px;
         }
-        .log-item { margin-bottom: 5px; display: none; }
-        .log-item.success { color: #28a745; }
+        .log-item { margin-bottom: 5px; display: block; }
+        .log-item.success { color: #28a745; font-weight: bold; }
         .log-item.warning { color: #e67e22; }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 11px;
-            color: #aaa;
-            border-top: 1px solid #eee;
-            margin-top: auto;
-            background: #fff;
-        }
-
+        footer { text-align: center; padding: 20px; font-size: 11px; color: #aaa; border-top: 1px solid #eee; margin-top: auto; background: #fff; }
         .highlight { color: var(--secondary); font-weight: 700; }
     </style>
 </head>
@@ -181,69 +106,68 @@
             <div class="logo-text">Sistema Nacional<br>de Verificação</div>
         </div>
         <div class="secure-badge">
-            <i class="fas fa-lock"></i> SSL SEGURO
+            <i class="fas fa-lock"></i> AMBIENTE SEGURO
         </div>
     </header>
 
     <main>
-        
         <div class="progress-container">
             <div class="progress-label">
-                <span>Progresso da Análise</span>
-                <span id="percent-text">0%</span>
+                <span>Análise de Elegibilidade</span>
+                <span id="percent-text">20%</span>
             </div>
             <div class="progress-track">
-                <div class="progress-fill" id="progress-bar"></div>
+                <div class="progress-fill" id="progress-bar" style="width: 20%;"></div>
             </div>
         </div>
 
         <div id="step1" class="card active">
             <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-mobile-alt"></i>
+                <i class="fas fa-user-check"></i>
             </div>
-            <h1>Uso de Aplicativo Bancário</h1>
-            <p class="desc">Para verificar a elegibilidade do seu perfil no <span class="highlight">Protocolo de 2026</span>, responda com sinceridade:</p>
-            <p class="desc" style="font-weight: 600;">Você já utiliza o aplicativo oficial do seu banco no seu celular hoje?</p>
+            <h1>Verificação de Titularidade</h1>
+            <p class="desc">Para iniciar a auditoria do <b>Roberto Mendes</b>, confirme seu perfil:</p>
+            <p class="desc" style="font-weight: 600;">Você possui conta ativa em algum banco brasileiro há mais de 3 anos?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-check-circle"></i> SIM, EU UTILIZO
+                    <i class="far fa-check-circle"></i> SIM, POSSUO
                 </button>
                 <button class="btn" onclick="nextStep(2)">
-                    <i class="far fa-times-circle"></i> NÃO POSSUO O APLICATIVO
+                    <i class="far fa-times-circle"></i> NÃO POSSUO
                 </button>
             </div>
         </div>
 
         <div id="step2" class="card">
             <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-calendar-check"></i>
+                <i class="fas fa-hand-holding-usd"></i>
             </div>
-            <h1>Frequência de Movimentação</h1>
-            <p class="desc">O sistema identificou que seu perfil está apto, mas precisa confirmar se o canal de Pix está desbloqueado.</p>
-            <p class="desc" style="font-weight: 600;">Você realizou alguma transação (Pix, cartão ou boleto) nos últimos 15 dias?</p>
+            <h1>Tarifas e Serviços</h1>
+            <p class="desc">O sistema busca por cobranças indevidas de cestas de serviços e taxas não autorizadas.</p>
+            <p class="desc" style="font-weight: 600;">Você já utilizou cartão de crédito, cheque especial ou empréstimos?</p>
             
             <div class="btn-group">
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-check-circle"></i> SIM, RECENTEMENTE
+                    <i class="far fa-check-circle"></i> SIM, JÁ UTILIZEI
                 </button>
                 <button class="btn" onclick="nextStep(3)">
-                    <i class="far fa-clock"></i> NÃO, FAZ MAIS TEMPO
+                    <i class="far fa-circle"></i> NUNCA UTILIZEI
                 </button>
             </div>
         </div>
 
         <div id="step3" class="card">
             <div style="margin-bottom: 15px; color: var(--secondary); font-size: 40px;">
-                <i class="fas fa-shield-alt"></i>
+                <i class="fas fa-file-invoice-dollar"></i>
             </div>
-            <h1>Verificação Final</h1>
-            <p class="desc">Estamos prontos para consultar a base de dados.</p>
-            <p class="desc">Você confirma que é o titular da conta e deseja visualizar o saldo disponível para resgate?</p>
+            <h1>Pronto para Consultar</h1>
+            <p class="desc">A ferramenta do Roberto Mendes identificou uma possível brecha no seu CPF.</p>
+            <p class="desc" style="font-weight: 600;">Deseja realizar a auditoria agora e visualizar seu saldo de ressarcimento?</p>
             
             <div class="btn-group">
                 <button class="btn primary" onclick="startLoading()">
-                    CONFIRMAR E CONSULTAR
+                    REALIZAR AUDITORIA AGORA
                 </button>
             </div>
         </div>
@@ -251,27 +175,21 @@
         <div id="loading" class="card">
             <div class="loader-content">
                 <div class="spinner"></div>
-                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Conectando ao Servidor...</h2>
-                <p style="font-size: 13px; color: #666;">Por favor, não feche esta página.</p>
+                <h2 style="color: var(--primary); font-size: 18px; margin-bottom: 10px;">Processando Auditoria...</h2>
+                <p style="font-size: 13px; color: #666;">Aguarde a liberação do protocolo.</p>
                 
-                <div class="terminal-log" id="terminal">
-                    </div>
+                <div class="terminal-log" id="terminal"></div>
             </div>
         </div>
-
     </main>
 
     <footer>
-        <p>Copyright © 2026 - Todos os direitos reservados.</p>
-        <p style="margin-top: 5px;">Política de Privacidade | Termos de Uso | LGPD</p>
+        <p>Copyright © 2026 - Auditoria Independente</p>
+        <p style="margin-top: 5px;">Este site não possui vínculo direto com instituições bancárias citadas.</p>
     </footer>
 
     <script>
-        // ============================================
-        // LINK CORRIGIDO PARA SUA PÁGINA DE VENDAS
-        // ============================================
         const redirectUrl = "pgblack.html"; 
-        // ============================================
 
         function updateProgress(percent) {
             document.getElementById('progress-bar').style.width = percent + '%';
@@ -279,9 +197,10 @@
         }
 
         function nextStep(step) {
-            if (navigator.vibrate) navigator.vibrate(50);
+            if (navigator.vibrate) navigator.vibrate(40);
             document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
+            
             if(step === 2) updateProgress(50);
             if(step === 3) updateProgress(85);
         }
@@ -290,16 +209,17 @@
             if (navigator.vibrate) navigator.vibrate(50);
             document.getElementById('step3').classList.remove('active');
             document.getElementById('loading').classList.add('active');
-            updateProgress(90);
+            updateProgress(92);
 
             const terminal = document.getElementById('terminal');
             const logs = [
-                { text: "> Iniciando conexão segura (SSL)...", delay: 500 },
-                { text: "> Validando dispositivo...", delay: 1500 },
-                { text: "> Acessando base de dados nacional...", delay: 2500, type: 'warning' },
-                { text: "> CPF Verificado. Status: ATIVO", delay: 3500, type: 'success' },
-                { text: "> Calculando valores pendentes...", delay: 4500 },
-                { text: "> PROTOCOLO AUTORIZADO!", delay: 5500, type: 'success' }
+                { text: "> Conectando ao Banco Central...", delay: 600 },
+                { text: "> Verificando histórico do CPF...", delay: 1400 },
+                { text: "> Analisando taxas de 2018 a 2026...", delay: 2200, type: 'warning' },
+                { text: "> Localizando valores não sacados...", delay: 3000 },
+                { text: "> BRECHA DE RESSARCIMENTO ENCONTRADA!", delay: 3800, type: 'success' },
+                { text: "> Gerando relatório de saque...", delay: 4500 },
+                { text: "> ACESSO LIBERADO!", delay: 5200, type: 'success' }
             ];
 
             let logIndex = 0;
@@ -310,7 +230,6 @@
                     setTimeout(() => {
                         const p = document.createElement('div');
                         p.className = 'log-item ' + (log.type || '');
-                        p.style.display = 'block';
                         p.innerText = log.text;
                         terminal.appendChild(p);
                         terminal.scrollTop = terminal.scrollHeight;
@@ -319,12 +238,12 @@
                             setTimeout(() => {
                                 updateProgress(100);
                                 window.location.href = redirectUrl;
-                            }, 1500);
+                            }, 1200);
                         }
                         
                         logIndex++;
                         addLog();
-                    }, logIndex === 0 ? log.delay : 1000); 
+                    }, 800); 
                 }
             }
             addLog();
