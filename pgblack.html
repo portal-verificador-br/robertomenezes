@@ -3,234 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sistema SARV - Auditoria Oficial</title>
+    <title>Sistema SARV - Auditoria 2026</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --blue-gov: #004ead; --blue-dark: #002d6b; --green-pix: #16a34a; --text: #1f2937; --bg: #fff; --grey-lite: #f3f4f6; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        :root { --blue-header: #004ead; --yellow-alert: #f59e0b; --green-btn: #16a34a; --bg-body: #f4f7f9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
-        body { background-color: var(--grey-lite); color: var(--text); line-height: 1.5; overflow-x: hidden; }
+        body { background-color: var(--bg-body); color: #333; line-height: 1.4; }
 
-        /* BARRA DE ALERTA AMRELA */
-        .alert-bar { background-color: #f59e0b; color: #000; text-align: center; padding: 12px 15px; font-weight: 700; font-size: 11px; text-transform: uppercase; line-height: 1.3; border-bottom: 2px solid #d97706; }
+        /* HEADER IDENTICO AO PRINT */
+        .top-alert { background: var(--yellow-alert); color: #000; padding: 10px; text-align: center; font-size: 11px; font-weight: 800; border-bottom: 1px solid #d97706; }
+        .navbar { background: var(--blue-header); padding: 15px; display: flex; justify-content: space-between; align-items: center; color: #fff; }
+        .logo-box { display: flex; align-items: center; gap: 10px; }
+        .logo-box b { font-size: 16px; line-height: 1; }
+        .logo-box span { font-size: 10px; opacity: 0.8; text-transform: uppercase; }
+        .status-online { font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 5px; }
+        .dot { width: 8px; height: 8px; background: #00ff41; border-radius: 50%; box-shadow: 0 0 5px #00ff41; }
 
-        /* HEADER BLUE */
-        .navbar { background: var(--blue-gov); padding: 15px; border-bottom: 2px solid #003070; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 800; color: #fff; font-size: 18px; display: flex; align-items: center; gap: 8px; }
-        .online-status { color: var(--primary); font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 5px; color: #fff; }
-        .dot { width: 9px; height: 9px; background: var(--primary); background-color: #00ff41; border-radius: 50%; animation: pulse 1s infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        .container { max-width: 500px; margin: 0 auto; padding: 20px 20px 50px 20px; }
+        /* TEXTO CENTRAL */
+        .hero { text-align: center; margin-bottom: 20px; }
+        .hero h1 { font-size: 24px; font-weight: 900; color: #004ead; line-height: 1.1; margin: 15px 0; }
+        .hl-yellow { background: #fef08a; padding: 0 4px; border-radius: 4px; color: #000; }
 
-        /* HERO CLEAN */
-        .hero { text-align: center; margin-bottom: 25px; padding-top: 10px; }
-        .hero h1 { font-size: 24px; font-weight: 800; color: #111827; line-height: 1.2; margin-top: 10px; }
-        .highlight-yellow { background: #fef08a; padding: 0 5px; border-radius: 3px; }
+        /* CARD ROBERTO (IGUAL AO PRINT) */
+        .roberto-card { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .roberto-head { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; }
+        .roberto-img { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #ddd; }
+        .roberto-info b { font-size: 15px; color: #111; }
+        .roberto-info p { font-size: 11px; color: #777; font-weight: 700; }
+        .roberto-copy { font-size: 13px; color: #444; font-style: italic; border-left: 3px solid #004ead; padding-left: 10px; }
 
-        /* ROBERTO CARD INSTITUCIONAL */
-        .auditor-card { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 25px; border: 1px solid #e5e7eb; display: flex; gap: 15px; align-items: center; }
-        .roberto-img { width: 65px; height: 65px; border-radius: 50%; border: 3px solid #e5e7eb; object-fit: cover; }
-        .auditor-card b { font-size: 14px; display: block; color: #111827; }
-        .auditor-card span { font-size: 11px; color: #6b7280; font-weight: 600; }
-        .auditor-quote { font-size: 13px; color: #374151; font-style: italic; margin-top: 8px; border-left: 3px solid #e5e7eb; padding-left: 10px; }
-
-        /* FORMULARIO MOTOR */
-        .main-card { background: #fff; border-radius: 20px; padding: 25px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border: 1px solid #e5e7eb; }
-        .main-card h2 { font-size: 18px; font-weight: 800; margin-bottom: 20px; text-align: center; color: var(--green-pix); }
+        /* FORMULARIO */
+        .white-card { background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; }
+        .white-card h2 { font-size: 18px; font-weight: 900; margin-bottom: 20px; color: #16a34a; }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { font-size: 11px; font-weight: 800; color: #666; margin-left: 5px; margin-bottom: 5px; display: block; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; font-weight: 600; background: #f9f9f9; }
         
-        .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 11px; font-weight: 700; color: #4b5563; margin-bottom: 6px; text-transform: uppercase; margin-left: 5px; }
-        input { width: 100%; padding: 16px; border-radius: 10px; border: 1px solid #d1d5db; background: #fff; font-size: 16px; color: #111; font-weight: 600; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--blue-gov); box-shadow: 0 0 0 4px rgba(0, 74, 173, 0.1); }
+        /* BOTÃO VERDE DO PRINT */
+        .btn-green { background: var(--green-btn); color: #fff; width: 100%; padding: 20px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 0 #118a3a; margin-top: 10px; }
+        .btn-green:active { transform: translateY(2px); box-shadow: 0 2px 0 #118a3a; }
 
-        .btn-check { background: var(--blue-gov); color: #fff; width: 100%; padding: 18px; border: none; border-radius: 12px; font-size: 16px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px; }
+        /* SCANNER LIST */
+        .bank-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; font-weight: 700; }
+        .status-ok { color: #16a34a; }
+        .status-load { color: #004ead; animation: flash 1s infinite; }
+        @keyframes flash { 50% { opacity: 0.5; } }
 
-        /* LOADING (SCANNER REALISTA) */
-        #loading-ui { display: none; text-align: center; padding: 20px 0; }
-        .gov-loader { width: 60px; height: 60px; border: 5px solid #f3f3f3; border-top: 5px solid var(--blue-gov); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        #status-txt { font-weight: 700; color: var(--blue-gov); font-size: 15px; }
-        
-        /* RESULTADO (CHECOUT AGRESSIVO) */
-        #result-ui { display: none; text-align: center; }
-        .badge-found { background: #dcfce7; color: #166534; padding: 10px; border-radius: 8px; font-weight: 800; font-size: 13px; margin-bottom: 20px; display: inline-block; }
-        
-        .result-amount { background: var(--bg); border: 2px dashed var(--green-pix); padding: 30px 20px; border-radius: 15px; margin: 20px 0; }
-        .result-amount span { font-size: 12px; font-weight: 700; color: #166534; text-transform: uppercase; }
-        .result-amount h3 { font-size: 40px; font-weight: 900; color: #111827; letter-spacing: -1px; }
+        /* RESULTADO VALOR (PRINT 54) */
+        .res-badge { background: #16a34a; color: #fff; padding: 12px; border-radius: 8px; font-weight: 900; font-size: 14px; margin-bottom: 20px; }
+        .money-box { border: 2px dashed #16a34a; border-radius: 20px; padding: 30px; margin: 20px 0; background: #f0fff4; }
+        .money-box span { font-size: 12px; font-weight: 800; color: #16a34a; }
+        .money-box h3 { font-size: 42px; font-weight: 900; color: #16a34a; margin: 10px 0; }
 
-        .btn-pix { background: var(--green-pix); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; text-decoration: none; display: block; margin-top: 15px; text-align: center; animation: pulse 1.5s infinite; box-shadow: 0 5px 0 #118a3a; }
-        .btn-pix:active { transform: translateY(3px); box-shadow: 0 2px 0 #118a3a; }
+        /* ÚLTIMA ETAPA (PRINT 55) */
+        .blue-bar-title { background: #003070; color: #fff; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 900; margin-bottom: 15px; }
+        .promo-box { background: #16a34a; color: #fff; padding: 25px; border-radius: 15px; margin: 20px 0; position: relative; }
+        .promo-box b { font-size: 40px; display: block; line-height: 1; }
 
-        .last-step-bar { background: #fffbeb; color: #b45309; padding: 10px; border-radius: 8px; border: 1px solid #fef3c7; font-size: 11px; font-weight: 700; text-align: center; margin-bottom: 15px; }
-
-        /* NOTIFICAÇÃO (CANTO DA TELA) */
-        #notif-box { position: fixed; bottom: 15px; left: 15px; background: #fff; padding: 10px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; display: none; align-items: center; gap: 10px; z-index: 999; border-left: 4px solid var(--green-pix); max-width: 250px; }
-        #notif-box img { width: 35px; height: 35px; border-radius: 50%; }
-        #notif-box b { font-size: 11px; color: #111; }
-        #notif-box p { font-size: 10px; color: var(--green-pix); font-weight: 700; }
-
-        .footer { text-align: center; padding: 50px 20px; font-size: 11px; color: #9ca3af; }
+        /* POPUP NOTIFICAÇÃO */
+        #notif { position: fixed; bottom: 20px; left: 20px; background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: none; align-items: center; gap: 10px; border-left: 5px solid #16a34a; z-index: 9999; }
+        #notif img { width: 40px; height: 40px; border-radius: 50%; }
+        #notif b { font-size: 12px; display: block; }
+        #notif span { font-size: 11px; color: #16a34a; font-weight: 700; }
     </style>
 </head>
 <body>
 
-    <div class="alert-bar">
-        ⚠️ Liberação extraordinária — Sistema disponível APENAS HOJE (11 de maio de 2026)
-    </div>
+    <div class="top-alert">⚠️ Liberação extraordinária — Sistema disponível APENAS HOJE (11 de maio de 2026)</div>
 
     <nav class="navbar">
-        <div class="logo">
-            <i class="fas fa-shield-alt"></i> Sistema SARV
+        <div class="logo-box">
+            <i class="fas fa-shield-alt fa-2x"></i>
+            <div><b>Sistema SARV</b><br><span>Auditoria de Valores</span></div>
         </div>
-        <div class="online-status">
-            <div class="dot"></div> ONLINE
-        </div>
+        <div class="status-online"><div class="dot"></div> ONLINE</div>
     </nav>
 
     <div class="container">
-        
-        <div class="hero">
-            <div class="badge" style="background: #e5e7eb; color: #374151; padding: 3px 10px; border-radius: 50px; font-size: 11px; font-weight: 700;">POR: ROBERTO MENDES — EX-AUDITOR SÊNIOR</div>
-            <h1>Recupere o saldo que os bancos <span class="highlight-yellow">esconderam de você</span></h1>
-            <p style="font-size: 14px; color: #4b5563; margin-top: 10px;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
-        </div>
 
-        <div class="auditor-card">
-            <img src="https://i.pravatar.cc/100?u=roberto_audit" class="roberto-img">
-            <div class="auditor-info">
-                <b>Roberto Mendes</b>
-                <span>Ex-Auditor Sênior · 12 anos no setor bancário</span>
-                <p class="auditor-quote">"Eu cansei de ver o sistema lucrar bilhões. Fui demitido por falar demais — então liberei o nosso scanner interno pra todo mundo."</p>
+        <div id="step-1">
+            <div class="hero">
+                <p style="font-size: 12px; font-weight: 800; color: #666;">POR: ROBERTO MENDES — EX-AUDITOR SÊNIOR</p>
+                <h1>Recupere o saldo que os bancos <span class="hl-yellow">esconderam de você</span></h1>
+                <p style="font-size: 14px; color: #555;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
             </div>
-        </div>
 
-        <div class="main-card">
-            
-            <div id="step-form">
-                <h2>CONSULTA GRÁTIS LIBERADA</h2>
+            <div class="roberto-card">
+                <div class="roberto-head">
+                    <img src="https://i.pravatar.cc/150?u=audit8" class="roberto-img">
+                    <div class="roberto-info">
+                        <b>Roberto Mendes</b>
+                        <p>Ex-Auditor Sênior · 12 anos de setor</p>
+                    </div>
+                </div>
+                <p class="roberto-copy">"Eu cansei de ver o sistema lucrar bilhões em cima do trabalhador. Fui demitido por falar demais — então liberei o nosso scanner interno pra todo mundo. Faça a sua consulta agora, é grátis."</p>
+            </div>
+
+            <div class="white-card">
+                <h2>Verificar meu saldo agora</h2>
                 <div class="input-group">
-                    <label>CPF DO TITULAR</label>
+                    <label>NOME COMPLETO</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome...">
+                </div>
+                <div class="input-group">
+                    <label>CPF PARA CONSULTA</label>
                     <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
                 </div>
-                <div class="input-group">
-                    <label>DATA DE NASCIMENTO</label>
-                    <input type="date" id="dob">
-                </div>
-                <button class="btn-check" onclick="startScanner()">
-                    REALIZAR CONSULTA <i class="fas fa-search"></i>
-                </button>
-                <div style="text-align: center; margin-top: 15px;">
-                    <img src="https://logodownload.org/wp-content/uploads/2020/02/pix-bc-logo.png" width="70" style="opacity: 0.4;">
+                <button class="btn-green" onclick="iniciar()">🔍 CONSULTAR MEU SALDO AGORA</button>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <h3 style="font-size: 16px; margin-bottom: 15px;">Depoimentos recentes:</h3>
+                <div class="roberto-card">
+                    <b style="font-size: 14px; color: #16a34a;">+ R$ 2.450,00 - Maria S.</b>
+                    <p style="font-size: 12px; color: #555; margin-top: 5px;">"Achei que era brincadeira, mas o Roberto é sério. O valor caiu no meu PIX em 10 minutos!"</p>
                 </div>
             </div>
+        </div>
 
-            <div id="loading-ui">
-                <div class="gov-loader"></div>
-                <h3 id="status-txt">Conectando ao banco de dados...</h3>
-                <p style="font-size: 12px; color: #9ca3af; margin-top: 10px;">Localizando ativos residuais do CPF...</p>
-            </div>
-
-            <div id="result-ui">
-                <div class="badge-found">✅ Consulta Concluída — Valor Localizado!</div>
+        <div id="step-2" style="display: none;">
+            <div class="white-card">
+                <div class="loader" style="width:50px; height:50px; border:5px solid #f3f3f3; border-top:5px solid #004ead; border-radius:50%; margin: 0 auto 20px; animation: spin 1s linear infinite;"></div>
+                <h3 style="font-size: 18px;">Aguarde, <span class="p-nome"></span></h3>
+                <p style="font-size: 12px; color: #666; margin-bottom: 20px;">Estamos verificando os bancos vinculados ao CPF <span id="p-cpf"></span></p>
                 
-                <div class="result-amount">
-                    <span>SALDO TOTAL DISPONÍVEL</span>
-                    <h3 id="final-amount">R$ 0,00</h3>
+                <div id="bank-list" style="text-align: left;">
+                    <div class="bank-item"><span>Banco do Brasil</span> <small>aguardando</small></div>
+                    <div class="bank-item"><span>Caixa Econômica</span> <small>aguardando</small></div>
+                    <div class="bank-item"><span>Bradesco</span> <small>aguardando</small></div>
+                    <div class="bank-item"><span>Itaú Unibanco</span> <small>aguardando</small></div>
+                    <div class="bank-item"><span>Nubank</span> <small>aguardando</small></div>
                 </div>
+            </div>
+        </div>
+
+        <div id="step-3" style="display: none;">
+            <div class="white-card">
+                <div class="res-badge">✓ CONSULTA CONCLUÍDA — VALOR LOCALIZADO!</div>
+                <p style="font-size: 14px;"><b class="p-nome"></b>, encontramos valores em seu CPF:</p>
                 
-                <p style="color: #4b5563; font-size: 14px; text-align: left; margin-bottom: 20px;">
-                    <i class="fas fa-check-circle" style="color: var(--green-pix);"></i> <b>Acesso Liberado!</b> Para sacar este valor agora via PIX, gere sua licença de auditoria.
+                <div class="money-box">
+                    <span>💰 SALDO TOTAL DISPONÍVEL</span>
+                    <h3 id="v-money">R$ 0,00</h3>
+                    <p style="font-size: 11px; color: #16a34a; font-weight: 800;">Pronto para saque via PIX imediato</p>
+                </div>
+
+                <div class="blue-bar-title">⚠️ ÚLTIMA ETAPA — LIBERAÇÃO DO SAQUE</div>
+                
+                <p style="font-size: 13px; margin-bottom: 20px;">
+                    Para liberar o saque de <b class="v-money-txt"></b> direto no seu PIX, é necessário ativar a sua <b>licença de auditoria.</b>
                 </p>
 
-                <div class="last-step-bar">⚠️ Última etapa — Liberação do saque</div>
+                <div class="promo-box">
+                    <p style="font-size: 11px; font-weight: 800; margin-bottom: 10px;">PROMOÇÃO EXCLUSIVA PIX — SÓ HOJE</p>
+                    <span style="font-size: 12px; text-decoration: line-through; opacity: 0.7;">De R$ 297,00</span>
+                    <b>R$ 97,00</b>
+                    <p style="font-size: 10px; margin-top: 10px;">PAGAMENTO ÚNICO · LIBERA NA HORA</p>
+                </div>
 
-                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-pix">
-                    RESGATAR MEUS VALORES
-                </a>
+                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-green" style="text-decoration: none; display: block;">🔓 PAGAR R$ 97 E LIBERAR MEU SAQUE</a>
                 
-                <p style="color: #9ca3af; font-size: 11px; margin-top: 15px;">*Taxa única de manutenção: R$ 97,00</p>
+                <p style="font-size: 12px; color: #666; margin-top: 20px; font-style: italic;">
+                    "Roberto: Esse dinheiro é seu de direito. A licença é só pra cobrir o custo do sistema."
+                </p>
             </div>
-
         </div>
 
+        <footer style="text-align: center; padding: 40px 0; font-size: 10px; color: #999;">
+            © 2026 Sistema SARV — Todos os direitos reservados.
+        </footer>
     </div>
 
-    <div id="notif-box">
-        <img src="https://i.pravatar.cc/100?u=a" id="notif-img">
+    <div id="notif">
+        <img src="https://i.pravatar.cc/100?u=1" id="n-img">
         <div>
-            <b><span id="notif-name">Marcos S.</span> de Fortaleza</b>
-            <p>Recebeu R$ <span id="notif-val">1.450,00</span> via PIX</p>
+            <b id="n-name">Carlos S. acabou de sacar</b>
+            <span>R$ 1.840,00 via PIX</span>
         </div>
     </div>
-
-    <footer class="footer">
-        <p>© 2026 SASO Auditoria Independente.<br>
-        Sistema de utilidade privada para consulta de ativos residuais bancários.</p>
-    </footer>
 
     <script>
+        // Lógica de troca de telas e valores
+        function iniciar() {
+            const nome = document.getElementById('nome').value;
+            const cpf = document.getElementById('cpf').value;
+            if(!nome || cpf.length < 14) return alert("Preencha tudo!");
+
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').style.display = 'block';
+            document.querySelectorAll('.p-nome').forEach(el => el.innerText = nome.split(' ')[0]);
+            document.getElementById('p-cpf').innerText = cpf;
+
+            const items = document.querySelectorAll('.bank-item');
+            let i = 0;
+            const timer = setInterval(() => {
+                if(i > 0) items[i-1].querySelector('small').innerText = "✓ Verificado", items[i-1].querySelector('small').className = "status-ok";
+                if(i < items.length) items[i].querySelector('small').innerText = "⟳ Buscando...", items[i].querySelector('small').className = "status-load", i++;
+                else { clearInterval(timer); setTimeout(finalizar, 1000); }
+            }, 1500);
+        }
+
+        function finalizar() {
+            const val = (Math.random() * (3553 - 1221) + 1221).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+            document.getElementById('v-money').innerText = "R$ " + val;
+            document.querySelectorAll('.v-money-txt').forEach(el => el.innerText = "R$ " + val);
+            document.getElementById('step-2').style.display = 'none';
+            document.getElementById('step-3').style.display = 'block';
+        }
+
+        // Popups fakes
+        const nomes = ["Marcos L.", "Ana P.", "Sérgio R.", "Beatriz F.", "João M."];
+        setInterval(() => {
+            const n = nomes[Math.floor(Math.random()*nomes.length)];
+            const v = (Math.random()*(3000-1000)+1000).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+            document.getElementById('n-name').innerText = n + " acabou de sacar";
+            document.getElementById('notif').querySelector('span').innerText = "R$ " + v + " via PIX";
+            document.getElementById('notif').style.display = 'flex';
+            setTimeout(() => document.getElementById('notif').style.display = 'none', 4000);
+        }, 10000);
+
         // Mascara CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
-
-        // NOTIFICAÇÃO (PROVA SOCIAL)
-        const names = ['André S.', 'Lucas F.', 'Beatriz L.', 'Ricardo M.', 'Ana P.', 'Gustavo R.'];
-        const cities = ['SP', 'RJ', 'MG', 'DF', 'CE', 'PR'];
-        function showNotif() {
-            const name = names[Math.floor(Math.random() * names.length)];
-            const city = cities[Math.floor(Math.random() * cities.length)];
-            const val = (Math.random() * (3100 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
-            document.getElementById('notif-name').innerText = `${name} de ${city}`;
-            document.getElementById('notif-val').innerText = val;
-            document.getElementById('notif-img').src = `https://i.pravatar.cc/100?u=${Math.random()}`;
-            const box = document.getElementById('notif-box');
-            box.style.display = 'flex';
-            setTimeout(() => box.style.display = 'none', 4000);
-        }
-        setInterval(showNotif, 12000); // Aparece a cada 12 segundos
-
-        function startScanner() {
-            const cpf = document.getElementById('cpf').value;
-            if(cpf.length < 14) { alert("Informe um CPF válido"); return; }
-
-            document.getElementById('step-form').style.display = 'none';
-            document.getElementById('loading-ui').style.display = 'block';
-
-            const msgs = [
-                "Conectando ao banco de dados...",
-                "Varrendo contas inativas...",
-                "Localizando tarifas abusivas...",
-                "Calculando juros acumulados...",
-                "Finalizando relatório..."
-            ];
-            
-            let i = 0;
-            const timer = setInterval(() => {
-                if(i < msgs.length) {
-                    document.getElementById('status-txt').innerText = msgs[i];
-                    i++;
-                } else {
-                    clearInterval(timer);
-                    showFinal();
-                }
-            }, 5500); // 27.5 segundos total
-        }
-
-        function showFinal() {
-            const val = (Math.random() * (3100 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
-            document.getElementById('final-amount').innerText = "R$ " + val;
-            document.getElementById('loading-ui').style.display = 'none';
-            document.getElementById('result-ui').style.display = 'block';
-        }
     </script>
+
+    <style> @keyframes spin { 100% { transform: rotate(360deg); } } </style>
 </body>
 </html>
