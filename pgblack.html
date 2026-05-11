@@ -2,247 +2,168 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scanner de Auditoria Bancária v1.4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sistema de Auditoria Privada</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: #0a0a0a; color: #fff; line-height: 1.5; }
+        :root { --primary: #00ff41; --bg: #050505; --card: #121212; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
         
-        .top-bar { background: #ff0000; color: #fff; text-align: center; padding: 8px; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        body { background-color: var(--bg); color: #fff; overflow-x: hidden; }
 
-        .container { max-width: 600px; margin: 0 auto; background: #111; border-left: 1px solid #333; border-right: 1px solid #333; min-height: 100vh; padding-bottom: 50px; }
+        /* HEADER ESTILO APP */
+        .app-header { background: #000; padding: 15px; border-bottom: 1px solid #222; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        .live-status { display: flex; align-items: center; gap: 5px; font-size: 10px; color: #ff0000; text-transform: uppercase; font-weight: 900; }
+        .dot { width: 8px; height: 8px; background: #ff0000; border-radius: 50%; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+        .hero { padding: 25px 20px; text-align: center; }
+        .hero h1 { font-size: 24px; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
+        .badge-auditor { background: #1a1a1a; color: #aaa; padding: 5px 12px; border-radius: 50px; font-size: 11px; border: 1px solid #333; margin-bottom: 10px; display: inline-block; }
+
+        .roberto-box { background: var(--card); border-radius: 15px; padding: 20px; margin-bottom: 25px; border-left: 4px solid var(--primary); text-align: left; }
+        .roberto-box p { font-size: 15px; color: #ccc; line-height: 1.4; margin-bottom: 10px; }
         
-        .header { padding: 30px 20px; text-align: center; background: linear-gradient(180deg, #1a1a1a 0%, #111 100%); }
-        h1 { font-size: 26px; line-height: 1.2; font-weight: 900; color: #fff; margin-bottom: 20px; }
-        .highlight { color: #00ff41; text-shadow: 0 0 10px rgba(0,255,65,0.3); }
-
-        /* CRONOMETRO */
-        .timer-box { background: #222; border: 1px dashed #ff0000; padding: 15px; border-radius: 8px; margin: 20px 0; }
-        .timer-text { font-size: 14px; margin-bottom: 5px; color: #ccc; }
-        #countdown { font-size: 28px; font-weight: 900; color: #ff0000; letter-spacing: 2px; }
-
-        .content { padding: 0 20px; }
-        p { margin-bottom: 20px; font-size: 17px; color: #e0e0e0; }
-        .feature-box { background: #1a1a1a; border: 1px solid #333; padding: 20px; border-radius: 10px; margin: 25px 0; }
-        .feature-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 15px; }
-        .feature-item i { color: #00ff41; margin-top: 5px; }
-
-        /* CARD DE PREÇO */
-        .price-card { background: #f9f9f9; color: #000; padding: 30px 20px; border-radius: 20px; text-align: center; margin: 40px 0; border: 4px solid #00ff41; }
-        .price-card h3 { font-weight: 900; font-size: 20px; text-transform: uppercase; margin-bottom: 10px; }
-        .old-price { text-decoration: line-through; color: #777; font-size: 18px; }
-        .new-price { font-size: 48px; font-weight: 900; color: #000; margin: 10px 0; }
-        .cta-btn { background: #00c853; color: #fff; padding: 22px; display: block; text-decoration: none; border-radius: 12px; font-weight: 900; font-size: 20px; margin-top: 20px; box-shadow: 0 6px 0 #007e33; animation: pulse 1.5s infinite; }
+        /* FORM E SCANNER */
+        .main-card { background: #fff; color: #000; border-radius: 20px; padding: 25px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .main-card h2 { font-size: 18px; font-weight: 900; margin-bottom: 20px; text-align: center; color: #000; }
         
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        label { display: block; font-size: 11px; font-weight: 900; color: #666; margin-bottom: 5px; margin-left: 5px; }
+        input { width: 100%; padding: 16px; margin-bottom: 15px; border-radius: 12px; border: 2px solid #eee; background: #f9f9f9; font-size: 16px; font-weight: 600; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--primary); }
 
-        /* DEPOIMENTOS */
-        .comments-container { padding: 20px; background: #111; margin-top: 30px; }
-        .comment { border-bottom: 1px solid #222; padding: 15px 0; display: none; }
-        .comment.visible { display: flex; }
-        .avatar { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; }
-        .comment-content { flex: 1; }
-        .c-name { font-weight: 700; color: #4e71ba; font-size: 14px; }
-        .c-text { font-size: 14px; color: #ddd; margin: 4px 0; }
-        .c-meta { font-size: 12px; color: #666; font-weight: bold; }
-        .load-more { background: transparent; color: #4e71ba; border: none; font-weight: 700; padding: 20px; cursor: pointer; width: 100%; text-align: left; }
+        .btn-scan { background: #000; color: var(--primary); width: 100%; padding: 20px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
+        /* LOADING */
+        #scanner-ui { display: none; text-align: center; }
+        .scanner-circle { width: 80px; height: 80px; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; margin: 20px auto; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* RESULTADO AGRESSIVO */
+        #result-ui { display: none; }
+        .amount-display { background: #f0fff4; border: 2px solid var(--primary); padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 20px; }
+        .amount-display span { font-size: 12px; font-weight: 900; color: #2d5a27; text-transform: uppercase; }
+        .amount-display h3 { font-size: 42px; font-weight: 900; color: #000; letter-spacing: -1px; }
 
-        /* NOTIFICAÇÃO */
-        #pix-notify { position: fixed; bottom: 20px; left: 20px; background: #fff; color: #000; padding: 12px; border-radius: 8px; font-size: 12px; display: none; align-items: center; gap: 10px; border-left: 5px solid #00ff41; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .cta-final { background: #00c853; color: #fff; text-align: center; padding: 22px; border-radius: 12px; display: block; text-decoration: none; font-weight: 900; font-size: 18px; box-shadow: 0 6px 0 #007e33; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+
+        .trust-line { margin-top: 20px; display: flex; justify-content: center; gap: 15px; filter: grayscale(1); opacity: 0.5; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">⚠️ ACESSO RESTRITO: AUDITORIA DE CONTAS ATIVA</div>
-
-    <div class="container">
-        <div class="header">
-            <h1>Scanner Localiza <span class="highlight">R$ 850 a R$ 3.100</span> de Saldo Retido Sob o seu CPF</h1>
-            
-            <div class="timer-box">
-                <div class="timer-text">Sua licença temporária expira em:</div>
-                <div id="countdown">15:00</div>
-            </div>
-        </div>
-
-        <div class="content">
-            <p>Você sabia que os bancos brasileiros lucram bilhões todos os anos apenas com o que chamam de <b>"Saldos Esquecidos de Tarifas"?</b></p>
-            
-            <p>Sempre que você paga uma anuidade, um seguro de cartão ou uma taxa de manutenção, o banco é obrigado a devolver uma parte se o serviço não for totalmente utilizado. O problema? <b>Eles nunca te avisam.</b></p>
-
-            <p>Desenvolvemos uma <b>Ferramenta de Auditoria Bruta</b> que acessa as camadas ocultas do sistema bancário e força a identificação desses valores vinculados ao seu CPF.</p>
-
-            <div class="feature-box">
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><b>Scanner de CPF 2.0:</b> Localiza valores em contas ativas e inativas dos últimos 10 anos.</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span><b>Protocolo de Saque:</b> Gera o código de autorização que obriga o banco a liberar o PIX.</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-star" style="color: gold;"></i>
-                    <span><b>BÔNUS:</b> Scanner de Dados Vazados (Veja se seus dados estão em risco e receba indenização por isso).</span>
-                </div>
-            </div>
-
-            <div class="price-card">
-                <h3>OFERTA EXCLUSIVA - HOJE</h3>
-                <p class="old-price">De R$ 997,00</p>
-                <p class="new-price">R$ 97,00</p>
-                <p style="font-size: 13px; font-weight: bold;">(Taxa única de manutenção da ferramenta)</p>
-                
-                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="cta-btn">
-                    QUERO USAR A FERRAMENTA AGORA
-                </a>
-                
-                <div style="margin-top: 15px; font-size: 12px; color: #555;">
-                    <i class="fas fa-shield-alt"></i> Pagamento 100% Seguro & Acesso Imediato.
-                </div>
-            </div>
-
-            <div class="comments-container">
-                <p style="font-weight: 900; font-size: 18px; margin-bottom: 20px;">Comentários Recentes (<span id="count-comm">1.402</span>)</p>
-
-                <!-- Comentários Visíveis -->
-                <div class="comment visible">
-                    <img src="https://i.pravatar.cc/150?u=1" class="avatar">
-                    <div class="comment-content">
-                        <div class="c-name">Marcos Vinícius</div>
-                        <div class="c-text">Gente, é real. Achei R$ 1.450 de uma conta do Bradesco que fechei em 2019. O PIX caiu em 15 minutos.</div>
-                        <div class="c-meta">Curtir · Responder · <span class="c-date"></span></div>
-                    </div>
-                </div>
-
-                <div class="comment visible">
-                    <img src="https://i.pravatar.cc/150?u=2" class="avatar">
-                    <div class="comment-content">
-                        <div class="c-name">Ana Cláudia Rocha</div>
-                        <div class="c-text">Eu paguei os 97 com medo, confesso. Mas a ferramenta achou R$ 2.100 no meu CPF. Valeu cada centavo do bônus de dados também!</div>
-                        <div class="c-meta">Curtir · Responder · <span class="c-date"></span></div>
-                    </div>
-                </div>
-
-                <div class="comment visible">
-                    <img src="https://i.pravatar.cc/150?u=8" class="avatar">
-                    <div class="comment-content">
-                        <div class="c-name">Felipe Souza</div>
-                        <div class="c-text">O meu deu R$ 890,00. Pensei que seria mais, mas ja pagou o churrasco do final de semana. Top dmais.</div>
-                        <div class="c-meta">Curtir · Responder · <span class="c-date"></span></div>
-                    </div>
-                </div>
-
-                <div class="comment visible">
-                    <img src="https://i.pravatar.cc/150?u=5" class="avatar">
-                    <div class="comment-content">
-                        <div class="c-name">Ricardo Mendes</div>
-                        <div class="c-text">Melhor ferramenta que ja usei. O passo a passo é muito simples, não tem erro.</div>
-                        <div class="c-meta">Curtir · Responder · <span class="c-date"></span></div>
-                    </div>
-                </div>
-
-                <div class="comment visible">
-                    <img src="https://i.pravatar.cc/150?u=12" class="avatar">
-                    <div class="comment-content">
-                        <div class="c-name">Carla Magalhães</div>
-                        <div class="c-text">Minha irmã fez e deu R$ 3.000. Eu fiz agora e deu R$ 1.100. Os bancos são muito sujos de esconder isso da gente.</div>
-                        <div class="c-meta">Curtir · Responder · <span class="c-date"></span></div>
-                    </div>
-                </div>
-
-                <!-- Comentários Ocultos (Carregados pelo botão) -->
-                <div class="comment">
-                    <img src="https://i.pravatar.cc/150?u=20" class="avatar">
-                    <div class="comment-content">
-                        <div class="c-name">Bruno G.</div>
-                        <div class="c-text">Aprovado! Funcionou na Caixa e no Santander aqui.</div>
-                        <div class="c-meta">Curtir · Responder · <span class="c-date"></span></div>
-                    </div>
-                </div>
-                
-                <div class="comment">
-                    <img src="https://i.pravatar.cc/150?u=22" class="avatar">
-                    <div class="comment-content">
-                        <div class="c-name">Luciana Dias</div>
-                        <div class="c-text">Tava precisando muito desse dinheiro. R$ 1.540 na conta agora! Obrigada Roberto.</div>
-                        <div class="c-meta">Curtir · Responder · <span class="c-date"></span></div>
-                    </div>
-                </div>
-
-                <button class="load-more" onclick="loadMore()">Carregar mais 10 comentários...</button>
-            </div>
-        </div>
+    <div class="app-header">
+        <div class="logo" style="font-weight: 900; font-size: 14px;"><i class="fas fa-fingerprint" style="color: var(--primary);"></i> SASO v.4.0</div>
+        <div class="live-status"><div class="dot"></div> Sistema Ativo</div>
     </div>
 
-    <div id="pix-notify">
-        <i class="fas fa-check-circle" style="color: #00c853; font-size: 20px;"></i>
-        <div>
-            <b id="notify-user">Marcos S.</b> acabou de sacar <br>
-            <span style="color: #00c853; font-weight: 900;">R$ <span id="notify-amt">1.450,00</span> via PIX</span>
+    <div class="hero">
+        <div class="badge-auditor">POR: ROBERTO (EX-AUDITOR SÊNIOR)</div>
+        <h1>Recupere o Saldo que os Bancos <span style="color: var(--primary);">Esconderam de Você</span></h1>
+        
+        <div class="roberto-box">
+            <p><strong>"Eu cansei de ver o sistema lucrar bilhões."</strong></p>
+            <p>Usei minha experiência de 12 anos em auditoria para criar este scanner. Ele encontra valores que o banco 'esqueceu' de te avisar.</p>
         </div>
+
+        <!-- AREA DE INTERAÇÃO -->
+        <div class="main-card">
+            
+            <!-- ETAPA 1: LOGIN/FORM -->
+            <div id="step-form">
+                <h2>INICIAR CONSULTA GRÁTIS</h2>
+                <label>CPF DO BENEFICIÁRIO</label>
+                <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
+                
+                <label>TELEFONE (WHATSAPP)</label>
+                <input type="tel" id="tel" placeholder="(11) 99999-9999">
+
+                <button class="btn-scan" onclick="startSearch()">
+                    CONSULTAR AGORA <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- ETAPA 2: SCANNER (DEMORA REALISTA) -->
+            <div id="scanner-ui">
+                <div class="scanner-circle"></div>
+                <h3 id="status-msg" style="color: #000; font-size: 16px; font-weight: 900;">Conectando ao Banco Central...</h3>
+                <p style="color: #666; font-size: 12px; margin-top: 10px;">Aguarde, estamos varrendo 14 instituições financeiras...</p>
+            </div>
+
+            <!-- ETAPA 3: RESULTADO + CTA -->
+            <div id="result-ui">
+                <div class="amount-display">
+                    <span>SALDO TOTAL LOCALIZADO</span>
+                    <h3 id="valor-final">R$ 0,00</h3>
+                </div>
+                
+                <p style="color: #333; font-size: 14px; text-align: left; margin-bottom: 20px;">
+                    <i class="fas fa-check-circle" style="color: #00c853;"></i> <b>Acesso Liberado!</b> Para sacar este valor agora via PIX, finalize a licença de auditoria abaixo.
+                </p>
+
+                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="cta-final">
+                    SAQUE IMEDIATO VIA PIX
+                </a>
+                
+                <p style="color: #999; font-size: 10px; margin-top: 15px; text-align: center;">
+                    *Taxa única de R$ 97,00 para custos de processamento e auditoria federal.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="trust-line">
+            <img src="https://logodownload.org/wp-content/uploads/2020/02/pix-bc-logo.png" height="20">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Logo_do_Banco_Central_do_Brasil.svg/1200px-Logo_do_Banco_Central_do_Brasil.svg.png" height="20">
+        </div>
+
     </div>
 
     <script>
-        // 1. CRONOMETRO PERSISTENTE (Não reseta no F5)
-        function startTimer(duration, display) {
-            let timer = localStorage.getItem('timer_val') || duration;
+        // Máscara Simples de CPF
+        document.getElementById('cpf').addEventListener('input', function (e) {
+            var value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            e.target.value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        });
+
+        function startSearch() {
+            const cpf = document.getElementById('cpf').value;
+            if(cpf.length < 14) { alert("CPF Inválido"); return; }
+
+            document.getElementById('step-form').style.display = 'none';
+            document.getElementById('scanner-ui').style.display = 'block';
+
+            const msgs = [
+                "Buscando Ativos Retidos...",
+                "Varrendo Contas Inativas...",
+                "Localizando Tarifas Abusivas...",
+                "Consultando Seguro de Cartão...",
+                "Gerando Protocolo de Saque..."
+            ];
             
-            // Se for meia-noite, resetamos
-            const now = new Date();
-            if (now.getHours() === 0 && now.getMinutes() === 0) {
-                timer = duration;
-            }
-
-            setInterval(function () {
-                let minutes = parseInt(timer / 60, 10);
-                let seconds = parseInt(timer % 60, 10);
-
-                minutes = minutes < 10 ? "0" + minutes : minutes;
-                seconds = seconds < 10 ? "0" + seconds : seconds;
-
-                display.textContent = minutes + ":" + seconds;
-                
-                if (--timer < 0) {
-                    timer = 0; 
+            let i = 0;
+            const interval = setInterval(() => {
+                if(i < msgs.length) {
+                    document.getElementById('status-msg').innerText = msgs[i];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                    showResult();
                 }
-                localStorage.setItem('timer_val', timer);
-            }, 1000);
+            }, 5500); // Demora realista: aprox 27 segundos total
         }
 
-        window.onload = function () {
-            const fifteenMinutes = 60 * 15;
-            const display = document.querySelector('#countdown');
-            startTimer(fifteenMinutes, display);
-
-            // Colocar datas nos comentários
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('pt-BR');
-            document.querySelectorAll('.c-date').forEach(el => el.innerText = dateStr);
-        };
-
-        // 2. CARREGAR MAIS COMENTÁRIOS
-        function loadMore() {
-            document.querySelectorAll('.comment').forEach(el => el.classList.add('visible'));
-            document.querySelector('.load-more').style.display = 'none';
+        function showResult() {
+            const final = (Math.random() * (3100 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+            document.getElementById('valor-final').innerText = "R$ " + final;
+            document.getElementById('scanner-ui').style.display = 'none';
+            document.getElementById('result-ui').style.display = 'block';
         }
-
-        // 3. NOTIFICAÇÃO DE SAQUE
-        const users = ['Renata M.', 'Cláudio F.', 'Jefferson T.', 'Sônia R.', 'Lucas H.', 'Beatriz W.'];
-        function showPix() {
-            const user = users[Math.floor(Math.random() * users.length)];
-            const amt = (Math.random() * (3100 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
-            document.getElementById('notify-user').innerText = user;
-            document.getElementById('notify-amt').innerText = amt;
-            const el = document.getElementById('pix-notify');
-            el.style.display = 'flex';
-            setTimeout(() => { el.style.display = 'none'; }, 4000);
-        }
-        setInterval(showPix, 10000);
     </script>
 
 </body>
