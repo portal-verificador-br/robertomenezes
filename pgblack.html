@@ -146,23 +146,21 @@
                         <span>Ex-Auditor Sênior · 20 anos no setor bancário</span>
                     </div>
                 </div>
-                <p class="roberto-text">O Sistema SARV faz uma varredura completa no seu CPF em busca de valores acumulados por tarifas indevidas e cesta de serviços. Estou liberando o acesso para você hoje, mas precisa ser rápido: meu login será excluído desse servidor hoje à meia-noite. Esta é a última oportunidade de usar a ferramenta antes que ela saia do ar permanentemente.</p>
+                <p class="roberto-text">O Sistema SARV faz uma varredura completa no seu CPF em busca de valores acumulados por tarifas indevidas e cesta de serviços. Estou liberando o acesso para você hoje, mas precisa ser rápido: meu login será excluído desse servidor hoje à meia-noite.</p>
             </div>
 
             <div class="form-card" id="main-form">
                 <h2>Preencha seus dados para consultar</h2>
-                <div class="input-group">
-                    <label>NOME COMPLETO</label>
-                    <input type="text" id="nome" placeholder="Nome do titular...">
-                </div>
+                
                 <div class="input-group">
                     <label>CPF</label>
                     <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
                 </div>
                 <div class="input-group">
-                    <label>WHATSAPP</label>
-                    <input type="tel" id="zap" placeholder="(00) 00000-0000">
+                    <label>DATA DE NASCIMENTO</label>
+                    <input type="tel" id="nascimento" placeholder="DD/MM/AAAA" maxlength="10">
                 </div>
+                
                 <button class="btn-main" onclick="startScanner()">🔍 CONSULTAR MEU SALDO AGORA</button>
                 
                 <p style="font-size: 12px; font-weight: 700; color: #666; text-align: center; margin-top: 15px;">
@@ -215,7 +213,7 @@
             <div class="form-card" style="text-align: center;">
                 <div class="loader-circle"></div>
                 <h3 style="font-size: 20px;">🔎 Consultando seu CPF...</h3>
-                <p style="font-size: 14px; margin-bottom: 20px;">Aguarde, <span class="u-nome" style="font-weight: 800;"></span></p>
+                <p style="font-size: 14px; margin-bottom: 20px;">Aguarde, estamos processando os dados</p>
                 
                 <div style="text-align: left; background: #fafafa; border-radius: 12px; padding: 15px; border: 1px solid #eee;">
                     <p style="font-size: 12px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Verificando 14 bancos vinculados ao CPF: <span id="u-cpf"></span></p>
@@ -246,7 +244,7 @@
                 </div>
                 
                 <p style="text-align: center; font-size: 17px; margin-bottom: 20px;">
-                    <span class="u-nome" style="font-weight: 800;"></span>, encontramos valores em seu CPF:<br>
+                    Encontramos valores disponíveis no seu CPF:<br>
                     <b style="font-size: 13px; color: #777;" id="f-cpf"></b>
                 </p>
 
@@ -263,7 +261,7 @@
                         <span>Status do Saque:</span> <b class="status-badge">LIBERADO</b>
                     </div>
                     <p class="liquidation-notice">
-                        📌 <b>Liberação Autorizada:</b> Os valores que localizamos aparecem após uma varredura completa nos registros bancários. Pela lei de ativos retidos, os bancos não podem segurar esse saldo. A nossa auditoria financeira gera um código de liberação que obriga o repasse imediato. Você receberá o valor total através da nossa plataforma, que faz a ponte entre o banco e o seu PIX.
+                        📌 <b>Liberação Autorizada:</b> Os valores que localizamos aparecem após uma varredura completa nos registros bancários. Pela lei de ativos retidos, os bancos não podem segurar esse saldo.
                     </p>
                 </div>
 
@@ -280,7 +278,7 @@
                 <h3 style="color: #ff0000; font-size: 20px; font-weight: 900; text-align: center; margin: 25px 0 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
                 
                 <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
-                    <span class="u-nome" style="font-weight: 800;"></span>, para garantir que o saque seja feito pelo titular do CPF e evitar fraudes, é necessário ativar sua <b>Licença de Validação de Saque</b>.<br><br>
+                    Para garantir a segurança do titular e evitar fraudes, é necessário ativar sua <b>Licença de Validação de Saque</b>.<br><br>
                     <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt">R$ 2.134,43</b>.
                 </div>
 
@@ -300,7 +298,7 @@
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
                      <p style="font-size: 15px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Roberto Menezes:</b> "<span class="u-nome"></span>, essa é a última chamada. ative sua licença agora, receba seus <b class="f-money-txt">R$ 2.134,43</b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
+                        <b>Roberto Menezes:</b> "Ative sua licença agora, receba seus <b class="f-money-txt">R$ 2.134,43</b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
                     </p>
                 </div>
             </div>
@@ -322,10 +320,23 @@
     </div>
 
     <script>
+        // Mascara CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        });
+
+        // Mascara Data de Nascimento
+        document.getElementById('nascimento').addEventListener('input', e => {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 8) v = v.slice(0, 8);
+            if (v.length >= 5) {
+                v = v.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+            } else if (v.length >= 3) {
+                v = v.replace(/(\d{2})(\d{2})/, "$1/$2");
+            }
+            e.target.value = v;
         });
 
         const usersPop = [
@@ -348,11 +359,11 @@
 
         function loadMoreDepos() {
             const container = document.getElementById('depo-container');
-            const hoje = "12/05/2026";
+            const hoje = "13/05/2026";
             const novos = [
                 {n: "Sandra Regina Santos Silva", l: hoje, v: "1.650,10", t: "Fiz a consulta e o valor do Santander que está inativo apareceu. Fiz o saque e caiu tudo certinho na minha conta."},
-                {n: "Luiz Gustavo Moreira Ramos", l: hoje, v: "1.120,45", t: "Estava precisando muito desse dinheiro pois meu aluguel estava atrasado. O sistema é muito rápido e o Roberto é nota 10 no suporte."},
-                {n: "Marcos Vinícius de Oliveira", l: hoje, v: "2.270,80", t: "Vi no anúncio e achei que era brincadeira, mas realmente tinha um valor de uma conta antiga minhaa do Itaú. Show de bola essa ferramenta!"}
+                {n: "Luiz Gustavo Moreira Ramos", l: hoje, v: "1.120,45", t: "Estava precisando muito desse dinheiro pois meu aluguel estava atrasado. O sistema é muito rápido."},
+                {n: "Marcos Vinícius de Oliveira", l: hoje, v: "2.270,80", t: "Vi no anúncio e achei que era brincadeira, mas realmente tinha um valor de uma conta antiga minhaa do Itaú."}
             ];
             novos.forEach(d => {
                 const div = document.createElement('div');
@@ -364,12 +375,12 @@
         }
 
         async function startScanner() {
-            const nome = document.getElementById('nome').value;
             const cpf = document.getElementById('cpf').value;
-            if(!nome || cpf.length < 14) { alert("Preencha os dados corretamente!"); return; }
+            const nasc = document.getElementById('nascimento').value;
+            if(cpf.length < 14 || nasc.length < 10) { alert("Preencha os dados corretamente!"); return; }
+            
             document.getElementById('step-1').style.display = 'none';
             document.getElementById('step-2').style.display = 'block';
-            document.querySelectorAll('.u-nome').forEach(el => el.innerText = nome.split(' ')[0]);
             document.getElementById('u-cpf').innerText = cpf;
             
             const bItems = document.querySelectorAll('.bank-item');
@@ -386,15 +397,15 @@
         }
 
         function showResult() {
-            // Valor fixo conforme solicitado
             const fixo = "R$ 2.134,43";
             document.getElementById('f-money').innerText = fixo;
             document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = fixo);
-            
             document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
+            
             document.getElementById('step-2').style.display = 'none';
             document.getElementById('step-3').style.display = 'block';
             window.scrollTo(0,0);
+            
             let dur = 300;
             setInterval(() => {
                 let m = Math.floor(dur/60); let s = dur%60;
