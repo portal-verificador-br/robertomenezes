@@ -148,7 +148,7 @@
                         <span>Ex-Auditor Sênior · 20 anos no setor bancário</span>
                     </div>
                 </div>
-                <p class="roberto-text">"Minha jornada no banco acabou quando decidi que era hora de o povo saber a verdade sobre as taxas ocultas. Fui desligado por tentar ajudar, mas trouxe comigo a ferramenta de auditoria interna. O Sistema SARV faz uma varredura completa no seu CPF em busca de valores acumulados. Estou liberando o acesso para você hoje, mas precisa ser rápido: meu login será excluído desse servidor hoje à meia-noite. Esta é a última oportunidade de usar a ferramenta antes que ela saia do ar permanentemente."</p>
+                <p class="roberto-text">"O Sistema SARV faz uma varredura completa no seu CPF em busca de valores acumulados por tarifas indevidas e cesta de serviços. Estou liberando o acesso para você hoje, mas precisa ser rápido: meu login será excluído desse servidor hoje à meia-noite. Esta é a última oportunidade de usar a ferramenta antes que ela saia do ar permanentemente."</p>
             </div>
 
             <div class="form-card" id="main-form">
@@ -158,11 +158,11 @@
                     <input type="text" id="nome" placeholder="Nome do titular...">
                 </div>
                 <div class="input-group">
-                    <label>CPF PARA A CONSULTA</label>
+                    <label>CPF</label>
                     <input type="tel" id="cpf" placeholder="000.000.000-00" maxlength="14">
                 </div>
                 <div class="input-group">
-                    <label>WHATSAPP PARA CONTATO</label>
+                    <label>WHATSAPP</label>
                     <input type="tel" id="zap" placeholder="(00) 00000-0000">
                 </div>
                 <button class="btn-main" onclick="startScanner()">🔍 CONSULTAR MEU SALDO AGORA</button>
@@ -184,7 +184,7 @@
                 <div class="card-depo">
                     <div class="depo-header"><b>Cleusa Aparecida dos Santos</b> <span>13/05/2026</span></div>
                     <div class="val-rec">+R$ 2.340,42</div>
-                    <p class="depo-text">"Fiquei com medo no começo, achei que era golpe. Mas minha filha me ajudou a fazer e caiu R$ 2.300 do Bradesco que eu nem sabia que tinha. Deus abençoe você Roberto."</p>
+                    <p class="depo-text">"Fiquei com medo no começo mas minha filha me ajudou a fazer e caiu R$ 2.300 do Bradesco que eu nem sabia que tinha. Deus abençoe você Roberto."</p>
                 </div>
                 <div class="card-depo">
                     <div class="depo-header"><b>Antônio Ferreira da Silva Neto</b> <span>13/05/2026</span></div>
@@ -226,14 +226,14 @@
                         <div class="bank-item" data-time="1100"><span>Caixa Econômica</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="1700"><span>Bradesco</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="1400"><span>Itaú Unibanco</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="950"><span>Santander</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="900"><span>Nubank</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="700"><span>Banco Inter</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="3000"><span>Santander</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1200"><span>Nubank</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="900"><span>Banco Inter</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="650"><span>Mercado Pago</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="750"><span>BTG Pactual</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="800"><span>Banco Safra</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="700"><span>C6 Bank</span> <small>aguardando</small></div>
-                        <div class="bank-item" data-time="850"><span>PagBank</span> <small>aguardando</small></div>
+                        <div class="bank-item" data-time="1500"><span>PagBank</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="900"><span>PicPay</span> <small>aguardando</small></div>
                         <div class="bank-item" data-time="800"><span>Banco Neon</span> <small>aguardando</small></div>
                     </div>
@@ -253,14 +253,14 @@
                 </p>
 
                 <div class="result-card">
-                    <span style="font-size: 13px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">💰 Saldo total disponível</span>
+                    <span style="font-size: 13px; font-weight: 800; color: var(--secondary); text-transform: uppercase;">Saldo total disponível</span>
                     <h3 id="f-money">R$ 0,00</h3>
                 </div>
 
                 <div class="audit-details">
                     <div class="audit-line"><span>Instituições Consultadas:</span> <b>14 Bancos</b></div>
-                    <div class="audit-line"><span>Tarifas Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
-                    <div class="audit-line"><span>Cesta de Serviços:</span> <b>R$ <span id="val-juros"></span></b></div>
+                    <div class="audit-line"><span>Tarifas Bancárias Indevidas Localizadas:</span> <b>R$ <span id="val-tarifas"></span></b></div>
+                    <div class="audit-line"><span>Cesta de Serviços Anual:</span> <b>R$ <span id="val-juros"></span></b></div>
                     <div class="audit-line" style="margin-top:10px; padding-top:15px; border-top: 1px solid #cbd5e1;">
                         <span>Status do Saque:</span> <b class="status-badge">LIBERADO</b>
                     </div>
@@ -287,7 +287,7 @@
                 </div>
 
                 <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
-                    <span style="font-size: 14px; color: #999; text-decoration: line-through;">De R$ 97,00</span>
+                    <span style="font-size: 14px; color: #999; text-decoration: line-through;">De R$ 197,00</span>
                     <div style="font-size: 46px; font-weight: 900; color: var(--secondary);">R$ 47,00</div>
                     <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
                         <div><span style="display:block; font-size: 13px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 20px;" id="timer">05:00</b></div>
@@ -302,7 +302,7 @@
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
                      <p style="font-size: 15px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Roberto Menezes:</b> "<span class="u-nome"></span>, essa é a última chamada. Garanta sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
+                        <b>Roberto Menezes:</b> "<span class="u-nome"></span>, essa é a última chamada. ative sua licença agora, receba seus <b class="f-money-txt"></b> e tenha os 47 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
                     </p>
                 </div>
             </div>
