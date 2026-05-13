@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistema SARV - Auditoria Oficial</title>
     
+    <!-- Scripts e Fontes Originais -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -36,88 +37,113 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background-color: var(--bg); color: var(--text); overflow-x: hidden; font-size: 16px; }
 
+        /* NOVO: Estilo da Tela de Transição */
+        #loader-redirect {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 10000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .spinner-red {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .loader-text-red {
+            font-size: 18px;
+            font-weight: 800;
+            color: #111;
+            padding: 0 30px;
+            line-height: 1.4;
+            text-transform: uppercase;
+        }
+
+        /* Seus Estilos Originais Mantidos */
         .top-alert { background: #f59e0b; color: #000; padding: 12px; text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; z-index: 999; position: relative; border-bottom: 1px solid #d97706; }
         .navbar { background: var(--primary); padding: 15px; border-bottom: 2px solid #003070; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .logo-container { display: flex; flex-direction: column; color: #fff; }
         .logo { font-weight: 900; font-size: 20px; display: flex; align-items: center; gap: 5px; }
-        
-        .sub-logo { font-size: 10px; font-weight: 700; text-transform: uppercase; opacity: 0.9; margin-left: 0px; margin-top: -2px; }
-        
+        .sub-logo { font-size: 10px; font-weight: 700; text-transform: uppercase; opacity: 0.9; margin-top: -2px; }
         .status-online { color: #fff; font-size: 11px; font-weight: 800; display: flex; align-items: center; gap: 4px; }
         .dot { width: 8px; height: 8px; background: #00ff41; border-radius: 50%; animation: pulse 1s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
         .container { max-width: 500px; margin: 0 auto; padding: 20px; }
-
         .hero { text-align: center; margin-bottom: 20px; }
         .hero h1 { font-size: 28px; font-weight: 900; line-height: 1.1; color: var(--dark-blue); margin-top: 15px; }
         mark { background-color: #ffeb3b; color: inherit; padding: 0 4px; border-radius: 4px; }
-
         .roberto-box { background: #fff; border-radius: 15px; padding: 20px; border: 1px solid #ddd; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .roberto-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
         .roberto-img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid #eee; object-fit: cover; }
         .roberto-info b { font-size: 18px; display: block; color: #111; }
         .roberto-info span { font-size: 12px; font-weight: 700; color: #777; }
-        
         .roberto-text { font-size: 18px; color: var(--graphite); line-height: 1.6; font-weight: 600; font-style: italic; border-left: 4px solid var(--primary); padding-left: 12px; }
-
         .form-card { background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         .form-card h2 { font-size: 21px; text-align: center; margin-bottom: 20px; font-weight: 900; color: var(--secondary); }
         .input-group { margin-bottom: 15px; }
         label { display: block; font-size: 12px; font-weight: 800; color: #666; margin-bottom: 5px; margin-left: 5px; text-transform: uppercase; }
         input, select { width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #ddd; font-size: 17px; font-weight: 600; outline: none; background: #f9f9f9; }
         .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
-
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 25px 0; text-align: center; }
         .stat-item b { font-size: 19px; color: var(--primary); display: block; }
         .stat-item span { font-size: 11px; font-weight: 800; color: #999; }
-
         .depo-title { font-weight: 900; font-size: 19px; margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px; }
         .card-depo { background: #fff; border-radius: 15px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; }
         .depo-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
         .val-rec { color: var(--secondary); font-weight: 900; font-size: 18px; }
-        
         .depo-text { font-size: 16px; color: #444; line-height: 1.5; font-weight: 500; }
-
         .btn-more { width: 100%; padding: 14px; background: transparent; border: 2px solid #ddd; border-radius: 10px; color: #888; font-weight: 700; cursor: pointer; margin-bottom: 20px; font-size: 15px; }
-
         .steps { background: #fff; border-radius: 20px; padding: 25px; margin: 30px 0; border: 1px solid #eee; }
         .step-item { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start; }
         .step-num { background: var(--primary); color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-size: 22px; }
         .step-info b { font-size: 18px; display: block; margin-bottom: 4px; color: var(--dark-blue); }
-        
         .step-info p { font-size: 16px; line-height: 1.5; font-weight: 600; color: #555; }
-
         #notification-box { position: fixed; bottom: 20px; left: 20px; right: 20px; background: #fff; border-radius: 12px; padding: 18px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 12px; z-index: 1000; transform: translateY(150%); transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-left: 6px solid var(--secondary); max-width: 420px; margin: 0 auto; }
         #notification-box.show { transform: translateY(0); }
         .notif-text b { font-size: 15px; display: block; color: #111; margin-bottom: 2px; }
         .notif-text span { font-size: 13px; color: #444; font-weight: 600; }
         .notif-val-highlight { color: #16a34a; font-weight: 900; font-size: 18px; display: block; margin-top: 4px; }
-
         .loader-circle { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .bank-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; font-weight: 700; }
         .status-ok { color: var(--secondary); }
         .status-load { color: var(--primary); animation: pulse 1s infinite; }
-
         .result-card { background: #f0fff4; border: 2px dashed var(--secondary); padding: 30px 20px; border-radius: 20px; margin: 15px 0; text-align: center; }
         .result-card h3 { font-size: 48px; font-weight: 900; color: #111; }
-        
         .audit-details { background: #f8fafc; border-radius: 15px; padding: 20px; margin: 20px 0; text-align: left; border: 1px solid #cbd5e1; }
         .audit-line { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; font-weight: 700; align-items: center; }
         .audit-line span { color: #475569; flex: 1; }
         .audit-line b { color: #0f172a; text-align: right; margin-left: 10px; }
         .audit-line .status-badge { background: #dcfce7; color: #166534; padding: 6px 12px; border-radius: 8px; font-size: 14px; font-weight: 900; border: 1px solid #16a34a; }
-
         .liquidation-notice { font-size: 14px; line-height: 1.6; color: #1e293b; margin-top: 15px; font-weight: 700; background: #fffbeb; padding: 12px; border-radius: 10px; border: 1px solid #fde68a; }
-
         .pix-container { background: #f9f9f9; border: 1px solid #ddd; border-radius: 12px; padding: 15px; margin-top: 15px; }
-
         .footer { text-align: center; padding: 40px 20px; font-size: 13px; color: #1e293b; border-top: 2px solid var(--primary); line-height: 1.8; background: #e2e8f0; font-weight: 700; }
         .footer b { color: var(--primary); }
     </style>
 </head>
 <body>
+
+    <!-- NOVO: HTML da Tela de Transição -->
+    <div id="loader-redirect">
+        <div class="spinner-red"></div>
+        <div class="loader-text-red">
+            VOCÊ ESTÁ SENDO REDIRECIONADO PARA A PLATAFORMA DE VALIDAÇÃO DE SAQUE...<br>
+            <span style="font-size: 13px; font-weight: normal; color: #666; margin-top: 10px; display: block; text-transform: none;">(Conectando ao sistema de segurança de ativos)</span>
+        </div>
+    </div>
 
     <div class="top-alert">⚠️ Liberação extraordinária — Sistema disponível APENAS HOJE (13 de maio de 2026)</div>
 
@@ -291,10 +317,10 @@
                     </div>
                 </div>
 
-                <a href="https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O" 
-                   onclick="fbq('track', 'InitiateCheckout');"
+                <!-- AJUSTADO: Botão chama a função de carregamento -->
+                <button onclick="finalizarSaque()"
                    class="btn-main" 
-                   style="text-decoration: none; display: block; text-align: center; font-size: 20px;">ATIVAR MINHA LICENÇA</a>
+                   style="text-decoration: none; display: block; text-align: center; font-size: 20px;">ATIVAR MINHA LICENÇA</button>
 
                 <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
                      <p style="font-size: 15px; color: #111; line-height: 1.6; font-weight: 600;">
@@ -320,6 +346,22 @@
     </div>
 
     <script>
+        // NOVO: Função de Redirecionamento com Carregamento
+        function finalizarSaque() {
+            // Rastreia o clique no Facebook
+            if(typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout');
+            }
+
+            // Mostra o Loader
+            document.getElementById('loader-redirect').style.display = 'flex';
+
+            // Aguarda 2.5 segundos (tempo rápido para não perder o lead)
+            setTimeout(function() {
+                window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O";
+            }, 2500);
+        }
+
         // Mascara CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
