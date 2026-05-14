@@ -38,117 +38,180 @@
             background-color: #fff; z-index: 20000; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
 
-        h1 { font-size: 26px; color: #111; line-height: 1.1; margin: 20px 0; font-weight: 900; }
-        .highlight { background: #ffeb3b; color: #c00; padding: 0 5px; }
+        /* HEADLINE AGRESSIVA */
+        h1 { font-size: 32px; color: #111; line-height: 1.0; margin: 25px 0; font-weight: 900; letter-spacing: -1px; }
+        .highlight { background: #ffeb3b; color: #c00; padding: 0 5px; border: 2px solid #c00; }
 
         .author-box { display: flex; align-items: center; padding: 15px 0; border-bottom: 2px solid #eee; margin-bottom: 20px; }
-        .author-img { width: 50px; height: 50px; border-radius: 50%; margin-right: 12px; border: 2px solid #c00; }
-        .date { font-size: 12px; color: #65676b; font-weight: bold; }
+        .author-img { width: 60px; height: 60px; border-radius: 50%; margin-right: 12px; border: 2px solid #c00; }
+        .date { font-size: 12px; color: #d32f2f; font-weight: bold; text-transform: uppercase; }
 
         p { margin-bottom: 18px; font-size: 18px; line-height: 1.5; color: #333; }
-        .step-card { background: #f8f9fa; border-left: 5px solid #28a745; padding: 15px; margin: 20px 0; border-radius: 4px; }
-        .step-card h3 { font-size: 16px; margin-bottom: 10px; color: #1e7e34; text-transform: uppercase; }
-        .step-card ol { margin-left: 20px; font-weight: bold; }
-        .step-card li { margin-bottom: 8px; }
+        
+        .step-card { background: #f8f9fa; border: 2px solid #ddd; border-left: 8px solid #28a745; padding: 20px; margin: 25px 0; border-radius: 8px; }
+        .step-card h3 { font-size: 18px; margin-bottom: 15px; color: #1e7e34; text-transform: uppercase; font-weight: 900; }
+        .step-card ol { margin-left: 20px; font-weight: bold; font-size: 16px; }
+        .step-card li { margin-bottom: 12px; }
 
+        /* BLOCO DE VALOR MELHORADO */
         .cta-box {
-            background-color: #fff9c4; border: 3px dashed #fbc02d; padding: 25px;
-            text-align: center; margin: 30px 0; border-radius: 12px;
+            background-color: #fff9c4; border: 4px dashed #fbc02d; padding: 35px 20px;
+            text-align: center; margin: 40px 0; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
+        .manual-badge { background: #c00; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: 900; display: inline-block; margin-bottom: 15px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
 
         .btn-pulse {
-            background: #28a745; color: white; font-size: 22px; font-weight: 900;
-            padding: 25px 10px; text-decoration: none; display: block; border-radius: 10px;
-            box-shadow: 0 6px 0 #155724; animation: grow 1.1s infinite alternate;
+            background: #28a745; color: white; font-size: 24px; font-weight: 900;
+            padding: 25px 15px; text-decoration: none; display: block; border-radius: 12px;
+            box-shadow: 0 8px 0 #155724; animation: grow 1.1s infinite alternate;
             text-transform: uppercase; cursor: pointer; border: none; width: 100%;
+            line-height: 1.1;
         }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
-        /* COMENTÁRIOS */
-        .comments-section { margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px; }
-        .comment { display: flex; margin-bottom: 20px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; background: #ddd; }
-        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; }
+        /* COMENTÁRIOS ESTILO FACEBOOK COM RESPOSTAS */
+        .comments-section { margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
+        .comment { display: flex; margin-bottom: 15px; }
+        .reply { margin-left: 50px; margin-top: -10px; margin-bottom: 20px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; background: #ccc; overflow: hidden; }
+        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; position: relative; }
         .name { font-weight: bold; font-size: 13px; color: #385898; }
-        .text { font-size: 14px; margin-top: 3px; }
-        .meta { font-size: 12px; color: #65676b; margin-top: 8px; }
+        .text { font-size: 14px; margin-top: 3px; color: #050505; }
+        .meta { font-size: 12px; color: #65676b; margin-top: 8px; font-weight: bold; }
 
-        /* NOTIFICAÇÃO SEM FOTO */
+        /* NOTIFICAÇÃO DE COMPRA */
         #notification {
-            position: fixed; bottom: 20px; left: 20px; background: #111; color: #fff;
-            padding: 12px 20px; border-radius: 50px; box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-            display: none; align-items: center; z-index: 10000; border: 1px solid #333;
+            position: fixed; bottom: 20px; left: 20px; background: rgba(0, 0, 0, 0.9); color: #fff;
+            padding: 15px 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            display: none; align-items: center; z-index: 10000; border: 1px solid #444;
         }
-        #notification p { font-size: 12px; margin: 0; color: #fff; font-weight: 700; }
+        #notification p { font-size: 13px; margin: 0; color: #fff; font-weight: 700; line-height: 1.2; }
     </style>
 </head>
 <body>
 
     <div class="alert-bar">
-        ⚠️ ATENÇÃO: CONEXÃO COM SERVIDOR SARV 892 EXPIRA EM <span id="timer">10:00</span>.
+        ⚠️ ATENÇÃO: ACESSO AO SERVIDOR SARV 892 EXPIRA EM <span id="timer">10:00</span>.
     </div>
 
     <div id="loader-redirect">
         <div class="spinner"></div>
-        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34;">ESTABELECENDO CONEXÃO PIX...<br><small>CONFIGURANDO SAQUE IMEDIATO</small></p>
+        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34;">CONFIGURANDO ACESSO AO SISTEMA...<br><small>PREPARANDO SOLICITAÇÃO DE SAQUE</small></p>
     </div>
 
     <div class="container">
-        <h1>Ex-Funcionário do Santander Vaza Ferramenta Interna: <span class="highlight">CPFs estão sacando Taxas Indevidas acumuladas hoje!</span></h1>
+        <h1>Ex-funcionário do Santander VAZA Ferramenta Interna e <span class="highlight">CPFs estão sacando Taxas Indevidas hoje!</span></h1>
 
         <div class="author-box">
-            <img src="link da foto raw aqui" class="author-img" alt="Roberto">
+            <img src="LINK_DA_FOTO_RAW_AQUI" class="author-img" alt="Roberto">
             <div>
                 <strong>Roberto M. (Ex-Auditor de TI)</strong><br>
-                <span class="date">ATUALIZADO AGORA</span>
+                <span class="date">AO VIVO: SISTEMA LIBERADO</span>
             </div>
         </div>
 
         <p>Eles me mandaram embora porque eu não aguentei ver o que faziam com o povo. Fui demitido por tentar ajudar um cliente a recuperar o que era dele por direito.</p>
 
-        <p>O que você não sabe é que os bancos usam uma ferramenta chamada <b>SARV 892</b>. Ela é de uso exclusivo de auditores para identificar valores cobrados indevidamente (Juros abusivos, taxas de crédito, seguros não contratados e tarifas de empréstimos) entre <b>2019 e 2025</b>.</p>
+        <p>O <b>SARV 892</b> é uma ferramenta interna usada por auditores para localizar valores que os bancos "escondem" de você: Juros abusivos, taxas de crédito e tarifas cobradas entre <b>2019 e 2025</b>.</p>
 
-        <p>O banco identifica o valor, mas NÃO devolve. Eles lucram bilhões deixando esse dinheiro parado. Eu copiei o acesso da ferramenta e estou liberando para você fazer o que os bancos odeiam: <b>O SAQUE.</b></p>
+        <p>O banco lucra bilhões deixando esse dinheiro parado na conta deles. Estou liberando o acesso para você consultar e configurar sua conta bancária para receber o saque via <b>PIX imediato</b>.</p>
 
         <div class="step-card">
-            <h3>Como funciona o seu Resgate:</h3>
+            <h3>PASSO A PASSO PARA O RESGATE:</h3>
             <ol>
-                <li>Acesse o Painel SARV 892 abaixo.</li>
-                <li>Consulte os valores cobrados indevidamente (Crédito, Juros e Taxas).</li>
-                <li>Configure sua conta (PIX ou Depósito) e solicite o saque imediato.</li>
+                <li>Acesse a Ferramenta SARV 892.</li>
+                <li>Consulte os valores cobrados (Crédito, Juros e Taxas).</li>
+                <li>Configure seu PIX ou conta para depósito e solicite o saque.</li>
             </ol>
         </div>
 
         <div class="cta-box">
-            <h2 style="margin-bottom: 10px; font-weight: 900; color: #c00;">SISTEMA LIBERADO</h2>
-            <p style="font-size: 16px; font-weight: 700;">MANUAL PASSO A PASSO INCLUSO NO ACESSO</p>
+            <div class="manual-badge">MANUAL PASSO A PASSO INCLUSO</div>
+            <h2 style="margin-bottom: 10px; font-weight: 900; color: #111;">ACESSO IMEDIATO À FERRAMENTA</h2>
             
-            <p style="text-decoration: line-through; color: #999; margin-top: 10px;">Valor da Licença: R$ 997,00</p>
-            <p style="font-size: 30px; font-weight: 900; color: #155724;">HOJE: R$ 97,00</p>
+            <p style="text-decoration: line-through; color: #999; margin-top: 10px; font-size: 14px;">Valor Real: R$ 197,00</p>
+            <p style="font-size: 42px; font-weight: 900; color: #155724; margin: 10px 0;">R$ 19,90</p>
+            <p style="font-size: 13px; color: #d32f2f; font-weight: 900; margin-bottom: 20px;">PAGAMENTO ÚNICO - SEM MENSALIDADES</p>
             
             <button onclick="irParaCheckout()" class="btn-pulse">
-                🔓 ACESSAR SARV E SOLICITAR SAQUE
+                🔓 LIBERAR FERRAMENTA E FAZER MEU SAQUE
             </button>
             
-            <p style="margin-top: 15px; font-size: 12px; color: #555;"><b>GARANTIA DE RESGATE:</b> Se não encontrar valores, devolvemos seu dinheiro.</p>
+            <p style="margin-top: 15px; font-size: 11px; color: #666;">Acesso enviado imediatamente para o seu e-mail.</p>
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 20px; color: #111;">382 Comentários</p>
+            <p style="font-weight: bold; margin-bottom: 20px; color: #65676b; font-size: 14px;">12 comentários</p>
 
-            <!-- 8 Comentários -->
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Fernando Souza</div><div class="text">Mano, o Santander me roubou por 4 anos. Usei a ferramenta e achei R$ 2.300 de taxa de cesta de serviço. Fiz o pix e caiu!</div><div class="meta">5 min</div></div></div>
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Ricardo Oliveira</div><div class="text">Isso aqui é vingança pura contra os bancos. Peguei R$ 890 de juros de empréstimo de 2021. Valeu Roberto!</div><div class="meta">8 min</div></div></div>
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Beatriz Costa</div><div class="text">Gente, é real. Eu tava com medo mas o passo a passo ensina tudo. Configurei meu pix e recebi o comprovante em 10 minutos.</div><div class="meta">12 min</div></div></div>
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Marcos Vinícius</div><div class="text">O banco lucra com nossa ignorância. O SARV achou taxa até de conta que eu já tinha encerrado em 2020.</div><div class="meta">15 min</div></div></div>
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Luciana Gomes</div><div class="text">Acabei de fazer no Bradesco. R$ 1.250 liberado. Chupa banco! kkkkk</div><div class="meta">20 min</div></div></div>
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">João Pedro</div><div class="text">O manual é bem simples, qualquer um faz. O mais difícil é acreditar que o banco esconde isso da gente.</div><div class="meta">25 min</div></div></div>
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Fernanda Souza</div><div class="text">Meu marido é bancário e confirmou que esse código 892 existe mesmo pros auditores. Fiz e deu certo.</div><div class="meta">32 min</div></div></div>
-            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Carlos Eduardo</div><div class="text">Melhor investimento de 97 reais da minha vida. Recuperei 15x esse valor em 5 minutos.</div><div class="meta">40 min</div></div></div>
+            <!-- Comentário 1 -->
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=1" width="40"></div>
+                <div class="comment-body">
+                    <div class="name">Fernando Souza Ramos</div>
+                    <div class="text">O Santander me roubou por anos. O SARV achou R$ 2.140 de taxas indevidas. O pix caiu com 15 minutos!</div>
+                    <div class="meta">Curtir · Responder · 4 min</div>
+                </div>
+            </div>
+
+            <!-- Resposta 1 -->
+            <div class="comment reply">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=2" width="40"></div>
+                <div class="comment-body">
+                    <div class="name">Ricardo Oliveira Santos</div>
+                    <div class="text">Fernando, funciona no Bradesco também? To querendo pegar o acesso aqui.</div>
+                    <div class="meta">Curtir · Responder · 2 min</div>
+                </div>
+            </div>
+
+            <!-- Resposta 2 -->
+            <div class="comment reply" style="margin-left: 80px;">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=1" width="40"></div>
+                <div class="comment-body">
+                    <div class="name">Fernando Souza Ramos</div>
+                    <div class="text">Funciona em todos Ricardo, o sistema é interbancário. Pode ir sem medo.</div>
+                    <div class="meta">Curtir · Responder · 1 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=3" width="40"></div>
+                <div class="comment-body"><div class="name">Beatriz Costa Silveira</div><div class="text">Gente é real. Eu tava com receio pelo valor ser baixo, mas o manual ensina tudo. Configurei o pix e recebi na hora.</div><div class="meta">12 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=4" width="40"></div>
+                <div class="comment-body"><div class="name">Marcos Vinícius de Almeida</div><div class="text">O banco lucra com nossa ignorância. Recuperei juros de empréstimo de 2022. Top!</div><div class="meta">15 min</div></div>
+            </div>
+
+            <div class="comment reply">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=5" width="40"></div>
+                <div class="comment-body"><div class="name">Juliana Maria Cavalcante</div><div class="text">Alguém sabe se precisa de advogado?</div><div class="meta">Curtir · Responder · 5 min</div></div>
+            </div>
+
+            <div class="comment reply" style="margin-left: 80px;">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=6" width="40"></div>
+                <div class="comment-body"><div class="name">Roberto M.</div><div class="text">Juliana, não precisa. A ferramenta faz a auditoria sozinha e gera a ordem de saque direto no seu app.</div><div class="meta">Curtir · Responder · 2 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=7" width="40"></div>
+                <div class="comment-body"><div class="name">João Pedro Barbosa</div><div class="text">Melhores 20 reais que já gastei. Saquei 950 reais que tavam parados lá.</div><div class="meta">32 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=8" width="40"></div>
+                <div class="comment-body"><div class="name">Carlos Eduardo Mendes</div><div class="text">Chupa banco! O Roberto é um herói kkkkkk</div><div class="meta">40 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=9" width="40"></div>
+                <div class="comment-body"><div class="name">Ana Paula Ferreira de Souza</div><div class="text">Consegui recuperar o valor do seguro que o banco me empurrou ano passado. Muito fácil.</div><div class="meta">1h</div></div>
+            </div>
         </div>
 
         <div style="text-align: center; padding: 40px 0; color: #999; font-size: 11px;">
@@ -157,8 +220,9 @@
         </div>
     </div>
 
+    <!-- POP-UP DE VENDA REALIZADA -->
     <div id="notification">
-        <p>✅ <span id="notify-name"></span> acabou de sacar R$ <span id="notify-val"></span> via PIX</p>
+        <p>🛒 <span id="notify-name"></span> acabou de adquirir a Ferramenta SARV 892</p>
     </div>
 
     <script>
@@ -178,17 +242,280 @@
             if(time > 0) time--;
         }, 1000);
 
-        const names = ['Pedro', 'Lucas', 'Fernanda', 'Marcos', 'Júlia', 'Rafael', 'Ana', 'Gustavo'];
+        const names = [
+            'Pedro Henrique Silva', 'Lucas Oliveira', 'Fernanda de Souza Santos', 
+            'Marcos Vinícius Barbosa', 'Júlia Mendes', 'Rafael Costa Pereira', 
+            'Ana Paula Ferreira', 'Gustavo de Almeida Santos'
+        ];
+        
         function showNotification() {
             const name = names[Math.floor(Math.random() * names.length)];
-            const val = (Math.random() * (2500 - 400) + 400).toFixed(2);
             document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-val').innerText = val;
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
-            setTimeout(() => { notify.style.display = 'none'; }, 4000);
+            setTimeout(() => { notify.style.display = 'none'; }, 4500);
         }
-        setInterval(showNotification, 12000);
+        setInterval(showNotification, 15000);
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SISTEMA DE AUDITORIA SARV 892 - ACESSO RESTRITO</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Pixel Meta -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1773918999950681'); 
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background-color: #f0f2f5; color: #1c1e21; overflow-x: hidden; }
+
+        .alert-bar {
+            background-color: #c00; color: #fff; text-align: center; padding: 12px;
+            font-weight: bold; font-size: 13px; animation: pulse 1s infinite;
+            position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
+        }
+        @keyframes pulse { 0% { background-color: #c00; } 50% { background-color: #ff0000; } 100% { background-color: #c00; } }
+
+        #loader-redirect {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #fff; z-index: 20000; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+        }
+        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; animation: spin 1s linear infinite; }
+
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+        /* HEADLINE AGRESSIVA */
+        h1 { font-size: 32px; color: #111; line-height: 1.0; margin: 25px 0; font-weight: 900; letter-spacing: -1px; }
+        .highlight { background: #ffeb3b; color: #c00; padding: 0 5px; border: 2px solid #c00; }
+
+        .author-box { display: flex; align-items: center; padding: 15px 0; border-bottom: 2px solid #eee; margin-bottom: 20px; }
+        .author-img { width: 60px; height: 60px; border-radius: 50%; margin-right: 12px; border: 2px solid #c00; }
+        .date { font-size: 12px; color: #d32f2f; font-weight: bold; text-transform: uppercase; }
+
+        p { margin-bottom: 18px; font-size: 18px; line-height: 1.5; color: #333; }
+        
+        .step-card { background: #f8f9fa; border: 2px solid #ddd; border-left: 8px solid #28a745; padding: 20px; margin: 25px 0; border-radius: 8px; }
+        .step-card h3 { font-size: 18px; margin-bottom: 15px; color: #1e7e34; text-transform: uppercase; font-weight: 900; }
+        .step-card ol { margin-left: 20px; font-weight: bold; font-size: 16px; }
+        .step-card li { margin-bottom: 12px; }
+
+        /* BLOCO DE VALOR MELHORADO */
+        .cta-box {
+            background-color: #fff9c4; border: 4px dashed #fbc02d; padding: 35px 20px;
+            text-align: center; margin: 40px 0; border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .manual-badge { background: #c00; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: 900; display: inline-block; margin-bottom: 15px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
+
+        .btn-pulse {
+            background: #28a745; color: white; font-size: 24px; font-weight: 900;
+            padding: 25px 15px; text-decoration: none; display: block; border-radius: 12px;
+            box-shadow: 0 8px 0 #155724; animation: grow 1.1s infinite alternate;
+            text-transform: uppercase; cursor: pointer; border: none; width: 100%;
+            line-height: 1.1;
+        }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
+
+        /* COMENTÁRIOS ESTILO FACEBOOK COM RESPOSTAS */
+        .comments-section { margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
+        .comment { display: flex; margin-bottom: 15px; }
+        .reply { margin-left: 50px; margin-top: -10px; margin-bottom: 20px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; background: #ccc; overflow: hidden; }
+        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; position: relative; }
+        .name { font-weight: bold; font-size: 13px; color: #385898; }
+        .text { font-size: 14px; margin-top: 3px; color: #050505; }
+        .meta { font-size: 12px; color: #65676b; margin-top: 8px; font-weight: bold; }
+
+        /* NOTIFICAÇÃO DE COMPRA */
+        #notification {
+            position: fixed; bottom: 20px; left: 20px; background: rgba(0, 0, 0, 0.9); color: #fff;
+            padding: 15px 25px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            display: none; align-items: center; z-index: 10000; border: 1px solid #444;
+        }
+        #notification p { font-size: 13px; margin: 0; color: #fff; font-weight: 700; line-height: 1.2; }
+    </style>
+</head>
+<body>
+
+    <div class="alert-bar">
+        ⚠️ ATENÇÃO: ACESSO AO SERVIDOR SARV 892 EXPIRA EM <span id="timer">10:00</span>.
+    </div>
+
+    <div id="loader-redirect">
+        <div class="spinner"></div>
+        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34;">CONFIGURANDO ACESSO AO SISTEMA...<br><small>PREPARANDO SOLICITAÇÃO DE SAQUE</small></p>
+    </div>
+
+    <div class="container">
+        <h1>Ex-funcionário do Santander VAZA Ferramenta Interna e <span class="highlight">CPFs estão sacando Taxas Indevidas hoje!</span></h1>
+
+        <div class="author-box">
+            <img src="LINK_DA_FOTO_RAW_AQUI" class="author-img" alt="Roberto">
+            <div>
+                <strong>Roberto M. (Ex-Auditor de TI)</strong><br>
+                <span class="date">AO VIVO: SISTEMA LIBERADO</span>
+            </div>
+        </div>
+
+        <p>Eles me mandaram embora porque eu não aguentei ver o que faziam com o povo. Fui demitido por tentar ajudar um cliente a recuperar o que era dele por direito.</p>
+
+        <p>O <b>SARV 892</b> é uma ferramenta interna usada por auditores para localizar valores que os bancos "escondem" de você: Juros abusivos, taxas de crédito e tarifas cobradas entre <b>2019 e 2025</b>.</p>
+
+        <p>O banco lucra bilhões deixando esse dinheiro parado na conta deles. Estou liberando o acesso para você consultar e configurar sua conta bancária para receber o saque via <b>PIX imediato</b>.</p>
+
+        <div class="step-card">
+            <h3>PASSO A PASSO PARA O RESGATE:</h3>
+            <ol>
+                <li>Acesse a Ferramenta SARV 892.</li>
+                <li>Consulte os valores cobrados (Crédito, Juros e Taxas).</li>
+                <li>Configure seu PIX ou conta para depósito e solicite o saque.</li>
+            </ol>
+        </div>
+
+        <div class="cta-box">
+            <div class="manual-badge">MANUAL PASSO A PASSO INCLUSO</div>
+            <h2 style="margin-bottom: 10px; font-weight: 900; color: #111;">ACESSO IMEDIATO À FERRAMENTA</h2>
+            
+            <p style="text-decoration: line-through; color: #999; margin-top: 10px; font-size: 14px;">Valor Real: R$ 197,00</p>
+            <p style="font-size: 42px; font-weight: 900; color: #155724; margin: 10px 0;">R$ 19,90</p>
+            <p style="font-size: 13px; color: #d32f2f; font-weight: 900; margin-bottom: 20px;">PAGAMENTO ÚNICO - SEM MENSALIDADES</p>
+            
+            <button onclick="irParaCheckout()" class="btn-pulse">
+                🔓 LIBERAR FERRAMENTA E FAZER MEU SAQUE
+            </button>
+            
+            <p style="margin-top: 15px; font-size: 11px; color: #666;">Acesso enviado imediatamente para o seu e-mail.</p>
+        </div>
+
+        <div class="comments-section">
+            <p style="font-weight: bold; margin-bottom: 20px; color: #65676b; font-size: 14px;">12 comentários</p>
+
+            <!-- Comentário 1 -->
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=1" width="40"></div>
+                <div class="comment-body">
+                    <div class="name">Fernando Souza Ramos</div>
+                    <div class="text">O Santander me roubou por anos. O SARV achou R$ 2.140 de taxas indevidas. O pix caiu com 15 minutos!</div>
+                    <div class="meta">Curtir · Responder · 4 min</div>
+                </div>
+            </div>
+
+            <!-- Resposta 1 -->
+            <div class="comment reply">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=2" width="40"></div>
+                <div class="comment-body">
+                    <div class="name">Ricardo Oliveira Santos</div>
+                    <div class="text">Fernando, funciona no Bradesco também? To querendo pegar o acesso aqui.</div>
+                    <div class="meta">Curtir · Responder · 2 min</div>
+                </div>
+            </div>
+
+            <!-- Resposta 2 -->
+            <div class="comment reply" style="margin-left: 80px;">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=1" width="40"></div>
+                <div class="comment-body">
+                    <div class="name">Fernando Souza Ramos</div>
+                    <div class="text">Funciona em todos Ricardo, o sistema é interbancário. Pode ir sem medo.</div>
+                    <div class="meta">Curtir · Responder · 1 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=3" width="40"></div>
+                <div class="comment-body"><div class="name">Beatriz Costa Silveira</div><div class="text">Gente é real. Eu tava com receio pelo valor ser baixo, mas o manual ensina tudo. Configurei o pix e recebi na hora.</div><div class="meta">12 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=4" width="40"></div>
+                <div class="comment-body"><div class="name">Marcos Vinícius de Almeida</div><div class="text">O banco lucra com nossa ignorância. Recuperei juros de empréstimo de 2022. Top!</div><div class="meta">15 min</div></div>
+            </div>
+
+            <div class="comment reply">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=5" width="40"></div>
+                <div class="comment-body"><div class="name">Juliana Maria Cavalcante</div><div class="text">Alguém sabe se precisa de advogado?</div><div class="meta">Curtir · Responder · 5 min</div></div>
+            </div>
+
+            <div class="comment reply" style="margin-left: 80px;">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=6" width="40"></div>
+                <div class="comment-body"><div class="name">Roberto M.</div><div class="text">Juliana, não precisa. A ferramenta faz a auditoria sozinha e gera a ordem de saque direto no seu app.</div><div class="meta">Curtir · Responder · 2 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=7" width="40"></div>
+                <div class="comment-body"><div class="name">João Pedro Barbosa</div><div class="text">Melhores 20 reais que já gastei. Saquei 950 reais que tavam parados lá.</div><div class="meta">32 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=8" width="40"></div>
+                <div class="comment-body"><div class="name">Carlos Eduardo Mendes</div><div class="text">Chupa banco! O Roberto é um herói kkkkkk</div><div class="meta">40 min</div></div>
+            </div>
+
+            <div class="comment">
+                <div class="avatar"><img src="https://i.pravatar.cc/40?u=9" width="40"></div>
+                <div class="comment-body"><div class="name">Ana Paula Ferreira de Souza</div><div class="text">Consegui recuperar o valor do seguro que o banco me empurrou ano passado. Muito fácil.</div><div class="meta">1h</div></div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0; color: #999; font-size: 11px;">
+            © 2026 Auditoria Independente - Protocolo 892 <br>
+            Acesso Restrito conforme LGPD.
+        </div>
+    </div>
+
+    <!-- POP-UP DE VENDA REALIZADA -->
+    <div id="notification">
+        <p>🛒 <span id="notify-name"></span> acabou de adquirir a Ferramenta SARV 892</p>
+    </div>
+
+    <script>
+        function irParaCheckout() {
+            if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+            document.getElementById('loader-redirect').style.display = 'flex';
+            setTimeout(() => {
+                window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O";
+            }, 1800);
+        }
+
+        let time = 600;
+        setInterval(() => {
+            let min = Math.floor(time / 60);
+            let sec = time % 60;
+            document.getElementById('timer').innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
+            if(time > 0) time--;
+        }, 1000);
+
+        const names = [
+            'Pedro Henrique Silva', 'Lucas Oliveira', 'Fernanda de Souza Santos', 
+            'Marcos Vinícius Barbosa', 'Júlia Mendes', 'Rafael Costa Pereira', 
+            'Ana Paula Ferreira', 'Gustavo de Almeida Santos'
+        ];
+        
+        function showNotification() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            document.getElementById('notify-name').innerText = name;
+            const notify = document.getElementById('notification');
+            notify.style.display = 'flex';
+            setTimeout(() => { notify.style.display = 'none'; }, 4500);
+        }
+        setInterval(showNotification, 15000);
     </script>
 </body>
 </html>
