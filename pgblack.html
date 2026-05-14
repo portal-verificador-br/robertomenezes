@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sistema SARV 892 - Acesso Oficial</title>
+    <title>SISTEMA SARV 892 - PROTOCOLO ATIVO</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+
     <!-- Pixel Meta -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -15,220 +17,245 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1773918999950681');
+    fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root { 
-            --primary: #004ead; 
-            --secondary: #16a34a; 
-            --text: #1a1a1a; 
-            --bg: #f4f7f9; 
-            --danger: #e11d48;
-            --dark-blue: #002d62;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
+        body { background-color: #f0f2f5; color: #1c1e21; }
 
-        /* BARRA DE URGÊNCIA */
-        .urgency-bar {
-            background: #ff0000;
+        /* BARRA DE URGÊNCIA MÁXIMA */
+        .alert-bar {
+            background-color: #c00;
             color: #fff;
-            padding: 12px;
             text-align: center;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 13px;
+            animation: pulse 1s infinite;
             position: sticky;
             top: 0;
-            z-index: 10001;
-            border-bottom: 3px solid #b30000;
+            z-index: 1000;
+            text-transform: uppercase;
         }
 
+        @keyframes pulse {
+            0% { background-color: #c00; }
+            50% { background-color: #ff0000; }
+            100% { background-color: #c00; }
+        }
+
+        /* LOADER DE REDIRECIONAMENTO */
         #loader-redirect {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
+            background-color: #fff;
             z-index: 20000;
             flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
+        .spinner {
+            width: 60px; height: 60px;
+            border: 6px solid #f3f3f3; border-top: 6px solid #28a745;
+            border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .spinner-red {
-            width: 50px; height: 50px;
-            border: 5px solid #f3f3f3; border-top: 5px solid var(--primary);
-            border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 20px;
+        .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+        h1 { font-size: 24px; color: #111; line-height: 1.2; margin: 20px 0; font-weight: 900; text-align: left; }
+        .highlight { background: yellow; color: #c00; padding: 0 5px; }
+
+        .author-box { display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .author-img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; }
+        .date { font-size: 12px; color: #65676b; }
+
+        p { margin-bottom: 18px; font-size: 17px; line-height: 1.5; color: #333; }
+        b { font-weight: 700; }
+
+        .cta-box {
+            background-color: #fff9c4;
+            border: 2px dashed #fbc02d;
+            padding: 25px;
+            text-align: center;
+            margin: 30px 0;
+            border-radius: 12px;
         }
 
-        .navbar { background: var(--primary); padding: 15px; color: #fff; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-weight: 900; font-size: 18px; text-transform: uppercase; }
-        
-        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
-        
-        .hero h1 { font-size: 24px; font-weight: 900; color: var(--dark-blue); text-align: center; margin: 15px 0; line-height: 1.2; }
-        mark { background: #ffeb3b; padding: 0 5px; }
-
-        .form-card { background: #fff; border-radius: 20px; padding: 25px; border: 1px solid #ddd; box-shadow: 0 10px 30px rgba(0,0,0,0.08); margin-bottom: 20px; }
-        
-        .btn-main { 
-            background: var(--secondary); 
-            color: #fff; 
-            width: 100%; 
-            padding: 20px; 
-            border: none; 
-            border-radius: 12px; 
-            font-size: 18px; 
-            font-weight: 900; 
-            box-shadow: 0 6px 0 #118a3a; 
+        .btn-pulse {
+            background: #28a745;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 22px 10px;
+            text-decoration: none;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 5px 0 #1e7e34;
+            animation: grow 1.2s infinite alternate;
             text-transform: uppercase;
             cursor: pointer;
-            animation: pulse-cta 1.5s infinite;
+            border: none;
+            width: 100%;
         }
 
-        @keyframes pulse-cta {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); background: #18b653; }
-            100% { transform: scale(1); }
-        }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.05); } }
 
-        /* NOTIFICAÇÃO ESTILO FACEBOOK/HOTMART */
-        #notification-box { 
-            position: fixed; 
-            bottom: 20px; 
-            left: 50%; 
-            transform: translateX(-50%) translateY(150%); 
-            background: #fff; 
-            border-radius: 50px; 
-            padding: 10px 20px; 
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2); 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            z-index: 10000; 
-            transition: 0.5s; 
-            width: 90%;
-            max-width: 380px;
-            border: 1px solid #eee;
-        }
-        #notification-box.show { transform: translateX(-50%) translateY(0); }
-        .notif-icon { color: var(--secondary); font-size: 20px; }
-        .notif-text b { font-size: 13px; display: block; color: #111; }
-        .notif-text span { font-size: 11px; color: #666; }
+        .scarcity { color: #c00; font-weight: bold; margin-top: 15px; font-size: 14px; }
 
-        .footer { text-align: center; padding: 30px; font-size: 12px; color: #666; }
-        
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* COMENTÁRIOS FAKE ESTILO FB */
+        .comments-section { margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px; }
+        .comment { display: flex; margin-bottom: 20px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
+        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; }
+        .name { font-weight: bold; font-size: 13px; color: #385898; margin-bottom: 4px; }
+        .text { font-size: 14px; color: #1c1e21; }
+        .meta { font-size: 12px; color: #65676b; margin-top: 8px; }
+
+        /* NOTIFICAÇÃO DE VENDA */
+        #notification {
+            position: fixed; bottom: 20px; left: 20px;
+            background: #fff; padding: 12px; border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: none; align-items: center; z-index: 10000;
+            width: 280px; border-left: 5px solid #28a745;
+        }
+        #notification img { width: 40px; height: 40px; border-radius: 50%; margin-right: 12px; }
+        #notification p { font-size: 12px; margin: 0; line-height: 1.2; }
     </style>
 </head>
 <body>
 
-    <div class="urgency-bar">
-        VAGAS LIBERADAS POR TEMPO LIMITADO: <span id="main-timer">14:55</span>
+    <div class="alert-bar">
+        ⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM <span id="timer">10:00</span> POR ORDEM JUDICIAL.
     </div>
 
     <div id="loader-redirect">
-        <div class="spinner-red"></div>
-        <div class="loader-text-red"><b>VALIDANDO SUA LICENÇA...</b><br><small>Conectando ao servidor SARV 892</small></div>
+        <div class="spinner"></div>
+        <p style="margin-top: 20px; font-weight: 900;">LIBERANDO ACESSO AO SARV 892...</p>
     </div>
-
-    <nav class="navbar">
-        <div class="logo">SARV 892</div>
-        <div style="font-size: 10px; font-weight: 800;"><i class="fas fa-circle" style="color: #00ff41;"></i> SISTEMA ATIVO</div>
-    </nav>
 
     <div class="container">
-        <section class="hero">
-            <h1>LIBERADO: Use a inteligência <mark>SARV 892</mark> para localizar e resgatar valores retidos.</h1>
-            <p style="text-align: center; font-weight: 600; font-size: 14px; color: #444;">O acesso expira hoje às 23:59.</p>
-        </section>
+        <h1>Ex-Funcionário VAZA Brecha no Sistema: <span class="highlight">"Qualquer pessoa pode ativar o SARV 892 e sacar valores hoje"</span></h1>
 
-        <div class="form-card">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <img src="https://img.icons8.com/fluency/96/checked-user-male.png" width="60">
-                <p style="font-size: 14px; font-weight: 700; color: var(--primary);">ACESSO DISPONÍVEL PARA O SEU CPF</p>
-            </div>
-            
-            <button class="btn-main" onclick="irParaCheckout()">ADQUIRIR ACESSO SARV 892</button>
-            
-            <div style="margin-top: 20px; font-size: 12px; color: #777; line-height: 1.4;">
-                <i class="fas fa-shield-alt"></i> Pagamento seguro e acesso imediato via e-mail. Licença vitalícia com garantia de 7 dias.
+        <div class="author-box">
+            <img src="https://randomuser.me/api/portraits/men/33.jpg" class="author-img">
+            <div>
+                <strong>Por: Roberto M.</strong><br>
+                <span class="date">Atualizado: Hoje, às 08:00</span>
             </div>
         </div>
 
-        <!-- DEPOIMENTO ÚNICO -->
-        <div class="form-card" style="border-left: 5px solid var(--secondary);">
-            <p style="font-style: italic; font-weight: 500; color: #333;">"Eu não acreditava, mas a ferramenta 892 achou 2.400 reais de uma conta antiga. O investimento se pagou em 5 minutos."</p>
-            <div style="margin-top: 10px; font-weight: 800; font-size: 13px;">— Marcos S. (São Paulo)</div>
+        <p>Eles tentaram esconder isso de você por anos.</p>
+
+        <p>Trabalhei no coração do sistema bancário e vi bilhões ficarem parados simplesmente porque as pessoas não conhecem o <b>Protocolo SARV 892</b>.</p>
+
+        <p>Não é sorteio, não é erro. É um comando de <b>Cashback Oculto</b> que os bancos são obrigados por lei a manter, mas que ninguém te ensina a ativar no app.</p>
+
+        <p>Decidi revelar o passo a passo antes que derrubem este site. O acesso à ferramenta é imediato.</p>
+
+        <div class="cta-box">
+            <h2 style="margin-bottom: 15px; font-weight: 900;">ACESSO AO SISTEMA SARV 892</h2>
+            <p style="font-size: 15px;">Clique no botão abaixo para desbloquear seu acesso e ver o saldo disponível para o seu CPF.</p>
+            
+            <p style="text-decoration: line-through; color: #999; margin: 5px 0;">De: R$ 997,00</p>
+            <p style="font-size: 26px; font-weight: 900; color: #c00; margin-bottom: 20px;">POR APENAS: R$ 97,00</p>
+            
+            <button onclick="irParaCheckout()" class="btn-pulse">
+                🔓 LIBERAR MEU ACESSO AGORA
+            </button>
+            
+            <p class="scarcity">🔥 Restam apenas 3 licenças disponíveis.</p>
         </div>
 
-        <footer class="footer">
-            © 2026 Sistema SARV Oficial<br>
-            Todos os direitos reservados.
-        </footer>
+        <div class="comments-section">
+            <p style="font-weight: bold; margin-bottom: 20px; color: #65676b;">247 Comentários</p>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Fernando Souza</div>
+                    <div class="text">Cara, funciona mesmo! Fiz no meu app e apareceu R$ 1.140,00 de saldo retido. O SARV 892 salvou meu mês.</div>
+                    <div class="meta">Curtir · Responder · 2 min</div>
+                </div>
+            </div>
+
+            <div class="comment">
+                <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Carla Dias</div>
+                    <div class="text">Tava com medo de ser golpe mas o acesso chegou na hora no meu e-mail. Já saquei o meu! 🙏</div>
+                    <div class="meta">Curtir · Responder · 5 min</div>
+                </div>
+            </div>
+
+            <div class="comment" style="margin-left: 45px;">
+                <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
+                <div class="comment-body">
+                    <div class="name">Marcos P.</div>
+                    <div class="text">Carla, pode ir sem medo. Eu recuperei 450 reais de taxas que o banco tinha cobrado indevido. Vale cada centavo.</div>
+                    <div class="meta">Curtir · Responder · 3 min</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 40px 0; color: #999; font-size: 11px;">
+            Termos de Uso | Privacidade <br><br>
+            Este site não tem vínculo com o Facebook ou instituições bancárias citadas.
+        </div>
     </div>
 
-    <!-- POP-UP DE COMPRA DINÂMICO -->
-    <div id="notification-box">
-        <div class="notif-icon"><i class="fas fa-check-circle"></i></div>
-        <div class="notif-text">
-            <b id="notif-content">Fulana comprou a ferramenta SARV 892</b>
-            <span id="notif-time">há 4 minutos</span>
+    <div id="notification">
+        <img src="" id="notify-img">
+        <div>
+            <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
+            <p>Acabou de ativar o SARV 892.</p>
+            <p style="color: #28a745; font-size: 11px; font-weight: bold;">Saldo liberado com sucesso!</p>
         </div>
     </div>
 
     <script>
-        // Configurações do Pop-up
-        const nomes = ["Ricardo Oliveira", "Ana Paula Silva", "Marcos Vinícius", "Beatriz Costa", "Carlos Eduardo", "Luciana Gomes", "Fernanda Souza", "João Pedro"];
-        const tempos = ["há 4 minutos", "há 2 minutos", "agora mesmo"];
-        let indiceNomes = 0;
-        let indiceTempos = 0;
-
-        function showPop() {
-            if (indiceNomes >= nomes.length) indiceNomes = 0;
-            
-            const nome = nomes[indiceNomes];
-            const tempo = tempos[indiceTempos];
-
-            document.getElementById('notif-content').innerText = `${nome} comprou a ferramenta SARV 892`;
-            document.getElementById('notif-time').innerText = tempo;
-
-            const box = document.getElementById('notification-box');
-            box.classList.add('show');
-
-            setTimeout(() => {
-                box.classList.remove('show');
-                indiceNomes++;
-                // Lógica para avançar o tempo (de 4min para 'agora')
-                if (indiceTempos < tempos.length - 1) indiceTempos++;
-            }, 4000);
-        }
-
-        // Inicia o primeiro pop-up rápido e depois repete
-        setTimeout(showPop, 2000);
-        setInterval(showPop, 12000);
-
-        // Timer de Urgência
-        let tempoRestante = 14 * 60 + 55;
-        setInterval(() => {
-            let m = Math.floor(tempoRestante / 60);
-            let s = tempoRestante % 60;
-            document.getElementById('main-timer').innerText = `${m}:${s < 10 ? '0' + s : s}`;
-            if (tempoRestante > 0) tempoRestante--;
-        }, 1000);
-
-        // Redirecionamento
         function irParaCheckout() {
             if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
             
             document.getElementById('loader-redirect').style.display = 'flex';
             setTimeout(() => {
                 window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O";
-            }, 2000);
+            }, 1500);
         }
+
+        let time = 600;
+        const timerElement = document.getElementById('timer');
+        setInterval(() => {
+            let min = Math.floor(time / 60);
+            let sec = time % 60;
+            timerElement.innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
+            if(time > 0) time--;
+        }, 1000);
+
+        const names = ['Pedro', 'Lucas', 'Fernanda', 'Marcos', 'Júlia', 'Rafael', 'Ana', 'Gustavo', 'Ricardo', 'Beatriz'];
+        const locs = ['SP', 'RJ', 'MG', 'RS', 'BA', 'PR', 'SC', 'GO'];
+        
+        function showNotification() {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const loc = locs[Math.floor(Math.random() * locs.length)];
+            const imgId = Math.floor(Math.random() * 50);
+            const gender = Math.random() > 0.5 ? 'men' : 'women';
+            
+            document.getElementById('notify-name').innerText = name;
+            document.getElementById('notify-loc').innerText = loc;
+            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
+            
+            const notify = document.getElementById('notification');
+            notify.style.display = 'flex';
+            
+            setTimeout(() => { notify.style.display = 'none'; }, 5000);
+        }
+
+        setTimeout(showNotification, 3000);
+        setInterval(showNotification, 18000);
     </script>
 </body>
 </html>
