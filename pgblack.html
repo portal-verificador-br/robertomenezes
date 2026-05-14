@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistema SARV - Auditoria Oficial</title>
     
-    <!-- Scripts e Fontes Originais -->
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -96,7 +95,30 @@
         .input-group { margin-bottom: 15px; }
         label { display: block; font-size: 12px; font-weight: 800; color: #666; margin-bottom: 5px; margin-left: 5px; text-transform: uppercase; }
         input, select { width: 100%; padding: 18px; border-radius: 12px; border: 1px solid #ddd; font-size: 17px; font-weight: 600; outline: none; background: #f9f9f9; }
-        .btn-main { background: var(--secondary); color: #fff; width: 100%; padding: 22px; border: none; border-radius: 12px; font-size: 18px; font-weight: 900; cursor: pointer; box-shadow: 0 6px 0 #118a3a; text-transform: uppercase; margin-top: 10px; }
+        
+        /* BOTÃO PULSANDO - PRESSÃO PSICOLÓGICA */
+        .btn-main { 
+            background: var(--secondary); 
+            color: #fff; 
+            width: 100%; 
+            padding: 22px; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 18px; 
+            font-weight: 900; 
+            cursor: pointer; 
+            box-shadow: 0 6px 0 #118a3a; 
+            text-transform: uppercase; 
+            margin-top: 10px;
+            animation: pulse-cta 1.2s infinite;
+        }
+
+        @keyframes pulse-cta {
+            0% { transform: scale(1); box-shadow: 0 6px 0 #118a3a; }
+            50% { transform: scale(1.02); box-shadow: 0 10px 20px rgba(22, 163, 74, 0.4); background: #18b653; }
+            100% { transform: scale(1); box-shadow: 0 6px 0 #118a3a; }
+        }
+
         .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 25px 0; text-align: center; }
         .stat-item b { font-size: 19px; color: var(--primary); display: block; }
         .stat-item span { font-size: 11px; font-weight: 800; color: #999; }
@@ -136,7 +158,6 @@
 </head>
 <body>
 
-    <!-- HTML da Tela de Transição -->
     <div id="loader-redirect">
         <div class="spinner-red"></div>
         <div class="loader-text-red">
@@ -286,8 +307,10 @@
                     <div class="audit-line" style="margin-top:10px; padding-top:15px; border-top: 1px solid #cbd5e1;">
                         <span>Status do Saque:</span> <b class="status-badge">LIBERADO</b>
                     </div>
+                    
                     <p class="liquidation-notice">
-                        📌 <b>Pela lei de ativos retidos, os bancos não podem negar ou segurar este saldo quando solicitado por um Auditor Sênior. O pagamento é enviado diretamente pelo sistema de liquidação da nossa Auditoria, que retira o valor das instituições e repassa para sua conta via PIX.
+                        ✅ <b>SAQUE LIBERADO:</b> Liberação autorizada pelo Auditor Roberto (ID: #4492-B). O sistema de Auditoria Nacional concluiu a varredura e os valores foram enviados do Banco Central para o servidor de liquidação imediata. Os bancos não possuem mais jurisdição sobre este saldo.
+                    </p>
                 </div>
 
                 <div class="pix-container">
@@ -304,26 +327,24 @@
                 
                 <div style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px; text-align: center; background: #fffdf0; padding: 15px; border: 1px solid #ffeeba; border-radius: 12px;">
                     Para garantir a segurança do titular e evitar fraudes, é necessário ativar sua <b>Licença de Validação de Saque</b>.<br><br>
-                    <b>IMPORTANTE:</b> O valor da licença de R$ 19,90 é 100% REEMBOLSÁVEL e será devolvido automaticamente somado ao seu saque total de <b class="f-money-txt">R$ 2.134,43</b>.
+                    <b>IMPORTANTE:</b> O valor da licença é único e garante o envio imediato via PIX para sua conta.
                 </div>
 
-                <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 20px; text-align: center; margin-bottom: 25px;">
-                    <span style="font-size: 14px; color: #999; text-decoration: line-through;">De R$ 197,00</span>
-                    <div style="font-size: 46px; font-weight: 900; color: var(--secondary);">R$ 19,90</div>
+                <div style="background: #fff; border: 2px solid var(--secondary); border-radius: 15px; padding: 25px; text-align: center; margin-bottom: 25px;">
+                    <p style="font-size: 12px; font-weight: 800; color: #333; margin-bottom: 5px; text-transform: uppercase;">Taxa de Ativação do Protocolo:</p>
+                    <div style="font-size: 52px; font-weight: 900; color: var(--secondary);">R$ 19,90</div>
+                    
                     <div style="display:flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
                         <div><span style="display:block; font-size: 13px; color: #999; font-weight:800;">Encerra em</span><b style="color:#ff0000; font-size: 20px;" id="timer">05:00</b></div>
                         <div><span style="display:block; font-size: 13px; color: #999; font-weight:800;">Saque no CPF</span><b style="font-size: 20px;">DISPONÍVEL (1)</b></div>
                     </div>
                 </div>
 
-                <!-- Botão com Redirecionamento -->
-                <button onclick="finalizarSaque()"
-                   class="btn-main" 
-                   style="text-decoration: none; display: block; text-align: center; font-size: 20px;">ATIVAR MINHA LICENÇA</button>
+                <button onclick="finalizarSaque()" class="btn-main" style="text-decoration: none; display: block; text-align: center; font-size: 20px;">ATIVAR LICENÇA E RECEBER AGORA</button>
 
-                <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger);">
+                <div class="roberto-box" style="margin-top: 25px; background: #fdfdfd; border-color: var(--danger); border-left: 5px solid var(--danger);">
                      <p style="font-size: 15px; color: #111; line-height: 1.6; font-weight: 600;">
-                        <b>Roberto Menezes:</b> "Ative sua licença agora, receba seus <b class="f-money-txt">R$ 2.134,43</b> e tenha os 19,90 reais devolvidos no mesmo PIX. Não deixe o banco ficar com o que é seu por direito."
+                        <b>Roberto Menezes:</b> "Seu saque já está disponível dentro do servidor seguro e as instituições estão autorizadas a enviar o dinheiro. Ative sua licença agora para liberar o pagamento de <b class="f-money-txt">R$ 2.134,43</b> imediatamente."
                     </p>
                 </div>
             </div>
