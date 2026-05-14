@@ -38,10 +38,11 @@
             background-color: #fff; z-index: 20000; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
         .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
 
-        h1 { font-size: 30px; color: #111; line-height: 1.0; margin: 20px 0; font-weight: 900; letter-spacing: -1px; }
+        h1 { font-size: 32px; color: #111; line-height: 1.0; margin: 25px 0; font-weight: 900; letter-spacing: -1px; }
         .highlight { background: #ffeb3b; color: #c00; padding: 0 5px; border: 2px solid #c00; }
 
         .author-box { display: flex; align-items: center; padding: 15px 0; border-bottom: 2px solid #eee; margin-bottom: 20px; }
@@ -50,61 +51,64 @@
 
         p { margin-bottom: 18px; font-size: 18px; line-height: 1.5; color: #333; }
         
-        .step-card { background: #f8f9fa; border: 2px solid #ddd; border-left: 8px solid #28a745; padding: 15px; margin: 20px 0; border-radius: 8px; }
-        .step-card h3 { font-size: 18px; margin-bottom: 10px; color: #1e7e34; text-transform: uppercase; font-weight: 900; }
-        .step-card ol { margin-left: 20px; font-weight: bold; }
+        .step-card { background: #f8f9fa; border: 2px solid #ddd; border-left: 8px solid #28a745; padding: 20px; margin: 25px 0; border-radius: 8px; }
+        .step-card h3 { font-size: 18px; margin-bottom: 15px; color: #1e7e34; text-transform: uppercase; font-weight: 900; }
+        .step-card ol { margin-left: 20px; font-weight: bold; font-size: 16px; }
+        .step-card li { margin-bottom: 12px; }
 
         .cta-box {
-            background-color: #fff9c4; border: 4px dashed #fbc02d; padding: 30px 15px;
-            text-align: center; margin: 30px 0; border-radius: 15px;
+            background-color: #fff9c4; border: 4px dashed #fbc02d; padding: 35px 20px;
+            text-align: center; margin: 40px 0; border-radius: 15px;
         }
-        .manual-badge { background: #c00; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: 900; display: inline-block; margin-bottom: 10px; animation: bounce 2s infinite; }
+        .manual-badge { background: #c00; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: 900; display: inline-block; margin-bottom: 15px; animation: bounce 2s infinite; }
 
         .btn-pulse {
-            background: #28a745; color: white; font-size: 22px; font-weight: 900;
-            padding: 22px 10px; text-decoration: none; display: block; border-radius: 12px;
+            background: #28a745; color: white; font-size: 24px; font-weight: 900;
+            padding: 25px 15px; text-decoration: none; display: block; border-radius: 12px;
             box-shadow: 0 8px 0 #155724; animation: grow 1.1s infinite alternate;
-            text-transform: uppercase; cursor: pointer; border: none; width: 100%; line-height: 1.1;
+            text-transform: uppercase; cursor: pointer; border: none; width: 100%;
         }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
         /* COMENTÁRIOS ESTILO FB - MOBILE FIX */
-        .comments-section { margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px; }
-        .comment-group { margin-bottom: 20px; position: relative; }
-        .comment { display: flex; margin-bottom: 10px; }
-        .reply { margin-left: 45px; margin-top: 5px; position: relative; }
+        .comments-section { margin-top: 40px; border-top: 1px solid #ddd; padding-top: 20px; }
+        .comment-group { margin-bottom: 20px; }
+        .comment { display: flex; margin-bottom: 10px; width: 100%; }
+        .reply { margin-left: 45px; position: relative; margin-top: 5px; }
         .reply::before { content: ""; position: absolute; left: -25px; top: -15px; width: 20px; height: 35px; border-left: 2px solid #ddd; border-bottom: 2px solid #ddd; border-bottom-left-radius: 10px; }
         
-        .avatar { width: 36px; height: 36px; border-radius: 50%; margin-right: 8px; background: #ccc; flex-shrink: 0; }
-        .comment-body { background: #f0f2f5; padding: 10px 14px; border-radius: 18px; width: 100%; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; background: #ccc; overflow: hidden; }
+        .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; }
         .name { font-weight: bold; font-size: 13px; color: #385898; }
-        .text { font-size: 14px; margin-top: 2px; color: #050505; line-height: 1.3; }
-        .meta { font-size: 12px; color: #65676b; margin-top: 5px; font-weight: bold; }
+        .text { font-size: 14px; margin-top: 3px; color: #050505; line-height: 1.4; }
+        .meta { font-size: 12px; color: #65676b; margin-top: 8px; font-weight: bold; }
 
+        /* POP-UP DE VENDA */
         #notification {
             position: fixed; bottom: 20px; left: 20px; background: #ffffff; color: #111111;
-            padding: 12px 18px; border-radius: 12px; display: none; align-items: center; z-index: 10000; 
-            border: 2px solid #28a745; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 280px;
+            padding: 15px 20px; border-radius: 12px; display: none; align-items: center; z-index: 10000; 
+            border: 2px solid #28a745; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 320px;
         }
-        #notification p { font-size: 13px; margin: 0; color: #111111 !important; font-weight: 700; line-height: 1.2; }
+        #notification p { font-size: 14px; margin: 0; color: #111111 !important; font-weight: 700; line-height: 1.3; }
+        #notification b { color: #28a745; }
     </style>
 </head>
 <body>
 
     <div class="alert-bar">
-        ⚠️ ACESSO AO SERVIDOR SARV 892 EXPIRA EM <span id="timer">10:00</span>.
+        ⚠️ ATENÇÃO: ACESSO AO SERVIDOR SARV 892 EXPIRA EM <span id="timer">10:00</span>.
     </div>
 
     <div id="loader-redirect">
         <div class="spinner"></div>
-        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34;">REDIRECIONANDO...<br><small>PÁGINA DE PAGAMENTO SEGURO</small></p>
+        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34;">VOCÊ ESTÁ SENDO REDIRECIONADO...<br><small>ABRINDO PÁGINA DE PAGAMENTO SEGURO</small></p>
     </div>
 
     <div class="container">
         <h1>Ex-funcionário do Santander VAZA Ferramenta Interna e <span class="highlight">CPFs estão sacando Taxas Indevidas hoje!</span></h1>
 
         <div class="author-box">
-            <img src="LINK_DA_FOTO_RAW_AQUI" class="author-img">
+            <img src="LINK_DA_FOTO_RAW_AQUI" class="author-img" alt="Roberto">
             <div>
                 <strong>Roberto M. (Ex-Auditor de TI)</strong><br>
                 <span class="date">AO VIVO: SISTEMA LIBERADO</span>
@@ -112,43 +116,43 @@
         </div>
 
         <p>Eles me mandaram embora porque eu não aguentei ver o que faziam com o povo. Fui demitido por tentar ajudar um cliente a recuperar o que era dele por direito.</p>
-
-        <p>O <b>SARV 892</b> localiza valores "escondidos": Juros abusivos, taxas de crédito e tarifas cobradas entre <b>2019 e 2025</b>.</p>
+        <p>O <b>SARV 892</b> é uma ferramenta interna usada por auditores para localizar valores que os bancos "escondem" de você: Juros abusivos, taxas de crédito e tarifas cobradas entre <b>2019 e 2025</b>.</p>
+        <p>O banco lucra bilhões deixando esse dinheiro parado na conta deles. Estou liberando o acesso para você consultar e configurar sua conta bancária para receber o saque via <b>PIX imediato</b>.</p>
 
         <div class="step-card">
-            <h3>PASSO A PASSO:</h3>
+            <h3>PASSO A PASSO PARA O RESGATE:</h3>
             <ol>
                 <li>Acesse a Ferramenta SARV 892.</li>
-                <li>Consulte os valores cobrados indevidamente.</li>
-                <li>Receba o saque via <b>PIX imediato</b>.</li>
+                <li>Consulte os valores cobrados (Crédito, Juros e Taxas).</li>
+                <li>Configure seu PIX ou conta para depósito e solicite o saque.</li>
             </ol>
         </div>
 
         <div class="cta-box">
             <div class="manual-badge">MANUAL PASSO A PASSO INCLUSO</div>
-            <p style="font-size: 42px; font-weight: 900; color: #155724; margin: 5px 0;">R$ 19,90</p>
-            <p style="font-size: 13px; color: #d32f2f; font-weight: 900; margin-bottom: 15px;">PAGAMENTO ÚNICO - SUPORTE NO ZAP</p>
+            <p style="text-decoration: line-through; color: #999; margin-top: 10px; font-size: 14px;">Valor Real: R$ 197,00</p>
+            <p style="font-size: 42px; font-weight: 900; color: #155724; margin: 10px 0;">R$ 19,90</p>
+            <p style="font-size: 13px; color: #d32f2f; font-weight: 900; margin-bottom: 20px;">PAGAMENTO ÚNICO - SUPORTE NO ZAP INCLUSO</p>
             <button onclick="irParaCheckout()" class="btn-pulse">🔓 ADQUIRIR FERRAMENTA E SOLICITAR MEU SAQUE</button>
-            <p style="margin-top: 10px; font-size: 11px;">Acesso enviado <b>no seu WhatsApp</b> agora.</p>
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 20px; color: #385898; font-size: 15px;">Depoimentos do Facebook:</p>
+            <p style="font-weight: bold; margin-bottom: 25px; color: #385898; font-size: 16px;">Veja alguns depoimentos do meu Facebook:</p>
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=11" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=11"></div>
                     <div class="comment-body">
                         <div class="name">Fernando Souza Ramos</div>
-                        <div class="text">O Santander me roubou por anos. Achei R$ 2.140 de taxas. O pix caiu com 15 min!</div>
+                        <div class="text">O Santander me roubou por anos. O SARV achou R$ 2.140 de taxas indevidas. O pix caiu com 15 minutos!</div>
                         <div class="meta">Curtir · Responder · 4 min</div>
                     </div>
                 </div>
                 <div class="comment reply">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=12" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=12"></div>
                     <div class="comment-body">
                         <div class="name">Ricardo Oliveira Santos</div>
-                        <div class="text">Fernando, funciona no Bradesco também?</div>
+                        <div class="text">Fernando, funciona no Bradesco também? To querendo pegar o acesso aqui.</div>
                         <div class="meta">Curtir · Responder · 2 min</div>
                     </div>
                 </div>
@@ -156,10 +160,10 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=13" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=13"></div>
                     <div class="comment-body">
                         <div class="name">Beatriz Costa Silveira</div>
-                        <div class="text">Gente é real. Configurei o pix e recebi na hora.</div>
+                        <div class="text">Gente é real. Eu tava com receio pelo valor ser baixo, mas o manual ensina tudo. Configurei o pix e recebi na hora.</div>
                         <div class="meta">Curtir · Responder · 12 min</div>
                     </div>
                 </div>
@@ -167,7 +171,7 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=15" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=15"></div>
                     <div class="comment-body">
                         <div class="name">Juliana Maria Cavalcante</div>
                         <div class="text">Alguém sabe se precisa de advogado?</div>
@@ -175,10 +179,10 @@
                     </div>
                 </div>
                 <div class="comment reply">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=16" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=16"></div>
                     <div class="comment-body">
                         <div class="name">Roberto M.</div>
-                        <div class="text">Juliana, não precisa. A ferramenta faz tudo sozinha.</div>
+                        <div class="text">Juliana, não precisa. A ferramenta gera a ordem de saque direto no seu app. Mandei no seu zap os detalhes.</div>
                         <div class="meta">Curtir · Responder · 2 min</div>
                     </div>
                 </div>
@@ -186,10 +190,10 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=17" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=17"></div>
                     <div class="comment-body">
                         <div class="name">João Pedro Barbosa</div>
-                        <div class="text">Melhores 20 reais que já gastei. Saquei 950 reais.</div>
+                        <div class="text">Melhores 20 reais que já gastei. Saquei 950 reais que tavam parados lá.</div>
                         <div class="meta">Curtir · Responder · 32 min</div>
                     </div>
                 </div>
@@ -197,37 +201,36 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=20" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=20"></div>
                     <div class="comment-body">
                         <div class="name">Lucas Gabriel Teixeira Ramos</div>
-                        <div class="text">O suporte no WhatsApp é nota 10, me ajudaram muito.</div>
+                        <div class="text">O suporte no WhatsApp é nota 10, me ajudaram a configurar o pix de destino.</div>
                         <div class="meta">Curtir · Responder · 1h</div>
                     </div>
                 </div>
                 <div class="comment reply">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=21" width="36"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=21"></div>
                     <div class="comment-body">
                         <div class="name">Sandra Helena G. Silva</div>
-                        <div class="text">Lucas, eles demoram pra chamar?</div>
+                        <div class="text">Lucas, eles demoram pra chamar? Comprei agora.</div>
                         <div class="meta">Curtir · Responder · 10 min</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- CTA FINAL PARA SEGURAR O USUÁRIO -->
         <div style="padding: 20px 0 40px 0;">
             <button onclick="irParaCheckout()" class="btn-pulse">🔓 ADQUIRIR FERRAMENTA E SOLICITAR MEU SAQUE</button>
-            <p style="text-align: center; font-size: 11px; margin-top: 10px; color: #666;">Acesso imediato e vitalício.</p>
+            <p style="text-align: center; font-size: 11px; margin-top: 10px; color: #666;">Acesso enviado no seu WhatsApp imediatamente.</p>
         </div>
 
-        <div style="text-align: center; padding: 20px 0; color: #999; font-size: 11px; border-top: 1px solid #eee;">
+        <div style="text-align: center; padding: 20px 0; color: #999; font-size: 11px;">
             © 2026 Auditoria Independente - Protocolo 892
         </div>
     </div>
 
     <div id="notification">
-        <p>🛒 <b><span id="notify-name"></span></b> <br>Adquiriu a Ferramenta SARV 892</p>
+        <p>🛒 <b><span id="notify-name"></span></b> <br>Acabou de adquirir a Ferramenta SARV 892</p>
     </div>
 
     <script>
@@ -242,7 +245,7 @@
             document.getElementById('timer').innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
             if(time > 0) time--;
         }, 1000);
-        const names = ['Pedro Henrique Silva', 'Lucas Oliveira Ramos', 'Fernanda Souza Santos', 'Marcos Vinícius Barbosa', 'Júlia Mendes Cavalcante'];
+        const names = ['Pedro Henrique Silva', 'Lucas Oliveira Ramos', 'Fernanda de Souza Santos', 'Marcos Vinícius Barbosa', 'Júlia Mendes Cavalcante'];
         function showNotification() {
             document.getElementById('notify-name').innerText = names[Math.floor(Math.random() * names.length)];
             const notify = document.getElementById('notification');
