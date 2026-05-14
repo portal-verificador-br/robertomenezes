@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SISTEMA SARV 892 - PROTOCOLO ATIVO</title>
+    <title>SISTEMA DE AUDITORIA SARV 892 - ACESSO RESTRITO</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -24,238 +24,171 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #f0f2f5; color: #1c1e21; }
+        body { background-color: #f0f2f5; color: #1c1e21; overflow-x: hidden; }
 
-        /* BARRA DE URGÊNCIA MÁXIMA */
         .alert-bar {
-            background-color: #c00;
-            color: #fff;
-            text-align: center;
-            padding: 12px;
-            font-weight: bold;
-            font-size: 13px;
-            animation: pulse 1s infinite;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            text-transform: uppercase;
+            background-color: #c00; color: #fff; text-align: center; padding: 12px;
+            font-weight: bold; font-size: 13px; animation: pulse 1s infinite;
+            position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
         }
+        @keyframes pulse { 0% { background-color: #c00; } 50% { background-color: #ff0000; } 100% { background-color: #c00; } }
 
-        @keyframes pulse {
-            0% { background-color: #c00; }
-            50% { background-color: #ff0000; }
-            100% { background-color: #c00; }
-        }
-
-        /* LOADER DE REDIRECIONAMENTO */
         #loader-redirect {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #fff;
-            z-index: 20000;
-            flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #fff; z-index: 20000; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
-        .spinner {
-            width: 60px; height: 60px;
-            border: 6px solid #f3f3f3; border-top: 6px solid #28a745;
-            border-radius: 50%; animation: spin 1s linear infinite;
-        }
+        .spinner { width: 60px; height: 60px; border: 6px solid #f3f3f3; border-top: 6px solid #28a745; border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
 
-        h1 { font-size: 24px; color: #111; line-height: 1.2; margin: 20px 0; font-weight: 900; text-align: left; }
-        .highlight { background: yellow; color: #c00; padding: 0 5px; }
+        h1 { font-size: 26px; color: #111; line-height: 1.1; margin: 20px 0; font-weight: 900; }
+        .highlight { background: #ffeb3b; color: #c00; padding: 0 5px; }
 
-        .author-box { display: flex; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; margin-bottom: 20px; }
-        .author-img { width: 45px; height: 45px; border-radius: 50%; margin-right: 12px; }
-        .date { font-size: 12px; color: #65676b; }
+        .author-box { display: flex; align-items: center; padding: 15px 0; border-bottom: 2px solid #eee; margin-bottom: 20px; }
+        .author-img { width: 50px; height: 50px; border-radius: 50%; margin-right: 12px; border: 2px solid #c00; }
+        .date { font-size: 12px; color: #65676b; font-weight: bold; }
 
-        p { margin-bottom: 18px; font-size: 17px; line-height: 1.5; color: #333; }
-        b { font-weight: 700; }
+        p { margin-bottom: 18px; font-size: 18px; line-height: 1.5; color: #333; }
+        .step-card { background: #f8f9fa; border-left: 5px solid #28a745; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        .step-card h3 { font-size: 16px; margin-bottom: 10px; color: #1e7e34; text-transform: uppercase; }
+        .step-card ol { margin-left: 20px; font-weight: bold; }
+        .step-card li { margin-bottom: 8px; }
 
         .cta-box {
-            background-color: #fff9c4;
-            border: 2px dashed #fbc02d;
-            padding: 25px;
-            text-align: center;
-            margin: 30px 0;
-            border-radius: 12px;
+            background-color: #fff9c4; border: 3px dashed #fbc02d; padding: 25px;
+            text-align: center; margin: 30px 0; border-radius: 12px;
         }
 
         .btn-pulse {
-            background: #28a745;
-            color: white;
-            font-size: 20px;
-            font-weight: 900;
-            padding: 22px 10px;
-            text-decoration: none;
-            display: block;
-            border-radius: 10px;
-            box-shadow: 0 5px 0 #1e7e34;
-            animation: grow 1.2s infinite alternate;
-            text-transform: uppercase;
-            cursor: pointer;
-            border: none;
-            width: 100%;
+            background: #28a745; color: white; font-size: 22px; font-weight: 900;
+            padding: 25px 10px; text-decoration: none; display: block; border-radius: 10px;
+            box-shadow: 0 6px 0 #155724; animation: grow 1.1s infinite alternate;
+            text-transform: uppercase; cursor: pointer; border: none; width: 100%;
         }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
-        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.05); } }
-
-        .scarcity { color: #c00; font-weight: bold; margin-top: 15px; font-size: 14px; }
-
-        /* COMENTÁRIOS FAKE ESTILO FB */
+        /* COMENTÁRIOS */
         .comments-section { margin-top: 40px; border-top: 2px solid #eee; padding-top: 20px; }
         .comment { display: flex; margin-bottom: 20px; }
-        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; background: #ddd; }
         .comment-body { background: #f0f2f5; padding: 12px; border-radius: 18px; width: 100%; }
-        .name { font-weight: bold; font-size: 13px; color: #385898; margin-bottom: 4px; }
-        .text { font-size: 14px; color: #1c1e21; }
+        .name { font-weight: bold; font-size: 13px; color: #385898; }
+        .text { font-size: 14px; margin-top: 3px; }
         .meta { font-size: 12px; color: #65676b; margin-top: 8px; }
 
-        /* NOTIFICAÇÃO DE VENDA */
+        /* NOTIFICAÇÃO SEM FOTO */
         #notification {
-            position: fixed; bottom: 20px; left: 20px;
-            background: #fff; padding: 12px; border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            display: none; align-items: center; z-index: 10000;
-            width: 280px; border-left: 5px solid #28a745;
+            position: fixed; bottom: 20px; left: 20px; background: #111; color: #fff;
+            padding: 12px 20px; border-radius: 50px; box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            display: none; align-items: center; z-index: 10000; border: 1px solid #333;
         }
-        #notification img { width: 40px; height: 40px; border-radius: 50%; margin-right: 12px; }
-        #notification p { font-size: 12px; margin: 0; line-height: 1.2; }
+        #notification p { font-size: 12px; margin: 0; color: #fff; font-weight: 700; }
     </style>
 </head>
 <body>
 
     <div class="alert-bar">
-        ⚠️ URGENTE: ESTA PÁGINA SERÁ RETIRADA DO AR EM <span id="timer">10:00</span> POR ORDEM JUDICIAL.
+        ⚠️ ATENÇÃO: CONEXÃO COM SERVIDOR SARV 892 EXPIRA EM <span id="timer">10:00</span>.
     </div>
 
     <div id="loader-redirect">
         <div class="spinner"></div>
-        <p style="margin-top: 20px; font-weight: 900;">LIBERANDO ACESSO AO SARV 892...</p>
+        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34;">ESTABELECENDO CONEXÃO PIX...<br><small>CONFIGURANDO SAQUE IMEDIATO</small></p>
     </div>
 
     <div class="container">
-        <h1>Ex-Funcionário VAZA Brecha no Sistema: <span class="highlight">"Qualquer pessoa pode ativar o SARV 892 e sacar valores hoje"</span></h1>
+        <h1>Ex-Funcionário do Santander Vaza Ferramenta Interna: <span class="highlight">CPFs estão sacando Taxas Indevidas acumuladas hoje!</span></h1>
 
         <div class="author-box">
-            <img src="https://randomuser.me/api/portraits/men/33.jpg" class="author-img">
+            <img src="link da foto raw aqui" class="author-img" alt="Roberto">
             <div>
-                <strong>Por: Roberto M.</strong><br>
-                <span class="date">Atualizado: Hoje, às 08:00</span>
+                <strong>Roberto M. (Ex-Auditor de TI)</strong><br>
+                <span class="date">ATUALIZADO AGORA</span>
             </div>
         </div>
 
-        <p>Eles tentaram esconder isso de você por anos.</p>
+        <p>Eles me mandaram embora porque eu não aguentei ver o que faziam com o povo. Fui demitido por tentar ajudar um cliente a recuperar o que era dele por direito.</p>
 
-        <p>Trabalhei no coração do sistema bancário e vi bilhões ficarem parados simplesmente porque as pessoas não conhecem o <b>Protocolo SARV 892</b>.</p>
+        <p>O que você não sabe é que os bancos usam uma ferramenta chamada <b>SARV 892</b>. Ela é de uso exclusivo de auditores para identificar valores cobrados indevidamente (Juros abusivos, taxas de crédito, seguros não contratados e tarifas de empréstimos) entre <b>2019 e 2025</b>.</p>
 
-        <p>Não é sorteio, não é erro. É um comando de <b>Cashback Oculto</b> que os bancos são obrigados por lei a manter, mas que ninguém te ensina a ativar no app.</p>
+        <p>O banco identifica o valor, mas NÃO devolve. Eles lucram bilhões deixando esse dinheiro parado. Eu copiei o acesso da ferramenta e estou liberando para você fazer o que os bancos odeiam: <b>O SAQUE.</b></p>
 
-        <p>Decidi revelar o passo a passo antes que derrubem este site. O acesso à ferramenta é imediato.</p>
+        <div class="step-card">
+            <h3>Como funciona o seu Resgate:</h3>
+            <ol>
+                <li>Acesse o Painel SARV 892 abaixo.</li>
+                <li>Consulte os valores cobrados indevidamente (Crédito, Juros e Taxas).</li>
+                <li>Configure sua conta (PIX ou Depósito) e solicite o saque imediato.</li>
+            </ol>
+        </div>
 
         <div class="cta-box">
-            <h2 style="margin-bottom: 15px; font-weight: 900;">ACESSO AO SISTEMA SARV 892</h2>
-            <p style="font-size: 15px;">Clique no botão abaixo para desbloquear seu acesso e ver o saldo disponível para o seu CPF.</p>
+            <h2 style="margin-bottom: 10px; font-weight: 900; color: #c00;">SISTEMA LIBERADO</h2>
+            <p style="font-size: 16px; font-weight: 700;">MANUAL PASSO A PASSO INCLUSO NO ACESSO</p>
             
-            <p style="text-decoration: line-through; color: #999; margin: 5px 0;">De: R$ 997,00</p>
-            <p style="font-size: 26px; font-weight: 900; color: #c00; margin-bottom: 20px;">POR APENAS: R$ 97,00</p>
+            <p style="text-decoration: line-through; color: #999; margin-top: 10px;">Valor da Licença: R$ 997,00</p>
+            <p style="font-size: 30px; font-weight: 900; color: #155724;">HOJE: R$ 97,00</p>
             
             <button onclick="irParaCheckout()" class="btn-pulse">
-                🔓 LIBERAR MEU ACESSO AGORA
+                🔓 ACESSAR SARV E SOLICITAR SAQUE
             </button>
             
-            <p class="scarcity">🔥 Restam apenas 3 licenças disponíveis.</p>
+            <p style="margin-top: 15px; font-size: 12px; color: #555;"><b>GARANTIA DE RESGATE:</b> Se não encontrar valores, devolvemos seu dinheiro.</p>
         </div>
 
         <div class="comments-section">
-            <p style="font-weight: bold; margin-bottom: 20px; color: #65676b;">247 Comentários</p>
+            <p style="font-weight: bold; margin-bottom: 20px; color: #111;">382 Comentários</p>
 
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/men/45.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Fernando Souza</div>
-                    <div class="text">Cara, funciona mesmo! Fiz no meu app e apareceu R$ 1.140,00 de saldo retido. O SARV 892 salvou meu mês.</div>
-                    <div class="meta">Curtir · Responder · 2 min</div>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="https://randomuser.me/api/portraits/women/22.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Carla Dias</div>
-                    <div class="text">Tava com medo de ser golpe mas o acesso chegou na hora no meu e-mail. Já saquei o meu! 🙏</div>
-                    <div class="meta">Curtir · Responder · 5 min</div>
-                </div>
-            </div>
-
-            <div class="comment" style="margin-left: 45px;">
-                <img src="https://randomuser.me/api/portraits/men/12.jpg" class="avatar">
-                <div class="comment-body">
-                    <div class="name">Marcos P.</div>
-                    <div class="text">Carla, pode ir sem medo. Eu recuperei 450 reais de taxas que o banco tinha cobrado indevido. Vale cada centavo.</div>
-                    <div class="meta">Curtir · Responder · 3 min</div>
-                </div>
-            </div>
+            <!-- 8 Comentários -->
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Fernando Souza</div><div class="text">Mano, o Santander me roubou por 4 anos. Usei a ferramenta e achei R$ 2.300 de taxa de cesta de serviço. Fiz o pix e caiu!</div><div class="meta">5 min</div></div></div>
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Ricardo Oliveira</div><div class="text">Isso aqui é vingança pura contra os bancos. Peguei R$ 890 de juros de empréstimo de 2021. Valeu Roberto!</div><div class="meta">8 min</div></div></div>
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Beatriz Costa</div><div class="text">Gente, é real. Eu tava com medo mas o passo a passo ensina tudo. Configurei meu pix e recebi o comprovante em 10 minutos.</div><div class="meta">12 min</div></div></div>
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Marcos Vinícius</div><div class="text">O banco lucra com nossa ignorância. O SARV achou taxa até de conta que eu já tinha encerrado em 2020.</div><div class="meta">15 min</div></div></div>
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Luciana Gomes</div><div class="text">Acabei de fazer no Bradesco. R$ 1.250 liberado. Chupa banco! kkkkk</div><div class="meta">20 min</div></div></div>
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">João Pedro</div><div class="text">O manual é bem simples, qualquer um faz. O mais difícil é acreditar que o banco esconde isso da gente.</div><div class="meta">25 min</div></div></div>
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Fernanda Souza</div><div class="text">Meu marido é bancário e confirmou que esse código 892 existe mesmo pros auditores. Fiz e deu certo.</div><div class="meta">32 min</div></div></div>
+            <div class="comment"><div class="avatar"></div><div class="comment-body"><div class="name">Carlos Eduardo</div><div class="text">Melhor investimento de 97 reais da minha vida. Recuperei 15x esse valor em 5 minutos.</div><div class="meta">40 min</div></div></div>
         </div>
 
         <div style="text-align: center; padding: 40px 0; color: #999; font-size: 11px;">
-            Termos de Uso | Privacidade <br><br>
-            Este site não tem vínculo com o Facebook ou instituições bancárias citadas.
+            © 2026 Auditoria Independente - Protocolo 892 <br>
+            Acesso Restrito conforme LGPD.
         </div>
     </div>
 
     <div id="notification">
-        <img src="" id="notify-img">
-        <div>
-            <p><strong><span id="notify-name"></span> de <span id="notify-loc"></span></strong></p>
-            <p>Acabou de ativar o SARV 892.</p>
-            <p style="color: #28a745; font-size: 11px; font-weight: bold;">Saldo liberado com sucesso!</p>
-        </div>
+        <p>✅ <span id="notify-name"></span> acabou de sacar R$ <span id="notify-val"></span> via PIX</p>
     </div>
 
     <script>
         function irParaCheckout() {
             if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
-            
             document.getElementById('loader-redirect').style.display = 'flex';
             setTimeout(() => {
                 window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O";
-            }, 1500);
+            }, 1800);
         }
 
         let time = 600;
-        const timerElement = document.getElementById('timer');
         setInterval(() => {
             let min = Math.floor(time / 60);
             let sec = time % 60;
-            timerElement.innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
+            document.getElementById('timer').innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
             if(time > 0) time--;
         }, 1000);
 
-        const names = ['Pedro', 'Lucas', 'Fernanda', 'Marcos', 'Júlia', 'Rafael', 'Ana', 'Gustavo', 'Ricardo', 'Beatriz'];
-        const locs = ['SP', 'RJ', 'MG', 'RS', 'BA', 'PR', 'SC', 'GO'];
-        
+        const names = ['Pedro', 'Lucas', 'Fernanda', 'Marcos', 'Júlia', 'Rafael', 'Ana', 'Gustavo'];
         function showNotification() {
             const name = names[Math.floor(Math.random() * names.length)];
-            const loc = locs[Math.floor(Math.random() * locs.length)];
-            const imgId = Math.floor(Math.random() * 50);
-            const gender = Math.random() > 0.5 ? 'men' : 'women';
-            
+            const val = (Math.random() * (2500 - 400) + 400).toFixed(2);
             document.getElementById('notify-name').innerText = name;
-            document.getElementById('notify-loc').innerText = loc;
-            document.getElementById('notify-img').src = `https://randomuser.me/api/portraits/${gender}/${imgId}.jpg`;
-            
+            document.getElementById('notify-val').innerText = val;
             const notify = document.getElementById('notification');
             notify.style.display = 'flex';
-            
-            setTimeout(() => { notify.style.display = 'none'; }, 5000);
+            setTimeout(() => { notify.style.display = 'none'; }, 4000);
         }
-
-        setTimeout(showNotification, 3000);
-        setInterval(showNotification, 18000);
+        setInterval(showNotification, 12000);
     </script>
 </body>
 </html>
