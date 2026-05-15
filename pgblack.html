@@ -44,9 +44,13 @@
         h1 { font-size: 32px; color: #111; line-height: 1.0; margin: 25px 0; font-weight: 900; letter-spacing: -1px; }
         .highlight { background: #ffeb3b; color: #c00; padding: 0 5px; border: 2px solid #c00; }
 
-        .author-box { display: flex; align-items: center; padding: 15px 0; border-bottom: 2px solid #eee; margin-bottom: 20px; }
+        .author-box { padding: 15px 0; border-bottom: 2px solid #eee; margin-bottom: 20px; text-align: center; }
+        .author-info { display: flex; align-items: center; justify-content: center; margin-bottom: 15px; text-align: left; }
         .author-img { width: 60px; height: 60px; border-radius: 50%; margin-right: 12px; border: 2px solid #c00; }
         .date { font-size: 12px; color: #d32f2f; font-weight: bold; text-transform: uppercase; }
+        
+        .video-container { width: 100%; margin-bottom: 15px; border-radius: 12px; overflow: hidden; background: #000; }
+        .video-container iframe { width: 100%; aspect-ratio: 9/16; border: none; }
 
         p { margin-bottom: 18px; font-size: 18px; line-height: 1.5; color: #333; }
         
@@ -61,6 +65,8 @@
         }
         .manual-badge { background: #c00; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 12px; font-weight: 900; display: inline-block; margin-bottom: 15px; animation: bounce 2s infinite; }
 
+        .guarantee-info { font-size: 13px; color: #155724; font-weight: bold; margin-bottom: 15px; background: #d4edda; padding: 10px; border-radius: 8px; border: 1px solid #c3e6cb; line-height: 1.4; }
+
         .btn-pulse {
             background: #28a745; color: white; font-size: 24px; font-weight: 900;
             padding: 25px 15px; text-decoration: none; display: block; border-radius: 12px;
@@ -69,13 +75,10 @@
         }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
-        /* COMENTÁRIOS AJUSTADOS PARA 100% MOBILE */
         .comments-section { margin-top: 40px; border-top: 1px solid #ddd; padding: 20px 0; width: 100%; box-sizing: border-box; }
         .comment-group { margin-bottom: 15px; width: 100%; }
         .comment { display: flex; align-items: flex-start; margin-bottom: 10px; width: 100%; }
         .reply { margin-left: 40px; width: auto; }
-        
-        /* Mata qualquer linha ou elemento decorativo que force largura lateral */
         .reply::before { display: none !important; }
         
         .avatar { width: 36px; height: 36px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; background: #ccc; overflow: hidden; }
@@ -87,14 +90,13 @@
             border-radius: 18px; 
             flex-shrink: 1; 
             min-width: 0;
-            max-width: 100%; /* Garante que não ultrapasse o container */
+            max-width: 100%;
         }
         
-        .name { font-weight: bold; font-size: 13px; color: #385898; margin-bottom: 2px; }
-        .text { font-size: 14px; color: #050505; line-height: 1.4; word-wrap: break-word; overflow-wrap: break-word; }
+        .name { font-weight: bold; font-size: 13px; color: #1c1e21; margin-bottom: 2px; }
+        .text { font-size: 14px; color: #050505; line-height: 1.4; word-wrap: break-word; }
         .meta { font-size: 11px; color: #65676b; margin-top: 5px; font-weight: bold; }
 
-        /* POP-UP DE VENDA */
         #notification {
             position: fixed; bottom: 20px; left: 10px; right: 10px; background: #ffffff; color: #111111;
             padding: 12px; border-radius: 12px; display: none; align-items: center; z-index: 10000; 
@@ -102,6 +104,10 @@
         }
         #notification p { font-size: 13px; margin: 0; color: #111111 !important; font-weight: 700; line-height: 1.3; }
         #notification b { color: #28a745; }
+
+        .footer-cta-text {
+            text-align: center; font-size: 16px; margin-top: 15px; color: #c00; font-weight: 900;
+        }
     </style>
 </head>
 <body>
@@ -119,10 +125,16 @@
         <h1>Ex-funcionário do Santander VAZA Ferramenta Interna e <span class="highlight">CPFs estão sacando Taxas e Tarifas Indevidas hoje!</span></h1>
 
         <div class="author-box">
-            <img src="robertoperfil.jpg" class="author-img" alt="Roberto">
-            <div>
-                <strong>Roberto M. (Ex-Auditor do Santander)</strong><br>
-                <span class="date">AO VIVO: SISTEMA LIBERADO</span>
+            <div class="author-info">
+                <img src="robertoperfil.jpg" class="author-img" alt="Roberto">
+                <div>
+                    <strong style="color: #1c1e21;">Roberto Mantovani</strong><br>
+                    <span class="date">AO VIVO: SISTEMA LIBERADO</span>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/B_M68bcNevA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
 
@@ -140,10 +152,16 @@
         </div>
 
         <div class="cta-box">
-            <div class="manual-badge">MANUAL PASSO A PASSO INCLUSO. É CLICAR ONDE EU MOSTRO E SACAR, SIMPLES ASSIM.</div>
+            <div class="manual-badge">ACESSO VITALÍCIO + MANUAL COMPLETO</div>
+            
+            <div class="guarantee-info">
+                ✅ SAQUE LEGALIZADO E GARANTIDO VIA SISTEMA DE VALORES A RECEBER (SVR) SOB A LEI COMPLEMENTAR Nº 179/2021 DO BANCO CENTRAL.<br>
+                📩 ENVIO IMEDIATO PELO WHATSAPP E SUPORTE TOTAL PARA DÚVIDAS.
+            </div>
+
             <p style="text-decoration: line-through; color: #999; margin-top: 10px; font-size: 14px;">Valor: R$ 997,00</p>
             <p style="font-size: 42px; font-weight: 900; color: #155724; margin: 10px 0;">R$ 67,00</p>
-            <p style="font-size: 13px; color: #d32f2f; font-weight: 900; margin-bottom: 20px;">SAQUE GARANTIDO PARA TODOS OS BANCOS NACIONAIS - SUPORTE TOTAL NO WHATSAPP</p>
+            
             <button onclick="irParaCheckout()" class="btn-pulse">🔓 ADQUIRIR FERRAMENTA E SOLICITAR MEU SAQUE</button>
         </div>
 
@@ -152,7 +170,7 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=11"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=man1"></div>
                     <div class="comment-body">
                         <div class="name">Fernando Souza Ramos</div>
                         <div class="text">O Bradesco me roubou por anos. O SARV achou R$ 2.140 de taxas indevidas. O PIX caiu com 2 minutos!</div>
@@ -160,7 +178,7 @@
                     </div>
                 </div>
                 <div class="comment reply">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=12"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=man2"></div>
                     <div class="comment-body">
                         <div class="name">Ricardo Aurélio Santos</div>
                         <div class="text">Fernando eu tbm, mas meu saque caiu pela Caixa.</div>
@@ -171,10 +189,10 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=13"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=woman1"></div>
                     <div class="comment-body">
                         <div class="name">Beatriz Costa Silveira</div>
-                        <div class="text">Gente é real. Eu tava com receio pq não entendo essas coisas, mas o manual ensina tudo mesmo bem rapido e prático. Adicionei minha conta e o pix e recebi na hora pela Nubank.Demorei uns 10 minutos no máximo até receber</div>
+                        <div class="text">Gente é real. Eu tava com receio pq não entendo essas coisas, mas o manual ensina tudo mesmo bem rapido e prático. Adicionei minha conta e o pix e recebi na hora pela Nubank.</div>
                         <div class="meta">Curtir · Responder · 12 min</div>
                     </div>
                 </div>
@@ -182,7 +200,7 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=15"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=woman2"></div>
                     <div class="comment-body">
                         <div class="name">Juliana Maria Cavalcante</div>
                         <div class="text">Alguém sabe se precisa de advogado?</div>
@@ -190,10 +208,10 @@
                     </div>
                 </div>
                 <div class="comment reply">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=16"></div>
+                    <div class="avatar"><img src="robertoperfil.jpg"></div>
                     <div class="comment-body">
-                        <div class="name">Roberto M.</div>
-                        <div class="text">Juliana, não precisa. A ferramenta gera a ordem de saque direto no seu app. O saque cai pela própia agência que vc escolheu.</div>
+                        <div class="name">Roberto Mantovani</div>
+                        <div class="text">Juliana, não precisa. A ferramenta gera a ordem de saque direto no seu app. O saque cai pela própria agência que vc escolher.</div>
                         <div class="meta">Curtir · Responder · 2 min</div>
                     </div>
                 </div>
@@ -201,7 +219,7 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=17"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=man3"></div>
                     <div class="comment-body">
                         <div class="name">João Pedro Barbosa</div>
                         <div class="text">Melhores 70 reais que já gastei. Saquei 950 que tavam parados no meu CPF de um empréstimo que fiz a muitos anos.</div>
@@ -212,19 +230,11 @@
 
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=20"></div>
+                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=man4"></div>
                     <div class="comment-body">
                         <div class="name">Lucas Gabriel Teixeira Ramos</div>
                         <div class="text">O suporte do Roberto no Whats é nota 10, me ajudou até eu finalizar meu saque.</div>
                         <div class="meta">Curtir · Responder · 1h</div>
-                    </div>
-                </div>
-                <div class="comment reply">
-                    <div class="avatar"><img src="https://i.pravatar.cc/40?u=21"></div>
-                    <div class="comment-body">
-                        <div class="name">Sandra Helena G. Silva</div>
-                        <div class="text">Comprei a ferramenta e uns 3 minutos depois ele já me chamou liberando o acesso. Ele é bom mesmo finalmente algo que funciona nesse Brasil</div>
-                        <div class="meta">Curtir · Responder · 10 min</div>
                     </div>
                 </div>
             </div>
@@ -232,7 +242,7 @@
 
         <div style="padding: 20px 0 40px 0;">
             <button onclick="irParaCheckout()" class="btn-pulse">🔓 ADQUIRIR FERRAMENTA E SOLICITAR MEU SAQUE</button>
-            <p style="text-align: center; font-size: 11px; margin-top: 10px; color: #666;">ACESSO ENVIADO NO WHATSAPP EM ATÉ 3 MINUTOS.</p>
+            <p class="footer-cta-text">🚀 RECEBA SEU ACESSO NO WHATSAPP EM ATÉ 3 MINUTOS!</p>
         </div>
 
         <div style="text-align: center; padding: 20px 0; color: #999; font-size: 11px;">
@@ -256,7 +266,7 @@
             document.getElementById('timer').innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
             if(time > 0) time--;
         }, 1000);
-        const names = ['Pedro Henrique Silva', 'Lucas Oliveira Ramos', 'Fernanda de Souza Santos', 'Marcos Vinícius Barbosa', 'Júlia Mendes Cavalcante'];
+        const names = ['Pedro Henrique Silva', 'Lucas Oliveira Ramos', 'Fernanda de Souza Santos', 'Marcos Vinícius Barbosa', 'Júlia Mendes Cavalcante', 'Ricardo Mendes Oliveira', 'Sandra Helena Guimarães'];
         function showNotification() {
             document.getElementById('notify-name').innerText = names[Math.floor(Math.random() * names.length)];
             const notify = document.getElementById('notification');
