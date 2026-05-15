@@ -78,6 +78,11 @@
         }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
+        /* Nova estilização para o aviso em baixo do CTA */
+        .cta-notice {
+            font-size: 12px; color: #666; margin-top: 15px; line-height: 1.4; text-align: center; font-weight: bold;
+        }
+
         .comments-section { margin-top: 40px; border-top: 1px solid #ddd; padding: 20px 0; width: 100%; box-sizing: border-box; }
         .comment-group { margin-bottom: 15px; width: 100%; }
         .comment { display: flex; align-items: flex-start; margin-bottom: 10px; width: 100%; }
@@ -121,7 +126,7 @@
 
     <div id="loader-redirect">
         <div class="spinner"></div>
-        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34;">VOCÊ ESTÁ SENDO REDIRECIONADO...<br><small>ABRINDO PÁGINA DE PAGAMENTO SEGURO</small></p>
+        <p style="margin-top: 20px; font-weight: 900; color: #1e7e34; text-transform: uppercase;">VOCÊ ESTÁ SENDO REDIRECIONADO PARA A ATIVAÇÃO DA SARV, AGUARDE...</p>
     </div>
 
     <div class="container">
@@ -168,6 +173,7 @@
             <p style="font-size: 42px; font-weight: 900; color: #155724; margin: 10px 0;">R$ 67,00</p>
             
             <button onclick="irParaCheckout()" class="btn-pulse">QUERO SACAR MEU SALDO RETIDO</button>
+            <div class="cta-notice">* Atenção: O valor da ferramenta é a garantia de que o CPF do comprador será o mesmo do recebimento do estorno. Para sua segurança, o sistema não libera o valor para terceiros.</div>
         </div>
 
         <div class="comments-section">
@@ -247,6 +253,7 @@
 
         <div style="padding: 20px 0 40px 0;">
             <button onclick="irParaCheckout()" class="btn-pulse">QUERO A FERRAMENTA E FAZER MEU SAQUE</button>
+            <div class="cta-notice" style="margin-bottom: 15px;">* Atenção: O valor da ferramenta é a garantia de que o CPF do comprador será o mesmo do recebimento do estorno. Para sua segurança, o sistema não libera o valor para terceiros.</div>
             <p class="footer-cta-text">🚀 RECEBA SEU ACESSO NO WHATSAPP IMEDIATAMENTE!</p>
         </div>
 
@@ -263,7 +270,7 @@
         function irParaCheckout() {
             if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
             document.getElementById('loader-redirect').style.display = 'flex';
-            setTimeout(() => { window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O"; }, 2000);
+            setTimeout(() => { window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O"; }, 800);
         }
         let time = 600;
         setInterval(() => {
