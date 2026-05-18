@@ -27,7 +27,7 @@
 
         .alert-bar {
             background-color: #ff0000; color: #fff; text-align: center; padding: 14px;
-            font-weight: 900; font-size: 15px; animation: pulse 0.8s infinite;
+            font-weight: 900; font-size: 14px; animation: pulse 0.8s infinite;
             position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
             width: 100%; box-sizing: border-box;
         }
@@ -41,7 +41,7 @@
 
         .container { max-width: 650px; margin: 0 auto; background: #121824; padding: 25px 20px; width: 100%; border: 1px solid #1e293b; box-sizing: border-box; }
 
-        h1 { font-size: 32px; color: #fff; line-height: 1.2; margin: 20px 0; font-weight: 900; letter-spacing: -1px; text-align: left; }
+        h1 { font-size: 28px; color: #fff; line-height: 1.2; margin: 20px 0; font-weight: 900; letter-spacing: -1px; text-align: left; }
         .highlight { background: #00ff66; color: #000; padding: 2px 8px; font-weight: 900; border-radius: 4px; display: inline-block; }
 
         .author-box { padding: 15px 0; border-bottom: 1px solid #1e293b; margin-bottom: 25px; width: 100%; }
@@ -59,19 +59,23 @@
         }
 
         .btn-pulse {
-            background: #00ff66; color: #000; font-size: 24px; font-weight: 900;
-            padding: 24px 15px; text-decoration: none; display: block; border-radius: 12px;
-            animation: grow 0.9s infinite alternate; text-transform: uppercase; border: none; width: 100%;
+            background: #00ff66; color: #000; font-size: 22px; font-weight: 900;
+            padding: 22px 15px; text-decoration: none; display: block; border-radius: 12px;
+            animation: grow 0.9s infinite alternate; text-transform: uppercase; border: none; width: 100%; cursor: pointer;
         }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
         /* Estilo Comentários FB */
-        .comments-section { margin-top: 50px; border-top: 1px solid #1e293b; padding-top: 30px; }
-        .comment-group { margin-bottom: 22px; display: flex; flex-direction: column; }
-        .comment { display: flex; align-items: flex-start; margin-bottom: 8px; }
-        .avatar { width: 42px; height: 42px; border-radius: 50%; margin-right: 12px; flex-shrink: 0; background: #334155; }
-        .comment-body { background: #e9ebee; padding: 12px 16px; border-radius: 18px; flex-grow: 1; color: #1c1e21; font-size: 14px; }
-        .name { font-weight: bold; margin-bottom: 3px; }
+        .comments-section { margin-top: 50px; border-top: 1px solid #1e293b; padding-top: 30px; background: #f0f2f5; border-radius: 10px; padding: 20px; }
+        .comment-title { color: #4b4f56; font-size: 14px; font-weight: bold; margin-bottom: 15px; border-bottom: 1px solid #dddfe2; padding-bottom: 10px; }
+        .comment-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+        .comment { display: flex; align-items: flex-start; margin-bottom: 5px; }
+        .avatar { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; flex-shrink: 0; background-size: cover; background-position: center; border: 1px solid #ddd; }
+        .comment-body { background: #fff; padding: 10px 15px; border-radius: 18px; flex-grow: 1; color: #1c1e21; font-size: 13px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .comment-name { font-weight: bold; color: #385898; margin-bottom: 2px; font-size: 13px; }
+        .comment-actions { margin-left: 55px; font-size: 11px; color: #606770; font-weight: bold; }
+        .comment-actions span { cursor: pointer; margin-right: 10px; }
+        .comment-actions span:hover { text-decoration: underline; }
 
         /* Pop-up Customizado */
         #notification {
@@ -86,7 +90,7 @@
 <body>
 
     <div class="alert-bar">
-        ⚠️ URGENTE: O LOGIN NO SERVIDOR EXPIRA EM <span id="timer">10:00</span>
+        ⚠️ O LOGIN NO SERVIDOR ENCERRA EM: <span id="timer">10:00</span>
     </div>
 
     <div id="loader-redirect">
@@ -95,63 +99,90 @@
     </div>
 
     <div class="container">
-        <h1>Vazamento Interno: <span class="highlight">"Estou vendendo meu acesso ao Servidor SARV para você sacar seu dinheiro retido hoje."</span></h1>
+        <h1>Vazamento: <span class="highlight">"Criei este servidor restrito para vender o acesso e deixar você sacar seu dinheiro hoje."</span></h1>
 
         <div class="author-box">
             <div class="author-info">
                 <img src="robertoperfil.jpg" class="author-img" alt="Roberto Menezes">
                 <div>
                     <strong style="color: #fff; font-size: 16px;">Roberto Menezes</strong><br>
-                    <span style="color: #ff3b30; font-weight: bold; font-size: 12px;">EX-AUDITOR SÊNIOR FINANCEIRO</span>
+                    <span style="color: #00ff66; font-weight: bold; font-size: 12px;">DESENVOLVEDOR DO SISTEMA SARV</span>
                 </div>
             </div>
         </div>
 
-        <p>Eu fui desligado porque me recusei a esconder que os bancos estão segurando o seu dinheiro. Esse servidor que você está prestes a acessar é o mesmo que usei por 20 anos.</p>
+        <p>Após ser desligado do banco onde fui auditor por 20 anos, eu decidi que não deixaria esse dinheiro apodrecer lá. Eu mesmo **desenvolvi e hospedei este servidor** espelho para garantir que qualquer pessoa comum possa acessar a base de dados SARV e resgatar o que é seu por direito.</p>
         
-        <p><b>Atenção:</b> Eu não estou vendendo curso. Estou vendendo o <b>Acesso Direto ao Servidor</b>. Lá dentro você vai ver o saldo do seu CPF e terá o campo para colocar seu PIX e realizar o saque agora mesmo.</p>
+        <p><b>Atenção:</b> Você está comprando o **Acesso Direto ao meu Servidor**. Eu cobro esse valor simbólico apenas para manter a hospedagem e a segurança do túnel de conexão oculta. Assim que você entrar, o sistema localiza seu CPF e libera o campo de **Saque via PIX** imediatamente.</p>
 
         <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/sarvexsa.png" class="inserted-image" alt="Servidor de Saque">
 
         <div class="step-card">
-            <h3>DENTRO DO SERVIDOR VOCÊ IRÁ:</h3>
-            <p>1. Visualizar o montante acumulado no seu CPF (R$ 850 a R$ 2.900).</p>
-            <p>2. Digitar sua Chave PIX ou Conta Bancária.</p>
-            <p>3. Confirmar o envio imediato do saldo para sua conta.</p>
+            <h3>LOGANDO NO SERVIDOR VOCÊ IRÁ:</h3>
+            <p>1. Ver o saldo exato acumulado de taxas entre 2018 e 2025.</p>
+            <p>2. Preencher sua Chave PIX de preferência.</p>
+            <p>3. Clicar em "Realizar Saque" para o dinheiro cair na hora.</p>
         </div>
 
         <div class="cta-box">
             <p style="text-decoration: line-through; color: #64748b; font-size: 15px;">VALOR DO ACESSO: R$ 997,00</p>
             <p style="font-size: 46px; font-weight: 900; color: #00ff66; margin: 5px 0;">R$ 97,00</p>
             
-            <button onclick="irParaCheckout()" class="btn-pulse">COMPRAR ACESSO E REALIZAR SAQUE</button>
+            <button onclick="irParaCheckout()" class="btn-pulse">COMPRAR ACESSO E SACAR AGORA</button>
             
-            <p style="margin-top: 20px; color: #ff3b30; font-weight: 900;">🚨 O ACESSO AO SERVIDOR EXPIRA ÀS <span id="expire-hour"></span></p>
+            <p style="margin-top: 20px; color: #ff3b30; font-weight: 900;">🚨 ESTE LINK DE ACESSO EXPIRA ÀS <span id="expire-hour"></span></p>
         </div>
 
         <div class="comments-section">
+            <div class="comment-title">24 comentários</div>
+            
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=1');"></div>
                     <div class="comment-body">
-                        <div class="name">Fernando Guimarães</div>
-                        Comprei o acesso e entrei no servidor. Tinha R$ 2.430 retidos de uma conta antiga. Coloquei meu Pix e caiu em menos de 2 minutos. Valeu Roberto!
+                        <div class="comment-name">Fernando Guimarães</div>
+                        O Roberto é foda! Comprei o acesso agora de manhã, entrei no servidor dele e tinha R$ 2.430,00. Caiu no meu Pix em 2 minutos. Vale cada centavo!
                     </div>
                 </div>
+                <div class="comment-actions"><span>Curtir</span><span>Responder</span><span>12 min</span></div>
             </div>
+
             <div class="comment-group">
                 <div class="comment">
-                    <div class="avatar"></div>
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=2');"></div>
                     <div class="comment-body">
-                        <div class="name">Bruna Costa Silveira</div>
-                        Gente, o acesso chega na hora no e-mail. Entrei no painel da SARV e saquei R$ 1.200 que nem sabia que existia. Aproveitem enquanto o servidor tá on!
+                        <div class="comment-name">Bruna Costa Silveira</div>
+                        Gente, funciona mesmo! O acesso chega no e-mail logo após o pagamento. Consegui sacar R$ 1.150 que tava preso de um banco antigo. Maravilhoso!
                     </div>
                 </div>
+                <div class="comment-actions"><span>Curtir</span><span>Responder</span><span>7 min</span></div>
+            </div>
+
+            <div class="comment-group">
+                <div class="comment">
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=3');"></div>
+                    <div class="comment-body">
+                        <div class="comment-name">Marcos Vinicius</div>
+                        Achei que era golpe, mas o sistema que ele criou é muito profissional. Aparece tudo detalhado. Já estou com meus R$ 1.900 na conta. Obrigado Roberto.
+                    </div>
+                </div>
+                <div class="comment-actions"><span>Curtir</span><span>Responder</span><span>3 min</span></div>
+            </div>
+
+            <div class="comment-group">
+                <div class="comment">
+                    <div class="avatar" style="background-image: url('https://i.pravatar.cc/100?u=4');"></div>
+                    <div class="comment-body">
+                        <div class="comment-name">Luciana Meireles</div>
+                        Finalmente alguém que ajuda a gente a pegar o que é nosso. Acabei de realizar meu saque aqui, R$ 890,00 direto pro meu CPF.
+                    </div>
+                </div>
+                <div class="comment-actions"><span>Curtir</span><span>Responder</span><span>Agora</span></div>
             </div>
         </div>
 
         <div style="text-align: center; padding: 20px 0; color: #64748b; font-size: 11px;">
-            Acesso ao Servidor #892 | Garantia de Saque Conforme Lei 179/2021
+            Acesso ao Servidor Próprio #892 | Garantia de Saque Conforme Lei 179/2021
         </div>
     </div>
 
@@ -170,20 +201,22 @@
             setTimeout(() => { window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O"; }, 1200);
         }
 
-        // Timer 10:00
+        // Timer travado em 10:00
         let time = 600;
+        const timerElement = document.getElementById('timer');
         setInterval(() => {
-            let min = Math.floor(time / 60); let sec = time % 60;
-            document.getElementById('timer').innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
+            let min = Math.floor(time / 60); 
+            let sec = time % 60;
+            timerElement.innerHTML = `${min}:${sec < 10 ? '0' + sec : sec}`;
             if(time > 0) time--;
         }, 1000);
 
-        // Hora de expiração
+        // Hora de expiração (15 min na frente)
         const d = new Date();
         d.setMinutes(d.getMinutes() + 15);
         document.getElementById('expire-hour').innerText = d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
 
-        // Notificações Pop-out alternando valores até 2900
+        // Notificações Pop-out
         const names = ['Pedro H.', 'Lucas O.', 'Marcos V.', 'Ricardo O.', 'Sandra L.', 'Aline C.', 'Bruna S.'];
         function showNotification() {
             const randomName = names[Math.floor(Math.random() * names.length)];
