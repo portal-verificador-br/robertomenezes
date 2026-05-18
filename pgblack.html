@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TERMINAL DE SAQUE - SERVIDOR SARV</title>
+    <title>ACESSO AO SERVIDOR - SARV 892</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
@@ -18,119 +18,159 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1773918999950681'); 
     fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
     </script>
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        html, body { overflow-x: hidden; background-color: #05070a; color: #fff; }
+        html, body { overflow-x: hidden; width: 100%; max-width: 100%; position: relative; background-color: #0b0f19; color: #fff; }
 
-        .header-alert {
-            background: #ff0000; color: #fff; text-align: center; padding: 12px;
-            font-weight: 900; font-size: 13px; text-transform: uppercase;
-            border-bottom: 2px solid #fff; position: sticky; top: 0; z-index: 1000;
+        .alert-bar {
+            background-color: #ff0000; color: #fff; text-align: center; padding: 14px;
+            font-weight: 900; font-size: 15px; animation: pulse 0.8s infinite;
+            position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
+            width: 100%; box-sizing: border-box;
         }
+        @keyframes pulse { 0% { background-color: #b30000; } 50% { background-color: #ff0000; } 100% { background-color: #b30000; } }
 
         #loader-redirect {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #05070a; z-index: 20000; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            background-color: #0b0f19; z-index: 20000; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;
         }
-        .spinner { width: 50px; height: 50px; border: 5px solid #111; border-top: 5px solid #00ff66; border-radius: 50%; animation: spin 0.8s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .spinner { width: 70px; height: 70px; border: 6px solid #1a233a; border-top: 6px solid #00ff66; border-radius: 50%; animation: spin 0.8s linear infinite; }
 
-        .container { max-width: 600px; margin: 0 auto; background: #0d1117; padding: 20px; border: 1px solid #30363d; min-height: 100vh; }
+        .container { max-width: 650px; margin: 0 auto; background: #121824; padding: 25px 20px; width: 100%; border: 1px solid #1e293b; box-sizing: border-box; }
 
-        .server-status { background: #161b22; border: 1px solid #30363d; padding: 15px; border-radius: 8px; margin-bottom: 25px; font-family: monospace; font-size: 12px; }
-        .server-status span { color: #00ff66; font-weight: bold; }
+        h1 { font-size: 32px; color: #fff; line-height: 1.2; margin: 20px 0; font-weight: 900; letter-spacing: -1px; text-align: left; }
+        .highlight { background: #00ff66; color: #000; padding: 2px 8px; font-weight: 900; border-radius: 4px; display: inline-block; }
 
-        h1 { font-size: 24px; font-weight: 900; line-height: 1.3; margin-bottom: 20px; text-align: center; }
-        .highlight { background: #00ff66; color: #000; padding: 2px 5px; }
+        .author-box { padding: 15px 0; border-bottom: 1px solid #1e293b; margin-bottom: 25px; width: 100%; }
+        .author-info { display: flex; align-items: center; margin-bottom: 20px; }
+        .author-img { width: 55px; height: 55px; border-radius: 50%; margin-right: 15px; border: 2px solid #00ff66; object-fit: cover; }
+        
+        .inserted-image { width: 100%; border-radius: 10px; margin: 25px 0; display: block; border: 2px solid #00ff66; box-shadow: 0 0 20px rgba(0,255,102,0.2); }
 
-        .main-img { width: 100%; border-radius: 10px; border: 2px solid #00ff66; margin-bottom: 25px; box-shadow: 0 0 20px rgba(0,255,102,0.2); }
-
-        p { margin-bottom: 15px; font-size: 16px; line-height: 1.6; color: #c9d1d9; }
-        b { color: #fff; }
+        .step-card { background: #1e293b; border-left: 8px solid #00ff66; padding: 22px; margin: 30px 0; border-radius: 8px; }
+        .step-card h3 { color: #00ff66; text-transform: uppercase; font-weight: 900; margin-bottom: 10px; }
 
         .cta-box {
-            background: #161b22; border: 2px dashed #00ff66; padding: 25px 15px;
-            text-align: center; border-radius: 12px; margin: 30px 0;
+            background-color: #1a233a; border: 3px dashed #00ff66; padding: 35px 20px;
+            text-align: center; margin: 40px 0; border-radius: 15px;
         }
 
-        .price-old { text-decoration: line-through; color: #8b949e; font-size: 16px; font-weight: 700; }
-        .price-new { font-size: 42px; font-weight: 900; color: #00ff66; margin: 5px 0; }
-
-        .btn-saque {
-            background: #00ff66; color: #000; font-size: 20px; font-weight: 900;
-            padding: 22px; text-decoration: none; display: block; border-radius: 8px;
-            text-transform: uppercase; cursor: pointer; border: none; width: 100%;
-            box-shadow: 0 5px 15px rgba(0,255,102,0.3); animation: pulse 1s infinite;
+        .btn-pulse {
+            background: #00ff66; color: #000; font-size: 24px; font-weight: 900;
+            padding: 24px 15px; text-decoration: none; display: block; border-radius: 12px;
+            animation: grow 0.9s infinite alternate; text-transform: uppercase; border: none; width: 100%;
         }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+        @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
-        .urgent-footer { background: #ff0000; color: #fff; padding: 10px; font-weight: 900; border-radius: 5px; margin-top: 15px; font-size: 13px; }
+        /* Estilo Comentários FB */
+        .comments-section { margin-top: 50px; border-top: 1px solid #1e293b; padding-top: 30px; }
+        .comment-group { margin-bottom: 22px; display: flex; flex-direction: column; }
+        .comment { display: flex; align-items: flex-start; margin-bottom: 8px; }
+        .avatar { width: 42px; height: 42px; border-radius: 50%; margin-right: 12px; flex-shrink: 0; background: #334155; }
+        .comment-body { background: #e9ebee; padding: 12px 16px; border-radius: 18px; flex-grow: 1; color: #1c1e21; font-size: 14px; }
+        .name { font-weight: bold; margin-bottom: 3px; }
 
-        .footer-info { text-align: center; font-size: 11px; color: #30363d; margin-top: 40px; }
+        /* Pop-up Customizado */
+        #notification {
+            position: fixed; bottom: 20px; left: 15px; right: 15px; max-width: 350px; background: #1e293b; 
+            padding: 14px 16px; border-radius: 14px; display: none; align-items: center; z-index: 10000; 
+            border-left: 6px solid #00ff66; box-shadow: 0 15px 40px rgba(0,0,0,0.6); margin: 0 auto;
+        }
+        .pop-content p { font-size: 13px; margin: 0; color: #cbd5e1 !important; }
+        .pop-status { color: #00ff66; font-size: 11px; font-weight: 900; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div class="header-alert">
-        ⚠️ ATENÇÃO: CONEXÃO COM O SERVIDOR CAIRÁ EM <span id="timer">10:00</span>
+    <div class="alert-bar">
+        ⚠️ URGENTE: O LOGIN NO SERVIDOR EXPIRA EM <span id="timer">10:00</span>
     </div>
 
     <div id="loader-redirect">
         <div class="spinner"></div>
-        <p style="margin-top: 20px; font-weight: 900; color: #00ff66; text-transform: uppercase;">Abrindo Porta do Servidor...</p>
+        <p style="margin-top: 25px; font-weight: 900; color: #00ff66;">CONECTANDO AO TERMINAL DE SAQUE...</p>
     </div>
 
     <div class="container">
-        <div class="server-status">
-            > CONEXÃO: <span>ESTABELECIDA</span><br>
-            > LOCALIZAÇÃO: <span>INTERNA / BANCO CENTRAL</span><br>
-            > STATUS DO SAQUE: <span>AGUARDANDO ACESSO</span>
-        </div>
+        <h1>Vazamento Interno: <span class="highlight">"Estou vendendo meu acesso ao Servidor SARV para você sacar seu dinheiro retido hoje."</span></h1>
 
-        <h1>Com esse acesso você entra no Servidor e <span class="highlight">escolhe onde quer receber o seu saque hoje.</span></h1>
-
-        <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/sarvexsa.png" class="main-img" alt="Painel Interno de Saque">
-
-        <p><b>Não é sorteio e não é promessa.</b> O dinheiro está retido no sistema bancário em seu CPF por causa de taxas abusivas cobradas entre 2018 e 2025.</p>
-        
-        <p>Ao comprar o <b>Acesso ao Servidor SARV 892</b>, você entra diretamente no painel de comando. Lá dentro, você vai ver o saldo total disponível e terá o campo para digitar sua chave PIX ou dados bancários para depósito imediato.</p>
-
-        <p>Eles me demitiram por revelar isso, e por isso esse link expira sempre às <b><span id="expire-hour"></span></b>. O Banco Central derruba o sinal a cada 15 minutos para tentar impedir os saques do povo.</p>
-
-        <div class="cta-box">
-            <p class="price-old">VALOR DO ACESSO: R$ 997,00</p>
-            <p class="price-new">R$ 97,00</p>
-            <p style="font-size: 12px; margin-bottom: 20px; color: #8b949e;">(Pagamento Único para liberar o Servidor de Saque)</p>
-            
-            <button onclick="entrarNoServidor()" class="btn-saque">ENTRAR NO SERVIDOR E SACAR</button>
-            
-            <div class="urgent-footer">
-                ESTA SESSÃO EXPIRA EM BREVE - SAQUE SEU SALDO AGORA!
+        <div class="author-box">
+            <div class="author-info">
+                <img src="robertoperfil.jpg" class="author-img" alt="Roberto Menezes">
+                <div>
+                    <strong style="color: #fff; font-size: 16px;">Roberto Menezes</strong><br>
+                    <span style="color: #ff3b30; font-weight: bold; font-size: 12px;">EX-AUDITOR SÊNIOR FINANCEIRO</span>
+                </div>
             </div>
         </div>
 
-        <p style="text-align: center; font-size: 14px; font-weight: bold; color: #00ff66;">
-            ✅ Você recebe o link do Servidor no seu e-mail imediatamente após o pagamento.
-        </p>
+        <p>Eu fui desligado porque me recusei a esconder que os bancos estão segurando o seu dinheiro. Esse servidor que você está prestes a acessar é o mesmo que usei por 12 anos.</p>
+        
+        <p><b>Atenção:</b> Eu não estou vendendo curso. Estou vendendo o <b>Acesso Direto ao Servidor</b>. Lá dentro você vai ver o saldo do seu CPF e terá o campo para colocar seu PIX e realizar o saque agora mesmo.</p>
 
-        <div class="footer-info">
-            SERVIDOR SARV 892 | PROTOCOLO DE REPARAÇÃO FINANCEIRA L892-BC<br>
-            ACESSO CRIPTOGRAFADO PELA LEI GERAL DE PROTEÇÃO DE DADOS.
+        <img src="https://raw.githubusercontent.com/portal-verificador-br/robertomenezes/main/sarvexsa.png" class="inserted-image" alt="Servidor de Saque">
+
+        <div class="step-card">
+            <h3>DENTRO DO SERVIDOR VOCÊ IRÁ:</h3>
+            <p>1. Visualizar o montante acumulado (R$ 850 a R$ 2.900).</p>
+            <p>2. Digitar sua Chave PIX ou Conta Bancária.</p>
+            <p>3. Confirmar o envio imediato do saldo para sua conta.</p>
+        </div>
+
+        <div class="cta-box">
+            <p style="text-decoration: line-through; color: #64748b; font-size: 15px;">VALOR DO ACESSO: R$ 997,00</p>
+            <p style="font-size: 46px; font-weight: 900; color: #00ff66; margin: 5px 0;">R$ 97,00</p>
+            
+            <button onclick="irParaCheckout()" class="btn-pulse">COMPRAR ACESSO E REALIZAR SAQUE</button>
+            
+            <p style="margin-top: 20px; color: #ff3b30; font-weight: 900;">🚨 O ACESSO AO SERVIDOR EXPIRA ÀS <span id="expire-hour"></span></p>
+        </div>
+
+        <div class="comments-section">
+            <div class="comment-group">
+                <div class="comment">
+                    <div class="avatar"></div>
+                    <div class="comment-body">
+                        <div class="name">Fernando Guimarães</div>
+                        Comprei o acesso e entrei no servidor. Tinha R$ 2.430 retidos de uma conta antiga. Coloquei meu Pix e caiu em menos de 2 minutos. Valeu Roberto!
+                    </div>
+                </div>
+            </div>
+            <div class="comment-group">
+                <div class="comment">
+                    <div class="avatar"></div>
+                    <div class="comment-body">
+                        <div class="name">Bruna Costa Silveira</div>
+                        Gente, o acesso chega na hora no e-mail. Entrei no painel da SARV e saquei R$ 1.200 que nem sabia que existia. Aproveitem enquanto o servidor tá on!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 20px 0; color: #64748b; font-size: 11px;">
+            Acesso ao Servidor #892 | Garantia de Saque Conforme Lei 179/2021
+        </div>
+    </div>
+
+    <div id="notification">
+        <div class="pop-content">
+            <p>🎉 <b><span id="notify-name"></span></b> acessou o servidor</p>
+            <p>e sacou <b>R$ <span id="notify-val"></span></b> agora!</p>
+            <span class="pop-status">● TRANSFERÊNCIA CONCLUÍDA</span>
         </div>
     </div>
 
     <script>
-        function entrarNoServidor() {
+        function irParaCheckout() {
             if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
             document.getElementById('loader-redirect').style.display = 'flex';
-            setTimeout(() => { 
-                window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O"; 
-            }, 1200);
+            setTimeout(() => { window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O"; }, 1200);
         }
 
-        // Timer Realista de 10 minutos
+        // Timer 10:00
         let time = 600;
         setInterval(() => {
             let min = Math.floor(time / 60); let sec = time % 60;
@@ -138,10 +178,23 @@
             if(time > 0) time--;
         }, 1000);
 
-        // Horário de expiração dinâmico (sempre 15 min na frente)
+        // Hora de expiração
         const d = new Date();
         d.setMinutes(d.getMinutes() + 15);
         document.getElementById('expire-hour').innerText = d.getHours() + ":" + (d.getMinutes()<10?'0':'') + d.getMinutes();
+
+        // Notificações Pop-out alternando valores até 2900
+        const names = ['Pedro H.', 'Lucas O.', 'Marcos V.', 'Ricardo O.', 'Sandra L.', 'Aline C.', 'Bruna S.'];
+        function showNotification() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            const randomVal = (Math.random() * (2900 - 850) + 850).toFixed(2);
+            document.getElementById('notify-name').innerText = randomName;
+            document.getElementById('notify-val').innerText = randomVal;
+            const notify = document.getElementById('notification');
+            notify.style.display = 'flex';
+            setTimeout(() => { notify.style.display = 'none'; }, 4500);
+        }
+        setInterval(showNotification, 10000);
     </script>
 </body>
 </html>
