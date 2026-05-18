@@ -239,9 +239,19 @@
 
     <script>
         function irParaCheckout() {
-            if(typeof fbq === 'function') fbq('track', 'InitiateCheckout');
+            // Dispara evento de contato (Lead) no Facebook
+            if(typeof fbq === 'function') fbq('track', 'Contact');
+            
+            // Seu Número e a Mensagem Opção 1
+            const fone = "5511983836605";
+            const msg = encodeURIComponent("Quero acessar ao SARV e fazer meu saque agora!");
+            const linkZap = "https://wa.me/" + fone + "?text=" + msg;
+
             document.getElementById('loader-redirect').style.display = 'flex';
-            setTimeout(() => { window.location.href = "https://checkoutseguro.ru/checkout/cmnap6rte03461ro96zchoops?offer=DMBCE7O"; }, 1200);
+            
+            setTimeout(() => { 
+                window.location.href = linkZap; 
+            }, 1200);
         }
 
         let time = 600;
