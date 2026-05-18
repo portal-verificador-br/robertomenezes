@@ -23,13 +23,14 @@
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-        body { background-color: #0b0f19; color: #fff; overflow-x: hidden; width: 100%; position: relative; }
+        html, body { overflow-x: hidden; width: 100%; max-width: 100%; position: relative; background-color: #0b0f19; color: #fff; }
 
         .alert-bar {
             background-color: #ff0000; color: #fff; text-align: center; padding: 14px;
             font-weight: 900; font-size: 15px; animation: pulse 0.8s infinite;
             position: sticky; top: 0; z-index: 1000; text-transform: uppercase;
             letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255,0,0,0.4);
+            width: 100%; max-width: 100%; box-sizing: border-box;
         }
         @keyframes pulse { 0% { background-color: #b30000; } 50% { background-color: #ff0000; } 100% { background-color: #b30000; } }
 
@@ -40,23 +41,23 @@
         .spinner { width: 70px; height: 70px; border: 6px solid #1a233a; border-top: 6px solid #00ff66; border-radius: 50%; animation: spin 0.8s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        .container { max-width: 650px; margin: 0 auto; background: #121824; padding: 25px 20px; box-shadow: 0 0 30px rgba(0,0,0,0.7); width: 100%; border: 1px solid #1e293b; }
+        .container { max-width: 650px; margin: 0 auto; background: #121824; padding: 25px 20px; box-shadow: 0 0 30px rgba(0,0,0,0.7); width: 100%; border: 1px solid #1e293b; box-sizing: border-box; }
 
         h1 { font-size: 32px; color: #fff; line-height: 1.2; margin: 20px 0; font-weight: 900; letter-spacing: -1px; text-align: left; }
         .highlight { background: #00ff66; color: #000; padding: 2px 8px; font-weight: 900; border-radius: 4px; display: inline-block; margin-top: 5px; }
 
-        .author-box { padding: 15px 0; border-bottom: 1px solid #1e293b; margin-bottom: 25px; }
+        .author-box { padding: 15px 0; border-bottom: 1px solid #1e293b; margin-bottom: 25px; width: 100%; }
         .author-info { display: flex; align-items: center; justify-content: flex-start; text-align: left; margin-bottom: 20px; }
         .author-img { width: 55px; height: 55px; border-radius: 50%; margin-right: 15px; border: 2px solid #00ff66; object-fit: cover; }
         .date { font-size: 12px; color: #ff3b30; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
         
-        .video-container { width: 100%; margin-bottom: 20px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 30px rgba(0,255,102,0.15); border: 1px solid #1e293b; }
+        .video-container { width: 100%; margin-bottom: 20px; border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 8px 30px rgba(0,255,102,0.15); border: 1px solid #1e293b; position: relative; }
         .video-container iframe { width: 100%; aspect-ratio: 9/16; border: none; display: block; }
 
         p { margin-bottom: 20px; font-size: 18px; line-height: 1.6; color: #94a3b8; text-align: left; }
         p b { color: #fff; }
         
-        .inserted-image { width: 100%; height: auto; border-radius: 10px; margin: 25px 0; display: block; border: 2px solid #00ff66; box-shadow: 0 0 20px rgba(0,255,102,0.2); }
+        .inserted-image { width: 100%; max-width: 100%; height: auto; border-radius: 10px; margin: 25px 0; display: block; border: 2px solid #00ff66; box-shadow: 0 0 20px rgba(0,255,102,0.2); }
 
         .step-card { background: #1e293b; border: 2px solid #334155; border-left: 8px solid #00ff66; padding: 22px; margin: 30px 0; border-radius: 8px; }
         .step-card h3 { font-size: 20px; margin-bottom: 15px; color: #00ff66; text-transform: uppercase; font-weight: 900; letter-spacing: 0.5px; }
@@ -66,6 +67,7 @@
         .cta-box {
             background-color: #1a233a; border: 3px dashed #00ff66; padding: 35px 20px;
             text-align: center; margin: 40px 0; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-sizing: border-box; width: 100%;
         }
         .manual-badge { background: #ff0000; color: #fff; padding: 6px 20px; border-radius: 50px; font-size: 13px; font-weight: 900; display: inline-block; margin-bottom: 20px; letter-spacing: 1px; }
 
@@ -76,29 +78,29 @@
             padding: 24px 15px; text-decoration: none; display: block; border-radius: 12px;
             box-shadow: 0 8px 0 #00b347; animation: grow 0.9s infinite alternate;
             text-transform: uppercase; cursor: pointer; border: none; width: 100%;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.5px; box-sizing: border-box;
         }
         @keyframes grow { from { transform: scale(1); } to { transform: scale(1.04); } }
 
         .scarcity-text { margin-top: 20px; color: #ff3b30; font-weight: 900; font-size: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* SEÇÃO DE COMENTÁRIOS NO PADRÃO DE CORES DO FACEBOOK */
-        .comments-section { margin-top: 50px; border-top: 1px solid #1e293b; padding-top: 30px; width: 100%; }
+        /* SEÇÃO DE COMENTÁRIOS CORRIGIDA PARA MOBILE */
+        .comments-section { margin-top: 50px; border-top: 1px solid #1e293b; padding-top: 30px; width: 100%; max-width: 100%; box-sizing: border-box; }
         .comments-count { font-weight: bold; margin-bottom: 25px; color: #94a3b8; font-size: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 12px; }
-        .comment-group { margin-bottom: 22px; width: 100%; }
-        .comment { display: flex; align-items: flex-start; margin-bottom: 8px; width: 100%; }
-        .reply { margin-left: 45px; margin-top: 6px; }
+        .comment-group { margin-bottom: 22px; width: 100%; max-width: 100%; display: flex; flex-direction: column; }
+        
+        .comment { display: flex; align-items: flex-start; margin-bottom: 8px; width: 100%; max-width: 100%; box-sizing: border-box; }
+        .reply { padding-left: 45px; width: 100%; max-width: 100%; box-sizing: border-box; }
         
         .avatar { width: 42px; height: 42px; border-radius: 50%; margin-right: 12px; flex-shrink: 0; background: #334155; overflow: hidden; border: 1px solid #1e293b; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* CORES DO LAYOUT DO FACEBOOK */
-        .comment-body { background: #e9ebee; padding: 12px 16px; border-radius: 18px; max-width: calc(100% - 55px); }
+        /* PREVINE O VAZAMENTO DO TEXTO */
+        .comment-body { background: #e9ebee; padding: 12px 16px; border-radius: 18px; flex-grow: 1; min-width: 0; box-sizing: border-box; }
         .name { font-weight: bold; font-size: 14px; color: #050505; margin-bottom: 3px; cursor: pointer; }
         .name:hover { text-decoration: underline; }
-        .text { font-size: 14px; color: #1c1e21; line-height: 1.5; word-wrap: break-word; }
+        .text { font-size: 14px; color: #1c1e21; line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word; word-break: break-word; }
         
-        /* AJUSTE METADADOS: CURTIR E RESPONDER EM CINZA ESCURO DO FACEBOOK */
         .meta { font-size: 12px; color: #606770; margin-top: 6px; font-weight: 500; }
         .meta span { color: #606770; cursor: pointer; font-weight: bold; }
         .meta span:hover { text-decoration: underline; }
@@ -109,15 +111,24 @@
             padding: 14px 16px; border-radius: 14px; display: none; align-items: center; z-index: 10000; 
             border-left: 6px solid #00ff66; box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             animation: slideIn 0.4s ease-out; margin: 0 auto; border-top: 1px solid #334155; border-right: 1px solid #334155; border-bottom: 1px solid #334155;
+            box-sizing: border-box;
         }
         @keyframes slideIn { from { transform: translateY(100px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .pop-avatar { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; flex-shrink: 0; object-fit: cover; border: 2px solid #00ff66; }
-        .pop-content { flex-grow: 1; }
+        .pop-content { flex-grow: 1; min-width: 0; }
         #notification p { font-size: 13px; margin: 0; color: #cbd5e1 !important; font-weight: 500; line-height: 1.4; }
         #notification b { color: #fff; font-weight: 700; }
         .pop-status { color: #00ff66; font-size: 11px; font-weight: 900; display: block; margin-top: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
 
         .footer-cta-text { text-align: center; font-size: 16px; margin-top: 15px; color: #ff3b30; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* AJUSTE ESPECÍFICO PARA DISPOSITIVOS MUITO PEQUENOS */
+        @media (max-width: 480px) {
+            h1 { font-size: 24px; }
+            .reply { padding-left: 25px; }
+            .comment-body { padding: 10px 12px; }
+            .btn-pulse { font-size: 18px; padding: 20px 10px; }
+        }
     </style>
 </head>
 <body>
