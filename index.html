@@ -34,50 +34,75 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+        
+        html, body { 
+            overflow-x: hidden; 
+            width: 100%; 
+            max-width: 100%; 
+            position: relative; 
+            background-color: var(--bg); 
+            color: var(--text); 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
 
         header {
             background: #fff; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             display: flex; align-items: center; justify-content: space-between; border-bottom: 4px solid var(--secondary);
+            width: 100%; max-width: 100%; box-sizing: border-box;
         }
-        .logo-text { font-size: 14px; font-weight: 900; color: var(--primary); text-transform: uppercase; line-height: 1.1; }
-        .secure-badge { background: #fdf2f2; color: var(--secondary); padding: 5px 8px; border-radius: 4px; font-size: 10px; font-weight: 900; border: 1px solid var(--secondary); }
+        .logo-text { font-size: 14px; font-weight: 900; color: var(--primary); text-transform: uppercase; line-height: 1.1; min-width: 0; }
+        .secure-badge { background: #fdf2f2; color: var(--secondary); padding: 5px 8px; border-radius: 4px; font-size: 10px; font-weight: 900; border: 1px solid var(--secondary); flex-shrink: 0; margin-left: 10px; }
 
-        main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; width: 100%; max-width: 480px; margin: 0 auto; }
+        main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; width: 100%; max-width: 480px; margin: 0 auto; box-sizing: border-box; }
 
-        .progress-container { width: 100%; margin-bottom: 20px; }
-        .progress-track { background: #ddd; height: 8px; border-radius: 5px; overflow: hidden; }
+        .progress-container { width: 100%; margin-bottom: 20px; padding: 0 5px; }
+        .progress-track { background: #ddd; height: 8px; border-radius: 5px; overflow: hidden; width: 100%; }
         .progress-fill { background: var(--secondary); height: 100%; width: 10%; transition: width 0.4s ease; }
 
         .card {
-            background: #fff; padding: 30px 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            width: 100%; text-align: center; display: none; animation: slideUp 0.3s ease-out;
+            background: #fff; padding: 25px 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            width: 100%; max-width: 100%; text-align: center; display: none; animation: slideUp 0.3s ease-out; box-sizing: border-box;
         }
         .card.active { display: block; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-size: 22px; font-weight: 900; color: var(--primary); margin-bottom: 12px; line-height: 1.2; }
+        h1 { font-size: 20px; font-weight: 900; color: var(--primary); margin-bottom: 15px; line-height: 1.3; text-align: center; word-wrap: break-word; }
         
         .video-container { 
             position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; 
-            border-radius: 10px; background: #000; margin-bottom: 20px; border: 2px solid #ddd;
+            border-radius: 10px; background: #000; margin-bottom: 20px; border: 2px solid #ddd; width: 100%;
         }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .highlight-box { background: #fff9c4; padding: 12px; border-radius: 10px; font-weight: 800; border: 2px dashed #fbc02d; margin-bottom: 20px; font-size: 16px; color: #b71c1c; }
+        .highlight-box { background: #fff9c4; padding: 12px; border-radius: 10px; font-weight: 800; border: 2px dashed #fbc02d; margin-bottom: 20px; font-size: 15px; color: #b71c1c; word-wrap: break-word; }
+        .highlight-box.success { background: #e8f5e9; border-color: #2e7d32; color: #1b5e20; }
 
         .btn {
-            background: #fff; border: 2px solid #333; padding: 18px; border-radius: 12px;
-            font-size: 16px; font-weight: 900; color: #222; cursor: pointer; width: 100%; margin-bottom: 10px;
+            background: #fff; border: 2px solid #333; padding: 16px 10px; border-radius: 12px;
+            font-size: 16px; font-weight: 900; color: #222; cursor: pointer; width: 100%; max-width: 100%; margin-bottom: 12px;
+            display: block; box-sizing: border-box; text-transform: uppercase; word-wrap: break-word;
         }
-        .btn.primary { background: #1e7e34; color: white; border: none; font-size: 18px; padding: 22px; animation: pulse 1.5s infinite; }
+        .btn.primary { background: #1e7e34; color: white; border: none; font-size: 18px; padding: 20px 10px; animation: pulse 1.2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
 
-        .terminal-log { background: #0d1117; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 12px; color: #58a6ff; text-align: left; height: 150px; overflow-y: auto; margin-top: 15px; }
-        .log-item { margin-bottom: 4px; display: block; }
+        .terminal-log { background: #0d1117; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 12px; color: #58a6ff; text-align: left; height: 160px; overflow-y: auto; margin-top: 15px; width: 100%; box-sizing: border-box; }
+        .log-item { margin-bottom: 6px; display: block; word-wrap: break-word; }
         .log-item.alert { color: #f85149; font-weight: bold; }
+        .log-item.success { color: #56d364; font-weight: bold; }
 
-        footer { text-align: center; padding: 20px; font-size: 11px; color: #666; background: #fff; margin-top: 20px; }
+        footer { text-align: center; padding: 20px; font-size: 11px; color: #666; background: #fff; margin-top: auto; width: 100%; box-sizing: border-box; }
+        footer p { margin: 0; }
+
+        @media (max-width: 360px) {
+            header { padding: 10px 12px; }
+            .logo-text { font-size: 12px; }
+            h1 { font-size: 18px; }
+            .card { padding: 20px 15px; }
+            .btn { font-size: 15px; padding: 14px 8px; }
+            .btn.primary { font-size: 16px; padding: 18px 8px; }
+        }
     </style>
 </head>
 <body>
@@ -94,48 +119,47 @@
             <div class="progress-track"><div class="progress-fill" id="progress-bar"></div></div>
         </div>
 
-        <!-- PASSO 1: VÍDEO E PRIMEIRA PERGUNTA -->
+        <!-- PASSO 1: O GANCHO DO DINHEIRO -->
         <div id="step1" class="card active">
-            <h1>Caso você tenha perdido, aqui está um trecho da matéria transmitida pela Globo no dia 03/05/2026 detalhando a liberação do SARV:</h1>
+            <h1>Caso você tenha perdido, veja o comunicado urgente transmitido ao vivo na TV:</h1>
             <div class="video-container">
-                <!-- VÍDEO ATUALIZADO: gwzWlANKTRA -->
-                <iframe src="https://www.youtube.com/embed/gwzWlANKTRA?rel=0&modestbranding=1&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/gwzWlANKTRA?rel=0&modestbranding=1&controls=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <p style="margin-bottom: 15px; font-weight: 700;">Você utilizou cartão de crédito ou pagou juros bancários entre 2018 e 2025?</p>
-            <button class="btn" onclick="nextStep(2)">SIM, UTILIZEI</button>
-            <button class="btn" onclick="nextStep(2)">NÃO TENHO CERTEZA</button>
+            <p style="margin-bottom: 15px; font-weight: 900; font-size: 16px; line-height: 1.4; color: #d32f2f;">Você movimentou conta bancária, usou cartão de crédito ou pagou juros nos últimos anos?</p>
+            <button class="btn" onclick="nextStep(2)">SIM, TENHO MOVIMENTAÇÕES</button>
+            <button class="btn" onclick="nextStep(2)">TENHO CERTEZA QUE SIM</button>
         </div>
 
-        <!-- PASSO 2: QUALIFICAÇÃO -->
+        <!-- PASSO 2: FILTRO GANANCIOSO DA CHAVE PIX -->
         <div id="step2" class="card">
-            <h1>Verificação de Perfil</h1>
-            <p style="margin-bottom: 20px;">O sistema prioriza ressarcimentos para CPFs com movimentação ativa.</p>
-            <div class="highlight-box">Você possui uma conta ativa há mais de 3 anos e chave PIX ativa para receber seu saque caso o valor seja localizado?</div>
-            <button class="btn" onclick="nextStep(3)">SIM, POSSUO</button>
-            <button class="btn" onclick="nextStep(3)">NÃO POSSUO</button>
+            <h1>Liberação e Destino do Saldo</h1>
+            <p style="margin-bottom: 20px; font-size: 15px; color: #333; font-weight: 700;">Os valores recuperados são transferidos via PIX imediato pelo Banco Central.</p>
+            <div class="highlight-box">Você possui uma chave PIX ativa (CPF, Celular ou E-mail) para receber o saldo total localizado em seu nome hoje?</div>
+            <button class="btn" onclick="nextStep(3)">SIM, QUERO RECEBER POR PIX</button>
+            <button class="btn" onclick="nextStep(3)">QUERO CADASTRAR PIX AGORA</button>
         </div>
 
-        <!-- PASSO 3: CONCLUSÃO E DISPARO DE LEAD -->
+        <!-- PASSO 3: GATILHO DA GANÂNCIA MÁXIMA + PROIBIÇÃO -->
         <div id="step3" class="card">
-            <h1 style="color: var(--accent);">CONSULTA DISPONÍVEL!</h1>
-            <p style="margin-bottom: 15px;">Localizamos registros de taxas abusivas pendentes de reembolso em seu histórico bancário.</p>
+            <h1 style="color: var(--accent); font-size: 24px;">SALDO DISPONÍVEL LOCALIZADO!</h1>
+            <p style="margin-bottom: 15px; font-size: 16px; color: #1a1a1a; font-weight: 700;">Identificamos um acúmulo de tarifas abusivas e juros retroativos pendentes de saque no seu perfil.</p>
             <div class="highlight-box">
-                ⚠️ ATENÇÃO: O servidor SARV 892 será desligado em breve por liminar judicial. Garanta o acesso a ferramenta agora.
+                ⚠️ URGENTE: O servidor de pagamento instantâneo será bloqueado à meia-noite por determinação judicial das instituições financeiras. Retire seu saldo antes do travamento.
             </div>
             <button class="btn primary" onclick="startFinalProcess()">
-                ACESSAR CONTEÚDO COMPLETO <i class="fas fa-arrow-right"></i>
+                RECONHECER CPF E SACAR VALORES <i class="fas fa-arrow-right"></i>
             </button>
         </div>
 
-        <!-- LOADING TERMINAL -->
+        <!-- LOADING TERMINAL BLACK HAT HYPE -->
         <div id="loading" class="card">
-            <h2 style="font-size: 18px; margin-bottom: 10px;">Processando Protocolo...</h2>
+            <h2 style="font-size: 18px; margin-bottom: 10px; font-weight: 900;">Conectando à API de Pagamentos...</h2>
             <div class="terminal-log" id="terminal"></div>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 Sistema SARV - Auditoria </p>
+        <p>© 2026 Sistema SARV - Auditoria Oficial</p>
     </footer>
 
     <script>
@@ -149,25 +173,25 @@
             document.querySelectorAll('.card').forEach(el => el.classList.remove('active'));
             document.getElementById('step' + step).classList.add('active');
             if(step === 2) updateProgress(40);
-            if(step === 3) updateProgress(80);
+            if(step === 3) updateProgress(75);
             window.scrollTo(0,0);
         }
 
         function startFinalProcess() {
-            // DISPARA O EVENTO DE LEAD NO MOMENTO DO CLIQUE
-            fbq('track', 'Lead'); 
+            if(typeof fbq === 'function') fbq('track', 'Lead'); 
 
             document.getElementById('step3').classList.remove('active');
             document.getElementById('loading').classList.add('active');
-            updateProgress(95);
+            updateProgress(90);
 
             const terminal = document.getElementById('terminal');
             const logs = [
-                { text: "> Conectando ao Banco Central...", delay: 500 },
-                { text: "> Verificando teto de restituição...", delay: 1200 },
-                { text: "> VALOR ACIMA DA MÉDIA LOCALIZADO!", delay: 2000, alert: true },
-                { text: "> Gerando guia de saque imediato...", delay: 2800 },
-                { text: "> Redirecionando para área segura...", delay: 3500 }
+                { text: "> Iniciando varredura criptografada...", delay: 400 },
+                { text: "> Acessando banco de dados de tarifas ocultas...", delay: 900 },
+                { text: "> SINCRO_SISTEMA: Vínculo ativo encontrado!", delay: 1500, success: true },
+                { text: "> ALERTA: Teto máximo de reembolso liberado para este CPF!", delay: 2200, alert: true },
+                { text: "> Formatando ordem de transferência PIX imediata...", delay: 2900 },
+                { text: "> Redirecionando para a página de resgate seguro...", delay: 3600 }
             ];
 
             let index = 0;
@@ -175,18 +199,22 @@
                 if (index < logs.length) {
                     setTimeout(() => {
                         const p = document.createElement('div');
-                        p.className = 'log-item' + (logs[index].alert ? ' alert' : '');
+                        let typeClass = '';
+                        if (logs[index].alert) typeClass = ' alert';
+                        if (logs[index].success) typeClass = ' success';
+                        
+                        p.className = 'log-item' + typeClass;
                         p.innerText = logs[index].text;
                         terminal.appendChild(p);
                         terminal.scrollTop = terminal.scrollHeight;
                         index++;
                         addLog();
-                    }, 800);
+                    }, 700);
                 } else {
                     setTimeout(() => {
                         updateProgress(100);
                         window.location.href = redirectUrl;
-                    }, 1000);
+                    }, 800);
                 }
             }
             addLog();
