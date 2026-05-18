@@ -92,15 +92,18 @@
         .avatar { width: 42px; height: 42px; border-radius: 50%; margin-right: 12px; flex-shrink: 0; background: #334155; overflow: hidden; border: 1px solid #1e293b; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* CORES DO LAYOUT DO FACEBOOK (NOME PRETO/ESCURO NO FUNDO DOS COMENTÁRIOS) */
+        /* CORES DO LAYOUT DO FACEBOOK */
         .comment-body { background: #e9ebee; padding: 12px 16px; border-radius: 18px; max-width: calc(100% - 55px); }
         .name { font-weight: bold; font-size: 14px; color: #050505; margin-bottom: 3px; cursor: pointer; }
         .name:hover { text-decoration: underline; }
         .text { font-size: 14px; color: #1c1e21; line-height: 1.5; word-wrap: break-word; }
+        
+        /* AJUSTE METADADOS: CURTIR E RESPONDER EM CINZA ESCURO DO FACEBOOK */
         .meta { font-size: 12px; color: #606770; margin-top: 6px; font-weight: 500; }
-        .meta span { color: #1877f2; cursor: pointer; font-weight: bold; }
+        .meta span { color: #606770; cursor: pointer; font-weight: bold; }
+        .meta span:hover { text-decoration: underline; }
 
-        /* NOTIFICAÇÃO DE SAQUE CORRIGIDA */
+        /* NOTIFICAÇÃO DE SAQUE */
         #notification {
             position: fixed; bottom: 20px; left: 15px; right: 15px; max-width: 350px; background: #1e293b; 
             padding: 14px 16px; border-radius: 14px; display: none; align-items: center; z-index: 10000; 
@@ -136,7 +139,8 @@
                 <img src="robertoperfil.jpg" class="author-img" alt="Roberto Menezes">
                 <div>
                     <strong style="color: #fff; font-size: 16px;">Roberto Menezes</strong><br>
-                    <span class="date">EX-AUDITOR CHEFE DE OPERAÇÕES</span>
+                    <!-- ATUALIZADO: AUDITOR SÊNIOR FINANCEIRO -->
+                    <span class="date">EX-AUDITOR SÊNIOR FINANCEIRO</span>
                 </div>
             </div>
             
@@ -241,7 +245,7 @@
         </div>
     </div>
 
-    <!-- POP-UP COM FILTRO SEPARADO POR GÊNERO -->
+    <!-- POP-UP -->
     <div id="notification">
         <img src="" id="pop-img" class="pop-avatar" alt="Usuário">
         <div class="pop-content">
@@ -265,14 +269,12 @@
             if(time > 0) time--;
         }, 1000);
 
-        // LISTAS SEPARADAS PARA TRAVAR HOMEM COM HOMEM E MULHER COM MULHER
         const menNames = ['Pedro Henrique Silva', 'Lucas Oliveira Ramos', 'Marcos Vinícius', 'Ricardo Oliveira', 'Rodrigo dos Santos', 'Thiago Alencar', 'Carlos Alberto Souza', 'Bruno Silveira', 'Fernando Guimarães'];
         const womenNames = ['Fernanda de Souza', 'Júlia Mendes', 'Sandra Helena', 'Aline Cavalcante', 'Marcela Guedes', 'Bruna Costa', 'Julia Pereira', 'Gabriela Teixeira', 'Ana Beatriz Reis'];
         
         const cities = ['São Paulo/SP', 'Rio de Janeiro/RJ', 'Belo Horizonte/MG', 'Porto Alegre/RS', 'Salvador/BA', 'Curitiba/PR', 'Goiânia/GO', 'Campinas/SP', 'Fortaleza/CE'];
         
         function showNotification() {
-            // Sorteia o gênero primeiro (true = homem, false = mulher)
             const isMale = Math.random() > 0.5;
             const imgId = Math.floor(Math.random() * 70);
             
@@ -293,7 +295,6 @@
             document.getElementById('notify-name').innerText = randomName;
             document.getElementById('notify-city').innerText = randomCity;
             document.getElementById('notify-val').innerText = randomVal;
-            // Aqui força a pasta e a foto a baterem 100% com o gênero sorteado
             document.getElementById('pop-img').src = `https://randomuser.me/api/portraits/${genderFolder}/${imgId}.jpg`;
             
             const notify = document.getElementById('notification');
